@@ -699,5 +699,33 @@
     "description_en": "Philippe Lauren men's chronograph in black ion-plated stainless steel with a square cushion case. Black dial with three chronograph subdials, silver-tone baton indices and hands, a date window, and a matching black steel bracelet. A sharp, modern all-black chronograph with a distinctive square silhouette.",
     "description_it": "Cronografo da uomo Philippe Lauren in acciaio inossidabile placcato nero con cassa quadrata a cuscino. Quadrante nero con tre contatori cronografici, indici a bastone e lancette color argento, finestrella data e bracciale in acciaio nero abbinato. Un cronografo total black moderno e deciso, con una silhouette quadrata distintiva.",
     "description_sq": "Kronograf për burra Philippe Lauren në çelik inoks të veshur me jon të zi, me kasë katrore në formë jastëku. Ciferblat i zi me tre nën-ciferblatë kronografi, tregues shiritash dhe akrepa në ngjyrë argjendi, dritare date dhe byzylyk çeliku i zi i përshtatur. Një kronograf tërësisht i zi, modern dhe i mprehtë, me siluetë katrore dalluese."
+  },
+  {
+    "id": "philippe-lauren-pl2392-4",
+    "brand": "Philippe Lauren",
+    "model": "Gold Square Crystal",
+    "reference": "PL2392-4",
+    "condition": "New",
+    "price": 59,
+    "currency": "EUR",
+    "image": "/images/watches/philippe-lauren-pl2392-4.webp",
+    "sold": false,
+    "description_en": "Philippe Lauren ladies' dress watch in gold-tone stainless steel with a square case and a crystal-set bezel. Silver dial with black Roman numerals and gold-tone hands, on a matching gold-tone bracelet. A sparkling, elegant everyday dress watch.",
+    "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile color oro con cassa quadrata e ghiera con cristalli. Quadrante argentato con numeri romani neri e lancette dorate, su bracciale abbinato color oro. Un orologio da abito elegante e brillante per ogni giorno.",
+    "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks ngjyrë ari me kasë katrore dhe lunetë me kristale. Ciferblat argjendi me numra romakë të zinj dhe akrepa të artë, mbi byzylyk të njëjtë ngjyrë ari. Një orë elegante dhe shkëlqyese për çdo ditë."
+  },
+  {
+    "id": "bigotti-bg1-10660-7",
+    "brand": "Bigotti",
+    "model": "Gold Black Dial",
+    "reference": "BG.1.10660-7",
+    "condition": "New",
+    "price": 69,
+    "currency": "EUR",
+    "image": "/images/watches/bigotti-bg1-10660-7.webp",
+    "sold": false,
+    "description_en": "Bigotti ladies' dress watch in gold-tone stainless steel with a glossy black dial. Applied gold-tone baton indices and hands on a slim round case, finished with a gold-tone five-link bracelet. A classic black-and-gold pairing that suits a slimmer wrist.",
+    "description_it": "Orologio da donna Bigotti in acciaio inossidabile color oro con quadrante nero lucido. Indici a bastone e lancette dorate applicati su una cassa rotonda sottile, con bracciale color oro a cinque maglie. Un classico abbinamento nero e oro, ideale per un polso sottile.",
+    "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks ngjyrë ari me ciferblat të zi të shndritshëm. Tregues shiritash dhe akrepa të artë të aplikuar mbi një kasë të rrumbullakët të hollë, me byzylyk ngjyrë ari me pesë hallka. Një kombinim klasik i zezë me ar, i përshtatshëm për një dorë më të hollë."
   }
 ]
