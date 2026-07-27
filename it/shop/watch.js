@@ -39,7 +39,12 @@
   }
 
   function render(w){
-    var title = w.brand + ' ' + w.model + (w.reference ? ' ' + w.reference : '') + (w.price ? ' \u2014 \u20ac' + w.price : '') + ' | Iglisi Watch';
+    // title must stay identical to gen_product_pages.py title_for(); the reference is
+    // appended only for brand+model collisions (Hislon Classic / Classic Queen).
+    var _DUP_NAMES = ['Hislon Classic','Hislon Classic Queen'];
+    var _nm = w.brand + ' ' + w.model;
+    if (w.reference && _DUP_NAMES.indexOf(_nm) !== -1) { _nm += ' ' + w.reference; }
+    var title = _nm + (w.price ? ' - €' + w.price : '') + ' | Orologi a Durazzo';
     var desc = (w.brand === 'Hislon' ? 'Orologio svizzero Hislon. ' : '') + (w.description_it || w.description_en || '') + ' Disponibile da Iglisi Watch, Durazzo, Albania.';
     var imgUrl = w.image ? 'https://watch.al' + w.image : 'https://watch.al/og-image.png';
     var pageUrl = 'https://watch.al/it/shop/' + w.id + '.html';
