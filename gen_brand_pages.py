@@ -92,6 +92,7 @@ UI = {
 }
 
 from brand_copy import COPY  # localized, owner-verified brand copy
+from shop_bits import crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html
 
 
 def esc(s):
@@ -135,10 +136,13 @@ def build_main(slug, brand, lang, items):
     cards = "".join(card(w, lang) for w in items)
     return (
         '<main id="main-content">'
-        '<div class="shop-hero"><div class="max-w-7xl mx-auto px-6">'
+        + CRUMB_CSS + crumb_html(lang, brand=brand)
+        +         '<div class="shop-hero"><div class="max-w-7xl mx-auto px-6">'
         f'<h1>{ui["h1"]}</h1>'
         f'<div class="brand-intro">{paras}</div>'
         f'<p class="brand-trust">{trust}</p>'
+        + open_now_html(lang)
+        + 
         '</div></div>'
         '<div class="max-w-7xl mx-auto px-6">'
         f'<h2 class="brand-grid-h">{ui["all_h"]}</h2>'
@@ -157,7 +161,7 @@ def build_main(slug, brand, lang, items):
 
 BRAND_CSS = (
     "<style>"
-    ".brand-intro{max-width:62ch;margin:1rem auto 0;display:flex;flex-direction:column;gap:.9rem}"
+    ".brand-intro{max-width:62ch;margin:1rem auto 0;display:flex;flex-direction:column;gap:.9rem;text-align:left}"
     ".brand-intro p{color:rgba(255,255,255,.82);line-height:1.65;font-size:.98rem}"
     ".brand-trust{margin:1.5rem auto 0;color:rgba(255,255,255,.7);font-size:.85rem}"
     ".brand-trust i{color:var(--accent-gold,#b4945c)}"
@@ -221,16 +225,7 @@ def build_jsonld(slug, brand, lang, items):
                 for i, w in enumerate(items, 1)],
         },
     }
-    crumbs = {
-        "@context": "https://schema.org", "@type": "BreadcrumbList",
-        "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": ui["crumb_home"],
-             "item": f"https://watch.al/{lang}/"},
-            {"@type": "ListItem", "position": 2, "name": ui["crumb_shop"],
-             "item": f"https://watch.al/{lang}/shop/"},
-            {"@type": "ListItem", "position": 3, "name": brand, "item": url},
-        ],
-    }
+    crumbs = crumb_jsonld(lang, url, brand=brand)
     faq = {
         "@context": "https://schema.org", "@type": "FAQPage",
         "mainEntity": [

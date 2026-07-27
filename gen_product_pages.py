@@ -16,6 +16,9 @@ import re
 import urllib.parse
 from pathlib import Path
 
+from shop_bits import (crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html,
+                       price_html as shared_price_html)
+
 BASE = Path(__file__).parent
 
 watches = json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
@@ -214,17 +217,11 @@ def lek(price, currency):
     return int(price * LEK_RATE / 100 + 0.5) * 100
 
 
-def build_price_html(price, currency):
+def build_price_html(price, currency, lang="en"):
+    """SQ leads with Lek, EN/IT with EUR. Mirrored by watch.js."""
     if not price:
         return "Price on request"
-    eur = f"€{price}"
-    l = lek(price, currency)
-    if l:
-        eur += (
-            f'<span style="font-size:1.1rem;color:#888;font-weight:500;margin-left:.5rem">'
-            f"· {l:,} L</span>"
-        )
-    return eur
+    return shared_price_html(price, currency, lang)
 
 
 def build_img_html(w):
@@ -355,7 +352,7 @@ def build_watch_div(w, lang, cfg):
     )
 
     img_html = build_img_html(w)
-    price_html = build_price_html(price, currency)
+    price_html = build_price_html(price, currency, lang)
 
     swiss_html = ""
     if brand == "Hislon":
@@ -399,7 +396,8 @@ def build_watch_div(w, lang, cfg):
         f'<p class="watch-price-pg">{price_html}</p>'
         f'<p class="watch-desc-pg">{desc}</p>'
         f"{cta_html}"
-        f"{trust_html}"
+        + open_now_html(lang)
+        +         f"{trust_html}"
         f"</div>"
     )
 
@@ -409,6 +407,23 @@ def build_watch_div(w, lang, cfg):
         f"{info_html}"
         f"</div>"
     )
+
+
+def build_crumb_div(w, lang):
+    """Visible breadcrumb, placed ABOVE #watch-content as a sibling: watch.js
+    replaces watch-content.innerHTML wholesale, so anything inside it is lost."""
+    leaf = f'{w["brand"]} {w["model"]}'.strip()
+    return (f'<div id="watch-crumb">{CRUMB_CSS}'
+            + crumb_html(lang, brand=w.get("brand"), leaf=leaf) + "</div>")
+
+
+def replace_crumb(html, new_div):
+    """Replace #watch-crumb, else insert just before #watch-content."""
+    m = re.search(r'<div id="watch-crumb">.*?</nav></div>', html, re.S)
+    if m:
+        return html[:m.start()] + new_div + html[m.end():]
+    i = html.find('<div id="watch-content"')
+    return html if i == -1 else html[:i] + new_div + "\n  " + html[i:]
 
 
 def build_extra_div(w, lang, cfg):
@@ -467,6 +482,14 @@ for w in watches:
         html = path.read_text(encoding="utf-8")
         new_html = replace_watch_content(html, build_watch_div(w, lang, cfg))
         new_html = replace_extra(new_html, build_extra_div(w, lang, cfg))
+        new_html = replace_crumb(new_html, build_crumb_div(w, lang))
+
+        # BreadcrumbList must match the visible crumb AND what watch.js rebuilds
+        bc = crumb_jsonld(lang, f'https://watch.al/{lang}/shop/{wid}.html',
+                          brand=w.get('brand'), leaf=f'{w["brand"]} {w["model"]}'.strip())
+        new_html = re.sub(r'(<script type="application/ld\+json" id="ld-breadcrumb">)(.*?)(</script>)',
+                          lambda m: m.group(1) + json.dumps(bc, ensure_ascii=False) + m.group(3),
+                          new_html, count=1, flags=re.S)
 
         # <title> + og:title, localized and commercial. Must equal what watch.js
         # rebuilds at runtime (see title_for), or static and rendered pages disagree.

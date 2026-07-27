@@ -161,6 +161,10 @@
     if(!price) return '\u00c7mimi me k\u00ebrkese';
     return (currency === 'EUR' ? '\u20ac' : currency) + Number(price).toLocaleString('sq-AL');
   }
+  function lekVal(price, currency){
+    if(!price || currency !== 'EUR') return 0;
+    return Math.round(price * EUR_TO_LEK / 100) * 100;
+  }
   function fmtLek(price, currency){
     if(!price || currency !== 'EUR') return '';
     return '<span style="font-size:.78rem;color:#888;font-weight:400"> \u00b7 ' + (Math.round(price * EUR_TO_LEK / 100) * 100).toLocaleString() + ' L</span>';
@@ -192,7 +196,7 @@
       + '<p class="watch-desc">' + (w.description_sq || '') + '</p>'
       + '<div class="watch-card-footer">'
       + '<div>'
-      + '<p class="watch-price">' + fmt(w.price, w.currency) + fmtLek(w.price, w.currency) + '</p>'
+      + '<p class="watch-price">' + /* LEK_FIRST: Albanian customers judge the Lek figure */ (lekVal(w.price,w.currency) ? lekVal(w.price,w.currency).toLocaleString() + ' L<span style="font-size:.78rem;color:#888;font-weight:400"> · ' + fmt(w.price,w.currency) + '</span>' : fmt(w.price, w.currency)) + '</p>'
       + (w.originalPrice ? '<p class="was-price-line">Was ' + (w.currency==='EUR'?'\u20ac':w.currency) + w.originalPrice + '</p>' : '')
       + '</div>'
       + '<a href="https://instagram.com/iglisiwatch" target="_blank" rel="noopener noreferrer" class="watch-ig-link" aria-label="Shiko n\u00eb Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>'

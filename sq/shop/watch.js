@@ -113,11 +113,24 @@
     var bc = {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      'itemListElement': [
-        {'@type': 'ListItem', 'position': 1, 'name': 'Kryefaqja', 'item': 'https://watch.al/sq/'},
-        {'@type': 'ListItem', 'position': 2, 'name': 'Orë në Shitje', 'item': 'https://watch.al/sq/shop/'},
-        {'@type': 'ListItem', 'position': 3, 'name': w.brand + ' ' + w.model, 'item': pageUrl}
-      ]
+      'itemListElement': (function(){
+        // must match shop_bits.crumb_jsonld() in the static generator
+        var _BRAND_SLUGS = 'Daniel Klein:daniel-klein|Navimarine:navimarine|Hislon:hislon|Philippe Lauren:philippe-lauren';
+        var _s = null, _parts = _BRAND_SLUGS.split('|');
+        for (var _i = 0; _i < _parts.length; _i++) {
+          var _kv = _parts[_i].split(':');
+          if (_kv[0] === w.brand) { _s = _kv[1]; break; }
+        }
+        var _out = [
+          {'@type': 'ListItem', 'position': 1, 'name': 'Kryefaqja', 'item': 'https://watch.al/sq/'},
+          {'@type': 'ListItem', 'position': 2, 'name': 'Dyqani', 'item': 'https://watch.al/sq/shop/'}
+        ];
+        if (_s) { _out.push({'@type': 'ListItem', 'position': 3, 'name': w.brand,
+          'item': 'https://watch.al/sq/shop/brand/' + _s + '.html'}); }
+        _out.push({'@type': 'ListItem', 'position': _out.length + 1,
+          'name': w.brand + ' ' + w.model, 'item': pageUrl});
+        return _out;
+      })()
     };
     document.getElementById('ld-breadcrumb').textContent = JSON.stringify(bc);
 
@@ -149,7 +162,7 @@
           + '<h1 class="watch-title-pg">' + w.brand + ' ' + w.model + '</h1>'
           + '<p class="watch-ref-pg">Ref. ' + (w.reference||'\u2014') + '</p>'
         + '</div>'
-        + '<p class="watch-price-pg">' + fmt(w.price, w.currency) + (lekPrice(w.price,w.currency) ? '<span style="font-size:1.1rem;color:#888;font-weight:500;margin-left:.5rem">· ' + lekPrice(w.price,w.currency).toLocaleString() + ' L</span>' : '') + '</p>'
+        + '<p class="watch-price-pg">' + (lekPrice(w.price,w.currency) ? lekPrice(w.price,w.currency).toLocaleString() + ' L<span style="font-size:1.1rem;color:#888;font-weight:500;margin-left:.5rem">· ' + fmt(w.price, w.currency) + '</span>' : fmt(w.price, w.currency)) + '</p>'
         + '<p class="watch-desc-pg">' + (w.description_sq || w.description_en || '') + '</p>'
         + ctaBlock
         + '<div class="trust-row">'

@@ -17,6 +17,8 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
+from shop_bits import card_price_html
+
 BASE = Path(__file__).parent
 BOM = b"\xef\xbb\xbf"
 W = json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
@@ -43,15 +45,35 @@ def lek(price, currency):
             + f"{v:,}" + "\u00a0L</span>")
 
 
+_SIZES = {}
+
+
+def img_size(rel):
+    """Intrinsic dimensions for the card <img>. The container already sets
+    aspect-ratio:1/1 so this is correctness rather than a layout-shift fix."""
+    if not rel:
+        return (0, 0)
+    if rel not in _SIZES:
+        try:
+            from PIL import Image
+            with Image.open(BASE / rel.lstrip("/")) as im:
+                _SIZES[rel] = im.size
+        except Exception:
+            _SIZES[rel] = (0, 0)
+    return _SIZES[rel]
+
+
 def card(w, lang):
     t = L[lang]
     swiss = " Swiss Watch" if w["brand"] == "Hislon" else ""
     name = f'{w["brand"]} {w["model"]}'
     alt = name + swiss
     webp = re.sub(r"\.jpe?g$", ".webp", w["image"], flags=re.I)
+    iw, ih = img_size(w.get("image", ""))
+    dims = f' width="{iw}" height="{ih}"' if iw else ""
     img = (f'<a href="/{lang}/shop/{w["id"]}.html" aria-label="{alt}"><picture>'
            f'<source srcset="{webp}" type="image/webp">'
-           f'<img src="{w["image"]}" alt="{alt}" loading="lazy"></picture></a>') if w.get("image") else \
+           f'<img src="{w["image"]}" alt="{alt}" loading="lazy"{dims}></picture></a>') if w.get("image") else \
           '<div class="watch-img-placeholder"><i class="fas fa-clock" aria-hidden="true"></i></div>'
     sold_ov = f'<div class="sold-overlay">{t["sold"]}</div>' if w.get("sold") else ""
     if w.get("sold"):
@@ -68,7 +90,8 @@ def card(w, lang):
     sale = '<span class="sale-badge">\u221210%</span>' if w.get("originalPrice") else ""
     was = (f'<p class="was-price-line">{t["was"]}\u20ac{w["originalPrice"]}</p>'
            if w.get("originalPrice") else "")
-    price = ("\u20ac" if w.get("currency") == "EUR" else str(w.get("currency", ""))) + f'{w["price"]:,}'
+    # SQ leads with Lek; mirrored by shop.js. Single definition in shop_bits.
+    price = card_price_html(w["price"], w.get("currency"), lang)
     sold_cls = " sold-card" if w.get("sold") else ""
     desc = w[f"description_{lang}"]
     ref_line = f'<p class="watch-ref">{t["ref"]} {w["reference"]}</p>' if w.get("reference") else ""
@@ -82,7 +105,7 @@ def card(w, lang):
         ref_line,
         f'<p class="watch-desc">{desc}</p>',
         '<div class="watch-card-footer"><div>',
-        f'<p class="watch-price">{price}{lek(w["price"], w.get("currency"))}</p>{was}</div>',
+        f'<p class="watch-price">{price}</p>{was}</div>',
         '<a href="https://instagram.com/iglisiwatch" target="_blank" rel="noopener noreferrer" '
         f'class="watch-ig-link" aria-label="{t["ig"]}">'
         '<i class="fab fa-instagram" aria-hidden="true"></i></a>',

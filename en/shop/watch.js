@@ -113,11 +113,24 @@
     var bc = {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      'itemListElement': [
-        {'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://watch.al/en/'},
-        {'@type': 'ListItem', 'position': 2, 'name': 'Shop', 'item': 'https://watch.al/en/shop/'},
-        {'@type': 'ListItem', 'position': 3, 'name': w.brand + ' ' + w.model, 'item': pageUrl}
-      ]
+      'itemListElement': (function(){
+        // must match shop_bits.crumb_jsonld() in the static generator
+        var _BRAND_SLUGS = 'Daniel Klein:daniel-klein|Navimarine:navimarine|Hislon:hislon|Philippe Lauren:philippe-lauren';
+        var _s = null, _parts = _BRAND_SLUGS.split('|');
+        for (var _i = 0; _i < _parts.length; _i++) {
+          var _kv = _parts[_i].split(':');
+          if (_kv[0] === w.brand) { _s = _kv[1]; break; }
+        }
+        var _out = [
+          {'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://watch.al/en/'},
+          {'@type': 'ListItem', 'position': 2, 'name': 'Shop', 'item': 'https://watch.al/en/shop/'}
+        ];
+        if (_s) { _out.push({'@type': 'ListItem', 'position': 3, 'name': w.brand,
+          'item': 'https://watch.al/en/shop/brand/' + _s + '.html'}); }
+        _out.push({'@type': 'ListItem', 'position': _out.length + 1,
+          'name': w.brand + ' ' + w.model, 'item': pageUrl});
+        return _out;
+      })()
     };
     document.getElementById('ld-breadcrumb').textContent = JSON.stringify(bc);
 
