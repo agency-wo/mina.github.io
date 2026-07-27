@@ -53,7 +53,7 @@
           handleMin.setAttribute('aria-valuenow', minVal);
           handleMax.setAttribute('aria-valuenow', maxVal);
           var disp = document.getElementById('priceRangeDisplay');
-          if(disp) disp.textContent = '€' + minVal + ' — €' + maxVal;
+          if(disp) disp.textContent = '€' + minVal + ' - €' + maxVal;
           currentMinPrice = minVal;
           currentMaxPrice = maxVal;
           renderWatches(WATCHES);
@@ -107,7 +107,11 @@
       }
     })
     .catch(function(){
-      document.getElementById('shopGrid').innerHTML = '<p class="no-watches">Could not load watches. Please refresh.</p>';
+      // keep the pre-rendered grid if the live fetch fails (stale cache / offline)
+      var g = document.getElementById('shopGrid');
+      var _shopHasPre = g && g.querySelector('.watch-card');
+      if(_shopHasPre) return;
+      if(g) g.innerHTML = '<p class="no-watches">Could not load watches. Please refresh.</p>';
     });
 
   function initBrandChips(WATCHES){
@@ -258,7 +262,7 @@
       + '<div class="watch-card-body">'
       + '<p class="watch-brand">' + w.brand + (w.brand === 'Hislon' ? '<span style="font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:#8a9abf;font-weight:500;margin-left:.4rem;vertical-align:middle">Swiss</span>' : '') + '</p>'
       + '<h2 class="watch-model">' + w.model + '</h2>'
-      + '<p class="watch-ref">Ref. ' + (w.reference||'\u2014') + '</p>'
+      + (w.reference ? '<p class="watch-ref">Ref. ' + w.reference + '</p>' : '')
       + '<p class="watch-desc">' + (w.description_en || '') + '</p>'
       + '<div class="watch-card-footer">'
       + '<div>'
