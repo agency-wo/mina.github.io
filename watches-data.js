@@ -728,5 +728,33 @@ window.WATCHES_DATA = [
     "description_en": "Bigotti ladies' dress watch in gold-tone stainless steel with a glossy black dial. Applied gold-tone baton indices and hands on a slim round case, finished with a gold-tone five-link bracelet. A classic black-and-gold pairing that suits a slimmer wrist.",
     "description_it": "Orologio da donna Bigotti in acciaio inossidabile color oro con quadrante nero lucido. Indici a bastone e lancette dorate applicati su una cassa rotonda sottile, con bracciale color oro a cinque maglie. Un classico abbinamento nero e oro, ideale per un polso sottile.",
     "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks ngjyrë ari me ciferblat të zi të shndritshëm. Tregues shiritash dhe akrepa të artë të aplikuar mbi një kasë të rrumbullakët të hollë, me byzylyk ngjyrë ari me pesë hallka. Një kombinim klasik i zezë me ar, i përshtatshëm për një dorë më të hollë."
+  },
+  {
+    "id": "philippe-lauren-pl2924-2",
+    "brand": "Philippe Lauren",
+    "model": "Steel Sport Black Dial",
+    "reference": "PL2924-2",
+    "condition": "New",
+    "price": 64,
+    "currency": "EUR",
+    "image": "/images/watches/philippe-lauren-pl2924-2.webp",
+    "sold": false,
+    "description_en": "Philippe Lauren men's sport watch in stainless steel with a faceted bezel and four visible screws. Black textured dial with Roman numerals at 12 and 6, applied baton indices, a date window, and an integrated steel bracelet. A bold everyday steel watch with a distinctive bezel.",
+    "description_it": "Orologio sportivo da uomo Philippe Lauren in acciaio inossidabile con ghiera sfaccettata e quattro viti a vista. Quadrante nero testurizzato con numeri romani alle 12 e alle 6, indici a bastone applicati, finestrella data e bracciale integrato in acciaio. Un deciso orologio quotidiano in acciaio con una ghiera distintiva.",
+    "description_sq": "Orë sportive për burra Philippe Lauren në çelik inoks me lunetë të faseituar dhe katër vida të dukshme. Ciferblat i zi me teksturë, numra romakë në 12 dhe 6, tregues shiritash të aplikuar, dritare date dhe byzylyk i integruar çeliku. Një orë e guximshme e përditshme çeliku me lunetë dalluese."
+  },
+  {
+    "id": "philippe-lauren-pl2394-2",
+    "brand": "Philippe Lauren",
+    "model": "Gold Classic",
+    "reference": "PL2394-2",
+    "condition": "New",
+    "price": 59,
+    "currency": "EUR",
+    "image": "/images/watches/philippe-lauren-pl2394-2.webp",
+    "sold": false,
+    "description_en": "Philippe Lauren ladies' dress watch in gold-tone stainless steel with a small round case. Silver sunburst dial with slim gold-tone baton indices and matching hands, on a gold-tone five-link bracelet. A quiet, classic watch that suits a slimmer wrist.",
+    "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile color oro con piccola cassa rotonda. Quadrante argentato sunburst con sottili indici a bastone dorati e lancette abbinate, su bracciale color oro a cinque maglie. Un orologio classico e discreto, adatto a un polso sottile.",
+    "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks ngjyrë ari me kasë të vogël të rrumbullakët. Ciferblat argjendi sunburst me tregues shiritash të hollë ngjyrë ari dhe akrepa të përshtatur, mbi byzylyk ngjyrë ari me pesë hallka. Një orë klasike dhe e qetë, e përshtatshme për një dorë më të hollë."
   }
 ];
