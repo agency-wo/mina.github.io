@@ -17,7 +17,8 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
-from shop_bits import card_price_html
+from shop_bits import card_price_html, crumb_html, CRUMB_CSS
+from shop_seo import COPY as SEO_COPY, fill as seo_fill, seo_section_html, faq_jsonld
 
 BASE = Path(__file__).parent
 BOM = b"\xef\xbb\xbf"
@@ -176,7 +177,76 @@ def main():
                 done = True
                 break
         assert done, f"{lang}: ItemList not found"
-    
+
+        # 3. visible Home > Shop crumb at the top of <main> (idempotent on the marker)
+        crumb = CRUMB_CSS + crumb_html(lang)
+        old_crumb = re.search(r'<style>\.shop-crumb.*?</nav>', norm, re.S)
+        if old_crumb:
+            norm = norm[:old_crumb.start()] + crumb + norm[old_crumb.end():]
+        else:
+            i = norm.index('<main id="main-content">') + len('<main id="main-content">')
+            norm = norm[:i] + crumb + norm[i:]
+
+        # 4. below-grid geo lead + FAQ section, just before </main>
+        sec = seo_section_html(lang, W)
+        old_sec = re.search(r'<section id="shop-seo".*?</section>', norm, re.S)
+        if old_sec:
+            norm = norm[:old_sec.start()] + sec + norm[old_sec.end():]
+        else:
+            i = norm.index("</main>")
+            norm = norm[:i] + sec + "\n  " + norm[i:]
+
+        # 5. FAQPage JSON-LD matching the visible FAQ byte for byte
+        faq_tag = ('<script type="application/ld+json" id="ld-shop-faq">'
+                   + json.dumps(faq_jsonld(lang, W), ensure_ascii=False) + "</script>")
+        old_faq = re.search(r'<script type="application/ld\+json" id="ld-shop-faq">.*?</script>', norm, re.S)
+        if old_faq:
+            norm = norm[:old_faq.start()] + faq_tag + norm[old_faq.end():]
+        else:
+            i = norm.index("</head>")
+            norm = norm[:i] + faq_tag + "\n" + norm[i:]
+
+        # 6. meta + og description with the COD/Tirana hooks (titles untouched)
+        desc = seo_fill(SEO_COPY[lang]["desc"], W)
+        norm = re.sub(r'(<meta name="description" content=")[^"]*(")',
+                      lambda m: m.group(1) + desc + m.group(2), norm, count=1)
+        norm = re.sub(r'(<meta property="og:description" content=")[^"]*(")',
+                      lambda m: m.group(1) + desc + m.group(2), norm, count=1)
+
+        # 7. refresh the stale schema descriptions from live data.
+        #    Replacements change block lengths, so matches are applied in REVERSE
+        #    document order: earlier spans stay valid while later ones are rewritten.
+        for s in reversed(list(SCRIPT_RE.finditer(norm))):
+            body = s.group(1)
+            if not body.strip():
+                continue
+            d = json.loads(body)
+            changed = False
+            if isinstance(d, dict) and "@graph" in d:
+                for node in d["@graph"]:
+                    ts = node.get("@type")
+                    if ts == "LocalBusiness" or (isinstance(ts, list) and "LocalBusiness" in ts):
+                        node["description"] = seo_fill(SEO_COPY[lang]["biz_desc"], W)
+                        changed = True
+                # the @graph carried a FAQPage whose 8 questions were never visible on the
+                # page (Google requires FAQ content to be visible) and which would duplicate
+                # the visible ld-shop-faq block. Drop it; ld-shop-faq is the only FAQPage.
+                pruned = [n for n in d["@graph"] if n.get("@type") != "FAQPage"]
+                if len(pruned) != len(d["@graph"]):
+                    d["@graph"] = pruned
+                    changed = True
+            elif isinstance(d, dict) and d.get("@type") == "CollectionPage":
+                d["description"] = seo_fill(SEO_COPY[lang]["coll_desc"], W)
+                changed = True
+            if changed:
+                payload = json.dumps(d, indent=2, ensure_ascii=False)
+                payload = "\n  " + payload.replace("\n", "\n  ") + "\n  "
+                norm = norm[:s.start(1)] + payload + norm[s.end(1):]
+
+        # 8. drop the empty shop-ld-list tag: the static ItemList above is the single
+        #    source of truth now (shop.js no longer injects a runtime duplicate)
+        norm = re.sub(r'\s*<script type="application/ld\+json" id="shop-ld-list"></script>', "", norm)
+
         out = norm.replace("\n", eol) if eol == "\r\n" else norm
         f.write_bytes((BOM if bom else b"") + out.encode("utf-8"))
     
@@ -192,7 +262,21 @@ def main():
         assert n_links == len(W), f"{lang}: {n_links} distinct product links"
         assert il["numberOfItems"] == len(il["itemListElement"]) == len(W), f"{lang}: ItemList count"
         assert "\u2014" not in chk.split("</head>")[1].replace('watch-ref">Ref. \u2014', ""), f"{lang}: em dash"
-        print(f"{lang}/shop/index.html: {n_cards} cards, {n_links} product links, ItemList {il['numberOfItems']}")
+        body_html = chk.split("</head>")[1]
+        n_faq_vis = body_html.count('<details class="faq-item"')
+        fd = [json.loads(b) for b in SCRIPT_RE.findall(chk) if b.strip() and '"FAQPage"' in b]
+        fd = [d for d in fd if d.get("@type") == "FAQPage"]  # top-level only; @graph FAQ is pruned
+        assert len(fd) == 1 and len(fd[0]["mainEntity"]) == n_faq_vis == 6, f"{lang}: FAQ sync"
+        assert '"FAQPage"' not in json.dumps([json.loads(b) for b in SCRIPT_RE.findall(chk)
+                                              if b.strip() and "@graph" in b]), f"{lang}: graph FAQ left"
+        stripped = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", body_html))
+        for q in fd[0]["mainEntity"]:
+            probe = re.sub(r"\s+", " ", q["acceptedAnswer"]["text"])[:60]
+            assert probe in stripped, f"{lang}: FAQ answer not visible: {probe[:40]}"
+        assert 'class="shop-crumb"' in chk, f"{lang}: crumb missing"
+        assert "shop-ld-list" not in chk, f"{lang}: empty ld tag still present"
+        print(f"{lang}/shop/index.html: {n_cards} cards, {n_links} links, "
+              f"ItemList {il['numberOfItems']}, FAQ {n_faq_vis}, crumb OK")
     
 
 
