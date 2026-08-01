@@ -178,14 +178,14 @@ def main():
                 break
         assert done, f"{lang}: ItemList not found"
 
-        # 3. visible Home > Shop crumb at the top of <main> (idempotent on the marker)
-        crumb = CRUMB_CSS + crumb_html(lang)
-        old_crumb = re.search(r'<style>\.shop-crumb.*?</nav>', norm, re.S)
-        if old_crumb:
-            norm = norm[:old_crumb.start()] + crumb + norm[old_crumb.end():]
-        else:
-            i = norm.index('<main id="main-content">') + len('<main id="main-content">')
-            norm = norm[:i] + crumb + norm[i:]
+        # 3. visible Home > Shop crumb, placed on the LIGHT content area just above the
+        #    filter controls. It must NOT go above the hero: a pale band between the dark
+        #    sticky header and the dark hero cuts the top of the page in half.
+        norm = re.sub(r'<style>\.shop-crumb.*?</nav>', "", norm, flags=re.S)   # drop any old copy
+        norm = re.sub(r'<nav class="shop-crumb".*?</nav>', "", norm, flags=re.S)
+        anchor = '<div class="shop-controls">'
+        assert norm.count(anchor) == 1, f"{lang}: shop-controls anchor x{norm.count(anchor)}"
+        norm = norm.replace(anchor, CRUMB_CSS + crumb_html(lang) + anchor, 1)
 
         # 4. below-grid geo lead + FAQ section, just before </main>
         sec = seo_section_html(lang, W)

@@ -136,7 +136,7 @@ def build_main(slug, brand, lang, items):
     cards = "".join(card(w, lang) for w in items)
     return (
         '<main id="main-content">'
-        + CRUMB_CSS + crumb_html(lang, brand=brand)
+        + CRUMB_CSS
         +         '<div class="shop-hero"><div class="max-w-7xl mx-auto px-6">'
         f'<h1>{ui["h1"]}</h1>'
         f'<div class="brand-intro">{paras}</div>'
@@ -144,7 +144,10 @@ def build_main(slug, brand, lang, items):
         + open_now_html(lang)
         + 
         '</div></div>'
-        '<div class="max-w-7xl mx-auto px-6">'
+        # crumb sits on the LIGHT content area below the hero. Never above it: a pale
+        # band between the dark sticky header and the dark hero cuts the page in half.
+        + crumb_html(lang, brand=brand)
+        + '<div class="max-w-7xl mx-auto px-6">'
         f'<h2 class="brand-grid-h">{ui["all_h"]}</h2>'
         f'<div class="shop-grid" id="brandGrid" aria-label="{brand}">{cards}</div>'
         f'<section class="brand-faq"><h2>{ui["faq_h"]}</h2><div class="space-y-2">{faqs}</div></section>'
