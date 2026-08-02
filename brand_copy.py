@@ -7,7 +7,9 @@ stays readable.
 RULE: only owner-verified facts appear here.
   Daniel Klein  Turkish brand, quartz, 3-5 BAR (state as a range, tell readers to ask
                 per model), gold-tone is plated. NEVER claim a crystal type.
-  Navimarine    sapphire crystal, quartz. Only the Steel 5ATM Blue has a stated rating.
+  Navimarine    quartz, solid steel cases and bracelets. CRYSTAL TYPE IS NOT VERIFIED:
+                do not claim one until the owner confirms it on the bench. Two models
+                state 5 ATM: the Steel 5ATM Blue and the NT0021-1 (watch-27).
   Hislon        sapphire crystal, marked Swiss, dress category. A higher price buys the
                 dress design and finish, not a better movement or more water resistance.
   Philippe Lauren  visible facts only: chronograph layouts, steel and black ion-plated
@@ -69,14 +71,14 @@ COPY = {
         "en": {
             "paras": [
                 "Navimarine is the brand we stock most deeply: {n} models in Durrës, from €{lo} to €{hi}. It covers everyday steel watches, colourful marine-styled pieces and classic dress designs for men and women.",
-                "What makes Navimarine good value is the sapphire crystal. Sapphire is the scratch-resistant glass usually found on much more expensive watches, and it is the single feature that keeps a watch looking new for years. The movements are quartz, so they are accurate and only need an occasional battery.",
-                "Water resistance is only officially stated on some models. The Steel 5ATM Blue is rated 5 ATM, which is fine for swimming at the surface. For any other model, ask us before you take it near water and we will tell you what we know.",
+                "What makes Navimarine good value is the build for the money: solid stainless steel cases and bracelets, and shapes you normally pay a good deal more for, from a dive-style bezel to an integrated bracelet to gold-tone dress models. The movements are quartz, so they are accurate and only need an occasional battery.",
+                "Water resistance is only officially stated on two models. The Steel 5ATM Blue and the NT0021-1 are both rated 5 ATM, which is fine for swimming at the surface. For any other model, ask us before you take it near water and we will tell you what we know.",
             ],
             "faq": [
                 ("Is Navimarine a good watch brand?",
-                 "For the price it is the best value we stock. Most models use a sapphire crystal, which resists scratches far better than the mineral glass usually found at €{lo} to €{hi}, and the quartz movements are accurate and cheap to maintain."),
+                 "For the price it is the best value we stock. You get a solid steel case and bracelet, a quartz movement that is accurate and cheap to maintain, and our 1-year guarantee. We do not publish a crystal type for Navimarine, so ask us about the exact model and we will tell you what we know."),
                 ("Which Navimarine can I swim with?",
-                 "The Steel 5ATM Blue carries a stated 5 ATM rating, which is fine for swimming at the surface. Water resistance is not officially stated on every other model, so message us with the one you like and we will tell you what we know before you buy."),
+                 "The Steel 5ATM Blue and the NT0021-1 both carry a stated 5 ATM rating, which is fine for swimming at the surface. Water resistance is not officially stated on any other model, so message us with the one you like and we will tell you what we know before you buy."),
                 ("Where can I buy a Navimarine watch in Albania?",
                  "Iglisi Watch in Durrës is a specialist Navimarine dealer with {n} models in stock from €{lo}. Come and try them on at Rruga Aleksander Goga, or order on WhatsApp with cash on delivery anywhere in Albania."),
             ],
@@ -84,14 +86,14 @@ COPY = {
         "it": {
             "paras": [
                 "Navimarine è il marchio di cui teniamo più scelta: {n} modelli a Durazzo, da €{lo} a €{hi}. Comprende orologi quotidiani in acciaio, pezzi colorati in stile marino e design classici da abito per uomo e donna.",
-                "Il vero punto di forza di Navimarine è il cristallo zaffiro. Lo zaffiro è il vetro antigraffio che di solito si trova su orologi molto più costosi ed è la caratteristica che mantiene un orologio come nuovo per anni. I movimenti sono al quarzo, quindi precisi e con la sola necessità di una batteria ogni tanto.",
-                "La resistenza all’acqua è dichiarata ufficialmente solo su alcuni modelli. Lo Steel 5ATM Blue è certificato 5 ATM, adatto al nuoto in superficie. Per ogni altro modello chiedeteci prima di avvicinarlo all’acqua e vi diremo quello che sappiamo.",
+                "Il vero punto di forza di Navimarine è quanto costruito offre per il prezzo: casse e bracciali in acciaio inossidabile solido e forme per cui di solito si paga molto di più, dalla lunetta in stile subacqueo al bracciale integrato ai modelli da abito color oro. I movimenti sono al quarzo, quindi precisi e con la sola necessità di una batteria ogni tanto.",
+                "La resistenza all’acqua è dichiarata ufficialmente solo su due modelli. Lo Steel 5ATM Blue e il NT0021-1 sono entrambi certificati 5 ATM, adatti al nuoto in superficie. Per ogni altro modello chiedeteci prima di avvicinarlo all’acqua e vi diremo quello che sappiamo.",
             ],
             "faq": [
                 ("Navimarine è un buon marchio di orologi?",
-                 "Per il prezzo è il miglior rapporto qualità prezzo che teniamo. La maggior parte dei modelli usa un cristallo zaffiro, che resiste ai graffi molto meglio del vetro minerale che di solito si trova tra €{lo} e €{hi}, e i movimenti al quarzo sono precisi ed economici da mantenere."),
+                 "Per il prezzo è il miglior rapporto qualità prezzo che teniamo. Avete una cassa e un bracciale in acciaio solido, un movimento al quarzo preciso ed economico da mantenere e la nostra garanzia di 1 anno. Non pubblichiamo il tipo di vetro per Navimarine, quindi chiedeteci del modello esatto e vi diremo quello che sappiamo."),
                 ("Con quale Navimarine posso nuotare?",
-                 "Lo Steel 5ATM Blue ha una certificazione dichiarata di 5 ATM, adatta al nuoto in superficie. La resistenza all’acqua non è dichiarata ufficialmente su tutti gli altri modelli, quindi scriveteci indicando quello che vi piace e vi diremo quello che sappiamo prima dell’acquisto."),
+                 "Lo Steel 5ATM Blue e il NT0021-1 hanno entrambi una certificazione dichiarata di 5 ATM, adatta al nuoto in superficie. La resistenza all’acqua non è dichiarata ufficialmente su nessun altro modello, quindi scriveteci indicando quello che vi piace e vi diremo quello che sappiamo prima dell’acquisto."),
                 ("Dove posso comprare un orologio Navimarine in Albania?",
                  "Iglisi Watch a Durazzo è rivenditore specializzato Navimarine con {n} modelli disponibili da €{lo}. Venite a provarli in Rruga Aleksander Goga oppure ordinate su WhatsApp con pagamento alla consegna in tutta l’Albania."),
             ],
@@ -99,14 +101,14 @@ COPY = {
         "sq": {
             "paras": [
                 "Navimarine është marka për të cilën mbajmë më shumë zgjedhje: {n} modele në Durrës, nga €{lo} deri €{hi}. Përfshin orë të përditshme çeliku, copa me ngjyra në stil detar dhe dizajne klasike veshjeje për burra dhe gra.",
-                "Ajo që e bën Navimarine vlerë të mirë është xhami safir. Safiri është xhami rezistent ndaj gërvishtjeve që zakonisht gjendet në orë shumë më të shtrenjta dhe është tipari i vetëm që e mban një orë si të re për vite. Lëvizjet janë kuarci, ndaj janë të sakta dhe kërkojnë vetëm ndonjë bateri herë pas here.",
-                "Rezistenca ndaj ujit deklarohet zyrtarisht vetëm në disa modele. Steel 5ATM Blue është certifikuar 5 ATM, e përshtatshme për not në sipërfaqe. Për çdo model tjetër na pyesni para se ta afroni te uji dhe ju themi atë që dimë.",
+                "Ajo që e bën Navimarine vlerë të mirë është sa ndërtim merrni për çmimin: kasa dhe byzylykë çeliku inoks solid, dhe forma për të cilat zakonisht paguani shumë më shumë, nga luneta në stil zhytjeje te byzylyku i integruar e te modelet e veshjes ngjyrë ari. Lëvizjet janë kuarci, ndaj janë të sakta dhe kërkojnë vetëm ndonjë bateri herë pas here.",
+                "Rezistenca ndaj ujit deklarohet zyrtarisht vetëm në dy modele. Steel 5ATM Blue dhe NT0021-1 janë të dyja të certifikuara 5 ATM, të përshtatshme për not në sipërfaqe. Për çdo model tjetër na pyesni para se ta afroni te uji dhe ju themi atë që dimë.",
             ],
             "faq": [
                 ("A është Navimarine një markë e mirë orësh?",
-                 "Për çmimin është vlera më e mirë që mbajmë. Shumica e modeleve përdorin xham safir, i cili u reziston gërvishtjeve shumë më mirë se xhami mineral që zakonisht gjendet mes €{lo} dhe €{hi}, dhe lëvizjet kuarci janë të sakta e të lira për mirëmbajtje."),
+                 "Për çmimin është vlera më e mirë që mbajmë. Merrni kasë dhe byzylyk çeliku solid, një mekanizëm kuarci të saktë dhe të lirë për mirëmbajtje, dhe garancinë tonë 1-vjeçare. Ne nuk publikojmë llojin e xhamit për Navimarine, ndaj na pyesni për modelin e saktë dhe ju themi atë që dimë."),
                 ("Me cilin Navimarine mund të notoj?",
-                 "Steel 5ATM Blue ka një certifikim të deklaruar 5 ATM, i përshtatshëm për not në sipërfaqe. Rezistenca ndaj ujit nuk është deklaruar zyrtarisht në çdo model tjetër, ndaj na shkruani për atë që ju pëlqen dhe ju themi atë që dimë para se ta blini."),
+                 "Steel 5ATM Blue dhe NT0021-1 kanë të dyja një certifikim të deklaruar 5 ATM, të përshtatshëm për not në sipërfaqe. Rezistenca ndaj ujit nuk është deklaruar zyrtarisht në asnjë model tjetër, ndaj na shkruani për atë që ju pëlqen dhe ju themi atë që dimë para se ta blini."),
                 ("Ku mund të blej një orë Navimarine në Shqipëri?",
                  "Iglisi Watch në Durrës është shitës specialist i Navimarine me {n} modele në gjendje nga €{lo}. Ejani t’i provoni në Rrugën Aleksander Goga ose porositni në WhatsApp me pagesë në dorëzim kudo në Shqipëri."),
             ],
