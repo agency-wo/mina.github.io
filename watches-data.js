@@ -756,5 +756,19 @@ window.WATCHES_DATA = [
     "description_en": "Philippe Lauren ladies' dress watch in gold-tone stainless steel with a small round case. Silver sunburst dial with slim gold-tone baton indices and matching hands, on a gold-tone five-link bracelet. A quiet, classic watch that suits a slimmer wrist.",
     "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile color oro con piccola cassa rotonda. Quadrante argentato sunburst con sottili indici a bastone dorati e lancette abbinate, su bracciale color oro a cinque maglie. Un orologio classico e discreto, adatto a un polso sottile.",
     "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks ngjyrë ari me kasë të vogël të rrumbullakët. Ciferblat argjendi sunburst me tregues shiritash të hollë ngjyrë ari dhe akrepa të përshtatur, mbi byzylyk ngjyrë ari me pesë hallka. Një orë klasike dhe e qetë, e përshtatshme për një dorë më të hollë."
+  },
+  {
+    "id": "daniel-klein-14190",
+    "brand": "Daniel Klein",
+    "model": "Premium Steel Crystal",
+    "reference": "DK.6.14190-1",
+    "condition": "New",
+    "price": 59,
+    "currency": "EUR",
+    "image": "/images/watches/daniel-klein-14190.webp",
+    "sold": false,
+    "description_en": "Daniel Klein Premium Steel Crystal, a women's dress watch in polished stainless steel with a silver sunburst dial. Eight crystal-set hour markers sit between applied baton indices at twelve, three, six and nine, on slim hands and a three-link steel bracelet. Reliable quartz movement, and no date window to clutter the dial.",
+    "description_it": "Daniel Klein Premium Steel Crystal, orologio da donna in acciaio inossidabile lucido con quadrante argentato sunburst. Otto indici delle ore con cristalli si alternano agli indici a bastone applicati a mezzogiorno, alle tre, alle sei e alle nove, con lancette sottili e bracciale in acciaio a tre maglie. Movimento al quarzo affidabile, senza finestrella data a disturbare il quadrante.",
+    "description_sq": "Daniel Klein Premium Steel Crystal, orë veshjeje për femra në çelik inoks të lëmuar me ciferblat argjendi sunburst. Tetë tregues orësh me kristale alternohen me tregues të aplikuar te dymbëdhjeta, treshi, gjashta dhe nënta, me akrepa të hollë dhe byzylyk çeliku me tre hallka. Mekanizëm kuarci i besueshëm, pa dritare date që ngarkon ciferblatin."
   }
 ];
