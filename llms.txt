@@ -12,7 +12,7 @@ The site is trilingual: English (/en/), Albanian (/sq/), Italian (/it/).
 
 - [Shop — all watches](https://watch.al/en/shop/): full catalog with prices in EUR and Lek; filter by brand, price, and search. Orders via WhatsApp with delivery anywhere in Albania.
 - [Services](https://watch.al/en/services.html): watch repair, battery replacement (~2 minutes while you wait), strap replacement, crystal replacement, key cutting.
-- [Blog](https://watch.al/en/blog/): 55+ practical guides on watch care, buying advice and repairs in Albania.
+- [Blog](https://watch.al/en/blog/): 75 practical guides on watch care, buying advice and repairs in Albania.
 - [About](https://watch.al/en/about.html): the family workshop, since 2009. 5.0★ Google rating.
 
 ## Contact & visit
