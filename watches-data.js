@@ -24,9 +24,9 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-ql145t-09sg.webp",
     "sold": false,
-    "description_en": "A refined ladies' watch with a rose gold-tone case and bracelet. Slim profile, elegant dial, and reliable quartz movement - effortless everyday style.",
-    "description_it": "Orologio da donna raffinato con cassa e bracciale in oro rosa. Profilo sottile, quadrante elegante e movimento al quarzo affidabile.",
-    "description_sq": "Orë elegante për femra me kasë dhe byzylyk në ngjyrë ari rozë. Profil i hollë, cadran elegant dhe lëvizje kuarci e besueshme."
+    "description_en": "A refined ladies' watch with a rose gold-tone case and bracelet. Slim profile, elegant dial, sapphire crystal, and reliable quartz movement - effortless everyday style.",
+    "description_it": "Orologio da donna raffinato con cassa e bracciale in oro rosa. Profilo sottile, quadrante elegante, cristallo zaffiro e movimento al quarzo affidabile.",
+    "description_sq": "Orë elegante për femra me kasë dhe byzylyk në ngjyrë ari rozë. Profil i hollë, cadran elegant, xham safiri dhe lëvizje kuarci e besueshme."
   },
   {
     "id": "watch-3",
