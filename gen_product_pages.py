@@ -42,6 +42,7 @@ LANGS = {
         "back_label": "Back to shop",
         "ref_label": "Ref.",
         "sold_text": "This watch has been sold.",
+        "was_label": "Was",
         "cta_label": "Enquire via WhatsApp",
         "ig_label": "Instagram",
         "swiss_label": "Swiss Brand",
@@ -89,6 +90,7 @@ LANGS = {
         "back_label": "Torna al negozio",
         "ref_label": "Rif.",
         "sold_text": "Questo orologio è stato venduto.",
+        "was_label": "Prima",
         "cta_label": "Richiedi via WhatsApp",
         "ig_label": "Instagram",
         "swiss_label": "Marchio Svizzero",
@@ -136,6 +138,7 @@ LANGS = {
         "back_label": "Kthehu në dyqan",
         "ref_label": "Ref.",
         "sold_text": "Kjo orë është shitur.",
+        "was_label": "Ishte",
         "cta_label": "Pyesni në WhatsApp",
         "ig_label": "Instagram",
         "swiss_label": "Markë Zvicerane",
@@ -231,7 +234,7 @@ def build_price_html(price, currency, lang="en"):
     return shared_price_html(price, currency, lang)
 
 
-def build_img_html(w):
+def build_img_html(w, cfg):
     image = w.get("image", "")
     if not image:
         return ""
@@ -240,15 +243,193 @@ def build_img_html(w):
     alt = f'{w["brand"]} {w["model"]}'
     sold = w.get("sold", False)
     badge = "Sold" if sold else w.get("condition", "New")
+    # The catalogue's discounts were invisible here: the old renderer injected the
+    # CSS for a sale ribbon and then never emitted one. Pinned top-RIGHT so it can
+    # never sit on top of the condition badge, which is top-left on this page.
+    sale = ""
+    op, p = w.get("originalPrice"), w.get("price")
+    if op and p and op > p:
+        sale = f'<span class="sale-badge">-{round((op - p) / op * 100)}%</span>'
     return (
         f'<div class="watch-img-wrap">'
         f"<picture>"
         f'<source srcset="{webp}" type="image/webp">'
         f'<img src="{jpg}" alt="{alt}" fetchpriority="high" loading="eager">'
         f"</picture>"
-        f'<span class="watch-badge-pg">{badge}</span>'
+        f'<span class="watch-badge-pg">{badge}</span>{sale}'
         f"</div>"
     )
+
+
+# Risk reversal. Every line compresses that language's own shop/delivery.html and must
+# never outrun it. Glyphs are the three shop_bits.DELIVERY_BAR already uses, so the site
+# speaks one visual language; fa-truck and fa-undo are NOT in the subsetted font.
+RISK = {
+    "en": {"points": [("fas fa-store", "Free delivery anywhere in Albania, 3 to 7 days"),
+                      ("fas fa-money-bill", "Pay the courier at the door, in cash"),
+                      ("fas fa-arrow-left", "Not right? Hand it back without paying")],
+           "link": "How ordering works"},
+    "it": {"points": [("fas fa-store", "Consegna gratuita in tutta l&rsquo;Albania, da 3 a 7 giorni"),
+                      ("fas fa-money-bill", "Pagate il corriere alla porta, in contanti"),
+                      ("fas fa-arrow-left", "Non va bene? Restituitelo senza pagare")],
+           "link": "Come funziona l&rsquo;ordine"},
+    "sq": {"points": [("fas fa-store", "D&euml;rges&euml; falas kudo n&euml; Shqip&euml;ri, 3 deri n&euml; 7 dit&euml;"),
+                      ("fas fa-money-bill", "Paguani korrierin te dera, me para n&euml; dor&euml;"),
+                      ("fas fa-arrow-left", "Nuk ju p&euml;rshtatet? Kthejani pa paguar")],
+           "link": "Si funksionon porosia"},
+}
+
+# The watchmaker and the aftercare, which is the part no Instagram seller can copy.
+# Every claim is already made somewhere in this repo: the bench-checked line restates
+# the shop index banner, the battery price and the free bracelet sizing come from
+# delivery.html, the strap materials from the strap-replacement service page. Straps
+# are leather, steel and rubber; NATO is not stocked and must never be claimed.
+MAKER = {
+    "en": {"h": "Bought from the watchmaker",
+           "p": ("We have run the repair bench in Durr&euml;s since 2009 and repaired more than "
+                 "350,000 watches. Every watch here is checked on that bench before it is listed. "
+                 "Afterwards you keep the workshop: we size the bracelet free at the counter, fit a "
+                 '<a href="/en/services/strap-replacement.html">leather, steel or rubber strap</a>'
+                 " when you want a change, and put in a "
+                 '<a href="/en/services/battery-replacement.html">new battery for 200 to 600 Lek</a>'
+                 " while you wait, whether or not you bought the watch from us.")},
+    "it": {"h": "Comprato dall&rsquo;orologiaio",
+           "p": ("Gestiamo il banco di riparazione a Durazzo dal 2009 e abbiamo riparato oltre "
+                 "350.000 orologi. Ogni orologio qui viene controllato su quel banco prima di essere "
+                 "messo in vendita. Dopo, l&rsquo;officina resta vostra: regoliamo il bracciale gratis "
+                 "al banco, montiamo un "
+                 '<a href="/it/services/sostituzione-cinturino.html">cinturino in pelle, acciaio o gomma</a>'
+                 " quando volete cambiare, e mettiamo una "
+                 '<a href="/it/services/sostituzione-batteria.html">pila nuova per 200-600 Lek</a>'
+                 " mentre aspettate, anche se l&rsquo;orologio non l&rsquo;avete comprato da noi.")},
+    "sq": {"h": "Bler&euml; nga mjeshtri i or&euml;ve",
+           "p": ("E mbajm&euml; banakun e riparimeve n&euml; Durr&euml;s që nga viti 2009 dhe kemi "
+                 "riparuar mbi 350.000 or&euml;. &Ccedil;do or&euml; k&euml;tu kontrollohet n&euml; at&euml; "
+                 "banak p&euml;rpara se t&euml; listohet. Pas blerjes, punishtja mbetet e juaja: e "
+                 "rregullojm&euml; byzylykun falas te banaku, montojm&euml; nj&euml; "
+                 '<a href="/sq/services/nderrimi-rripit.html">rrip l&euml;kure, &ccedil;eliku ose gome</a>'
+                 " kur doni ndryshim, dhe vendosim nj&euml; "
+                 '<a href="/sq/services/nderrimi-baterise.html">bateri t&euml; re p&euml;r 200 deri n&euml; 600 Lek&euml;</a>'
+                 " nd&euml;rsa prisni, edhe nëse or&euml;n nuk e keni bler&euml; te ne.")},
+}
+
+# The 5.0 from 106 reviews is real and verifiable, and it has never once been visible
+# on a phone anywhere on this site: shared.css hides .review-badge below 768px in two
+# separate rules. A fresh class avoids fighting them with !important.
+GRATING = {
+    "en": ("Iglisi Watch on Google, rated 5.0 from 106 reviews", "Google 5.0"),
+    "it": ("Iglisi Watch su Google, 5.0 su 106 recensioni", "Google 5.0"),
+    "sq": ("Iglisi Watch n&euml; Google, 5.0 nga 106 vler&euml;sime", "Google 5.0"),
+}
+REVIEWS_URL = ("https://search.google.com/local/reviews"
+               "?placeid=ChIJU3JyAljB0RMRdoAB2vYR5oo")
+CALL_BAR_ARIA = {"en": "Quick call", "it": "Chiamata rapida", "sq": "Telefonat&euml; e shpejt&euml;"}
+
+
+def build_risk_html(lang):
+    r = RISK[lang]
+    pts = "".join(f'<span><i class="{i}" aria-hidden="true"></i>{t}</span>'
+                  for i, t in r["points"])
+    return (f'<div class="pdp-risk">{pts}'
+            f'<a href="/{lang}/shop/delivery.html">{r["link"]}'
+            f'<i class="fas fa-chevron-right" aria-hidden="true"></i></a></div>')
+
+
+def build_maker_html(lang):
+    m = MAKER[lang]
+    return f'<section class="pdp-maker"><h2>{m["h"]}</h2><p>{m["p"]}</p></section>'
+
+
+def build_rating_html(lang):
+    aria, label = GRATING[lang]
+    return (f'<a class="pdp-rating" href="{REVIEWS_URL}" target="_blank" '
+            f'rel="noopener noreferrer" aria-label="{aria}">'
+            f'<span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>'
+            f'<span>{label}</span></a>')
+
+
+# Product-page styles. Same reasoning as EXTRA_CSS: page-local so shared.css, which is
+# referenced by 475 files, never needs a cache-bust for a change to 171 of them.
+#
+# The mobile block exists to get the price, the buy button and the whole risk-reversal
+# box above the fold on a 390x844 phone. The button used to start around y=909, i.e.
+# below it, so the page asked people to decide before showing them anything reassuring.
+# Note what is NOT here: a shorter image box. The image is object-fit:contain, so a
+# shorter box makes the watch smaller, not the page tighter. Halving the padding makes
+# the watch about a tenth larger and costs no height at all; the room comes from moving
+# the description below the button and dropping the back-link the breadcrumb duplicates.
+PDP_CSS = "<style id=\"pdp-css\">" + (
+    ".pdp-idrow{display:flex;align-items:baseline;gap:.25rem .7rem;flex-wrap:wrap;margin:0 0 .15rem}"
+    ".pdp-idrow .watch-ref-pg{margin:0}"
+    ".pdp-swiss{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;"
+    "color:#8a9abf;font-weight:600}"
+    ".pdp-pricerow{display:flex;align-items:baseline;justify-content:space-between;"
+    "gap:.4rem .9rem;flex-wrap:wrap}"
+    ".pdp-pricerow .watch-price-pg{margin:0}"
+    ".pdp-rating{display:inline-flex;align-items:center;gap:.35rem;font-size:.74rem;"
+    "white-space:nowrap;background:#f4f1ea;border:1px solid #e6e0d4;border-radius:9999px;"
+    "padding:.18rem .6rem;color:#5a5a5a;text-decoration:none}"
+    ".pdp-rating .stars{color:var(--accent-gold,#b4945c);letter-spacing:.5px}"
+    ".pdp-rating:hover{border-color:var(--accent-gold,#b4945c)}"
+    ".was-price-pg{font-size:.9rem;color:#aaa;text-decoration:line-through;margin:0}"
+    ".sale-badge{position:absolute;top:1.15rem;right:-2.1rem;width:7.5rem;text-align:center;"
+    "background:var(--btn-start,#06153b);color:var(--accent-gold,#b4945c);font-size:.62rem;"
+    "font-weight:700;letter-spacing:.12em;padding:.32rem 0;transform:rotate(45deg);z-index:3;"
+    "box-shadow:0 2px 8px rgba(0,0,0,.28)}"
+    ".pdp-risk{background:#f7f5f0;border-left:3px solid var(--accent-gold,#b4945c);"
+    "border-radius:0 .5rem .5rem 0;padding:.7rem .9rem;display:flex;flex-direction:column;"
+    "gap:.4rem;font-size:.82rem;line-height:1.45;color:var(--text-secondary,#4a4a4a)}"
+    ".pdp-risk span{display:flex;align-items:flex-start;gap:.5rem}"
+    ".pdp-risk i{color:var(--accent-gold-accessible,#7a6240);font-size:.8rem;margin-top:.2em;"
+    "flex:none;width:1em;text-align:center}"
+    ".pdp-risk a{color:var(--accent-gold-accessible,#7a6240);text-decoration:underline;"
+    "text-underline-offset:2px;font-weight:600;display:inline-flex;align-items:center;gap:.35rem}"
+    ".pdp-risk a:hover{color:var(--accent-gold,#b4945c)}"
+    ".pdp-maker{border-top:1px solid var(--border-light,#eaeaea);padding-top:1rem}"
+    ".pdp-maker h2{font-size:1rem;margin:0 0 .4rem;color:var(--btn-start,#06153b)}"
+    ".pdp-maker p{font-size:.86rem;line-height:1.6;color:var(--text-secondary,#4a4a4a);margin:0}"
+    ".pdp-maker a{color:var(--accent-gold-accessible,#7a6240);text-decoration:underline;"
+    "text-underline-offset:2px}"
+    ".pdp-secondary{display:flex;align-items:center;gap:.5rem 1.25rem;flex-wrap:wrap;font-size:.82rem}"
+    ".pdp-ig{display:inline-flex;align-items:center;gap:.4rem;"
+    "color:var(--accent-gold-accessible,#7a6240);text-decoration:underline;text-underline-offset:2px}"
+    ".pdp-ig:hover{color:var(--accent-gold,#b4945c)}"
+    # shared.css never defined .md-flex, so the header phone icon was invisible at
+    # every width on these pages.
+    "@media(min-width:769px){.solid-header a.md-flex{display:inline-flex!important;"
+    "align-items:center}}"
+    "@media(max-width:768px){"
+    ".watch-page{padding:.75rem 1rem 4rem;gap:1rem}"
+    ".watch-img-wrap img{padding:1rem}"
+    ".watch-info{gap:.85rem}"
+    ".watch-info>.back-link{display:none}"
+    ".watch-cta-main{width:100%;justify-content:center;font-size:1rem;padding:.85rem 1.5rem}"
+    "}"
+) + "</style>"
+
+
+def replace_pdp_css(html: str, new: str) -> str:
+    if '<style id="pdp-css">' in html:
+        out, n = re.subn(r'<style id="pdp-css">.*?</style>', lambda _: new, html,
+                         count=1, flags=re.S)
+    else:
+        out, n = re.subn(r'(?=<div id="watch-crumb")', lambda _: new, html, count=1)
+    assert n == 1, "pdp-css anchor not found"
+    return out
+
+
+def add_call_bar(html: str, lang: str) -> str:
+    """The sticky phone bar exists on the homepage and the delivery page but never on
+    a product page, though shared.css already styles it and pixel.js already lifts the
+    consent banner 40px assuming it is there."""
+    if 'class="call-bar"' in html:
+        return html
+    bar = (f'<div class="call-bar" role="complementary" aria-label="{CALL_BAR_ARIA[lang]}">'
+           f'<a href="tel:+355676360510"><i class="fas fa-phone-alt" aria-hidden="true"></i> '
+           f'+355 67 636 0510</a></div>')
+    out, n = re.subn(r'(?=<a href="[^"]*" class="whatsapp-float")', lambda _: bar, html, count=1)
+    assert n == 1, "whatsapp-float anchor not found for call bar"
+    return out
 
 
 # Styles for the sections below the product hero. Emitted inline with the block so the
@@ -358,53 +539,65 @@ def build_watch_div(w, lang, cfg):
         + urllib.parse.quote(wa_text)
     )
 
-    img_html = build_img_html(w)
+    img_html = build_img_html(w, cfg)
     price_html = build_price_html(price, currency, lang)
 
+    # Hislon's Swiss tag rides inline in the identity row rather than taking a line of
+    # its own, so it costs no height above the fold.
     swiss_html = ""
     if brand == "Hislon":
-        swiss_html = (
-            f'<p style="font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;'
-            f'color:#8a9abf;font-weight:600;margin:0 0 .3rem">{cfg["swiss_label"]}</p>'
-        )
+        swiss_html = f'<span class="pdp-swiss">{cfg["swiss_label"]}</span>'
 
     if sold:
         cta_html = (
             f'<p style="font-size:1rem;color:#888;font-weight:600">{cfg["sold_text"]}</p>'
         )
+        risk_html = ""
     else:
         cta_html = (
             f'<div class="watch-cta-wrap">'
             f'<a href="{wa_url}" target="_blank" rel="noopener noreferrer" '
-            f'class="watch-cta-main" data-fb-contact="1">'
+            f'class="watch-cta-main" data-fb-contact="pdp-cta">'
             f'<i class="fab fa-whatsapp" aria-hidden="true"></i> {cfg["cta_label"]}</a>'
-            f'<a href="https://instagram.com/iglisiwatch" target="_blank" '
-            f'rel="noopener noreferrer" class="watch-ig">'
-            f'<i class="fab fa-instagram" aria-hidden="true"></i> {cfg["ig_label"]}</a>'
             f"</div>"
         )
+        risk_html = build_risk_html(lang)
 
-    trust_html = (
-        '<div class="trust-row">'
-        + "".join(cfg["trust"])
-        + "</div>"
-    )
+    trust_html = '<div class="trust-row">' + "".join(cfg["trust"]) + "</div>"
 
+    was_html = ""
+    op = w.get("originalPrice")
+    if op and price and op > price:
+        was_html = f'<p class="was-price-pg">{cfg["was_label"]} &euro;{op}</p>'
+
+    # Instagram moves out of the buy row. It was a saturated gradient pill sitting
+    # beside the only button that earns money, which made the clearest exit from the
+    # page compete with the one action worth taking.
+    ig_html = (f'<a class="pdp-ig" href="https://instagram.com/iglisiwatch" target="_blank" '
+               f'rel="noopener noreferrer">'
+               f'<i class="fab fa-instagram" aria-hidden="true"></i> {cfg["ig_label"]}</a>')
+
+    # Order is the argument: what it is, what it costs, how to get it, why it is safe
+    # to, then the detail, then who is selling it.
     info_html = (
         f'<div class="watch-info">'
         f'<a href="{cfg["back_href"]}" class="back-link">'
         f'<i class="fas fa-arrow-left" aria-hidden="true"></i> {cfg["back_label"]}</a>'
         f"<div>"
-        f'<p class="watch-brand-pg">{brand}</p>'
-        f"{swiss_html}"
+        f'<p class="pdp-idrow"><span class="watch-brand-pg">{brand}</span>{swiss_html}'
+        + (f'<span class="watch-ref-pg">{cfg["ref_label"]} {ref}</span>' if ref else "")
+        + f"</p>"
         f'<h1 class="watch-title-pg">{brand} {model}</h1>'
-        + (f'<p class="watch-ref-pg">{cfg["ref_label"]} {ref}</p>' if ref else "")
-        + f"</div>"
-        f'<p class="watch-price-pg">{price_html}</p>'
-        f'<p class="watch-desc-pg">{desc}</p>'
+        f"</div>"
+        f'<div class="pdp-pricerow"><div>{was_html}'
+        f'<p class="watch-price-pg">{price_html}</p></div>'
+        f"{build_rating_html(lang)}</div>"
         f"{cta_html}"
-        + open_now_html(lang)
-        +         f"{trust_html}"
+        f"{risk_html}"
+        f'<p class="watch-desc-pg">{desc}</p>'
+        f"{build_maker_html(lang)}"
+        f'<div class="pdp-secondary">' + open_now_html(lang) + ig_html + "</div>"
+        f"{trust_html}"
         f"</div>"
     )
 
@@ -457,6 +650,40 @@ def pre_render_twitter(html: str, title: str, desc: str, w) -> str:
                      r'(?:\n\s*<meta name="twitter:(?:title|description|image)"[^>]*>)*',
                      lambda _: block, html, count=1)
     assert n == 1, f"twitter:card block not found ({n})"
+    return out
+
+
+
+def build_biz_ld(lang):
+    """The 5.0 from 106 reviews as structured data, on a LocalBusiness node.
+
+    Deliberately NOT aggregateRating inside the Product: these are reviews of a repair
+    shop, not of a Navimarine NM181-03, and Google treats a business rating dressed up
+    as a product rating as a policy violation. The @id is the one the shop index already
+    uses, so this reads as the same business rather than 171 of them.
+    """
+    return ('<script type="application/ld+json" id="ld-biz">' + json.dumps({
+        "@context": "https://schema.org", "@type": ["Store", "LocalBusiness"],
+        "@id": "https://watch.al/#business", "name": "Iglisi Watch",
+        "url": f"https://watch.al/{lang}/shop/", "telephone": "+355676360510",
+        "email": "iglisi@watch.al", "image": "https://watch.al/og-image.png?v=2",
+        "priceRange": "€€",
+        "address": {"@type": "PostalAddress", "streetAddress": "Rruga Aleksander Goga",
+                    "addressLocality": "Durrës", "postalCode": "2001",
+                    "addressCountry": "AL"},
+        "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0",
+                            "reviewCount": "106", "bestRating": "5"},
+    }, ensure_ascii=False, separators=(",", ":")) + "</script>")
+
+
+def replace_biz_ld(html: str, lang: str) -> str:
+    new = build_biz_ld(lang)
+    if 'id="ld-biz"' in html:
+        out, n = re.subn(r'<script type="application/ld\+json" id="ld-biz">.*?</script>',
+                         lambda _: new, html, count=1, flags=re.S)
+    else:
+        out, n = re.subn(r"(?=</head>)", lambda _: new + "\n", html, count=1)
+    assert n == 1, "ld-biz anchor not found"
     return out
 
 
@@ -575,6 +802,9 @@ for w in watches:
         new_html = re.sub(r'(<script type="application/ld\+json" id="ld-json">)(.*?)(</script>)',
                           _set_ld_desc, new_html, count=1, flags=re.S)
 
+        new_html = replace_pdp_css(new_html, PDP_CSS)
+        new_html = replace_biz_ld(new_html, lang)
+        new_html = add_call_bar(new_html, lang)
         new_html = fix_footer_year(new_html)
         new_html = strip_runtime_renderer(new_html)
         new_html = pre_render_twitter(new_html, t, meta_desc, w)
