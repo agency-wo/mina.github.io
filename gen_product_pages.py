@@ -43,7 +43,7 @@ LANGS = {
         "ref_label": "Ref.",
         "sold_text": "This watch has been sold.",
         "was_label": "Was",
-        "cta_label": "Enquire via WhatsApp",
+        "cta_label": "Order on WhatsApp",
         "ig_label": "Instagram",
         "swiss_label": "Swiss Brand",
         "trust": [
@@ -60,10 +60,6 @@ LANGS = {
              '<i class="fas fa-clock" aria-hidden="true"></i>'
              " Mon–Sat 8:30–20:30</span>"),
         ],
-        "wa_msg": (
-            "Hi, I’m interested in the {brand} {model}"
-            " (Ref. {ref}) - can you confirm if it’s still available?"
-        ),
         "title_tail": "Buy in Durrës, Albania",
         "specs_h": "Details",
         "spec_brand": "Brand",
@@ -91,7 +87,7 @@ LANGS = {
         "ref_label": "Rif.",
         "sold_text": "Questo orologio è stato venduto.",
         "was_label": "Prima",
-        "cta_label": "Richiedi via WhatsApp",
+        "cta_label": "Ordina su WhatsApp",
         "ig_label": "Instagram",
         "swiss_label": "Marchio Svizzero",
         "trust": [
@@ -108,10 +104,6 @@ LANGS = {
              '<i class="fas fa-clock" aria-hidden="true"></i>'
              " Lun–Sab 8:30–20:30</span>"),
         ],
-        "wa_msg": (
-            "Salve, sono interessato all’orologio {brand} {model}"
-            " (Rif. {ref}) - potete confermare se è ancora disponibile?"
-        ),
         "title_tail": "Orologi a Durazzo",
         "specs_h": "Dettagli",
         "spec_brand": "Marca",
@@ -139,7 +131,7 @@ LANGS = {
         "ref_label": "Ref.",
         "sold_text": "Kjo orë është shitur.",
         "was_label": "Ishte",
-        "cta_label": "Pyesni në WhatsApp",
+        "cta_label": "Porosit në WhatsApp",
         "ig_label": "Instagram",
         "swiss_label": "Markë Zvicerane",
         "trust": [
@@ -156,10 +148,6 @@ LANGS = {
              '<i class="fas fa-clock" aria-hidden="true"></i>'
              " Hën–Sht 8:30–20:30</span>"),
         ],
-        "wa_msg": (
-            "Pershendetje, jam i interesuar per oren {brand} {model}"
-            " (Ref. {ref}) - a mund te konfirmoni nese është ende e disponueshme?"
-        ),
         "title_tail": "Blej Orë në Durrës",
         "specs_h": "Detaje",
         "spec_brand": "Marka",
@@ -326,6 +314,88 @@ REVIEWS_URL = ("https://search.google.com/local/reviews"
 CALL_BAR_ARIA = {"en": "Quick call", "it": "Chiamata rapida", "sq": "Telefonat&euml; e shpejt&euml;"}
 
 
+# WhatsApp is the whole checkout, so the message is the order form. Three changes from
+# what these buttons used to send:
+#   * intent, not a question. "can you confirm it is still available?" invites a yes and
+#     ends the conversation; "I would like to order" starts a sale.
+#   * the price, in that language's currency order, so there is nothing to negotiate
+#     back and forth about before the shop can act.
+#   * the page it came from. That is the attribution: the owner reads the inbox and
+#     knows which page earned the message, with no analytics and no consent gate, and
+#     the link opens the exact watch with its photo.
+# The Albanian used to open "Pershendetje, jam i interesuar per oren" with the
+# diacritics stripped out, in the shop's primary market language.
+WA = {
+    "en": {"order": "Hi, I would like to order the {name}{ref}, {price}. From {url}",
+           "ask": "Hi, I have a question about the {name}{ref}, {price}. From {url}",
+           "help": "Hi, I am not sure which watch to choose. Budget: . It is for: . From {url}"},
+    "it": {"order": "Salve, vorrei ordinare l’orologio {name}{ref}, {price}. Da {url}",
+           "ask": "Salve, ho una domanda sull’orologio {name}{ref}, {price}. Da {url}",
+           "help": "Salve, non so quale orologio scegliere. Budget: . È per: . Da {url}"},
+    "sq": {"order": "Përshëndetje, dua të porosis orën {name}{ref}, {price}. Nga {url}",
+           "ask": "Përshëndetje, kam një pyetje për orën {name}{ref}, {price}. Nga {url}",
+           "help": "Përshëndetje, nuk jam i sigurt cilën orë të zgjedh. Buxheti: . Është për: . Nga {url}"},
+}
+REF_WORD = {"en": "Ref.", "it": "Rif.", "sq": "Ref."}
+HELP = {
+    "en": ("Not sure which one? Tell us the budget and who it is for, and we will send "
+           "two or three from what is in the shop.", "Ask on WhatsApp"),
+    "it": ("Non sapete quale scegliere? Diteci il budget e per chi &egrave;, e ve ne "
+           "mandiamo due o tre tra quelli in negozio.", "Chiedete su WhatsApp"),
+    "sq": ("Nuk jeni t&euml; sigurt cil&euml;n t&euml; zgjidhni? Na thoni buxhetin dhe p&euml;r k&euml; "
+           "&euml;sht&euml;, dhe ju d&euml;rgojm&euml; dy ose tre nga ato q&euml; kemi n&euml; dyqan.",
+           "Pyesni n&euml; WhatsApp"),
+}
+
+
+def wa_url(kind, w, lang):
+    """Build one WhatsApp deep link. Never emits a placeholder for a missing reference:
+    the whole parenthetical is dropped instead."""
+    name = f'{w["brand"]} {w["model"]}'.strip()
+    ref = f' ({REF_WORD[lang]} {w["reference"]})' if w.get("reference") else ""
+    price = ""
+    if w.get("price"):
+        eur = f'€{w["price"]}'
+        l = lek(w["price"], w.get("currency", "EUR"))
+        price = (f"{l:,} L / {eur}" if lang == "sq" else f"{eur} / {l:,} L") if l else eur
+    url = f'watch.al/{lang}/shop/{w["id"]}.html'
+    msg = WA[lang][kind].format(name=name, ref=ref, price=price, url=url)
+    assert "—" not in msg
+    return ("https://api.whatsapp.com/send?phone=355676360510&amp;text="
+            + urllib.parse.quote(msg))
+
+
+def rewrite_ambient_wa(html: str, w, lang: str) -> str:
+    """The floating bubble and the header button opened an empty chat, on the one page
+    type where the site knows exactly what the visitor is looking at. They now carry the
+    watch, with question intent rather than order intent so the two stay distinguishable
+    in the inbox."""
+    url = wa_url("ask", w, lang)
+    out, n1 = re.subn(r'(<a href=")[^"]*(" class="whatsapp-float")',
+                      lambda m: m.group(1) + url + m.group(2), html, count=1)
+    out, n2 = re.subn(r'(<a href=")[^"]*(" target="_blank" rel="noopener noreferrer" '
+                      r'class="btn-primary wa-hdr")',
+                      lambda m: m.group(1) + url + m.group(2), out, count=1)
+    assert n1 == 1 and n2 == 1, f"ambient WhatsApp anchors not found ({n1},{n2})"
+    out = out.replace('class="whatsapp-float" target="_blank" rel="noopener noreferrer" '
+                      'data-fb-contact="1"',
+                      'class="whatsapp-float" target="_blank" rel="noopener noreferrer" '
+                      'data-fb-contact="pdp-float"')
+    out = out.replace('class="btn-primary wa-hdr" data-fb-contact="1"',
+                      'class="btn-primary wa-hdr" data-fb-contact="pdp-header"')
+    return out
+
+
+def build_help_html(w, lang):
+    """delivery.html says in all three languages that "I do not know which one" is the
+    most common message the shop gets. Until now the product page had no way to send it."""
+    text, label = HELP[lang]
+    return (f'<div class="pdp-help"><p>{text}</p>'
+            f'<a href="{wa_url("help", w, lang)}" target="_blank" rel="noopener noreferrer" '
+            f'data-fb-contact="pdp-help"><i class="fab fa-whatsapp" aria-hidden="true"></i> '
+            f'{label}</a></div>')
+
+
 def build_risk_html(lang):
     r = RISK[lang]
     pts = "".join(f'<span><i class="{i}" aria-hidden="true"></i>{t}</span>'
@@ -454,6 +524,15 @@ EXTRA_CSS = (
     "color:var(--text-secondary,#4a4a4a);line-height:1.5}"
     ".buy-list li::before{content:'';position:absolute;left:0;top:.45em;width:.5rem;height:.5rem;"
     "border-radius:50%;background:var(--accent-gold,#b4945c)}"
+    ".pdp-help{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;"
+    "gap:1rem;flex-wrap:wrap;background:var(--btn-start,#06153b);border-radius:1rem;"
+    "padding:1.1rem 1.5rem}"
+    ".pdp-help p{margin:0;color:rgba(255,255,255,.85);font-size:.9rem;line-height:1.5;max-width:52ch}"
+    ".pdp-help a{display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;"
+    "background:var(--accent-gold,#b4945c);color:#18110a;font-weight:700;font-size:.85rem;"
+    "border-radius:2rem;padding:.6rem 1.3rem;text-decoration:none}"
+    ".pdp-help a:hover{background:#c9a86a}"
+    "@media(max-width:600px){.pdp-help a{width:100%;justify-content:center}}"
     ".rel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}"
     ".rel-card{display:flex;flex-direction:column;gap:.4rem;text-decoration:none;color:inherit;"
     "border:1px solid var(--border-light,#eaeaea);border-radius:.75rem;padding:.75rem;"
@@ -533,11 +612,7 @@ def build_watch_div(w, lang, cfg):
     desc = w.get(cfg["desc_key"]) or w.get("description_en", "")
 
     # WhatsApp URL
-    wa_text = cfg["wa_msg"].format(brand=brand, model=model, ref=ref or "N/A")
-    wa_url = (
-        "https://api.whatsapp.com/send?phone=355676360510&amp;text="
-        + urllib.parse.quote(wa_text)
-    )
+    wa_href = wa_url("order", w, lang)
 
     img_html = build_img_html(w, cfg)
     price_html = build_price_html(price, currency, lang)
@@ -556,7 +631,7 @@ def build_watch_div(w, lang, cfg):
     else:
         cta_html = (
             f'<div class="watch-cta-wrap">'
-            f'<a href="{wa_url}" target="_blank" rel="noopener noreferrer" '
+            f'<a href="{wa_href}" target="_blank" rel="noopener noreferrer" '
             f'class="watch-cta-main" data-fb-contact="pdp-cta">'
             f'<i class="fab fa-whatsapp" aria-hidden="true"></i> {cfg["cta_label"]}</a>'
             f"</div>"
@@ -716,6 +791,7 @@ def build_extra_div(w, lang, cfg):
         f"{EXTRA_CSS}"
         f"{build_specs_html(w, cfg)}"
         f"{build_buy_html(cfg)}"
+        f"{build_help_html(w, lang)}"
         f"{build_related_html(w, lang, cfg)}"
         f"</div>"
     )
@@ -803,6 +879,7 @@ for w in watches:
                           _set_ld_desc, new_html, count=1, flags=re.S)
 
         new_html = replace_pdp_css(new_html, PDP_CSS)
+        new_html = rewrite_ambient_wa(new_html, w, lang)
         new_html = replace_biz_ld(new_html, lang)
         new_html = add_call_bar(new_html, lang)
         new_html = fix_footer_year(new_html)
