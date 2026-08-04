@@ -220,7 +220,10 @@ def load_manifest():
     arts = blog_index_data.ARTICLES
     slugs = [a["slug"] for a in arts]
     assert len(slugs) == len(set(slugs)), "duplicate slug in manifest"
-    on_disk = {p.stem for p in (BASE / "en" / "blog").glob("*.html")} - {"index"}
+    # noindex files in the blog directory are redirect stubs from a slug rename,
+    # not articles. gen_sitemap.py excludes them by the same rule.
+    on_disk = {p.stem for p in (BASE / "en" / "blog").glob("*.html")
+               if "noindex" not in p.read_bytes().decode("utf-8-sig").lower()} - {"index"}
     assert set(slugs) == on_disk, (
         f"manifest vs en/blog drift: only-manifest={sorted(set(slugs) - on_disk)} "
         f"only-disk={sorted(on_disk - set(slugs))}")
