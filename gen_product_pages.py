@@ -11,6 +11,7 @@ for browsers — only crawlers and view-source benefit.
 Run from repo root:  python gen_product_pages.py
 Idempotent: safe to run multiple times.
 """
+import hashlib
 import json
 import re
 import urllib.parse
@@ -76,7 +77,7 @@ LANGS = {
             "30 days to return it in store if it is not right.",
             "Try it on first at our workshop on Rruga Aleksander Goga, Durrës.",
         ],
-        "related_h": "Other watches you may like",
+        "related_h": "What else we would show you at the counter",
     },
     "it": {
         "desc_key": "description_it",
@@ -120,7 +121,7 @@ LANGS = {
             "30 giorni per restituirlo in negozio se non va bene.",
             "Provalo prima nel nostro laboratorio in Rruga Aleksander Goga, Durazzo.",
         ],
-        "related_h": "Altri orologi che potrebbero piacerti",
+        "related_h": "Cosa vi mostreremmo al banco",
     },
     "sq": {
         "desc_key": "description_sq",
@@ -164,7 +165,7 @@ LANGS = {
             "30 ditë për ta kthyer në dyqan nëse nuk ju përshtatet.",
             "Provojeni fillimisht në punishten tonë në Rrugën Aleksander Goga, Durrës.",
         ],
-        "related_h": "Orë të tjera që mund t’ju pëlqejnë",
+        "related_h": "Çfarë do t’ju tregonim te banaku",
     },
 }
 
@@ -539,6 +540,8 @@ EXTRA_CSS = (
     "transition:border-color .2s,transform .2s}"
     ".rel-card:hover{border-color:var(--accent-gold,#b4945c);transform:translateY(-3px)}"
     ".rel-card img{width:100%;height:auto;border-radius:.5rem;background:#f7f5f0}"
+    ".rel-role{font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;"
+    "color:var(--accent-gold-accessible,#7a6240)}"
     ".rel-name{font-size:.82rem;font-weight:600;line-height:1.35}"
     ".rel-price{font-size:.82rem;color:var(--text-secondary,#4a4a4a)}"
     "@media(max-width:900px){.watch-extra{grid-template-columns:1fr;gap:1.5rem;padding:0 1rem 3rem}"
@@ -547,16 +550,63 @@ EXTRA_CSS = (
 )
 
 
+STEP_UP = 1.25    # what "a step up" has to mean to be worth showing
+NEAR_BAND = 0.30  # a cross-brand alternative must be within this much of the price,
+                  # so a 199 euro Hislon never advertises a 95 euro Navimarine
+
+ROLE = {
+    "en": {"same_brand": "Same brand", "same_price": "Same price",
+           "step_up": "A step up", "top": "Top of the range"},
+    "it": {"same_brand": "Stessa marca", "same_price": "Stesso prezzo",
+           "step_up": "Un gradino sopra", "top": "Il top della gamma"},
+    "sq": {"same_brand": "E nj&euml;jta mark&euml;", "same_price": "I nj&euml;jti &ccedil;mim",
+           "step_up": "Nj&euml; shkall&euml; m&euml; lart", "top": "Maja e gam&euml;s"},
+}
+
+
 def related_for(w, n=4):
-    """Same brand first, then nearest price. Gives every product page real internal
-    links and is the one part of the added markup that is unique per page."""
+    """Four watches with four different jobs, read left to right as a price ladder.
+
+    The old rule was "same brand, nearest price", which on a Navimarine page, and 22 of
+    the 57 watches are Navimarines, showed four more Navimarines within five euro of
+    each other. Nothing on any page ever pointed at the 149 to 199 end of the counter,
+    so a shop with a top tier never once offered it.
+    """
     others = [x for x in watches if x["id"] != w["id"] and not x.get("sold")]
-    price = w.get("price") or 0
-    same = [x for x in others if x["brand"] == w["brand"]]
-    same.sort(key=lambda x: abs((x.get("price") or 0) - price))
-    rest = [x for x in others if x["brand"] != w["brand"]]
-    rest.sort(key=lambda x: abs((x.get("price") or 0) - price))
-    return (same + rest)[:n]
+    p = w.get("price") or 0
+    picks, roles = [], []
+
+    def take(cands, role):
+        for x in cands:
+            if all(x["id"] != y["id"] for y in picks):
+                picks.append(x)
+                roles.append(role)
+                return
+
+    near = lambda x: (abs((x.get("price") or 0) - p), x["id"])
+    take(sorted([x for x in others if x["brand"] == w["brand"]], key=near), "same_brand")
+    take(sorted([x for x in others if x["brand"] != w["brand"]
+                 and abs((x.get("price") or 0) - p) <= NEAR_BAND * p], key=near), "same_price")
+    take(sorted([x for x in others if (x.get("price") or 0) >= STEP_UP * p],
+                key=lambda x: (x.get("price") or 0, x["id"])), "step_up")
+    # Rotate the top-tier pick by a hash of the id, so 50-odd pages do not all send
+    # everyone to the same watch, without depending on the order of watches.json.
+    ceiling = max((x.get("price") or 0) for x in others)
+    top = sorted([x for x in others if (x.get("price") or 0) >= 0.75 * ceiling],
+                 key=lambda x: (-(x.get("price") or 0), x["id"]))
+    if top:
+        i = int(hashlib.md5(w["id"].encode()).hexdigest(), 16) % len(top)
+        take([top[(i + k) % len(top)] for k in range(len(top))], "top")
+    for x in sorted(others, key=near):  # fall-through, deliberately unlabelled
+        if len(picks) >= n:
+            break
+        if all(x["id"] != y["id"] for y in picks):
+            picks.append(x)
+            roles.append("")
+
+    out = sorted(zip(picks[:n], roles[:n]), key=lambda t: t[0].get("price") or 0)
+    # A label must never lie: drop "top of the range" when the card is not dearer.
+    return [(x, "" if r == "top" and (x.get("price") or 0) <= p else r) for x, r in out]
 
 
 def build_specs_html(w, cfg):
@@ -586,7 +636,7 @@ def build_buy_html(cfg):
 
 def build_related_html(w, lang, cfg):
     cards = []
-    for r in related_for(w):
+    for r, role in related_for(w):
         price = r.get("price")
         l = lek(price, r.get("currency", "EUR")) if price else 0
         price_html = (f'<span class="rel-price">€{price}'
@@ -594,8 +644,9 @@ def build_related_html(w, lang, cfg):
         img = r.get("image", "")
         img_html = (f'<img src="{re.sub(r".webp$", ".jpg", img, flags=re.I)}" alt="{r["brand"]} {r["model"]}"'
                     f' loading="lazy" width="300" height="300">') if img else ""
+        role_html = (f'<span class="rel-role">{ROLE[lang][role]}</span>' if role else "")
         cards.append(
-            f'<a class="rel-card" href="/{lang}/shop/{r["id"]}.html">{img_html}'
+            f'<a class="rel-card" href="/{lang}/shop/{r["id"]}.html">{img_html}{role_html}'
             f'<span class="rel-name">{r["brand"]} {r["model"]}</span>{price_html}</a>'
         )
     return (f'<section class="watch-related"><h2>{cfg["related_h"]}</h2>'
