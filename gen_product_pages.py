@@ -135,7 +135,7 @@ LANGS = {
         "back_href": "/sq/shop/",
         "back_label": "Kthehu në dyqan",
         "ref_label": "Ref.",
-        "sold_text": "Kjo orë është shëtur.",
+        "sold_text": "Kjo orë është shitur.",
         "cta_label": "Pyesni në WhatsApp",
         "ig_label": "Instagram",
         "swiss_label": "Markë Zvicerane",
@@ -416,6 +416,50 @@ def build_watch_div(w, lang, cfg):
     )
 
 
+def fix_footer_year(html: str) -> str:
+    """#footerYear was filled by watch.js. shared.js fills [data-year] on every other
+    page, so switch to that rather than keep a script alive for one number."""
+    out, n = re.subn(r'<span id="footerYear"></span>', '<span data-year></span>', html)
+    assert n <= 1
+    return out
+
+
+def strip_runtime_renderer(html: str) -> str:
+    """Remove watch.js and the 63 KB watches-data.js it existed to feed.
+
+    watch.js re-rendered #watch-content on every load, over static markup that was
+    already correct, and every difference it introduced was damage: a NaN Lek price
+    (render() ran before `var EUR_TO_LEK = 97` was assigned), the sale price dropped,
+    the open-now block deleted, an em dash where a reference was empty, and a
+    toLocaleString() with no locale so an Albanian phone printed 6.800 L against
+    Python's 6,800 L. Its reason to exist, the legacy shop/watch.html?id= template,
+    is now a redirect stub that does not even load it.
+
+    One renderer means the static and runtime versions of a page cannot disagree,
+    which is the whole bug class.
+    """
+    out, n = re.subn(r'\n?<script src="[^"]*watches-data\.js[^"]*" defer></script>'
+                     r'|\n?<script src="watch\.js" defer></script>', "", html)
+    assert n in (0, 2), f"expected 0 or 2 script tags to strip, removed {n}"
+    assert "watch.js" not in out and "watches-data.js" not in out
+    return out
+
+
+def pre_render_twitter(html: str, title: str, desc: str, w) -> str:
+    """twitter:title/description/image were set only by watch.js, so every product
+    link shared to a chat app rendered bare. Emit them next to twitter:card."""
+    img = f'https://watch.al{w["image"]}'
+    block = (f'<meta name="twitter:card" content="summary_large_image">\n'
+             f'  <meta name="twitter:title" id="tw-title" content="{title}">\n'
+             f'  <meta name="twitter:description" id="tw-desc" content="{desc}">\n'
+             f'  <meta name="twitter:image" id="tw-image" content="{img}">')
+    out, n = re.subn(r'<meta name="twitter:card" content="summary_large_image">'
+                     r'(?:\n\s*<meta name="twitter:(?:title|description|image)"[^>]*>)*',
+                     lambda _: block, html, count=1)
+    assert n == 1, f"twitter:card block not found ({n})"
+    return out
+
+
 def build_crumb_div(w, lang):
     """Visible breadcrumb, placed ABOVE #watch-content as a sibling: watch.js
     replaces watch-content.innerHTML wholesale, so anything inside it is lost."""
@@ -486,7 +530,12 @@ for w in watches:
             skipped_missing.append(f"{lang}/shop/{wid}.html")
             continue
 
-        html = path.read_text(encoding="utf-8")
+        raw = path.read_bytes()
+        bom = raw.startswith(b"\xef\xbb\xbf")
+        body = raw[3:] if bom else raw
+        crlf = body.count(b"\r\n") == body.count(b"\n") and body.count(b"\n") > 0
+        html = body.decode("utf-8").replace("\r\n", "\n")
+
         new_html = replace_watch_content(html, build_watch_div(w, lang, cfg))
         new_html = replace_extra(new_html, build_extra_div(w, lang, cfg))
         new_html = replace_crumb(new_html, build_crumb_div(w, lang))
@@ -526,11 +575,18 @@ for w in watches:
         new_html = re.sub(r'(<script type="application/ld\+json" id="ld-json">)(.*?)(</script>)',
                           _set_ld_desc, new_html, count=1, flags=re.S)
 
-        if new_html == html:
+        new_html = fix_footer_year(new_html)
+        new_html = strip_runtime_renderer(new_html)
+        new_html = pre_render_twitter(new_html, t, meta_desc, w)
+
+        out = (b"\xef\xbb\xbf" if bom else b"") + (
+            new_html.replace("\n", "\r\n") if crlf else new_html).encode("utf-8")
+        assert b"\x0c" not in out
+        if out == raw:
             unchanged.append(f"{lang}/shop/{wid}.html")
             print(f"  SKIP (no change): {lang}/shop/{wid}.html")
         else:
-            path.write_text(new_html, encoding="utf-8")
+            path.write_bytes(out)
             updated.append(f"{lang}/shop/{wid}.html")
             print(f"  OK: {lang}/shop/{wid}.html")
 
