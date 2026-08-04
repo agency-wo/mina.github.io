@@ -3,30 +3,16 @@ Disallow: /admin.html
 Disallow: /offline.html
 
 User-agent: GPTBot
-Allow: /
-
 User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: ChatGPT-User
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
 User-agent: PerplexityBot
-Allow: /
-
 User-agent: Google-Extended
-Allow: /
-
 User-agent: Bingbot
-Allow: /
-
 User-agent: CCBot
-Allow: /
-
 User-agent: Applebot
 Allow: /
+Disallow: /admin.html
+Disallow: /offline.html
 
 Sitemap: https://watch.al/sitemap.xml
