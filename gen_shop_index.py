@@ -17,7 +17,8 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
-from shop_bits import card_price_html, crumb_html, CRUMB_CSS
+from shop_bits import (card_price_html, crumb_html, CRUMB_CSS,
+                       delivery_bar_html, DELIVERY_CSS)
 from shop_seo import COPY as SEO_COPY, fill as seo_fill, seo_section_html, faq_jsonld
 
 BASE = Path(__file__).parent
@@ -181,11 +182,17 @@ def main():
         # 3. visible Home > Shop crumb, placed on the LIGHT content area just above the
         #    filter controls. It must NOT go above the hero: a pale band between the dark
         #    sticky header and the dark hero cuts the top of the page in half.
+        #    Directly under it sits the delivery bar: free delivery, pay on arrival,
+        #    30 days to return, linking to shop/delivery.html. It answers the three
+        #    objections a buyer outside Durres has before they will open a card.
         norm = re.sub(r'<style>\.shop-crumb.*?</nav>', "", norm, flags=re.S)   # drop any old copy
         norm = re.sub(r'<nav class="shop-crumb".*?</nav>', "", norm, flags=re.S)
+        norm = re.sub(r'<style>\.shop-deliv.*?</style>', "", norm, flags=re.S)
+        norm = re.sub(r'<div class="shop-deliv">.*?</div></div>', "", norm, flags=re.S)
         anchor = '<div class="shop-controls">'
         assert norm.count(anchor) == 1, f"{lang}: shop-controls anchor x{norm.count(anchor)}"
-        norm = norm.replace(anchor, CRUMB_CSS + crumb_html(lang) + anchor, 1)
+        norm = norm.replace(anchor, CRUMB_CSS + crumb_html(lang)
+                            + DELIVERY_CSS + delivery_bar_html(lang) + anchor, 1)
 
         # 4. below-grid geo lead + FAQ section, just before </main>
         sec = seo_section_html(lang, W)
@@ -256,10 +263,16 @@ def main():
             if b.strip():
                 json.loads(b)
         n_cards = chk.count('<article class="watch-card')
-        n_links = len(set(re.findall(rf'href="/{lang}/shop/([a-z0-9.-]+)\.html"', chk)))
+        # shop/ also holds delivery.html, which is a page not a product. Count product
+        # links against the catalog ids rather than "everything under shop/".
+        linked = set(re.findall(rf'href="/{lang}/shop/([a-z0-9.-]+)\.html"', chk))
+        ids = {w["id"] for w in W}
+        assert ids <= linked, f"{lang}: unlinked products {sorted(ids - linked)}"
+        assert not (linked - ids - {"delivery"}), f"{lang}: stray shop links {sorted(linked - ids - {'delivery'})}"
+        n_links = len(ids)
         il = [json.loads(b) for b in SCRIPT_RE.findall(chk) if b.strip() and '"ItemList"' in b][0]
         assert n_cards == len(W), f"{lang}: {n_cards} cards != {len(W)}"
-        assert n_links == len(W), f"{lang}: {n_links} distinct product links"
+        assert "delivery" in linked, f"{lang}: delivery page not linked from the shop index"
         assert il["numberOfItems"] == len(il["itemListElement"]) == len(W), f"{lang}: ItemList count"
         assert "\u2014" not in chk.split("</head>")[1].replace('watch-ref">Ref. \u2014', ""), f"{lang}: em dash"
         body_html = chk.split("</head>")[1]

@@ -104,6 +104,57 @@ def crumb_html(lang, brand=None, leaf=None):
     return ('<nav class="shop-crumb" aria-label="Breadcrumb">' + "".join(parts) + "</nav>")
 
 
+# --- delivery reassurance bar ---------------------------------------------------
+# The three objections a buyer outside Durres has before they will click a card:
+# what does delivery cost, when do I pay, and what if it is wrong. All three are
+# answered in full on {lang}/shop/delivery.html, which this bar links to.
+# Icons are limited to the 64 glyphs in the subsetted font (fa-truck is not one).
+DELIVERY_CSS = (
+    "<style>"
+    ".shop-deliv{max-width:80rem;margin:.75rem auto 0;padding:.7rem 1.5rem;font-size:.82rem;"
+    "display:flex;align-items:center;gap:.5rem 1.4rem;flex-wrap:wrap;"
+    "color:var(--text-secondary,#4a4a4a)}"
+    ".shop-deliv-in{display:flex;align-items:center;gap:.5rem 1.4rem;flex-wrap:wrap;"
+    "background:#f7f5f0;border-left:3px solid var(--accent-gold,#b4945c);border-radius:0 .5rem .5rem 0;"
+    "padding:.6rem 1rem;width:100%}"
+    ".shop-deliv span{display:inline-flex;align-items:center;gap:.4rem}"
+    ".shop-deliv i{color:var(--accent-gold-accessible,#7a6240);font-size:.8rem}"
+    ".shop-deliv a{color:var(--accent-gold-accessible,#7a6240);text-decoration:underline;"
+    "text-underline-offset:2px;font-weight:600;margin-left:auto;display:inline-flex;"
+    "align-items:center;gap:.35rem;white-space:nowrap}"
+    ".shop-deliv a:hover{color:var(--accent-gold,#b4945c)}"
+    "@media(max-width:640px){.shop-deliv a{margin-left:0}}"
+    "</style>"
+)
+
+# Wording is a summary of {lang}/shop/delivery.html and must not outrun it: free
+# delivery, pay the courier, 30 days. No figure that is not on that page.
+DELIVERY_BAR = {
+    "en": (("fas fa-store", "Free delivery anywhere in Albania"),
+           ("fas fa-money-bill", "Pay the courier when it arrives"),
+           ("fas fa-arrow-left", "30 days to return it"),
+           "How ordering works"),
+    "it": (("fas fa-store", "Consegna gratuita in tutta l&rsquo;Albania"),
+           ("fas fa-money-bill", "Pagate il corriere alla consegna"),
+           ("fas fa-arrow-left", "30 giorni per il reso"),
+           "Come funziona l&rsquo;ordine"),
+    "sq": (("fas fa-store", "D&euml;rges&euml; falas kudo n&euml; Shqip&euml;ri"),
+           ("fas fa-money-bill", "Paguani korrierin kur mb&euml;rrin"),
+           ("fas fa-arrow-left", "30 dit&euml; p&euml;r ta kthyer"),
+           "Si funksionon porosia"),
+}
+
+
+def delivery_bar_html(lang):
+    """Slim reassurance strip linking to the delivery, payment and returns page."""
+    *points, link = DELIVERY_BAR[lang]
+    items = "".join(
+        f'<span><i class="{icon}" aria-hidden="true"></i>{text}</span>' for icon, text in points)
+    return ('<div class="shop-deliv"><div class="shop-deliv-in">' + items
+            + f'<a href="/{lang}/shop/delivery.html">{link}'
+              '<i class="fas fa-chevron-right" aria-hidden="true"></i></a></div></div>')
+
+
 def crumb_jsonld(lang, page_url, brand=None, leaf=None):
     """BreadcrumbList matching crumb_html exactly. watch.js builds the same shape."""
     c = CRUMBS[lang]
