@@ -195,9 +195,18 @@ OPEN_NOW_TEXT = {
 
 
 def open_now_html(lang):
+    """Walk-in indicator. The strings ride on data attributes and shared.js does the
+    work.
+
+    It used to carry its own inline <script>, which never ran once: these pages set
+    script-src 'self' with no unsafe-inline and no nonce, so the browser refused it
+    on all 186 pages that had it. A page cannot fix that itself; the logic has to
+    live in a file the CSP already trusts.
+    """
     t = OPEN_NOW_TEXT[lang]
+    data = " ".join(f'data-on-{k}="{v}"' for k, v in t.items() if k != "fallback")
     return (
-        f'<p class="open-now" id="openNow" data-open-now>'
+        f'<p class="open-now" id="openNow" data-open-now {data}>'
         f'<span class="open-dot" aria-hidden="true"></span>'
         f'<span class="open-txt">{t["fallback"]}</span></p>'
         "<style>"
@@ -208,21 +217,4 @@ def open_now_html(lang):
         ".open-now.is-open{color:#1a7a3f}"
         ".open-now.is-shut .open-dot{background:#c0392b}"
         "</style>"
-        "<script>(function(){var e=document.getElementById('openNow');if(!e)return;"
-        "var T=" + _js_texts(t) + ";"
-        "try{var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Tirane',weekday:'short',"
-        "hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());"
-        "var g=function(k){for(var i=0;i<p.length;i++)if(p[i].type===k)return p[i].value;return ''};"
-        "var d=g('weekday'),m=parseInt(g('hour'),10)*60+parseInt(g('minute'),10);"
-        "var sun=d==='Sun',sat=d==='Sat',open=!sun&&m>=510&&m<1230;"
-        "var s=e.querySelector('.open-txt');"
-        "if(open){e.className='open-now is-open';s.textContent=T.open}"
-        "else{e.className='open-now is-shut';"
-        "s.textContent=sun?T.monday:(m<510?T.soon:(sat?T.monday:T.tomorrow))}"
-        "}catch(x){}})();</script>"
     )
-
-
-def _js_texts(t):
-    import json as _j
-    return _j.dumps({k: v for k, v in t.items() if k != "fallback"}, ensure_ascii=False)
