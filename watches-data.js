@@ -770,5 +770,33 @@ window.WATCHES_DATA = [
     "description_en": "Daniel Klein Premium Steel Crystal, a women's dress watch in polished stainless steel with a silver sunburst dial. Eight crystal-set hour markers sit between applied baton indices at twelve, three, six and nine, on slim hands and a three-link steel bracelet. Reliable quartz movement, and no date window to clutter the dial.",
     "description_it": "Daniel Klein Premium Steel Crystal, orologio da donna in acciaio inossidabile lucido con quadrante argentato sunburst. Otto indici delle ore con cristalli si alternano agli indici a bastone applicati a mezzogiorno, alle tre, alle sei e alle nove, con lancette sottili e bracciale in acciaio a tre maglie. Movimento al quarzo affidabile, senza finestrella data a disturbare il quadrante.",
     "description_sq": "Daniel Klein Premium Steel Crystal, orë veshjeje për femra në çelik inoks të lëmuar me ciferblat argjendi sunburst. Tetë tregues orësh me kristale alternohen me tregues të aplikuar te dymbëdhjeta, treshi, gjashta dhe nënta, me akrepa të hollë dhe byzylyk çeliku me tre hallka. Mekanizëm kuarci i besueshëm, pa dritare date që ngarkon ciferblatin."
+  },
+  {
+    "id": "bigotti-bg1-10616-2",
+    "brand": "Bigotti",
+    "model": "Steel Square Crystal",
+    "reference": "BG.1.10616-2",
+    "condition": "New",
+    "price": 77,
+    "currency": "EUR",
+    "image": "/images/watches/bigotti-bg1-10616-2.webp",
+    "sold": false,
+    "description_en": "Bigotti Steel Square Crystal, a women's dress watch in polished stainless steel with a square case and a crystal-set bezel on all four sides. Silver sunburst dial, applied baton indices and a five-link bracelet, quartz movement, no date window. Sparkle you can wear every day.",
+    "description_it": "Orologio da donna Bigotti in acciaio inossidabile lucido con cassa quadrata e lunetta con cristalli su tutti e quattro i lati. Quadrante argentato sunburst, indici a bastone applicati e bracciale in acciaio a cinque maglie, movimento al quarzo, senza finestrella data. Brillante quanto basta, ogni giorno.",
+    "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks të lëmuar me kasë katrore dhe lunetë me kristale në të katër anët. Ciferblat argjendi sunburst, tregues shiritash të aplikuar dhe byzylyk çeliku me pesë hallka, mekanizëm kuarci, pa dritare date. Shkëlqim që vishet çdo ditë."
+  },
+  {
+    "id": "bigotti-bg1-10616-7",
+    "brand": "Bigotti",
+    "model": "Gold Square Crystal",
+    "reference": "BG.1.10616-7",
+    "condition": "New",
+    "price": 77,
+    "currency": "EUR",
+    "image": "/images/watches/bigotti-bg1-10616-7.webp",
+    "sold": false,
+    "description_en": "Bigotti Gold Square Crystal, a women's dress watch in gold-tone stainless steel with a square case and a crystal-set bezel on all four sides. Glossy black dial, applied baton indices and a matching five-link bracelet, quartz movement, no date window. The dressiest square we stock.",
+    "description_it": "Orologio da donna Bigotti in acciaio inossidabile color oro con cassa quadrata e lunetta con cristalli su tutti e quattro i lati. Quadrante nero lucido, indici a bastone dorati applicati e bracciale abbinato a cinque maglie, movimento al quarzo, senza finestrella data. Il quadrato più elegante che teniamo.",
+    "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks ngjyrë ari me kasë katrore dhe lunetë me kristale në të katër anët. Ciferblat i zi i shndritshëm, tregues shiritash të artë të aplikuar dhe byzylyk i njëjtë me pesë hallka, mekanizëm kuarci, pa dritare date. Katrori më elegant që kemi."
   }
 ];
