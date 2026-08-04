@@ -17,7 +17,7 @@ import re
 import urllib.parse
 from pathlib import Path
 
-from catalog_stats import lek, nfmt
+from catalog_stats import REVIEWS, lek, nfmt
 from shop_bits import (crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html,
                        price_html as shared_price_html)
 
@@ -295,13 +295,13 @@ MAKER = {
                  " nd&euml;rsa prisni, edhe nëse or&euml;n nuk e keni bler&euml; te ne.")},
 }
 
-# The 5.0 from 106 reviews is real and verifiable, and it has never once been visible
+# The 5.0 rating is real and verifiable, and it has never once been visible
 # on a phone anywhere on this site: shared.css hides .review-badge below 768px in two
 # separate rules. A fresh class avoids fighting them with !important.
 GRATING = {
-    "en": ("Iglisi Watch on Google, rated 5.0 from 106 reviews", "Google 5.0"),
-    "it": ("Iglisi Watch su Google, 5.0 su 106 recensioni", "Google 5.0"),
-    "sq": ("Iglisi Watch n&euml; Google, 5.0 nga 106 vler&euml;sime", "Google 5.0"),
+    "en": (f"Iglisi Watch on Google, rated 5.0 from {REVIEWS} reviews", "Google 5.0"),
+    "it": (f"Iglisi Watch su Google, 5.0 su {REVIEWS} recensioni", "Google 5.0"),
+    "sq": (f"Iglisi Watch n&euml; Google, 5.0 nga {REVIEWS} vler&euml;sime", "Google 5.0"),
 }
 REVIEWS_URL = ("https://search.google.com/local/reviews"
                "?placeid=ChIJU3JyAljB0RMRdoAB2vYR5oo")
@@ -774,7 +774,7 @@ def pre_render_twitter(html: str, title: str, desc: str, w) -> str:
 
 
 def build_biz_ld(lang):
-    """The 5.0 from 106 reviews as structured data, on a LocalBusiness node.
+    """The 5.0 rating as structured data, on a LocalBusiness node.
 
     Deliberately NOT aggregateRating inside the Product: these are reviews of a repair
     shop, not of a Navimarine NM181-03, and Google treats a business rating dressed up
@@ -791,7 +791,7 @@ def build_biz_ld(lang):
                     "addressLocality": "Durrës", "postalCode": "2001",
                     "addressCountry": "AL"},
         "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0",
-                            "reviewCount": "106", "bestRating": "5"},
+                            "reviewCount": str(REVIEWS), "bestRating": "5"},
     }, ensure_ascii=False, separators=(",", ":")) + "</script>")
 
 
