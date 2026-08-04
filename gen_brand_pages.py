@@ -107,30 +107,30 @@ def brand_watches(brand):
                   key=lambda w: w["price"])
 
 
-def fill(text, brand, items):
+def fill(text, brand, items, lang='en'):
     prices = [w["price"] for w in items]
     return (text.replace("{brand}", brand)
                 .replace("{n}", str(len(items)))
                 .replace("{lo}", str(min(prices)))
                 .replace("{hi}", str(max(prices)))
-                .replace("{lolek}", f"{lek(min(prices)):,}")
-                .replace("{hilek}", f"{lek(max(prices)):,}"))
+                .replace("{lolek}", nfmt(lek(min(prices)), lang))
+                .replace("{hilek}", nfmt(lek(max(prices)), lang)))
 
 
 def build_main(slug, brand, lang, items):
-    ui = {k: (fill(v, brand, items) if isinstance(v, str) else v) for k, v in UI[lang].items()}
+    ui = {k: (fill(v, brand, items, lang) if isinstance(v, str) else v) for k, v in UI[lang].items()}
     copy = COPY[slug][lang]
-    paras = "".join(f"<p>{fill(p, brand, items)}</p>" for p in copy["paras"])
+    paras = "".join(f"<p>{fill(p, brand, items, lang)}</p>" for p in copy["paras"])
     faqs = "".join(
         '<details class="faq-item"><summary class="faq-question">'
-        f'<span class="faq-q-label">{fill(q, brand, items)}</span>'
+        f'<span class="faq-q-label">{fill(q, brand, items, lang)}</span>'
         '<i class="fas fa-chevron-down" aria-hidden="true"></i></summary>'
-        f'<div class="faq-answer"><p>{fill(a, brand, items)}</p></div></details>'
+        f'<div class="faq-answer"><p>{fill(a, brand, items, lang)}</p></div></details>'
         for q, a in copy["faq"])
     trust = " &middot; ".join(
         f'<span style="white-space:nowrap"><i class="fas {ic}" aria-hidden="true"></i> {t}</span>'
         for ic, t in zip(("fa-check-circle", "fa-shield-alt", "fa-map-marker-alt"), ui["trust"]))
-    wa = WA + fill(UI[lang]["wa_msg"], brand, items).replace(" ", "%20").replace(",", "%2C")
+    wa = WA + fill(UI[lang]["wa_msg"], brand, items, lang).replace(" ", "%20").replace(",", "%2C")
     cards = "".join(card(w, lang) for w in items)
     return (
         '<main id="main-content">'
@@ -178,8 +178,8 @@ BRAND_CSS = (
 
 def head_swaps(html, slug, brand, lang, items):
     ui = UI[lang]
-    title = esc(fill(ui["title"], brand, items))
-    desc = esc(fill(ui["desc"], brand, items))
+    title = esc(fill(ui["title"], brand, items, lang))
+    desc = esc(fill(ui["desc"], brand, items, lang))
     url = f"https://watch.al/{lang}/shop/brand/{slug}.html"
     img = "https://watch.al" + re.sub(r"\.jpe?g$", ".webp", items[0]["image"], flags=re.I)
     subs = [
@@ -216,11 +216,11 @@ def build_jsonld(slug, brand, lang, items):
     copy = COPY[slug][lang]
     collection = {
         "@context": "https://schema.org", "@type": "CollectionPage",
-        "name": fill(ui["title"], brand, items).split(" | ")[0],
-        "description": fill(ui["desc"], brand, items),
+        "name": fill(ui["title"], brand, items, lang).split(" | ")[0],
+        "description": fill(ui["desc"], brand, items, lang),
         "url": url, "inLanguage": lang,
         "mainEntity": {
-            "@type": "ItemList", "name": fill(ui["all_h"], brand, items),
+            "@type": "ItemList", "name": fill(ui["all_h"], brand, items, lang),
             "numberOfItems": len(items),
             "itemListElement": [
                 {"@type": "ListItem", "position": i,
@@ -233,8 +233,8 @@ def build_jsonld(slug, brand, lang, items):
     faq = {
         "@context": "https://schema.org", "@type": "FAQPage",
         "mainEntity": [
-            {"@type": "Question", "name": fill(q, brand, items),
-             "acceptedAnswer": {"@type": "Answer", "text": fill(a, brand, items)}}
+            {"@type": "Question", "name": fill(q, brand, items, lang),
+             "acceptedAnswer": {"@type": "Answer", "text": fill(a, brand, items, lang)}}
             for q, a in copy["faq"]],
     }
     return "".join(

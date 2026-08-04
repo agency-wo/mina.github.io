@@ -194,13 +194,19 @@
 
 
   var EUR_TO_LEK = 97;
+  var SEP = ',';
+  /* Comma in EN, dot in IT and SQ. Mirrors catalog_stats.SEP byte for byte.
+     Never toLocaleString(): it asks the browser for the separator, so an
+     Italian phone reflowed the grid from 18,300 L to 18.300 L after hydration
+     and the rendered page disagreed with the HTML the server sent. */
+  function group(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, SEP); }
   function fmt(price, currency){
     if(!price) return 'Price on request';
-    return (currency === 'EUR' ? '\u20ac' : currency) + Number(price).toLocaleString('en-EU');
+    return (currency === 'EUR' ? '\u20ac' : currency) + group(price);
   }
   function fmtLek(price, currency){
     if(!price || currency !== 'EUR') return '';
-    return '<span style="font-size:.78rem;color:#888;font-weight:400"> \u00b7 ' + (Math.round(price * EUR_TO_LEK / 100) * 100).toLocaleString() + '\u00a0L</span>';
+    return '<span style="font-size:.78rem;color:#888;font-weight:400"> \u00b7 ' + group(Math.round(price * EUR_TO_LEK / 100) * 100) + '\u00a0L</span>';
   }
 
   function waMsg(w){

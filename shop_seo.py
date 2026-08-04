@@ -148,15 +148,15 @@ COPY = {
 from catalog_stats import lek as _lek, nfmt
 
 
-def fill(text, watches):
+def fill(text, watches, lang="en"):
     prices = [w["price"] for w in watches if w.get("price")]
     brands = {w["brand"] for w in watches}
     return (text.replace("{n}", str(len(watches)))
                 .replace("{b}", str(len(brands)))
                 .replace("{lo}", str(min(prices)))
                 .replace("{hi}", str(max(prices)))
-                .replace("{lolek}", f"{_lek(min(prices)):,}")
-                .replace("{hilek}", f"{_lek(max(prices)):,}"))
+                .replace("{lolek}", nfmt(_lek(min(prices)), lang))
+                .replace("{hilek}", nfmt(_lek(max(prices)), lang)))
 
 
 def seo_section_html(lang, watches):
@@ -164,15 +164,15 @@ def seo_section_html(lang, watches):
     t = COPY[lang]
     faqs = "".join(
         '<details class="faq-item"><summary class="faq-question">'
-        f'<span class="faq-q-label">{fill(q, watches)}</span>'
+        f'<span class="faq-q-label">{fill(q, watches, lang)}</span>'
         '<i class="fas fa-chevron-down" aria-hidden="true"></i></summary>'
-        f'<div class="faq-answer"><p>{fill(a, watches)}</p></div></details>'
+        f'<div class="faq-answer"><p>{fill(a, watches, lang)}</p></div></details>'
         for q, a in t["faq"])
     return (
         '<section id="shop-seo" style="background:var(--bg-soft,#faf7f2);'
         'border-top:1px solid var(--border-light,#eaeaea);padding:3rem 1.5rem 3.5rem">'
         '<div style="max-width:50rem;margin:0 auto">'
-        f'<p style="color:var(--text-secondary,#4a4a4a);line-height:1.65">{fill(t["lead"], watches)}</p>'
+        f'<p style="color:var(--text-secondary,#4a4a4a);line-height:1.65">{fill(t["lead"], watches, lang)}</p>'
         f'<h2 style="font-size:1.5rem;margin:2rem 0 .75rem">{t["faq_h"]}</h2>'
         f'<div class="space-y-2">{faqs}</div>'
         "</div></section>"
@@ -184,8 +184,8 @@ def faq_jsonld(lang, watches):
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
-            {"@type": "Question", "name": fill(q, watches),
-             "acceptedAnswer": {"@type": "Answer", "text": fill(a, watches)}}
+            {"@type": "Question", "name": fill(q, watches, lang),
+             "acceptedAnswer": {"@type": "Answer", "text": fill(a, watches, lang)}}
             for q, a in COPY[lang]["faq"]
         ],
     }

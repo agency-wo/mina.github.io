@@ -48,22 +48,22 @@ def price_html(price, currency, lang, small="1.1rem"):
         return eur
     sec = f'<span style="font-size:{small};color:#888;font-weight:500;margin-left:.5rem">'
     if lang == "sq":
-        return f'{l:,} L{sec}· {eur}</span>'
-    return f'{eur}{sec}· {l:,} L</span>'
+        return f'{nfmt(l, lang)} L{sec}· {eur}</span>'
+    return f'{eur}{sec}· {nfmt(l, lang)} L</span>'
 
 
 def card_price_html(price, currency, lang):
     """Grid-card price line (smaller secondary text). Mirrored in shop.js."""
     if not price:
         return "Price on request"
-    eur = ("€" if currency == "EUR" else str(currency)) + f"{price:,}"
+    eur = ("€" if currency == "EUR" else str(currency)) + nfmt(price, lang)
     l = lek(price, currency)
     if not l:
         return eur
     sec = '<span style="font-size:.78rem;color:#888;font-weight:400">'
     if lang == "sq":
-        return f'{l:,} L{sec} · {eur}</span>'
-    return f'{eur}{sec} · {l:,} L</span>'
+        return f'{nfmt(l, lang)} L{sec} · {eur}</span>'
+    return f'{eur}{sec} · {nfmt(l, lang)} L</span>'
 
 
 CRUMB_CSS = (

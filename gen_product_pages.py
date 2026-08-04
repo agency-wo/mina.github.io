@@ -351,7 +351,7 @@ def wa_url(kind, w, lang):
     if w.get("price"):
         eur = f'€{w["price"]}'
         l = lek(w["price"], w.get("currency", "EUR"))
-        price = (f"{l:,} L / {eur}" if lang == "sq" else f"{eur} / {l:,} L") if l else eur
+        price = (f"{nfmt(l, lang)} L / {eur}" if lang == "sq" else f"{eur} / {nfmt(l, lang)} L") if l else eur
     url = f'watch.al/{lang}/shop/{w["id"]}.html'
     msg = WA[lang][kind].format(name=name, ref=ref, price=price, url=url)
     assert "—" not in msg
@@ -610,7 +610,7 @@ def build_specs_html(w, cfg):
     price, currency = w.get("price"), w.get("currency", "EUR")
     if price:
         l = lek(price, currency)
-        rows.append((cfg["spec_price"], f"€{price}" + (f" · {l:,} L" if l else "")))
+        rows.append((cfg["spec_price"], f"€{price}" + (f" · {nfmt(l, lang)} L" if l else "")))
     if not w.get("sold"):
         rows.append((cfg["spec_avail"], cfg["avail_val"]))
     items = "".join(
@@ -633,7 +633,7 @@ def build_related_html(w, lang, cfg):
         price = r.get("price")
         l = lek(price, r.get("currency", "EUR")) if price else 0
         price_html = (f'<span class="rel-price">€{price}'
-                      + (f' · {l:,} L' if l else "") + "</span>") if price else ""
+                      + (f' · {nfmt(l, lang)} L' if l else "") + "</span>") if price else ""
         img = r.get("image", "")
         img_html = (f'<img src="{re.sub(r".webp$", ".jpg", img, flags=re.I)}" alt="{r["brand"]} {r["model"]}"'
                     f' loading="lazy" width="300" height="300">') if img else ""

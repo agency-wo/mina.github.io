@@ -119,9 +119,15 @@
 
 
   var EUR_TO_LEK = 97;
+  var SEP = '.';
+  /* Comma in EN, dot in IT and SQ. Mirrors catalog_stats.SEP byte for byte.
+     Never toLocaleString(): it asks the browser for the separator, so an
+     Italian phone reflowed the grid from 18,300 L to 18.300 L after hydration
+     and the rendered page disagreed with the HTML the server sent. */
+  function group(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, SEP); }
   function fmt(price, currency){
     if(!price) return '\u00c7mimi me k\u00ebrkese';
-    return (currency === 'EUR' ? '\u20ac' : currency) + Number(price).toLocaleString('sq-AL');
+    return (currency === 'EUR' ? '\u20ac' : currency) + group(price);
   }
   function lekVal(price, currency){
     if(!price || currency !== 'EUR') return 0;
@@ -129,7 +135,7 @@
   }
   function fmtLek(price, currency){
     if(!price || currency !== 'EUR') return '';
-    return '<span style="font-size:.78rem;color:#888;font-weight:400"> \u00b7 ' + (Math.round(price * EUR_TO_LEK / 100) * 100).toLocaleString() + ' L</span>';
+    return '<span style="font-size:.78rem;color:#888;font-weight:400"> \u00b7 ' + group(Math.round(price * EUR_TO_LEK / 100) * 100) + '\u00a0L</span>';
   }
 
   function waMsg(w){
@@ -158,7 +164,7 @@
       + '<p class="watch-desc">' + (w.description_sq || '') + '</p>'
       + '<div class="watch-card-footer">'
       + '<div>'
-      + '<p class="watch-price">' + /* LEK_FIRST: Albanian customers judge the Lek figure */ (lekVal(w.price,w.currency) ? lekVal(w.price,w.currency).toLocaleString() + ' L<span style="font-size:.78rem;color:#888;font-weight:400"> · ' + fmt(w.price,w.currency) + '</span>' : fmt(w.price, w.currency)) + '</p>'
+      + '<p class="watch-price">' + /* LEK_FIRST: Albanian customers judge the Lek figure */ (lekVal(w.price,w.currency) ? group(lekVal(w.price,w.currency)) + ' L<span style="font-size:.78rem;color:#888;font-weight:400"> · ' + fmt(w.price,w.currency) + '</span>' : fmt(w.price, w.currency)) + '</p>'
       + (w.originalPrice ? '<p class="was-price-line">Was ' + (w.currency==='EUR'?'\u20ac':w.currency) + w.originalPrice + '</p>' : '')
       + '</div>'
       + '<a href="https://instagram.com/iglisiwatch" target="_blank" rel="noopener noreferrer" class="watch-ig-link" aria-label="Shiko n\u00eb Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>'

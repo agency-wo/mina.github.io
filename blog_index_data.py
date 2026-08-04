@@ -89,8 +89,8 @@ ARTICLES = [
                     desc='50 of our 57 watches cost under 10,000 Leke, starting at 4,900 L. The counter priced in Lek, band by band, with cash on delivery anywhere in Albania.'),
             it=dict(title='Orologi Sotto i 10.000 Lek: Cosa Compra Davvero il Vostro Denaro',
                     desc='50 dei nostri 57 orologi costano meno di 10.000 Leke, da 4.900 L. Il banco prezzato in Lek, fascia per fascia, con pagamento alla consegna ovunque.'),
-            sq=dict(title='Orë Nën 10,000 Lekë: Çfarë Blejnë Vërtet Paratë Tuaja',
-                    desc='50 nga 57 orët tona kushtojnë nën 10,000 Lekë, duke filluar nga 4,900 L. Banaku me çmime në lekë, fashë pas fashe, me pagesë në dorëzim kudo.'),
+            sq=dict(title='Orë Nën 10.000 Lekë: Çfarë Blejnë Vërtet Paratë Tuaja',
+                    desc='50 nga 57 orët tona kushtojnë nën 10.000 Lekë, duke filluar nga 4.900 L. Banaku me çmime në lekë, fashë pas fashe, me pagesë në dorëzim kudo.'),
         ),
     ),
     dict(

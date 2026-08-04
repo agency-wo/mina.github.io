@@ -208,7 +208,7 @@ def main():
             norm = norm[:i] + faq_tag + "\n" + norm[i:]
 
         # 6. meta + og description with the COD/Tirana hooks (titles untouched)
-        desc = seo_fill(SEO_COPY[lang]["desc"], W)
+        desc = seo_fill(SEO_COPY[lang]["desc"], W, lang)
         norm = re.sub(r'(<meta name="description" content=")[^"]*(")',
                       lambda m: m.group(1) + desc + m.group(2), norm, count=1)
         norm = re.sub(r'(<meta property="og:description" content=")[^"]*(")',
@@ -227,7 +227,7 @@ def main():
                 for node in d["@graph"]:
                     ts = node.get("@type")
                     if ts == "LocalBusiness" or (isinstance(ts, list) and "LocalBusiness" in ts):
-                        node["description"] = seo_fill(SEO_COPY[lang]["biz_desc"], W)
+                        node["description"] = seo_fill(SEO_COPY[lang]["biz_desc"], W, lang)
                         changed = True
                 # the @graph carried a FAQPage whose 8 questions were never visible on the
                 # page (Google requires FAQ content to be visible) and which would duplicate
@@ -237,7 +237,7 @@ def main():
                     d["@graph"] = pruned
                     changed = True
             elif isinstance(d, dict) and d.get("@type") == "CollectionPage":
-                d["description"] = seo_fill(SEO_COPY[lang]["coll_desc"], W)
+                d["description"] = seo_fill(SEO_COPY[lang]["coll_desc"], W, lang)
                 changed = True
             if changed:
                 payload = json.dumps(d, indent=2, ensure_ascii=False)
