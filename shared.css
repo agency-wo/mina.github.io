@@ -528,10 +528,10 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
   .about-family-section{padding:2.5rem 1.5rem!important}
   .about-timeline-strip{padding:1.75rem 1.5rem}
 }
-.fa-filter::before{content:"0b0"}
-.fa-money-bill::before{content:"0d6"}
-.fa-store::before{content:"54e"}
-.fa-watch::before{content:"55e"}
+.fa-filter::before{content:"\f0b0"}
+.fa-money-bill::before{content:"\f0d6"}
+.fa-store::before{content:"\f54e"}
+.fa-watch::before{content:"\f55e"}
 .article-cta{margin:2rem 0 1rem;padding:1rem 1.25rem;background:rgba(180,148,92,.08);border-left:3px solid var(--accent-gold);border-radius:0 .6rem .6rem 0;font-size:.875rem;color:var(--text-secondary);line-height:1.6}
 .related-articles{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--bg-soft);border-radius:var(--radius-card);border:1px solid var(--border-light)}
 .blog-nudge-btn{display:inline-block;padding:.7rem 2rem;border:1.5px solid var(--accent-gold);color:var(--accent-gold);border-radius:var(--radius-card);font-size:.9rem;font-weight:600;letter-spacing:.04em;text-decoration:none;transition:background var(--transition-base),color var(--transition-base)}
