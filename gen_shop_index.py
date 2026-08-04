@@ -17,6 +17,7 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
+import catalog_stats
 from shop_bits import (card_price_html, crumb_html, CRUMB_CSS,
                        delivery_bar_html, DELIVERY_CSS)
 from shop_seo import COPY as SEO_COPY, fill as seo_fill, seo_section_html, faq_jsonld
@@ -24,6 +25,7 @@ from shop_seo import COPY as SEO_COPY, fill as seo_fill, seo_section_html, faq_j
 BASE = Path(__file__).parent
 BOM = b"\xef\xbb\xbf"
 W = json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
+S = catalog_stats.load()
 
 L = {
  "en": dict(sold="Sold", cta="Enquire", ig="See on Instagram", ref="Ref.",
@@ -37,14 +39,6 @@ L = {
             cta_aria="Pyesni per {n} ne WhatsApp", was="M\u00eb par\u00eb ",
             msg="Pershendetje, jam i interesuar per oren {b} {m} (Ref. {r}) ne faqen tuaj."),
 }
-
-
-def lek(price, currency):
-    if not price or currency != "EUR":
-        return ""
-    v = int(price * 97 / 100 + 0.5) * 100
-    return ('<span style="font-size:.78rem;color:#888;font-weight:400"> \u00b7 '
-            + f"{v:,}" + "\u00a0L</span>")
 
 
 _SIZES = {}
@@ -273,7 +267,10 @@ def main():
         il = [json.loads(b) for b in SCRIPT_RE.findall(chk) if b.strip() and '"ItemList"' in b][0]
         assert n_cards == len(W), f"{lang}: {n_cards} cards != {len(W)}"
         assert "delivery" in linked, f"{lang}: delivery page not linked from the shop index"
-        assert il["numberOfItems"] == len(il["itemListElement"]) == len(W), f"{lang}: ItemList count"
+        # itemlist() excludes sold, so this must compare against the live count, not
+        # len(W). It asserted len(W) and would have crashed the first time a watch
+        # was marked sold.
+        assert il["numberOfItems"] == len(il["itemListElement"]) == S.n, f"{lang}: ItemList count"
         assert "\u2014" not in chk.split("</head>")[1].replace('watch-ref">Ref. \u2014', ""), f"{lang}: em dash"
         body_html = chk.split("</head>")[1]
         n_faq_vis = body_html.count('<details class="faq-item"')

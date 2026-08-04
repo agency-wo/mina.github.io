@@ -14,7 +14,7 @@ Kept here so there is exactly one definition of:
   * the "open now" walk-in indicator
 """
 
-LEK_RATE = 97
+from catalog_stats import LEK_RATE, lek, nfmt  # one definition, see catalog_stats.py
 
 # Brands that have a landing page. Others fall back to a breadcrumb without a
 # brand level, because a non-final BreadcrumbList item needs a real URL.
@@ -32,13 +32,6 @@ CRUMBS = {
     "it": {"home": "Home", "shop": "Negozio"},
     "sq": {"home": "Kryefaqja", "shop": "Dyqani"},
 }
-
-
-def lek(price, currency="EUR"):
-    """Half-up, to match Math.round in shop.js / watch.js (Python round() is banker's)."""
-    if not price or currency != "EUR":
-        return 0
-    return int(price * LEK_RATE / 100 + 0.5) * 100
 
 
 def price_html(price, currency, lang, small="1.1rem"):

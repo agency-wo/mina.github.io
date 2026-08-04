@@ -17,6 +17,7 @@ import re
 import urllib.parse
 from pathlib import Path
 
+from catalog_stats import lek, nfmt
 from shop_bits import (crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html,
                        price_html as shared_price_html)
 
@@ -24,7 +25,6 @@ BASE = Path(__file__).parent
 
 watches = json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
 
-LEK_RATE = 97
 
 # brand+model is not unique for the Hislon Classic / Classic Queen families, so those
 # titles get the reference appended to stay distinct.
@@ -207,13 +207,6 @@ def replace_watch_content(html: str, new_div: str) -> str:
             end = next_close + 6  # len("</div>") == 6
             pos = next_close + 6
     return html[:start] + new_div + html[end:]
-
-
-def lek(price, currency):
-    if not price or currency != "EUR":
-        return 0
-    # half-up to match Math.round in shop/watch.js (Python round() is banker's: 48.5 -> 48)
-    return int(price * LEK_RATE / 100 + 0.5) * 100
 
 
 def build_price_html(price, currency, lang="en"):

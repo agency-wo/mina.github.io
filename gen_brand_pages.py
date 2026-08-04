@@ -25,6 +25,7 @@ import json
 import re
 from pathlib import Path
 
+from catalog_stats import lek, nfmt
 from gen_shop_index import card, W as WATCHES  # same card markup as the shop grid
 
 BASE = Path(__file__).parent
@@ -98,10 +99,6 @@ from shop_bits import crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html
 
 def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-
-
-def lek(p):
-    return int(p * 97 / 100 + 0.5) * 100
 
 
 def brand_watches(brand):

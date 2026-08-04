@@ -145,8 +145,7 @@ COPY = {
 }
 
 
-def _lek(p):
-    return int(p * 97 / 100 + 0.5) * 100
+from catalog_stats import lek as _lek, nfmt
 
 
 def fill(text, watches):
