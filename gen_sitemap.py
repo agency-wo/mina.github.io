@@ -44,10 +44,17 @@ TODAY = date.today().isoformat()
 STATE = BASE / "sitemap_state.json"
 OUT = BASE / "sitemap.xml"
 
-# The apex is a language selector, not a language version. It carries no
-# alternates: a self-referencing x-default would put two conflicting x-default in
-# the home cluster, and folding it into that cluster would need it to
-# self-canonicalise, setting a contentless shim against /en/.
+# The apex is listed as a synthetic entry, NOT enumerated from disk. The edge
+# 301s https://watch.al/ to /en/, so root index.html is never served there and
+# stays noindex: Google is redirected before it ever sees the meta tag, so there
+# is no "submitted URL marked noindex". The entry declares the canonical entry
+# point and resolves to /en/, which GSC reports as the benign "Page with
+# redirect". Its date tracks /en/, since that is the content a crawler receives.
+#
+# It carries no alternates: a self-referencing x-default would put two
+# conflicting x-default in the home cluster, and folding it into that cluster
+# would need a contentless shim to self-canonicalise against /en/.
+APEX_TRACKS = "en/index.html"
 NO_ALTERNATES = frozenset({SITE})
 
 # Commercial-intent articles the owner ranks above the rest. Not derivable from
@@ -135,10 +142,11 @@ def collect():
             assert canon and canon.group(1) == u, f"{p}: canonical {canon and canon.group(1)} != {u}"
         pages[u] = dict(path=p, alts=dict(alts), text=t)
 
-    fams, singles = {}, []
+    # synthetic apex: its own file is noindex and never served at /, see APEX_TRACKS
+    pages[SITE] = dict(path=BASE / APEX_TRACKS, alts={}, text="")
+    fams, singles = {}, [SITE]
     for u, d in sorted(pages.items()):
         if u in NO_ALTERNATES:
-            singles.append(u)
             continue
         a = d["alts"]
         assert sorted(a) == ["en", "it", "sq", "x-default"], f"{d['path']}: hreflang {sorted(a)}"
