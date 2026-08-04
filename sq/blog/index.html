@@ -48,7 +48,6 @@
 .nav-drawer{display:none}
 #nav-toggle:checked~.nav-drawer{display:block!important}
 
-    /* === Magazine Blog Layout === */
     .blog-wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:2rem}
     .b-feat{display:grid;grid-template-columns:5.5rem 1fr;gap:2.5rem;align-items:center;background:linear-gradient(135deg,#18110a 0%,#2c1d0d 60%,#1a1208 100%);border-radius:1.5rem;padding:2.5rem 3rem;text-decoration:none;color:#fff;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;box-shadow:0 6px 40px rgba(0,0,0,.22)}
     .b-feat::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:var(--accent-gold);border-radius:6px 0 0 6px}
@@ -64,12 +63,12 @@
     .b-feat:hover .b-feat-cta{background:rgba(180,148,92,.12);border-color:rgba(180,148,92,.65)}
     .b-label{display:flex;align-items:center;gap:1rem;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#bbb;margin:0}
     .b-label::after{content:'';flex:1;height:1px;background:#e5ddd3}
-    .b-row2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .b-label-count{background:rgba(180,148,92,.14);color:var(--accent-gold-accessible);padding:.2rem .6rem;border-radius:1rem;font-size:.65rem;font-weight:700;letter-spacing:normal}
+    .b-count{text-align:center;font-size:.8rem;color:var(--text-secondary);margin:0}
     .b-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
     .b-card{background:#fff;border-radius:1.1rem;box-shadow:0 2px 14px rgba(0,0,0,.07);display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s,border-top-color .2s;border-top:3px solid transparent;overflow:hidden}
     .b-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.12);border-top-color:var(--accent-gold)}
     .b-card-body{padding:1.4rem 1.5rem;flex:1;display:flex;flex-direction:column}
-    .b-card-num{font-size:1.75rem;font-weight:900;color:rgba(180,148,92,.25);font-family:'Cormorant Garamond',serif;line-height:1;margin-bottom:.25rem}
     .b-card-cat{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:.6rem}
     .b-card-title{font-size:1.05rem;font-weight:800;line-height:1.3;margin-bottom:.5rem;color:var(--text-primary);flex:1}
     .b-card-desc{font-size:.83rem;color:var(--text-secondary);line-height:1.55;margin-bottom:.85rem}
@@ -79,21 +78,18 @@
     .b-card-link i{font-size:.65rem;transition:transform .2s}
     .b-card:hover .b-card-link i{transform:translateX(3px)}
     @media(max-width:960px){.b-grid3{grid-template-columns:1fr 1fr}.b-feat{grid-template-columns:1fr;padding:2rem}.b-feat-num{display:none}}
-    @media(max-width:640px){.b-row2,.b-grid3{grid-template-columns:1fr}}
+    @media(max-width:640px){.b-grid3{grid-template-columns:1fr}}
     .blog-search-wrap{position:relative;max-width:440px;margin:0 auto 1.75rem}
     .blog-search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:rgba(180,148,92,.7);font-size:.95rem;pointer-events:none}
     .blog-search-input{width:100%;padding:.7rem 1rem .7rem 2.6rem;background:rgba(255,255,255,.08);border:1.5px solid rgba(180,148,92,.3);border-radius:2rem;color:#fff;font-size:.9rem;outline:none;transition:border-color .2s,background .2s;box-sizing:border-box}
     .blog-search-input::placeholder{color:rgba(255,255,255,.38)}
     .blog-search-input:focus{border-color:rgba(180,148,92,.7);background:rgba(255,255,255,.12)}
     .blog-search-input::-webkit-search-cancel-button{cursor:pointer;filter:invert(1)opacity(.5)}
-    /* Category filter */
     .blog-cats{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;max-width:700px;margin:0 auto 1.75rem}
     .b-cat-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem 1.05rem;border-radius:2rem;border:1.5px solid rgba(180,148,92,.45);background:rgba(255,255,255,.11);color:rgba(255,255,255,.82);font-size:.75rem;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:all .18s;white-space:nowrap;line-height:1;font-family:inherit}
     .b-cat-btn:hover{border-color:rgba(180,148,92,.6);background:rgba(180,148,92,.12);color:#fff}
     .b-cat-btn[aria-pressed="true"]{background:var(--accent-gold);border-color:var(--accent-gold);color:#18110a}
     #blog-empty{display:none;text-align:center;padding:3rem 1rem;color:var(--text-secondary);font-size:.95rem}
-  
-    #blog-empty{text-align:center;padding:3rem 1rem;color:rgba(255,255,255,.6);font-size:1.05rem}
     #blog-empty::before{content:'\f002';font-family:'Font Awesome 6 Free';font-weight:900;display:block;font-size:2rem;margin-bottom:.75rem;opacity:.4}
 </style>
   <script type="application/ld+json">
@@ -101,503 +97,7 @@
     {"@type":"ListItem","position":1,"name":"Kryefaqja","item":"https://watch.al/sq/"},
     {"@type":"ListItem","position":2,"name":"Blog","item":"https://watch.al/sq/blog/"}
   ]}</script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Blog i Riparimit të Orëve dhe Kopjimit të Çelësave | Iglisi Watch",
-    "url": "https://watch.al/sq/blog/",
-    "inLanguage": "sq",
-    "numberOfItems": 80,
-    "mainEntity": {
-      "@type": "ItemList",
-      "name": "Blog i Riparimit të Orëve dhe Kopjimit të Çelësave | Iglisi Watch",
-      "numberOfItems": 80,
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Casio vs Citizen: Cilën Orë ia Vlen të Blini?",
-          "url": "https://watch.al/sq/blog/casio-vs-citizen.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Keni Nevojë për Dhuratë Orë në Durrës Sot? Jemi Hapur deri në 20:30",
-          "url": "https://watch.al/sq/blog/dhurate-ore-durres-sot.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Duhet Riparoj apo Blej Orë të Re? Një Udhëzues i Sinqertë",
-          "url": "https://watch.al/sq/blog/riparoj-apo-blej-ore-te-re.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Sa Zgjat Bateria e Orës? Shenjat që Po Dështon & Çfarë të Bëni",
-          "url": "https://watch.al/sq/blog/guide-bateria-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "name": "5 Shenja që Ora Juaj Ka Nevojë për Riparim, Jo Vetëm Bateri të Re",
-          "url": "https://watch.al/sq/blog/shenjat-riparimit-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 6,
-          "name": "Si të Kujdeseni për Brezin e Orës: Lëkurë, Metal dhe Gomë",
-          "url": "https://watch.al/sq/blog/kujdesi-brezit-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 7,
-          "name": "Si Funksionon Kopjimi i Çelësave: Llojet, Çfarë të Sillni & Çfarë të Prisni",
-          "url": "https://watch.al/sq/blog/guide-kopjim-celesi.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 8,
-          "name": "Rezistenca ndaj Ujit e Orëve: Kuptoni ATM, BAR dhe Metrat",
-          "url": "https://watch.al/sq/blog/rezistenca-ujes-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 9,
-          "name": "Si të Pastroni Orën Tuaj në Shtëpi: Metoda të Sigurta për Çdo Material",
-          "url": "https://watch.al/sq/blog/guide-pastrimit-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 10,
-          "name": "Si të Ruani Saktë Orën Tuaj: Udhëzues i Plotë",
-          "url": "https://watch.al/sq/blog/guide-ruajtjes-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 11,
-          "name": "Mekanik vs Kuarc: Cili është Ndryshimi dhe Cilin të Zgjidhni?",
-          "url": "https://watch.al/sq/blog/mekanik-vs-kuarc.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 12,
-          "name": "Xhami i Orës: Akrilik, Mineral dhe Safir - Cili është Ndryshimi?",
-          "url": "https://watch.al/sq/blog/guide-xhamit-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 13,
-          "name": "Si të Mbushni Orën: Manual, Automatike & Pozicionet e Kurorës",
-          "url": "https://watch.al/sq/blog/guide-mbushjes-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 14,
-          "name": "Si të Dalloni Orën Falsifikuar: 8 Kontrolle të Ekspertëve",
-          "url": "https://watch.al/sq/blog/si-dalloj-oren-falsifikuar.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 15,
-          "name": "Orë Ceremoniale, Sportive & Casual: Çfarë të Vishni për Çdo Rast",
-          "url": "https://watch.al/sq/blog/guide-rasteve-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 16,
-          "name": "Kriza e Kuarcit: Japonia kundër Zvicërës",
-          "url": "https://watch.al/sq/blog/kriza-kuarci.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 17,
-          "name": "Mjetet e Orologjistit: Çfarë Përdor Realisht",
-          "url": "https://watch.al/sq/blog/mjetet-riparimit.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 18,
-          "name": "Pse Ora Magnetizohet - dhe Si ta Rregulloni",
-          "url": "https://watch.al/sq/blog/magnetizimi-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 19,
-          "name": "Lëvizjet Zvicerane vs Japoneze të Krahasuar",
-          "url": "https://watch.al/sq/blog/levizje-zvicerane-vs-japoneze.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 20,
-          "name": "Si të Blini Orë Dorë të Dytë Pa u Djepur",
-          "url": "https://watch.al/sq/blog/blerja-ores-dore-te-dyte.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 21,
-          "name": "Përmasat e Kasës së Orës: Si të Dini Nëse i Shkon Kyçit",
-          "url": "https://watch.al/sq/blog/permasat-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 22,
-          "name": "Lumja e Ciferblatit: Nga Radio te Super-LumiNova",
-          "url": "https://watch.al/sq/blog/lumja-ciferblati.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 23,
-          "name": "Pse Ora Automatike Ndalet: Rezerva e Energjisë",
-          "url": "https://watch.al/sq/blog/rezerva-energjise.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 24,
-          "name": "Kurora e Orës: Çfarë Bën Çdo Pozicion dhe Pse Rëndëson",
-          "url": "https://watch.al/sq/blog/kurora-ores.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 25,
-          "name": "Orët më të Mira Nën 200 Euro në Shqipëri (2026)",
-          "url": "https://watch.al/sq/blog/ore-me-te-mira-nen-200-shqiperi.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 26,
-          "name": "Ku të Blesh një Orë në Durrës: Udhëzues i Sinqertë",
-          "url": "https://watch.al/sq/blog/ku-te-blesh-ore-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 27,
-          "name": "Hislon vs Navimarine: Cilën Markë Orësh të Zgjidhni?",
-          "url": "https://watch.al/sq/blog/hislon-vs-navimarine.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 28,
-          "name": "Bli Orë në Çdo Qytet të Shqipërisë - Tiranë, Vlorë, Shkodër e Më Shumë",
-          "url": "https://watch.al/sq/blog/ku-te-blesh-ore-tirane.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 29,
-          "name": "A është e Sigurt të Blesh Orë në Instagram në Shqipëri?",
-          "url": "https://watch.al/sq/blog/blej-ore-instagram-shqiperi.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 30,
-          "name": "Orët më të Mira nën 100€ në Durrës",
-          "url": "https://watch.al/sq/blog/ore-me-te-mira-nen-100-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 31,
-          "name": "Dhuratat më të Mira të Orëve për Burra në Shqipëri",
-          "url": "https://watch.al/sq/blog/dhurata-ore-burra-shqiperi.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 32,
-          "name": "Dhuratat më të Mira të Orëve për Gra në Shqipëri",
-          "url": "https://watch.al/sq/blog/dhurata-ore-gra-shqiperi.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 33,
-          "name": "Ora si Dhuratë Dasme në Shqipëri",
-          "url": "https://watch.al/sq/blog/ore-dhurate-dasme-shqiperi.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 34,
-          "name": "Ide Orësh për Diplomim nën €200",
-          "url": "https://watch.al/sq/blog/idete-ore-diplomim.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 35,
-          "name": "Recensim i Hislon Classic: Ia Vlen?",
-          "url": "https://watch.al/sq/blog/recensim-hislon-classic.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 36,
-          "name": "Cilin Navimarine të Blesh?",
-          "url": "https://watch.al/sq/blog/cilin-navimarine-te-blesh.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 37,
-          "name": "Ora e Parë për një Adoleshent",
-          "url": "https://watch.al/sq/blog/ora-e-pare-adoleshent.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 38,
-          "name": "A Është e Sigurt të Blesh Orë pa e Provuar?",
-          "url": "https://watch.al/sq/blog/blej-ore-pa-e-provuar.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 39,
-          "name": "Çfarë Përfshin Shërbimi i Orës?",
-          "url": "https://watch.al/sq/blog/sherbimi-ores-cfare-perfshine.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 40,
-          "name": "Riparimi i Orëve në Durrës: Çfarë të Prisni",
-          "url": "https://watch.al/sq/blog/riparim-orash-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 41,
-          "name": "Çfarë Garanci Vijnë me Orët e Reja?",
-          "url": "https://watch.al/sq/blog/garancia-ore-te-reja.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 42,
-          "name": "Zëvendësimi i Baterisë së Orës në Durrës - Gati Ndërkohë që Prisni",
-          "url": "https://watch.al/sq/blog/zevdendosja-baterise-ores-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 43,
-          "name": "Zëvendësimi i Brezit të Orës në Durrës - Montim në Të Njëjtën Ditë",
-          "url": "https://watch.al/sq/blog/zevdendosja-brezit-ores-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 44,
-          "name": "Xhami i Thyer? Zëvendësimi i Kristaltë në Durrës",
-          "url": "https://watch.al/sq/blog/zevdendosja-xhamit-ores-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 45,
-          "url": "https://watch.al/sq/blog/seiko-vs-citizen-vs-casio.html",
-          "name": "Seiko vs Citizen vs Casio: Cila Marke Japoneze Ia Vlen te Blesh?"
-        },
-        {
-          "@type": "ListItem",
-          "position": 46,
-          "url": "https://watch.al/sq/blog/watch-battery-size-guide.html",
-          "name": "Madhesitet e Baterive te Oreve: Si te Gjeni Baterine e Duhur"
-        },
-        {
-          "@type": "ListItem",
-          "position": 47,
-          "url": "https://watch.al/sq/blog/nxehtesia-lageshti-ores.html",
-          "name": "A Mund të Dëmtohet Ora nga Nxehtësia dhe Lagështia?"
-        },
-        {
-          "@type": "ListItem",
-          "position": 48,
-          "url": "https://watch.al/sq/blog/testi-presionit-ores.html",
-          "name": "Testi i Presionit të Orës: Çfarë Është dhe Kur Nevojitet"
-        },
-        {
-          "@type": "ListItem",
-          "position": 49,
-          "url": "https://watch.al/sq/blog/komplikime-ores.html",
-          "name": "Komplikime të Orës së Dorës Shpjeguara: nga Data tek Tourbillon-i"
-        },
-        {
-          "@type": "ListItem",
-          "position": 50,
-          "url": "https://watch.al/sq/blog/smartwatch-vs-ore-tradicionale.html",
-          "name": "Smartwatch apo Orë Tradicionale: Cilën të Blesh?"
-        },
-        {
-          "@type": "ListItem",
-          "position": 51,
-          "url": "https://watch.al/sq/blog/ora-si-investim.html",
-          "name": "A Është Ora një Investim i Mirë? Çfarë të Blini dhe Çfarë të Evitoni"
-        },
-        {
-          "@type": "ListItem",
-          "position": 52,
-          "url": "https://watch.al/sq/blog/revizionim-ore-durres.html",
-          "name": "Revizionim i Plotë i Orës në Durrës"
-        },
-        {
-          "@type": "ListItem",
-          "position": 53,
-          "url": "https://watch.al/sq/blog/casio-a159wa-legjenda.html",
-          "name": "Casio A159WA: Legjenda 40-Vjeçare që Blihet në Durrës"
-        },
-        {
-          "@type": "ListItem",
-          "position": 54,
-          "url": "https://watch.al/sq/blog/cartier-santos-ora-e-pare-e-dores.html",
-          "name": "Cartier Santos: Si Lindi Ora e Parë e Dorës"
-        },
-        {
-          "@type": "ListItem",
-          "position": 55,
-          "url": "https://watch.al/sq/blog/jaeger-lecoultre-historia.html",
-          "name": "Jaeger-LeCoultre: Orëndreqësi Pas Orëndreqësve"
-        },
-        {
-          "@type": "ListItem",
-          "position": 56,
-          "url": "https://watch.al/sq/blog/ora-e-pare-ne-hene.html",
-          "name": "Ora e Parë në Hënë"
-        },
-        {
-          "@type": "ListItem",
-          "position": 57,
-          "url": "https://watch.al/sq/blog/historia-g-shock.html",
-          "name": "Historia e G-Shock: Si një Orë e Thyer Krijoi një të Pathyeshme"
-        },
-        {
-          "@type": "ListItem",
-          "position": 58,
-          "url": "https://watch.al/sq/blog/oret-ushtarake-hamilton.html",
-          "name": "Hamilton dhe Orët që Shkuan në Luftë"
-        },
-        {
-          "@type": "ListItem",
-          "position": 59,
-          "url": "https://watch.al/sq/blog/patek-philippe-brezat.html",
-          "name": "Patek Philippe dhe Ora që Trashëgohet"
-        },
-        {
-          "@type": "ListItem",
-          "position": 60,
-          "url": "https://watch.al/sq/blog/oret-qe-bene-histori.html",
-          "name": "Orët që Bënë Histori: Gjashtë Histori në një Vend"
-        },
-        {
-          "@type": "ListItem",
-          "position": 61,
-          "url": "https://watch.al/sq/blog/llojet-e-oreve-udhezues.html",
-          "name": "Llojet e Orëve të Shpjeguara: Zhytëse, Tank, Pilotë dhe Të Tjerë"
-        },
-        {
-          "@type": "ListItem",
-          "position": 62,
-          "url": "https://watch.al/sq/blog/ora-per-plazh-e-det.html",
-          "name": "Ora për Plazh e Det: Vera Shqiptare"
-        },
-        {
-          "@type": "ListItem",
-          "position": 63,
-          "url": "https://watch.al/sq/blog/daniel-klein-ia-vlen.html",
-          "name": "A Vlejnë Orët Daniel Klein? Përgjigjja e Ndershme e një Orëndreqësi"
-        },
-        {
-          "@type": "ListItem",
-          "position": 64,
-          "url": "https://watch.al/sq/blog/sa-kushton-nje-ore-e-mire.html",
-          "name": "60 vs 90 vs 190 Euro: Çfarë Blen Vërtet me një Orë Më të Shtrenjtë"
-        },
-        {
-          "@type": "ListItem",
-          "position": 65,
-          "url": "https://watch.al/sq/blog/ora-per-cifte.html",
-          "name": "Orë për Çifte: His and Hers nga 124 Euro"
-        },
-        {
-          "@type": "ListItem",
-          "position": 66,
-          "url": "https://watch.al/sq/blog/oret-qe-do-i-bleja-vete.html",
-          "name": "5 Orët që Do të Blija Vetë nga Dyqani Im"
-        },
-        {
-          "@type": "ListItem",
-          "position": 67,
-          "url": "https://watch.al/sq/blog/ore-per-burra-shqiperi.html",
-          "name": "Orë për Burra në Shqipëri: Çfarë Mbajmë dhe Sa Kushton"
-        },
-        {
-          "@type": "ListItem",
-          "position": 68,
-          "url": "https://watch.al/sq/blog/ore-nen-10000-leke.html",
-          "name": "Orë Nën 10,000 Lekë: Çfarë Blejnë Vërtet Paratë Tuaja"
-        },
-        {
-          "@type": "ListItem",
-          "position": 69,
-          "url": "https://watch.al/sq/blog/ore-per-femra-shqiperi.html",
-          "name": "Orë për Femra në Shqipëri: Çfarë Mbajmë dhe Sa Kushton"
-        },
-        {
-          "@type": "ListItem",
-          "position": 70,
-          "url": "https://watch.al/sq/blog/bli-ore-shqiperi.html",
-          "name": "Si të Blesh Orë të Reja në Shqipëri - Hislon dhe Navimarine"
-        },
-        {
-          "@type": "ListItem",
-          "position": 71,
-          "url": "https://watch.al/sq/blog/citizen-eco-drive-shpjeguar.html",
-          "name": "Citizen Eco-Drive Shpjeguar: Si Funksionon Ngarkimi Solar në Orë"
-        },
-        {
-          "@type": "ListItem",
-          "position": 72,
-          "url": "https://watch.al/sq/blog/guide-gjeresise-brezit-ores.html",
-          "name": "Gjerësia e Ansave të Orës: Si të Matni dhe të Gjeni Brezin e Duhur"
-        },
-        {
-          "@type": "ListItem",
-          "position": 73,
-          "url": "https://watch.al/sq/blog/llojet-unazave-ores.html",
-          "name": "Llojet e Unazës së Orës: nga Unaza e Zhytjes tek Tahimetri"
-        },
-        {
-          "@type": "ListItem",
-          "position": 74,
-          "url": "https://watch.al/sq/blog/riparim-korona-ores.html",
-          "name": "Riparimi i Kurorës së Orës: Kur të Riparohet dhe Kur të Zëvendësohet"
-        },
-        {
-          "@type": "ListItem",
-          "position": 75,
-          "url": "https://watch.al/sq/blog/sherbimi-casio-shqiperi.html",
-          "name": "Ku të Servisoni një Casio, Seiko ose Citizen në Shqipëri"
-        },
-        {
-          "@type": "ListItem",
-          "position": 76,
-          "url": "https://watch.al/sq/blog/dhurata-ore-viti-i-ri-shqiperi.html",
-          "name": "Dhurata Ore për Vitin e Ri në Shqipëri: Çfarë të Blesh dhe Kur të Porosisësh"
-        },
-        {
-          "@type": "ListItem",
-          "position": 77,
-          "url": "https://watch.al/sq/blog/cfare-e-ben-oren-te-duket-e-shtrenjte.html",
-          "name": "Çfarë e Bën një Orë të Duket e Shtrenjtë: Gjashtë Detaje Që Bëjnë Punën"
-        },
-        {
-          "@type": "ListItem",
-          "position": 78,
-          "url": "https://watch.al/sq/blog/sa-zgjat-nje-ore-e-lire.html",
-          "name": "Sa Zgjat një Orë 7.000 Lekë? Çfarë Shohim në Banak"
-        },
-        {
-          "@type": "ListItem",
-          "position": 79,
-          "url": "https://watch.al/sq/blog/ore-ari-apo-celik.html",
-          "name": "Ar apo Çelik? Çfarë Do të Thotë Vërtet Veshja me Ar në Këtë Çmim"
-        },
-        {
-          "@type": "ListItem",
-          "position": 80,
-          "url": "https://watch.al/sq/blog/kronograf-vs-tre-akrepa.html",
-          "name": "Kronograf apo Tre Akrepa? Çfarë Bëjnë Vërtet Nën-ciferblatët"
-        }
-      ]
-    }
-  }
-  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Blog i Riparimit të Orëve dhe Kopjimit të Çelësave | Iglisi Watch", "url": "https://watch.al/sq/blog/", "inLanguage": "sq", "numberOfItems": 80, "mainEntity": {"@type": "ItemList", "name": "Blog i Riparimit të Orëve dhe Kopjimit të Çelësave | Iglisi Watch", "numberOfItems": 80, "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Orë Nën 10,000 Lekë: Çfarë Blejnë Vërtet Paratë Tuaja", "url": "https://watch.al/sq/blog/ore-nen-10000-leke.html"}, {"@type": "ListItem", "position": 2, "name": "Kronograf apo Tre Akrepa? Çfarë Bëjnë Vërtet Nën-ciferblatët", "url": "https://watch.al/sq/blog/kronograf-vs-tre-akrepa.html"}, {"@type": "ListItem", "position": 3, "name": "Orë për Femra në Shqipëri: Çfarë Mbajmë dhe Sa Kushton", "url": "https://watch.al/sq/blog/ore-per-femra-shqiperi.html"}, {"@type": "ListItem", "position": 4, "name": "Orë për Burra në Shqipëri: Çfarë Mbajmë dhe Sa Kushton", "url": "https://watch.al/sq/blog/ore-per-burra-shqiperi.html"}, {"@type": "ListItem", "position": 5, "name": "5 Orët që Do të Blija Vetë nga Dyqani Im", "url": "https://watch.al/sq/blog/oret-qe-do-i-bleja-vete.html"}, {"@type": "ListItem", "position": 6, "name": "60 vs 90 vs 190 Euro: Çfarë Blen Vërtet me një Orë Më të Shtrenjtë", "url": "https://watch.al/sq/blog/sa-kushton-nje-ore-e-mire.html"}, {"@type": "ListItem", "position": 7, "name": "A Vlejnë Orët Daniel Klein? Përgjigjja e Ndershme e një Orëndreqësi", "url": "https://watch.al/sq/blog/daniel-klein-ia-vlen.html"}, {"@type": "ListItem", "position": 8, "name": "Ora për Plazh e Det: Vera Shqiptare", "url": "https://watch.al/sq/blog/ora-per-plazh-e-det.html"}, {"@type": "ListItem", "position": 9, "name": "Smartwatch apo Orë Tradicionale: Cilën të Blesh?", "url": "https://watch.al/sq/blog/smartwatch-vs-ore-tradicionale.html"}, {"@type": "ListItem", "position": 10, "name": "A Është Ora një Investim i Mirë? Çfarë të Blini dhe Çfarë të Evitoni", "url": "https://watch.al/sq/blog/ora-si-investim.html"}, {"@type": "ListItem", "position": 11, "name": "Si të Blesh Orë të Reja në Shqipëri - Hislon dhe Navimarine", "url": "https://watch.al/sq/blog/bli-ore-shqiperi.html"}, {"@type": "ListItem", "position": 12, "name": "Seiko vs Citizen vs Casio: Cilë Markë Japoneze Ia Vlen të Blesh?", "url": "https://watch.al/sq/blog/seiko-vs-citizen-vs-casio.html"}, {"@type": "ListItem", "position": 13, "name": "Casio vs Citizen: Cilën Orë të Blini?", "url": "https://watch.al/sq/blog/casio-vs-citizen.html"}, {"@type": "ListItem", "position": 14, "name": "Recensim Hislon Classic: Ia Vlen?", "url": "https://watch.al/sq/blog/recensim-hislon-classic.html"}, {"@type": "ListItem", "position": 15, "name": "Cilin Navimarine të Blesh: Sport, Classic apo Chronograph?", "url": "https://watch.al/sq/blog/cilin-navimarine-te-blesh.html"}, {"@type": "ListItem", "position": 16, "name": "Ora e Parë për Adoleshentin: Çfarë të Kërkoni", "url": "https://watch.al/sq/blog/ora-e-pare-adoleshent.html"}, {"@type": "ListItem", "position": 17, "name": "A është e Sigurtë të Blesh Orë pa e Provuar?", "url": "https://watch.al/sq/blog/blej-ore-pa-e-provuar.html"}, {"@type": "ListItem", "position": 18, "name": "A është e Sigurt të Blesh Orë në Instagram në Shqipëri?", "url": "https://watch.al/sq/blog/blej-ore-instagram-shqiperi.html"}, {"@type": "ListItem", "position": 19, "name": "Orët më të Mira nën 100€ në Durrës", "url": "https://watch.al/sq/blog/ore-me-te-mira-nen-100-durres.html"}, {"@type": "ListItem", "position": 20, "name": "Bli Orë në Çdo Qytet të Shqipërisë", "url": "https://watch.al/sq/blog/ku-te-blesh-ore-tirane.html"}, {"@type": "ListItem", "position": 21, "name": "Orët më të Mira Nën €200 në Shqipëri (2026)", "url": "https://watch.al/sq/blog/ore-me-te-mira-nen-200-shqiperi.html"}, {"@type": "ListItem", "position": 22, "name": "Ku të Blesh një Orë në Durrës: Udhëzues i Sinqertë", "url": "https://watch.al/sq/blog/ku-te-blesh-ore-durres.html"}, {"@type": "ListItem", "position": 23, "name": "Hislon vs Navimarine: Cilën Markë Orësh të Zgjidhni?", "url": "https://watch.al/sq/blog/hislon-vs-navimarine.html"}, {"@type": "ListItem", "position": 24, "name": "Dhurata Ore për Vitin e Ri në Shqipëri: Çfarë të Blesh dhe Kur të Porosisësh", "url": "https://watch.al/sq/blog/dhurata-ore-viti-i-ri-shqiperi.html"}, {"@type": "ListItem", "position": 25, "name": "Orë për Çifte: His and Hers nga 124 Euro", "url": "https://watch.al/sq/blog/ora-per-cifte.html"}, {"@type": "ListItem", "position": 26, "name": "Keni Nevojë për Dhuratë Orë në Durrës Sot?", "url": "https://watch.al/sq/blog/dhurate-ore-durres-sot.html"}, {"@type": "ListItem", "position": 27, "name": "Dhuratat më të Mira Orë për Burra në Shqipëri (2026)", "url": "https://watch.al/sq/blog/dhurata-ore-burra-shqiperi.html"}, {"@type": "ListItem", "position": 28, "name": "Dhuratat më të Mira Orë për Gra në Shqipëri (2026)", "url": "https://watch.al/sq/blog/dhurata-ore-gra-shqiperi.html"}, {"@type": "ListItem", "position": 29, "name": "Ide Orësh për Diplomim: Si të Zgjidhni Dhuratën e Duhur", "url": "https://watch.al/sq/blog/idete-ore-diplomim.html"}, {"@type": "ListItem", "position": 30, "name": "Orë si Dhuratë Dasme në Shqipëri: Udhëzues i Plotë", "url": "https://watch.al/sq/blog/ore-dhurate-dasme-shqiperi.html"}, {"@type": "ListItem", "position": 31, "name": "Gjerësia e Ansave të Orës: Si të Matni dhe të Gjeni Brezin e Duhur", "url": "https://watch.al/sq/blog/guide-gjeresise-brezit-ores.html"}, {"@type": "ListItem", "position": 32, "name": "Riparimi i Kurorës së Orës: Kur të Riparohet dhe Kur të Zëvendësohet", "url": "https://watch.al/sq/blog/riparim-korona-ores.html"}, {"@type": "ListItem", "position": 33, "name": "Ku të Servisoni një Casio, Seiko ose Citizen në Shqipëri", "url": "https://watch.al/sq/blog/sherbimi-casio-shqiperi.html"}, {"@type": "ListItem", "position": 34, "name": "A Mund të Dëmtohet Ora nga Nxehtësia dhe Lagështia?", "url": "https://watch.al/sq/blog/nxehtesia-lageshti-ores.html"}, {"@type": "ListItem", "position": 35, "name": "Testi i Presionit të Orës: Çfarë Është dhe Kur Nevojitet", "url": "https://watch.al/sq/blog/testi-presionit-ores.html"}, {"@type": "ListItem", "position": 36, "name": "Revizionim i Plotë i Orës në Durrës", "url": "https://watch.al/sq/blog/revizionim-ore-durres.html"}, {"@type": "ListItem", "position": 37, "name": "Madhësitë e Baterive të Orëve: SR626SW, SR920SW, CR2032 të Shpjegun", "url": "https://watch.al/sq/blog/watch-battery-size-guide.html"}, {"@type": "ListItem", "position": 38, "name": "Duhet Riparoj apo Blej Orë të Re? Një Udhëzues i Sinqertë", "url": "https://watch.al/sq/blog/riparoj-apo-blej-ore-te-re.html"}, {"@type": "ListItem", "position": 39, "name": "Zëvendësimi i Baterisë së Orës në Durrës - Gati Ndërkohë që Prisni", "url": "https://watch.al/sq/blog/zevdendosja-baterise-ores-durres.html"}, {"@type": "ListItem", "position": 40, "name": "Zëvendësimi i Brezit të Orës në Durrës - Montim në Të Njëjtën Ditë", "url": "https://watch.al/sq/blog/zevdendosja-brezit-ores-durres.html"}, {"@type": "ListItem", "position": 41, "name": "Xhami i Thyer? Zëvendësimi i Kristaltë në Durrës", "url": "https://watch.al/sq/blog/zevdendosja-xhamit-ores-durres.html"}, {"@type": "ListItem", "position": 42, "name": "Çfarë Përfshine Shërbimi i Orës?", "url": "https://watch.al/sq/blog/sherbimi-ores-cfare-perfshine.html"}, {"@type": "ListItem", "position": 43, "name": "Riparim Orash në Durrës: Çfarë të Prisni", "url": "https://watch.al/sq/blog/riparim-orash-durres.html"}, {"@type": "ListItem", "position": 44, "name": "Çfarë Garanci Vijnë me Orët e Reja?", "url": "https://watch.al/sq/blog/garancia-ore-te-reja.html"}, {"@type": "ListItem", "position": 45, "name": "Pse Ora Magnetizohet - dhe Si ta Rregulloni", "url": "https://watch.al/sq/blog/magnetizimi-ores.html"}, {"@type": "ListItem", "position": 46, "name": "Kurora e Orës: Çfarë Bën Çdo Pozicion dhe Pse Rëndëson", "url": "https://watch.al/sq/blog/kurora-ores.html"}, {"@type": "ListItem", "position": 47, "name": "Si të Mbushni Orën: Manual, Automatike & Pozicionet e Kurorës", "url": "https://watch.al/sq/blog/guide-mbushjes-ores.html"}, {"@type": "ListItem", "position": 48, "name": "Si të Ruani Orën Tuaj Siç Duhet: Udhëzues i Plotë", "url": "https://watch.al/sq/blog/guide-ruajtjes-ores.html"}, {"@type": "ListItem", "position": 49, "name": "Xhami i Orës: Akrilik, Mineral dhe Safir - Cili është Ndryshimi?", "url": "https://watch.al/sq/blog/guide-xhamit-ores.html"}, {"@type": "ListItem", "position": 50, "name": "Sa Zgjat Bateria e Orës? Shenjat që Po Dështron & Çfarë të Bëni", "url": "https://watch.al/sq/blog/guide-bateria-ores.html"}, {"@type": "ListItem", "position": 51, "name": "5 Shenja që Ora Juaj Ka Nevojë për Riparim, Jo Vetëm Bateri të Re", "url": "https://watch.al/sq/blog/shenjat-riparimit-ores.html"}, {"@type": "ListItem", "position": 52, "name": "Si të Kujdeseni për Brezin e Orës: Lëkurë, Metal dhe Gomë", "url": "https://watch.al/sq/blog/kujdesi-brezit-ores.html"}, {"@type": "ListItem", "position": 53, "name": "Rezistenca ndaj Ujit e Orëve: Kuptoni ATM, BAR dhe Metrat", "url": "https://watch.al/sq/blog/rezistenca-ujes-ores.html"}, {"@type": "ListItem", "position": 54, "name": "Si të Pastroni Orën Tuaj në Shtpëi: Metoda të Sigurta për Çdo Material", "url": "https://watch.al/sq/blog/guide-pastrimit-ores.html"}, {"@type": "ListItem", "position": 55, "name": "Ar apo Çelik? Çfarë Do të Thotë Vërtet Veshja me Ar në Këtë Çmim", "url": "https://watch.al/sq/blog/ore-ari-apo-celik.html"}, {"@type": "ListItem", "position": 56, "name": "Sa Zgjat një Orë 7.000 Lekë? Çfarë Shohim në Banak", "url": "https://watch.al/sq/blog/sa-zgjat-nje-ore-e-lire.html"}, {"@type": "ListItem", "position": 57, "name": "Çfarë e Bën një Orë të Duket e Shtrenjtë: Gjashtë Detaje Që Bëjnë Punën", "url": "https://watch.al/sq/blog/cfare-e-ben-oren-te-duket-e-shtrenjte.html"}, {"@type": "ListItem", "position": 58, "name": "Orët që Bënë Histori: Gjashtë Histori në një Vend", "url": "https://watch.al/sq/blog/oret-qe-bene-histori.html"}, {"@type": "ListItem", "position": 59, "name": "Patek Philippe dhe Ora që Trashëgohet", "url": "https://watch.al/sq/blog/patek-philippe-brezat.html"}, {"@type": "ListItem", "position": 60, "name": "Hamilton dhe Orët që Shkuan në Luftë", "url": "https://watch.al/sq/blog/oret-ushtarake-hamilton.html"}, {"@type": "ListItem", "position": 61, "name": "Historia e G-Shock: Si një Orë e Thyer Krijoi një të Pathyeshme", "url": "https://watch.al/sq/blog/historia-g-shock.html"}, {"@type": "ListItem", "position": 62, "name": "Ora e Parë në Hënë", "url": "https://watch.al/sq/blog/ora-e-pare-ne-hene.html"}, {"@type": "ListItem", "position": 63, "name": "Jaeger-LeCoultre: Orëndreqësi Pas Orëndreqësve", "url": "https://watch.al/sq/blog/jaeger-lecoultre-historia.html"}, {"@type": "ListItem", "position": 64, "name": "Cartier Santos: Si Lindi Ora e Parë e Dorës", "url": "https://watch.al/sq/blog/cartier-santos-ora-e-pare-e-dores.html"}, {"@type": "ListItem", "position": 65, "name": "Casio A159WA: Legjenda 40-Vjeçare që Blihet në Durrës", "url": "https://watch.al/sq/blog/casio-a159wa-legjenda.html"}, {"@type": "ListItem", "position": 66, "name": "Llojet e Unazës së Orës: nga Unaza e Zhytjes tek Tahimetri", "url": "https://watch.al/sq/blog/llojet-unazave-ores.html"}, {"@type": "ListItem", "position": 67, "name": "Citizen Eco-Drive Shpjeguar: Si Funksionon Ngarkimi Solar në Orë", "url": "https://watch.al/sq/blog/citizen-eco-drive-shpjeguar.html"}, {"@type": "ListItem", "position": 68, "name": "Komplikime të Orës Shpjeguara: nga Data tek Tourbillon-i", "url": "https://watch.al/sq/blog/komplikime-ores.html"}, {"@type": "ListItem", "position": 69, "name": "Llojet e Orëve të Shpjeguara: Zhytëse, Tank, Pilotë dhe Të Tjerë", "url": "https://watch.al/sq/blog/llojet-e-oreve-udhezues.html"}, {"@type": "ListItem", "position": 70, "name": "Kriza e Kuarcit: Si një Çip Japonez Pothuajse Rrënoi Orëbërjen Zvicerane", "url": "https://watch.al/sq/blog/kriza-kuarci.html"}, {"@type": "ListItem", "position": 71, "name": "Mjetet e Riparimit të Orëve: Çfarë Përdor Realisht Orëtari dhe Pse", "url": "https://watch.al/sq/blog/mjetet-riparimit.html"}, {"@type": "ListItem", "position": 72, "name": "Lëvizjet Zvicerane vs Japoneze: Çfarë Tregon Etiketa Realisht", "url": "https://watch.al/sq/blog/levizje-zvicerane-vs-japoneze.html"}, {"@type": "ListItem", "position": 73, "name": "Si të Blini Orë Dorë të Dytë Pa u Djepur", "url": "https://watch.al/sq/blog/blerja-ores-dore-te-dyte.html"}, {"@type": "ListItem", "position": 74, "name": "Përmasat e Kasës së Orës: Si të Dini Nëse i Shkon Kyçit", "url": "https://watch.al/sq/blog/permasat-ores.html"}, {"@type": "ListItem", "position": 75, "name": "Lumja e Ciferblatit: Lume, Tritium dhe Pse Ora Shkëlqen në Errësirë", "url": "https://watch.al/sq/blog/lumja-ciferblati.html"}, {"@type": "ListItem", "position": 76, "name": "Pse Ora Automatike Ndalet Nëse Nuk e Vishni: Rezerva e Energjisë", "url": "https://watch.al/sq/blog/rezerva-energjise.html"}, {"@type": "ListItem", "position": 77, "name": "Si të Dalloni Orën Falsifikuar: 8 Kontrolle të Ekspertëve", "url": "https://watch.al/sq/blog/si-dalloj-oren-falsifikuar.html"}, {"@type": "ListItem", "position": 78, "name": "Orë Ceremoniale, Sportive & Casual: Çfarë të Vishni për Çdo Rast", "url": "https://watch.al/sq/blog/guide-rasteve-ores.html"}, {"@type": "ListItem", "position": 79, "name": "Mekanik vs Kuarc: Cili është Ndryshimi dhe Cilin të Zgjidhni?", "url": "https://watch.al/sq/blog/mekanik-vs-kuarc.html"}, {"@type": "ListItem", "position": 80, "name": "Si Funksionon Kopjimi i Çelësave: Llojet, Çfarë të Sillni & Çfarë të Prisni", "url": "https://watch.al/sq/blog/guide-kopjim-celesi.html"}]}}</script>
   <!-- Meta Pixel Code -->
   <script src="/tt-policy.js" defer></script>
   <script src="/pixel.js" defer></script>
@@ -674,10 +174,10 @@
       </div>
       <div class="blog-cats" role="group" aria-label="Filtro sipas kategorisë">
         <button class="b-cat-btn" data-filter="all" aria-pressed="true">Të gjitha</button>
+        <button class="b-cat-btn" data-filter="buying" aria-pressed="false"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</button>
+        <button class="b-cat-btn" data-filter="gifts" aria-pressed="false"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</button>
         <button class="b-cat-btn" data-filter="care" aria-pressed="false"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</button>
         <button class="b-cat-btn" data-filter="knowledge" aria-pressed="false"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</button>
-        <button class="b-cat-btn" data-filter="buying" aria-pressed="false"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerje</button>
-        <button class="b-cat-btn" data-filter="gifts" aria-pressed="false"><i class="fas fa-gem" aria-hidden="true"></i> Udhëzues Dhuratash</button>
         <button class="b-cat-btn" data-filter="keys" aria-pressed="false"><i class="fas fa-key" aria-hidden="true"></i> Shërbime Çelësash</button>
       </div>
       <p class="kicker"><i class="fas fa-tools" aria-hidden="true"></i>&ensp;Keshilla &amp; Udhezues</p>
@@ -690,867 +190,782 @@
     <section class="py-16 px-6" style="background:var(--bg-soft)">
       <div class="blog-wrap">
 
-        <!-- ① Featured -->
-                <a data-cat="care" href="/sq/blog/riparoj-apo-blej-ore-te-re.html" class="b-feat">
+        <p id="blog-count" class="b-count" aria-live="polite" hidden data-tpl="Po shfaqen {n} nga {t} artikuj"></p>
+
+        <a data-cat="buying" href="/sq/blog/ore-nen-10000-leke.html" class="b-feat">
           <span class="b-feat-num" aria-hidden="true">01</span>
           <div>
-            <span class="b-feat-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-            <h2 class="b-feat-title">Duhet Riparoj apo Blej Or&euml; t&euml; Re? Nj&euml; Udh&euml;zues i Sinqert&euml;</h2>
-            <p class="b-feat-desc">Ia vlen t&euml; riparohet apo &euml;sht&euml; m&euml; mir&euml; ta z&euml;vend&euml;soni? Udh&euml;zues praktik nga Iglisi Watch n&euml; Durr&euml;s bazuar n&euml; koston e riparimit, llojin dhe vler&euml;n sentimentale.</p>
-            <div class="b-feat-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
+            <span class="b-feat-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guidë Blerjeje</span>
+            <h2 class="b-feat-title">Orë Nën 10,000 Lekë: Çfarë Blejnë Vërtet Paratë Tuaja</h2>
+            <p class="b-feat-desc">50 nga 57 orët tona kushtojnë nën 10,000 Lekë, duke filluar nga 4,900 L. Banaku me çmime në lekë, fashë pas fashe, me pagesë në dorëzim kudo.</p>
+            <div class="b-feat-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-01">Gusht 2026</time></span></div>
             <span class="b-feat-cta">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
           </div>
         </a>
 
-        <p class="b-label">Artikujt e Fundit</p>
-
-        <!-- ②③ Row of 2 -->
-                <div class="b-row2">
-
-
-          <a data-cat="gifts" href="/sq/blog/dhurate-ore-durres-sot.html" class="b-card">
+        <p class="b-label" id="b-latest-label">Artikujt e Fundit</p>
+        <div class="b-grid3" id="b-latest">
+          <a data-cat="buying" href="/sq/blog/kronograf-vs-tre-akrepa.html" class="b-card" data-dup="1">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
-              <h2 class="b-card-title">Keni Nevoj&euml; p&euml;r Dhurat&euml; Or&euml; n&euml; Durr&euml;s Sot?</h2>
-              <p class="b-card-desc">Iglisi Watch &euml;sht&euml; hapur e h&euml;n&euml;-shtun&euml; deri n&euml; 20:30. Hyni, zgjidhni nga gjend&euml;ja dhe largohuni me or&euml; gati p&euml;r t&rsquo;u dh&euml;n&euml;. Daniel Klein dhe Navimarine nga &euro;60.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 3 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-
-          <a data-cat="care" href="/sq/blog/riparoj-apo-blej-ore-te-re.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Duhet Riparoj apo Blej Or&euml; t&euml; Re? Nj&euml; Udhëzues i Sinqert&euml;</h2>
-              <p class="b-card-desc">Ia vlen t&euml; riparohet apo &euml;sht&euml; m&euml; mir&euml; ta z&euml;vend&euml;soni? Udhëzues praktik nga Iglisi Watch n&euml; Durr&euml;s bazuar n&euml; koston e riparimit, llojin dhe vler&euml;n sentimentale.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">Edhe n&euml; Blog</p>
-
-        <!-- ④–⑨ Grid of 3×2 -->
-        <div class="b-grid3">
-          <a data-cat="buying" href="/sq/blog/kronograf-vs-tre-akrepa.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Udh&euml;zues Blerjeje</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
               <h2 class="b-card-title">Kronograf apo Tre Akrepa? &Ccedil;far&euml; B&euml;jn&euml; V&euml;rtet N&euml;n-ciferblat&euml;t</h2>
               <p class="b-card-desc">Dymb&euml;dhjet&euml; nga or&euml;t tona kan&euml; n&euml;n-ciferblat&euml; dhe vet&euml;m shtat&euml; mat&euml;n koh&euml;n. Si dallohen p&euml;r pes&euml; sekonda, sa kushtojn&euml; n&euml; bateri dhe cil&euml;n t&euml; blesh.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 11 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Gusht 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 11 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Gusht 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-          <a data-cat="knowledge" href="/sq/blog/ore-ari-apo-celik.html" class="b-card">
+          <a data-cat="knowledge" href="/sq/blog/ore-ari-apo-celik.html" class="b-card" data-dup="1">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Njohuri Or&euml;sh</span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
               <h2 class="b-card-title">Ar apo &Ccedil;elik? &Ccedil;far&euml; Do t&euml; Thot&euml; V&euml;rtet Veshja me Ar n&euml; K&euml;t&euml; &Ccedil;mim</h2>
               <p class="b-card-desc">Asnj&euml; or&euml; n&euml; k&euml;t&euml; &ccedil;mim nuk &euml;sht&euml; prej ari masiv. Sa zgjat veshja, pse nuk riparohet, rregullat q&euml; e zgjasin dhe kur &ccedil;eliku &euml;sht&euml; m&euml; i mir&euml;.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Gusht 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Gusht 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-          <a data-cat="knowledge" href="/sq/blog/sa-zgjat-nje-ore-e-lire.html" class="b-card">
+          <a data-cat="knowledge" href="/sq/blog/sa-zgjat-nje-ore-e-lire.html" class="b-card" data-dup="1">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-hourglass-half" aria-hidden="true"></i> Njohuri Or&euml;sh</span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
               <h2 class="b-card-title">Sa Zgjat nj&euml; Or&euml; 7.000 Lek&euml;? &Ccedil;far&euml; Shohim n&euml; Banak</h2>
               <p class="b-card-desc">Nga pes&euml; n&euml; dhjet&euml; vjet, dhe mekanizmi nuk &euml;sht&euml; thuajse kurr&euml; ai q&euml; dor&euml;zohet. Radha e v&euml;rtet&euml; e prishjeve dhe sa kushton vërtet nj&euml; dekad&euml; pron&euml;sie.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Gusht 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Gusht 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-          <a data-cat="knowledge" href="/sq/blog/cfare-e-ben-oren-te-duket-e-shtrenjte.html" class="b-card">
+        </div>
+
+        <p class="b-label" data-sec="buying">Udhëzues Blerjeje <span class="b-label-count">23</span></p>
+        <div class="b-grid3" data-sec-grid="buying">
+          <a data-cat="buying" href="/sq/blog/kronograf-vs-tre-akrepa.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Njohuri Or&euml;sh</span>
-              <h2 class="b-card-title">&Ccedil;far&euml; e B&euml;n nj&euml; Or&euml; t&euml; Duket e Shtrenjt&euml;: Gjasht&euml; Detaje Q&euml; B&euml;jn&euml; Pun&euml;n</h2>
-              <p class="b-card-desc">Luneta t&euml; val&euml;zuara, bracelete jubilee, ciferblate sunburst. Gjasht&euml; detaje q&euml; duken t&euml; shtrenjta, nga vjen secili dhe sa kushtojn&euml; n&euml; Durr&euml;s, nga 4.900 lek&euml;.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Gusht 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="gifts" href="/sq/blog/dhurata-ore-viti-i-ri-shqiperi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udh&euml;zues Dhuratash</span>
-              <h2 class="b-card-title">Dhurata Ore p&euml;r Vitin e Ri n&euml; Shqip&euml;ri: &Ccedil;far&euml; t&euml; Blesh dhe Kur t&euml; Porosis&euml;sh</h2>
-              <p class="b-card-desc">Dy nivele &ccedil;mimesh, asgj&euml; n&euml; mes, dhe dita e fundit q&euml; mund t&euml; porosisni e t&euml; mb&euml;rrij&euml; n&euml; koh&euml;. Pages&euml; n&euml; dor&euml;zim kudo n&euml; Shqip&euml;ri, ose ejani n&euml; Durr&euml;s deri n&euml; 20:30.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Gusht 2026</span></div>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
+              <h2 class="b-card-title">Kronograf apo Tre Akrepa? &Ccedil;far&euml; B&euml;jn&euml; V&euml;rtet N&euml;n-ciferblat&euml;t</h2>
+              <p class="b-card-desc">Dymb&euml;dhjet&euml; nga or&euml;t tona kan&euml; n&euml;n-ciferblat&euml; dhe vet&euml;m shtat&euml; mat&euml;n koh&euml;n. Si dallohen p&euml;r pes&euml; sekonda, sa kushtojn&euml; n&euml; bateri dhe cil&euml;n t&euml; blesh.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 11 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Gusht 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="buying" href="/sq/blog/ore-per-femra-shqiperi.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Guidë Blerjeje</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guidë Blerjeje</span>
               <h2 class="b-card-title">Orë për Femra në Shqipëri: Çfarë Mbajmë dhe Sa Kushton</h2>
               <p class="b-card-desc">Orë veshjeje ngjyrë ari, çelik i hollë dhe Hislon Queen me sedef nga 59 deri 189 euro, gjendje në Durrës me pagesë në dorëzim kudo në Shqipëri.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Gusht 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-01">Gusht 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="buying" href="/sq/blog/ore-nen-10000-leke.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Guidë Blerjeje</span>
-              <h2 class="b-card-title">Orë Nën 10,000 Lekë: Çfarë Blejnë Vërtet Paratë Tuaja</h2>
-              <p class="b-card-desc">50 nga 57 orët tona kushtojnë nën 10,000 Lekë, duke filluar nga 4,900 L. Banaku me çmime në lekë, fashë pas fashe, me pagesë në dorëzim kudo.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Gusht 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
           <a data-cat="buying" href="/sq/blog/ore-per-burra-shqiperi.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Guidë Blerjeje</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guidë Blerjeje</span>
               <h2 class="b-card-title">Orë për Burra në Shqipëri: Çfarë Mbajmë dhe Sa Kushton</h2>
               <p class="b-card-desc">Sportive çeliku, kronografë dhe orë veshjeje nga €50 deri €199, të gjitha gjendje në Durrës. Për çfarë shërben çdo stil dhe si të porosisni kudo.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Gusht 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-01">Gusht 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-
-          <a data-cat="knowledge" href="/sq/blog/oret-qe-bene-histori.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Historia e Or&euml;ve</span>
-              <h2 class="b-card-title">Or&euml;t q&euml; B&euml;n&euml; Histori: Gjasht&euml; Histori n&euml; nj&euml; Vend</h2>
-              <p class="b-card-desc">Ora e dor&euml;s, H&euml;na, lufta, ajo e pathyeshme dhe trash&euml;gimia. Gjasht&euml; histori t&euml; sona t&euml; mbledhura n&euml; nj&euml; vend, secila me link te artikulli i plot&euml;.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/sq/blog/patek-philippe-brezat.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Historia e Or&euml;ve</span>
-              <h2 class="b-card-title">Patek Philippe dhe Ora q&euml; Trash&euml;gohet</h2>
-              <p class="b-card-desc">Fraza m&euml; e famshme n&euml; reklamat e or&euml;ve, pse nj&euml; or&euml; e mir&euml; &euml;sht&euml; trash&euml;gimi e jo nj&euml; vegl&euml;, dhe or&euml;t q&euml; mund t&apos;i dhurosh n&euml; Durr&euml;s p&euml;r t&euml; zgjatur nj&euml; brez.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/sq/blog/oret-ushtarake-hamilton.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Historia e Or&euml;ve</span>
-              <h2 class="b-card-title">Hamilton dhe Or&euml;t q&euml; Shkuan n&euml; Luft&euml;</h2>
-              <p class="b-card-desc">Llogoret e vendos&euml;n or&euml;n n&euml; dor&euml;, dhe Hamilton i dha t&euml; gjith&euml; fabrik&euml;n luft&euml;s. Ora ushtarake dhe or&euml;t e forta n&euml; stil fushe q&euml; mund t&apos;i blesh sot.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/sq/blog/historia-g-shock.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Historia e Or&euml;ve</span>
-              <h2 class="b-card-title">Historia e G-Shock: Si nj&euml; Or&euml; e Thyer Krijoi nj&euml; t&euml; Pathyeshme</h2>
-              <p class="b-card-desc">Nj&euml; inxhinier, nj&euml; dhurat&euml; e thyer dhe 200 prototipe t&euml; d&euml;shtuar. Si Casio nd&euml;rtoi or&euml;n q&euml; nuk vdes, dhe vlera Casio q&euml; mund ta blesh nga ne sot.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/sq/blog/ora-e-pare-ne-hene.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Historia e Or&euml;ve</span>
-              <h2 class="b-card-title">Ora e Par&euml; n&euml; H&euml;n&euml;</h2>
-              <p class="b-card-desc">NASA i testoi or&euml;t derisa u thyen dhe vet&euml;m Omega Speedmaster mbijetoi. Si arriti n&euml; H&euml;n&euml; n&euml; 1969 dhe ndihmoi t&euml; kthente Apollo 13.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/sq/blog/jaeger-lecoultre-historia.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Historia e Or&euml;ve</span>
-              <h2 class="b-card-title">Jaeger-LeCoultre: Or&euml;ndreq&euml;si Pas Or&euml;ndreq&euml;sve</h2>
-              <p class="b-card-desc">P&euml;r nj&euml; shekull emrat m&euml; t&euml; fam&euml;sh&euml;m vendosnin mekanizma LeCoultre n&euml; kasat e tyre. Laboratori n&euml; lugin&euml;, 1200 kalibra dhe ora q&euml; kthehet mbrapsht.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/sq/blog/cartier-santos-ora-e-pare-e-dores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Historia e Or&euml;ve</span>
-              <h2 class="b-card-title">Cartier Santos: Si Lindi Ora e Par&euml; e Dor&euml;s</h2>
-              <p class="b-card-desc">N&euml; 1904 nj&euml; pilot nuk mund t&euml; shikonte or&euml;n e xhepit gjat&euml; fluturimit, k&euml;shtu Louis Cartier e solli koh&euml;n n&euml; dor&euml;. Historia e or&euml;s nga e cila filloi gjith&ccedil;ka.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/sq/blog/casio-a159wa-legjenda.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Njohuri p&euml;r Or&euml;t</span>
-              <h2 class="b-card-title">Casio A159WA: Legjenda 40-Vje&ccedil;are q&euml; Blihet n&euml; Durr&euml;s</h2>
-              <p class="b-card-desc">Ora dixhitale e pandryshuar q&euml; nga fillimi i viteve &rsquo;80: bateri 7-vje&ccedil;are, byzylyk &ccedil;eliku, alarm dhe kronomet&euml;r. Te Iglisi Watch p&euml;r &euro;61.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="care" href="/sq/blog/revizionim-ore-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Revizionim i Plot&euml; i Or&euml;s n&euml; Durr&euml;s</h2>
-              <p class="b-card-desc">Revizionim i plot&euml; p&euml;r or&euml; me kuarc dhe mekanike n&euml; Durr&euml;s - &ccedil;montim, pastrim ultrasonik, lubrifikim dhe rregullim. Vler&euml;sim falas dhe k&euml;shill&euml; n&euml; WhatsApp para se t&euml; vish.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/guide-bateria-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zm-1.67 8h-2V6h2v6zm0 4h-2v-2h2v2z"/></svg> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Sa Zgjat Bateria e Or&euml;s? Shenjat q&euml; Po D&euml;shtron &amp; &Ccedil;far&euml; t&euml; B&euml;ni</h2>
-              <p class="b-card-desc">Baterit&euml; e oreve kuarc zgjasin 1&ndash;3 vjet. M&euml;so 5 shenjat paralajm&euml;ruese, n&euml;se duhet ta ndërrosh vet&euml; dhe &ccedil;far&euml; p&euml;rfshine nd&euml;rrimi profesional.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span>
-              <span><i class="fas fa-bolt" aria-hidden="true"></i> P&euml;rdit&euml;suar mars 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="care" href="/sq/blog/shenjat-riparimit-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Mir&euml;mbajtja</span>
-              <h2 class="b-card-title">5 Shenja q&euml; Ora Juaj Ka Nevoj&euml; p&euml;r Riparim, Jo Vetëm Bateri t&euml; Re</h2>
-              <p class="b-card-desc">N&euml;se ora juaj humb koh&euml; pas bateris&euml; s&euml; re, kurora &euml;sht&euml; e vrazhd&euml; ose ka pasur lag&euml;shti - ka nevoj&euml; p&euml;r riparim. M&euml;soni 5 shenjat.</p>
-              <div class="b-card-meta">
-                <span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span>
-                <span><i class="fas fa-bolt" aria-hidden="true"></i> P&euml;rdit&euml;suar mars 2026</span>
-              </div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="care" href="/sq/blog/kujdesi-brezit-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Si t&euml; Kujdeseni p&euml;r Brezin e Or&euml;s: L&euml;kur&euml;, Metal dhe Gom&euml;</h2>
-              <p class="b-card-desc">Brezi &euml;sht&euml; pjesa m&euml; e p&euml;rdorur e &ccedil;do ore. M&euml;soni si t&euml; pastroni dhe kushtoni l&euml;kur&euml;n, si t&euml; mir&euml;mbani byzylykun metalik dhe kur duhet ta z&euml;v&euml;nd&euml;soni.</p>
-              <div class="b-card-meta">
-                <span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span>
-                <span><i class="fas fa-bolt" aria-hidden="true"></i> P&euml;rdit&euml;suar mars 2026</span>
-              </div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/guide-gjeresise-brezit-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Gjer&euml;sia e Ansave t&euml; Or&euml;s: Si t&euml; Matni dhe t&euml; Gjeni Brezin e Duhur</h2>
-              <p class="b-card-desc">Blerja e brezit me madh&euml;si t&euml; gabuar &euml;sht&euml; gabimi m&euml; i zakonsh&euml;m. M&euml;soni si t&euml; matni gjer&euml;sin&euml; e ansave, cilat madh&euml;si p&euml;rdorin modelet m&euml; t&euml; zakonshme dhe &ccedil;far&euml; t&euml; b&euml;ni n&euml; rast dyshimi.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Qershor 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="keys" href="/sq/blog/guide-kopjim-celesi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-key" aria-hidden="true"></i> Shërbime &Ccedil;elësash</span>
-              <h2 class="b-card-title">Si Funksionon Kopjimi i &Ccedil;elësave: Llojet, &Ccedil;far&euml; t&euml; Sillni &amp; &Ccedil;far&euml; t&euml; Prisni</h2>
-              <p class="b-card-desc">B&euml;rja e nj&euml; kopje k&euml;rkon m&euml; pak se 5 minuta - n&euml;se dini &ccedil;far&euml; t&euml; sillni. M&euml;soni cil&euml;t &ccedil;elësa mund t&euml; kopjohen dhe sa kopje duhet t&euml; b&euml;ni.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/rezistenca-ujes-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" aria-hidden="true" focusable="false" style="width:.75em;height:.875em;display:inline-block;fill:currentColor;vertical-align:-.1em"><path d="M192 512C86 512 0 426 0 320C0 228.8 130.2 57.7 166.6 11.7C172.6 4.2 181.5 0 191 0h2c9.5 0 18.4 4.2 24.5 11.7C253.8 57.7 384 228.8 384 320c0 106-86 192-192 192z"/></svg> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Rezistenca ndaj Ujit e Or&euml;ve: Kuptoni ATM, BAR dhe Metrat</h2>
-              <p class="b-card-desc">Ora juaj thot&euml; &ldquo;rezistente ndaj ujit&rdquo; - por a mund t&euml; notoni apo laheni me t&euml;? Shumica keqkuptojn&euml; k&euml;to klasifikime dhe d&euml;mtojn&euml; or&euml;n e tyre.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/guide-pastrimit-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Si t&euml; Pastroni Or&euml;n Tuaj n&euml; Shtp&euml;i: Metoda t&euml; Sigurta p&euml;r &Ccedil;do Material</h2>
-              <p class="b-card-desc">Papastërtia, djers&euml; dhe lyra grumbullohen n&euml; &ccedil;do or&euml;. Pastrimi i rregullt k&euml;rkon m&euml; pak se pes&euml; minuta dhe e mban or&euml;n tuaj si e re.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/guide-ruajtjes-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Si t&euml; Ruani Or&euml;n Tuaj Si&ccedil; Duhet: Udhëzues i Plot&euml;</h2>
-              <p class="b-card-desc">Ruajtja gabim d&euml;mton lubrifikant&euml;t, magnetizon mekanizmin dhe bën t&euml; rrec&euml;jë rripin. M&euml;soni kushtet optimale - temperatura, lagështia dhe &ccedil;far&euml; t&euml; shmangni.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/sq/blog/mekanik-vs-kuarc.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Njohuri p&euml;r Or&euml;t</span>
-              <h2 class="b-card-title">Mekanik vs Kuarc: Cili &euml;sht&euml; Ndryshimi dhe Cilin t&euml; Zgjidhni?</h2>
-              <p class="b-card-desc">Kuarci fiton n&euml; saktësi dhe mir&euml;mbajtje t&euml; ul&euml;t. Mekaniku fiton n&euml; artizanat dhe vler&euml; koleksioni. Nj&euml; krahasim i nd&euml;rsh&euml;m p&euml;r t&euml; zgjedhur or&euml;n e duhur.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/sq/blog/llojet-e-oreve-udhezues.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-compass" aria-hidden="true"></i> Njohuri p&euml;r Or&euml;t</span>
-              <h2 class="b-card-title">Llojet e Or&euml;ve t&euml; Shpjeguara: Zhyt&euml;se, Tank, Pilot&euml; dhe T&euml; Tjer&euml;</h2>
-              <p class="b-card-desc">Zhyt&euml;se, field, pilot, elegante, tank: nga vjen secili lloj ore, p&euml;r &ccedil;far&euml; u nd&euml;rtua dhe cili i p&euml;rshtatet m&euml;nyr&euml;s si jetoni vërtet.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/guide-xhamit-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Xhami i Or&euml;s: Akrilik, Mineral dhe Safir - Cili &euml;sht&euml; Ndryshimi?</h2>
-              <p class="b-card-desc">Tre materiale, tre nivele mbrojtjeje. M&euml;so cilat g&euml;rvishten leht&euml;, cilat thyhen dhe &ccedil;far&euml; t&euml; b&euml;sh kur xhami i or&euml;s d&euml;mtohet.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/guide-mbushjes-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Mir&euml;mbajtja e Or&euml;s</span>
-              <h2 class="b-card-title">Si t&euml; Mbushni Or&euml;n: Manual, Automatike &amp; Pozicionet e Kuror&euml;s</h2>
-              <p class="b-card-desc">Teknika e duhur e mbushjes p&euml;r or&euml;t manuale dhe automatike, tre pozicionet e kuror&euml;s t&euml; shpjeguara dhe 5 gabime t&euml; zakonshme q&euml; d&euml;mtojn&euml; l&euml;vizjet.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/sq/blog/si-dalloj-oren-falsifikuar.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Or&euml;sh</span>
-              <h2 class="b-card-title">Si t&euml; Dalloni Or&euml;n Falsifikuar: 8 Kontrolle t&euml; Ekspert&euml;ve</h2>
-              <p class="b-card-desc">Nga pesha e kas&euml;s te ndjesja e kuror&euml;s - 8 kontrollet fizike q&euml; zbulojn&euml; nj&euml; falsifikim pa pajisje t&euml; specializuara.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/sq/blog/guide-rasteve-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Stili i Or&euml;s</span>
-              <h2 class="b-card-title">Or&euml; Ceremoniale, Sportive &amp; Casual: &Ccedil;far&euml; t&euml; Vishni p&euml;r &Ccedil;do Rast</h2>
-              <p class="b-card-desc">Or&euml; ceremoniale p&euml;r nj&euml; dasme, sportive p&euml;r palestr&euml;, zhyt&euml;se p&euml;r fundjavë - zgjed&euml;hja e or&euml;s s&euml; duhur p&euml;r rastin &euml;sht&euml; m&euml; e thjesht&euml; se sa mendoni.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">Histori &amp; Njohuri t&euml; Thelluara</p>
-
-        <!-- ⑬–㉑ Grid of 3×3 -->
-        <div class="b-grid3">
-
-          <a data-cat="knowledge" href="/sq/blog/kriza-kuarci.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Or&euml;sh</span>
-              <h2 class="b-card-title">Kriza e Kuarcit: Si nj&euml; &Ccedil;ip Japonez Pothuajse Rr&euml;noi Or&euml;b&euml;rjen Zvicerane</h2>
-              <p class="b-card-desc">Nga lëshimi i Seiko Astron n&euml; 1969 te shpikja e Swatch - historia e plot&euml; e kolapsit q&euml; riformatoi ind&uuml;strin&euml; globale t&euml; or&euml;ve.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/sq/blog/mjetet-riparimit.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Or&euml;sh</span>
-              <h2 class="b-card-title">Mjetet e Riparimit t&euml; Or&euml;ve: &Ccedil;far&euml; P&euml;rdor Realisht Or&euml;tari dhe Pse</h2>
-              <p class="b-card-desc">Hapja e kas&euml;s me mjetin e gabuar g&euml;rvish, prish vul&euml;n e ujit ose d&euml;mton l&euml;vizjen. &Ccedil;do mjet q&euml; p&euml;rdor profesionisti dhe pse ekziston secili.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/magnetizimi-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Pse Ora Magnetizohet - dhe Si ta Rregulloni</h2>
-              <p class="b-card-desc">Ora fiton minuta &ccedil;do dit&euml; pa asnjë arsye? Ka shumë mundësi t&euml; jet&euml; magnetizuar. Diagnoza kërkon sekonda. Rregullimi kërkon n&euml;n nj&euml; minut&euml;.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/sq/blog/levizje-zvicerane-vs-japoneze.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Or&euml;sh</span>
-              <h2 class="b-card-title">L&euml;vizjet Zvicerane vs Japoneze: &Ccedil;far&euml; Tregon Etiketa Realisht</h2>
-              <p class="b-card-desc">&ldquo;Swiss Made&rdquo; nuk garanton cilësi - garanton origjin&euml;. Ja &ccedil;far&euml; k&euml;rkon etiketa ligjërisht dhe ku japonezja fiton sipas nivelit t&euml; &ccedil;mimit.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/sq/blog/blerja-ores-dore-te-dyte.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Or&euml;sh</span>
-              <h2 class="b-card-title">Si t&euml; Blini Or&euml; Dor&euml; t&euml; Dyt&euml; Pa u Djepur</h2>
-              <p class="b-card-desc">&Ccedil;farë t&euml; kontrolloni fizikisht, si t&euml; verifikoni &ccedil;mimin, kur t&euml; k&euml;rkoni inspektim nga or&euml;tar dhe pse refuzimi i shitësit &euml;sht&euml; vet&euml; informacion.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/sq/blog/permasat-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Stili i Or&euml;s</span>
-              <h2 class="b-card-title">P&euml;rmasat e Kas&euml;s s&euml; Or&euml;s: Si t&euml; Dini N&euml;se i Shkon Ky&ccedil;it</h2>
-              <p class="b-card-desc">Diametri, distanca lug-to-lug dhe trashësia - tre matjet q&euml; realisht p&euml;rcaktojn&euml; sh&euml;ndetin. Tabell&euml; praktike p&euml;r &ccedil;do madhësi ky&ccedil;i.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/sq/blog/lumja-ciferblati.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Or&euml;sh</span>
-              <h2 class="b-card-title">Lumja e Ciferblatit: Lume, Tritium dhe Pse Ora Shk&euml;lqen n&euml; Err&euml;sir&euml;</h2>
-              <p class="b-card-desc">Radium, tritium dhe Super-LumiNova - tre teknologjit&euml; lumineshente, sher&euml; profili i tyre i sigurisë dhe si t&euml; identifikoni &ccedil;far&euml; ka or&euml;t juaj.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/sq/blog/rezerva-energjise.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Or&euml;sh</span>
-              <h2 class="b-card-title">Pse Ora Automatike Ndalet N&euml;se Nuk e Vishni: Rezerva e Energjis&euml;</h2>
-              <p class="b-card-desc">Tabela e rezervave t&euml; energjis&euml; sipas llojit t&euml; l&euml;vizjes, pse mbushja automatike nuk &euml;sht&euml; gjithmon&euml; e mjaftueshme dhe si t&euml; rregulloni or&euml;n pas ndalimit.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/kurora-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Kurora e Or&euml;s: &Ccedil;far&euml; B&euml;n &Ccedil;do Pozicion dhe Pse R&euml;nd&euml;son</h2>
-              <p class="b-card-desc">Tre pozicionet e kuror&euml;s, si funksionon kurora me vid&euml; dhe pse keqp&euml;rdorimi i kuror&euml;s &euml;sht&euml; shkaku kryesor i d&euml;mtimit nga uji q&euml; shohim.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">Udhëzues Blerjeje</p>
-
-        <div class="b-grid3">
-
-          <a data-cat="buying" href="/sq/blog/ore-me-te-mira-nen-200-shqiperi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
-              <h2 class="b-card-title">Orët më të Mira Nën &euro;200 në Shqipëri (2026)</h2>
-              <p class="b-card-desc">Vlerësim i sinqertë i asaj që ia vlen të blihet në Shqipëri në intervalin &euro;100&ndash;200 - nga orë kuarci për çdo ditë deri tek modele sportive për fundjavë.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/sq/blog/ku-te-blesh-ore-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Udhëzues Lokal</span>
-              <h2 class="b-card-title">Ku të Blesh një Orë në Durrës: Udhëzues i Sinqertë</h2>
-              <p class="b-card-desc">Tregjet e rrugës, argjendaria ose orëtarët specialistë - vështrim i drejtpërdrejtë mbi tregun e orëve të Durrësit, çfarë të besohet dhe çfarë të shmanget.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/sq/blog/hislon-vs-navimarine.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Krahasim Markash</span>
-              <h2 class="b-card-title">Hislon vs Navimarine: Cilën Markë Orësh të Zgjidhni?</h2>
-              <p class="b-card-desc">Të dyja në të njëjtën gamë çmimesh, ndërtuar për veshje të përditshme - por i drejtohen shijeve shumë të ndryshme. Krahasim objektiv për t&rsquo;ju ndihmuar të zgjidhni.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/sq/blog/ku-te-blesh-ore-tirane.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> E gjithë Shqipëria</span>
-              <h2 class="b-card-title">Bli Orë në Çdo Qytet të Shqipërisë</h2>
-              <p class="b-card-desc">Orë të reja Daniel Klein, Navimarine dhe Hislon nga &euro;60 - shfleto stokun online, dërgo mesazh në WhatsApp dhe ne rregullojmë pjesën tjetër. Tiranë, Vlorë, Shkodër, Elbasan apo kudo tjetër në Shqipëri.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/sq/blog/blej-ore-instagram-shqiperi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fab fa-instagram" aria-hidden="true"></i> Udhëzues Blerje</span>
-              <h2 class="b-card-title">A është e Sigurt të Blesh Orë në Instagram në Shqipëri?</h2>
-              <p class="b-card-desc">Shitësit e orëve në Instagram në Shqipëri janë kudo - por a është e sigurt? Rreziqet reale, shenjat paralajmëruese dhe kur të zgjidhni dyqanin fizik.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/sq/blog/ore-me-te-mira-nen-100-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerje</span>
-              <h2 class="b-card-title">Orët më të Mira nën 100&euro; në Durrës</h2>
-              <p class="b-card-desc">100&euro; janë të mjaftueshme për orë të besueshme në Durrës - nëse dini ku të shikoni. Këshilla të ndershme nga orëtari që u shërbën këtyre copave çdo ditë.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        
-          <a data-cat="buying" href="/sq/blog/seiko-vs-citizen-vs-casio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Krahasim Markash</span>
-              <h2 class="b-card-title">Seiko vs Citizen vs Casio: Cil&euml; Mark&euml; Japoneze Ia Vlen t&euml; Blesh?</h2>
-              <p class="b-card-desc">Tre gjigant&euml; japonez&euml; t&euml; krahasuar nd&euml;rshmërisht - l&euml;vizjet automatike t&euml; Seiko, Eco-Drive t&euml; Citizen dhe qëndrueshmëria e Casio. Cili &euml;sht&euml; i duhuri p&euml;r ty?</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/sq/blog/casio-vs-citizen.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Krahasim Markash</span>
-              <h2 class="b-card-title">Casio vs Citizen: Cil&euml;n Or&euml; t&euml; Blini?</h2>
-              <p class="b-card-desc">Dy marka japoneze, dy filozofi: vlera e fort&euml; e Casio p&euml;rball&euml; rafinimit Eco-Drive t&euml; Citizen. Nj&euml; krahasim i nd&euml;rsh&euml;m nga banaku i riparimit.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-</div>
-
-        <p class="b-label">Udhëzues Dhuratash</p>
-
-        <div class="b-grid3">
-
-          <a data-cat="gifts" href="/sq/blog/dhurata-ore-burra-shqiperi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
-              <h2 class="b-card-title">Dhuratat m&euml; t&euml; Mira Or&euml; p&euml;r Burra n&euml; Shqip&euml;ri (2026)</h2>
-              <p class="b-card-desc">Ide dhuratash praktike p&euml;r burrat q&euml; kan&euml; gjithka - or&euml; q&euml; zgjasin, q&euml; vishen &ccedil;do dit&euml; dhe q&euml; kujtohen.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="gifts" href="/sq/blog/dhurata-ore-gra-shqiperi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
-              <h2 class="b-card-title">Dhuratat m&euml; t&euml; Mira Or&euml; p&euml;r Gra n&euml; Shqip&euml;ri (2026)</h2>
-              <p class="b-card-desc">Si t&euml; zgjidhni or&euml; si dhuratë p&euml;r nj&euml; grua - stil, p&euml;rmasa dhe buxhet - me sugjerime konkrete nga selekcioni yn&euml; n&euml; Shqip&euml;ri.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="gifts" href="/sq/blog/ore-dhurate-dasme-shqiperi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
-              <h2 class="b-card-title">Or&euml; si Dhuratë Dasme n&euml; Shqip&euml;ri: Udhëzues i Plot&euml;</h2>
-              <p class="b-card-desc">Pse ora &euml;sht&euml; dhurata ideale e dasmës, cil&euml;t modele funksionojn&euml; p&euml;r burrë dhe grua dhe si t&euml; zgjidhni pa gabuar.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="gifts" href="/sq/blog/idete-ore-diplomim.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Udhëzues Dhuratash</span>
-              <h2 class="b-card-title">Ide Or&euml;sh p&euml;r Diplomim: Si t&euml; Zgjidhni Dhuratën e Duhur</h2>
-              <p class="b-card-desc">Dhurata e duhur e diplomimit &euml;sht&euml; ajo q&euml; zgjat vite. Si t&euml; zgjidhni or&euml;n q&euml; diplomuari do ta veshë vërtet - stil, buxhet dhe p&euml;rmasa e ky&ccedil;it.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
           <a data-cat="buying" href="/sq/blog/oret-qe-do-i-bleja-vete.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Udhëzues Blerjeje</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
               <h2 class="b-card-title">5 Or&euml;t q&euml; Do t&euml; Blija Vet&euml; nga Dyqani Im</h2>
               <p class="b-card-desc">Zgjedhjet personale t&euml; ndershme t&euml; nj&euml; or&euml;ndreq&euml;si: pes&euml; or&euml;t p&euml;r t&euml; cilat do t&euml; shpenzoja parat&euml; e mia, nga nj&euml; Daniel Klein &euro;64 te nj&euml; Hislon Classic &euro;199, dhe pse.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">Korrik 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="gifts" href="/sq/blog/ora-per-cifte.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-heart" aria-hidden="true"></i> Udhëzues Dhuratash</span>
-              <h2 class="b-card-title">Or&euml; p&euml;r Çifte: His and Hers nga 124 Euro</h2>
-              <p class="b-card-desc">Katër çifte his and hers p&euml;r dasma dhe p&euml;rvjetorë: sete Hislon t&euml; p&euml;rputhura n&euml; ar dhe çelik me xham safiri, dhe çifte Daniel Klein nga &euro;124.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
           <a data-cat="buying" href="/sq/blog/sa-kushton-nje-ore-e-mire.html" class="b-card">
             <div class="b-card-body">
               <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
               <h2 class="b-card-title">60 vs 90 vs 190 Euro: Çfar&euml; Blen V&euml;rtet me nj&euml; Or&euml; M&euml; t&euml; Shtrenjt&euml;</h2>
               <p class="b-card-desc">Daniel Klein, Navimarine, Hislon krahasuar ndershm&euml;risht. Parat&euml; shtes&euml; blejn&euml; dizajn elegant dhe p&euml;rfundim, jo xham, l&euml;vizje apo rezistenc&euml; ndaj ujit m&euml; t&euml; mir&euml;.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">Korrik 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
           <a data-cat="buying" href="/sq/blog/daniel-klein-ia-vlen.html" class="b-card">
             <div class="b-card-body">
               <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
               <h2 class="b-card-title">A Vlejn&euml; Or&euml;t Daniel Klein? P&euml;rgjigjja e Ndershme e nj&euml; Or&euml;ndreq&euml;si</h2>
               <p class="b-card-desc">Mark&euml; mode turke, kuarc, pamje ari p&euml;r &euro;59 deri &euro;89. Ku shkojn&euml; mir&euml; parat&euml; dhe ku jo, me t&euml; 8 modelet n&euml; stok.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">Korrik 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="buying" href="/sq/blog/recensim-hislon-classic.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Recensim Or&euml;sh</span>
-              <h2 class="b-card-title">Recensim Hislon Classic: Ia Vlen?</h2>
-              <p class="b-card-desc">L&euml;vizje kuarci e besueshme, xham safiri, kas&euml; &ccedil;eliku 38&nbsp;mm. Nj&euml; recensim i nd&euml;rsh&euml;m nga ai q&euml; e revisioni&ccedil;on &ccedil;do dit&euml; n&euml; punëtori.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
           <a data-cat="buying" href="/sq/blog/ora-per-plazh-e-det.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-swimmer" aria-hidden="true"></i> Udhëzues Blerjeje</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
               <h2 class="b-card-title">Ora p&euml;r Plazh e Det: Vera Shqiptare</h2>
               <p class="b-card-desc">Çfar&euml; i b&euml;jn&euml; kripa, r&euml;ra dhe kremi i diellit nj&euml; ore, cilat vler&euml;sime lejojn&euml; vërtet notin, dhe çeliku 5 ATM q&euml; rekomandojm&euml; me &euro;75.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Korrik 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/sq/blog/cilin-navimarine-te-blesh.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-compass" aria-hidden="true"></i> Udhëzues Blerjeje</span>
-              <h2 class="b-card-title">Cilin Navimarine t&euml; Blesh: Sport, Classic apo Chronograph?</h2>
-              <p class="b-card-desc">Tre linja Navimarine, tre p&euml;rdorime t&euml; ndryshme. Si t&euml; kuptoni cili model i p&euml;rshtatet ky&ccedil;it tuaj, stilit tuaj dhe rastit.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="gifts" href="/sq/blog/ora-e-pare-adoleshent.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-user-graduate" aria-hidden="true"></i> Udhëzues Dhuratash</span>
-              <h2 class="b-card-title">Ora e Par&euml; p&euml;r Adoleshentin: &Ccedil;far&euml; t&euml; K&euml;rkoni</h2>
-              <p class="b-card-desc">Ora e par&euml; e v&euml;rtet&euml; &euml;sht&euml; nj&euml; dhuratë q&euml; e kujtojn&euml; vite me radh&euml;. Si t&euml; zgjidhni modelin e duhur - t&euml; qëndruesh&euml;m, t&euml; p&euml;rshtatsh&euml;m dhe brenda buxhetit.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/sq/blog/blej-ore-pa-e-provuar.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
-              <h2 class="b-card-title">A &euml;sht&euml; e Sigurt&euml; t&euml; Blesh Or&euml; pa e Provuar?</h2>
-              <p class="b-card-desc">Blerja online ose si dhuratë pa e veshur m&euml; par&euml; &euml;sht&euml; e mundur, n&euml;se dini p&euml;rmasat e duhura. Si t&euml; matni ky&ccedil;in dhe &ccedil;far&euml; t&euml; pyesni para se t&euml; porosisni.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">Kujdesi i Or&euml;s</p>
-
-        <div class="b-grid3">
-
-          <a data-cat="care" href="/sq/blog/sherbimi-ores-cfare-perfshine.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">&Ccedil;far&euml; P&euml;rfshine Sh&euml;rbimi i Or&euml;s?</h2>
-              <p class="b-card-desc">Çmontim i plot&euml;, pastrim, lubrifikim, kontroll i rezistenc&euml;s ndaj ujit - &ccedil;far&euml; ndodh realisht gjat&euml; nj&euml; sh&euml;rbimi t&euml; nivelit&nbsp;4 n&euml; punëtori.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/riparim-orash-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Riparim</span>
-              <h2 class="b-card-title">Riparim Orash n&euml; Durr&euml;s: &Ccedil;far&euml; t&euml; Prisni</h2>
-              <p class="b-card-desc">Ndërrimi i baterisë, z&euml;v&euml;nd&euml;simi i rripit, xhami i ri, revisioni i plot&euml; - nj&euml; udhëzues i nd&euml;rsh&euml;m mbi kohën, &ccedil;mimin dhe si funksionon punëtoria jon&euml; n&euml; Durrës.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/sherbimi-casio-shqiperi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Ku t&euml; Servisoni nj&euml; Casio, Seiko ose Citizen n&euml; Shqip&euml;ri</h2>
-              <p class="b-card-desc">Shqip&euml;ria nuk ka qendra t&euml; autorizuara sh&euml;rbimi p&euml;r markat japoneze t&euml; or&euml;ve. Ja ku t&euml; shkoni n&euml; Durr&euml;s, &ccedil;far&euml; kan&euml; nevoj&euml; k&euml;to or&euml; dhe sa kushton.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Qershor 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/riparim-korona-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Riparim Orash</span>
-              <h2 class="b-card-title">Riparimi i Kuror&euml;s s&euml; Or&euml;s: Kur t&euml; Riparohet dhe Kur t&euml; Z&euml;vend&euml;sohet</h2>
-              <p class="b-card-desc">Kurora ra apo rrotullohet pa rezultat? Shpjegojm&euml; kat&euml;r problemet m&euml; t&euml; zakonshme, &ccedil;far&euml; p&euml;rfshin riparimi dhe sa kushton n&euml; Durr&euml;s.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Qershor 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/garancia-ore-te-reja.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">&Ccedil;far&euml; Garanci Vijnë me Or&euml;t e Reja?</h2>
-              <p class="b-card-desc">&Ccedil;far&euml; mbulon realisht garancia, &ccedil;far&euml; jo, &ccedil;far&euml; e anullon dhe si t&euml; paraqisësh nj&euml; k&euml;rkes&euml; - nj&euml; udhëzues i qart&euml; p&euml;r bler&euml;sin e or&euml;ve t&euml; reja.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="care" href="/sq/blog/zevdendosja-baterise-ores-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-bolt" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Z&euml;vend&euml;simi i Bateris&euml; s&euml; Or&euml;s n&euml; Durr&euml;s - Gati Nd&euml;rkoh&euml; q&euml; Prisni</h2>
-              <p class="b-card-desc">Ejani tek Iglisi Watch n&euml; Durr&euml;s. Gati n&euml; 10-15 minuta, pa takim paraprak, inspektim i garnitur&euml;s i p&euml;rfshir&euml;. &Ccedil;do mark&euml; e mirëpritur.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/zevdendosja-brezit-ores-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-link" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Z&euml;vend&euml;simi i Brezit t&euml; Or&euml;s n&euml; Durr&euml;s - Montim n&euml; T&euml; Nj&euml;jt&euml;n Dit&euml;</h2>
-              <p class="b-card-desc">Z&euml;vend&euml;so brezin ose g&euml;rmaxhen tek Iglisi Watch n&euml; Durr&euml;s. L&euml;kur&euml;, gom&euml; dhe metal n&euml; magazin&euml;. Montohet nd&euml;rkoh&euml; q&euml; prisni, pa takim. &Ccedil;do mark&euml;.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/zevdendosja-xhamit-ores-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Kujdesi i Or&euml;s</span>
-              <h2 class="b-card-title">Xhami i Thyer? Z&euml;vend&euml;simi i Kristalt&euml; n&euml; Durr&euml;s</h2>
-              <p class="b-card-desc">Kristal i &ccedil;ar ose i thyer n&euml; Durr&euml;s? Iglisi Watch z&euml;vend&euml;son kristale minerale dhe safiri t&euml; nj&euml;jt&euml;n dit&euml; n&euml;se kemi m&euml;simin tuaj. Pa takim, &ccedil;do mark&euml;.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        
-          <a data-cat="care" href="/sq/blog/watch-battery-size-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zm-1.67 8h-2V6h2v6zm0 4h-2v-2h2v2z"/></svg> Mirëmbajtja e Orës</span>
-              <h2 class="b-card-title">Madhësitë e Baterive t&euml; Or&euml;ve: SR626SW, SR920SW, CR2032 t&euml; Shpjegun</h2>
-              <p class="b-card-desc">Si t&euml; lexoni kodet e baterive, cila madhësi i p&euml;rshtatet or&euml;s tuaj dhe kur t&euml; ndërroni baterinë.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/nxehtesia-lageshti-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-thermometer-half" aria-hidden="true"></i> Kujdesi i Orës</span>
-              <h2 class="b-card-title">A Mund t&euml; D&euml;mtohet Ora nga Nxeht&euml;sia dhe Lag&euml;shtia?</h2>
-              <p class="b-card-desc">Nxehtësia dëmton lubrifikantët, deformon garniturat dhe shkakton rrjedhje bateri. Lagështia detyron ujin të kalojë garniturat. Mëso zonat e rrezikut, shenjat dhe 5 mënyra për ta mbrojtur orën.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Qershor 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/sq/blog/testi-presionit-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
-              <h2 class="b-card-title">Testi i Presionit t&euml; Or&euml;s: &Ccedil;far&euml; &Euml;sht&euml; dhe Kur Nevojitet</h2>
-              <p class="b-card-desc">Vlerësimi i rezistencës ndaj ujit ishte i saktë kur ishte e re. Testi i presionit ju tregon nëse është ende. Mësoni çfarë teston, kur ta bëni dhe pse ndërrimi i baterisë anullon guarnizën.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Qershor 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="knowledge" href="/sq/blog/komplikime-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cog" aria-hidden="true"></i> Kultura e Orëve</span>
-              <h2 class="b-card-title">Komplikime t&euml; Or&euml;s Shpjeguara: nga Data tek Tourbillon-i</h2>
-              <p class="b-card-desc">Data, kronograf, faz&euml; h&euml;nore, GMT dhe tourbillon - &ccedil;far&euml; b&euml;n &ccedil;do komplikim, pse ekziston dhe si ndikon kostot e servisimit afatgjat&euml;.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Qershor 2026</span></div>
-              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="knowledge" href="/sq/blog/llojet-unazave-ores.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Kultura e Or&euml;ve</span>
-              <h2 class="b-card-title">Llojet e Unaz&euml;s s&euml; Or&euml;s: nga Unaza e Zhytjes tek Tahimetri</h2>
-              <p class="b-card-desc">Unaza b&euml;n shum&euml; m&euml; tep&euml;r se t&euml; rrethojë xhamin. Mësoni gjasht&euml; llojet kryesore - zhytja, tahimetri, GMT, e l&euml;muar, dydrejtim&euml;she dhe pulsometri - &ccedil;far&euml; b&euml;n secila dhe si ta identifikoni tuajën.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Qershor 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">Korrik 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="buying" href="/sq/blog/smartwatch-vs-ore-tradicionale.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
               <h2 class="b-card-title">Smartwatch apo Or&euml; Tradicionale: Cil&euml;n t&euml; Blesh?</h2>
               <p class="b-card-desc">Njëra ngarkohet çdo natë dhe gjurmon frekuencën kardiake. Tjetra funksionon me sustë dhe mund të zgjasë më shumë se pronari. Krahasim i ndershëm nga laboratori.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Qershor 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">Qershor 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="buying" href="/sq/blog/ora-si-investim.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99l1.5 1.5z"/></svg> Udhëzues Blerjeje</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
               <h2 class="b-card-title">A Është Ora një Investim i Mirë? Çfarë të Blini dhe Çfarë të Evitoni</h2>
               <p class="b-card-desc">Disa orë ruajnë vlerën; pak rriten; shumica zhvlerësohen. Udhëzues i ndershëm mbi markat, referencat dhe kushtet që e bëjnë një orë investim të vërtetë.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Qershor 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">Qershor 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/bli-ore-shqiperi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Blerje Orësh</span>
+              <h2 class="b-card-title">Si t&euml; Blesh Or&euml; t&euml; Reja n&euml; Shqip&euml;ri - Hislon dhe Navimarine</h2>
+              <p class="b-card-desc">Udhëzues për blerjen e orëve të reja në Shqipëri. Daniel Klein, Navimarine dhe Hislon te Iglisi Watch Durrës - çmime nga &euro;60, garanci 1-vjeçare dhe dërgim kudo nëpërmjet WhatsApp.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/seiko-vs-citizen-vs-casio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Krahasim Markash</span>
+              <h2 class="b-card-title">Seiko vs Citizen vs Casio: Cil&euml; Mark&euml; Japoneze Ia Vlen t&euml; Blesh?</h2>
+              <p class="b-card-desc">Tre gjigant&euml; japonez&euml; t&euml; krahasuar nd&euml;rshmërisht - l&euml;vizjet automatike t&euml; Seiko, Eco-Drive t&euml; Citizen dhe qëndrueshmëria e Casio. Cili &euml;sht&euml; i duhuri p&euml;r ty?</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-19">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/casio-vs-citizen.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Krahasim Markash</span>
+              <h2 class="b-card-title">Casio vs Citizen: Cil&euml;n Or&euml; t&euml; Blini?</h2>
+              <p class="b-card-desc">Dy marka japoneze, dy filozofi: vlera e fort&euml; e Casio p&euml;rball&euml; rafinimit Eco-Drive t&euml; Citizen. Nj&euml; krahasim i nd&euml;rsh&euml;m nga banaku i riparimit.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-19">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/recensim-hislon-classic.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Recensim Orësh</span>
+              <h2 class="b-card-title">Recensim Hislon Classic: Ia Vlen?</h2>
+              <p class="b-card-desc">L&euml;vizje kuarci e besueshme, xham safiri, kas&euml; &ccedil;eliku 38&nbsp;mm. Nj&euml; recensim i nd&euml;rsh&euml;m nga ai q&euml; e revisioni&ccedil;on &ccedil;do dit&euml; n&euml; punëtori.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/cilin-navimarine-te-blesh.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
+              <h2 class="b-card-title">Cilin Navimarine t&euml; Blesh: Sport, Classic apo Chronograph?</h2>
+              <p class="b-card-desc">Tre linja Navimarine, tre p&euml;rdorime t&euml; ndryshme. Si t&euml; kuptoni cili model i p&euml;rshtatet ky&ccedil;it tuaj, stilit tuaj dhe rastit.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Përditësuar Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/ora-e-pare-adoleshent.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
+              <h2 class="b-card-title">Ora e Par&euml; p&euml;r Adoleshentin: &Ccedil;far&euml; t&euml; K&euml;rkoni</h2>
+              <p class="b-card-desc">Ora e par&euml; e v&euml;rtet&euml; &euml;sht&euml; nj&euml; dhuratë q&euml; e kujtojn&euml; vite me radh&euml;. Si t&euml; zgjidhni modelin e duhur - t&euml; qëndruesh&euml;m, t&euml; p&euml;rshtatsh&euml;m dhe brenda buxhetit.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Përditësuar Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/blej-ore-pa-e-provuar.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
+              <h2 class="b-card-title">A &euml;sht&euml; e Sigurt&euml; t&euml; Blesh Or&euml; pa e Provuar?</h2>
+              <p class="b-card-desc">Blerja online ose si dhuratë pa e veshur m&euml; par&euml; &euml;sht&euml; e mundur, n&euml;se dini p&euml;rmasat e duhura. Si t&euml; matni ky&ccedil;in dhe &ccedil;far&euml; t&euml; pyesni para se t&euml; porosisni.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Përditësuar Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/blej-ore-instagram-shqiperi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerje</span>
+              <h2 class="b-card-title">A është e Sigurt të Blesh Orë në Instagram në Shqipëri?</h2>
+              <p class="b-card-desc">Shitësit e orëve në Instagram në Shqipëri janë kudo - por a është e sigurt? Rreziqet reale, shenjat paralajmëruese dhe kur të zgjidhni dyqanin fizik.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-18">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/ore-me-te-mira-nen-100-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerje</span>
+              <h2 class="b-card-title">Orët më të Mira nën 100&euro; në Durrës</h2>
+              <p class="b-card-desc">100&euro; janë të mjaftueshme për orë të besueshme në Durrës - nëse dini ku të shikoni. Këshilla të ndershme nga orëtari që u shërbën këtyre copave çdo ditë.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-18">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/ku-te-blesh-ore-tirane.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> E gjithë Shqipëria</span>
+              <h2 class="b-card-title">Bli Orë në Çdo Qytet të Shqipërisë</h2>
+              <p class="b-card-desc">Orë të reja Daniel Klein, Navimarine dhe Hislon nga &euro;60 - shfleto stokun online, dërgo mesazh në WhatsApp dhe ne rregullojmë pjesën tjetër. Tiranë, Vlorë, Shkodër, Elbasan apo kudo tjetër në Shqipëri.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Përditësuar Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/ore-me-te-mira-nen-200-shqiperi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Blerjeje</span>
+              <h2 class="b-card-title">Orët më të Mira Nën &euro;200 në Shqipëri (2026)</h2>
+              <p class="b-card-desc">Vlerësim i sinqertë i asaj që ia vlen të blihet në Shqipëri në intervalin &euro;100&ndash;200 - nga orë kuarci për çdo ditë deri tek modele sportive për fundjavë.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-12">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/ku-te-blesh-ore-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Udhëzues Lokal</span>
+              <h2 class="b-card-title">Ku të Blesh një Orë në Durrës: Udhëzues i Sinqertë</h2>
+              <p class="b-card-desc">Tregjet e rrugës, argjendaria ose orëtarët specialistë - vështrim i drejtpërdrejtë mbi tregun e orëve të Durrësit, çfarë të besohet dhe çfarë të shmanget.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-12">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/sq/blog/hislon-vs-navimarine.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Krahasim Markash</span>
+              <h2 class="b-card-title">Hislon vs Navimarine: Cilën Markë Orësh të Zgjidhni?</h2>
+              <p class="b-card-desc">Të dyja në të njëjtën gamë çmimesh, ndërtuar për veshje të përditshme - por i drejtohen shijeve shumë të ndryshme. Krahasim objektiv për t&rsquo;ju ndihmuar të zgjidhni.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-12">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p class="b-label" data-sec="gifts">Udhëzues Dhuratash <span class="b-label-count">7</span></p>
+        <div class="b-grid3" data-sec-grid="gifts">
+          <a data-cat="gifts" href="/sq/blog/dhurata-ore-viti-i-ri-shqiperi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
+              <h2 class="b-card-title">Dhurata Ore p&euml;r Vitin e Ri n&euml; Shqip&euml;ri: &Ccedil;far&euml; t&euml; Blesh dhe Kur t&euml; Porosis&euml;sh</h2>
+              <p class="b-card-desc">Dy nivele &ccedil;mimesh, asgj&euml; n&euml; mes, dhe dita e fundit q&euml; mund t&euml; porosisni e t&euml; mb&euml;rrij&euml; n&euml; koh&euml;. Pages&euml; n&euml; dor&euml;zim kudo n&euml; Shqip&euml;ri, ose ejani n&euml; Durr&euml;s deri n&euml; 20:30.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-03">Gusht 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/sq/blog/ora-per-cifte.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
+              <h2 class="b-card-title">Or&euml; p&euml;r Çifte: His and Hers nga 124 Euro</h2>
+              <p class="b-card-desc">Katër çifte his and hers p&euml;r dasma dhe p&euml;rvjetorë: sete Hislon t&euml; p&euml;rputhura n&euml; ar dhe çelik me xham safiri, dhe çifte Daniel Klein nga &euro;124.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">Korrik 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/sq/blog/dhurate-ore-durres-sot.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
+              <h2 class="b-card-title">Keni Nevoj&euml; p&euml;r Dhurat&euml; Or&euml; n&euml; Durr&euml;s Sot?</h2>
+              <p class="b-card-desc">Iglisi Watch &euml;sht&euml; hapur e h&euml;n&euml;-shtun&euml; deri n&euml; 20:30. Hyni, zgjidhni nga gjend&euml;ja dhe largohuni me or&euml; gati p&euml;r t&rsquo;u dh&euml;n&euml;. Daniel Klein dhe Navimarine nga &euro;60.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 3 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/sq/blog/dhurata-ore-burra-shqiperi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
+              <h2 class="b-card-title">Dhuratat m&euml; t&euml; Mira Or&euml; p&euml;r Burra n&euml; Shqip&euml;ri (2026)</h2>
+              <p class="b-card-desc">Ide dhuratash praktike p&euml;r burrat q&euml; kan&euml; gjithka - or&euml; q&euml; zgjasin, q&euml; vishen &ccedil;do dit&euml; dhe q&euml; kujtohen.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/sq/blog/dhurata-ore-gra-shqiperi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
+              <h2 class="b-card-title">Dhuratat m&euml; t&euml; Mira Or&euml; p&euml;r Gra n&euml; Shqip&euml;ri (2026)</h2>
+              <p class="b-card-desc">Si t&euml; zgjidhni or&euml; si dhuratë p&euml;r nj&euml; grua - stil, p&euml;rmasa dhe buxhet - me sugjerime konkrete nga selekcioni yn&euml; n&euml; Shqip&euml;ri.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/sq/blog/idete-ore-diplomim.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
+              <h2 class="b-card-title">Ide Or&euml;sh p&euml;r Diplomim: Si t&euml; Zgjidhni Dhuratën e Duhur</h2>
+              <p class="b-card-desc">Dhurata e duhur e diplomimit &euml;sht&euml; ajo q&euml; zgjat vite. Si t&euml; zgjidhni or&euml;n q&euml; diplomuari do ta veshë vërtet - stil, buxhet dhe p&euml;rmasa e ky&ccedil;it.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/sq/blog/ore-dhurate-dasme-shqiperi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Udhëzues Dhuratash</span>
+              <h2 class="b-card-title">Or&euml; si Dhuratë Dasme n&euml; Shqip&euml;ri: Udhëzues i Plot&euml;</h2>
+              <p class="b-card-desc">Pse ora &euml;sht&euml; dhurata ideale e dasmës, cil&euml;t modele funksionojn&euml; p&euml;r burrë dhe grua dhe si t&euml; zgjidhni pa gabuar.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p class="b-label" data-sec="care">Kujdesi i Orës <span class="b-label-count">24</span></p>
+        <div class="b-grid3" data-sec-grid="care">
+          <a data-cat="care" href="/sq/blog/guide-gjeresise-brezit-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Gjer&euml;sia e Ansave t&euml; Or&euml;s: Si t&euml; Matni dhe t&euml; Gjeni Brezin e Duhur</h2>
+              <p class="b-card-desc">Blerja e brezit me madh&euml;si t&euml; gabuar &euml;sht&euml; gabimi m&euml; i zakonsh&euml;m. M&euml;soni si t&euml; matni gjer&euml;sin&euml; e ansave, cilat madh&euml;si p&euml;rdorin modelet m&euml; t&euml; zakonshme dhe &ccedil;far&euml; t&euml; b&euml;ni n&euml; rast dyshimi.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">Qershor 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/riparim-korona-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Riparim Orash</span>
+              <h2 class="b-card-title">Riparimi i Kuror&euml;s s&euml; Or&euml;s: Kur t&euml; Riparohet dhe Kur t&euml; Z&euml;vend&euml;sohet</h2>
+              <p class="b-card-desc">Kurora ra apo rrotullohet pa rezultat? Shpjegojm&euml; kat&euml;r problemet m&euml; t&euml; zakonshme, &ccedil;far&euml; p&euml;rfshin riparimi dhe sa kushton n&euml; Durr&euml;s.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">Qershor 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/sherbimi-casio-shqiperi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Ku t&euml; Servisoni nj&euml; Casio, Seiko ose Citizen n&euml; Shqip&euml;ri</h2>
+              <p class="b-card-desc">Shqip&euml;ria nuk ka qendra t&euml; autorizuara sh&euml;rbimi p&euml;r markat japoneze t&euml; or&euml;ve. Ja ku t&euml; shkoni n&euml; Durr&euml;s, &ccedil;far&euml; kan&euml; nevoj&euml; k&euml;to or&euml; dhe sa kushton.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-21">Qershor 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/nxehtesia-lageshti-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">A Mund t&euml; D&euml;mtohet Ora nga Nxeht&euml;sia dhe Lag&euml;shtia?</h2>
+              <p class="b-card-desc">Nxehtësia dëmton lubrifikantët, deformon garniturat dhe shkakton rrjedhje bateri. Lagështia detyron ujin të kalojë garniturat. Mëso zonat e rrezikut, shenjat dhe 5 mënyra për ta mbrojtur orën.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">Qershor 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/testi-presionit-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Testi i Presionit t&euml; Or&euml;s: &Ccedil;far&euml; &Euml;sht&euml; dhe Kur Nevojitet</h2>
+              <p class="b-card-desc">Vlerësimi i rezistencës ndaj ujit ishte i saktë kur ishte e re. Testi i presionit ju tregon nëse është ende. Mësoni çfarë teston, kur ta bëni dhe pse ndërrimi i baterisë anullon guarnizën.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">Qershor 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/revizionim-ore-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Revizionim i Plot&euml; i Or&euml;s n&euml; Durr&euml;s</h2>
+              <p class="b-card-desc">Revizionim i plot&euml; p&euml;r or&euml; me kuarc dhe mekanike n&euml; Durr&euml;s - &ccedil;montim, pastrim ultrasonik, lubrifikim dhe rregullim. Vler&euml;sim falas dhe k&euml;shill&euml; n&euml; WhatsApp para se t&euml; vish.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/watch-battery-size-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Mirëmbajtja e Orës</span>
+              <h2 class="b-card-title">Madhësitë e Baterive t&euml; Or&euml;ve: SR626SW, SR920SW, CR2032 t&euml; Shpjegun</h2>
+              <p class="b-card-desc">Si t&euml; lexoni kodet e baterive, cila madhësi i p&euml;rshtatet or&euml;s tuaj dhe kur t&euml; ndërroni baterinë.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-19">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/riparoj-apo-blej-ore-te-re.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Duhet Riparoj apo Blej Or&euml; t&euml; Re? Nj&euml; Udhëzues i Sinqert&euml;</h2>
+              <p class="b-card-desc">Ia vlen t&euml; riparohet apo &euml;sht&euml; m&euml; mir&euml; ta z&euml;vend&euml;soni? Udhëzues praktik nga Iglisi Watch n&euml; Durr&euml;s bazuar n&euml; koston e riparimit, llojin dhe vler&euml;n sentimentale.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/zevdendosja-baterise-ores-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Z&euml;vend&euml;simi i Bateris&euml; s&euml; Or&euml;s n&euml; Durr&euml;s - Gati Nd&euml;rkoh&euml; q&euml; Prisni</h2>
+              <p class="b-card-desc">Ejani tek Iglisi Watch n&euml; Durr&euml;s. Gati n&euml; 10-15 minuta, pa takim paraprak, inspektim i garnitur&euml;s i p&euml;rfshir&euml;. &Ccedil;do mark&euml; e mirëpritur.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/zevdendosja-brezit-ores-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Z&euml;vend&euml;simi i Brezit t&euml; Or&euml;s n&euml; Durr&euml;s - Montim n&euml; T&euml; Nj&euml;jt&euml;n Dit&euml;</h2>
+              <p class="b-card-desc">Z&euml;vend&euml;so brezin ose g&euml;rmaxhen tek Iglisi Watch n&euml; Durr&euml;s. L&euml;kur&euml;, gom&euml; dhe metal n&euml; magazin&euml;. Montohet nd&euml;rkoh&euml; q&euml; prisni, pa takim. &Ccedil;do mark&euml;.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/zevdendosja-xhamit-ores-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Xhami i Thyer? Z&euml;vend&euml;simi i Kristalt&euml; n&euml; Durr&euml;s</h2>
+              <p class="b-card-desc">Kristal i &ccedil;ar ose i thyer n&euml; Durr&euml;s? Iglisi Watch z&euml;vend&euml;son kristale minerale dhe safiri t&euml; nj&euml;jt&euml;n dit&euml; n&euml;se kemi m&euml;simin tuaj. Pa takim, &ccedil;do mark&euml;.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/sherbimi-ores-cfare-perfshine.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">&Ccedil;far&euml; P&euml;rfshine Sh&euml;rbimi i Or&euml;s?</h2>
+              <p class="b-card-desc">Çmontim i plot&euml;, pastrim, lubrifikim, kontroll i rezistenc&euml;s ndaj ujit - &ccedil;far&euml; ndodh realisht gjat&euml; nj&euml; sh&euml;rbimi t&euml; nivelit&nbsp;4 n&euml; punëtori.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 10 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Përditësuar Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/riparim-orash-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Riparim</span>
+              <h2 class="b-card-title">Riparim Orash n&euml; Durr&euml;s: &Ccedil;far&euml; t&euml; Prisni</h2>
+              <p class="b-card-desc">Ndërrimi i baterisë, z&euml;v&euml;nd&euml;simi i rripit, xhami i ri, revisioni i plot&euml; - nj&euml; udhëzues i nd&euml;rsh&euml;m mbi kohën, &ccedil;mimin dhe si funksionon punëtoria jon&euml; n&euml; Durrës.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/garancia-ore-te-reja.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">&Ccedil;far&euml; Garanci Vijnë me Or&euml;t e Reja?</h2>
+              <p class="b-card-desc">&Ccedil;far&euml; mbulon realisht garancia, &ccedil;far&euml; jo, &ccedil;far&euml; e anullon dhe si t&euml; paraqisësh nj&euml; k&euml;rkes&euml; - nj&euml; udhëzues i qart&euml; p&euml;r bler&euml;sin e or&euml;ve t&euml; reja.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Përditësuar Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/magnetizimi-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Pse Ora Magnetizohet - dhe Si ta Rregulloni</h2>
+              <p class="b-card-desc">Ora fiton minuta &ccedil;do dit&euml; pa asnjë arsye? Ka shumë mundësi t&euml; jet&euml; magnetizuar. Diagnoza kërkon sekonda. Rregullimi kërkon n&euml;n nj&euml; minut&euml;.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/kurora-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Kurora e Or&euml;s: &Ccedil;far&euml; B&euml;n &Ccedil;do Pozicion dhe Pse R&euml;nd&euml;son</h2>
+              <p class="b-card-desc">Tre pozicionet e kuror&euml;s, si funksionon kurora me vid&euml; dhe pse keqp&euml;rdorimi i kuror&euml;s &euml;sht&euml; shkaku kryesor i d&euml;mtimit nga uji q&euml; shohim.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/guide-mbushjes-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Mirëmbajtja e Orës</span>
+              <h2 class="b-card-title">Si t&euml; Mbushni Or&euml;n: Manual, Automatike &amp; Pozicionet e Kuror&euml;s</h2>
+              <p class="b-card-desc">Teknika e duhur e mbushjes p&euml;r or&euml;t manuale dhe automatike, tre pozicionet e kuror&euml;s t&euml; shpjeguara dhe 5 gabime t&euml; zakonshme q&euml; d&euml;mtojn&euml; l&euml;vizjet.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-29">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/guide-ruajtjes-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Si t&euml; Ruani Or&euml;n Tuaj Si&ccedil; Duhet: Udhëzues i Plot&euml;</h2>
+              <p class="b-card-desc">Ruajtja gabim d&euml;mton lubrifikant&euml;t, magnetizon mekanizmin dhe bën t&euml; rrec&euml;jë rripin. M&euml;soni kushtet optimale - temperatura, lagështia dhe &ccedil;far&euml; t&euml; shmangni.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-23">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/guide-xhamit-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Xhami i Or&euml;s: Akrilik, Mineral dhe Safir - Cili &euml;sht&euml; Ndryshimi?</h2>
+              <p class="b-card-desc">Tre materiale, tre nivele mbrojtjeje. M&euml;so cilat g&euml;rvishten leht&euml;, cilat thyhen dhe &ccedil;far&euml; t&euml; b&euml;sh kur xhami i or&euml;s d&euml;mtohet.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-23">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/guide-bateria-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Sa Zgjat Bateria e Or&euml;s? Shenjat q&euml; Po D&euml;shtron &amp; &Ccedil;far&euml; t&euml; B&euml;ni</h2>
+              <p class="b-card-desc">Baterit&euml; e oreve kuarc zgjasin 1&ndash;3 vjet. M&euml;so 5 shenjat paralajm&euml;ruese, n&euml;se duhet ta ndërrosh vet&euml; dhe &ccedil;far&euml; p&euml;rfshine nd&euml;rrimi profesional.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/shenjat-riparimit-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Mirëmbajtja</span>
+              <h2 class="b-card-title">5 Shenja q&euml; Ora Juaj Ka Nevoj&euml; p&euml;r Riparim, Jo Vetëm Bateri t&euml; Re</h2>
+              <p class="b-card-desc">N&euml;se ora juaj humb koh&euml; pas bateris&euml; s&euml; re, kurora &euml;sht&euml; e vrazhd&euml; ose ka pasur lag&euml;shti - ka nevoj&euml; p&euml;r riparim. M&euml;soni 5 shenjat.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/kujdesi-brezit-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Si t&euml; Kujdeseni p&euml;r Brezin e Or&euml;s: L&euml;kur&euml;, Metal dhe Gom&euml;</h2>
+              <p class="b-card-desc">Brezi &euml;sht&euml; pjesa m&euml; e p&euml;rdorur e &ccedil;do ore. M&euml;soni si t&euml; pastroni dhe kushtoni l&euml;kur&euml;n, si t&euml; mir&euml;mbani byzylykun metalik dhe kur duhet ta z&euml;v&euml;nd&euml;soni.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/rezistenca-ujes-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Rezistenca ndaj Ujit e Or&euml;ve: Kuptoni ATM, BAR dhe Metrat</h2>
+              <p class="b-card-desc">Ora juaj thot&euml; &ldquo;rezistente ndaj ujit&rdquo; - por a mund t&euml; notoni apo laheni me t&euml;? Shumica keqkuptojn&euml; k&euml;to klasifikime dhe d&euml;mtojn&euml; or&euml;n e tyre.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/sq/blog/guide-pastrimit-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Kujdesi i Orës</span>
+              <h2 class="b-card-title">Si t&euml; Pastroni Or&euml;n Tuaj n&euml; Shtp&euml;i: Metoda t&euml; Sigurta p&euml;r &Ccedil;do Material</h2>
+              <p class="b-card-desc">Papastërtia, djers&euml; dhe lyra grumbullohen n&euml; &ccedil;do or&euml;. Pastrimi i rregullt k&euml;rkon m&euml; pak se pes&euml; minuta dhe e mban or&euml;n tuaj si e re.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p class="b-label" data-sec="knowledge">Njohuri Orësh <span class="b-label-count">25</span></p>
+        <div class="b-grid3" data-sec-grid="knowledge">
+          <a data-cat="knowledge" href="/sq/blog/ore-ari-apo-celik.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
+              <h2 class="b-card-title">Ar apo &Ccedil;elik? &Ccedil;far&euml; Do t&euml; Thot&euml; V&euml;rtet Veshja me Ar n&euml; K&euml;t&euml; &Ccedil;mim</h2>
+              <p class="b-card-desc">Asnj&euml; or&euml; n&euml; k&euml;t&euml; &ccedil;mim nuk &euml;sht&euml; prej ari masiv. Sa zgjat veshja, pse nuk riparohet, rregullat q&euml; e zgjasin dhe kur &ccedil;eliku &euml;sht&euml; m&euml; i mir&euml;.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Gusht 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/sa-zgjat-nje-ore-e-lire.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
+              <h2 class="b-card-title">Sa Zgjat nj&euml; Or&euml; 7.000 Lek&euml;? &Ccedil;far&euml; Shohim n&euml; Banak</h2>
+              <p class="b-card-desc">Nga pes&euml; n&euml; dhjet&euml; vjet, dhe mekanizmi nuk &euml;sht&euml; thuajse kurr&euml; ai q&euml; dor&euml;zohet. Radha e v&euml;rtet&euml; e prishjeve dhe sa kushton vërtet nj&euml; dekad&euml; pron&euml;sie.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Gusht 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/cfare-e-ben-oren-te-duket-e-shtrenjte.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
+              <h2 class="b-card-title">&Ccedil;far&euml; e B&euml;n nj&euml; Or&euml; t&euml; Duket e Shtrenjt&euml;: Gjasht&euml; Detaje Q&euml; B&euml;jn&euml; Pun&euml;n</h2>
+              <p class="b-card-desc">Luneta t&euml; val&euml;zuara, bracelete jubilee, ciferblate sunburst. Gjasht&euml; detaje q&euml; duken t&euml; shtrenjta, nga vjen secili dhe sa kushtojn&euml; n&euml; Durr&euml;s, nga 4.900 lek&euml;.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Gusht 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/oret-qe-bene-histori.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Historia e Orëve</span>
+              <h2 class="b-card-title">Or&euml;t q&euml; B&euml;n&euml; Histori: Gjasht&euml; Histori n&euml; nj&euml; Vend</h2>
+              <p class="b-card-desc">Ora e dor&euml;s, H&euml;na, lufta, ajo e pathyeshme dhe trash&euml;gimia. Gjasht&euml; histori t&euml; sona t&euml; mbledhura n&euml; nj&euml; vend, secila me link te artikulli i plot&euml;.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Korrik 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/patek-philippe-brezat.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Historia e Orëve</span>
+              <h2 class="b-card-title">Patek Philippe dhe Ora q&euml; Trash&euml;gohet</h2>
+              <p class="b-card-desc">Fraza m&euml; e famshme n&euml; reklamat e or&euml;ve, pse nj&euml; or&euml; e mir&euml; &euml;sht&euml; trash&euml;gimi e jo nj&euml; vegl&euml;, dhe or&euml;t q&euml; mund t&apos;i dhurosh n&euml; Durr&euml;s p&euml;r t&euml; zgjatur nj&euml; brez.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Korrik 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/oret-ushtarake-hamilton.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Historia e Orëve</span>
+              <h2 class="b-card-title">Hamilton dhe Or&euml;t q&euml; Shkuan n&euml; Luft&euml;</h2>
+              <p class="b-card-desc">Llogoret e vendos&euml;n or&euml;n n&euml; dor&euml;, dhe Hamilton i dha t&euml; gjith&euml; fabrik&euml;n luft&euml;s. Ora ushtarake dhe or&euml;t e forta n&euml; stil fushe q&euml; mund t&apos;i blesh sot.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Korrik 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/historia-g-shock.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Historia e Orëve</span>
+              <h2 class="b-card-title">Historia e G-Shock: Si nj&euml; Or&euml; e Thyer Krijoi nj&euml; t&euml; Pathyeshme</h2>
+              <p class="b-card-desc">Nj&euml; inxhinier, nj&euml; dhurat&euml; e thyer dhe 200 prototipe t&euml; d&euml;shtuar. Si Casio nd&euml;rtoi or&euml;n q&euml; nuk vdes, dhe vlera Casio q&euml; mund ta blesh nga ne sot.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Korrik 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/ora-e-pare-ne-hene.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Historia e Orëve</span>
+              <h2 class="b-card-title">Ora e Par&euml; n&euml; H&euml;n&euml;</h2>
+              <p class="b-card-desc">NASA i testoi or&euml;t derisa u thyen dhe vet&euml;m Omega Speedmaster mbijetoi. Si arriti n&euml; H&euml;n&euml; n&euml; 1969 dhe ndihmoi t&euml; kthente Apollo 13.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Korrik 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/jaeger-lecoultre-historia.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Historia e Orëve</span>
+              <h2 class="b-card-title">Jaeger-LeCoultre: Or&euml;ndreq&euml;si Pas Or&euml;ndreq&euml;sve</h2>
+              <p class="b-card-desc">P&euml;r nj&euml; shekull emrat m&euml; t&euml; fam&euml;sh&euml;m vendosnin mekanizma LeCoultre n&euml; kasat e tyre. Laboratori n&euml; lugin&euml;, 1200 kalibra dhe ora q&euml; kthehet mbrapsht.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Korrik 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/cartier-santos-ora-e-pare-e-dores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Historia e Orëve</span>
+              <h2 class="b-card-title">Cartier Santos: Si Lindi Ora e Par&euml; e Dor&euml;s</h2>
+              <p class="b-card-desc">N&euml; 1904 nj&euml; pilot nuk mund t&euml; shikonte or&euml;n e xhepit gjat&euml; fluturimit, k&euml;shtu Louis Cartier e solli koh&euml;n n&euml; dor&euml;. Historia e or&euml;s nga e cila filloi gjith&ccedil;ka.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Korrik 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/casio-a159wa-legjenda.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri për Orët</span>
+              <h2 class="b-card-title">Casio A159WA: Legjenda 40-Vje&ccedil;are q&euml; Blihet n&euml; Durr&euml;s</h2>
+              <p class="b-card-desc">Ora dixhitale e pandryshuar q&euml; nga fillimi i viteve &rsquo;80: bateri 7-vje&ccedil;are, byzylyk &ccedil;eliku, alarm dhe kronomet&euml;r. Te Iglisi Watch p&euml;r &euro;61.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-10">Korrik 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/llojet-unazave-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Kultura e Orëve</span>
+              <h2 class="b-card-title">Llojet e Unaz&euml;s s&euml; Or&euml;s: nga Unaza e Zhytjes tek Tahimetri</h2>
+              <p class="b-card-desc">Unaza b&euml;n shum&euml; m&euml; tep&euml;r se t&euml; rrethojë xhamin. Mësoni gjasht&euml; llojet kryesore - zhytja, tahimetri, GMT, e l&euml;muar, dydrejtim&euml;she dhe pulsometri - &ccedil;far&euml; b&euml;n secila dhe si ta identifikoni tuajën.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">Qershor 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="knowledge" href="/sq/blog/citizen-eco-drive-shpjeguar.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Kultura e Or&euml;ve</span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Kultura e Orëve</span>
               <h2 class="b-card-title">Citizen Eco-Drive Shpjeguar: Si Funksionon Ngarkimi Solar n&euml; Or&euml;</h2>
               <p class="b-card-desc">Pa nd&euml;rrim baterie, por kondensatori zgjat 10&ndash;15 vjet. M&euml;soni si Eco-Drive kthen drit&euml;n n&euml; energji, &ccedil;far&euml; do t&euml; thot&euml; k&euml;rcimi i 2 sekondave dhe kur k&euml;rkohet mir&euml;mbajtje.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Qershor 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">Qershor 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-</div>
-
-        <p id="blog-empty" aria-live="polite">Nuk u gjet asnjë artikull. Provo me një kërkim ose kategori tjetër.</p>
-
-          <a data-cat="buying" href="/sq/blog/bli-ore-shqiperi.html" class="b-card">
+          <a data-cat="knowledge" href="/sq/blog/komplikime-ores.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Blerje Orësh</span>
-              <h2 class="b-card-title">Si t&euml; Blesh Or&euml; t&euml; Reja n&euml; Shqip&euml;ri - Hislon dhe Navimarine</h2>
-              <p class="b-card-desc">Udhëzues për blerjen e orëve të reja në Shqipëri. Daniel Klein, Navimarine dhe Hislon te Iglisi Watch Durrës - çmime nga &euro;60, garanci 1-vjeçare dhe dërgim kudo nëpërmjet WhatsApp.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maj 2026</span></div>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Kultura e Orëve</span>
+              <h2 class="b-card-title">Komplikime t&euml; Or&euml;s Shpjeguara: nga Data tek Tourbillon-i</h2>
+              <p class="b-card-desc">Data, kronograf, faz&euml; h&euml;nore, GMT dhe tourbillon - &ccedil;far&euml; b&euml;n &ccedil;do komplikim, pse ekziston dhe si ndikon kostot e servisimit afatgjat&euml;.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">Qershor 2026</time></span></div>
               <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
+          <a data-cat="knowledge" href="/sq/blog/llojet-e-oreve-udhezues.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri për Orët</span>
+              <h2 class="b-card-title">Llojet e Or&euml;ve t&euml; Shpjeguara: Zhyt&euml;se, Tank, Pilot&euml; dhe T&euml; Tjer&euml;</h2>
+              <p class="b-card-desc">Zhyt&euml;se, field, pilot, elegante, tank: nga vjen secili lloj ore, p&euml;r &ccedil;far&euml; u nd&euml;rtua dhe cili i p&euml;rshtatet m&euml;nyr&euml;s si jetoni vërtet.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-15">Qershor 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/kriza-kuarci.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
+              <h2 class="b-card-title">Kriza e Kuarcit: Si nj&euml; &Ccedil;ip Japonez Pothuajse Rr&euml;noi Or&euml;b&euml;rjen Zvicerane</h2>
+              <p class="b-card-desc">Nga lëshimi i Seiko Astron n&euml; 1969 te shpikja e Swatch - historia e plot&euml; e kolapsit q&euml; riformatoi ind&uuml;strin&euml; globale t&euml; or&euml;ve.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/mjetet-riparimit.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
+              <h2 class="b-card-title">Mjetet e Riparimit t&euml; Or&euml;ve: &Ccedil;far&euml; P&euml;rdor Realisht Or&euml;tari dhe Pse</h2>
+              <p class="b-card-desc">Hapja e kas&euml;s me mjetin e gabuar g&euml;rvish, prish vul&euml;n e ujit ose d&euml;mton l&euml;vizjen. &Ccedil;do mjet q&euml; p&euml;rdor profesionisti dhe pse ekziston secili.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/levizje-zvicerane-vs-japoneze.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
+              <h2 class="b-card-title">L&euml;vizjet Zvicerane vs Japoneze: &Ccedil;far&euml; Tregon Etiketa Realisht</h2>
+              <p class="b-card-desc">&ldquo;Swiss Made&rdquo; nuk garanton cilësi - garanton origjin&euml;. Ja &ccedil;far&euml; k&euml;rkon etiketa ligjërisht dhe ku japonezja fiton sipas nivelit t&euml; &ccedil;mimit.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 10 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Përditësuar Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/blerja-ores-dore-te-dyte.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
+              <h2 class="b-card-title">Si t&euml; Blini Or&euml; Dor&euml; t&euml; Dyt&euml; Pa u Djepur</h2>
+              <p class="b-card-desc">&Ccedil;farë t&euml; kontrolloni fizikisht, si t&euml; verifikoni &ccedil;mimin, kur t&euml; k&euml;rkoni inspektim nga or&euml;tar dhe pse refuzimi i shitësit &euml;sht&euml; vet&euml; informacion.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/permasat-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Stili i Orës</span>
+              <h2 class="b-card-title">P&euml;rmasat e Kas&euml;s s&euml; Or&euml;s: Si t&euml; Dini N&euml;se i Shkon Ky&ccedil;it</h2>
+              <p class="b-card-desc">Diametri, distanca lug-to-lug dhe trashësia - tre matjet q&euml; realisht p&euml;rcaktojn&euml; sh&euml;ndetin. Tabell&euml; praktike p&euml;r &ccedil;do madhësi ky&ccedil;i.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Përditësuar Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/lumja-ciferblati.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
+              <h2 class="b-card-title">Lumja e Ciferblatit: Lume, Tritium dhe Pse Ora Shk&euml;lqen n&euml; Err&euml;sir&euml;</h2>
+              <p class="b-card-desc">Radium, tritium dhe Super-LumiNova - tre teknologjit&euml; lumineshente, sher&euml; profili i tyre i sigurisë dhe si t&euml; identifikoni &ccedil;far&euml; ka or&euml;t juaj.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Prill 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/rezerva-energjise.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
+              <h2 class="b-card-title">Pse Ora Automatike Ndalet N&euml;se Nuk e Vishni: Rezerva e Energjis&euml;</h2>
+              <p class="b-card-desc">Tabela e rezervave t&euml; energjis&euml; sipas llojit t&euml; l&euml;vizjes, pse mbushja automatike nuk &euml;sht&euml; gjithmon&euml; e mjaftueshme dhe si t&euml; rregulloni or&euml;n pas ndalimit.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 10 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Përditësuar Maj 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/si-dalloj-oren-falsifikuar.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri Orësh</span>
+              <h2 class="b-card-title">Si t&euml; Dalloni Or&euml;n Falsifikuar: 8 Kontrolle t&euml; Ekspert&euml;ve</h2>
+              <p class="b-card-desc">Nga pesha e kas&euml;s te ndjesja e kuror&euml;s - 8 kontrollet fizike q&euml; zbulojn&euml; nj&euml; falsifikim pa pajisje t&euml; specializuara.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-29">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/guide-rasteve-ores.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Stili i Orës</span>
+              <h2 class="b-card-title">Or&euml; Ceremoniale, Sportive &amp; Casual: &Ccedil;far&euml; t&euml; Vishni p&euml;r &Ccedil;do Rast</h2>
+              <p class="b-card-desc">Or&euml; ceremoniale p&euml;r nj&euml; dasme, sportive p&euml;r palestr&euml;, zhyt&euml;se p&euml;r fundjavë - zgjed&euml;hja e or&euml;s s&euml; duhur p&euml;r rastin &euml;sht&euml; m&euml; e thjesht&euml; se sa mendoni.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-29">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/sq/blog/mekanik-vs-kuarc.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Njohuri për Orët</span>
+              <h2 class="b-card-title">Mekanik vs Kuarc: Cili &euml;sht&euml; Ndryshimi dhe Cilin t&euml; Zgjidhni?</h2>
+              <p class="b-card-desc">Kuarci fiton n&euml; saktësi dhe mir&euml;mbajtje t&euml; ul&euml;t. Mekaniku fiton n&euml; artizanat dhe vler&euml; koleksioni. Nj&euml; krahasim i nd&euml;rsh&euml;m p&euml;r t&euml; zgjedhur or&euml;n e duhur.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-23">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p class="b-label" data-sec="keys">Shërbime Çelësash <span class="b-label-count">1</span></p>
+        <div class="b-grid3" data-sec-grid="keys">
+          <a data-cat="keys" href="/sq/blog/guide-kopjim-celesi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-key" aria-hidden="true"></i> Shërbime Çelësash</span>
+              <h2 class="b-card-title">Si Funksionon Kopjimi i &Ccedil;elësave: Llojet, &Ccedil;far&euml; t&euml; Sillni &amp; &Ccedil;far&euml; t&euml; Prisni</h2>
+              <p class="b-card-desc">B&euml;rja e nj&euml; kopje k&euml;rkon m&euml; pak se 5 minuta - n&euml;se dini &ccedil;far&euml; t&euml; sillni. M&euml;soni cil&euml;t &ccedil;elësa mund t&euml; kopjohen dhe sa kopje duhet t&euml; b&euml;ni.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min lexim</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Mars 2026</time></span></div>
+              <span class="b-card-link">Lexo artikullin <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p id="blog-empty">Nuk u gjet asnjë artikull. Provo me një kërkim ose kategori tjetër.</p>
 
       </div>
     </section>
@@ -1583,6 +998,6 @@
   </footer>
 
   <script src="/shared.js?v=22" defer></script>
-  <script src="/blog-search.js?v=2" defer></script>
+  <script src="/blog-search.js?v=3" defer></script>
 </body>
 </html>

@@ -48,9 +48,7 @@
 .nav-drawer{display:none}
 #nav-toggle:checked~.nav-drawer{display:block!important}
 
-    /* === Magazine Blog Layout === */
     .blog-wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:2rem}
-    /* Featured card */
     .b-feat{display:grid;grid-template-columns:5.5rem 1fr;gap:2.5rem;align-items:center;background:linear-gradient(135deg,#18110a 0%,#2c1d0d 60%,#1a1208 100%);border-radius:1.5rem;padding:2.5rem 3rem;text-decoration:none;color:#fff;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;box-shadow:0 6px 40px rgba(0,0,0,.22)}
     .b-feat::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:var(--accent-gold);border-radius:6px 0 0 6px}
     .b-feat::after{content:'';position:absolute;inset:0;border-radius:1.5rem;border:1px solid rgba(180,148,92,.18);pointer-events:none}
@@ -63,18 +61,14 @@
     .b-feat-meta i{color:rgba(180,148,92,.7)}
     .b-feat-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:700;color:var(--accent-gold);border:1.5px solid rgba(180,148,92,.4);padding:.55rem 1.3rem;border-radius:2rem;transition:background .2s,border-color .2s}
     .b-feat:hover .b-feat-cta{background:rgba(180,148,92,.12);border-color:rgba(180,148,92,.65)}
-    /* Section label */
     .b-label{display:flex;align-items:center;gap:1rem;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#bbb;margin:0}
     .b-label::after{content:'';flex:1;height:1px;background:#e5ddd3}
-    /* Row of 2 */
-    .b-row2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-    /* Grid of 3 */
+    .b-label-count{background:rgba(180,148,92,.14);color:var(--accent-gold-accessible);padding:.2rem .6rem;border-radius:1rem;font-size:.65rem;font-weight:700;letter-spacing:normal}
+    .b-count{text-align:center;font-size:.8rem;color:var(--text-secondary);margin:0}
     .b-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-    /* Regular card */
     .b-card{background:#fff;border-radius:1.1rem;box-shadow:0 2px 14px rgba(0,0,0,.07);display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s,border-top-color .2s;border-top:3px solid transparent;overflow:hidden}
     .b-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.12);border-top-color:var(--accent-gold)}
     .b-card-body{padding:1.4rem 1.5rem;flex:1;display:flex;flex-direction:column}
-    .b-card-num{font-size:1.75rem;font-weight:900;color:rgba(180,148,92,.25);font-family:'Cormorant Garamond',serif;line-height:1;margin-bottom:.25rem}
     .b-card-cat{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:.6rem}
     .b-card-title{font-size:1.05rem;font-weight:800;line-height:1.3;margin-bottom:.5rem;color:var(--text-primary);flex:1}
     .b-card-desc{font-size:.83rem;color:var(--text-secondary);line-height:1.55;margin-bottom:.85rem}
@@ -83,24 +77,19 @@
     .b-card-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;font-weight:700;color:var(--accent-gold);margin-top:auto}
     .b-card-link i{font-size:.65rem;transition:transform .2s}
     .b-card:hover .b-card-link i{transform:translateX(3px)}
-    /* Responsive */
     @media(max-width:960px){.b-grid3{grid-template-columns:1fr 1fr}.b-feat{grid-template-columns:1fr;padding:2rem}.b-feat-num{display:none}}
-    @media(max-width:640px){.b-row2,.b-grid3{grid-template-columns:1fr}}
-    /* Search bar */
+    @media(max-width:640px){.b-grid3{grid-template-columns:1fr}}
     .blog-search-wrap{position:relative;max-width:440px;margin:0 auto 1.75rem}
     .blog-search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:rgba(180,148,92,.7);font-size:.95rem;pointer-events:none}
     .blog-search-input{width:100%;padding:.7rem 1rem .7rem 2.6rem;background:rgba(255,255,255,.08);border:1.5px solid rgba(180,148,92,.3);border-radius:2rem;color:#fff;font-size:.9rem;outline:none;transition:border-color .2s,background .2s;box-sizing:border-box}
     .blog-search-input::placeholder{color:rgba(255,255,255,.38)}
     .blog-search-input:focus{border-color:rgba(180,148,92,.7);background:rgba(255,255,255,.12)}
     .blog-search-input::-webkit-search-cancel-button{cursor:pointer;filter:invert(1)opacity(.5)}
-    /* Category filter */
     .blog-cats{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;max-width:700px;margin:0 auto 1.75rem}
     .b-cat-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem 1.05rem;border-radius:2rem;border:1.5px solid rgba(180,148,92,.45);background:rgba(255,255,255,.11);color:rgba(255,255,255,.82);font-size:.75rem;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:all .18s;white-space:nowrap;line-height:1;font-family:inherit}
     .b-cat-btn:hover{border-color:rgba(180,148,92,.6);background:rgba(180,148,92,.12);color:#fff}
     .b-cat-btn[aria-pressed="true"]{background:var(--accent-gold);border-color:var(--accent-gold);color:#18110a}
     #blog-empty{display:none;text-align:center;padding:3rem 1rem;color:var(--text-secondary);font-size:.95rem}
-  
-    #blog-empty{text-align:center;padding:3rem 1rem;color:rgba(255,255,255,.6);font-size:1.05rem}
     #blog-empty::before{content:'\f002';font-family:'Font Awesome 6 Free';font-weight:900;display:block;font-size:2rem;margin-bottom:.75rem;opacity:.4}
 </style>
   <script type="application/ld+json">
@@ -108,503 +97,7 @@
     {"@type":"ListItem","position":1,"name":"Home","item":"https://watch.al/en/"},
     {"@type":"ListItem","position":2,"name":"Blog","item":"https://watch.al/en/blog/"}
   ]}</script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Watch Repair Blog & Key Duplication Guide | Iglisi Watch",
-    "url": "https://watch.al/en/blog/",
-    "inLanguage": "en",
-    "numberOfItems": 80,
-    "mainEntity": {
-      "@type": "ItemList",
-      "name": "Watch Repair Blog & Key Duplication Guide | Iglisi Watch",
-      "numberOfItems": 80,
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Casio vs Citizen Watch: Which Is Worth Buying?",
-          "url": "https://watch.al/en/blog/casio-vs-citizen.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Need a Watch Gift in Durrës Today? We're Open Until 20:30",
-          "url": "https://watch.al/en/blog/watch-gift-durres-same-day.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Should I Repair My Watch or Buy a New One? An Honest Guide",
-          "url": "https://watch.al/en/blog/repair-or-buy-new-watch-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "How Long Does a Watch Battery Last? Signs It's Dying & What To Do",
-          "url": "https://watch.al/en/blog/watch-battery-guide.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "name": "5 Signs Your Watch Needs a Service, Not Just a New Battery",
-          "url": "https://watch.al/en/blog/watch-service-signs.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 6,
-          "name": "How to Care for Your Watch Strap: Leather, Metal & Rubber Guide",
-          "url": "https://watch.al/en/blog/watch-strap-care.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 7,
-          "name": "How Key Duplication Works: Types, What to Bring & What to Expect",
-          "url": "https://watch.al/en/blog/key-duplication-guide.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 8,
-          "name": "Watch Water Resistance Ratings Explained: ATM, BAR & What They Really Mean",
-          "url": "https://watch.al/en/blog/watch-water-resistance.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 9,
-          "name": "How to Clean Your Watch at Home: Safe Methods for Every Material",
-          "url": "https://watch.al/en/blog/watch-cleaning-guide.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 10,
-          "name": "How to Store Your Watch Properly: A Complete Guide",
-          "url": "https://watch.al/en/blog/watch-storage-guide.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 11,
-          "name": "Mechanical vs Quartz Watches: What's the Difference and Which Should You Choose?",
-          "url": "https://watch.al/en/blog/mechanical-vs-quartz.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 12,
-          "name": "Watch Crystals Explained: Acrylic, Mineral, and Sapphire - What's the Difference?",
-          "url": "https://watch.al/en/blog/watch-crystal-guide.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 13,
-          "name": "How to Wind Your Watch: Manual, Automatic & Setting the Crown",
-          "url": "https://watch.al/en/blog/watch-winding-guide.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 14,
-          "name": "How to Spot a Fake Watch: 8 Things Experts Check First",
-          "url": "https://watch.al/en/blog/spot-fake-watch.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 15,
-          "name": "Dress, Sport & Casual Watches: What to Wear for Every Occasion",
-          "url": "https://watch.al/en/blog/watch-occasion-guide.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 16,
-          "name": "The Quartz Crisis: Japan vs Swiss Watchmaking",
-          "url": "https://watch.al/en/blog/quartz-crisis.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 17,
-          "name": "Watch Repair Tools: What Professionals Use",
-          "url": "https://watch.al/en/blog/watch-repair-tools.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 18,
-          "name": "Watch Magnetisation: Causes and How to Fix It",
-          "url": "https://watch.al/en/blog/watch-magnetisation.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 19,
-          "name": "Swiss vs Japanese Watch Movements Compared",
-          "url": "https://watch.al/en/blog/swiss-vs-japanese-movements.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 20,
-          "name": "Buying a Second-Hand Watch: What to Check",
-          "url": "https://watch.al/en/blog/buying-second-hand-watch.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 21,
-          "name": "Watch Case Sizes: How to Find the Right Fit",
-          "url": "https://watch.al/en/blog/watch-case-sizes.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 22,
-          "name": "Luminous Dials: From Radium to Super-LumiNova",
-          "url": "https://watch.al/en/blog/luminous-dials-explained.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 23,
-          "name": "Watch Power Reserve: What It Is and Why It Matters",
-          "url": "https://watch.al/en/blog/watch-power-reserve.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 24,
-          "name": "The Watch Crown: What Every Position Does",
-          "url": "https://watch.al/en/blog/watch-crown-explained.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 25,
-          "name": "Best Watches Under €200 in Albania (2026)",
-          "url": "https://watch.al/en/blog/best-watches-under-200-albania.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 26,
-          "name": "Where to Buy a Watch in Durrës: An Honest Guide",
-          "url": "https://watch.al/en/blog/where-to-buy-watch-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 27,
-          "name": "Hislon vs Navimarine: Which Watch Brand Is Right for You?",
-          "url": "https://watch.al/en/blog/hislon-vs-navimarine.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 28,
-          "name": "Buy Watches Anywhere in Albania - Tirana, Vlorë, Shkodër & More",
-          "url": "https://watch.al/en/blog/where-to-buy-watch-tirana.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 29,
-          "name": "Is It Safe to Buy a Watch on Instagram in Albania?",
-          "url": "https://watch.al/en/blog/buy-watch-instagram-albania.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 30,
-          "name": "Best Budget Watches in Durrës Under €100",
-          "url": "https://watch.al/en/blog/best-budget-watches-durres-under-100.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 31,
-          "name": "Hislon Classic Review: Is It Worth It?",
-          "url": "https://watch.al/en/blog/hislon-classic-review.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 32,
-          "name": "Which Navimarine Should You Buy?",
-          "url": "https://watch.al/en/blog/which-navimarine-to-buy.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 33,
-          "name": "Best First Watch for a Teenager",
-          "url": "https://watch.al/en/blog/first-watch-teenager.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 34,
-          "name": "Is It Safe to Buy a Watch Without Trying It On?",
-          "url": "https://watch.al/en/blog/buy-watch-without-trying-on.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 35,
-          "name": "Best Watch Gifts for Men in Albania",
-          "url": "https://watch.al/en/blog/best-watch-gifts-men-albania.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 36,
-          "name": "Best Watch Gifts for Women in Albania",
-          "url": "https://watch.al/en/blog/best-watch-gifts-women-albania.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 37,
-          "name": "Graduation Watch Ideas Under €200",
-          "url": "https://watch.al/en/blog/graduation-watch-ideas.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 38,
-          "name": "Watch as a Wedding Gift in Albania",
-          "url": "https://watch.al/en/blog/watch-wedding-gift-albania.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 39,
-          "name": "What Does a Watch Service Actually Include?",
-          "url": "https://watch.al/en/blog/what-watch-service-includes.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 40,
-          "name": "Watch Repair in Durrës: What to Expect",
-          "url": "https://watch.al/en/blog/watch-repair-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 41,
-          "name": "What Warranty Do New Watches Come With?",
-          "url": "https://watch.al/en/blog/watch-warranty-guide.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 42,
-          "name": "Watch Battery Replacement in Durrës - Done While You Wait",
-          "url": "https://watch.al/en/blog/watch-battery-replacement-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 43,
-          "name": "Watch Strap Replacement in Durrës - Same-Day Fitting",
-          "url": "https://watch.al/en/blog/watch-strap-replacement-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 44,
-          "name": "Cracked Watch Glass? Crystal Replacement in Durrës",
-          "url": "https://watch.al/en/blog/watch-crystal-replacement-durres.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 45,
-          "url": "https://watch.al/en/blog/seiko-vs-citizen-vs-casio.html",
-          "name": "Seiko vs Citizen vs Casio: Which Japanese Watch Brand Is Worth Buying?"
-        },
-        {
-          "@type": "ListItem",
-          "position": 46,
-          "url": "https://watch.al/en/blog/watch-battery-size-guide.html",
-          "name": "Watch Battery Size Guide: How to Find the Right Battery for Your Watch"
-        },
-        {
-          "@type": "ListItem",
-          "position": 47,
-          "url": "https://watch.al/en/blog/watch-heat-humidity-damage.html",
-          "name": "Can Heat and Humidity Damage Your Watch?"
-        },
-        {
-          "@type": "ListItem",
-          "position": 48,
-          "url": "https://watch.al/en/blog/watch-pressure-test-explained.html",
-          "name": "Watch Pressure Testing Explained: What It Is and When You Need It"
-        },
-        {
-          "@type": "ListItem",
-          "position": 49,
-          "url": "https://watch.al/en/blog/watch-complications-explained.html",
-          "name": "Watch Complications Explained: From Date Windows to Tourbillons"
-        },
-        {
-          "@type": "ListItem",
-          "position": 50,
-          "url": "https://watch.al/en/blog/smartwatch-vs-traditional-watch.html",
-          "name": "Smartwatch vs Traditional Watch: Which Should You Buy?"
-        },
-        {
-          "@type": "ListItem",
-          "position": 51,
-          "url": "https://watch.al/en/blog/watch-as-investment-guide.html",
-          "name": "Is a Watch a Good Investment? What to Buy and What to Avoid"
-        },
-        {
-          "@type": "ListItem",
-          "position": 52,
-          "url": "https://watch.al/en/blog/watch-service-durres.html",
-          "name": "Complete Watch Service & Overhaul in Durrës"
-        },
-        {
-          "@type": "ListItem",
-          "position": 53,
-          "url": "https://watch.al/en/blog/buy-watches-albania.html",
-          "name": "How to Buy New Watches in Albania"
-        },
-        {
-          "@type": "ListItem",
-          "position": 54,
-          "url": "https://watch.al/en/blog/casio-a159wa-legend.html",
-          "name": "The Casio A159WA: a 40-Year Legend You Can Buy in Durrës"
-        },
-        {
-          "@type": "ListItem",
-          "position": 55,
-          "url": "https://watch.al/en/blog/cartier-santos-first-wristwatch.html",
-          "name": "Cartier Santos: How the First Wristwatch Was Born"
-        },
-        {
-          "@type": "ListItem",
-          "position": 56,
-          "url": "https://watch.al/en/blog/jaeger-lecoultre-history.html",
-          "name": "Jaeger-LeCoultre: the Watchmaker Behind the Watchmakers"
-        },
-        {
-          "@type": "ListItem",
-          "position": 57,
-          "url": "https://watch.al/en/blog/first-watch-on-the-moon.html",
-          "name": "The First Watch on the Moon"
-        },
-        {
-          "@type": "ListItem",
-          "position": 58,
-          "url": "https://watch.al/en/blog/g-shock-history.html",
-          "name": "The G-Shock Story: How a Broken Watch Built an Unbreakable One"
-        },
-        {
-          "@type": "ListItem",
-          "position": 59,
-          "url": "https://watch.al/en/blog/hamilton-military-watches.html",
-          "name": "Hamilton and the Watches That Went to War"
-        },
-        {
-          "@type": "ListItem",
-          "position": 60,
-          "url": "https://watch.al/en/blog/patek-philippe-generations.html",
-          "name": "Patek Philippe and the Watch You Pass Down"
-        },
-        {
-          "@type": "ListItem",
-          "position": 61,
-          "url": "https://watch.al/en/blog/watch-history-stories.html",
-          "name": "The Watches That Made History: Six Stories in One Place"
-        },
-        {
-          "@type": "ListItem",
-          "position": 62,
-          "url": "https://watch.al/en/blog/watch-types-guide.html",
-          "name": "Watch Types Explained: Divers, Tanks, Pilots and More"
-        },
-        {
-          "@type": "ListItem",
-          "position": 63,
-          "url": "https://watch.al/en/blog/summer-sea-watch-guide.html",
-          "name": "Watches for the Albanian Summer: Beach, Sweat and Sea"
-        },
-        {
-          "@type": "ListItem",
-          "position": 64,
-          "url": "https://watch.al/en/blog/are-daniel-klein-watches-good.html",
-          "name": "Are Daniel Klein Watches Any Good? A Watchmaker's Honest Answer"
-        },
-        {
-          "@type": "ListItem",
-          "position": 65,
-          "url": "https://watch.al/en/blog/watch-price-tiers-60-190.html",
-          "name": "60 vs 90 vs 190 Euro: What More Money Actually Buys in a Watch"
-        },
-        {
-          "@type": "ListItem",
-          "position": 66,
-          "url": "https://watch.al/en/blog/matching-watches-for-couples.html",
-          "name": "Matching Watches for Couples: His and Hers Pairs from 124 Euro"
-        },
-        {
-          "@type": "ListItem",
-          "position": 67,
-          "url": "https://watch.al/en/blog/watches-i-would-buy-myself.html",
-          "name": "The 5 Watches I Would Buy From My Own Shop"
-        },
-        {
-          "@type": "ListItem",
-          "position": 68,
-          "url": "https://watch.al/en/blog/mens-watches-albania.html",
-          "name": "Men's Watches in Albania: What We Stock and What It Costs"
-        },
-        {
-          "@type": "ListItem",
-          "position": 69,
-          "url": "https://watch.al/en/blog/watches-under-10000-lek.html",
-          "name": "Watches Under 10,000 Lek: What Your Money Actually Buys"
-        },
-        {
-          "@type": "ListItem",
-          "position": 70,
-          "url": "https://watch.al/en/blog/womens-watches-albania.html",
-          "name": "Women's Watches in Albania: What We Stock and What It Costs"
-        },
-        {
-          "@type": "ListItem",
-          "position": 71,
-          "url": "https://watch.al/en/blog/casio-service-albania.html",
-          "name": "Where to Service a Casio, Seiko or Citizen in Albania"
-        },
-        {
-          "@type": "ListItem",
-          "position": 72,
-          "url": "https://watch.al/en/blog/citizen-eco-drive-explained.html",
-          "name": "Citizen Eco-Drive Explained: How Solar Charging Works in Watches"
-        },
-        {
-          "@type": "ListItem",
-          "position": 73,
-          "url": "https://watch.al/en/blog/watch-bezel-types-explained.html",
-          "name": "Watch Bezel Types Explained: From Dive Bezels to Tachymeters"
-        },
-        {
-          "@type": "ListItem",
-          "position": 74,
-          "url": "https://watch.al/en/blog/watch-crown-repair.html",
-          "name": "Watch Crown Repair: When to Fix and When to Replace"
-        },
-        {
-          "@type": "ListItem",
-          "position": 75,
-          "url": "https://watch.al/en/blog/watch-strap-lug-width-guide.html",
-          "name": "Watch Strap Lug Width: How to Measure and Find the Right Size"
-        },
-        {
-          "@type": "ListItem",
-          "position": 76,
-          "url": "https://watch.al/en/blog/new-year-watch-gifts-albania.html",
-          "name": "New Year Watch Gifts in Albania: What to Buy and When to Order"
-        },
-        {
-          "@type": "ListItem",
-          "position": 77,
-          "url": "https://watch.al/en/blog/what-makes-a-watch-look-expensive.html",
-          "name": "What Makes a Watch Look Expensive: Six Details That Do the Work"
-        },
-        {
-          "@type": "ListItem",
-          "position": 78,
-          "url": "https://watch.al/en/blog/how-long-does-a-cheap-watch-last.html",
-          "name": "How Long Does a 70 Euro Watch Last? What We See on the Bench"
-        },
-        {
-          "@type": "ListItem",
-          "position": 79,
-          "url": "https://watch.al/en/blog/gold-or-steel-watch.html",
-          "name": "Gold or Steel? What Plated Gold Really Means at This Price"
-        },
-        {
-          "@type": "ListItem",
-          "position": 80,
-          "url": "https://watch.al/en/blog/chronograph-vs-three-hand-watch.html",
-          "name": "Chronograph or Three Hands? What Those Subdials Actually Do"
-        }
-      ]
-    }
-  }
-  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Watch Repair Blog & Key Duplication Guide | Iglisi Watch", "url": "https://watch.al/en/blog/", "inLanguage": "en", "numberOfItems": 80, "mainEntity": {"@type": "ItemList", "name": "Watch Repair Blog & Key Duplication Guide | Iglisi Watch", "numberOfItems": 80, "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Watches Under 10,000 Lek: What Your Money Actually Buys", "url": "https://watch.al/en/blog/watches-under-10000-lek.html"}, {"@type": "ListItem", "position": 2, "name": "Chronograph or Three Hands? What Those Subdials Actually Do", "url": "https://watch.al/en/blog/chronograph-vs-three-hand-watch.html"}, {"@type": "ListItem", "position": 3, "name": "Women's Watches in Albania: What We Stock and What It Costs", "url": "https://watch.al/en/blog/womens-watches-albania.html"}, {"@type": "ListItem", "position": 4, "name": "Men's Watches in Albania: What We Stock and What It Costs", "url": "https://watch.al/en/blog/mens-watches-albania.html"}, {"@type": "ListItem", "position": 5, "name": "The 5 Watches I Would Buy From My Own Shop", "url": "https://watch.al/en/blog/watches-i-would-buy-myself.html"}, {"@type": "ListItem", "position": 6, "name": "60 vs 90 vs 190 Euro: What More Money Actually Buys in a Watch", "url": "https://watch.al/en/blog/watch-price-tiers-60-190.html"}, {"@type": "ListItem", "position": 7, "name": "Are Daniel Klein Watches Any Good? A Watchmaker's Honest Answer", "url": "https://watch.al/en/blog/are-daniel-klein-watches-good.html"}, {"@type": "ListItem", "position": 8, "name": "Watches for the Albanian Summer: Beach, Sweat and Sea", "url": "https://watch.al/en/blog/summer-sea-watch-guide.html"}, {"@type": "ListItem", "position": 9, "name": "Smartwatch vs Traditional Watch: Which Should You Buy?", "url": "https://watch.al/en/blog/smartwatch-vs-traditional-watch.html"}, {"@type": "ListItem", "position": 10, "name": "Is a Watch a Good Investment? What to Buy and What to Avoid", "url": "https://watch.al/en/blog/watch-as-investment-guide.html"}, {"@type": "ListItem", "position": 11, "name": "How to Buy New Watches in Albania", "url": "https://watch.al/en/blog/buy-watches-albania.html"}, {"@type": "ListItem", "position": 12, "name": "Seiko vs Citizen vs Casio: Which Japanese Watch Is Worth Buying?", "url": "https://watch.al/en/blog/seiko-vs-citizen-vs-casio.html"}, {"@type": "ListItem", "position": 13, "name": "Casio vs Citizen Watch: Which Is Worth Buying?", "url": "https://watch.al/en/blog/casio-vs-citizen.html"}, {"@type": "ListItem", "position": 14, "name": "Hislon Classic Review: Is It Worth It?", "url": "https://watch.al/en/blog/hislon-classic-review.html"}, {"@type": "ListItem", "position": 15, "name": "Which Navimarine Should You Buy?", "url": "https://watch.al/en/blog/which-navimarine-to-buy.html"}, {"@type": "ListItem", "position": 16, "name": "Best First Watch for a Teenager", "url": "https://watch.al/en/blog/first-watch-teenager.html"}, {"@type": "ListItem", "position": 17, "name": "Is It Safe to Buy a Watch Without Trying It On?", "url": "https://watch.al/en/blog/buy-watch-without-trying-on.html"}, {"@type": "ListItem", "position": 18, "name": "Is It Safe to Buy a Watch on Instagram in Albania?", "url": "https://watch.al/en/blog/buy-watch-instagram-albania.html"}, {"@type": "ListItem", "position": 19, "name": "Best Budget Watches in Durrës Under €100", "url": "https://watch.al/en/blog/best-budget-watches-durres-under-100.html"}, {"@type": "ListItem", "position": 20, "name": "Buy Watches Anywhere in Albania", "url": "https://watch.al/en/blog/where-to-buy-watch-tirana.html"}, {"@type": "ListItem", "position": 21, "name": "Best Watches Under €200 in Albania (2026)", "url": "https://watch.al/en/blog/best-watches-under-200-albania.html"}, {"@type": "ListItem", "position": 22, "name": "Where to Buy a Watch in Durrës: An Honest Guide", "url": "https://watch.al/en/blog/where-to-buy-watch-durres.html"}, {"@type": "ListItem", "position": 23, "name": "Hislon vs Navimarine: Which Watch Brand Is Right for You?", "url": "https://watch.al/en/blog/hislon-vs-navimarine.html"}, {"@type": "ListItem", "position": 24, "name": "New Year Watch Gifts in Albania: What to Buy and When to Order", "url": "https://watch.al/en/blog/new-year-watch-gifts-albania.html"}, {"@type": "ListItem", "position": 25, "name": "Matching Watches for Couples: His and Hers Pairs from 124 Euro", "url": "https://watch.al/en/blog/matching-watches-for-couples.html"}, {"@type": "ListItem", "position": 26, "name": "Need a Watch Gift in Durrës Today? Open Until 20:30", "url": "https://watch.al/en/blog/watch-gift-durres-same-day.html"}, {"@type": "ListItem", "position": 27, "name": "Best Watch Gifts for Men in Albania", "url": "https://watch.al/en/blog/best-watch-gifts-men-albania.html"}, {"@type": "ListItem", "position": 28, "name": "Best Watch Gifts for Women in Albania", "url": "https://watch.al/en/blog/best-watch-gifts-women-albania.html"}, {"@type": "ListItem", "position": 29, "name": "Graduation Watch Ideas Under €200", "url": "https://watch.al/en/blog/graduation-watch-ideas.html"}, {"@type": "ListItem", "position": 30, "name": "Watch as a Wedding Gift in Albania", "url": "https://watch.al/en/blog/watch-wedding-gift-albania.html"}, {"@type": "ListItem", "position": 31, "name": "Watch Strap Lug Width: How to Measure and Find the Right Size", "url": "https://watch.al/en/blog/watch-strap-lug-width-guide.html"}, {"@type": "ListItem", "position": 32, "name": "Watch Crown Repair: When to Fix and When to Replace", "url": "https://watch.al/en/blog/watch-crown-repair.html"}, {"@type": "ListItem", "position": 33, "name": "Where to Service a Casio, Seiko or Citizen in Albania", "url": "https://watch.al/en/blog/casio-service-albania.html"}, {"@type": "ListItem", "position": 34, "name": "Can Heat and Humidity Damage Your Watch?", "url": "https://watch.al/en/blog/watch-heat-humidity-damage.html"}, {"@type": "ListItem", "position": 35, "name": "Watch Pressure Testing Explained: What It Is and When You Need It", "url": "https://watch.al/en/blog/watch-pressure-test-explained.html"}, {"@type": "ListItem", "position": 36, "name": "Complete Watch Service & Overhaul in Durrës", "url": "https://watch.al/en/blog/watch-service-durres.html"}, {"@type": "ListItem", "position": 37, "name": "Watch Battery Size Guide: SR626SW, SR920SW, CR2032 Explained", "url": "https://watch.al/en/blog/watch-battery-size-guide.html"}, {"@type": "ListItem", "position": 38, "name": "Should I Repair My Watch or Buy a New One? An Honest Guide", "url": "https://watch.al/en/blog/repair-or-buy-new-watch-durres.html"}, {"@type": "ListItem", "position": 39, "name": "Watch Battery Replacement in Durrës: Done While You Wait", "url": "https://watch.al/en/blog/watch-battery-replacement-durres.html"}, {"@type": "ListItem", "position": 40, "name": "Watch Strap Replacement in Durrës: Same-Day Fitting", "url": "https://watch.al/en/blog/watch-strap-replacement-durres.html"}, {"@type": "ListItem", "position": 41, "name": "Cracked Watch Glass? Crystal Replacement in Durrës", "url": "https://watch.al/en/blog/watch-crystal-replacement-durres.html"}, {"@type": "ListItem", "position": 42, "name": "What Does a Watch Service Actually Include?", "url": "https://watch.al/en/blog/what-watch-service-includes.html"}, {"@type": "ListItem", "position": 43, "name": "Watch Repair in Durrës: What to Expect", "url": "https://watch.al/en/blog/watch-repair-durres.html"}, {"@type": "ListItem", "position": 44, "name": "What Warranty Do New Watches Come With?", "url": "https://watch.al/en/blog/watch-warranty-guide.html"}, {"@type": "ListItem", "position": 45, "name": "Watch Magnetisation: What It Is, What Causes It, and How It's Fixed", "url": "https://watch.al/en/blog/watch-magnetisation.html"}, {"@type": "ListItem", "position": 46, "name": "The Watch Crown Explained: What Every Position Does and Why It Matters", "url": "https://watch.al/en/blog/watch-crown-explained.html"}, {"@type": "ListItem", "position": 47, "name": "How to Wind Your Watch: Manual, Automatic & Setting the Crown", "url": "https://watch.al/en/blog/watch-winding-guide.html"}, {"@type": "ListItem", "position": 48, "name": "How to Store Your Watch Properly: A Complete Guide", "url": "https://watch.al/en/blog/watch-storage-guide.html"}, {"@type": "ListItem", "position": 49, "name": "Watch Crystals Explained: Acrylic, Mineral, and Sapphire - What’s the Difference?", "url": "https://watch.al/en/blog/watch-crystal-guide.html"}, {"@type": "ListItem", "position": 50, "name": "How Long Does a Watch Battery Last? Signs It’s Dying & What To Do", "url": "https://watch.al/en/blog/watch-battery-guide.html"}, {"@type": "ListItem", "position": 51, "name": "5 Signs Your Watch Needs a Service, Not Just a New Battery", "url": "https://watch.al/en/blog/watch-service-signs.html"}, {"@type": "ListItem", "position": 52, "name": "How to Care for Your Watch Strap: Leather, Metal & Rubber Guide", "url": "https://watch.al/en/blog/watch-strap-care.html"}, {"@type": "ListItem", "position": 53, "name": "Watch Water Resistance Ratings Explained: ATM, BAR & What They Really Mean", "url": "https://watch.al/en/blog/watch-water-resistance.html"}, {"@type": "ListItem", "position": 54, "name": "How to Clean Your Watch at Home: Safe Methods for Every Material", "url": "https://watch.al/en/blog/watch-cleaning-guide.html"}, {"@type": "ListItem", "position": 55, "name": "Gold or Steel? What Plated Gold Really Means at This Price", "url": "https://watch.al/en/blog/gold-or-steel-watch.html"}, {"@type": "ListItem", "position": 56, "name": "How Long Does a 70 Euro Watch Last? What We See on the Bench", "url": "https://watch.al/en/blog/how-long-does-a-cheap-watch-last.html"}, {"@type": "ListItem", "position": 57, "name": "What Makes a Watch Look Expensive: Six Details That Do the Work", "url": "https://watch.al/en/blog/what-makes-a-watch-look-expensive.html"}, {"@type": "ListItem", "position": 58, "name": "The Watches That Made History: Six Stories in One Place", "url": "https://watch.al/en/blog/watch-history-stories.html"}, {"@type": "ListItem", "position": 59, "name": "Patek Philippe and the Watch You Pass Down", "url": "https://watch.al/en/blog/patek-philippe-generations.html"}, {"@type": "ListItem", "position": 60, "name": "Hamilton and the Watches That Went to War", "url": "https://watch.al/en/blog/hamilton-military-watches.html"}, {"@type": "ListItem", "position": 61, "name": "The G-Shock Story: How a Broken Watch Built an Unbreakable One", "url": "https://watch.al/en/blog/g-shock-history.html"}, {"@type": "ListItem", "position": 62, "name": "The First Watch on the Moon", "url": "https://watch.al/en/blog/first-watch-on-the-moon.html"}, {"@type": "ListItem", "position": 63, "name": "Jaeger-LeCoultre: the Watchmaker Behind the Watchmakers", "url": "https://watch.al/en/blog/jaeger-lecoultre-history.html"}, {"@type": "ListItem", "position": 64, "name": "Cartier Santos: How the First Wristwatch Was Born", "url": "https://watch.al/en/blog/cartier-santos-first-wristwatch.html"}, {"@type": "ListItem", "position": 65, "name": "The Casio A159WA: a 40-Year Legend You Can Buy in Durrës", "url": "https://watch.al/en/blog/casio-a159wa-legend.html"}, {"@type": "ListItem", "position": 66, "name": "Watch Bezel Types Explained: From Dive Bezels to Tachymeters", "url": "https://watch.al/en/blog/watch-bezel-types-explained.html"}, {"@type": "ListItem", "position": 67, "name": "Citizen Eco-Drive Explained: How Solar Charging Works in Watches", "url": "https://watch.al/en/blog/citizen-eco-drive-explained.html"}, {"@type": "ListItem", "position": 68, "name": "Watch Complications Explained: From Date Windows to Tourbillons", "url": "https://watch.al/en/blog/watch-complications-explained.html"}, {"@type": "ListItem", "position": 69, "name": "Watch Types Explained: Divers, Tanks, Pilots and More", "url": "https://watch.al/en/blog/watch-types-guide.html"}, {"@type": "ListItem", "position": 70, "name": "The Quartz Crisis: How a Japanese Chip Almost Destroyed Swiss Watchmaking", "url": "https://watch.al/en/blog/quartz-crisis.html"}, {"@type": "ListItem", "position": 71, "name": "Watch Repair Tools: What We Use and Why It Matters", "url": "https://watch.al/en/blog/watch-repair-tools.html"}, {"@type": "ListItem", "position": 72, "name": "Swiss vs Japanese Movements: What the Label Actually Tells You", "url": "https://watch.al/en/blog/swiss-vs-japanese-movements.html"}, {"@type": "ListItem", "position": 73, "name": "Buying a Second-Hand Watch: What to Check Before You Pay", "url": "https://watch.al/en/blog/buying-second-hand-watch.html"}, {"@type": "ListItem", "position": 74, "name": "Watch Case Sizes Explained: Finding the Right Fit for Your Wrist", "url": "https://watch.al/en/blog/watch-case-sizes.html"}, {"@type": "ListItem", "position": 75, "name": "Luminous Dials Explained: Radium, Tritium, and Super-LumiNova", "url": "https://watch.al/en/blog/luminous-dials-explained.html"}, {"@type": "ListItem", "position": 76, "name": "Watch Power Reserve: What It Is and Why It Matters", "url": "https://watch.al/en/blog/watch-power-reserve.html"}, {"@type": "ListItem", "position": 77, "name": "How to Spot a Fake Watch: 8 Things Experts Check First", "url": "https://watch.al/en/blog/spot-fake-watch.html"}, {"@type": "ListItem", "position": 78, "name": "Dress, Sport & Casual Watches: What to Wear for Every Occasion", "url": "https://watch.al/en/blog/watch-occasion-guide.html"}, {"@type": "ListItem", "position": 79, "name": "Mechanical vs Quartz Watches: What’s the Difference and Which Should You Choose?", "url": "https://watch.al/en/blog/mechanical-vs-quartz.html"}, {"@type": "ListItem", "position": 80, "name": "How Key Duplication Works: Types, What to Bring & What to Expect", "url": "https://watch.al/en/blog/key-duplication-guide.html"}]}}</script>
   <!-- Meta Pixel Code -->
   <script src="/tt-policy.js" defer></script>
   <script src="/pixel.js" defer></script>
@@ -681,10 +174,10 @@
       </div>
       <div class="blog-cats" role="group" aria-label="Filter by category">
         <button class="b-cat-btn" data-filter="all" aria-pressed="true">All</button>
+        <button class="b-cat-btn" data-filter="buying" aria-pressed="false"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guides</button>
+        <button class="b-cat-btn" data-filter="gifts" aria-pressed="false"><i class="fas fa-gift" aria-hidden="true"></i> Gift Guides</button>
         <button class="b-cat-btn" data-filter="care" aria-pressed="false"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</button>
         <button class="b-cat-btn" data-filter="knowledge" aria-pressed="false"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</button>
-        <button class="b-cat-btn" data-filter="buying" aria-pressed="false"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guides</button>
-        <button class="b-cat-btn" data-filter="gifts" aria-pressed="false"><i class="fas fa-gem" aria-hidden="true"></i> Gift Guides</button>
         <button class="b-cat-btn" data-filter="keys" aria-pressed="false"><i class="fas fa-key" aria-hidden="true"></i> Key Services</button>
       </div>
       <p class="kicker"><i class="fas fa-tools" aria-hidden="true"></i>&ensp;Tips &amp; Guides</p>
@@ -697,869 +190,783 @@
     <section class="py-16 px-6" style="background:var(--bg-soft)">
       <div class="blog-wrap">
 
-        <!-- ① Featured -->
-                <a data-cat="care" href="/en/blog/repair-or-buy-new-watch-durres.html" class="b-feat">
+        <p id="blog-count" class="b-count" aria-live="polite" hidden data-tpl="Showing {n} of {t} articles"></p>
+
+        <a data-cat="buying" href="/en/blog/watches-under-10000-lek.html" class="b-feat">
           <span class="b-feat-num" aria-hidden="true">01</span>
           <div>
-            <span class="b-feat-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Watch Care</span>
-            <h2 class="b-feat-title">Should I Repair My Watch or Buy a New One? An Honest Guide</h2>
-            <p class="b-feat-desc">Your watch stopped working. Before you replace it - read this. An honest guide from Iglisi Watch on repair cost ratios, watch age, and when sentimental value changes the calculation entirely.</p>
-            <div class="b-feat-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
+            <span class="b-feat-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
+            <h2 class="b-feat-title">Watches Under 10,000 Lek: What Your Money Actually Buys</h2>
+            <p class="b-feat-desc">50 of our 57 watches cost under 10,000 Leke, starting at 4,900 L. The counter priced in Lek, band by band, with cash on delivery anywhere in Albania.</p>
+            <div class="b-feat-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-01">August 2026</time></span></div>
             <span class="b-feat-cta">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
           </div>
         </a>
 
-        <p class="b-label">Latest Articles</p>
-
-        <!-- ②③ Row of 2 -->
-                <div class="b-row2">
-
-
-          <a data-cat="gifts" href="/en/blog/watch-gift-durres-same-day.html" class="b-card">
+        <p class="b-label" id="b-latest-label">Latest Articles</p>
+        <div class="b-grid3" id="b-latest">
+          <a data-cat="buying" href="/en/blog/chronograph-vs-three-hand-watch.html" class="b-card" data-dup="1">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Gift Guide</span>
-              <h2 class="b-card-title">Need a Watch Gift in Durr&euml;s Today? Open Until 20:30</h2>
-              <p class="b-card-desc">Walk in, choose from Daniel Klein and Navimarine watches from &euro;60 or Hislon from &euro;149, leave with a gift-ready watch the same day. Open Monday to Saturday until 20:30. No appointment needed.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 3 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-
-          <a data-cat="care" href="/en/blog/repair-or-buy-new-watch-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Should I Repair My Watch or Buy a New One? An Honest Guide</h2>
-              <p class="b-card-desc">An honest framework based on repair cost, watch type, age, and sentimental value. Free assessment at Iglisi Watch in Durr&euml;s, no obligation to proceed.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">Also on the Blog</p>
-
-        <!-- ④–⑨ Grid of 3×2 -->
-        <div class="b-grid3">
-          <a data-cat="buying" href="/en/blog/chronograph-vs-three-hand-watch.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Buying Guide</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
               <h2 class="b-card-title">Chronograph or Three Hands? What Those Subdials Actually Do</h2>
               <p class="b-card-desc">Twelve of our watches have subdials and only seven of them time anything. How to tell in five seconds, what the pushers cost in battery life, and which one to buy.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 11 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> August 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 11 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">August 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-          <a data-cat="knowledge" href="/en/blog/gold-or-steel-watch.html" class="b-card">
+          <a data-cat="knowledge" href="/en/blog/gold-or-steel-watch.html" class="b-card" data-dup="1">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Watch Knowledge</span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
               <h2 class="b-card-title">Gold or Steel? What Plated Gold Really Means at This Price</h2>
               <p class="b-card-desc">No watch at this price is solid gold. How long plating lasts, why it cannot be repaired, the rules that extend it, and when steel is simply the better buy.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> August 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">August 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-          <a data-cat="knowledge" href="/en/blog/how-long-does-a-cheap-watch-last.html" class="b-card">
+          <a data-cat="knowledge" href="/en/blog/how-long-does-a-cheap-watch-last.html" class="b-card" data-dup="1">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-hourglass-half" aria-hidden="true"></i> Watch Knowledge</span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
               <h2 class="b-card-title">How Long Does a 70 Euro Watch Last? What We See on the Bench</h2>
               <p class="b-card-desc">Five to ten years, and the movement is almost never what fails. The real failure order, the seasonal damage we see every year, and what a decade of ownership actually costs.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> August 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">August 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-          <a data-cat="knowledge" href="/en/blog/what-makes-a-watch-look-expensive.html" class="b-card">
+        </div>
+
+        <p class="b-label" data-sec="buying">Buying Guides <span class="b-label-count">23</span></p>
+        <div class="b-grid3" data-sec-grid="buying">
+          <a data-cat="buying" href="/en/blog/chronograph-vs-three-hand-watch.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">What Makes a Watch Look Expensive: Six Details That Do the Work</h2>
-              <p class="b-card-desc">Fluted bezels, jubilee bracelets, sunburst dials. Six design details that read as costly, where each one came from, and what they cost in Durres from 4,900 Lek.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> August 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="gifts" href="/en/blog/new-year-watch-gifts-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Gift Guide</span>
-              <h2 class="b-card-title">New Year Watch Gifts in Albania: What to Buy and When to Order</h2>
-              <p class="b-card-desc">Two price levels, nothing in between, and the last day you can order and still have it arrive. Cash on delivery anywhere in Albania, or walk into Durres until 20:30.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> August 2026</span></div>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
+              <h2 class="b-card-title">Chronograph or Three Hands? What Those Subdials Actually Do</h2>
+              <p class="b-card-desc">Twelve of our watches have subdials and only seven of them time anything. How to tell in five seconds, what the pushers cost in battery life, and which one to buy.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 11 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">August 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="buying" href="/en/blog/womens-watches-albania.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Buying Guide</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
               <h2 class="b-card-title">Women's Watches in Albania: What We Stock and What It Costs</h2>
               <p class="b-card-desc">Gold-tone dress watches, slim steel and mother-of-pearl Hislon Queens from 59 to 189 euro, in stock in Durres with cash on delivery anywhere in Albania.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> August 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-01">August 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="buying" href="/en/blog/watches-under-10000-lek.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Buying Guide</span>
-              <h2 class="b-card-title">Watches Under 10,000 Lek: What Your Money Actually Buys</h2>
-              <p class="b-card-desc">50 of our 57 watches cost under 10,000 Leke, starting at 4,900 L. The counter priced in Lek, band by band, with cash on delivery anywhere in Albania.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> August 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
           <a data-cat="buying" href="/en/blog/mens-watches-albania.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Buying Guide</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
               <h2 class="b-card-title">Men's Watches in Albania: What We Stock and What It Costs</h2>
               <p class="b-card-desc">Sport steel, chronographs and dress watches from €50 to €199, all in stock in Durrës. What each style is for and how to order anywhere in Albania.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> August 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-01">August 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-
-          <a data-cat="knowledge" href="/en/blog/watch-history-stories.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Watch History</span>
-              <h2 class="b-card-title">The Watches That Made History: Six Stories in One Place</h2>
-              <p class="b-card-desc">The wristwatch, the Moon, the war, the unbreakable one and the heirloom. Our six watch-history stories gathered in one place, each linking to the full article.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/en/blog/patek-philippe-generations.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Watch History</span>
-              <h2 class="b-card-title">Patek Philippe and the Watch You Pass Down</h2>
-              <p class="b-card-desc">The most famous line in watch advertising, why a good watch is an heirloom and not a gadget, and the watches you can give in Durres to last a generation.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/en/blog/hamilton-military-watches.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Watch History</span>
-              <h2 class="b-card-title">Hamilton and the Watches That Went to War</h2>
-              <p class="b-card-desc">The trenches put the watch on the wrist, and Hamilton gave its whole factory to the war. The military watch and the rugged field-style watches you can buy today.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/en/blog/g-shock-history.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Watch History</span>
-              <h2 class="b-card-title">The G-Shock Story: How a Broken Watch Built an Unbreakable One</h2>
-              <p class="b-card-desc">One engineer, a broken gift and 200 failed prototypes. How Casio built the watch that would not die, and the Casio value you can buy from us today.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/en/blog/first-watch-on-the-moon.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Watch History</span>
-              <h2 class="b-card-title">The First Watch on the Moon</h2>
-              <p class="b-card-desc">NASA tested watches to destruction and only the Omega Speedmaster survived. How it reached the Moon in 1969 and helped bring Apollo 13 home.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/en/blog/jaeger-lecoultre-history.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Watch History</span>
-              <h2 class="b-card-title">Jaeger-LeCoultre: the Watchmaker Behind the Watchmakers</h2>
-              <p class="b-card-desc">For a century the most famous names in watchmaking put LeCoultre movements inside their cases. The valley workshop, 1200 calibres, and the watch that flips.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/en/blog/cartier-santos-first-wristwatch.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Watch History</span>
-              <h2 class="b-card-title">Cartier Santos: How the First Wristwatch Was Born</h2>
-              <p class="b-card-desc">In 1904 a pilot could not check his pocket watch mid-flight, so Louis Cartier put time on the wrist. The story of the watch that started everything.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/en/blog/casio-a159wa-legend.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">The Casio A159WA: a 40-Year Legend You Can Buy in Durr&euml;s</h2>
-              <p class="b-card-desc">The digital watch that has not changed since the early 1980s: 7-year battery, steel bracelet, alarm and stopwatch. In stock at Iglisi Watch for &euro;61.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="care" href="/en/blog/watch-service-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Complete Watch Service &amp; Overhaul in Durr&euml;s</h2>
-              <p class="b-card-desc">Full quartz and mechanical watch service in Durr&euml;s - disassembly, ultrasonic cleaning, lubrication and regulation. Free quote and WhatsApp advice before you visit.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/en/blog/buy-watches-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Buying Guide</span>
-              <h2 class="b-card-title">How to Buy New Watches in Albania</h2>
-              <p class="b-card-desc">Daniel Klein and Navimarine from &euro;60, Hislon from &euro;149, all with a 1-year guarantee. Buy in-store in Durr&euml;s or order on WhatsApp with delivery anywhere in Albania.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-battery-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zm-1.67 8h-2V6h2v6zm0 4h-2v-2h2v2z"/></svg> Watch Care</span>
-              <h2 class="b-card-title">How Long Does a Watch Battery Last? Signs It&rsquo;s Dying &amp; What To Do</h2>
-              <p class="b-card-desc">Most quartz watch batteries last 1&ndash;3 years. Learn the 5 warning signs your battery is failing, whether you should replace it yourself, and what a professional swap involves.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span>
-              <span><i class="fas fa-bolt" aria-hidden="true"></i> Updated May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="care" href="/en/blog/watch-service-signs.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Watch Maintenance</span>
-              <h2 class="b-card-title">5 Signs Your Watch Needs a Service, Not Just a New Battery</h2>
-              <p class="b-card-desc">If your watch loses time after a fresh battery, feels gritty when wound, or has had moisture inside - it needs a service. Learn the 5 signs and what a professional overhaul involves.</p>
-              <div class="b-card-meta">
-                <span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span>
-                <span><i class="fas fa-bolt" aria-hidden="true"></i> Updated May 2026</span>
-              </div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="care" href="/en/blog/watch-strap-care.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">How to Care for Your Watch Strap: Leather, Metal &amp; Rubber Guide</h2>
-              <p class="b-card-desc">The strap is the most worn part of any watch. Learn how to clean and condition leather, maintain metal bracelets, and when it&rsquo;s time to replace - for any material.</p>
-              <div class="b-card-meta">
-                <span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span>
-                <span><i class="fas fa-bolt" aria-hidden="true"></i> Updated May 2026</span>
-              </div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-strap-lug-width-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Watch Strap Lug Width: How to Measure and Find the Right Size</h2>
-              <p class="b-card-desc">Buying a strap that doesn&rsquo;t fit is the most common strap-shopping mistake. Learn how to measure lug width, what sizes common watches use, and what to do when you&rsquo;re not sure.</p>
-              <div class="b-card-meta">
-                <span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span>
-                <span><i class="fas fa-bolt" aria-hidden="true"></i> June 2026</span>
-              </div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="keys" href="/en/blog/key-duplication-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-key" aria-hidden="true"></i> Key Services</span>
-              <h2 class="b-card-title">How Key Duplication Works: Types, What to Bring &amp; What to Expect</h2>
-              <p class="b-card-desc">Getting a spare key cut takes under 5 minutes - if you know what to bring. Learn which keys we can duplicate, how the cutting process works, and how many copies you should make.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-water-resistance.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" aria-hidden="true" focusable="false" style="width:.75em;height:.875em;display:inline-block;fill:currentColor;vertical-align:-.1em"><path d="M192 512C86 512 0 426 0 320C0 228.8 130.2 57.7 166.6 11.7C172.6 4.2 181.5 0 191 0h2c9.5 0 18.4 4.2 24.5 11.7C253.8 57.7 384 228.8 384 320c0 106-86 192-192 192z"/></svg> Watch Care</span>
-              <h2 class="b-card-title">Watch Water Resistance Ratings Explained: ATM, BAR &amp; What They Really Mean</h2>
-              <p class="b-card-desc">Your watch says &ldquo;water resistant&rdquo; - but does that mean you can swim, shower, or dive with it? Most people misread these ratings and damage their watch as a result.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-cleaning-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">How to Clean Your Watch at Home: Safe Methods for Every Material</h2>
-              <p class="b-card-desc">Dirt, sweat, and grime build up on every watch - even expensive ones. Regular cleaning takes under five minutes and keeps your watch looking new.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-storage-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">How to Store Your Watch Properly: A Complete Guide</h2>
-              <p class="b-card-desc">Wrong storage degrades lubricants, magnetises movements, and cracks straps. Learn the optimal conditions - temperature, humidity, and what should never sit next to a watch.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/en/blog/mechanical-vs-quartz.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">Mechanical vs Quartz Watches: What&rsquo;s the Difference and Which Should You Choose?</h2>
-              <p class="b-card-desc">Quartz wins on accuracy and low maintenance. Mechanical wins on craftsmanship and collector value. An honest comparison to help you choose the right watch.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/en/blog/watch-types-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-compass" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">Watch Types Explained: Divers, Tanks, Pilots and More</h2>
-              <p class="b-card-desc">Dive, field, pilot, dress, tank: where each watch type comes from, what it was built to do, and which one fits how you actually live.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-crystal-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Watch Crystals Explained: Acrylic, Mineral, and Sapphire - What&rsquo;s the Difference?</h2>
-              <p class="b-card-desc">Three materials, three levels of protection. Learn which scratch easily, which shatter, and what to do when your watch crystal is damaged.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-winding-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Watch Maintenance</span>
-              <h2 class="b-card-title">How to Wind Your Watch: Manual, Automatic &amp; Setting the Crown</h2>
-              <p class="b-card-desc">Winding incorrectly is one of the most common causes of premature movement wear. The right technique, the three crown positions explained, and 5 mistakes to avoid.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/en/blog/spot-fake-watch.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">How to Spot a Fake Watch: 8 Things Experts Check First</h2>
-              <p class="b-card-desc">Buying second-hand or unsure about an inherited piece? These are the 8 physical checks that reveal a counterfeit - no specialist equipment needed.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/en/blog/watch-occasion-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Watch Style</span>
-              <h2 class="b-card-title">Dress, Sport &amp; Casual Watches: What to Wear for Every Occasion</h2>
-              <p class="b-card-desc">Dress watch for a wedding, sport watch for the gym, diver for weekends - choosing the right watch for the occasion is simpler than you think.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">History &amp; Deep Knowledge</p>
-
-        <div class="b-grid3">
-
-          <a data-cat="knowledge" href="/en/blog/quartz-crisis.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">The Quartz Crisis: How a Japanese Chip Almost Destroyed Swiss Watchmaking</h2>
-              <p class="b-card-desc">In 1969, Seiko launched a watch more accurate than anything Switzerland had ever made - and far cheaper. What happened next was the near-total collapse of an entire industry.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/en/blog/watch-repair-tools.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">Watch Repair Tools: What We Use and Why It Matters</h2>
-              <p class="b-card-desc">The wrong tool causes more damage than the fault it's trying to fix. Here's what professional watch repair requires - from case back openers to movement holders.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-magnetisation.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Watch Magnetisation: What It Is, What Causes It, and How It's Fixed</h2>
-              <p class="b-card-desc">A magnetised watch can lose minutes per day with no visible damage. Here's what causes it, how to test for it with a compass, and how demagnetisation works.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/en/blog/swiss-vs-japanese-movements.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">Swiss vs Japanese Movements: What the Label Actually Tells You</h2>
-              <p class="b-card-desc">Swiss Made and Japanese movements represent two philosophies. One trades on heritage; the other on engineering volume. Here's what those labels actually mean at every price tier.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/en/blog/buying-second-hand-watch.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">Buying a Second-Hand Watch: What to Check Before You Pay</h2>
-              <p class="b-card-desc">A second-hand watch is one of the best ways to get quality at a fair price - if you know what to look for. The complete pre-purchase checklist from case to movement.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/en/blog/watch-case-sizes.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Watch Style</span>
-              <h2 class="b-card-title">Watch Case Sizes Explained: Finding the Right Fit for Your Wrist</h2>
-              <p class="b-card-desc">Diameter alone doesn't determine how a watch fits. Lug-to-lug distance and thickness matter just as much. How to read the specs and avoid buying the wrong size.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/en/blog/luminous-dials-explained.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">Luminous Dials Explained: Radium, Tritium, and Super-LumiNova</h2>
-              <p class="b-card-desc">Watch dials have glowed in the dark for over a century. The materials used have changed from radioactive radium to modern Super-LumiNova - here's what that means for vintage watches.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/en/blog/watch-power-reserve.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">Watch Power Reserve: What It Is and Why It Matters</h2>
-              <p class="b-card-desc">An automatic watch winds itself - but not always enough. Understanding power reserve explains why your watch stops overnight and why there's a dangerous window for setting the date.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-crown-explained.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">The Watch Crown Explained: What Every Position Does and Why It Matters</h2>
-              <p class="b-card-desc">The crown is the most-used control on a mechanical watch and the most common entry point for water damage. What each position does and the signs that the crown needs attention.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">Buying Guides</p>
-
-        <div class="b-grid3">
-
-          <a data-cat="buying" href="/en/blog/best-watches-under-200-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Watch Buying Guide</span>
-              <h2 class="b-card-title">Best Watches Under &euro;200 in Albania (2026)</h2>
-              <p class="b-card-desc">An honest look at what&rsquo;s worth buying in Albania at the €100–200 price point - from everyday quartz to weekend sport watches. From a watchmaker who services these pieces daily.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/en/blog/where-to-buy-watch-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Local Guide</span>
-              <h2 class="b-card-title">Where to Buy a Watch in Durr&euml;s: An Honest Guide</h2>
-              <p class="b-card-desc">Street markets, jewellery shops, or specialist watchmakers - a straight-talking look at the Durrës watch market, what to trust, and what to walk away from.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/en/blog/hislon-vs-navimarine.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Brand Comparison</span>
-              <h2 class="b-card-title">Hislon vs Navimarine: Which Watch Brand Is Right for You?</h2>
-              <p class="b-card-desc">Both sit in the same price range and are built for daily wear - but they appeal to very different tastes. A clear-headed comparison to help you choose.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/en/blog/where-to-buy-watch-tirana.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Albania Nationwide</span>
-              <h2 class="b-card-title">Buy Watches Anywhere in Albania</h2>
-              <p class="b-card-desc">Brand-new Daniel Klein, Navimarine and Hislon watches from &euro;60 - browse the stock online, message us on WhatsApp, and we arrange the rest. Tirana, Vlor&euml;, Shkod&euml;r, Elbasan or anywhere in Albania.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/en/blog/buy-watch-instagram-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fab fa-instagram" aria-hidden="true"></i> Watch Buying Guide</span>
-              <h2 class="b-card-title">Is It Safe to Buy a Watch on Instagram in Albania?</h2>
-              <p class="b-card-desc">Instagram watch sellers in Albania are everywhere - but is it safe? Real risks, red flags, and when a physical shop is always the better choice.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/en/blog/best-budget-watches-durres-under-100.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Watch Buying Guide</span>
-              <h2 class="b-card-title">Best Budget Watches in Durrës Under &euro;100</h2>
-              <p class="b-card-desc">&euro;100 is enough to buy a reliable, well-finished watch in Durrës - if you know where to look. Honest advice from a watchmaker who services these pieces every day.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
           <a data-cat="buying" href="/en/blog/watches-i-would-buy-myself.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Buying Guide</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
               <h2 class="b-card-title">The 5 Watches I Would Buy From My Own Shop</h2>
               <p class="b-card-desc">A watchmaker's honest personal picks: the five watches I would spend my own money on, from a &euro;64 Daniel Klein to a &euro;199 Hislon Classic, and why.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">July 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="gifts" href="/en/blog/matching-watches-for-couples.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-heart" aria-hidden="true"></i> Gift Guide</span>
-              <h2 class="b-card-title">Matching Watches for Couples: His and Hers Pairs from 124 Euro</h2>
-              <p class="b-card-desc">Four his and hers pairs for weddings and anniversaries: matching Hislon gold and steel sets with sapphire crystal, and Daniel Klein pairs from &euro;124.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
           <a data-cat="buying" href="/en/blog/watch-price-tiers-60-190.html" class="b-card">
             <div class="b-card-body">
               <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
               <h2 class="b-card-title">60 vs 90 vs 190 Euro: What More Money Actually Buys in a Watch</h2>
               <p class="b-card-desc">Daniel Klein, Navimarine, Hislon compared honestly. More money buys dress design and finishing, not a better crystal, movement or water resistance.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">July 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
           <a data-cat="buying" href="/en/blog/are-daniel-klein-watches-good.html" class="b-card">
             <div class="b-card-body">
               <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
               <h2 class="b-card-title">Are Daniel Klein Watches Any Good? A Watchmaker's Honest Answer</h2>
               <p class="b-card-desc">Turkish fashion brand, quartz, gold-tone looks for &euro;59 to &euro;89. Where the money is well spent and where it is not, plus all 8 models we stock.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">July 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="buying" href="/en/blog/hislon-classic-review.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Watch Review</span>
-              <h2 class="b-card-title">Hislon Classic Review: Is It Worth It?</h2>
-              <p class="b-card-desc">An honest assessment from the people who sell and service these watches daily. Build quality, real-world durability, and who it actually suits.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
           <a data-cat="buying" href="/en/blog/summer-sea-watch-guide.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-swimmer" aria-hidden="true"></i> Buying Guide</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
               <h2 class="b-card-title">Watches for the Albanian Summer: Beach, Sweat and Sea</h2>
               <p class="b-card-desc">What salt, sand and sunscreen do to a watch, which ratings actually allow swimming, and the 5 ATM steel model we recommend at &euro;75.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> July 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/en/blog/which-navimarine-to-buy.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-compass" aria-hidden="true"></i> Buying Guide</span>
-              <h2 class="b-card-title">Which Navimarine Should You Buy?</h2>
-              <p class="b-card-desc">Sport, classic, or chronograph: a guide to matching the right Navimarine model to your lifestyle and wrist size.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/en/blog/first-watch-teenager.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-user-graduate" aria-hidden="true"></i> Buying Guide</span>
-              <h2 class="b-card-title">Best First Watch for a Teenager</h2>
-              <p class="b-card-desc">What to look for, what to spend, and which watches actually survive daily life on a young person's wrist. A guide for parents and family.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/en/blog/buy-watch-without-trying-on.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Buying Guide</span>
-              <h2 class="b-card-title">Is It Safe to Buy a Watch Without Trying It On?</h2>
-              <p class="b-card-desc">How to get case size and fit right when ordering remotely. A practical guide to measuring your wrist and choosing the right size with confidence.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        
-          <a data-cat="buying" href="/en/blog/seiko-vs-citizen-vs-casio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Brand Comparison</span>
-              <h2 class="b-card-title">Seiko vs Citizen vs Casio: Which Japanese Watch Is Worth Buying?</h2>
-              <p class="b-card-desc">Three Japanese giants compared honestly - Seiko&rsquo;s automatic movements, Citizen&rsquo;s Eco-Drive and Casio&rsquo;s durability. Which one is right for you?</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/en/blog/casio-vs-citizen.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Brand Comparison</span>
-              <h2 class="b-card-title">Casio vs Citizen Watch: Which Is Worth Buying?</h2>
-              <p class="b-card-desc">Two Japanese brands, two philosophies: Casio&rsquo;s rugged value against Citizen&rsquo;s Eco-Drive refinement. An honest head-to-head from the repair bench.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-</div>
-
-        <p class="b-label">Gift Guides</p>
-
-        <div class="b-grid3">
-
-          <a data-cat="gifts" href="/en/blog/best-watch-gifts-men-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Gift Guide</span>
-              <h2 class="b-card-title">Best Watch Gifts for Men in Albania</h2>
-              <p class="b-card-desc">Which watches make good gifts, which budgets make sense, and how to order anywhere in Albania without leaving home.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="gifts" href="/en/blog/best-watch-gifts-women-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Gift Guide</span>
-              <h2 class="b-card-title">Best Watch Gifts for Women in Albania</h2>
-              <p class="b-card-desc">What to look for in a women's watch gift, which styles work for different occasions, and how to order with delivery anywhere in Albania.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="gifts" href="/en/blog/graduation-watch-ideas.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Gift Guide</span>
-              <h2 class="b-card-title">Graduation Watch Ideas Under &euro;200</h2>
-              <p class="b-card-desc">The right watch for a new graduate entering work. Which brands suit which fields, and how to order with cash on delivery anywhere in Albania.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="gifts" href="/en/blog/watch-wedding-gift-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Gift Guide</span>
-              <h2 class="b-card-title">Watch as a Wedding Gift in Albania</h2>
-              <p class="b-card-desc">Why a watch makes a lasting wedding gift, which models are appropriate for groom and bride, and how to present it well.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">Watch Care</p>
-
-        <div class="b-grid3">
-
-          <a data-cat="care" href="/en/blog/what-watch-service-includes.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">What Does a Watch Service Actually Include?</h2>
-              <p class="b-card-desc">From a battery change to a full movement overhaul: a plain-language guide to what each level of watch service involves and when each is needed.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-repair-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Watch Repair in Durr&euml;s: What to Expect</h2>
-              <p class="b-card-desc">What happens when you bring a watch to our workshop: the assessment process, common repairs, how pricing works, and what we can fix in-house.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/casio-service-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Where to Service a Casio, Seiko or Citizen in Albania</h2>
-              <p class="b-card-desc">Albania has no official service centres for Japanese watch brands. Here&rsquo;s where to go in Durr&euml;s, what these watches need, and what it costs.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> June 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-crown-repair.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Watch Repair</span>
-              <h2 class="b-card-title">Watch Crown Repair: When to Fix and When to Replace</h2>
-              <p class="b-card-desc">Crown fell off or spinning with no result? We explain the four most common crown problems, what repair involves, and what it costs in Durr&euml;s.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> June 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-warranty-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">What Warranty Do New Watches Come With?</h2>
-              <p class="b-card-desc">A plain-language guide to what a new watch warranty covers, what voids it, and how to make a claim if something goes wrong.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="care" href="/en/blog/watch-battery-replacement-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-bolt" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Watch Battery Replacement in Durr&euml;s: Done While You Wait</h2>
-              <p class="b-card-desc">Walk in with a dead watch, walk out with a working one. Battery replacements take 10-15 minutes. No appointment needed, any brand welcome.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-strap-replacement-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-link" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Watch Strap Replacement in Durr&euml;s: Same-Day Fitting</h2>
-              <p class="b-card-desc">Leather, rubber, metal, and NATO options in stock. Fitted while you wait. Bracelet sizing and clasp repair done on the spot. Any brand, no appointment needed.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-crystal-replacement-durres.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Cracked Watch Glass? Crystal Replacement in Durr&euml;s</h2>
-              <p class="b-card-desc">A cracked crystal removes the water seal entirely. Iglisi Watch replaces mineral and sapphire crystals same day if we have your size in stock. Any brand, no appointment.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        
-          <a data-cat="care" href="/en/blog/watch-battery-size-guide.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zm-1.67 8h-2V6h2v6zm0 4h-2v-2h2v2z"/></svg> Watch Care</span>
-              <h2 class="b-card-title">Watch Battery Size Guide: SR626SW, SR920SW, CR2032 Explained</h2>
-              <p class="b-card-desc">How to read battery codes, which battery fits your watch, and when to replace it. Covers all common silver oxide and lithium sizes.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> May 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-heat-humidity-damage.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-thermometer-half" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Can Heat and Humidity Damage Your Watch?</h2>
-              <p class="b-card-desc">Heat degrades lubricants, warps gaskets, and causes battery leakage. Humidity forces moisture past seals. Learn the danger zones, warning signs, and 5 ways to protect your watch.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> June 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/en/blog/watch-pressure-test-explained.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Watch Care</span>
-              <h2 class="b-card-title">Watch Pressure Testing Explained: What It Is and When You Need It</h2>
-              <p class="b-card-desc">Your water resistance rating was accurate when new. A pressure test tells you if it still is. Learn what the test involves, when you need one, and why a battery change voids your seal.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> June 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="knowledge" href="/en/blog/watch-complications-explained.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cog" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">Watch Complications Explained: From Date Windows to Tourbillons</h2>
-              <p class="b-card-desc">Date, chronograph, moon phase, GMT and tourbillon - what each complication actually does, why they exist, and how they affect long-term servicing costs and ownership.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> June 2026</span></div>
-              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="knowledge" href="/en/blog/watch-bezel-types-explained.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Watch Knowledge</span>
-              <h2 class="b-card-title">Watch Bezel Types Explained: From Dive Bezels to Tachymeters</h2>
-              <p class="b-card-desc">The bezel does far more than frame the crystal. Learn the six main types - dive, tachymeter, GMT, plain, bidirectional, and pulsometer - what each does and how to identify yours.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> June 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">July 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="buying" href="/en/blog/smartwatch-vs-traditional-watch.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Buying Guide</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
               <h2 class="b-card-title">Smartwatch vs Traditional Watch: Which Should You Buy?</h2>
               <p class="b-card-desc">One charges every night and tracks your heart rate. The other runs on a wound spring and can outlast its owner. An honest comparison from a workshop that repairs both.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> June 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">June 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="buying" href="/en/blog/watch-as-investment-guide.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99l1.5 1.5z"/></svg> Buying Guide</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
               <h2 class="b-card-title">Is a Watch a Good Investment? What to Buy and What to Avoid</h2>
               <p class="b-card-desc">Some watches hold value; fewer actually appreciate; most depreciate. An honest guide to which brands, references, and conditions make a watch worth buying as an investment.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> June 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">June 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/buy-watches-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
+              <h2 class="b-card-title">How to Buy New Watches in Albania</h2>
+              <p class="b-card-desc">Daniel Klein and Navimarine from &euro;60, Hislon from &euro;149, all with a 1-year guarantee. Buy in-store in Durr&euml;s or order on WhatsApp with delivery anywhere in Albania.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/seiko-vs-citizen-vs-casio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Brand Comparison</span>
+              <h2 class="b-card-title">Seiko vs Citizen vs Casio: Which Japanese Watch Is Worth Buying?</h2>
+              <p class="b-card-desc">Three Japanese giants compared honestly - Seiko&rsquo;s automatic movements, Citizen&rsquo;s Eco-Drive and Casio&rsquo;s durability. Which one is right for you?</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-19">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/casio-vs-citizen.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Brand Comparison</span>
+              <h2 class="b-card-title">Casio vs Citizen Watch: Which Is Worth Buying?</h2>
+              <p class="b-card-desc">Two Japanese brands, two philosophies: Casio&rsquo;s rugged value against Citizen&rsquo;s Eco-Drive refinement. An honest head-to-head from the repair bench.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-19">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/hislon-classic-review.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Watch Review</span>
+              <h2 class="b-card-title">Hislon Classic Review: Is It Worth It?</h2>
+              <p class="b-card-desc">An honest assessment from the people who sell and service these watches daily. Build quality, real-world durability, and who it actually suits.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/which-navimarine-to-buy.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
+              <h2 class="b-card-title">Which Navimarine Should You Buy?</h2>
+              <p class="b-card-desc">Sport, classic, or chronograph: a guide to matching the right Navimarine model to your lifestyle and wrist size.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/first-watch-teenager.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
+              <h2 class="b-card-title">Best First Watch for a Teenager</h2>
+              <p class="b-card-desc">What to look for, what to spend, and which watches actually survive daily life on a young person's wrist. A guide for parents and family.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/buy-watch-without-trying-on.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Buying Guide</span>
+              <h2 class="b-card-title">Is It Safe to Buy a Watch Without Trying It On?</h2>
+              <p class="b-card-desc">How to get case size and fit right when ordering remotely. A practical guide to measuring your wrist and choosing the right size with confidence.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/buy-watch-instagram-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Watch Buying Guide</span>
+              <h2 class="b-card-title">Is It Safe to Buy a Watch on Instagram in Albania?</h2>
+              <p class="b-card-desc">Instagram watch sellers in Albania are everywhere - but is it safe? Real risks, red flags, and when a physical shop is always the better choice.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-18">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/best-budget-watches-durres-under-100.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Watch Buying Guide</span>
+              <h2 class="b-card-title">Best Budget Watches in Durrës Under &euro;100</h2>
+              <p class="b-card-desc">&euro;100 is enough to buy a reliable, well-finished watch in Durrës - if you know where to look. Honest advice from a watchmaker who services these pieces every day.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-18">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/where-to-buy-watch-tirana.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Albania Nationwide</span>
+              <h2 class="b-card-title">Buy Watches Anywhere in Albania</h2>
+              <p class="b-card-desc">Brand-new Daniel Klein, Navimarine and Hislon watches from &euro;60 - browse the stock online, message us on WhatsApp, and we arrange the rest. Tirana, Vlor&euml;, Shkod&euml;r, Elbasan or anywhere in Albania.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/best-watches-under-200-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Watch Buying Guide</span>
+              <h2 class="b-card-title">Best Watches Under &euro;200 in Albania (2026)</h2>
+              <p class="b-card-desc">An honest look at what&rsquo;s worth buying in Albania at the €100–200 price point - from everyday quartz to weekend sport watches. From a watchmaker who services these pieces daily.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-12">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/where-to-buy-watch-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Local Guide</span>
+              <h2 class="b-card-title">Where to Buy a Watch in Durr&euml;s: An Honest Guide</h2>
+              <p class="b-card-desc">Street markets, jewellery shops, or specialist watchmakers - a straight-talking look at the Durrës watch market, what to trust, and what to walk away from.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-12">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/en/blog/hislon-vs-navimarine.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Brand Comparison</span>
+              <h2 class="b-card-title">Hislon vs Navimarine: Which Watch Brand Is Right for You?</h2>
+              <p class="b-card-desc">Both sit in the same price range and are built for daily wear - but they appeal to very different tastes. A clear-headed comparison to help you choose.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-12">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p class="b-label" data-sec="gifts">Gift Guides <span class="b-label-count">7</span></p>
+        <div class="b-grid3" data-sec-grid="gifts">
+          <a data-cat="gifts" href="/en/blog/new-year-watch-gifts-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Gift Guide</span>
+              <h2 class="b-card-title">New Year Watch Gifts in Albania: What to Buy and When to Order</h2>
+              <p class="b-card-desc">Two price levels, nothing in between, and the last day you can order and still have it arrive. Cash on delivery anywhere in Albania, or walk into Durres until 20:30.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-03">August 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/en/blog/matching-watches-for-couples.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Gift Guide</span>
+              <h2 class="b-card-title">Matching Watches for Couples: His and Hers Pairs from 124 Euro</h2>
+              <p class="b-card-desc">Four his and hers pairs for weddings and anniversaries: matching Hislon gold and steel sets with sapphire crystal, and Daniel Klein pairs from &euro;124.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">July 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/en/blog/watch-gift-durres-same-day.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Gift Guide</span>
+              <h2 class="b-card-title">Need a Watch Gift in Durr&euml;s Today? Open Until 20:30</h2>
+              <p class="b-card-desc">Walk in, choose from Daniel Klein and Navimarine watches from &euro;60 or Hislon from &euro;149, leave with a gift-ready watch the same day. Open Monday to Saturday until 20:30. No appointment needed.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 3 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/en/blog/best-watch-gifts-men-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Gift Guide</span>
+              <h2 class="b-card-title">Best Watch Gifts for Men in Albania</h2>
+              <p class="b-card-desc">Which watches make good gifts, which budgets make sense, and how to order anywhere in Albania without leaving home.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/en/blog/best-watch-gifts-women-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Gift Guide</span>
+              <h2 class="b-card-title">Best Watch Gifts for Women in Albania</h2>
+              <p class="b-card-desc">What to look for in a women's watch gift, which styles work for different occasions, and how to order with delivery anywhere in Albania.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/en/blog/graduation-watch-ideas.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Gift Guide</span>
+              <h2 class="b-card-title">Graduation Watch Ideas Under &euro;200</h2>
+              <p class="b-card-desc">The right watch for a new graduate entering work. Which brands suit which fields, and how to order with cash on delivery anywhere in Albania.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="gifts" href="/en/blog/watch-wedding-gift-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Gift Guide</span>
+              <h2 class="b-card-title">Watch as a Wedding Gift in Albania</h2>
+              <p class="b-card-desc">Why a watch makes a lasting wedding gift, which models are appropriate for groom and bride, and how to present it well.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p class="b-label" data-sec="care">Watch Care <span class="b-label-count">24</span></p>
+        <div class="b-grid3" data-sec-grid="care">
+          <a data-cat="care" href="/en/blog/watch-strap-lug-width-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Watch Strap Lug Width: How to Measure and Find the Right Size</h2>
+              <p class="b-card-desc">Buying a strap that doesn&rsquo;t fit is the most common strap-shopping mistake. Learn how to measure lug width, what sizes common watches use, and what to do when you&rsquo;re not sure.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">June 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-crown-repair.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Repair</span>
+              <h2 class="b-card-title">Watch Crown Repair: When to Fix and When to Replace</h2>
+              <p class="b-card-desc">Crown fell off or spinning with no result? We explain the four most common crown problems, what repair involves, and what it costs in Durr&euml;s.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">June 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/casio-service-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Where to Service a Casio, Seiko or Citizen in Albania</h2>
+              <p class="b-card-desc">Albania has no official service centres for Japanese watch brands. Here&rsquo;s where to go in Durr&euml;s, what these watches need, and what it costs.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-21">June 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-heat-humidity-damage.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Can Heat and Humidity Damage Your Watch?</h2>
+              <p class="b-card-desc">Heat degrades lubricants, warps gaskets, and causes battery leakage. Humidity forces moisture past seals. Learn the danger zones, warning signs, and 5 ways to protect your watch.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">June 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-pressure-test-explained.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Watch Pressure Testing Explained: What It Is and When You Need It</h2>
+              <p class="b-card-desc">Your water resistance rating was accurate when new. A pressure test tells you if it still is. Learn what the test involves, when you need one, and why a battery change voids your seal.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">June 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-service-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Complete Watch Service &amp; Overhaul in Durr&euml;s</h2>
+              <p class="b-card-desc">Full quartz and mechanical watch service in Durr&euml;s - disassembly, ultrasonic cleaning, lubrication and regulation. Free quote and WhatsApp advice before you visit.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-battery-size-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Watch Battery Size Guide: SR626SW, SR920SW, CR2032 Explained</h2>
+              <p class="b-card-desc">How to read battery codes, which battery fits your watch, and when to replace it. Covers all common silver oxide and lithium sizes.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-19">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/repair-or-buy-new-watch-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Should I Repair My Watch or Buy a New One? An Honest Guide</h2>
+              <p class="b-card-desc">An honest framework based on repair cost, watch type, age, and sentimental value. Free assessment at Iglisi Watch in Durr&euml;s, no obligation to proceed.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-battery-replacement-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Watch Battery Replacement in Durr&euml;s: Done While You Wait</h2>
+              <p class="b-card-desc">Walk in with a dead watch, walk out with a working one. Battery replacements take 10-15 minutes. No appointment needed, any brand welcome.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-strap-replacement-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Watch Strap Replacement in Durr&euml;s: Same-Day Fitting</h2>
+              <p class="b-card-desc">Leather, rubber, metal, and NATO options in stock. Fitted while you wait. Bracelet sizing and clasp repair done on the spot. Any brand, no appointment needed.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-crystal-replacement-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Cracked Watch Glass? Crystal Replacement in Durr&euml;s</h2>
+              <p class="b-card-desc">A cracked crystal removes the water seal entirely. Iglisi Watch replaces mineral and sapphire crystals same day if we have your size in stock. Any brand, no appointment.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/what-watch-service-includes.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">What Does a Watch Service Actually Include?</h2>
+              <p class="b-card-desc">From a battery change to a full movement overhaul: a plain-language guide to what each level of watch service involves and when each is needed.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 10 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-repair-durres.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Watch Repair in Durr&euml;s: What to Expect</h2>
+              <p class="b-card-desc">What happens when you bring a watch to our workshop: the assessment process, common repairs, how pricing works, and what we can fix in-house.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-warranty-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">What Warranty Do New Watches Come With?</h2>
+              <p class="b-card-desc">A plain-language guide to what a new watch warranty covers, what voids it, and how to make a claim if something goes wrong.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-magnetisation.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Watch Magnetisation: What It Is, What Causes It, and How It's Fixed</h2>
+              <p class="b-card-desc">A magnetised watch can lose minutes per day with no visible damage. Here's what causes it, how to test for it with a compass, and how demagnetisation works.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-crown-explained.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">The Watch Crown Explained: What Every Position Does and Why It Matters</h2>
+              <p class="b-card-desc">The crown is the most-used control on a mechanical watch and the most common entry point for water damage. What each position does and the signs that the crown needs attention.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-winding-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Maintenance</span>
+              <h2 class="b-card-title">How to Wind Your Watch: Manual, Automatic &amp; Setting the Crown</h2>
+              <p class="b-card-desc">Winding incorrectly is one of the most common causes of premature movement wear. The right technique, the three crown positions explained, and 5 mistakes to avoid.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-28">March 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-storage-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">How to Store Your Watch Properly: A Complete Guide</h2>
+              <p class="b-card-desc">Wrong storage degrades lubricants, magnetises movements, and cracks straps. Learn the optimal conditions - temperature, humidity, and what should never sit next to a watch.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-23">March 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-crystal-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Watch Crystals Explained: Acrylic, Mineral, and Sapphire - What&rsquo;s the Difference?</h2>
+              <p class="b-card-desc">Three materials, three levels of protection. Learn which scratch easily, which shatter, and what to do when your watch crystal is damaged.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-battery-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">How Long Does a Watch Battery Last? Signs It&rsquo;s Dying &amp; What To Do</h2>
+              <p class="b-card-desc">Most quartz watch batteries last 1&ndash;3 years. Learn the 5 warning signs your battery is failing, whether you should replace it yourself, and what a professional swap involves.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-service-signs.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Maintenance</span>
+              <h2 class="b-card-title">5 Signs Your Watch Needs a Service, Not Just a New Battery</h2>
+              <p class="b-card-desc">If your watch loses time after a fresh battery, feels gritty when wound, or has had moisture inside - it needs a service. Learn the 5 signs and what a professional overhaul involves.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">March 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-strap-care.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">How to Care for Your Watch Strap: Leather, Metal &amp; Rubber Guide</h2>
+              <p class="b-card-desc">The strap is the most worn part of any watch. Learn how to clean and condition leather, maintain metal bracelets, and when it&rsquo;s time to replace - for any material.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">March 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-water-resistance.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">Watch Water Resistance Ratings Explained: ATM, BAR &amp; What They Really Mean</h2>
+              <p class="b-card-desc">Your watch says &ldquo;water resistant&rdquo; - but does that mean you can swim, shower, or dive with it? Most people misread these ratings and damage their watch as a result.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">March 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/en/blog/watch-cleaning-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Watch Care</span>
+              <h2 class="b-card-title">How to Clean Your Watch at Home: Safe Methods for Every Material</h2>
+              <p class="b-card-desc">Dirt, sweat, and grime build up on every watch - even expensive ones. Regular cleaning takes under five minutes and keeps your watch looking new.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">March 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p class="b-label" data-sec="knowledge">Watch Knowledge <span class="b-label-count">25</span></p>
+        <div class="b-grid3" data-sec-grid="knowledge">
+          <a data-cat="knowledge" href="/en/blog/gold-or-steel-watch.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">Gold or Steel? What Plated Gold Really Means at This Price</h2>
+              <p class="b-card-desc">No watch at this price is solid gold. How long plating lasts, why it cannot be repaired, the rules that extend it, and when steel is simply the better buy.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">August 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/how-long-does-a-cheap-watch-last.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">How Long Does a 70 Euro Watch Last? What We See on the Bench</h2>
+              <p class="b-card-desc">Five to ten years, and the movement is almost never what fails. The real failure order, the seasonal damage we see every year, and what a decade of ownership actually costs.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">August 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/what-makes-a-watch-look-expensive.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">What Makes a Watch Look Expensive: Six Details That Do the Work</h2>
+              <p class="b-card-desc">Fluted bezels, jubilee bracelets, sunburst dials. Six design details that read as costly, where each one came from, and what they cost in Durres from 4,900 Lek.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">August 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/watch-history-stories.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch History</span>
+              <h2 class="b-card-title">The Watches That Made History: Six Stories in One Place</h2>
+              <p class="b-card-desc">The wristwatch, the Moon, the war, the unbreakable one and the heirloom. Our six watch-history stories gathered in one place, each linking to the full article.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">July 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/patek-philippe-generations.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch History</span>
+              <h2 class="b-card-title">Patek Philippe and the Watch You Pass Down</h2>
+              <p class="b-card-desc">The most famous line in watch advertising, why a good watch is an heirloom and not a gadget, and the watches you can give in Durres to last a generation.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">July 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/hamilton-military-watches.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch History</span>
+              <h2 class="b-card-title">Hamilton and the Watches That Went to War</h2>
+              <p class="b-card-desc">The trenches put the watch on the wrist, and Hamilton gave its whole factory to the war. The military watch and the rugged field-style watches you can buy today.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">July 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/g-shock-history.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch History</span>
+              <h2 class="b-card-title">The G-Shock Story: How a Broken Watch Built an Unbreakable One</h2>
+              <p class="b-card-desc">One engineer, a broken gift and 200 failed prototypes. How Casio built the watch that would not die, and the Casio value you can buy from us today.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">July 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/first-watch-on-the-moon.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch History</span>
+              <h2 class="b-card-title">The First Watch on the Moon</h2>
+              <p class="b-card-desc">NASA tested watches to destruction and only the Omega Speedmaster survived. How it reached the Moon in 1969 and helped bring Apollo 13 home.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">July 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/jaeger-lecoultre-history.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch History</span>
+              <h2 class="b-card-title">Jaeger-LeCoultre: the Watchmaker Behind the Watchmakers</h2>
+              <p class="b-card-desc">For a century the most famous names in watchmaking put LeCoultre movements inside their cases. The valley workshop, 1200 calibres, and the watch that flips.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">July 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/cartier-santos-first-wristwatch.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch History</span>
+              <h2 class="b-card-title">Cartier Santos: How the First Wristwatch Was Born</h2>
+              <p class="b-card-desc">In 1904 a pilot could not check his pocket watch mid-flight, so Louis Cartier put time on the wrist. The story of the watch that started everything.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">July 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/casio-a159wa-legend.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">The Casio A159WA: a 40-Year Legend You Can Buy in Durr&euml;s</h2>
+              <p class="b-card-desc">The digital watch that has not changed since the early 1980s: 7-year battery, steel bracelet, alarm and stopwatch. In stock at Iglisi Watch for &euro;61.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-10">July 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/watch-bezel-types-explained.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">Watch Bezel Types Explained: From Dive Bezels to Tachymeters</h2>
+              <p class="b-card-desc">The bezel does far more than frame the crystal. Learn the six main types - dive, tachymeter, GMT, plain, bidirectional, and pulsometer - what each does and how to identify yours.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">June 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="knowledge" href="/en/blog/citizen-eco-drive-explained.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Watch Knowledge</span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
               <h2 class="b-card-title">Citizen Eco-Drive Explained: How Solar Charging Works in Watches</h2>
               <p class="b-card-desc">No battery changes, but the capacitor lasts 10&ndash;15 years. Learn how Eco-Drive converts light to power, what the 2-second jump means, and when servicing is still needed.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> June 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">June 2026</time></span></div>
               <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-</div>
+          <a data-cat="knowledge" href="/en/blog/watch-complications-explained.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">Watch Complications Explained: From Date Windows to Tourbillons</h2>
+              <p class="b-card-desc">Date, chronograph, moon phase, GMT and tourbillon - what each complication actually does, why they exist, and how they affect long-term servicing costs and ownership.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">June 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/watch-types-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">Watch Types Explained: Divers, Tanks, Pilots and More</h2>
+              <p class="b-card-desc">Dive, field, pilot, dress, tank: where each watch type comes from, what it was built to do, and which one fits how you actually live.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-15">June 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/quartz-crisis.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">The Quartz Crisis: How a Japanese Chip Almost Destroyed Swiss Watchmaking</h2>
+              <p class="b-card-desc">In 1969, Seiko launched a watch more accurate than anything Switzerland had ever made - and far cheaper. What happened next was the near-total collapse of an entire industry.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/watch-repair-tools.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">Watch Repair Tools: What We Use and Why It Matters</h2>
+              <p class="b-card-desc">The wrong tool causes more damage than the fault it's trying to fix. Here's what professional watch repair requires - from case back openers to movement holders.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/swiss-vs-japanese-movements.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">Swiss vs Japanese Movements: What the Label Actually Tells You</h2>
+              <p class="b-card-desc">Swiss Made and Japanese movements represent two philosophies. One trades on heritage; the other on engineering volume. Here's what those labels actually mean at every price tier.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/buying-second-hand-watch.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">Buying a Second-Hand Watch: What to Check Before You Pay</h2>
+              <p class="b-card-desc">A second-hand watch is one of the best ways to get quality at a fair price - if you know what to look for. The complete pre-purchase checklist from case to movement.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/watch-case-sizes.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Style</span>
+              <h2 class="b-card-title">Watch Case Sizes Explained: Finding the Right Fit for Your Wrist</h2>
+              <p class="b-card-desc">Diameter alone doesn't determine how a watch fits. Lug-to-lug distance and thickness matter just as much. How to read the specs and avoid buying the wrong size.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/luminous-dials-explained.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">Luminous Dials Explained: Radium, Tritium, and Super-LumiNova</h2>
+              <p class="b-card-desc">Watch dials have glowed in the dark for over a century. The materials used have changed from radioactive radium to modern Super-LumiNova - here's what that means for vintage watches.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">April 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/watch-power-reserve.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">Watch Power Reserve: What It Is and Why It Matters</h2>
+              <p class="b-card-desc">An automatic watch winds itself - but not always enough. Understanding power reserve explains why your watch stops overnight and why there's a dangerous window for setting the date.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 10 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Updated May 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/spot-fake-watch.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">How to Spot a Fake Watch: 8 Things Experts Check First</h2>
+              <p class="b-card-desc">Buying second-hand or unsure about an inherited piece? These are the 8 physical checks that reveal a counterfeit - no specialist equipment needed.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-28">March 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/watch-occasion-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Style</span>
+              <h2 class="b-card-title">Dress, Sport &amp; Casual Watches: What to Wear for Every Occasion</h2>
+              <p class="b-card-desc">Dress watch for a wedding, sport watch for the gym, diver for weekends - choosing the right watch for the occasion is simpler than you think.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-28">March 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/en/blog/mechanical-vs-quartz.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Watch Knowledge</span>
+              <h2 class="b-card-title">Mechanical vs Quartz Watches: What&rsquo;s the Difference and Which Should You Choose?</h2>
+              <p class="b-card-desc">Quartz wins on accuracy and low maintenance. Mechanical wins on craftsmanship and collector value. An honest comparison to help you choose the right watch.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-23">March 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
 
-        <p id="blog-empty" aria-live="polite">No articles found. Try a different search or category.</p>
+        <p class="b-label" data-sec="keys">Key Services <span class="b-label-count">1</span></p>
+        <div class="b-grid3" data-sec-grid="keys">
+          <a data-cat="keys" href="/en/blog/key-duplication-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-key" aria-hidden="true"></i> Key Services</span>
+              <h2 class="b-card-title">How Key Duplication Works: Types, What to Bring &amp; What to Expect</h2>
+              <p class="b-card-desc">Getting a spare key cut takes under 5 minutes - if you know what to bring. Learn which keys we can duplicate, how the cutting process works, and how many copies you should make.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min read</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">March 2026</time></span></div>
+              <span class="b-card-link">Read article <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p id="blog-empty">No articles found. Try a different search or category.</p>
+
       </div>
     </section>
   </main>
@@ -1591,6 +998,6 @@
   </footer>
 
   <script src="/shared.js?v=22" defer></script>
-  <script src="/blog-search.js?v=2" defer></script>
+  <script src="/blog-search.js?v=3" defer></script>
 </body>
 </html>

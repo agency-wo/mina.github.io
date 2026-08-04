@@ -48,7 +48,6 @@
 .nav-drawer{display:none}
 #nav-toggle:checked~.nav-drawer{display:block!important}
 
-    /* === Magazine Blog Layout === */
     .blog-wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:2rem}
     .b-feat{display:grid;grid-template-columns:5.5rem 1fr;gap:2.5rem;align-items:center;background:linear-gradient(135deg,#18110a 0%,#2c1d0d 60%,#1a1208 100%);border-radius:1.5rem;padding:2.5rem 3rem;text-decoration:none;color:#fff;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;box-shadow:0 6px 40px rgba(0,0,0,.22)}
     .b-feat::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:var(--accent-gold);border-radius:6px 0 0 6px}
@@ -64,12 +63,12 @@
     .b-feat:hover .b-feat-cta{background:rgba(180,148,92,.12);border-color:rgba(180,148,92,.65)}
     .b-label{display:flex;align-items:center;gap:1rem;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#bbb;margin:0}
     .b-label::after{content:'';flex:1;height:1px;background:#e5ddd3}
-    .b-row2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .b-label-count{background:rgba(180,148,92,.14);color:var(--accent-gold-accessible);padding:.2rem .6rem;border-radius:1rem;font-size:.65rem;font-weight:700;letter-spacing:normal}
+    .b-count{text-align:center;font-size:.8rem;color:var(--text-secondary);margin:0}
     .b-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
     .b-card{background:#fff;border-radius:1.1rem;box-shadow:0 2px 14px rgba(0,0,0,.07);display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s,border-top-color .2s;border-top:3px solid transparent;overflow:hidden}
     .b-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.12);border-top-color:var(--accent-gold)}
     .b-card-body{padding:1.4rem 1.5rem;flex:1;display:flex;flex-direction:column}
-    .b-card-num{font-size:1.75rem;font-weight:900;color:rgba(180,148,92,.25);font-family:'Cormorant Garamond',serif;line-height:1;margin-bottom:.25rem}
     .b-card-cat{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:.6rem}
     .b-card-title{font-size:1.05rem;font-weight:800;line-height:1.3;margin-bottom:.5rem;color:var(--text-primary);flex:1}
     .b-card-desc{font-size:.83rem;color:var(--text-secondary);line-height:1.55;margin-bottom:.85rem}
@@ -79,21 +78,18 @@
     .b-card-link i{font-size:.65rem;transition:transform .2s}
     .b-card:hover .b-card-link i{transform:translateX(3px)}
     @media(max-width:960px){.b-grid3{grid-template-columns:1fr 1fr}.b-feat{grid-template-columns:1fr;padding:2rem}.b-feat-num{display:none}}
-    @media(max-width:640px){.b-row2,.b-grid3{grid-template-columns:1fr}}
+    @media(max-width:640px){.b-grid3{grid-template-columns:1fr}}
     .blog-search-wrap{position:relative;max-width:440px;margin:0 auto 1.75rem}
     .blog-search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:rgba(180,148,92,.7);font-size:.95rem;pointer-events:none}
     .blog-search-input{width:100%;padding:.7rem 1rem .7rem 2.6rem;background:rgba(255,255,255,.08);border:1.5px solid rgba(180,148,92,.3);border-radius:2rem;color:#fff;font-size:.9rem;outline:none;transition:border-color .2s,background .2s;box-sizing:border-box}
     .blog-search-input::placeholder{color:rgba(255,255,255,.38)}
     .blog-search-input:focus{border-color:rgba(180,148,92,.7);background:rgba(255,255,255,.12)}
     .blog-search-input::-webkit-search-cancel-button{cursor:pointer;filter:invert(1)opacity(.5)}
-    /* Category filter */
     .blog-cats{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;max-width:700px;margin:0 auto 1.75rem}
     .b-cat-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem 1.05rem;border-radius:2rem;border:1.5px solid rgba(180,148,92,.45);background:rgba(255,255,255,.11);color:rgba(255,255,255,.82);font-size:.75rem;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:all .18s;white-space:nowrap;line-height:1;font-family:inherit}
     .b-cat-btn:hover{border-color:rgba(180,148,92,.6);background:rgba(180,148,92,.12);color:#fff}
     .b-cat-btn[aria-pressed="true"]{background:var(--accent-gold);border-color:var(--accent-gold);color:#18110a}
     #blog-empty{display:none;text-align:center;padding:3rem 1rem;color:var(--text-secondary);font-size:.95rem}
-  
-    #blog-empty{text-align:center;padding:3rem 1rem;color:rgba(255,255,255,.6);font-size:1.05rem}
     #blog-empty::before{content:'\f002';font-family:'Font Awesome 6 Free';font-weight:900;display:block;font-size:2rem;margin-bottom:.75rem;opacity:.4}
 </style>
   <script type="application/ld+json">
@@ -101,503 +97,7 @@
     {"@type":"ListItem","position":1,"name":"Home","item":"https://watch.al/it/"},
     {"@type":"ListItem","position":2,"name":"Blog","item":"https://watch.al/it/blog/"}
   ]}</script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Blog Riparazione Orologi e Copia Chiavi | Iglisi Watch",
-    "url": "https://watch.al/it/blog/",
-    "inLanguage": "it",
-    "numberOfItems": 80,
-    "mainEntity": {
-      "@type": "ItemList",
-      "name": "Blog Riparazione Orologi e Copia Chiavi | Iglisi Watch",
-      "numberOfItems": 80,
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Casio vs Citizen: Quale Orologio Vale la Pena Comprare?",
-          "url": "https://watch.al/it/blog/casio-vs-citizen.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Hai Bisogno di un Orologio Come Regalo a Durazzo Oggi? Siamo Aperti fino alle 20:30",
-          "url": "https://watch.al/it/blog/regalo-orologio-durazzo-stesso-giorno.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Devo Riparare il Mio Orologio o Comprarne Uno Nuovo? Una Guida Onesta",
-          "url": "https://watch.al/it/blog/riparare-o-comprare-orologio-nuovo-durazzo.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Quanto Dura la Batteria di un Orologio? Segnali di Scarica & Cosa Fare",
-          "url": "https://watch.al/it/blog/guida-batteria-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "name": "5 Segnali che il Tuo Orologio ha Bisogno di una Revisione, Non Solo di una Batteria Nuova",
-          "url": "https://watch.al/it/blog/segni-revisione-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 6,
-          "name": "Come Prendersi Cura del Cinturino dell'Orologio: Guida per Pelle, Metallo e Gomma",
-          "url": "https://watch.al/it/blog/cura-cinturino-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 7,
-          "name": "Come Funziona il Duplicato di Chiavi: Tipi, Cosa Portare e Cosa Aspettarsi",
-          "url": "https://watch.al/it/blog/guida-duplicato-chiavi.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 8,
-          "name": "Impermeabilità degli Orologi: Cosa Significano Davvero ATM, BAR e Metri",
-          "url": "https://watch.al/it/blog/impermeabilita-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 9,
-          "name": "Come Pulire il Tuo Orologio in Casa: Metodi Sicuri per Ogni Materiale",
-          "url": "https://watch.al/it/blog/guida-pulizia-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 10,
-          "name": "Come Conservare Correttamente il Tuo Orologio: Guida Completa",
-          "url": "https://watch.al/it/blog/guida-conservazione-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 11,
-          "name": "Meccanico vs Quarzo: Qual è la Differenza e Quale Dovresti Scegliere?",
-          "url": "https://watch.al/it/blog/meccanico-vs-quarzo.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 12,
-          "name": "Vetri degli Orologi: Acrilico, Minerale e Zaffiro - Le Differenze",
-          "url": "https://watch.al/it/blog/guida-cristallo-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 13,
-          "name": "Come Caricare il Tuo Orologio: Manuale, Automatico & Posizioni della Corona",
-          "url": "https://watch.al/it/blog/guida-carica-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 14,
-          "name": "Come Riconoscere un Orologio Falso: 8 Controlli degli Esperti",
-          "url": "https://watch.al/it/blog/riconoscere-orologio-falso.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 15,
-          "name": "Orologi da Cerimonia, Sport e Casual: Cosa Indossare per Ogni Occasione",
-          "url": "https://watch.al/it/blog/guida-occasioni-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 16,
-          "name": "La Crisi al Quarzo: Giappone contro Svizzera",
-          "url": "https://watch.al/it/blog/crisi-al-quarzo.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 17,
-          "name": "Gli Strumenti dell'Orologiaio: Cosa Usiamo",
-          "url": "https://watch.al/it/blog/strumenti-riparazione-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 18,
-          "name": "Orologio Magnetizzato: Cause e Soluzione",
-          "url": "https://watch.al/it/blog/magnetizzazione-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 19,
-          "name": "Movimenti Svizzeri vs Giapponesi a Confronto",
-          "url": "https://watch.al/it/blog/movimenti-svizzeri-vs-giapponesi.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 20,
-          "name": "Comprare un Orologio Usato: Cosa Controllare",
-          "url": "https://watch.al/it/blog/comprare-orologio-usato.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 21,
-          "name": "Dimensioni della Cassa: Come Scegliere la Misura",
-          "url": "https://watch.al/it/blog/dimensioni-cassa-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 22,
-          "name": "Quadranti Luminosi: Dal Radio al Super-LumiNova",
-          "url": "https://watch.al/it/blog/quadranti-luminosi-spiegati.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 23,
-          "name": "Riserva di Carica: Tutto Quello che Devi Sapere",
-          "url": "https://watch.al/it/blog/riserva-di-carica-orologio.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 24,
-          "name": "La Corona dell'Orologio: Funzioni e Posizioni",
-          "url": "https://watch.al/it/blog/corona-orologio-spiegata.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 25,
-          "name": "I Migliori Orologi Sotto 200 Euro in Albania (2026)",
-          "url": "https://watch.al/it/blog/migliori-orologi-sotto-200-albania.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 26,
-          "name": "Dove Comprare un Orologio a Durrës: Una Guida Onesta",
-          "url": "https://watch.al/it/blog/dove-comprare-orologio-durazzo.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 27,
-          "name": "Hislon vs Navimarine: Quale Marchio di Orologi fa per Te?",
-          "url": "https://watch.al/it/blog/hislon-vs-navimarine.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 28,
-          "name": "Acquista Orologi in Tutta l'Albania - Tirana, Vlorë, Shkodër e Oltre",
-          "url": "https://watch.al/it/blog/dove-comprare-orologio-tirana.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 29,
-          "name": "È Sicuro Comprare un Orologio su Instagram in Albania?",
-          "url": "https://watch.al/it/blog/comprare-orologio-instagram-albania.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 30,
-          "name": "I Migliori Orologi Economici a Durrës Sotto i 100€",
-          "url": "https://watch.al/it/blog/migliori-orologi-economici-durazzo-100.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 31,
-          "name": "Migliori Regali Orologio per Uomo in Albania",
-          "url": "https://watch.al/it/blog/regalo-orologio-uomo-albania.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 32,
-          "name": "Migliori Regali Orologio per Donna in Albania",
-          "url": "https://watch.al/it/blog/regalo-orologio-donna-albania.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 33,
-          "name": "Orologio come Regalo di Matrimonio in Albania",
-          "url": "https://watch.al/it/blog/orologio-regalo-matrimonio-albania.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 34,
-          "name": "Idee Orologio per la Laurea Sotto €200",
-          "url": "https://watch.al/it/blog/idee-orologio-laurea.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 35,
-          "name": "Recensione Hislon Classic: Ne Vale la Pena?",
-          "url": "https://watch.al/it/blog/recensione-hislon-classic.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 36,
-          "name": "Quale Navimarine Comprare?",
-          "url": "https://watch.al/it/blog/quale-navimarine-comprare.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 37,
-          "name": "Il Primo Orologio per un Adolescente",
-          "url": "https://watch.al/it/blog/primo-orologio-adolescente.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 38,
-          "name": "È Sicuro Comprare un Orologio Senza Provarlo?",
-          "url": "https://watch.al/it/blog/comprare-orologio-senza-provare.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 39,
-          "name": "Cosa Include la Revisione di un Orologio?",
-          "url": "https://watch.al/it/blog/revisione-orologio-cosa-include.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 40,
-          "name": "Riparazione Orologi a Durrës: Cosa Aspettarsi",
-          "url": "https://watch.al/it/blog/riparazione-orologi-durazzo.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 41,
-          "name": "Che Garanzia Viene con un Orologio Nuovo?",
-          "url": "https://watch.al/it/blog/garanzia-orologio-nuovo.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 42,
-          "name": "Sostituzione Batteria Orologio a Durrës - Pronto Mentre Aspetti",
-          "url": "https://watch.al/it/blog/sostituzione-batteria-orologio-durazzo.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 43,
-          "name": "Sostituzione Cinturino Orologio a Durazzo - Montaggio in Giornata",
-          "url": "https://watch.al/it/blog/sostituzione-cinturino-orologio-durazzo.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 44,
-          "name": "Vetro Rotto? Sostituzione del Cristallo a Durazzo",
-          "url": "https://watch.al/it/blog/sostituzione-cristallo-orologio-durazzo.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 45,
-          "url": "https://watch.al/it/blog/seiko-vs-citizen-vs-casio.html",
-          "name": "Seiko vs Citizen vs Casio: Quale Marchio Giapponese Vale la Pena Comprare?"
-        },
-        {
-          "@type": "ListItem",
-          "position": 46,
-          "url": "https://watch.al/it/blog/watch-battery-size-guide.html",
-          "name": "Guida alle Misure delle Batterie per Orologi: Come Trovare la Batteria Giusta"
-        },
-        {
-          "@type": "ListItem",
-          "position": 47,
-          "url": "https://watch.al/it/blog/caldo-umidita-orologio.html",
-          "name": "Il Caldo e l'Umidità Possono Danneggiare il Tuo Orologio?"
-        },
-        {
-          "@type": "ListItem",
-          "position": 48,
-          "url": "https://watch.al/it/blog/test-pressione-orologio.html",
-          "name": "Test di Pressione dell'Orologio: Cos'È e Quando Serve"
-        },
-        {
-          "@type": "ListItem",
-          "position": 49,
-          "url": "https://watch.al/it/blog/complicazioni-orologio.html",
-          "name": "Complicazioni dell'Orologio Spiegate: dal Data al Tourbillon"
-        },
-        {
-          "@type": "ListItem",
-          "position": 50,
-          "url": "https://watch.al/it/blog/smartwatch-vs-orologio-tradizionale.html",
-          "name": "Smartwatch o Orologio Tradizionale: Quale Comprare?"
-        },
-        {
-          "@type": "ListItem",
-          "position": 51,
-          "url": "https://watch.al/it/blog/orologio-come-investimento.html",
-          "name": "L'Orologio come Investimento: Cosa Comprare e Cosa Evitare"
-        },
-        {
-          "@type": "ListItem",
-          "position": 52,
-          "url": "https://watch.al/it/blog/comprare-orologi-albania.html",
-          "name": "Come Comprare Orologi Nuovi in Albania"
-        },
-        {
-          "@type": "ListItem",
-          "position": 53,
-          "url": "https://watch.al/it/blog/casio-a159wa-leggenda.html",
-          "name": "Casio A159WA: la Leggenda di 40 Anni in Vendita a Durrës"
-        },
-        {
-          "@type": "ListItem",
-          "position": 54,
-          "url": "https://watch.al/it/blog/cartier-santos-primo-orologio-da-polso.html",
-          "name": "Cartier Santos: Come Nacque il Primo Orologio da Polso"
-        },
-        {
-          "@type": "ListItem",
-          "position": 55,
-          "url": "https://watch.al/it/blog/jaeger-lecoultre-storia.html",
-          "name": "Jaeger-LeCoultre: l'Orologiaio Dietro gli Orologiai"
-        },
-        {
-          "@type": "ListItem",
-          "position": 56,
-          "url": "https://watch.al/it/blog/primo-orologio-sulla-luna.html",
-          "name": "Il Primo Orologio sulla Luna"
-        },
-        {
-          "@type": "ListItem",
-          "position": 57,
-          "url": "https://watch.al/it/blog/storia-g-shock.html",
-          "name": "La Storia del G-Shock: Come un Orologio Rotto ne Creò uno Indistruttibile"
-        },
-        {
-          "@type": "ListItem",
-          "position": 58,
-          "url": "https://watch.al/it/blog/orologi-militari-hamilton.html",
-          "name": "Hamilton e gli Orologi che Andarono in Guerra"
-        },
-        {
-          "@type": "ListItem",
-          "position": 59,
-          "url": "https://watch.al/it/blog/patek-philippe-generazioni.html",
-          "name": "Patek Philippe e l'Orologio che si Tramanda"
-        },
-        {
-          "@type": "ListItem",
-          "position": 60,
-          "url": "https://watch.al/it/blog/orologi-che-hanno-fatto-storia.html",
-          "name": "Gli Orologi che Hanno Fatto la Storia: Sei Storie in un Solo Posto"
-        },
-        {
-          "@type": "ListItem",
-          "position": 61,
-          "url": "https://watch.al/it/blog/guida-tipi-di-orologi.html",
-          "name": "Tipi di Orologio Spiegati: Subacquei, Tank, Aviatori e Non Solo"
-        },
-        {
-          "@type": "ListItem",
-          "position": 62,
-          "url": "https://watch.al/it/blog/orologio-mare-estate.html",
-          "name": "Che Orologio Portare al Mare: l'Estate Albanese"
-        },
-        {
-          "@type": "ListItem",
-          "position": 63,
-          "url": "https://watch.al/it/blog/daniel-klein-orologi-opinioni.html",
-          "name": "Gli Orologi Daniel Klein Sono Buoni? La Risposta Onesta di un Orologiaio"
-        },
-        {
-          "@type": "ListItem",
-          "position": 64,
-          "url": "https://watch.al/it/blog/fasce-prezzo-orologi.html",
-          "name": "60 vs 90 vs 190 Euro: Cosa Compri Davvero con un Orologio Più Caro"
-        },
-        {
-          "@type": "ListItem",
-          "position": 65,
-          "url": "https://watch.al/it/blog/orologi-coppia-abbinati.html",
-          "name": "Orologi Abbinati per Coppie: Lui e Lei da 124 Euro"
-        },
-        {
-          "@type": "ListItem",
-          "position": 66,
-          "url": "https://watch.al/it/blog/orologi-che-comprerei-io.html",
-          "name": "I 5 Orologi che Comprerei dal Mio Stesso Negozio"
-        },
-        {
-          "@type": "ListItem",
-          "position": 67,
-          "url": "https://watch.al/it/blog/orologi-uomo-albania.html",
-          "name": "Orologi da Uomo in Albania: Cosa Teniamo e Quanto Costa"
-        },
-        {
-          "@type": "ListItem",
-          "position": 68,
-          "url": "https://watch.al/it/blog/orologi-sotto-10000-lek.html",
-          "name": "Orologi Sotto i 10.000 Lek: Cosa Compra Davvero il Vostro Denaro"
-        },
-        {
-          "@type": "ListItem",
-          "position": 69,
-          "url": "https://watch.al/it/blog/orologi-donna-albania.html",
-          "name": "Orologi da Donna in Albania: Cosa Teniamo e Quanto Costa"
-        },
-        {
-          "@type": "ListItem",
-          "position": 70,
-          "url": "https://watch.al/it/blog/citizen-eco-drive-spiegato.html",
-          "name": "Citizen Eco-Drive Spiegato: Come Funziona la Ricarica Solare negli Orologi"
-        },
-        {
-          "@type": "ListItem",
-          "position": 71,
-          "url": "https://watch.al/it/blog/guida-larghezza-cinturino-orologio.html",
-          "name": "Larghezza Anse Orologio: Come Misurare e Trovare il Cinturino Giusto"
-        },
-        {
-          "@type": "ListItem",
-          "position": 72,
-          "url": "https://watch.al/it/blog/revisione-orologio-durazzo.html",
-          "name": "Revisione Completa dell’Orologio a Durrës - Iglisi Watch"
-        },
-        {
-          "@type": "ListItem",
-          "position": 73,
-          "url": "https://watch.al/it/blog/riparazione-corona-orologio.html",
-          "name": "Riparazione della Corona dell’Orologio: Quando Riparare e Quando Sostituire"
-        },
-        {
-          "@type": "ListItem",
-          "position": 74,
-          "url": "https://watch.al/it/blog/servizio-casio-albania.html",
-          "name": "Dove Portare un Casio, Seiko o Citizen in Albania"
-        },
-        {
-          "@type": "ListItem",
-          "position": 75,
-          "url": "https://watch.al/it/blog/tipi-lunetta-orologio.html",
-          "name": "Tipi di Lunetta dell’Orologio: dalla Lunetta Sub al Tachimetro"
-        },
-        {
-          "@type": "ListItem",
-          "position": 76,
-          "url": "https://watch.al/it/blog/regalo-orologio-capodanno-albania.html",
-          "name": "Regalo Orologio per Capodanno in Albania: Cosa Comprare e Quando Ordinare"
-        },
-        {
-          "@type": "ListItem",
-          "position": 77,
-          "url": "https://watch.al/it/blog/cosa-rende-un-orologio-elegante.html",
-          "name": "Cosa Rende un Orologio Elegante: Sei Dettagli Che Fanno il Lavoro"
-        },
-        {
-          "@type": "ListItem",
-          "position": 78,
-          "url": "https://watch.al/it/blog/quanto-dura-un-orologio-economico.html",
-          "name": "Quanto Dura un Orologio da 70 Euro? Quello Che Vediamo al Banco"
-        },
-        {
-          "@type": "ListItem",
-          "position": 79,
-          "url": "https://watch.al/it/blog/orologio-oro-o-acciaio.html",
-          "name": "Oro o Acciaio? Cosa Significa Davvero la Placcatura a Questo Prezzo"
-        },
-        {
-          "@type": "ListItem",
-          "position": 80,
-          "url": "https://watch.al/it/blog/cronografo-vs-tre-sfere.html",
-          "name": "Cronografo o Tre Sfere? Cosa Fanno Davvero Quei Contatori"
-        }
-      ]
-    }
-  }
-  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Blog Riparazione Orologi e Copia Chiavi | Iglisi Watch", "url": "https://watch.al/it/blog/", "inLanguage": "it", "numberOfItems": 80, "mainEntity": {"@type": "ItemList", "name": "Blog Riparazione Orologi e Copia Chiavi | Iglisi Watch", "numberOfItems": 80, "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Orologi Sotto i 10.000 Lek: Cosa Compra Davvero il Vostro Denaro", "url": "https://watch.al/it/blog/orologi-sotto-10000-lek.html"}, {"@type": "ListItem", "position": 2, "name": "Cronografo o Tre Sfere? Cosa Fanno Davvero Quei Contatori", "url": "https://watch.al/it/blog/cronografo-vs-tre-sfere.html"}, {"@type": "ListItem", "position": 3, "name": "Orologi da Donna in Albania: Cosa Teniamo e Quanto Costa", "url": "https://watch.al/it/blog/orologi-donna-albania.html"}, {"@type": "ListItem", "position": 4, "name": "Orologi da Uomo in Albania: Cosa Teniamo e Quanto Costa", "url": "https://watch.al/it/blog/orologi-uomo-albania.html"}, {"@type": "ListItem", "position": 5, "name": "I 5 Orologi che Comprerei dal Mio Stesso Negozio", "url": "https://watch.al/it/blog/orologi-che-comprerei-io.html"}, {"@type": "ListItem", "position": 6, "name": "60 vs 90 vs 190 Euro: Cosa Compri Davvero con un Orologio Più Caro", "url": "https://watch.al/it/blog/fasce-prezzo-orologi.html"}, {"@type": "ListItem", "position": 7, "name": "Gli Orologi Daniel Klein Sono Buoni? La Risposta Onesta di un Orologiaio", "url": "https://watch.al/it/blog/daniel-klein-orologi-opinioni.html"}, {"@type": "ListItem", "position": 8, "name": "Che Orologio Portare al Mare: l’Estate Albanese", "url": "https://watch.al/it/blog/orologio-mare-estate.html"}, {"@type": "ListItem", "position": 9, "name": "Smartwatch o Orologio Tradizionale: Quale Comprare?", "url": "https://watch.al/it/blog/smartwatch-vs-orologio-tradizionale.html"}, {"@type": "ListItem", "position": 10, "name": "L’Orologio come Investimento: Cosa Comprare e Cosa Evitare", "url": "https://watch.al/it/blog/orologio-come-investimento.html"}, {"@type": "ListItem", "position": 11, "name": "Come Comprare Orologi Nuovi in Albania", "url": "https://watch.al/it/blog/comprare-orologi-albania.html"}, {"@type": "ListItem", "position": 12, "name": "Seiko vs Citizen vs Casio: Quale Marchio Giapponese Vale la Pena Comprare?", "url": "https://watch.al/it/blog/seiko-vs-citizen-vs-casio.html"}, {"@type": "ListItem", "position": 13, "name": "Casio vs Citizen: Quale Scegliere?", "url": "https://watch.al/it/blog/casio-vs-citizen.html"}, {"@type": "ListItem", "position": 14, "name": "Recensione Hislon Classic: Vale la Pena?", "url": "https://watch.al/it/blog/recensione-hislon-classic.html"}, {"@type": "ListItem", "position": 15, "name": "Quale Navimarine Comprare: Sport, Classic o Chronograph?", "url": "https://watch.al/it/blog/quale-navimarine-comprare.html"}, {"@type": "ListItem", "position": 16, "name": "Il Primo Orologio per un Adolescente: Cosa Cercare", "url": "https://watch.al/it/blog/primo-orologio-adolescente.html"}, {"@type": "ListItem", "position": 17, "name": "È Sicuro Comprare un Orologio Senza Provarlo?", "url": "https://watch.al/it/blog/comprare-orologio-senza-provare.html"}, {"@type": "ListItem", "position": 18, "name": "È Sicuro Comprare un Orologio su Instagram in Albania?", "url": "https://watch.al/it/blog/comprare-orologio-instagram-albania.html"}, {"@type": "ListItem", "position": 19, "name": "I Migliori Orologi Economici a Durrës Sotto i 100€", "url": "https://watch.al/it/blog/migliori-orologi-economici-durazzo-100.html"}, {"@type": "ListItem", "position": 20, "name": "Acquista Orologi in Tutta l’Albania", "url": "https://watch.al/it/blog/dove-comprare-orologio-tirana.html"}, {"@type": "ListItem", "position": 21, "name": "I Migliori Orologi Sotto €200 in Albania (2026)", "url": "https://watch.al/it/blog/migliori-orologi-sotto-200-albania.html"}, {"@type": "ListItem", "position": 22, "name": "Dove Comprare un Orologio a Durazzo: Una Guida Onesta", "url": "https://watch.al/it/blog/dove-comprare-orologio-durazzo.html"}, {"@type": "ListItem", "position": 23, "name": "Hislon vs Navimarine: Quale Marchio di Orologi fa per Te?", "url": "https://watch.al/it/blog/hislon-vs-navimarine.html"}, {"@type": "ListItem", "position": 24, "name": "Regalo Orologio per Capodanno in Albania: Cosa Comprare e Quando Ordinare", "url": "https://watch.al/it/blog/regalo-orologio-capodanno-albania.html"}, {"@type": "ListItem", "position": 25, "name": "Orologi Abbinati per Coppie: Lui e Lei da 124 Euro", "url": "https://watch.al/it/blog/orologi-coppia-abbinati.html"}, {"@type": "ListItem", "position": 26, "name": "Hai Bisogno di un Orologio Come Regalo a Durazzo Oggi?", "url": "https://watch.al/it/blog/regalo-orologio-durazzo-stesso-giorno.html"}, {"@type": "ListItem", "position": 27, "name": "I Migliori Regali Orologio per Uomo in Albania (2026)", "url": "https://watch.al/it/blog/regalo-orologio-uomo-albania.html"}, {"@type": "ListItem", "position": 28, "name": "I Migliori Regali Orologio per Donna in Albania (2026)", "url": "https://watch.al/it/blog/regalo-orologio-donna-albania.html"}, {"@type": "ListItem", "position": 29, "name": "Idee Orologio per la Laurea: Come Scegliere il Regalo Giusto", "url": "https://watch.al/it/blog/idee-orologio-laurea.html"}, {"@type": "ListItem", "position": 30, "name": "Orologio come Regalo di Matrimonio in Albania: Guida Completa", "url": "https://watch.al/it/blog/orologio-regalo-matrimonio-albania.html"}, {"@type": "ListItem", "position": 31, "name": "Larghezza Anse Orologio: Come Misurare e Trovare il Cinturino Giusto", "url": "https://watch.al/it/blog/guida-larghezza-cinturino-orologio.html"}, {"@type": "ListItem", "position": 32, "name": "Riparazione della Corona dell’Orologio: Quando Riparare e Quando Sostituire", "url": "https://watch.al/it/blog/riparazione-corona-orologio.html"}, {"@type": "ListItem", "position": 33, "name": "Dove Portare un Casio, Seiko o Citizen in Albania", "url": "https://watch.al/it/blog/servizio-casio-albania.html"}, {"@type": "ListItem", "position": 34, "name": "Il Caldo e l’Umidità Possono Danneggiare il Tuo Orologio?", "url": "https://watch.al/it/blog/caldo-umidita-orologio.html"}, {"@type": "ListItem", "position": 35, "name": "Test di Pressione dell’Orologio: Cos’È e Quando Serve", "url": "https://watch.al/it/blog/test-pressione-orologio.html"}, {"@type": "ListItem", "position": 36, "name": "Revisione Completa dell’Orologio a Durrës - Iglisi Watch", "url": "https://watch.al/it/blog/revisione-orologio-durazzo.html"}, {"@type": "ListItem", "position": 37, "name": "Guida Misure Batterie Orologi: SR626SW, SR920SW, CR2032 Spiegati", "url": "https://watch.al/it/blog/watch-battery-size-guide.html"}, {"@type": "ListItem", "position": 38, "name": "Devo Riparare il Mio Orologio o Comprarne Uno Nuovo?", "url": "https://watch.al/it/blog/riparare-o-comprare-orologio-nuovo-durazzo.html"}, {"@type": "ListItem", "position": 39, "name": "Sostituzione Batteria Orologio a Durrës - Pronto Mentre Aspetti", "url": "https://watch.al/it/blog/sostituzione-batteria-orologio-durazzo.html"}, {"@type": "ListItem", "position": 40, "name": "Sostituzione Cinturino Orologio a Durazzo - Montaggio in Giornata", "url": "https://watch.al/it/blog/sostituzione-cinturino-orologio-durazzo.html"}, {"@type": "ListItem", "position": 41, "name": "Vetro Rotto? Sostituzione del Cristallo a Durazzo", "url": "https://watch.al/it/blog/sostituzione-cristallo-orologio-durazzo.html"}, {"@type": "ListItem", "position": 42, "name": "Cosa Include Davvero una Revisione dell’Orologio?", "url": "https://watch.al/it/blog/revisione-orologio-cosa-include.html"}, {"@type": "ListItem", "position": 43, "name": "Riparazione Orologi a Durazzo: Cosa Aspettarsi", "url": "https://watch.al/it/blog/riparazione-orologi-durazzo.html"}, {"@type": "ListItem", "position": 44, "name": "Che Garanzia Viene con un Orologio Nuovo?", "url": "https://watch.al/it/blog/garanzia-orologio-nuovo.html"}, {"@type": "ListItem", "position": 45, "name": "Magnetizzazione dell’Orologio: Cause, Sintomi e Come Smagnetizzarlo", "url": "https://watch.al/it/blog/magnetizzazione-orologio.html"}, {"@type": "ListItem", "position": 46, "name": "La Corona dell’Orologio: Funzioni, Posizioni e Come Non Danneggiarla", "url": "https://watch.al/it/blog/corona-orologio-spiegata.html"}, {"@type": "ListItem", "position": 47, "name": "Come Caricare il Tuo Orologio: Manuale, Automatico & Posizioni della Corona", "url": "https://watch.al/it/blog/guida-carica-orologio.html"}, {"@type": "ListItem", "position": 48, "name": "Come Conservare il Tuo Orologio Correttamente: Guida Completa", "url": "https://watch.al/it/blog/guida-conservazione-orologio.html"}, {"@type": "ListItem", "position": 49, "name": "Cristalli per Orologi: Acrilico, Minerale e Zaffiro - Qual è la Differenza?", "url": "https://watch.al/it/blog/guida-cristallo-orologio.html"}, {"@type": "ListItem", "position": 50, "name": "Quanto Dura la Batteria di un Orologio? Segnali di Scarica e Cosa Fare", "url": "https://watch.al/it/blog/guida-batteria-orologio.html"}, {"@type": "ListItem", "position": 51, "name": "5 Segnali che il Tuo Orologio ha Bisogno di una Revisione, Non Solo di una Batteria Nuova", "url": "https://watch.al/it/blog/segni-revisione-orologio.html"}, {"@type": "ListItem", "position": 52, "name": "Come Prendersi Cura del Cinturino dell’Orologio: Guida per Pelle, Metallo e Gomma", "url": "https://watch.al/it/blog/cura-cinturino-orologio.html"}, {"@type": "ListItem", "position": 53, "name": "Impermeabilità degli Orologi: Cosa Significano Davvero ATM, BAR e Metri", "url": "https://watch.al/it/blog/impermeabilita-orologio.html"}, {"@type": "ListItem", "position": 54, "name": "Come Pulire il Tuo Orologio in Casa: Metodi Sicuri per Ogni Materiale", "url": "https://watch.al/it/blog/guida-pulizia-orologio.html"}, {"@type": "ListItem", "position": 55, "name": "Oro o Acciaio? Cosa Significa Davvero la Placcatura a Questo Prezzo", "url": "https://watch.al/it/blog/orologio-oro-o-acciaio.html"}, {"@type": "ListItem", "position": 56, "name": "Quanto Dura un Orologio da 70 Euro? Quello Che Vediamo al Banco", "url": "https://watch.al/it/blog/quanto-dura-un-orologio-economico.html"}, {"@type": "ListItem", "position": 57, "name": "Cosa Rende un Orologio Elegante: Sei Dettagli Che Fanno il Lavoro", "url": "https://watch.al/it/blog/cosa-rende-un-orologio-elegante.html"}, {"@type": "ListItem", "position": 58, "name": "Gli Orologi che Hanno Fatto la Storia: Sei Storie in un Solo Posto", "url": "https://watch.al/it/blog/orologi-che-hanno-fatto-storia.html"}, {"@type": "ListItem", "position": 59, "name": "Patek Philippe e l’Orologio che si Tramanda", "url": "https://watch.al/it/blog/patek-philippe-generazioni.html"}, {"@type": "ListItem", "position": 60, "name": "Hamilton e gli Orologi che Andarono in Guerra", "url": "https://watch.al/it/blog/orologi-militari-hamilton.html"}, {"@type": "ListItem", "position": 61, "name": "La Storia del G-Shock: Come un Orologio Rotto ne Creò uno Indistruttibile", "url": "https://watch.al/it/blog/storia-g-shock.html"}, {"@type": "ListItem", "position": 62, "name": "Il Primo Orologio sulla Luna", "url": "https://watch.al/it/blog/primo-orologio-sulla-luna.html"}, {"@type": "ListItem", "position": 63, "name": "Jaeger-LeCoultre: l’Orologiaio Dietro gli Orologiai", "url": "https://watch.al/it/blog/jaeger-lecoultre-storia.html"}, {"@type": "ListItem", "position": 64, "name": "Cartier Santos: Come Nacque il Primo Orologio da Polso", "url": "https://watch.al/it/blog/cartier-santos-primo-orologio-da-polso.html"}, {"@type": "ListItem", "position": 65, "name": "Casio A159WA: la Leggenda di 40 Anni in Vendita a Durrës", "url": "https://watch.al/it/blog/casio-a159wa-leggenda.html"}, {"@type": "ListItem", "position": 66, "name": "Tipi di Lunetta dell’Orologio: dalla Lunetta Sub al Tachimetro", "url": "https://watch.al/it/blog/tipi-lunetta-orologio.html"}, {"@type": "ListItem", "position": 67, "name": "Citizen Eco-Drive Spiegato: Come Funziona la Ricarica Solare negli Orologi", "url": "https://watch.al/it/blog/citizen-eco-drive-spiegato.html"}, {"@type": "ListItem", "position": 68, "name": "Complicazioni dell’Orologio Spiegate: dal Data al Tourbillon", "url": "https://watch.al/it/blog/complicazioni-orologio.html"}, {"@type": "ListItem", "position": 69, "name": "Tipi di Orologio Spiegati: Subacquei, Tank, Aviatori e Non Solo", "url": "https://watch.al/it/blog/guida-tipi-di-orologi.html"}, {"@type": "ListItem", "position": 70, "name": "La Crisi al Quarzo: Come un Chip Giapponese Quasi Distrusse l’Orologeria Svizzera", "url": "https://watch.al/it/blog/crisi-al-quarzo.html"}, {"@type": "ListItem", "position": 71, "name": "Gli Strumenti del Maestro Orologiaio: Dal Cacciavite da 0,5 mm al Banco Ultrasuoni", "url": "https://watch.al/it/blog/strumenti-riparazione-orologio.html"}, {"@type": "ListItem", "position": 72, "name": "Movimenti Svizzeri vs Giapponesi: Qual È il Migliore?", "url": "https://watch.al/it/blog/movimenti-svizzeri-vs-giapponesi.html"}, {"@type": "ListItem", "position": 73, "name": "Comprare un Orologio Usato: La Checklist in 7 Passi per Non Sbagliare", "url": "https://watch.al/it/blog/comprare-orologio-usato.html"}, {"@type": "ListItem", "position": 74, "name": "Dimensioni della Cassa: Come Scegliere l’Orologio Giusto per il Tuo Polso", "url": "https://watch.al/it/blog/dimensioni-cassa-orologio.html"}, {"@type": "ListItem", "position": 75, "name": "Quadranti Luminosi: Lume, Super-LumiNova e la Storia del Radio Sugli Orologi", "url": "https://watch.al/it/blog/quadranti-luminosi-spiegati.html"}, {"@type": "ListItem", "position": 76, "name": "Riserva di Carica: Cos’è, Come Funziona e Quanto Deve Durare il Tuo Orologio", "url": "https://watch.al/it/blog/riserva-di-carica-orologio.html"}, {"@type": "ListItem", "position": 77, "name": "Come Riconoscere un Orologio Falso: 8 Controlli degli Esperti", "url": "https://watch.al/it/blog/riconoscere-orologio-falso.html"}, {"@type": "ListItem", "position": 78, "name": "Orologi da Cerimonia, Sport e Casual: Cosa Indossare per Ogni Occasione", "url": "https://watch.al/it/blog/guida-occasioni-orologio.html"}, {"@type": "ListItem", "position": 79, "name": "Orologi Meccanici vs al Quarzo: Qual è la Differenza e Quale Scegliere?", "url": "https://watch.al/it/blog/meccanico-vs-quarzo.html"}, {"@type": "ListItem", "position": 80, "name": "Come Funziona il Duplicato di Chiavi: Tipi, Cosa Portare e Cosa Aspettarsi", "url": "https://watch.al/it/blog/guida-duplicato-chiavi.html"}]}}</script>
   <!-- Meta Pixel Code -->
   <script src="/tt-policy.js" defer></script>
   <script src="/pixel.js" defer></script>
@@ -674,10 +174,10 @@
       </div>
       <div class="blog-cats" role="group" aria-label="Filtra per categoria">
         <button class="b-cat-btn" data-filter="all" aria-pressed="true">Tutti</button>
-        <button class="b-cat-btn" data-filter="care" aria-pressed="false"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura Orologio</button>
+        <button class="b-cat-btn" data-filter="buying" aria-pressed="false"><i class="fas fa-tag" aria-hidden="true"></i> Guide all’Acquisto</button>
+        <button class="b-cat-btn" data-filter="gifts" aria-pressed="false"><i class="fas fa-gift" aria-hidden="true"></i> Guide ai Regali</button>
+        <button class="b-cat-btn" data-filter="care" aria-pressed="false"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</button>
         <button class="b-cat-btn" data-filter="knowledge" aria-pressed="false"><i class="fas fa-search" aria-hidden="true"></i> Cultura Orologio</button>
-        <button class="b-cat-btn" data-filter="buying" aria-pressed="false"><i class="fas fa-tag" aria-hidden="true"></i> Guide Acquisto</button>
-        <button class="b-cat-btn" data-filter="gifts" aria-pressed="false"><i class="fas fa-gem" aria-hidden="true"></i> Guida Regali</button>
         <button class="b-cat-btn" data-filter="keys" aria-pressed="false"><i class="fas fa-key" aria-hidden="true"></i> Servizi Chiavi</button>
       </div>
       <p class="kicker"><i class="fas fa-tools" aria-hidden="true"></i>&ensp;Consigli &amp; Guide</p>
@@ -690,865 +190,782 @@
     <section class="py-16 px-6" style="background:var(--bg-soft)">
       <div class="blog-wrap">
 
-        <!-- ① Featured -->
-                <a data-cat="care" href="/it/blog/riparare-o-comprare-orologio-nuovo-durazzo.html" class="b-feat">
+        <p id="blog-count" class="b-count" aria-live="polite" hidden data-tpl="Mostrati {n} di {t} articoli"></p>
+
+        <a data-cat="buying" href="/it/blog/orologi-sotto-10000-lek.html" class="b-feat">
           <span class="b-feat-num" aria-hidden="true">01</span>
           <div>
-            <span class="b-feat-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
-            <h2 class="b-feat-title">Devo Riparare il Mio Orologio o Comprarne Uno Nuovo?</h2>
-            <p class="b-feat-desc">Vale la pena ripararlo o &egrave; meglio comprarne uno nuovo? Guida pratica da Iglisi Watch a Durazzo basata su costo di riparazione, tipo, et&agrave; e valore sentimentale.</p>
-            <div class="b-feat-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-            <span class="b-feat-cta">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            <span class="b-feat-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+            <h2 class="b-feat-title">Orologi Sotto i 10.000 Lek: Cosa Compra Davvero il Vostro Denaro</h2>
+            <p class="b-feat-desc">50 dei nostri 57 orologi costano meno di 10.000 Leke, da 4.900 L. Il banco prezzato in Lek, fascia per fascia, con pagamento alla consegna ovunque.</p>
+            <div class="b-feat-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-01">Agosto 2026</time></span></div>
+            <span class="b-feat-cta">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
           </div>
         </a>
 
-        <p class="b-label">Articoli Recenti</p>
-
-        <!-- ②③ Row of 2 -->
-                <div class="b-row2">
-
-
-          <a data-cat="gifts" href="/it/blog/regalo-orologio-durazzo-stesso-giorno.html" class="b-card">
+        <p class="b-label" id="b-latest-label">Articoli Recenti</p>
+        <div class="b-grid3" id="b-latest">
+          <a data-cat="buying" href="/it/blog/cronografo-vs-tre-sfere.html" class="b-card" data-dup="1">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Guida ai Regali</span>
-              <h2 class="b-card-title">Hai Bisogno di un Orologio Come Regalo a Durazzo Oggi?</h2>
-              <p class="b-card-desc">Iglisi Watch &egrave; aperto luned&igrave;-sabato fino alle 20:30. Entra, scegli dallo stock e parti con un orologio pronto da regalare. Daniel Klein e Navimarine da &euro;60.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 3 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-
-          <a data-cat="care" href="/it/blog/riparare-o-comprare-orologio-nuovo-durazzo.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
-              <h2 class="b-card-title">Devo Riparare il Mio Orologio o Comprarne Uno Nuovo?</h2>
-              <p class="b-card-desc">Vale la pena ripararlo o &egrave; meglio comprarne uno nuovo? Guida pratica da Iglisi Watch a Durazzo basata su costo di riparazione, tipo, et&agrave; e valore sentimentale.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">Anche sul Blog</p>
-
-        <!-- ④–⑨ Grid of 3×2 -->
-        <div class="b-grid3">
-          <a data-cat="buying" href="/it/blog/cronografo-vs-tre-sfere.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
               <h2 class="b-card-title">Cronografo o Tre Sfere? Cosa Fanno Davvero Quei Contatori</h2>
               <p class="b-card-desc">Dodici dei nostri orologi hanno i contatori e solo sette cronometrano davvero. Come capirlo in cinque secondi, quanto costano in batteria e quale comprare.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 11 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Agosto 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 11 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Agosto 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-          <a data-cat="knowledge" href="/it/blog/orologio-oro-o-acciaio.html" class="b-card">
+          <a data-cat="knowledge" href="/it/blog/orologio-oro-o-acciaio.html" class="b-card" data-dup="1">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Cultura Orologio</span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Cultura Orologio</span>
               <h2 class="b-card-title">Oro o Acciaio? Cosa Significa Davvero la Placcatura a Questo Prezzo</h2>
               <p class="b-card-desc">Nessun orologio a questo prezzo è in oro massiccio. Quanto dura la placcatura, perché non si ripara, le regole che la fanno durare e quando conviene l'acciaio.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Agosto 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Agosto 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-          <a data-cat="knowledge" href="/it/blog/quanto-dura-un-orologio-economico.html" class="b-card">
+          <a data-cat="knowledge" href="/it/blog/quanto-dura-un-orologio-economico.html" class="b-card" data-dup="1">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-hourglass-half" aria-hidden="true"></i> Cultura Orologio</span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Cultura Orologio</span>
               <h2 class="b-card-title">Quanto Dura un Orologio da 70 Euro? Quello Che Vediamo al Banco</h2>
               <p class="b-card-desc">Da cinque a dieci anni, e il movimento non è quasi mai ciò che cede. Il vero ordine dei guasti, i danni stagionali e quanto costa davvero un decennio di possesso.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Agosto 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Agosto 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-          <a data-cat="knowledge" href="/it/blog/cosa-rende-un-orologio-elegante.html" class="b-card">
+        </div>
+
+        <p class="b-label" data-sec="buying">Guide all’Acquisto <span class="b-label-count">23</span></p>
+        <div class="b-grid3" data-sec-grid="buying">
+          <a data-cat="buying" href="/it/blog/cronografo-vs-tre-sfere.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Cultura Orologio</span>
-              <h2 class="b-card-title">Cosa Rende un Orologio Elegante: Sei Dettagli Che Fanno il Lavoro</h2>
-              <p class="b-card-desc">Lunette zigrinate, bracciali jubilee, quadranti sunburst. Sei dettagli che sembrano costosi, da dove viene ciascuno e quanto costano a Durazzo, da 4.900 lek.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Agosto 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">Cronografo o Tre Sfere? Cosa Fanno Davvero Quei Contatori</h2>
+              <p class="b-card-desc">Dodici dei nostri orologi hanno i contatori e solo sette cronometrano davvero. Come capirlo in cinque secondi, quanto costano in batteria e quale comprare.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 11 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Agosto 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
+          <a data-cat="buying" href="/it/blog/orologi-donna-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">Orologi da Donna in Albania: Cosa Teniamo e Quanto Costa</h2>
+              <p class="b-card-desc">Orologi da abito color oro, acciaio sottile e Hislon Queen in madreperla da 59 a 189 euro, disponibili a Durazzo con pagamento alla consegna ovunque.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-01">Agosto 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/orologi-uomo-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">Orologi da Uomo in Albania: Cosa Teniamo e Quanto Costa</h2>
+              <p class="b-card-desc">Sportivi in acciaio, cronografi e orologi da abito da €50 a €199, tutti disponibili a Durazzo. A cosa serve ogni stile e come ordinare ovunque.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-01">Agosto 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/orologi-che-comprerei-io.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">I 5 Orologi che Comprerei dal Mio Stesso Negozio</h2>
+              <p class="b-card-desc">Le scelte personali oneste di un orologiaio: i cinque orologi su cui spenderei i miei soldi, da un Daniel Klein da &euro;64 a un Hislon Classic da &euro;199, e perch&eacute;.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/fasce-prezzo-orologi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">60 vs 90 vs 190 Euro: Cosa Compri Davvero con un Orologio Pi&ugrave; Caro</h2>
+              <p class="b-card-desc">Daniel Klein, Navimarine, Hislon a confronto onesto. I soldi in pi&ugrave; comprano design da abito e finitura, non un vetro, un movimento o un&rsquo;impermeabilit&agrave; migliori.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/daniel-klein-orologi-opinioni.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">Gli Orologi Daniel Klein Sono Buoni? La Risposta Onesta di un Orologiaio</h2>
+              <p class="b-card-desc">Marchio di moda turco, quarzo, look dorato per &euro;59 a &euro;89. Dove i soldi sono ben spesi e dove no, con tutti gli 8 modelli in stock.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/orologio-mare-estate.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">Che Orologio Portare al Mare: l&rsquo;Estate Albanese</h2>
+              <p class="b-card-desc">Cosa fanno sale, sabbia e crema solare a un orologio, quali rating permettono davvero di nuotare, e l&rsquo;acciaio 5 ATM che consigliamo a &euro;75.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/smartwatch-vs-orologio-tradizionale.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">Smartwatch o Orologio Tradizionale: Quale Comprare?</h2>
+              <p class="b-card-desc">Uno si ricarica ogni notte e traccia la frequenza cardiaca. L&rsquo;altro funziona grazie a una molla e pu&ograve; durare pi&ugrave; del suo proprietario. Un confronto onesto da un laboratorio che li ripara entrambi.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/orologio-come-investimento.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">L&rsquo;Orologio come Investimento: Cosa Comprare e Cosa Evitare</h2>
+              <p class="b-card-desc">Alcuni orologi mantengono il valore; pochi si apprezzano; la maggior parte si deprezza. Una guida onesta su marchi, referenze e condizioni che rendono un orologio un vero investimento.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/comprare-orologi-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">Come Comprare Orologi Nuovi in Albania</h2>
+              <p class="b-card-desc">Daniel Klein e Navimarine da &euro;60, Hislon da &euro;149, tutti con garanzia di 1 anno. Acquista in negozio a Durr&euml;s o ordina via WhatsApp con consegna in tutta l&rsquo;Albania.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/seiko-vs-citizen-vs-casio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Confronto Marchi</span>
+              <h2 class="b-card-title">Seiko vs Citizen vs Casio: Quale Marchio Giapponese Vale la Pena Comprare?</h2>
+              <p class="b-card-desc">Tre giganti giapponesi a confronto - i movimenti automatici Seiko, l&rsquo;Eco-Drive Citizen e la durata Casio. Qual &egrave; quello giusto per te?</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-19">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/casio-vs-citizen.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Confronto Marchi</span>
+              <h2 class="b-card-title">Casio vs Citizen: Quale Scegliere?</h2>
+              <p class="b-card-desc">Due marchi giapponesi, due filosofie: il valore robusto di Casio contro la raffinatezza Eco-Drive di Citizen. Un confronto onesto dal banco di riparazione.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-19">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/recensione-hislon-classic.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Recensione Orologio</span>
+              <h2 class="b-card-title">Recensione Hislon Classic: Vale la Pena?</h2>
+              <p class="b-card-desc">Movimento al quarzo affidabile, vetro zaffiro, cassa in acciaio da 38&nbsp;mm. Una recensione onesta da chi lo revisiona ogni giorno in laboratorio.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/quale-navimarine-comprare.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">Quale Navimarine Comprare: Sport, Classic o Chronograph?</h2>
+              <p class="b-card-desc">Tre linee Navimarine, tre usi diversi. Come capire quale modello si adatta al tuo polso, al tuo stile e all&rsquo;occasione.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Aggiornato Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/primo-orologio-adolescente.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">Il Primo Orologio per un Adolescente: Cosa Cercare</h2>
+              <p class="b-card-desc">Il primo vero orologio &egrave; un regalo che ricordano per anni. Come scegliere il modello giusto - resistente, della giusta taglia e nel budget corretto.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Aggiornato Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/comprare-orologio-senza-provare.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">&Egrave; Sicuro Comprare un Orologio Senza Provarlo?</h2>
+              <p class="b-card-desc">Acquistare online o per regalo senza indossarlo prima &egrave; possibile, se si conoscono le misure giuste. Come misurare il polso e cosa chiedere prima di ordinare.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Aggiornato Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/comprare-orologio-instagram-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">È Sicuro Comprare un Orologio su Instagram in Albania?</h2>
+              <p class="b-card-desc">I venditori di orologi su Instagram in Albania sono ovunque - ma è sicuro? Rischi reali, segnali d&rsquo;allarme e quando fidarsi di un negozio fisico.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-18">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/migliori-orologi-economici-durazzo-100.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">I Migliori Orologi Economici a Durrës Sotto i 100&euro;</h2>
+              <p class="b-card-desc">100&euro; sono sufficienti per un orologio affidabile a Durrës - se sapete dove guardare. Consigli onesti da un orologiaio che revisiona questi pezzi ogni giorno.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-18">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/dove-comprare-orologio-tirana.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Albania Nazionale</span>
+              <h2 class="b-card-title">Acquista Orologi in Tutta l&rsquo;Albania</h2>
+              <p class="b-card-desc">Orologi nuovi Daniel Klein, Navimarine e Hislon da &euro;60 - sfoglia il catalogo online, scrivici su WhatsApp e pensiamo noi al resto. Che tu sia a Tirana, Vlor&euml;, Shkod&euml;r, Elbasan o in qualsiasi altra citt&agrave; d&rsquo;Albania.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Aggiornato Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/migliori-orologi-sotto-200-albania.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all’Acquisto</span>
+              <h2 class="b-card-title">I Migliori Orologi Sotto &euro;200 in Albania (2026)</h2>
+              <p class="b-card-desc">Una valutazione onesta di ci&ograve; che vale la pena comprare in Albania nella fascia &euro;100&ndash;200 - da orologi al quarzo quotidiani a modelli sportivi da weekend.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-12">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/dove-comprare-orologio-durazzo.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida Locale</span>
+              <h2 class="b-card-title">Dove Comprare un Orologio a Durazzo: Una Guida Onesta</h2>
+              <p class="b-card-desc">Mercati di strada, gioiellerie o orologiai specializzati - una panoramica diretta del mercato degli orologi di Durr&euml;s, cosa fidarsi e cosa evitare.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-12">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="buying" href="/it/blog/hislon-vs-navimarine.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Confronto Marchi</span>
+              <h2 class="b-card-title">Hislon vs Navimarine: Quale Marchio di Orologi fa per Te?</h2>
+              <p class="b-card-desc">Entrambi nella stessa fascia di prezzo, costruiti per l&rsquo;uso quotidiano - ma si rivolgono a gusti molto diversi. Un confronto obiettivo per aiutarti a scegliere.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-12">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p class="b-label" data-sec="gifts">Guide ai Regali <span class="b-label-count">7</span></p>
+        <div class="b-grid3" data-sec-grid="gifts">
           <a data-cat="gifts" href="/it/blog/regalo-orologio-capodanno-albania.html" class="b-card">
             <div class="b-card-body">
               <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Guida Regali</span>
               <h2 class="b-card-title">Regalo Orologio per Capodanno in Albania: Cosa Comprare e Quando Ordinare</h2>
               <p class="b-card-desc">Due fasce di prezzo, nulla in mezzo, e l'ultimo giorno utile per ordinare e riceverlo in tempo. Pagamento alla consegna in tutta l'Albania, o venite a Durazzo fino alle 20:30.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Agosto 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="buying" href="/it/blog/orologi-donna-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Guida all’Acquisto</span>
-              <h2 class="b-card-title">Orologi da Donna in Albania: Cosa Teniamo e Quanto Costa</h2>
-              <p class="b-card-desc">Orologi da abito color oro, acciaio sottile e Hislon Queen in madreperla da 59 a 189 euro, disponibili a Durazzo con pagamento alla consegna ovunque.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Agosto 2026</span></div>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-03">Agosto 2026</time></span></div>
               <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="buying" href="/it/blog/orologi-sotto-10000-lek.html" class="b-card">
+          <a data-cat="gifts" href="/it/blog/orologi-coppia-abbinati.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Guida all’Acquisto</span>
-              <h2 class="b-card-title">Orologi Sotto i 10.000 Lek: Cosa Compra Davvero il Vostro Denaro</h2>
-              <p class="b-card-desc">50 dei nostri 57 orologi costano meno di 10.000 Leke, da 4.900 L. Il banco prezzato in Lek, fascia per fascia, con pagamento alla consegna ovunque.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Agosto 2026</span></div>
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Guida ai Regali</span>
+              <h2 class="b-card-title">Orologi Abbinati per Coppie: Lui e Lei da 124 Euro</h2>
+              <p class="b-card-desc">Quattro coppie lui e lei per matrimoni e anniversari: set Hislon abbinati in oro e acciaio con vetro zaffiro, e coppie Daniel Klein da &euro;124.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-15">Luglio 2026</time></span></div>
               <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="buying" href="/it/blog/orologi-uomo-albania.html" class="b-card">
+          <a data-cat="gifts" href="/it/blog/regalo-orologio-durazzo-stesso-giorno.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Guida all’Acquisto</span>
-              <h2 class="b-card-title">Orologi da Uomo in Albania: Cosa Teniamo e Quanto Costa</h2>
-              <p class="b-card-desc">Sportivi in acciaio, cronografi e orologi da abito da €50 a €199, tutti disponibili a Durazzo. A cosa serve ogni stile e come ordinare ovunque.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Agosto 2026</span></div>
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Guida ai Regali</span>
+              <h2 class="b-card-title">Hai Bisogno di un Orologio Come Regalo a Durazzo Oggi?</h2>
+              <p class="b-card-desc">Iglisi Watch &egrave; aperto luned&igrave;-sabato fino alle 20:30. Entra, scegli dallo stock e parti con un orologio pronto da regalare. Daniel Klein e Navimarine da &euro;60.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 3 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">Maggio 2026</time></span></div>
               <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-
-          <a data-cat="knowledge" href="/it/blog/orologi-che-hanno-fatto-storia.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Storia dell&rsquo;Orologeria</span>
-              <h2 class="b-card-title">Gli Orologi che Hanno Fatto la Storia: Sei Storie in un Solo Posto</h2>
-              <p class="b-card-desc">L&rsquo;orologio da polso, la Luna, la guerra, quello indistruttibile e il cimelio. Le nostre sei storie riunite in un posto, ognuna con un link all&rsquo;articolo completo.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/it/blog/patek-philippe-generazioni.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Storia dell&rsquo;Orologeria</span>
-              <h2 class="b-card-title">Patek Philippe e l&rsquo;Orologio che si Tramanda</h2>
-              <p class="b-card-desc">La frase pi&ugrave; famosa della pubblicit&agrave; di orologi, perch&eacute; un buon orologio &egrave; un cimelio e non un gadget, e gli orologi che puoi regalare a Durazzo per durare una generazione.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/it/blog/orologi-militari-hamilton.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Storia dell&rsquo;Orologeria</span>
-              <h2 class="b-card-title">Hamilton e gli Orologi che Andarono in Guerra</h2>
-              <p class="b-card-desc">Le trincee portarono l&rsquo;orologio al polso e Hamilton diede l&rsquo;intera fabbrica alla guerra. L&rsquo;orologio militare e gli orologi robusti in stile campo che puoi comprare oggi.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/it/blog/storia-g-shock.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Storia dell&rsquo;Orologeria</span>
-              <h2 class="b-card-title">La Storia del G-Shock: Come un Orologio Rotto ne Cre&ograve; uno Indistruttibile</h2>
-              <p class="b-card-desc">Un ingegnere, un regalo rotto e 200 prototipi falliti. Come Casio costru&igrave; l&rsquo;orologio che non muore, e il valore Casio che puoi comprare da noi oggi.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/it/blog/primo-orologio-sulla-luna.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Storia dell&rsquo;Orologeria</span>
-              <h2 class="b-card-title">Il Primo Orologio sulla Luna</h2>
-              <p class="b-card-desc">La NASA test&ograve; gli orologi fino a romperli e solo l&rsquo;Omega Speedmaster sopravvisse. Come raggiunse la Luna nel 1969 e aiut&ograve; a salvare l&rsquo;Apollo 13.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/it/blog/jaeger-lecoultre-storia.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Storia dell&rsquo;Orologeria</span>
-              <h2 class="b-card-title">Jaeger-LeCoultre: l&rsquo;Orologiaio Dietro gli Orologiai</h2>
-              <p class="b-card-desc">Per un secolo i nomi pi&ugrave; famosi hanno messo movimenti LeCoultre nelle loro casse. Il laboratorio nella valle, 1200 calibri e l&rsquo;orologio che si capovolge.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/it/blog/cartier-santos-primo-orologio-da-polso.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Storia dell&rsquo;Orologeria</span>
-              <h2 class="b-card-title">Cartier Santos: Come Nacque il Primo Orologio da Polso</h2>
-              <p class="b-card-desc">Nel 1904 un pilota non poteva controllare l&rsquo;orologio da tasca in volo, cos&igrave; Louis Cartier port&ograve; il tempo al polso. La storia dell&rsquo;orologio da cui &egrave; nato tutto.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="knowledge" href="/it/blog/casio-a159wa-leggenda.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Cultura Orologiera</span>
-              <h2 class="b-card-title">Casio A159WA: la Leggenda di 40 Anni in Vendita a Durr&euml;s</h2>
-              <p class="b-card-desc">L&rsquo;orologio digitale immutato dai primi anni &rsquo;80: batteria da 7 anni, bracciale in acciaio, sveglia e cronometro. Da Iglisi Watch a &euro;61.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="buying" href="/it/blog/comprare-orologi-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">Come Comprare Orologi Nuovi in Albania</h2>
-              <p class="b-card-desc">Daniel Klein e Navimarine da &euro;60, Hislon da &euro;149, tutti con garanzia di 1 anno. Acquista in negozio a Durr&euml;s o ordina via WhatsApp con consegna in tutta l&rsquo;Albania.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/it/blog/guida-batteria-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zm-1.67 8h-2V6h2v6zm0 4h-2v-2h2v2z"/></svg> Cura Orologio</span>
-              <h2 class="b-card-title">Quanto Dura la Batteria di un Orologio? Segnali di Scarica e Cosa Fare</h2>
-              <p class="b-card-desc">Le batterie degli orologi al quarzo durano 1&ndash;3 anni. Scopri i 5 segnali d&rsquo;allarme, se conviene sostituirla da soli e cosa comporta una sostituzione professionale.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span>
-              <span><i class="fas fa-bolt" aria-hidden="true"></i> Aggiornato marzo 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="care" href="/it/blog/segni-revisione-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Manutenzione</span>
-              <h2 class="b-card-title">5 Segnali che il Tuo Orologio ha Bisogno di una Revisione, Non Solo di una Batteria Nuova</h2>
-              <p class="b-card-desc">Se il tuo orologio perde tempo con una batteria appena installata, la corona &egrave; grattante o ha avuto umidit&agrave; - ha bisogno di una revisione. Scopri i 5 segnali.</p>
-              <div class="b-card-meta">
-                <span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span>
-                <span><i class="fas fa-bolt" aria-hidden="true"></i> Aggiornato marzo 2026</span>
-              </div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-
-          <a data-cat="care" href="/it/blog/cura-cinturino-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura Orologio</span>
-              <h2 class="b-card-title">Come Prendersi Cura del Cinturino dell&rsquo;Orologio: Guida per Pelle, Metallo e Gomma</h2>
-              <p class="b-card-desc">Il cinturino &egrave; la parte pi&ugrave; usurata di qualsiasi orologio. Scopri come pulire e nutrire la pelle, mantenere il bracciale in metallo e quando &egrave; il momento di sostituirlo.</p>
-              <div class="b-card-meta">
-                <span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span>
-                <span><i class="fas fa-bolt" aria-hidden="true"></i> Aggiornato marzo 2026</span>
-              </div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/it/blog/guida-larghezza-cinturino-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura Orologio</span>
-              <h2 class="b-card-title">Larghezza Anse Orologio: Come Misurare e Trovare il Cinturino Giusto</h2>
-              <p class="b-card-desc">Acquistare un cinturino della misura sbagliata &egrave; l&rsquo;errore pi&ugrave; comune. Scoprite come misurare la larghezza delle anse, le misure dei modelli pi&ugrave; comuni e cosa fare in caso di dubbio.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Giugno 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="keys" href="/it/blog/guida-duplicato-chiavi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-key" aria-hidden="true"></i> Servizi Chiavi</span>
-              <h2 class="b-card-title">Come Funziona il Duplicato di Chiavi: Tipi, Cosa Portare e Cosa Aspettarsi</h2>
-              <p class="b-card-desc">Fare un duplicato richiede meno di 5 minuti - se sai cosa portare. Scopri quali chiavi possiamo duplicare, come funziona il processo di taglio e quante copie dovresti fare.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/it/blog/impermeabilita-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" aria-hidden="true" focusable="false" style="width:.75em;height:.875em;display:inline-block;fill:currentColor;vertical-align:-.1em"><path d="M192 512C86 512 0 426 0 320C0 228.8 130.2 57.7 166.6 11.7C172.6 4.2 181.5 0 191 0h2c9.5 0 18.4 4.2 24.5 11.7C253.8 57.7 384 228.8 384 320c0 106-86 192-192 192z"/></svg> Cura Orologio</span>
-              <h2 class="b-card-title">Impermeabilit&agrave; degli Orologi: Cosa Significano Davvero ATM, BAR e Metri</h2>
-              <p class="b-card-desc">Il tuo orologio dice &ldquo;impermeabile&rdquo; - ma puoi nuotarci o farci la doccia? La maggior parte delle persone fraintende queste classificazioni e rovina il proprio orologio.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/it/blog/guida-pulizia-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Cura Orologio</span>
-              <h2 class="b-card-title">Come Pulire il Tuo Orologio in Casa: Metodi Sicuri per Ogni Materiale</h2>
-              <p class="b-card-desc">Lo sporco, il sudore e il grasso si accumulano su ogni orologio - anche su quelli costosi. La pulizia regolare richiede meno di cinque minuti. Guida passo per passo.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/it/blog/guida-conservazione-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Cura Orologio</span>
-              <h2 class="b-card-title">Come Conservare il Tuo Orologio Correttamente: Guida Completa</h2>
-              <p class="b-card-desc">La conservazione sbagliata danneggia i lubrificanti, magn&eacute;tizza i movimenti e fa spellare i cinturini. Scopri le condizioni ottimali - temperatura, umidit&agrave; e cosa evitare.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/it/blog/meccanico-vs-quarzo.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Conoscenza Orologi</span>
-              <h2 class="b-card-title">Orologi Meccanici vs al Quarzo: Qual &egrave; la Differenza e Quale Scegliere?</h2>
-              <p class="b-card-desc">Il quarzo vince in precisione e bassa manutenzione. Il meccanico vince in artigianalit&agrave; e valore da collezione. Un confronto onesto per scegliere l&rsquo;orologio giusto.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/it/blog/guida-tipi-di-orologi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-compass" aria-hidden="true"></i> Conoscenza Orologi</span>
-              <h2 class="b-card-title">Tipi di Orologio Spiegati: Subacquei, Tank, Aviatori e Non Solo</h2>
-              <p class="b-card-desc">Subacqueo, field, aviatore, elegante, tank: da dove viene ogni tipo di orologio, per cosa &egrave; stato costruito e quale si adatta a come vivi davvero.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/it/blog/guida-cristallo-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Cura Orologio</span>
-              <h2 class="b-card-title">Cristalli per Orologi: Acrilico, Minerale e Zaffiro - Qual &egrave; la Differenza?</h2>
-              <p class="b-card-desc">Tre materiali, tre livelli di protezione. Scopri quali si graffiano facilmente, quali si rompono e cosa fare quando il vetro del tuo orologio &egrave; danneggiato.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/it/blog/guida-carica-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Manutenzione Orologio</span>
-              <h2 class="b-card-title">Come Caricare il Tuo Orologio: Manuale, Automatico &amp; Posizioni della Corona</h2>
-              <p class="b-card-desc">La tecnica di carica corretta per orologi manuali e automatici, le tre posizioni della corona spiegate e 5 errori comuni che danneggiano i movimenti.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/it/blog/riconoscere-orologio-falso.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
-              <h2 class="b-card-title">Come Riconoscere un Orologio Falso: 8 Controlli degli Esperti</h2>
-              <p class="b-card-desc">Dal peso della cassa alla sensazione della corona - gli 8 controlli fisici che rivelano un falso senza attrezzatura specializzata.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/it/blog/guida-occasioni-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Stile Orologio</span>
-              <h2 class="b-card-title">Orologi da Cerimonia, Sport e Casual: Cosa Indossare per Ogni Occasione</h2>
-              <p class="b-card-desc">Orologio da cerimonia per un matrimonio, sportivo per la palestra, subacqueo per i weekend - scegliere l&rsquo;orologio giusto per l&rsquo;occasione è più semplice di quanto pensi.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">Storia &amp; Conoscenza Approfondita</p>
-        <div class="b-grid3">
-
-          <a data-cat="knowledge" href="/it/blog/crisi-al-quarzo.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
-              <h2 class="b-card-title">La Crisi al Quarzo: Come un Chip Giapponese Quasi Distrusse l&rsquo;Orologeria Svizzera</h2>
-              <p class="b-card-desc">Negli anni &rsquo;70, gli orologi al quarzo giapponesi mandarono in bancarotta centinaia di manifatture svizzere. La storia della crisi che ridisegnò l&rsquo;industria.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/it/blog/strumenti-riparazione-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
-              <h2 class="b-card-title">Gli Strumenti del Maestro Orologiaio: Dal Cacciavite da 0,5 mm al Banco Ultrasuoni</h2>
-              <p class="b-card-desc">Pinzette antistatiche, cacciaviti per scappamento, vasche a ultrasuoni - gli strumenti professionali che separano una riparazione corretta da un danno permanente.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/it/blog/magnetizzazione-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
-              <h2 class="b-card-title">Magnetizzazione dell&rsquo;Orologio: Cause, Sintomi e Come Smagnetizzarlo</h2>
-              <p class="b-card-desc">Telefono, chiusura magnetica della borsa, altoparlante - bastano pochi secondi per magnetizzare il bilanciere. Scopri i sintomi e come risolvere il problema.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/it/blog/movimenti-svizzeri-vs-giapponesi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
-              <h2 class="b-card-title">Movimenti Svizzeri vs Giapponesi: Qual È il Migliore?</h2>
-              <p class="b-card-desc">ETA 2824 contro Miyota 9015, Sellita contro NH35 - un confronto tecnico onesto tra i movimenti più usati al mondo senza pubblicità di mezzo.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/it/blog/comprare-orologio-usato.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
-              <h2 class="b-card-title">Comprare un Orologio Usato: La Checklist in 7 Passi per Non Sbagliare</h2>
-              <p class="b-card-desc">Dalla verifica del numero seriale al test dell&rsquo;impermeabilità, dalla storia delle riparazioni al prezzo di mercato - 7 controlli prima di acquistare un usato.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/it/blog/dimensioni-cassa-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Stile Orologio</span>
-              <h2 class="b-card-title">Dimensioni della Cassa: Come Scegliere l&rsquo;Orologio Giusto per il Tuo Polso</h2>
-              <p class="b-card-desc">36 mm, 40 mm, 44 mm - le dimensioni della cassa cambiano tutto. Come misurare il polso, scegliere lo spessore e capire perché i numeri da soli non bastano.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/it/blog/quadranti-luminosi-spiegati.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
-              <h2 class="b-card-title">Quadranti Luminosi: Lume, Super-LumiNova e la Storia del Radio Sugli Orologi</h2>
-              <p class="b-card-desc">Dalle pittrici del radio alle moderne vernici Super-LumiNova - come funzionano i quadranti che brillano nel buio e perché gli orologi vintage luminosi richiedono cautela.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="knowledge" href="/it/blog/riserva-di-carica-orologio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
-              <h2 class="b-card-title">Riserva di Carica: Cos&rsquo;è, Come Funziona e Quanto Deve Durare il Tuo Orologio</h2>
-              <p class="b-card-desc">38 ore, 72 ore, 8 giorni - cosa significano questi numeri e perché la riserva di carica reale è spesso inferiore a quella dichiarata dal costruttore.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/it/blog/corona-orologio-spiegata.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
-              <h2 class="b-card-title">La Corona dell&rsquo;Orologio: Funzioni, Posizioni e Come Non Danneggiarla</h2>
-              <p class="b-card-desc">La corona non serve solo a impostare l&rsquo;ora - ha 3 posizioni distinte, protegge l&rsquo;impermeabilità e può causare danni seri se usata male. Tutto quello che devi sapere.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <p class="b-label">Guide all&rsquo;Acquisto</p>
-
-        <div class="b-grid3">
-
-          <a data-cat="buying" href="/it/blog/migliori-orologi-sotto-200-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">I Migliori Orologi Sotto &euro;200 in Albania (2026)</h2>
-              <p class="b-card-desc">Una valutazione onesta di ci&ograve; che vale la pena comprare in Albania nella fascia &euro;100&ndash;200 - da orologi al quarzo quotidiani a modelli sportivi da weekend.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/dove-comprare-orologio-durazzo.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Guida Locale</span>
-              <h2 class="b-card-title">Dove Comprare un Orologio a Durazzo: Una Guida Onesta</h2>
-              <p class="b-card-desc">Mercati di strada, gioiellerie o orologiai specializzati - una panoramica diretta del mercato degli orologi di Durr&euml;s, cosa fidarsi e cosa evitare.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/hislon-vs-navimarine.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Confronto Marchi</span>
-              <h2 class="b-card-title">Hislon vs Navimarine: Quale Marchio di Orologi fa per Te?</h2>
-              <p class="b-card-desc">Entrambi nella stessa fascia di prezzo, costruiti per l&rsquo;uso quotidiano - ma si rivolgono a gusti molto diversi. Un confronto obiettivo per aiutarti a scegliere.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/dove-comprare-orologio-tirana.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Albania Nazionale</span>
-              <h2 class="b-card-title">Acquista Orologi in Tutta l&rsquo;Albania</h2>
-              <p class="b-card-desc">Orologi nuovi Daniel Klein, Navimarine e Hislon da &euro;60 - sfoglia il catalogo online, scrivici su WhatsApp e pensiamo noi al resto. Che tu sia a Tirana, Vlor&euml;, Shkod&euml;r, Elbasan o in qualsiasi altra citt&agrave; d&rsquo;Albania.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/comprare-orologio-instagram-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fab fa-instagram" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">È Sicuro Comprare un Orologio su Instagram in Albania?</h2>
-              <p class="b-card-desc">I venditori di orologi su Instagram in Albania sono ovunque - ma è sicuro? Rischi reali, segnali d&rsquo;allarme e quando fidarsi di un negozio fisico.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/migliori-orologi-economici-durazzo-100.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">I Migliori Orologi Economici a Durrës Sotto i 100&euro;</h2>
-              <p class="b-card-desc">100&euro; sono sufficienti per un orologio affidabile a Durrës - se sapete dove guardare. Consigli onesti da un orologiaio che revisiona questi pezzi ogni giorno.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        
-          <a data-cat="buying" href="/it/blog/seiko-vs-citizen-vs-casio.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Confronto Marchi</span>
-              <h2 class="b-card-title">Seiko vs Citizen vs Casio: Quale Marchio Giapponese Vale la Pena Comprare?</h2>
-              <p class="b-card-desc">Tre giganti giapponesi a confronto - i movimenti automatici Seiko, l&rsquo;Eco-Drive Citizen e la durata Casio. Qual &egrave; quello giusto per te?</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/casio-vs-citizen.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-balance-scale" aria-hidden="true"></i> Confronto Marchi</span>
-              <h2 class="b-card-title">Casio vs Citizen: Quale Scegliere?</h2>
-              <p class="b-card-desc">Due marchi giapponesi, due filosofie: il valore robusto di Casio contro la raffinatezza Eco-Drive di Citizen. Un confronto onesto dal banco di riparazione.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-</div>
-
-        <p class="b-label">Guide ai Regali</p>
-
-        <div class="b-grid3">
-
           <a data-cat="gifts" href="/it/blog/regalo-orologio-uomo-albania.html" class="b-card">
             <div class="b-card-body">
               <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Guida ai Regali</span>
               <h2 class="b-card-title">I Migliori Regali Orologio per Uomo in Albania (2026)</h2>
               <p class="b-card-desc">Idee regalo pratiche per gli uomini che gi&agrave; hanno tutto - orologi che durano, che si indossano ogni giorno e che si ricordano.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
           <a data-cat="gifts" href="/it/blog/regalo-orologio-donna-albania.html" class="b-card">
             <div class="b-card-body">
               <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Guida ai Regali</span>
               <h2 class="b-card-title">I Migliori Regali Orologio per Donna in Albania (2026)</h2>
               <p class="b-card-desc">Come scegliere un orologio per una donna - stile, dimensioni e budget - con suggerimenti concreti dalla nostra selezione in Albania.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
+          <a data-cat="gifts" href="/it/blog/idee-orologio-laurea.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Guida ai Regali</span>
+              <h2 class="b-card-title">Idee Orologio per la Laurea: Come Scegliere il Regalo Giusto</h2>
+              <p class="b-card-desc">Il regalo di laurea perfetto &egrave; uno che dura anni. Come scegliere un orologio che il laureato indosser&agrave; davvero - stile, budget e taglia del polso.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
           <a data-cat="gifts" href="/it/blog/orologio-regalo-matrimonio-albania.html" class="b-card">
             <div class="b-card-body">
               <span class="b-card-cat"><i class="fas fa-gift" aria-hidden="true"></i> Guida ai Regali</span>
               <h2 class="b-card-title">Orologio come Regalo di Matrimonio in Albania: Guida Completa</h2>
               <p class="b-card-desc">Perch&eacute; un orologio &egrave; il regalo di nozze ideale, quali modelli funzionano per uomo e donna e come scegliere senza sbagliare.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="gifts" href="/it/blog/idee-orologio-laurea.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Guida ai Regali</span>
-              <h2 class="b-card-title">Idee Orologio per la Laurea: Come Scegliere il Regalo Giusto</h2>
-              <p class="b-card-desc">Il regalo di laurea perfetto &egrave; uno che dura anni. Come scegliere un orologio che il laureato indosser&agrave; davvero - stile, budget e taglia del polso.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/orologi-che-comprerei-io.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">I 5 Orologi che Comprerei dal Mio Stesso Negozio</h2>
-              <p class="b-card-desc">Le scelte personali oneste di un orologiaio: i cinque orologi su cui spenderei i miei soldi, da un Daniel Klein da &euro;64 a un Hislon Classic da &euro;199, e perch&eacute;.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="gifts" href="/it/blog/orologi-coppia-abbinati.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-heart" aria-hidden="true"></i> Guida ai Regali</span>
-              <h2 class="b-card-title">Orologi Abbinati per Coppie: Lui e Lei da 124 Euro</h2>
-              <p class="b-card-desc">Quattro coppie lui e lei per matrimoni e anniversari: set Hislon abbinati in oro e acciaio con vetro zaffiro, e coppie Daniel Klein da &euro;124.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/fasce-prezzo-orologi.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">60 vs 90 vs 190 Euro: Cosa Compri Davvero con un Orologio Pi&ugrave; Caro</h2>
-              <p class="b-card-desc">Daniel Klein, Navimarine, Hislon a confronto onesto. I soldi in pi&ugrave; comprano design da abito e finitura, non un vetro, un movimento o un&rsquo;impermeabilit&agrave; migliori.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/daniel-klein-orologi-opinioni.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tag" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">Gli Orologi Daniel Klein Sono Buoni? La Risposta Onesta di un Orologiaio</h2>
-              <p class="b-card-desc">Marchio di moda turco, quarzo, look dorato per &euro;59 a &euro;89. Dove i soldi sono ben spesi e dove no, con tutti gli 8 modelli in stock.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/recensione-hislon-classic.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-star" aria-hidden="true"></i> Recensione Orologio</span>
-              <h2 class="b-card-title">Recensione Hislon Classic: Vale la Pena?</h2>
-              <p class="b-card-desc">Movimento al quarzo affidabile, vetro zaffiro, cassa in acciaio da 38&nbsp;mm. Una recensione onesta da chi lo revisiona ogni giorno in laboratorio.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/orologio-mare-estate.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-swimmer" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">Che Orologio Portare al Mare: l&rsquo;Estate Albanese</h2>
-              <p class="b-card-desc">Cosa fanno sale, sabbia e crema solare a un orologio, quali rating permettono davvero di nuotare, e l&rsquo;acciaio 5 ATM che consigliamo a &euro;75.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Luglio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/quale-navimarine-comprare.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-compass" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">Quale Navimarine Comprare: Sport, Classic o Chronograph?</h2>
-              <p class="b-card-desc">Tre linee Navimarine, tre usi diversi. Come capire quale modello si adatta al tuo polso, al tuo stile e all&rsquo;occasione.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="gifts" href="/it/blog/primo-orologio-adolescente.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-user-graduate" aria-hidden="true"></i> Guida ai Regali</span>
-              <h2 class="b-card-title">Il Primo Orologio per un Adolescente: Cosa Cercare</h2>
-              <p class="b-card-desc">Il primo vero orologio &egrave; un regalo che ricordano per anni. Come scegliere il modello giusto - resistente, della giusta taglia e nel budget corretto.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="buying" href="/it/blog/comprare-orologio-senza-provare.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">&Egrave; Sicuro Comprare un Orologio Senza Provarlo?</h2>
-              <p class="b-card-desc">Acquistare online o per regalo senza indossarlo prima &egrave; possibile, se si conoscono le misure giuste. Come misurare il polso e cosa chiedere prima di ordinare.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
         </div>
 
-        <p class="b-label">Cura dell&rsquo;Orologio</p>
-
-        <div class="b-grid3">
-
-          <a data-cat="care" href="/it/blog/revisione-orologio-cosa-include.html" class="b-card">
+        <p class="b-label" data-sec="care">Cura dell’Orologio <span class="b-label-count">24</span></p>
+        <div class="b-grid3" data-sec-grid="care">
+          <a data-cat="care" href="/it/blog/guida-larghezza-cinturino-orologio.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
-              <h2 class="b-card-title">Cosa Include Davvero una Revisione dell&rsquo;Orologio?</h2>
-              <p class="b-card-desc">Smontaggio completo, pulizia, lubrificazione, verifica dell&rsquo;impermeabilit&agrave; - quello che succede realmente durante una revisione di livello&nbsp;4 in laboratorio.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura Orologio</span>
+              <h2 class="b-card-title">Larghezza Anse Orologio: Come Misurare e Trovare il Cinturino Giusto</h2>
+              <p class="b-card-desc">Acquistare un cinturino della misura sbagliata &egrave; l&rsquo;errore pi&ugrave; comune. Scoprite come misurare la larghezza delle anse, le misure dei modelli pi&ugrave; comuni e cosa fare in caso di dubbio.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="care" href="/it/blog/riparazione-orologi-durazzo.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Riparazione</span>
-              <h2 class="b-card-title">Riparazione Orologi a Durazzo: Cosa Aspettarsi</h2>
-              <p class="b-card-desc">Cambio batteria, sostituzione cinturino, nuovo vetro, revisione completa - una guida onesta su tempi, costi e come funziona il nostro laboratorio a Durr&euml;s.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <a data-cat="care" href="/it/blog/servizio-casio-albania.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
-              <h2 class="b-card-title">Dove Portare un Casio, Seiko o Citizen in Albania</h2>
-              <p class="b-card-desc">In Albania non esistono centri di assistenza autorizzati per i marchi giapponesi. Ecco dove andare a Durr&euml;s, cosa richiedono questi orologi e quanto costa.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Giugno 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
           <a data-cat="care" href="/it/blog/riparazione-corona-orologio.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tools" aria-hidden="true"></i> Riparazione Orologi</span>
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Riparazione Orologi</span>
               <h2 class="b-card-title">Riparazione della Corona dell&rsquo;Orologio: Quando Riparare e Quando Sostituire</h2>
               <p class="b-card-desc">La corona &egrave; caduta o gira senza risultato? Spieghiamo i quattro problemi pi&ugrave; comuni, cosa comporta la riparazione e quanto costa a Durr&euml;s.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Giugno 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="care" href="/it/blog/garanzia-orologio-nuovo.html" class="b-card">
+          <a data-cat="care" href="/it/blog/servizio-casio-albania.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
-              <h2 class="b-card-title">Che Garanzia Viene con un Orologio Nuovo?</h2>
-              <p class="b-card-desc">Cosa copre davvero la garanzia, cosa non copre, cosa la annulla e come presentare un reclamo - una guida chiara per chi acquista un orologio nuovo.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
+              <h2 class="b-card-title">Dove Portare un Casio, Seiko o Citizen in Albania</h2>
+              <p class="b-card-desc">In Albania non esistono centri di assistenza autorizzati per i marchi giapponesi. Ecco dove andare a Durr&euml;s, cosa richiedono questi orologi e quanto costa.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-21">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/caldo-umidita-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
+              <h2 class="b-card-title">Il Caldo e l&rsquo;Umidit&agrave; Possono Danneggiare il Tuo Orologio?</h2>
+              <p class="b-card-desc">Il caldo degrada i lubrificanti, deforma le guarnizioni e causa perdite dalla batteria. L&rsquo;umidit&agrave; forza l&rsquo;umidità oltre le guarnizioni. Scopri le zone di pericolo, i segnali d&rsquo;allarme e 5 modi per proteggere il tuo orologio.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/test-pressione-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
+              <h2 class="b-card-title">Test di Pressione dell&rsquo;Orologio: Cos&rsquo;&Egrave; e Quando Serve</h2>
+              <p class="b-card-desc">Il valore di resistenza all&rsquo;acqua era accurato quando era nuovo. Un test di pressione ti dice se lo è ancora. Scopri cosa verifica, quando farlo e perché la sostituzione della batteria annulla la guarnizione.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/revisione-orologio-durazzo.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Riparazione Orologi</span>
+              <h2 class="b-card-title">Revisione Completa dell&rsquo;Orologio a Durrës - Iglisi Watch</h2>
+              <p class="b-card-desc">Revisione completa orologi al quarzo e meccanici a Durrës da Iglisi Watch. Smontaggio, pulizia ultrasonica, lubrificazione e regolazione. Preventivo gratuito, pronto in 1-5 giorni.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/watch-battery-size-guide.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Manutenzione Orologio</span>
+              <h2 class="b-card-title">Guida Misure Batterie Orologi: SR626SW, SR920SW, CR2032 Spiegati</h2>
+              <p class="b-card-desc">Come leggere i codici delle batterie, quale si adatta al tuo orologio e quando sostituirla. Copre tutte le misure comuni a ossido d&rsquo;argento e litio.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-19">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/riparare-o-comprare-orologio-nuovo-durazzo.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
+              <h2 class="b-card-title">Devo Riparare il Mio Orologio o Comprarne Uno Nuovo?</h2>
+              <p class="b-card-desc">Vale la pena ripararlo o &egrave; meglio comprarne uno nuovo? Guida pratica da Iglisi Watch a Durazzo basata su costo di riparazione, tipo, et&agrave; e valore sentimentale.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="care" href="/it/blog/sostituzione-batteria-orologio-durazzo.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-bolt" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
               <h2 class="b-card-title">Sostituzione Batteria Orologio a Durr&euml;s - Pronto Mentre Aspetti</h2>
               <p class="b-card-desc">Portate il vostro orologio da Iglisi Watch a Durr&euml;s. Nessun appuntamento, pronto in 10-15 minuti, ispezione della guarnizione inclusa. Qualsiasi marca.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
           <a data-cat="care" href="/it/blog/sostituzione-cinturino-orologio-durazzo.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-link" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
               <h2 class="b-card-title">Sostituzione Cinturino Orologio a Durazzo - Montaggio in Giornata</h2>
               <p class="b-card-desc">Sostituzione cinturino o bracciale da Iglisi Watch a Durazzo. Pelle, gomma e metallo disponibili. Montato mentre aspettate, senza appuntamento. Qualsiasi marca.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
           <a data-cat="care" href="/it/blog/sostituzione-cristallo-orologio-durazzo.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-gem" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
               <h2 class="b-card-title">Vetro Rotto? Sostituzione del Cristallo a Durazzo</h2>
               <p class="b-card-desc">Cristallo rotto o crepato a Durazzo? Iglisi Watch sostituisce cristalli minerali e zaffiro il giorno stesso se abbiamo la misura. Senza appuntamento, qualsiasi marca.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-14">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
+          <a data-cat="care" href="/it/blog/revisione-orologio-cosa-include.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
+              <h2 class="b-card-title">Cosa Include Davvero una Revisione dell&rsquo;Orologio?</h2>
+              <p class="b-card-desc">Smontaggio completo, pulizia, lubrificazione, verifica dell&rsquo;impermeabilit&agrave; - quello che succede realmente durante una revisione di livello&nbsp;4 in laboratorio.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 10 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Aggiornato Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/riparazione-orologi-durazzo.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Riparazione</span>
+              <h2 class="b-card-title">Riparazione Orologi a Durazzo: Cosa Aspettarsi</h2>
+              <p class="b-card-desc">Cambio batteria, sostituzione cinturino, nuovo vetro, revisione completa - una guida onesta su tempi, costi e come funziona il nostro laboratorio a Durr&euml;s.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-07">Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/garanzia-orologio-nuovo.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
+              <h2 class="b-card-title">Che Garanzia Viene con un Orologio Nuovo?</h2>
+              <p class="b-card-desc">Cosa copre davvero la garanzia, cosa non copre, cosa la annulla e come presentare un reclamo - una guida chiara per chi acquista un orologio nuovo.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Aggiornato Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/magnetizzazione-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
+              <h2 class="b-card-title">Magnetizzazione dell&rsquo;Orologio: Cause, Sintomi e Come Smagnetizzarlo</h2>
+              <p class="b-card-desc">Telefono, chiusura magnetica della borsa, altoparlante - bastano pochi secondi per magnetizzare il bilanciere. Scopri i sintomi e come risolvere il problema.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/corona-orologio-spiegata.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura dell’Orologio</span>
+              <h2 class="b-card-title">La Corona dell&rsquo;Orologio: Funzioni, Posizioni e Come Non Danneggiarla</h2>
+              <p class="b-card-desc">La corona non serve solo a impostare l&rsquo;ora - ha 3 posizioni distinte, protegge l&rsquo;impermeabilità e può causare danni seri se usata male. Tutto quello che devi sapere.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/guida-carica-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Manutenzione Orologio</span>
+              <h2 class="b-card-title">Come Caricare il Tuo Orologio: Manuale, Automatico &amp; Posizioni della Corona</h2>
+              <p class="b-card-desc">La tecnica di carica corretta per orologi manuali e automatici, le tre posizioni della corona spiegate e 5 errori comuni che danneggiano i movimenti.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-29">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/guida-conservazione-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura Orologio</span>
+              <h2 class="b-card-title">Come Conservare il Tuo Orologio Correttamente: Guida Completa</h2>
+              <p class="b-card-desc">La conservazione sbagliata danneggia i lubrificanti, magn&eacute;tizza i movimenti e fa spellare i cinturini. Scopri le condizioni ottimali - temperatura, umidit&agrave; e cosa evitare.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-23">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/guida-cristallo-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura Orologio</span>
+              <h2 class="b-card-title">Cristalli per Orologi: Acrilico, Minerale e Zaffiro - Qual &egrave; la Differenza?</h2>
+              <p class="b-card-desc">Tre materiali, tre livelli di protezione. Scopri quali si graffiano facilmente, quali si rompono e cosa fare quando il vetro del tuo orologio &egrave; danneggiato.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-23">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/guida-batteria-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura Orologio</span>
+              <h2 class="b-card-title">Quanto Dura la Batteria di un Orologio? Segnali di Scarica e Cosa Fare</h2>
+              <p class="b-card-desc">Le batterie degli orologi al quarzo durano 1&ndash;3 anni. Scopri i 5 segnali d&rsquo;allarme, se conviene sostituirla da soli e cosa comporta una sostituzione professionale.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Aggiornato Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/segni-revisione-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Manutenzione</span>
+              <h2 class="b-card-title">5 Segnali che il Tuo Orologio ha Bisogno di una Revisione, Non Solo di una Batteria Nuova</h2>
+              <p class="b-card-desc">Se il tuo orologio perde tempo con una batteria appena installata, la corona &egrave; grattante o ha avuto umidit&agrave; - ha bisogno di una revisione. Scopri i 5 segnali.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/cura-cinturino-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura Orologio</span>
+              <h2 class="b-card-title">Come Prendersi Cura del Cinturino dell&rsquo;Orologio: Guida per Pelle, Metallo e Gomma</h2>
+              <p class="b-card-desc">Il cinturino &egrave; la parte pi&ugrave; usurata di qualsiasi orologio. Scopri come pulire e nutrire la pelle, mantenere il bracciale in metallo e quando &egrave; il momento di sostituirlo.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/impermeabilita-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura Orologio</span>
+              <h2 class="b-card-title">Impermeabilit&agrave; degli Orologi: Cosa Significano Davvero ATM, BAR e Metri</h2>
+              <p class="b-card-desc">Il tuo orologio dice &ldquo;impermeabile&rdquo; - ma puoi nuotarci o farci la doccia? La maggior parte delle persone fraintende queste classificazioni e rovina il proprio orologio.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="care" href="/it/blog/guida-pulizia-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cura Orologio</span>
+              <h2 class="b-card-title">Come Pulire il Tuo Orologio in Casa: Metodi Sicuri per Ogni Materiale</h2>
+              <p class="b-card-desc">Lo sporco, il sudore e il grasso si accumulano su ogni orologio - anche su quelli costosi. La pulizia regolare richiede meno di cinque minuti. Guida passo per passo.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
 
-        
-          <a data-cat="care" href="/it/blog/watch-battery-size-guide.html" class="b-card">
+        <p class="b-label" data-sec="knowledge">Cultura Orologio <span class="b-label-count">25</span></p>
+        <div class="b-grid3" data-sec-grid="knowledge">
+          <a data-cat="knowledge" href="/it/blog/orologio-oro-o-acciaio.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zm-1.67 8h-2V6h2v6zm0 4h-2v-2h2v2z"/></svg> Manutenzione Orologio</span>
-              <h2 class="b-card-title">Guida Misure Batterie Orologi: SR626SW, SR920SW, CR2032 Spiegati</h2>
-              <p class="b-card-desc">Come leggere i codici delle batterie, quale si adatta al tuo orologio e quando sostituirla. Copre tutte le misure comuni a ossido d&rsquo;argento e litio.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Cultura Orologio</span>
+              <h2 class="b-card-title">Oro o Acciaio? Cosa Significa Davvero la Placcatura a Questo Prezzo</h2>
+              <p class="b-card-desc">Nessun orologio a questo prezzo è in oro massiccio. Quanto dura la placcatura, perché non si ripara, le regole che la fanno durare e quando conviene l'acciaio.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Agosto 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="care" href="/it/blog/caldo-umidita-orologio.html" class="b-card">
+          <a data-cat="knowledge" href="/it/blog/quanto-dura-un-orologio-economico.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-thermometer-half" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
-              <h2 class="b-card-title">Il Caldo e l&rsquo;Umidit&agrave; Possono Danneggiare il Tuo Orologio?</h2>
-              <p class="b-card-desc">Il caldo degrada i lubrificanti, deforma le guarnizioni e causa perdite dalla batteria. L&rsquo;umidit&agrave; forza l&rsquo;umidità oltre le guarnizioni. Scopri le zone di pericolo, i segnali d&rsquo;allarme e 5 modi per proteggere il tuo orologio.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Giugno 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Cultura Orologio</span>
+              <h2 class="b-card-title">Quanto Dura un Orologio da 70 Euro? Quello Che Vediamo al Banco</h2>
+              <p class="b-card-desc">Da cinque a dieci anni, e il movimento non è quasi mai ciò che cede. Il vero ordine dei guasti, i danni stagionali e quanto costa davvero un decennio di possesso.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 8 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Agosto 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-
-          <a data-cat="care" href="/it/blog/test-pressione-orologio.html" class="b-card">
+          <a data-cat="knowledge" href="/it/blog/cosa-rende-un-orologio-elegante.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Cura dell&rsquo;Orologio</span>
-              <h2 class="b-card-title">Test di Pressione dell&rsquo;Orologio: Cos&rsquo;&Egrave; e Quando Serve</h2>
-              <p class="b-card-desc">Il valore di resistenza all&rsquo;acqua era accurato quando era nuovo. Un test di pressione ti dice se lo è ancora. Scopri cosa verifica, quando farlo e perché la sostituzione della batteria annulla la guarnizione.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Giugno 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Cultura Orologio</span>
+              <h2 class="b-card-title">Cosa Rende un Orologio Elegante: Sei Dettagli Che Fanno il Lavoro</h2>
+              <p class="b-card-desc">Lunette zigrinate, bracciali jubilee, quadranti sunburst. Sei dettagli che sembrano costosi, da dove viene ciascuno e quanto costano a Durazzo, da 4.900 lek.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-08-04">Agosto 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-          <a data-cat="knowledge" href="/it/blog/complicazioni-orologio.html" class="b-card">
+          <a data-cat="knowledge" href="/it/blog/orologi-che-hanno-fatto-storia.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cog" aria-hidden="true"></i> Cultura Orologiera</span>
-              <h2 class="b-card-title">Complicazioni dell&rsquo;Orologio Spiegate: dal Data al Tourbillon</h2>
-              <p class="b-card-desc">Data, cronografo, fase lunare, GMT e tourbillon - cosa fa ogni complicazione, perch&eacute; esiste e come influenza i costi di revisione nel lungo periodo.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Giugno 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Storia dell’Orologeria</span>
+              <h2 class="b-card-title">Gli Orologi che Hanno Fatto la Storia: Sei Storie in un Solo Posto</h2>
+              <p class="b-card-desc">L&rsquo;orologio da polso, la Luna, la guerra, quello indistruttibile e il cimelio. Le nostre sei storie riunite in un posto, ognuna con un link all&rsquo;articolo completo.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/patek-philippe-generazioni.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Storia dell’Orologeria</span>
+              <h2 class="b-card-title">Patek Philippe e l&rsquo;Orologio che si Tramanda</h2>
+              <p class="b-card-desc">La frase pi&ugrave; famosa della pubblicit&agrave; di orologi, perch&eacute; un buon orologio &egrave; un cimelio e non un gadget, e gli orologi che puoi regalare a Durazzo per durare una generazione.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/orologi-militari-hamilton.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Storia dell’Orologeria</span>
+              <h2 class="b-card-title">Hamilton e gli Orologi che Andarono in Guerra</h2>
+              <p class="b-card-desc">Le trincee portarono l&rsquo;orologio al polso e Hamilton diede l&rsquo;intera fabbrica alla guerra. L&rsquo;orologio militare e gli orologi robusti in stile campo che puoi comprare oggi.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/storia-g-shock.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Storia dell’Orologeria</span>
+              <h2 class="b-card-title">La Storia del G-Shock: Come un Orologio Rotto ne Cre&ograve; uno Indistruttibile</h2>
+              <p class="b-card-desc">Un ingegnere, un regalo rotto e 200 prototipi falliti. Come Casio costru&igrave; l&rsquo;orologio che non muore, e il valore Casio che puoi comprare da noi oggi.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/primo-orologio-sulla-luna.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Storia dell’Orologeria</span>
+              <h2 class="b-card-title">Il Primo Orologio sulla Luna</h2>
+              <p class="b-card-desc">La NASA test&ograve; gli orologi fino a romperli e solo l&rsquo;Omega Speedmaster sopravvisse. Come raggiunse la Luna nel 1969 e aiut&ograve; a salvare l&rsquo;Apollo 13.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/jaeger-lecoultre-storia.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Storia dell’Orologeria</span>
+              <h2 class="b-card-title">Jaeger-LeCoultre: l&rsquo;Orologiaio Dietro gli Orologiai</h2>
+              <p class="b-card-desc">Per un secolo i nomi pi&ugrave; famosi hanno messo movimenti LeCoultre nelle loro casse. Il laboratorio nella valle, 1200 calibri e l&rsquo;orologio che si capovolge.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/cartier-santos-primo-orologio-da-polso.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Storia dell’Orologeria</span>
+              <h2 class="b-card-title">Cartier Santos: Come Nacque il Primo Orologio da Polso</h2>
+              <p class="b-card-desc">Nel 1904 un pilota non poteva controllare l&rsquo;orologio da tasca in volo, cos&igrave; Louis Cartier port&ograve; il tempo al polso. La storia dell&rsquo;orologio da cui &egrave; nato tutto.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-11">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/casio-a159wa-leggenda.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Cultura Orologiera</span>
+              <h2 class="b-card-title">Casio A159WA: la Leggenda di 40 Anni in Vendita a Durr&euml;s</h2>
+              <p class="b-card-desc">L&rsquo;orologio digitale immutato dai primi anni &rsquo;80: batteria da 7 anni, bracciale in acciaio, sveglia e cronometro. Da Iglisi Watch a &euro;61.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-07-10">Luglio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="knowledge" href="/it/blog/tipi-lunetta-orologio.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Cultura Orologiera</span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Cultura Orologiera</span>
               <h2 class="b-card-title">Tipi di Lunetta dell&rsquo;Orologio: dalla Lunetta Sub al Tachimetro</h2>
               <p class="b-card-desc">La lunetta fa molto pi&ugrave; che incorniciare il vetro. Scoprite i sei tipi principali - sub, tachimetrica, GMT, liscia, bidirezionale e pulsimetrica - cosa fa ciascuna e come riconoscerla.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Giugno 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="buying" href="/it/blog/smartwatch-vs-orologio-tradizionale.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">Smartwatch o Orologio Tradizionale: Quale Comprare?</h2>
-              <p class="b-card-desc">Uno si ricarica ogni notte e traccia la frequenza cardiaca. L&rsquo;altro funziona grazie a una molla e pu&ograve; durare pi&ugrave; del suo proprietario. Un confronto onesto da un laboratorio che li ripara entrambi.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Giugno 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-          <a data-cat="buying" href="/it/blog/orologio-come-investimento.html" class="b-card">
-            <div class="b-card-body">
-              <span class="b-card-cat"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99l1.5 1.5z"/></svg> Guida all&rsquo;Acquisto</span>
-              <h2 class="b-card-title">L&rsquo;Orologio come Investimento: Cosa Comprare e Cosa Evitare</h2>
-              <p class="b-card-desc">Alcuni orologi mantengono il valore; pochi si apprezzano; la maggior parte si deprezza. Una guida onesta su marchi, referenze e condizioni che rendono un orologio un vero investimento.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Giugno 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a data-cat="knowledge" href="/it/blog/citizen-eco-drive-spiegato.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Cultura Orologiera</span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Cultura Orologiera</span>
               <h2 class="b-card-title">Citizen Eco-Drive Spiegato: Come Funziona la Ricarica Solare negli Orologi</h2>
               <p class="b-card-desc">Niente cambio batteria, ma il condensatore dura 10&ndash;15 anni. Scopri come Eco-Drive converte la luce in energia, cosa significa il salto dei 2 secondi e quando serve la manutenzione.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Giugno 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-23">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
-</div>
-
-        <p id="blog-empty" aria-live="polite">Nessun articolo trovato. Prova una ricerca o categoria diversa.</p>
-
-          <a data-cat="repair" href="/it/blog/revisione-orologio-durazzo.html" class="b-card">
+          <a data-cat="knowledge" href="/it/blog/complicazioni-orologio.html" class="b-card">
             <div class="b-card-body">
-              <span class="b-card-cat"><i class="fas fa-cogs" aria-hidden="true"></i> Riparazione Orologi</span>
-              <h2 class="b-card-title">Revisione Completa dell&rsquo;Orologio a Durrës - Iglisi Watch</h2>
-              <p class="b-card-desc">Revisione completa orologi al quarzo e meccanici a Durrës da Iglisi Watch. Smontaggio, pulizia ultrasonica, lubrificazione e regolazione. Preventivo gratuito, pronto in 1-5 giorni.</p>
-              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> Maggio 2026</span></div>
-              <span class="b-card-link">Leggi l&rsquo;articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Cultura Orologiera</span>
+              <h2 class="b-card-title">Complicazioni dell&rsquo;Orologio Spiegate: dal Data al Tourbillon</h2>
+              <p class="b-card-desc">Data, cronografo, fase lunare, GMT e tourbillon - cosa fa ogni complicazione, perch&eacute; esiste e come influenza i costi di revisione nel lungo periodo.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-19">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
             </div>
           </a>
+          <a data-cat="knowledge" href="/it/blog/guida-tipi-di-orologi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
+              <h2 class="b-card-title">Tipi di Orologio Spiegati: Subacquei, Tank, Aviatori e Non Solo</h2>
+              <p class="b-card-desc">Subacqueo, field, aviatore, elegante, tank: da dove viene ogni tipo di orologio, per cosa &egrave; stato costruito e quale si adatta a come vivi davvero.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-06-15">Giugno 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/crisi-al-quarzo.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
+              <h2 class="b-card-title">La Crisi al Quarzo: Come un Chip Giapponese Quasi Distrusse l&rsquo;Orologeria Svizzera</h2>
+              <p class="b-card-desc">Negli anni &rsquo;70, gli orologi al quarzo giapponesi mandarono in bancarotta centinaia di manifatture svizzere. La storia della crisi che ridisegnò l&rsquo;industria.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/strumenti-riparazione-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
+              <h2 class="b-card-title">Gli Strumenti del Maestro Orologiaio: Dal Cacciavite da 0,5 mm al Banco Ultrasuoni</h2>
+              <p class="b-card-desc">Pinzette antistatiche, cacciaviti per scappamento, vasche a ultrasuoni - gli strumenti professionali che separano una riparazione corretta da un danno permanente.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/movimenti-svizzeri-vs-giapponesi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
+              <h2 class="b-card-title">Movimenti Svizzeri vs Giapponesi: Qual È il Migliore?</h2>
+              <p class="b-card-desc">ETA 2824 contro Miyota 9015, Sellita contro NH35 - un confronto tecnico onesto tra i movimenti più usati al mondo senza pubblicità di mezzo.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 10 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Aggiornato Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/comprare-orologio-usato.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
+              <h2 class="b-card-title">Comprare un Orologio Usato: La Checklist in 7 Passi per Non Sbagliare</h2>
+              <p class="b-card-desc">Dalla verifica del numero seriale al test dell&rsquo;impermeabilità, dalla storia delle riparazioni al prezzo di mercato - 7 controlli prima di acquistare un usato.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/dimensioni-cassa-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Stile Orologio</span>
+              <h2 class="b-card-title">Dimensioni della Cassa: Come Scegliere l&rsquo;Orologio Giusto per il Tuo Polso</h2>
+              <p class="b-card-desc">36 mm, 40 mm, 44 mm - le dimensioni della cassa cambiano tutto. Come misurare il polso, scegliere lo spessore e capire perché i numeri da soli non bastano.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 9 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Aggiornato Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/quadranti-luminosi-spiegati.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
+              <h2 class="b-card-title">Quadranti Luminosi: Lume, Super-LumiNova e la Storia del Radio Sugli Orologi</h2>
+              <p class="b-card-desc">Dalle pittrici del radio alle moderne vernici Super-LumiNova - come funzionano i quadranti che brillano nel buio e perché gli orologi vintage luminosi richiedono cautela.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-04-05">Aprile 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/riserva-di-carica-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
+              <h2 class="b-card-title">Riserva di Carica: Cos&rsquo;è, Come Funziona e Quanto Deve Durare il Tuo Orologio</h2>
+              <p class="b-card-desc">38 ore, 72 ore, 8 giorni - cosa significano questi numeri e perché la riserva di carica reale è spesso inferiore a quella dichiarata dal costruttore.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 10 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-05-20">Aggiornato Maggio 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/riconoscere-orologio-falso.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
+              <h2 class="b-card-title">Come Riconoscere un Orologio Falso: 8 Controlli degli Esperti</h2>
+              <p class="b-card-desc">Dal peso della cassa alla sensazione della corona - gli 8 controlli fisici che rivelano un falso senza attrezzatura specializzata.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 7 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-29">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/guida-occasioni-orologio.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Stile Orologio</span>
+              <h2 class="b-card-title">Orologi da Cerimonia, Sport e Casual: Cosa Indossare per Ogni Occasione</h2>
+              <p class="b-card-desc">Orologio da cerimonia per un matrimonio, sportivo per la palestra, subacqueo per i weekend - scegliere l&rsquo;orologio giusto per l&rsquo;occasione è più semplice di quanto pensi.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-29">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a data-cat="knowledge" href="/it/blog/meccanico-vs-quarzo.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-search" aria-hidden="true"></i> Conoscenza Orologi</span>
+              <h2 class="b-card-title">Orologi Meccanici vs al Quarzo: Qual &egrave; la Differenza e Quale Scegliere?</h2>
+              <p class="b-card-desc">Il quarzo vince in precisione e bassa manutenzione. Il meccanico vince in artigianalit&agrave; e valore da collezione. Un confronto onesto per scegliere l&rsquo;orologio giusto.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 6 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-23">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p class="b-label" data-sec="keys">Servizi Chiavi <span class="b-label-count">1</span></p>
+        <div class="b-grid3" data-sec-grid="keys">
+          <a data-cat="keys" href="/it/blog/guida-duplicato-chiavi.html" class="b-card">
+            <div class="b-card-body">
+              <span class="b-card-cat"><i class="fas fa-key" aria-hidden="true"></i> Servizi Chiavi</span>
+              <h2 class="b-card-title">Come Funziona il Duplicato di Chiavi: Tipi, Cosa Portare e Cosa Aspettarsi</h2>
+              <p class="b-card-desc">Fare un duplicato richiede meno di 5 minuti - se sai cosa portare. Scopri quali chiavi possiamo duplicare, come funziona il processo di taglio e quante copie dovresti fare.</p>
+              <div class="b-card-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 4 min di lettura</span><span><i class="fas fa-bolt" aria-hidden="true"></i> <time datetime="2026-03-22">Marzo 2026</time></span></div>
+              <span class="b-card-link">Leggi l’articolo <i class="fas fa-chevron-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <p id="blog-empty">Nessun articolo trovato. Prova una ricerca o categoria diversa.</p>
 
       </div>
     </section>
@@ -1581,6 +998,6 @@
   </footer>
 
   <script src="/shared.js?v=22" defer></script>
-  <script src="/blog-search.js?v=2" defer></script>
+  <script src="/blog-search.js?v=3" defer></script>
 </body>
 </html>
