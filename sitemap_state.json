@@ -1,10 +1,10 @@
 {
   "https://watch.al/": {
-    "fp": "32f123b8b043e34eeb63d3951178f281040afb7182544e15cc0a521e1c5a8bb4",
+    "fp": "3a49003a62cc6a92f7a015199a735987335b60d24458a7e95c5b180b4b4e3335",
     "lastmod": "2026-08-05"
   },
   "https://watch.al/en/": {
-    "fp": "32f123b8b043e34eeb63d3951178f281040afb7182544e15cc0a521e1c5a8bb4",
+    "fp": "3a49003a62cc6a92f7a015199a735987335b60d24458a7e95c5b180b4b4e3335",
     "lastmod": "2026-08-05"
   },
   "https://watch.al/en/about.html": {
@@ -128,8 +128,8 @@
     "lastmod": "2026-08-03"
   },
   "https://watch.al/en/blog/matching-watches-for-couples.html": {
-    "fp": "5b86daa6717ea2e910fe98d5ebacfae4bee50dcaffad59f8a007dee5aa3d8ead",
-    "lastmod": "2026-08-03"
+    "fp": "ee14682f449d27e70de861ebbfa7f09a479fc3d632f04382d9d2a1cf504d7a0c",
+    "lastmod": "2026-08-05"
   },
   "https://watch.al/en/blog/mechanical-vs-quartz.html": {
     "fp": "5c7a392d4e8c4ba47bb38f7110366a551f9046496cb0a982f6fb306c22ab4fd0",
@@ -620,7 +620,7 @@
     "lastmod": "2026-08-05"
   },
   "https://watch.al/it/": {
-    "fp": "ad9aef18ea617baf2584098a38ceeee6df03d6a7f43e424a8b64948d85995251",
+    "fp": "57489e0b94765c31b61f3484ef267c25b393691d1368f1945452c75555c1c24d",
     "lastmod": "2026-08-05"
   },
   "https://watch.al/it/about.html": {
@@ -800,8 +800,8 @@
     "lastmod": "2026-08-03"
   },
   "https://watch.al/it/blog/orologi-coppia-abbinati.html": {
-    "fp": "5e78c418f3453d4f1d2a0c4136079a340227c7ece65886fd9a313d0fc87a3450",
-    "lastmod": "2026-08-03"
+    "fp": "959662d845a71aeae4e5b449bd848f7d51fbbb435a4ddb4e1c886525299a1d2b",
+    "lastmod": "2026-08-05"
   },
   "https://watch.al/it/blog/orologi-donna-albania.html": {
     "fp": "e6a97544f18b654fafafe826b4c25833066e0381b417d6e1a2f7887341d4792e",
@@ -1236,7 +1236,7 @@
     "lastmod": "2026-08-05"
   },
   "https://watch.al/sq/": {
-    "fp": "3987ddce191fcc8b9a96a243be6851327d00b5ce5c549e2acadbe2a85a551751",
+    "fp": "91c0ee986dd646f0b13add12bfc1fc9e6d4bcb4cd3fd8b2fb4aa5ff8df90b67e",
     "lastmod": "2026-08-05"
   },
   "https://watch.al/sq/about.html": {
@@ -1432,7 +1432,7 @@
     "lastmod": "2026-08-03"
   },
   "https://watch.al/sq/blog/ora-per-cifte.html": {
-    "fp": "c861079f55f60e7bf92260b4bdfb3e8de3aa5d139653d4a456853242da9830a0",
+    "fp": "486ae14f6226b20f6ee9c60497b5f77e62e08621c0b01c1cc26d4e3d17b6b1cc",
     "lastmod": "2026-08-05"
   },
   "https://watch.al/sq/blog/ora-per-plazh-e-det.html": {

@@ -50,11 +50,11 @@ ARTICLES = [
         label=dict(en='Watch Knowledge', it='Cultura Orologio', sq='Njohuri Orësh'),
         card=dict(
             en=dict(title='What Makes a Watch Look Expensive: Six Details That Do the Work',
-                    desc='Fluted bezels, jubilee bracelets, sunburst dials. Six design details that read as costly, where each one came from, and what they cost in Durres from 4,900 Lek.'),
+                    desc='Fluted bezels, jubilee bracelets, sunburst dials. Six design details that read as costly, where each one came from, and what they cost in Durres from {lolek} Lek.'),
             it=dict(title='Cosa Rende un Orologio Elegante: Sei Dettagli Che Fanno il Lavoro',
-                    desc='Lunette zigrinate, bracciali jubilee, quadranti sunburst. Sei dettagli che sembrano costosi, da dove viene ciascuno e quanto costano a Durazzo, da 4.900 lek.'),
+                    desc='Lunette zigrinate, bracciali jubilee, quadranti sunburst. Sei dettagli che sembrano costosi, da dove viene ciascuno e quanto costano a Durazzo, da {lolek} lek.'),
             sq=dict(title='&Ccedil;far&euml; e B&euml;n nj&euml; Or&euml; t&euml; Duket e Shtrenjt&euml;: Gjasht&euml; Detaje Q&euml; B&euml;jn&euml; Pun&euml;n',
-                    desc='Luneta t&euml; val&euml;zuara, bracelete jubilee, ciferblate sunburst. Gjasht&euml; detaje q&euml; duken t&euml; shtrenjta, nga vjen secili dhe sa kushtojn&euml; n&euml; Durr&euml;s, nga 4.900 lek&euml;.'),
+                    desc='Luneta t&euml; val&euml;zuara, bracelete jubilee, ciferblate sunburst. Gjasht&euml; detaje q&euml; duken t&euml; shtrenjta, nga vjen secili dhe sa kushtojn&euml; n&euml; Durr&euml;s, nga {lolek} lek&euml;.'),
         ),
     ),
     dict(
@@ -86,11 +86,11 @@ ARTICLES = [
         label=dict(en='Buying Guide', it='Guida all’Acquisto', sq='Guidë Blerjeje'),
         card=dict(
             en=dict(title='Watches Under 10,000 Lek: What Your Money Actually Buys',
-                    desc='50 of our 57 watches cost under 10,000 Leke, starting at 4,900 L. The counter priced in Lek, band by band, with cash on delivery anywhere in Albania.'),
+                    desc='{u10k} of our {n} watches cost under 10,000 Leke, starting at {lolek} L. The counter priced in Lek, band by band, with cash on delivery anywhere in Albania.'),
             it=dict(title='Orologi Sotto i 10.000 Lek: Cosa Compra Davvero il Vostro Denaro',
-                    desc='50 dei nostri 57 orologi costano meno di 10.000 Leke, da 4.900 L. Il banco prezzato in Lek, fascia per fascia, con pagamento alla consegna ovunque.'),
+                    desc='{u10k} dei nostri {n} orologi costano meno di 10.000 Leke, da {lolek} L. Il banco prezzato in Lek, fascia per fascia, con pagamento alla consegna ovunque.'),
             sq=dict(title='Orë Nën 10.000 Lekë: Çfarë Blejnë Vërtet Paratë Tuaja',
-                    desc='50 nga 57 orët tona kushtojnë nën 10.000 Lekë, duke filluar nga 4.900 L. Banaku me çmime në lekë, fashë pas fashe, me pagesë në dorëzim kudo.'),
+                    desc='{u10k} nga {n} orët tona kushtojnë nën 10.000 Lekë, duke filluar nga {lolek} L. Banaku me çmime në lekë, fashë pas fashe, me pagesë në dorëzim kudo.'),
         ),
     ),
     dict(
@@ -98,11 +98,11 @@ ARTICLES = [
         label=dict(en='Buying Guide', it='Guida all’Acquisto', sq='Guidë Blerjeje'),
         card=dict(
             en=dict(title="Men's Watches in Albania: What We Stock and What It Costs",
-                    desc='Sport steel, chronographs and dress watches from €50 to €199, all in stock in Durrës. What each style is for and how to order anywhere in Albania.'),
+                    desc='Sport steel, chronographs and dress watches from €{lo} to €{hi}, all in stock in Durrës. What each style is for and how to order anywhere in Albania.'),
             it=dict(title='Orologi da Uomo in Albania: Cosa Teniamo e Quanto Costa',
-                    desc='Sportivi in acciaio, cronografi e orologi da abito da €50 a €199, tutti disponibili a Durazzo. A cosa serve ogni stile e come ordinare ovunque.'),
+                    desc='Sportivi in acciaio, cronografi e orologi da abito da €{lo} a €{hi}, tutti disponibili a Durazzo. A cosa serve ogni stile e come ordinare ovunque.'),
             sq=dict(title='Orë për Burra në Shqipëri: Çfarë Mbajmë dhe Sa Kushton',
-                    desc='Sportive çeliku, kronografë dhe orë veshjeje nga €50 deri €199, të gjitha gjendje në Durrës. Për çfarë shërben çdo stil dhe si të porosisni kudo.'),
+                    desc='Sportive çeliku, kronografë dhe orë veshjeje nga €{lo} deri €{hi}, të gjitha gjendje në Durrës. Për çfarë shërben çdo stil dhe si të porosisni kudo.'),
         ),
     ),
     dict(
@@ -142,7 +142,7 @@ ARTICLES = [
         slug='are-daniel-klein-watches-good', cat='buying',
         card=dict(
             en=dict(title="Are Daniel Klein Watches Any Good? A Watchmaker's Honest Answer",
-                    desc='Turkish fashion brand, quartz, gold-tone looks for &euro;59 to &euro;89. Where the money is well spent and where it is not, plus all 8 models we stock.'),
+                    desc='Turkish fashion brand, quartz, gold-tone looks for &euro;59 to &euro;89. Where the money is well spent and where it is not, plus all {n:daniel-klein} models we stock.'),
             it=dict(title='Gli Orologi Daniel Klein Sono Buoni? La Risposta Onesta di un Orologiaio',
                     desc='Marchio di moda turco, quarzo, look dorato per &euro;59 a &euro;89. Dove i soldi sono ben spesi e dove no, con tutti gli 8 modelli in stock.'),
             sq=dict(title='A Vlejn&euml; Or&euml;t Daniel Klein? P&euml;rgjigjja e Ndershme e nj&euml; Or&euml;ndreq&euml;si',

@@ -42,6 +42,8 @@ import sys
 from html import unescape
 from pathlib import Path
 
+import catalog_stats
+
 BASE = Path(__file__).resolve().parent
 LANGS = ("en", "it", "sq")
 BLOG_SEARCH_V = 3
@@ -240,7 +242,9 @@ def card_texts(a, lang, fam):
     """(title, desc) for the card: manifest override or article-derived fallback."""
     if "card" in a:
         c = a["card"][lang]
-        return c["title"], c["desc"]
+        # counts and price bounds are tokens, never literals: the shop publishes
+        # fewer watches than it holds and the number moves every month
+        return (catalog_stats.fill(c["title"], lang), catalog_stats.fill(c["desc"], lang))
     slug = a["slug"] if lang == "en" else fam[a["slug"]][lang]
     t = (BASE / lang / "blog" / f"{slug}.html").read_text(encoding="utf-8")
     h = re.search(r'"headline"\s*:\s*"([^"]+)"', t)
