@@ -109,10 +109,31 @@ def sweep(files=None):
     return hits
 
 
+
+def render_llms():
+    """llms.txt introduces the shop to language models and was the least accurate
+    page on the site: it claimed 75 guides for months. It is a template now."""
+    s = C.load()
+    n_art = len([f for f in (BASE / "en" / "blog").glob("*.html")
+                 if f.stem != "index"
+                 and "noindex" not in f.read_bytes().decode("utf-8-sig").lower()])
+    tpl = (BASE / "llms.tpl").read_text(encoding="utf-8")
+    # {articles} is not a catalogue token, so it is resolved before fill() runs;
+    # fill() refuses to ship a token it does not recognise.
+    out = C.fill(tpl.replace("{articles}", str(n_art)), "en", s)
+    tgt = BASE / "llms.txt"
+    if tgt.read_bytes() != out.encode("utf-8"):
+        tgt.write_bytes(out.encode("utf-8"))
+        print("  WROTE llms.txt")
+    else:
+        print("  SKIP llms.txt")
+
+
 def main():
     if "--seed" in sys.argv:
         import seed_stats
         seed_stats.run(BASE, read, write)
+    render_llms()
     sweep()
 
 

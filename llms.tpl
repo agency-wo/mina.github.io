@@ -1,0 +1,40 @@
+# Iglisi Watch, watch.al
+
+> Family-owned watch shop and repair workshop in Durrës, Albania, open since 2009.
+> We sell {n} brand-new watches from €{lo} (Navimarine, Daniel Klein, Hislon, Philippe
+> Lauren, Bigotti, Casio, Citizen, Belonni, Romanson, Starking) with a 1-year guarantee,
+> and offer expert watch repair, battery replacement, strap fitting, crystal replacement
+> and key cutting. Most services are done while you wait, with no appointment needed.
+
+The site is trilingual: English (/en/), Albanian (/sq/), Italian (/it/).
+
+## Key pages
+
+- [Shop, all watches](https://watch.al/en/shop/): full catalogue with prices in EUR and Lek; filter by brand, price, and search. Orders via WhatsApp with delivery anywhere in Albania.
+- [Delivery, payment and returns](https://watch.al/en/shop/delivery.html): free delivery anywhere in Albania, pay the courier when it arrives, 30 days to return it.
+- [Services](https://watch.al/en/services.html): watch repair, battery replacement (about 2 minutes while you wait, 200 to 600 Lek), strap replacement, crystal replacement, key cutting.
+- [Blog](https://watch.al/en/blog/): {articles} practical guides on watch care, buying advice and repairs in Albania.
+- [About](https://watch.al/en/about.html): the family workshop, since 2009. 5.0 star Google rating.
+
+## Brand pages
+
+- [Navimarine](https://watch.al/en/shop/brand/navimarine.html), [Daniel Klein](https://watch.al/en/shop/brand/daniel-klein.html), [Hislon](https://watch.al/en/shop/brand/hislon.html), [Philippe Lauren](https://watch.al/en/shop/brand/philippe-lauren.html), [Bigotti](https://watch.al/en/shop/brand/bigotti.html)
+
+## Contact and visit
+
+- Address: Rruga Aleksander Goga, Durrës 2001, Albania
+- Hours: Monday to Saturday, 08:30 to 20:30. Closed Sunday.
+- Phone and WhatsApp: +355 67 636 0510
+- Instagram: https://instagram.com/iglisiwatch
+
+## Albanian (Shqip)
+
+- [Dyqani](https://watch.al/sq/shop/): orë të reja nga €{lo} me garanci 1-vjeçare
+- [Shërbimet](https://watch.al/sq/services.html): riparim orësh, ndërrim baterie, prerje çelësash
+- [Dërgesa dhe kthimi](https://watch.al/sq/shop/delivery.html): dërgesë falas, paguani korrierin, 30 ditë për ta kthyer
+
+## Italiano
+
+- [Negozio](https://watch.al/it/shop/): orologi nuovi da €{lo} con garanzia di 1 anno
+- [Servizi](https://watch.al/it/services.html): riparazione orologi, sostituzione batteria, duplicazione chiavi
+- [Consegna e resi](https://watch.al/it/shop/delivery.html): consegna gratuita, pagate il corriere, 30 giorni per il reso
