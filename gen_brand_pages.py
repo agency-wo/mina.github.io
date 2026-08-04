@@ -201,7 +201,7 @@ def head_swaps(html, slug, brand, lang, items):
     for lg in ("en", "it", "sq"):
         # \s+ rather than a single space: the EN and SQ shop indexes pad this attribute, so a
         # one-space pattern matched only the IT link and left en and sq pointing at /shop/.
-        # Ten of the twelve brand pages shipped that way from July until 2026-08-05.
+        # Ten of the twelve brand pages shipped that way from July until 2026-08-04.
         html = re.sub(rf'(<link rel="alternate" hreflang="{lg}"\s+href=")[^"]*(")',
                       r"\g<1>" + f"https://watch.al/{lg}/shop/brand/{slug}.html" + r"\g<2>",
                       html, count=1)
