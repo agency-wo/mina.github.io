@@ -50,12 +50,48 @@
     fbq('dataProcessingOptions', ['LDU'], 0, 0);
     fbq('init','818615647986085');
     fbq('track','PageView');
-    /* Fire Contact event on any WhatsApp CTA click */
-    document.addEventListener('click',function(e){
-      var el=e.target.closest('[data-fb-contact]');
-      if(el) fbq('track','Contact');
-    });
+    /* ViewContent with a real product id is what a catalogue and any retargeting
+       need. A bare Contact can never drive either. */
+    if(_ctx) fbq('track','ViewContent', _ctx);
+    for(var i=0;i<_queue.length;i++) fbq('track', _queue[i][0], _queue[i][1]);
+    _queue.length = 0;
   }
+
+  /* Product context, read from metas that every product page already carries. */
+  var _ctx = null, _queue = [], _denied = false;
+  (function(){
+    var m = document.querySelector('meta[property="product:price:amount"]');
+    if(!m) return;
+    var s = (location.pathname.match(/\/shop\/([^\/]+)\.html$/) || [])[1];
+    if(!s || s === 'index' || s === 'delivery' || s === 'watch') return;
+    var v = parseFloat(m.getAttribute('content'));
+    if(!(v > 0)) return;
+    var c = document.querySelector('meta[property="product:price:currency"]');
+    var h = document.querySelector('h1.watch-title-pg');
+    _ctx = { content_ids:[s], content_type:'product',
+             content_name: h ? h.textContent.trim() : s,
+             value: v, currency: (c && c.getAttribute('content')) || 'EUR' };
+  })();
+
+  function fire(name, params){
+    if(_denied) return;
+    if(window._fbPixelLoaded && window.fbq) fbq('track', name, params);
+    else _queue.push([name, params]);
+  }
+
+  /* Registered at parse time, not inside loadPixel(). Returning visitors load the
+     pixel on a 5 second timer, so every click in the first five seconds used to be
+     lost, and the buy button is above the fold. Nothing leaves the browser before
+     consent: the queue is an in-memory array, discarded on unload, and loadPixel()
+     only ever runs on a granted consent. */
+  document.addEventListener('click', function(e){
+    var el = e.target.closest && e.target.closest('[data-fb-contact]');
+    if(!el) return;
+    var src = el.getAttribute('data-fb-contact');
+    var p = {}; for(var k in _ctx) p[k] = _ctx[k];
+    p.source = (src && src !== '1') ? src : 'other';
+    fire('Contact', p);
+  });
 
   /* ── Check stored preference ───────────────────────────────────────────── */
   var stored = localStorage.getItem(STORAGE_KEY);
@@ -69,12 +105,12 @@
     setTimeout(loadPixel, 5000);
     return;
   }
-  if(stored === 'denied'){ return; }
+  if(stored === 'denied'){ _denied = true; _queue.length = 0; return; }
 
   /* Also honour consent recorded by cookie.js (key: 'iglisi_consent') */
   var ck; try{ ck = JSON.parse(localStorage.getItem('iglisi_consent')); }catch(e){}
   if(ck && ck.analytics === true){ setTimeout(loadPixel, 5000); return; }
-  if(ck && ck.analytics === false){ return; }
+  if(ck && ck.analytics === false){ _denied = true; _queue.length = 0; return; }
 
   /* If cookie.js is managing consent on this page (#cookie-banner present),
      skip building our own banner — wait for cookie.js to fire the event. */
@@ -123,6 +159,7 @@
 
   function dismiss(choice){
     localStorage.setItem(STORAGE_KEY, choice);
+    if(choice === 'denied'){ _denied = true; _queue.length = 0; }
     banner.style.transition = 'transform .3s ease, opacity .3s ease';
     banner.style.transform  = 'translateY(100%)';
     banner.style.opacity    = '0';
