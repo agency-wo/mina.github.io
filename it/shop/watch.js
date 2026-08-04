@@ -115,7 +115,7 @@
       '@type': 'BreadcrumbList',
       'itemListElement': (function(){
         // must match shop_bits.crumb_jsonld() in the static generator
-        var _BRAND_SLUGS = 'Daniel Klein:daniel-klein|Navimarine:navimarine|Hislon:hislon|Philippe Lauren:philippe-lauren';
+        var _BRAND_SLUGS = 'Daniel Klein:daniel-klein|Navimarine:navimarine|Hislon:hislon|Philippe Lauren:philippe-lauren|Bigotti:bigotti';
         var _s = null, _parts = _BRAND_SLUGS.split('|');
         for (var _i = 0; _i < _parts.length; _i++) {
           var _kv = _parts[_i].split(':');

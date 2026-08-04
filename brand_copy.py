@@ -14,6 +14,14 @@ RULE: only owner-verified facts appear here.
                 dress design and finish, not a better movement or more water resistance.
   Philippe Lauren  visible facts only: chronograph layouts, steel and black ion-plated
                 steel, one square cushion case, one gold-tone dress model.
+  Bigotti       visible facts only. NOTHING about the company is owner-verified: no country
+                of origin, no history, no crystal type, no water resistance, no diameter.
+                Quartz is stated ONLY on the two BG.1.10616 squares, so never write that the
+                whole line is quartz. The crystal-set bezels are SET STONES, never diamonds
+                and never the glass. The BG1.10154.1 is multifunction in a three-pusher
+                chronograph case: it is not a chronograph, and the site says so already.
+                The owner stocks more Bigotti than is published, so every number here is a
+                placeholder and never a literal.
 
 Placeholders filled at build time: {n} models, {lo}/{hi} price range, {lolek}/{hilek}.
 """
@@ -207,6 +215,53 @@ COPY = {
                  "Modelet tona Philippe Lauren shkojnë nga €{lo} deri €{hi}, që janë afërsisht {lolek} deri {hilek} Lekë. Kjo përfshin një garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri."),
                 ("Ku mund t’i shoh orët Philippe Lauren nga afër?",
                  "Në punishten tonë në Rrugën Aleksander Goga në Durrës, e hapur nga e hëna në të shtunë 8:30 deri 20:30. Kemi {n} modele në gjendje dhe jeni të mirëseardhur t’i provoni para se të blini."),
+            ],
+        },
+    },
+    "bigotti": {
+        "en": {
+            "paras": [
+                "Bigotti is our square and dress line: {n} models in Durrës from €{lo} to €{hi}. Most of what we keep is women's dress watches, with one multifunction in the range for a larger wrist.",
+                "The two square models have a crystal-set bezel on all four sides, one in polished steel with a silver sunburst dial and one in gold-tone with a glossy black one, both on a five-link bracelet with no date window. Alongside them sit a slim round gold-tone piece and a steel multifunction with a day-date display. The set stones are crystals, not diamonds, and we would rather say so than let you assume otherwise.",
+                "Water resistance is not stated on these models, so ask us before you take one near water and we will tell you what we know. Every one comes with our 1-year guarantee, cash on delivery across Albania.",
+            ],
+            "faq": [
+                ("What kind of watches is Bigotti?",
+                 "It is the square and dress line we stock: {n} models from €{lo} to €{hi}, mostly women's dress watches in stainless steel and gold-tone, two of them with a crystal-set bezel on a square case, plus a steel multifunction with a day-date display."),
+                ("How much does a Bigotti watch cost in Albania?",
+                 "Our Bigotti models run from €{lo} to €{hi}, which is roughly {lolek} to {hilek} Lek. That includes a 1-year guarantee, and cash on delivery anywhere in Albania."),
+                ("Where can I see Bigotti watches in person?",
+                 "At our workshop on Rruga Aleksander Goga in Durrës, open Monday to Saturday 8:30 to 20:30. We have {n} models in stock and you are welcome to try them on before you buy."),
+            ],
+        },
+        "it": {
+            "paras": [
+                "Bigotti è la nostra linea quadrata e da abito: {n} modelli a Durazzo da €{lo} a €{hi}. Gran parte di ciò che teniamo sono orologi da donna, con un multifunzione nella gamma per un polso più grande.",
+                "I due modelli quadrati hanno una lunetta con cristalli su tutti e quattro i lati, uno in acciaio lucido con quadrante argentato sunburst e uno color oro con quadrante nero lucido, entrambi su bracciale a cinque maglie e senza finestrella data. Accanto a loro ci sono un pezzo rotondo sottile color oro e un multifunzione in acciaio con display giorno-data. Le pietre applicate sono cristalli, non diamanti, e preferiamo dirlo piuttosto che lasciarvelo supporre.",
+                "L'impermeabilità non è dichiarata su questi modelli, quindi chiedeteci prima di avvicinarne uno all'acqua e vi diremo quello che sappiamo. Ognuno ha la nostra garanzia di 1 anno, con pagamento alla consegna in tutta l'Albania.",
+            ],
+            "faq": [
+                ("Che tipo di orologi è Bigotti?",
+                 "È la linea quadrata e da abito che teniamo: {n} modelli da €{lo} a €{hi}, in gran parte orologi da donna in acciaio inossidabile e color oro, due con lunetta con cristalli su cassa quadrata, più un multifunzione in acciaio con display giorno-data."),
+                ("Quanto costa un orologio Bigotti in Albania?",
+                 "I nostri modelli Bigotti vanno da €{lo} a €{hi}, che sono circa {lolek} a {hilek} Lek. Sono inclusi la garanzia di 1 anno e il pagamento alla consegna in tutta l'Albania."),
+                ("Dove posso vedere gli orologi Bigotti di persona?",
+                 "Nel nostro laboratorio in Rruga Aleksander Goga a Durazzo, aperto dal lunedì al sabato dalle 8:30 alle 20:30. Abbiamo {n} modelli disponibili e potete provarli prima di acquistare."),
+            ],
+        },
+        "sq": {
+            "paras": [
+                "Bigotti është linja jonë katrore dhe e veshjes: {n} modele në Durrës nga €{lo} deri €{hi}. Pjesa më e madhe e asaj që mbajmë janë orë veshjeje për femra, me një multifunksion në gamë për një dorë më të madhe.",
+                "Dy modelet katrore kanë lunetë me kristale në të katër anët, njëri në çelik të lëmuar me ciferblat argjendi sunburst dhe tjetri në ngjyrë ari me ciferblat të zi të shndritshëm, të dyja me byzylyk me pesë hallka dhe pa dritare date. Pranë tyre janë një copë e rrumbullakët e hollë në ngjyrë ari dhe një multifunksion çeliku me tregues dite-date. Gurët e vendosur janë kristale, jo diamante, dhe preferojmë ta themi sesa t'ju lëmë ta merrni me mend.",
+                "Rezistenca ndaj ujit nuk është e deklaruar te këto modele, ndaj na pyesni para se ta afroni njërën te uji dhe ju themi çfarë dimë. Secila vjen me garancinë tonë 1-vjeçare, me pagesë në dorëzim kudo në Shqipëri.",
+            ],
+            "faq": [
+                ("Çfarë lloj orësh është Bigotti?",
+                 "Është linja katrore dhe e veshjes që mbajmë: {n} modele nga €{lo} deri €{hi}, kryesisht orë veshjeje për femra në çelik inoks dhe ngjyrë ari, dy prej tyre me lunetë me kristale mbi kasë katrore, plus një multifunksion çeliku me tregues dite-date."),
+                ("Sa kushton një orë Bigotti në Shqipëri?",
+                 "Modelet tona Bigotti shkojnë nga €{lo} deri €{hi}, që janë afërsisht {lolek} deri {hilek} Lekë. Kjo përfshin një garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri."),
+                ("Ku mund t'i shoh orët Bigotti nga afër?",
+                 "Në punishten tonë në Rrugën Aleksander Goga në Durrës, e hapur nga e hëna në të shtunë 8:30 deri 20:30. Kemi {n} modele në gjendje dhe jeni të mirëseardhur t'i provoni para se të blini."),
             ],
         },
     },

@@ -23,6 +23,7 @@ BRAND_SLUGS = {
     "Navimarine": "navimarine",
     "Hislon": "hislon",
     "Philippe Lauren": "philippe-lauren",
+    "Bigotti": "bigotti",
 }
 
 # Breadcrumb labels. watch.js carries the same strings; change both together.

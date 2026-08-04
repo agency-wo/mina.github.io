@@ -36,6 +36,7 @@ BRANDS = [
     ("navimarine", "Navimarine"),
     ("hislon", "Hislon"),
     ("philippe-lauren", "Philippe Lauren"),
+    ("bigotti", "Bigotti"),
 ]
 
 WA = "https://api.whatsapp.com/send?phone=355676360510&amp;text="
@@ -198,10 +199,13 @@ def head_swaps(html, slug, brand, lang, items):
     for pat, rep in subs:
         html = re.sub(pat, rep, html, count=1)
     for lg in ("en", "it", "sq"):
-        html = re.sub(rf'(<link rel="alternate" hreflang="{lg}" href=")[^"]*(")',
+        # \s+ rather than a single space: the EN and SQ shop indexes pad this attribute, so a
+        # one-space pattern matched only the IT link and left en and sq pointing at /shop/.
+        # Ten of the twelve brand pages shipped that way from July until 2026-08-05.
+        html = re.sub(rf'(<link rel="alternate" hreflang="{lg}"\s+href=")[^"]*(")',
                       r"\g<1>" + f"https://watch.al/{lg}/shop/brand/{slug}.html" + r"\g<2>",
                       html, count=1)
-    html = re.sub(r'(<link rel="alternate" hreflang="x-default" href=")[^"]*(")',
+    html = re.sub(r'(<link rel="alternate" hreflang="x-default"\s+href=")[^"]*(")',
                   r"\g<1>" + f"https://watch.al/en/shop/brand/{slug}.html" + r"\g<2>",
                   html, count=1)
     # asset paths move one level deeper: /shop/ -> /shop/brand/
