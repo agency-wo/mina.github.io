@@ -259,6 +259,11 @@ def build_page(slug, brand, lang):
     # shop.js would hydrate the grid from the FULL catalog and wipe the brand filter
     html = re.sub(r'\s*<script src="\.\./shop\.js[^>]*></script>', "", html)
     assert "shop.js" not in html, f"{lang}/{slug}: shop.js still referenced"
+
+    # watch-effects is a shop-index-only feature. The cloned need-help panel
+    # keeps its [data-balance-wheel] div, but empty; the :empty CSS hides it.
+    html = re.sub(r'\s*<script src="/watch-effects[^"]*"[^>]*></script>', "", html)
+    assert '<script src="/watch-effects' not in html, f"{lang}/{slug}: watch-effects still referenced"
     return html
 
 
