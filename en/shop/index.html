@@ -298,6 +298,47 @@ img{display:block;max-width:100%;height:auto}
 .price-handle:hover,.price-handle:focus{box-shadow:0 2px 10px rgba(6,21,59,.4);outline:none}
 .price-handle:active{cursor:grabbing}
 @media(max-width:600px){.price-filter-section{padding:.25rem 1.25rem 1rem}}
+/* WATCH-NATIVE UPGRADES 2026-08: swing-tag price, crystal glint, phone shelf,
+   bright-gold hero, bracelet divider, balance-wheel slot. CSS-only for cards:
+   markup and the grid script untouched, so static and runtime cannot diverge. */
+.watch-card{position:relative}
+.watch-card::before{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,#b4945c 40%,#b4945c 60%,transparent);opacity:0;transition:opacity .3s ease;z-index:2;pointer-events:none}
+.watch-card-img img{transition:transform .45s ease}
+.watch-badge{z-index:2}
+.watch-card-img::after{content:'';position:absolute;top:0;bottom:0;left:0;width:55%;background:linear-gradient(105deg,transparent 0%,rgba(255,250,235,0) 35%,rgba(255,250,235,.55) 50%,rgba(212,175,109,.18) 58%,transparent 100%);transform:translateX(-140%) skewX(-14deg);pointer-events:none;z-index:1}
+@keyframes iw-glint{from{transform:translateX(-140%) skewX(-14deg)}to{transform:translateX(300%) skewX(-14deg)}}
+@media(hover:hover){
+.watch-card:hover::before{opacity:1}
+.watch-card:hover .watch-card-img img{transform:scale(1.07)}
+.watch-card:hover .watch-card-img::after{animation:iw-glint .9s ease-out 1 both}
+.watch-card:hover .watch-card-footer .watch-price{transform:rotate(0deg)}
+}
+.watch-card-footer .watch-price{position:relative;display:inline-block;background:linear-gradient(to bottom left,transparent calc(50% - .75px),rgba(180,148,92,.55) calc(50% - .75px) calc(50% + .75px),transparent 50%) no-repeat top right/.6rem .6rem,#faf6ec;border:1px solid rgba(180,148,92,.55);border-radius:.35rem;clip-path:polygon(0 -.7rem,calc(100% - .6rem) -.7rem,calc(100% - .6rem) 0,100% .6rem,100% 100%,0 100%);padding:.22rem .7rem .22rem 1.3rem;line-height:1.25;transform:rotate(-3deg);transform-origin:.5rem 50%;transition:transform .3s ease;box-shadow:inset 0 -1px 2px rgba(6,21,59,.06)}
+.watch-card-footer .watch-price::before{content:'';position:absolute;left:.38rem;top:50%;width:.44rem;height:.44rem;transform:translateY(-50%);border-radius:50%;background:#fff;border:1px solid rgba(122,98,64,.55);box-shadow:inset 0 1px 1px rgba(6,21,59,.18)}
+.watch-card-footer .watch-price::after{content:'';position:absolute;left:.5rem;top:-.5rem;width:.5rem;height:.55rem;border-left:1.5px solid rgba(122,98,64,.5);border-top:1.5px solid rgba(122,98,64,.5);border-top-left-radius:100% 100%;transform:rotate(10deg)}
+.watch-card-footer .was-price-line{margin-top:.3rem}
+@media(max-width:600px){
+.watch-card-img img{padding:.5rem}
+.shop-grid .watch-card:nth-child(-n+2){grid-column:1/-1}
+.shop-grid .watch-card:nth-child(-n+2) .watch-card-img{aspect-ratio:4/3}
+.shop-grid .watch-card:nth-child(-n+2) .watch-card-img img{padding:.75rem}
+}
+.shop-hero .gold-display{color:#b4945c}
+@supports((-webkit-background-clip:text) or (background-clip:text)){
+.shop-hero h1 .gold-display{background:linear-gradient(105deg,#b4945c 44%,#d9c08a 50%,#b4945c 56%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:iw-gold-pan 8s linear infinite}
+@media(prefers-reduced-motion:reduce){.shop-hero h1 .gold-display{animation:none}}
+}
+@keyframes iw-gold-pan{0%{background-position:125% 0}100%{background-position:-25% 0}}
+.bracelet-divider{display:flex;justify-content:center;padding:.25rem 1.5rem 2.5rem}
+.bracelet-divider svg{display:block;width:220px;max-width:70%;height:auto}
+[data-balance-wheel]{display:inline-block;line-height:0;margin-bottom:1.1rem}
+[data-balance-wheel]:empty{display:none}
+@media(prefers-reduced-motion:reduce){
+.watch-card-img img{transition:none}
+.watch-card:hover .watch-card-img img{transform:none}
+.watch-card:hover .watch-card-img::after{animation:none}
+.watch-card-footer .watch-price{transform:none;transition:none}
+}
 </style>
 
   <!-- STRUCTURED DATA -->
@@ -2122,6 +2163,8 @@ img{display:block;max-width:100%;height:auto}
       <article class="watch-card"><div class="watch-card-img"><a href="/en/shop/bigotti-bg1-10616-7.html" aria-label="Bigotti Gold Square Crystal"><picture><source srcset="/images/watches/bigotti-bg1-10616-7.webp" type="image/webp"><img src="/images/watches/bigotti-bg1-10616-7.webp" alt="Bigotti Gold Square Crystal" loading="lazy" width="800" height="800"></picture></a><span class="watch-badge">New</span></div><div class="watch-card-body"><p class="watch-brand">Bigotti</p><h2 class="watch-model">Gold Square Crystal</h2><p class="watch-ref">Ref. BG.1.10616-7</p><p class="watch-desc">Bigotti Gold Square Crystal, a women's dress watch in gold-tone stainless steel with a square case and a crystal-set bezel on all four sides. Glossy black dial, applied baton indices and a matching five-link bracelet, quartz movement, no date window. The dressiest square we stock.</p><div class="watch-card-footer"><div><p class="watch-price">€77<span style="font-size:.78rem;color:#888;font-weight:400"> · 7,500 L</span></p></div><a href="https://instagram.com/iglisiwatch" target="_blank" rel="noopener noreferrer" class="watch-ig-link" aria-label="See on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a><a href="https://api.whatsapp.com/send?phone=355676360510&text=Hi%2C%20I%E2%80%99m%20interested%20in%20the%20Bigotti%20Gold%20Square%20Crystal%20%28Ref.%20BG.1.10616-7%29%20listed%20on%20your%20website." target="_blank" rel="noopener noreferrer" class="watch-cta" data-fb-contact="1" aria-label="Enquire about Bigotti Gold Square Crystal via WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> Enquire</a></div></div></article>
     
     </div>
+
+    <div class="bracelet-divider" aria-hidden="true"><svg viewBox="0 0 220 14" width="220" height="14" fill="none" stroke="#b4945c" stroke-width="1.3" opacity=".4" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="4" width="14" height="6" rx="3"/><rect x="25" y="2" width="26" height="10" rx="4"/><rect x="55" y="4" width="14" height="6" rx="3"/><rect x="73" y="2" width="26" height="10" rx="4"/><rect x="103" y="4" width="14" height="6" rx="3"/><rect x="121" y="2" width="26" height="10" rx="4"/><rect x="151" y="4" width="14" height="6" rx="3"/><rect x="169" y="2" width="26" height="10" rx="4"/><rect x="199" y="4" width="14" height="6" rx="3"/></svg></div>
 
   <section id="shop-seo" style="background:var(--bg-soft,#faf7f2);border-top:1px solid var(--border-light,#eaeaea);padding:3rem 1.5rem 3.5rem"><div style="max-width:50rem;margin:0 auto"><p style="color:var(--text-secondary,#4a4a4a);line-height:1.65">Every watch on this page is in stock at our shop on Rruga Aleksander Goga in Durrës: 57 models from 10 brands, €50 to €199, each brand new with a 1-year guarantee. Try them on Monday to Saturday, 8:30 to 20:30, or order on WhatsApp with cash on delivery in Tirana, Shkodër, Vlorë, Elbasan, Korçë and anywhere else in Albania.</p><h2 style="font-size:1.5rem;margin:2rem 0 .75rem">Buying a watch from us</h2><div class="space-y-2"><details class="faq-item"><summary class="faq-question"><span class="faq-q-label">Can I order a watch online in Albania?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>Yes. Pick a watch on this page and message us on WhatsApp at +355 67 636 0510. We deliver anywhere in Albania with cash on delivery, so you pay when the watch arrives. Delivery is free and normally takes 3 to 7 days.</p></div></details><details class="faq-item"><summary class="faq-question"><span class="faq-q-label">Do you deliver watches to Tirana?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>Yes, and to every other city. Orders go out to Tirana, Shkodër, Vlorë, Elbasan, Korçë and the rest of Albania with cash on delivery. You can also reserve a watch on WhatsApp and collect it at the shop in Durrës.</p></div></details><details class="faq-item"><summary class="faq-question"><span class="faq-q-label">How much do your watches cost?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>From €50 to €199, which is roughly 4,900 to 19,300 Lek. Most models are under €100. We stock 10 brands, including Navimarine, Daniel Klein, Hislon and Philippe Lauren, all brand new.</p></div></details><details class="faq-item"><summary class="faq-question"><span class="faq-q-label">Can I try a watch on before buying?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>Of course. The shop is on Rruga Aleksander Goga in Durrës, open Monday to Saturday from 8:30 to 20:30, no appointment needed. Every watch on this page is physically in the shop.</p></div></details><details class="faq-item"><summary class="faq-question"><span class="faq-q-label">Do you also repair watches?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>Yes, the same workshop repairs watches: battery changes in under 2 minutes while you wait, straps, crystals and full servicing, Monday to Saturday from 8:30 to 20:30.</p></div></details><details class="faq-item"><summary class="faq-question"><span class="faq-q-label">What guarantee do the watches come with?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>Every watch we sell carries our own 1-year guarantee, and you have 30 days to return it in store if it is not right. The watches are brand new and unused.</p></div></details></div></div></section>
   </main>
