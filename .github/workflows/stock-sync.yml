@@ -1,0 +1,51 @@
+# [DB-004] stock-sync.yml — the durable leg of the CRM↔site sync (P125 W3).
+# Triggers: repository_dispatch "stock-sync" (fired by the api.watch.al worker
+# on watch-stock changes), a daily schedule (reconciliation safety net for
+# missed events — works even with NO worker token configured), and a manual
+# button. The job pulls CRM availability, flips `sold` flags, reruns the
+# generators, and commits only when something actually changed (idempotent:
+# replaying an event produces zero diff, zero commit).
+# Contract: part-tracker repo, docs/CRM_SYNC.md.
+name: stock-sync
+
+on:
+  repository_dispatch:
+    types: [stock-sync]
+  schedule:
+    - cron: '17 5 * * *'   # daily reconcile, 05:17 UTC (quiet hour in Durrës)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stock-sync
+  cancel-in-progress: false   # queue, never kill a run mid-regeneration
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: self-test (flip semantics + byte formats, 3 passes)
+        run: |
+          python tools/test_sync_stock.py
+          python tools/test_sync_stock.py
+          python tools/test_sync_stock.py
+      - name: reconcile stock
+        run: python tools/sync_stock.py
+      - name: commit if changed
+        run: |
+          git config user.name "stock-sync"
+          git config user.email "iglisiwatchandkey@gmail.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no change — already reconciled"
+          else
+            git commit -m "[DB-002] stock-sync: CRM availability -> sold flags + regen"
+            git pull --rebase origin main
+            git push
+          fi

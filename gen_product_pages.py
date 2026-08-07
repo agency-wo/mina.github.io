@@ -322,14 +322,21 @@ CALL_BAR_ARIA = {"en": "Quick call", "it": "Chiamata rapida", "sq": "Telefonat&e
 WA = {
     "en": {"order": "Hi, I would like to order the {name}{ref}, {price}. From {url}",
            "ask": "Hi, I have a question about the {name}{ref}, {price}. From {url}",
-           "help": "Hi, I am not sure which watch to choose. Budget: . It is for: . From {url}"},
+           "help": "Hi, I am not sure which watch to choose. Budget: . It is for: . From {url}",
+           # [DB-003] the sold page keeps capturing demand — same channel,
+           # same wording family as stock-live.js's runtime notify link
+           "notify": "Hi! The {name}{ref} on {url} is sold out - please let me know when it is back."},
     "it": {"order": "Salve, vorrei ordinare l’orologio {name}{ref}, {price}. Da {url}",
            "ask": "Salve, ho una domanda sull’orologio {name}{ref}, {price}. Da {url}",
-           "help": "Salve, non so quale orologio scegliere. Budget: . È per: . Da {url}"},
+           "help": "Salve, non so quale orologio scegliere. Budget: . È per: . Da {url}",
+           "notify": "Ciao! L’orologio {name}{ref} su {url} è esaurito - avvisatemi quando torna disponibile."},
     "sq": {"order": "Përshëndetje, dua të porosis orën {name}{ref}, {price}. Nga {url}",
            "ask": "Përshëndetje, kam një pyetje për orën {name}{ref}, {price}. Nga {url}",
-           "help": "Përshëndetje, nuk jam i sigurt cilën orë të zgjedh. Buxheti: . Është për: . Nga {url}"},
+           "help": "Përshëndetje, nuk jam i sigurt cilën orë të zgjedh. Buxheti: . Është për: . Nga {url}",
+           "notify": "Përshëndetje! Ora {name}{ref} në {url} është shitur - më njoftoni kur të kthehet ju lutem."},
 }
+NOTIFY_LABEL = {"en": "Tell me when it’s back", "it": "Avvisami quando torna",
+                "sq": "Më njofto kur të kthehet"}
 REF_WORD = {"en": "Ref.", "it": "Rif.", "sq": "Ref."}
 HELP = {
     "en": ("Not sure which one? Tell us the budget and who it is for, and we will send "
@@ -668,8 +675,14 @@ def build_watch_div(w, lang, cfg):
         swiss_html = f'<span class="pdp-swiss">{cfg["swiss_label"]}</span>'
 
     if sold:
+        # [DB-003] statically-sold pages keep the notify capture: same class
+        # family as the runtime layer, so stock-live.js recognizes the state
         cta_html = (
             f'<p style="font-size:1rem;color:#888;font-weight:600">{cfg["sold_text"]}</p>'
+            f'<div class="watch-cta-wrap">'
+            f'<a href="{wa_url("notify", w, lang)}" target="_blank" rel="noopener noreferrer" '
+            f'class="watch-cta-main" style="background:#6d6a63" data-fb-contact="pdp-notify">'
+            f'<i class="fab fa-whatsapp" aria-hidden="true"></i> {NOTIFY_LABEL[lang]}</a></div>'
         )
         risk_html = ""
     else:
@@ -917,6 +930,11 @@ for w in watches:
         def _set_ld_desc(m):
             ld = json.loads(m.group(2))
             ld["description"] = raw_desc
+            # [DB-003] availability follows the CRM-driven sold flag — a sold
+            # watch must tell crawlers OutOfStock, never evergreen InStock
+            assert isinstance(ld.get("offers"), dict), f"{wid}: Product LD without offers"
+            ld["offers"]["availability"] = ("https://schema.org/OutOfStock" if w.get("sold")
+                                            else "https://schema.org/InStock")
             return m.group(1) + json.dumps(ld, ensure_ascii=False, separators=(",", ":")) + m.group(3)
 
         new_html = re.sub(r'(<script type="application/ld\+json" id="ld-json">)(.*?)(</script>)',
