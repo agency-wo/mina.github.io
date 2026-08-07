@@ -6,8 +6,30 @@
   var BRAND_ALL_LABEL = 'Tutte le marche';
   var currentSort   = 'default';
 
+  // [UI-002] live CRM stock (P125): merged into the catalog BEFORE any render.
+  // Linked refs are governed in both directions; a failed fetch changes
+  // nothing (fail-closed — the pre-rendered sold flags stand).
+  // Promise.race: a HUNG connection (blackholed route) neither resolves nor
+  // rejects for 30s+ — without the 4s cap it would hold every shop control
+  // (chips, search, sort, slider) hostage to an optional feed.
+  var stockFetch = Promise.race([
+    fetch('https://api.watch.al/public/stock').then(function(r){ return r.ok ? r.json() : null; }),
+    new Promise(function(res){ setTimeout(function(){ res(null); }, 4000); })
+  ]).catch(function(){ return null; });
+
   fetch('https://raw.githubusercontent.com/agency-wo/mina.github.io/main/watches.json?v=3')
     .then(function(r){ return r.json(); })
+    .then(function(WATCHES){
+      return stockFetch.then(function(live){
+        if(live && live.stock){
+          WATCHES.forEach(function(w){
+            var ref = String(w.reference || '').trim().toUpperCase();
+            if(ref && Object.prototype.hasOwnProperty.call(live.stock, ref)) w.sold = live.stock[ref] === 0;
+          });
+        }
+        return WATCHES;
+      });
+    })
     .then(function(WATCHES){
       initBrandChips(WATCHES);
       renderWatches(WATCHES);

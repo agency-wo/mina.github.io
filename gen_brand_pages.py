@@ -50,7 +50,7 @@ UI = {
              "cash on delivery across Albania. Try them on or order on WhatsApp.",
         crumb_home="Home", crumb_shop="Shop",
         faq_h="{brand} questions",
-        all_h="All {n} {brand} watches in stock",
+        all_h="All {n} {brand} watches we sell",
         cta_h="Not sure which one?",
         cta_p="Send us a message and we will help you choose based on your wrist, your style and "
               "your budget. There is no charge for the advice.",
@@ -66,7 +66,7 @@ UI = {
              "pagamento alla consegna in tutta l'Albania. Provali o ordina su WhatsApp.",
         crumb_home="Home", crumb_shop="Negozio",
         faq_h="Domande su {brand}",
-        all_h="Tutti i {n} orologi {brand} disponibili",
+        all_h="Tutti i {n} orologi {brand} che vendiamo",
         cta_h="Non sai quale scegliere?",
         cta_p="Scrivici e ti aiutiamo a scegliere in base al tuo polso, al tuo stile e al tuo "
               "budget. La consulenza è gratuita.",
@@ -82,7 +82,7 @@ UI = {
              "dorëzim në gjithë Shqipërinë. Provojini ose porositni në WhatsApp.",
         crumb_home="Kryefaqja", crumb_shop="Dyqani",
         faq_h="Pyetje për {brand}",
-        all_h="Të gjitha {n} orët {brand} në gjendje",
+        all_h="Të gjitha {n} orët {brand} që shesim",
         cta_h="Nuk jeni i sigurt cilën të zgjidhni?",
         cta_p="Na shkruani dhe ju ndihmojmë të zgjidhni sipas dorës, stilit dhe buxhetit tuaj. "
               "Këshilla është pa pagesë.",
@@ -264,6 +264,14 @@ def build_page(slug, brand, lang):
     # keeps its [data-balance-wheel] div, but empty; the :empty CSS hides it.
     html = re.sub(r'\s*<script src="/watch-effects[^"]*"[^>]*></script>', "", html)
     assert '<script src="/watch-effects' not in html, f"{lang}/{slug}: watch-effects still referenced"
+
+    # [UI-001] brand grids are static cards — stock-live.js flips them from the
+    # CRM feed. The cloned shop index deliberately does NOT carry the tag
+    # (shop.js merges live stock into its own data), so it is added here.
+    if '<script src="/stock-live.js' not in html:
+        html = html.replace('<script src="/shared.js?v=23" defer></script>',
+                            '<script src="/shared.js?v=23" defer></script>\n  <script src="/stock-live.js?v=1" defer></script>', 1)
+    assert '<script src="/stock-live.js' in html, f"{lang}/{slug}: stock-live.js missing"
     return html
 
 
