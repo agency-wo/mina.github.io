@@ -16,4 +16,3 @@ Disallow: /admin.html
 Disallow: /offline.html
 
 Sitemap: https://watch.al/sitemap.xml
-# deploy-probe p125-w2 2026-08-07

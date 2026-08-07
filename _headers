@@ -5,7 +5,7 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin-allow-popups
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), attribution-reporting=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://connect.facebook.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://www.facebook.com https://connect.facebook.net https://api.country.is https://api.github.com https://raw.githubusercontent.com https://api.web3forms.com https://cloudflareinsights.com; font-src 'self'; frame-src https://www.google.com https://www.facebook.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://connect.facebook.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.watch.al https://www.facebook.com https://connect.facebook.net https://api.country.is https://api.github.com https://raw.githubusercontent.com https://api.web3forms.com https://cloudflareinsights.com; font-src 'self'; frame-src https://www.google.com https://www.facebook.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'
 
 /watches.json
   Cache-Control: no-cache, no-store, must-revalidate
