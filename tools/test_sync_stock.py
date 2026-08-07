@@ -9,7 +9,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from sync_stock import apply_stock, json_bytes, data_js_bytes  # noqa: E402
+from sync_stock import apply_stock, json_bytes, data_js_bytes, style_of  # noqa: E402
 
 BASE = Path(__file__).resolve().parent.parent
 
@@ -66,17 +66,24 @@ class ApplyStock(unittest.TestCase):
 
 
 class ByteFormats(unittest.TestCase):
-    """A no-op reconcile must be byte-identical or every night commits noise."""
+    """A no-op reconcile must be byte-identical or every night commits noise.
+
+    EOL/BOM are MIRRORED from the existing files, because git materializes LF
+    on the Action's Linux runner and CRLF on the owner's autocrlf Windows
+    tree — the same repo, two byte shapes (the first Action run failed here).
+    """
 
     def test_watches_json_roundtrip(self):
         raw = (BASE / "watches.json").read_bytes()
         data = json.loads(raw.decode("utf-8-sig"))
-        self.assertEqual(json_bytes(data), raw)
+        eol, bom = style_of(raw)
+        self.assertEqual(json_bytes(data, eol, bom), raw)
 
     def test_watches_data_js_roundtrip(self):
         raw = (BASE / "watches-data.js").read_bytes()
         data = json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
-        self.assertEqual(data_js_bytes(data), raw)
+        eol, bom = style_of(raw)
+        self.assertEqual(data_js_bytes(data, eol, bom), raw)
 
 
 if __name__ == "__main__":

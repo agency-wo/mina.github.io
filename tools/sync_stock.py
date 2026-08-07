@@ -15,11 +15,13 @@
 #         replaying with the same feed produces zero diff (idempotent).
 # CALLS:  gen_shop_index.py, gen_product_pages.py, gen_brand_pages.py,
 #         gen_sitemap.py via subprocess (they own ALL generated HTML).
-# NOTES:  Byte formats are load-bearing: watches.json = no BOM, CRLF,
-#         json.dumps(indent=2, ensure_ascii=False); watches-data.js = BOM,
-#         CRLF, the AUTO-GENERATED wrapper. tools/test_sync_stock.py pins
-#         both plus the flip semantics. Contract: part-tracker repo,
-#         docs/CRM_SYNC.md.
+# NOTES:  Byte formats are load-bearing AND environment-dependent: git
+#         materializes LF on the Action's Linux runner but CRLF on the
+#         owner's autocrlf Windows tree — so the writers MIRROR the existing
+#         file's EOL and BOM instead of assuming either (the first Action run
+#         failed exactly here, caught by its own self-test before any write).
+#         tools/test_sync_stock.py pins the roundtrip plus the flip
+#         semantics. Contract: part-tracker repo, docs/CRM_SYNC.md.
 import json
 import subprocess
 import sys
@@ -83,14 +85,20 @@ def fetch_stock():
     return None
 
 
-def json_bytes(data):
-    return (json.dumps(data, indent=2, ensure_ascii=False) + "\n").replace("\n", "\r\n").encode("utf-8")
+def style_of(raw):
+    """(eol, bom) of an existing file — mirrored, never assumed."""
+    return ("\r\n" if b"\r\n" in raw else "\n", raw.startswith(b"\xef\xbb\xbf"))
 
 
-def data_js_bytes(data):
+def json_bytes(data, eol="\n", bom=False):
+    body = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+    return (b"\xef\xbb\xbf" if bom else b"") + body.replace("\n", eol).encode("utf-8")
+
+
+def data_js_bytes(data, eol="\n", bom=True):
     core = json.dumps(data, indent=2, ensure_ascii=False)
     body = "/* AUTO-GENERATED */\nwindow.WATCHES_DATA = " + core + ";\n"
-    return b"\xef\xbb\xbf" + body.replace("\n", "\r\n").encode("utf-8")
+    return (b"\xef\xbb\xbf" if bom else b"") + body.replace("\n", eol).encode("utf-8")
 
 
 def main():
@@ -112,8 +120,10 @@ def main():
     if not changed:
         print("already reconciled — zero diff by design")
         return
-    (BASE / "watches.json").write_bytes(json_bytes(watches))
-    (BASE / "watches-data.js").write_bytes(data_js_bytes(watches))
+    j_eol, j_bom = style_of((BASE / "watches.json").read_bytes())
+    d_eol, d_bom = style_of((BASE / "watches-data.js").read_bytes())
+    (BASE / "watches.json").write_bytes(json_bytes(watches, j_eol, j_bom))
+    (BASE / "watches-data.js").write_bytes(data_js_bytes(watches, d_eol, d_bom))
     for g in GENERATORS:
         print(f"— {g} —")
         subprocess.run([sys.executable, str(BASE / g)], cwd=BASE, check=True)
