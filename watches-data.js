@@ -798,5 +798,19 @@ window.WATCHES_DATA = [
     "description_en": "Bigotti Gold Square Crystal, a women's dress watch in gold-tone stainless steel with a square case and a crystal-set bezel on all four sides. Glossy black dial, applied baton indices and a matching five-link bracelet, quartz movement, no date window. The dressiest square we stock.",
     "description_it": "Orologio da donna Bigotti in acciaio inossidabile color oro con cassa quadrata e lunetta con cristalli su tutti e quattro i lati. Quadrante nero lucido, indici a bastone dorati applicati e bracciale abbinato a cinque maglie, movimento al quarzo, senza finestrella data. Il quadrato più elegante che teniamo.",
     "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks ngjyrë ari me kasë katrore dhe lunetë me kristale në të katër anët. Ciferblat i zi i shndritshëm, tregues shiritash të artë të aplikuar dhe byzylyk i njëjtë me pesë hallka, mekanizëm kuarci, pa dritare date. Katrori më elegant që kemi."
+  },
+  {
+    "id": "philippe-lauren-pl2412-8",
+    "brand": "Philippe Lauren",
+    "model": "Steel Sport Blue Dial",
+    "reference": "PL2412-8",
+    "condition": "New",
+    "price": 72,
+    "currency": "EUR",
+    "image": "/images/watches/philippe-lauren-pl2412-8.webp",
+    "sold": false,
+    "description_en": "Philippe Lauren men's sport watch in stainless steel with a faceted bezel and four visible screws. Deep blue sunburst dial with three subdials and applied baton indices, a date window, pushers on the case side, and an integrated steel bracelet. The blue counterpart to our black-dial sport model.",
+    "description_it": "Orologio sportivo da uomo Philippe Lauren in acciaio inossidabile con ghiera sfaccettata e quattro viti a vista. Quadrante blu intenso sunburst con tre contatori e indici a bastone applicati, finestrella data, pulsanti sul lato della cassa e bracciale integrato in acciaio. La controparte blu del nostro modello sportivo con quadrante nero.",
+    "description_sq": "Orë sportive për burra Philippe Lauren në çelik inoks me lunetë të faseituar dhe katër vida të dukshme. Ciferblat blu i thellë sunburst me tre nën-ciferblatë dhe tregues shiritash të aplikuar, dritare date, butona në anën e kasës dhe byzylyk i integruar çeliku. Versioni blu i modelit tonë sportiv me ciferblat të zi."
   }
 ];

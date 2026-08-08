@@ -14,11 +14,11 @@ ARTICLES = [
         slug='chronograph-vs-three-hand-watch', cat='buying',
         card=dict(
             en=dict(title='Chronograph or Three Hands? What Those Subdials Actually Do',
-                    desc='Twelve of our watches have subdials and only seven of them time anything. How to tell in five seconds, what the pushers cost in battery life, and which one to buy.'),
+                    desc='Seven of our watches time something and the rest only look like they do. How to tell in five seconds, what the pushers cost in battery life, and which one to buy.'),
             it=dict(title='Cronografo o Tre Sfere? Cosa Fanno Davvero Quei Contatori',
-                    desc='Dodici dei nostri orologi hanno i contatori e solo sette cronometrano davvero. Come capirlo in cinque secondi, quanto costano in batteria e quale comprare.'),
+                    desc='Sette dei nostri orologi cronometrano davvero, gli altri sembrano solo farlo. Come capirlo in cinque secondi, quanto costano in batteria e quale comprare.'),
             sq=dict(title='Kronograf apo Tre Akrepa? &Ccedil;far&euml; B&euml;jn&euml; V&euml;rtet N&euml;n-ciferblat&euml;t',
-                    desc='Dymb&euml;dhjet&euml; nga or&euml;t tona kan&euml; n&euml;n-ciferblat&euml; dhe vet&euml;m shtat&euml; mat&euml;n koh&euml;n. Si dallohen p&euml;r pes&euml; sekonda, sa kushtojn&euml; n&euml; bateri dhe cil&euml;n t&euml; blesh.'),
+                    desc='Shtat&euml; nga or&euml;t tona mat&euml;n koh&euml;n, t&euml; tjerat vet&euml;m duken sikur e b&euml;jn&euml;. Si dallohen p&euml;r pes&euml; sekonda, sa kushtojn&euml; n&euml; bateri dhe cil&euml;n t&euml; blesh.'),
         ),
     ),
     dict(

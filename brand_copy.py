@@ -184,7 +184,7 @@ COPY = {
             ],
             "faq": [
                 ("What kind of watches is Philippe Lauren?",
-                 "It is the chronograph line we stock: {n} models from €{lo} to €{hi}, mostly three-counter chronograph layouts with a date window, in stainless steel and black ion-plated steel, plus a gold-tone dress model."),
+                 "It is the chronograph line we stock: {n} models from €{lo} to €{hi}, mostly three-counter chronograph layouts with a date window, in stainless steel and black ion-plated steel, plus gold-tone dress models."),
                 ("How much does a Philippe Lauren watch cost in Albania?",
                  "Our Philippe Lauren models run from €{lo} to €{hi}, which is roughly {lolek} to {hilek} Lek. That includes a 1-year guarantee, and cash on delivery anywhere in Albania."),
                 ("Where can I see Philippe Lauren watches in person?",
@@ -199,7 +199,7 @@ COPY = {
             ],
             "faq": [
                 ("Che tipo di orologi è Philippe Lauren?",
-                 "È la linea di cronografi che teniamo: {n} modelli da €{lo} a €{hi}, in gran parte con layout cronografico a tre contatori e finestrella data, in acciaio inossidabile e acciaio placcato nero, più un modello da abito color oro."),
+                 "È la linea di cronografi che teniamo: {n} modelli da €{lo} a €{hi}, in gran parte con layout cronografico a tre contatori e finestrella data, in acciaio inossidabile e acciaio placcato nero, più modelli da abito color oro."),
                 ("Quanto costa un orologio Philippe Lauren in Albania?",
                  "I nostri modelli Philippe Lauren vanno da €{lo} a €{hi}, che sono circa {lolek} a {hilek} Lek. Sono inclusi la garanzia di 1 anno e il pagamento alla consegna in tutta l’Albania."),
                 ("Dove posso vedere gli orologi Philippe Lauren di persona?",
@@ -214,7 +214,7 @@ COPY = {
             ],
             "faq": [
                 ("Çfarë lloj orësh është Philippe Lauren?",
-                 "Është linja e kronografëve që mbajmë: {n} modele nga €{lo} deri €{hi}, kryesisht me skema kronografi me tre nën-ciferblatë dhe dritare date, në çelik inoks dhe çelik të veshur me jon të zi, plus një model veshjeje në ngjyrë ari."),
+                 "Është linja e kronografëve që mbajmë: {n} modele nga €{lo} deri €{hi}, kryesisht me skema kronografi me tre nën-ciferblatë dhe dritare date, në çelik inoks dhe çelik të veshur me jon të zi, plus modele veshjeje në ngjyrë ari."),
                 ("Sa kushton një orë Philippe Lauren në Shqipëri?",
                  "Modelet tona Philippe Lauren shkojnë nga €{lo} deri €{hi}, që janë afërsisht {lolek} deri {hilek} Lekë. Kjo përfshin një garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri."),
                 ("Ku mund t’i shoh orët Philippe Lauren nga afër?",
