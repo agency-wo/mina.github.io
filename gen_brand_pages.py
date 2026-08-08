@@ -301,9 +301,24 @@ def build_page(slug, brand, lang):
 # OUT:    prints SKIP (no change) / OK per page and a final Written: N count.
 def main():
     out = []
+    # [DB-008.i] P128: a brand whose every watch is sold (or retired) has no
+    # page to build — brand_watches() returns [] and build_page asserts. That
+    # assert used to kill the WHOLE run, and since this generator is a step of
+    # the stock-sync Action, one ordinary sale wedged the CRM→site sync for
+    # good: the static pages froze and only a red Action log said so. Bigotti
+    # has four watches; selling four is a normal week. Now the sold-out brand
+    # is skipped, its existing page is left standing (stock-live.js flips its
+    # cards to Sold at runtime, and the shop index still lists the brand), and
+    # the run continues for everyone else.
+    empty = [b for _, b in BRANDS if not brand_watches(b)]
+    if empty:
+        print(f"  NOTE: no unsold watches for {', '.join(empty)} — "
+              f"leaving those brand pages as they are (runtime marks them Sold)")
     for lang in ("en", "it", "sq"):
         (BASE / lang / "shop" / "brand").mkdir(parents=True, exist_ok=True)
         for slug, brand in BRANDS:
+            if not brand_watches(brand):
+                continue
             p = BASE / lang / "shop" / "brand" / f"{slug}.html"
             html = build_page(slug, brand, lang)
             old = p.read_text(encoding="utf-8-sig") if p.exists() else None

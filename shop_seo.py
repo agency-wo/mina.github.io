@@ -156,6 +156,15 @@ from catalog_stats import lek as _lek, nfmt
 # DOES:   {n}/{b}/{lo}/{hi}/{lolek}/{hilek} from the given watches, so the same
 #         strings work for the full catalog or any subset.
 def fill(text, watches, lang="en"):
+    # P128: count what a buyer can actually BUY. These tokens land in the
+    # visible lead, the meta description and the structured data of the shop
+    # hub ("Every watch on this page… {n} watches from €{lo}"), and they were
+    # taken over a sold-inclusive list — so the moment anything sold, the page
+    # over-reported the shelf and could quote a price band whose cheapest
+    # watch was gone. catalog_stats.load() has excluded sold since P- for the
+    # same reason; this is the last surface that did not.
+    live = [w for w in watches if not w.get("sold") and not w.get("deleted")] or list(watches)
+    watches = live
     prices = [w["price"] for w in watches if w.get("price")]
     brands = {w["brand"] for w in watches}
     return (text.replace("{n}", str(len(watches)))

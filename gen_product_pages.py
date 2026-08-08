@@ -696,16 +696,24 @@ def build_watch_div(w, lang, cfg):
         swiss_html = f'<span class="pdp-swiss">{cfg["swiss_label"]}</span>'
 
     if sold:
-        # [DB-003] statically-sold pages keep the notify capture: same class
-        # family as the runtime layer, so stock-live.js recognizes the state
+        # [DB-003] statically-sold pages keep the notify capture. P128: they
+        # now carry the EXACT contract stock-live.js toggles — the badge, the
+        # real order CTA (CSS-hidden by .stock-oos) and the notify link marked
+        # .stock-notify. Before this the sold page held ONLY a notify anchor,
+        # so a restock could never un-flip it: the runtime layer removed the
+        # class and revealed nothing, leaving one page saying "sold" while the
+        # shop index across the site said it was for sale.
         cta_html = (
-            f'<p style="font-size:1rem;color:#888;font-weight:600">{cfg["sold_text"]}</p>'
+            f'<p class="stock-oos-badge">{cfg["sold_text"]}</p>'
             f'<div class="watch-cta-wrap">'
+            f'<a href="{wa_href}" target="_blank" rel="noopener noreferrer" '
+            f'class="watch-cta-main" data-fb-contact="pdp-cta">'
+            f'<i class="fab fa-whatsapp" aria-hidden="true"></i> {cfg["cta_label"]}</a>'
             f'<a href="{wa_url("notify", w, lang)}" target="_blank" rel="noopener noreferrer" '
-            f'class="watch-cta-main" style="background:#6d6a63" data-fb-contact="pdp-notify">'
+            f'class="watch-cta-main stock-notify" data-fb-contact="pdp-notify">'
             f'<i class="fab fa-whatsapp" aria-hidden="true"></i> {NOTIFY_LABEL[lang]}</a></div>'
         )
-        risk_html = ""
+        risk_html = build_risk_html(lang)
     else:
         cta_html = (
             f'<div class="watch-cta-wrap">'
@@ -754,8 +762,12 @@ def build_watch_div(w, lang, cfg):
         f"</div>"
     )
 
+    # P128: `stock-oos` is the ONE class the runtime layer toggles. Rendering
+    # it here means the static page and stock-live.js speak the same contract
+    # in both directions: sold out on arrival, purchasable again the moment
+    # the CRM says the shelf has one.
     return (
-        f'<div id="watch-content" class="watch-page pre-rendered">'
+        f'<div id="watch-content" class="watch-page pre-rendered{" stock-oos" if sold else ""}">'
         f"{img_html}"
         f"{info_html}"
         f"</div>"
@@ -903,6 +915,7 @@ def replace_extra(html: str, new_div: str) -> str:
 updated = []
 skipped_missing = []
 unchanged = []
+stub_relink = []   # P128: un-retired watches whose page is still a redirect stub
 
 # [DB-017] THE MODULE-LEVEL PAGE LOOP — runs on import, see the module docstring.
 # DOES:   per watch x language: read the page preserving BOM/CRLF; deleted watches
@@ -923,6 +936,18 @@ for w in watches:
         body = raw[3:] if bom else raw
         crlf = body.count(b"\r\n") == body.count(b"\n") and body.count(b"\n") > 0
         html = body.decode("utf-8").replace("\r\n", "\n")
+
+        # P128: soft delete on the site was ONE-WAY. Retiring a watch replaces
+        # its page with a 12-line noindex stub; clearing the flag then sent the
+        # stub down the patching path, which needs #watch-content, #watch-extra
+        # and </main> — none of which a stub has. The run died, so the whole
+        # rebuild leg (and every other watch in it) stopped. Now the stub is
+        # recognised, skipped loudly, and named with the command that restores
+        # it — the Action stays green and the fix is one line away.
+        if not w.get("deleted") and 'id="watch-content"' not in html:
+            stub_relink.append(f"{lang}/shop/{wid}.html")
+            print(f"  SKIP (stub, needs a full page): {lang}/shop/{wid}.html")
+            continue
 
         if w.get("deleted"):
             stub = stub_html(w, lang)
@@ -1003,3 +1028,10 @@ for w in watches:
 print(f"\nDone. Updated: {len(updated)}  |  Unchanged: {len(unchanged)}  |  Missing: {len(skipped_missing)}")
 if skipped_missing:
     print("Missing:", skipped_missing)
+if stub_relink:
+    print(f"\nNOTE: {len(stub_relink)} page(s) are still redirect stubs for watches that are no longer "
+          f"retired. The catalogue lists them again, but their pages bounce to the shop index.")
+    print("Rebuild those shells, then rerun this generator:")
+    print("    python ../scripts/make-new-watch-pages.py")
+    for s in stub_relink:
+        print("   -", s)

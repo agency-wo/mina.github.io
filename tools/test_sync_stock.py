@@ -72,6 +72,43 @@ class ApplyStock(unittest.TestCase):
         self.assertNotIn("a", rep["unlinked"])   # not owner-actionable either
 
 
+class RebuildSurvives(unittest.TestCase):
+    """P128: two ordinary events used to kill the whole rebuild leg for good.
+
+    A brand selling out (Bigotti has four watches) made gen_brand_pages assert,
+    and un-retiring a watch fed a redirect stub to the page patcher. Both are
+    steps of the stock-sync Action, so one sale froze the site silently."""
+
+    def test_brand_with_no_unsold_watches_is_skipped_not_fatal(self):
+        sys.path.insert(0, str(BASE))
+        import gen_brand_pages as g
+        # the generator must handle an empty brand rather than assert on it
+        src = (BASE / "gen_brand_pages.py").read_text(encoding="utf-8")
+        self.assertIn("if not brand_watches(brand):", src)
+        self.assertIn("continue", src.split("if not brand_watches(brand):")[1][:80])
+        # and it must SAY which brands it skipped
+        self.assertIn("NOTE: no unsold watches for", src)
+
+    def test_unretired_stub_is_reported_not_crashed(self):
+        src = (BASE / "gen_product_pages.py").read_text(encoding="utf-8")
+        self.assertIn('if not w.get("deleted") and \'id="watch-content"\' not in html:', src)
+        self.assertIn("make-new-watch-pages.py", src)
+
+    def test_sold_page_carries_the_runtime_contract(self):
+        """A statically-sold page must be un-flippable by stock-live.js."""
+        src = (BASE / "gen_product_pages.py").read_text(encoding="utf-8")
+        self.assertIn('stock-oos-badge', src)
+        self.assertIn('stock-notify', src)
+        self.assertIn('" stock-oos" if sold else ""', src)
+
+    def test_hub_counts_only_what_can_be_bought(self):
+        sys.path.insert(0, str(BASE))
+        from shop_seo import fill
+        ws = [{"brand": "A", "price": 50}, {"brand": "B", "price": 200, "sold": True}]
+        out = fill("{n} watches from EUR{lo} to EUR{hi}, {b} brands", ws)
+        self.assertEqual(out, "1 watches from EUR50 to EUR50, 1 brands")
+
+
 class DeletedStub(unittest.TestCase):
     """A retired watch's page becomes the standard noindex redirect stub.
 
