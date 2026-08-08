@@ -259,6 +259,13 @@ def main():
                     changed = True
             elif isinstance(d, dict) and d.get("@type") == "CollectionPage":
                 d["description"] = seo_fill(SEO_COPY[lang]["coll_desc"], W, lang)
+                # numberOfItems was hand-typed as 30 and had been wrong since the
+                # catalogue passed 30. It is not a valid CollectionPage property
+                # either (schema.org puts it on ItemList), and the sibling
+                # ItemList block on this same page already publishes the real
+                # count. Drop it rather than generate it: a second copy of a
+                # number is a second thing that can go stale.
+                d.pop("numberOfItems", None)
                 changed = True
             if changed:
                 payload = json.dumps(d, indent=2, ensure_ascii=False)
