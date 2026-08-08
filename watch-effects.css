@@ -1,3 +1,18 @@
+/* [UI-018] watch-effects.css — the CSS half of the watch-effects pair
+   DOES:   three rules and nothing else: the hidden start state the tick-in
+           reveal animates from, its space exemption, and the box the
+           balance-wheel SVG is injected into. No colour, no layout, no media
+           queries, no keyframes.
+   NOTES:  NOTHING LINKS THIS FILE. No page carries a stylesheet link to it. The
+           three homepages inline the same rules, minified, under a
+           "watch-effects" marker comment, and the three shop indexes carry a
+           diverged copy of the balance-wheel rule that adds margin-bottom and
+           an :empty guard. So editing this file alone changes nothing on the
+           site: it is the source of record, and the inline copies are what
+           ships. Keep it in step with them or the record lies.
+           Paired with watch-effects.js ([UI-012]); the loupe and the gold-dust
+           trail need no CSS at all because those effects style themselves from
+           JS. */
 /*!
  * Iglisi Watch — Interactive Effects  v1.0
  * watch-effects.css
@@ -5,6 +20,18 @@
 
 /* ── Escapement Tick-In ─────────────────────────────────────────────────── */
 /* Each character is wrapped in .iw-char by JS and revealed one at a time    */
+/* [UI-018.a] .iw-char — the hidden start state the tick-in reveal animates from
+   DOES:   every character span starts invisible and fades in over 60 ms; spaces
+           are exempted so they never animate.
+   NOTES:  fail-safe by construction: these spans exist only because TickIn
+           ([UI-012.b]) created them, so if watch-effects.js never loads there is
+           nothing to hide and the text renders normally. The [data-space] rule
+           mirrors the JS selector, which animates :not([data-space]) — change
+           one without the other and spaces start ticking. Opacity only, never
+           display or visibility, so the text stays in the accessibility tree
+           and the line never reflows mid-reveal. There is deliberately NO
+           prefers-reduced-motion block here: TickIn checks it itself and
+           reveals everything at once. */
 .iw-char {
   display: inline;
   opacity: 0;
@@ -15,6 +42,14 @@
 }
 
 /* ── Balance Wheel container ────────────────────────────────────────────── */
+/* [UI-018.b] [data-balance-wheel] — the mount point for the wheel SVG
+   DOES:   inline-block so the box takes the SVG's size, line-height 0 to kill
+           the descender gap under it.
+   NOTES:  the element is empty in the HTML on purpose; BalanceWheel
+           ([UI-012.d]) appends the svg at runtime, so a page whose JS never
+           arrives shows a zero-height nothing instead of an empty frame. The
+           shop indexes add :empty{display:none} on top of this for exactly that
+           case. */
 [data-balance-wheel] {
   display: inline-block;
   line-height: 0; /* collapse whitespace below SVG */

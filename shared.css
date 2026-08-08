@@ -1,3 +1,54 @@
+/* [UI-017] shared.css — the sitewide stylesheet, linked by 478 of the 491 pages
+   DOES:   holds the entire visual system in one 67 KB file: the :root design
+           tokens, resets, navy header / nav / drawer chrome, hero, watch and
+           blog cards, FAQ, footer, the global focus ring, three
+           prefers-reduced-motion guards, and THE SUBSETTED FONT AWESOME GLYPH
+           TABLE. The 13 pages that do not link it are noindex redirect stubs
+           plus the standalone admin.html and offline.html.
+   IN:     four @font-face sources under /webfonts/: cormorant-garamond.woff2
+           and inter.woff2 with font-display:swap, fa-solid-900.woff2 and
+           fa-brands-400.woff2 with font-display:block, so an icon never flashes
+           as a fallback letter.
+   OUT:    rendering, plus one derived value: the Font Awesome whitelist that
+           scripts/verify-product-pages.py and scripts/faq-build.py parse back
+           out of this file rather than hardcoding.
+   NOTES:  THE FONT AWESOME SUBSET LIVES HERE AND NOWHERE ELSE. There is no
+           fontawesome.css and no CDN; this file hand-declares 64 glyphs, 59
+           solid and 5 brands, as content rules on the two faces above. A class
+           outside those 64 renders as NOTHING: no glyph, no fallback box, no
+           console error, and no text-based check can see it. CLAUDE.md calls it
+           the most repeated bug in the repo's history. Six classes sit in the
+           HTML right now with no declaration here and are blank on the page:
+           fa-chart-line, fa-handshake, fa-stopwatch, fa-exclamation-triangle,
+           fa-info-circle and fa-lightbulb. A new icon is declared HERE FIRST,
+           then used.
+           The 64 are NOT contiguous, and that is the trap: 55 are buried in the
+           17 KB minified run on line 26, five sit under the FONT AWESOME banner
+           and four were appended at the tail. Grep the whole file. Reading the
+           FONT AWESOME section alone reports a glyph missing when it is there.
+           Those declarations are parsed, not merely rendered: the product-page
+           gate asserts at least 50 of them and faq-build.py derives each icon's
+           font family from this file, both with the same regex. Their written
+           shape is load-bearing, so re-minifying or reformatting the glyph
+           rules breaks two gates that otherwise never read CSS.
+           :root is the complete token list (gold #b4945c, navy #06153b,
+           --accent-gold-accessible #7a6240 for gold text that has to pass
+           contrast on white) and there is deliberately NO spacing scale: every
+           padding and margin is a literal, so "tighten the cards" is a per-rule
+           edit and never a token change.
+           MINIFIED, and only in part: three runs (lines 1, 26 and 151, the
+           largest 17 KB) carry the core with nowhere to attach a per-rule
+           comment, and both :root and the global focus ring are inside line 1.
+           The later sections are hand-formatted under banner comments. This
+           header is the only commentary the minified core can have. Patch a
+           rule in place, never reflow the file.
+           Any change that alters rendering must be followed by a ?v= bump on
+           all 478 pages (shared.css?v=56 at present, swept by
+           scripts/bump-shared-version.py, [UTIL-010]). A comment-only change
+           like this one is exempt: it renders identically, and gen_sitemap
+           fingerprints content with ?v= params stripped, which is why the v55
+           to v56 sweep touched 475 files and correctly moved no lastmod (see
+           [DB-010]). */
 :root{--accent-gold-dark:#8B6914;--bg-warm:#fcfcfc;--bg-soft:#faf7f2;--text-primary:#2a2a2a;--text-secondary:#4a4a4a;--card-bg:#ffffff;--border-light:#eaeaea;--header-bg:rgba(6,21,59,0.98);--footer-bg:#030917;--footer-text:#aaa;--accent-gold:#b4945c;--accent-gold-accessible:#7a6240;--accent-teal:#9b6e3a;--btn-start:#06153b;--btn-end:#04102e;--radius-card:1.5rem;--transition-base:0.3s ease}html{margin:0;padding:0;scroll-behavior:smooth;overflow-x:hidden;background:#06153b}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}body{margin:0;padding:0;font-family:'Inter',sans-serif;background-color:var(--bg-warm);color:var(--text-primary);background-image:radial-gradient(rgba(6,21,59,0.02) 1px,transparent 1px);background-size:30px 30px;overflow-x:hidden;width:100%}h1,h2,h3,h4{font-family:'Cormorant Garamond','Cormorant Garamond Fallback',serif;font-weight:800;letter-spacing:0.02em}.gold{color:var(--accent-gold-accessible)}.gold-display{color:#7a6240}.bg-gold{background-color:var(--accent-gold)}.border-gold{border-color:var(--accent-gold)}.teal{color:var(--accent-teal)}.bg-teal{background-color:var(--accent-teal)}.border-teal{border-color:var(--accent-teal)}.footer .gold{color:var(--accent-gold);text-decoration:underline;text-underline-offset:2px}:focus-visible{outline:3px solid var(--accent-gold);outline-offset:3px;border-radius:4px}.urgent-banner{background:#8a6f3f;color:#fff;text-align:center;padding:6px 0;font-size:0.875rem;font-weight:500}.urgent-banner i{margin-right:6px}.solid-header{background:var(--header-bg);border-bottom:2px solid rgba(180,148,92,0.4);position:sticky;top:0;z-index:50;padding:0}.logo-area{display:flex;align-items:center;gap:0.5rem}.logo-area a{display:block;overflow:hidden;height:125px;flex-shrink:0;transition:transform var(--transition-base)}.logo-area a:hover{transform:scale(1.04)}.logo-area img{height:265px;width:auto;margin-top:-70px;filter:drop-shadow(0 2px 10px rgba(180,148,92,0.3))}.logo-area p{font-size:0.7rem;color:rgba(255,255,255,0.52);letter-spacing:0.02em}@media (max-width:768px){.logo-area a{height:100px}.logo-area img{height:205px;margin-top:-52px}.desktop-only-text{display:none}}.mobile-icons{display:none;align-items:center;gap:1rem}.mobile-icons a,.mobile-icons button{color:var(--text-primary);font-size:1.5rem;background:none;border:none;cursor:pointer;transition:color 0.2s;padding:4px}.mobile-icons i{display:inline-block;width:1em;height:1em}.mobile-icons a:hover,.mobile-icons button:hover{color:var(--accent-gold)}@media (max-width:768px){.mobile-icons{display:flex}}/* ── NAVY HEADER — component overrides ──────────────────────────────────── */
 /* Phone link */
 .solid-header nav a[href^="tel"]{color:rgba(255,255,255,0.88)}

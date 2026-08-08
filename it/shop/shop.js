@@ -1,3 +1,30 @@
+// [UI-016] shop.js — the IT shop index controller: filter state and the grid.
+// DOES:   fetches watches.json, merges the live CRM stock feed into it BEFORE
+//         the first render, then owns every piece of filter state (condition
+//         chip, brand chip, search term, sort) and repaints #shopGrid on each
+//         change. Brand chips are built from the data, seeded from ?brand= and
+//         written back to the URL, so a filtered grid is a link somebody can
+//         send.
+// IN:     watches.json over the network; .filter-chip, #brandChips, #shopSearch,
+//         #shopSort; ?brand= on the query string.
+// OUT:    #shopGrid innerHTML, the #shopCount line, one WhatsApp link per card.
+// CALLS:  raw.githubusercontent.com for watches.json; api.watch.al/public/stock
+//         (the [UI-002] block below; [SEC-002] owns the CSP that allows it).
+// NOTES:  THE INVARIANT: watchCard() mirrors gen_shop_index.card() ([DB-007.b])
+//         BYTE FOR BYTE, down to the \u00a0 before the L in a Lek price. The
+//         page ships pre-rendered and this file repaints it from the same data,
+//         so one differing byte is a visible flicker on hydration. Change one
+//         and change the other in the same edit, or keep the change CSS-only.
+//         A SECOND renderer (watch.js) was deleted for printing NaN Lek prices;
+//         never add another.
+//         The stock merge is capped at 4s by Promise.race on purpose: a hung,
+//         blackholed route neither resolves nor rejects, and an optional feed
+//         must never hold the chips, search and sort hostage. See [UI-002].
+//         The three copies are NOT identical: 269, 195 and 199 lines of code in
+//         en, it and sq before these headers went in. The dual-handle price
+//         slider (PRICE_MIN 50, PRICE_MAX 200) exists in EN only, so this file
+//         has no price control at all, and SQ prints Lek first. Nothing ships in
+//         one language: all three change in one edit.
 (function(){
   var condMap = {'New':'Nuovo','Pre-owned':'Usato'};
   var currentFilter = 'all';
@@ -64,6 +91,14 @@
       if(g) g.innerHTML = '<p class="no-watches">Impossibile caricare gli orologi. Aggiorna la pagina.</p>';
     });
 
+  // [UI-016.a] initBrandChips — the brand row is DERIVED, never a typed list
+  // DOES:   tallies live watches per brand, orders by count then name, draws the
+  //         chip row and wires ONE delegated click handler on the wrapper.
+  // NOTES:  nothing here is hard-coded, so a new brand appears the moment it
+  //         lands in watches.json and a retired one leaves no dead chip behind.
+  //         ?brand= is read on load and written back with replaceState, never
+  //         pushState: the back button must leave the shop, not walk the visitor
+  //         back through one filter click at a time.
   function initBrandChips(WATCHES){
     var wrap = document.getElementById('brandChips');
     if(!wrap) return;
@@ -99,6 +134,13 @@
     });
   }
 
+  // [UI-016.b] renderWatches — the ONE render path: filter, sort, repaint
+  // DOES:   applies condition, brand and search in that order, sorts, then
+  //         replaces #shopGrid wholesale and rewrites the count line.
+  // NOTES:  full repaint on purpose. Nothing mutates a card in place, so the grid
+  //         can never show a half-applied filter. With a search term and sort
+  //         left at default, a prefix hit on brand or model is scored to the top,
+  //         so typing "his" lands Hislon first instead of alphabetically.
   function renderWatches(watches){
     // [DB-006] deleted (retired) entries leave the catalog everywhere; SOLD
     // ones stay visible with their badge — the two must never be confused
@@ -149,21 +191,54 @@
      Never toLocaleString(): it asks the browser for the separator, so an
      Italian phone reflowed the grid from 18,300 L to 18.300 L after hydration
      and the rendered page disagreed with the HTML the server sent. */
+  // [UI-016.c] group — the thousands separator, fixed per language by hand
+  // NOTES:  the note just above is the reason. The browser is never asked:
+  //         toLocaleString() reads the phone's locale, and an Italian phone
+  //         reflowed the grid from 18,300 L to 18.300 L after hydration, so the
+  //         rendered page disagreed with the HTML the server had just sent.
   function group(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, SEP); }
+  // [UI-016.d] fmt — the euro figure, or an honest fallback
+  // NOTES:  a missing or zero price prints "Prezzo su richiesta", never a
+  //         zero. No price in the data is a data hole, and a hole must never
+  //         read as a free watch.
   function fmt(price, currency){
     if(!price) return 'Prezzo su richiesta';
     return (currency === 'EUR' ? '\u20ac' : currency) + group(price);
   }
+  // [UI-016.e] fmtLek — the Lek line that rides beside the euro price
+  // NOTES:  half-up to the nearest 100 L, the same arithmetic catalog_stats.py
+  //         and shop_bits.card_price_html ([DB-014.b]) use, so the runtime card
+  //         and the static one can never round apart. The \u00a0 before the L
+  //         is LOAD-BEARING: the generator emits that exact non-breaking space,
+  //         and a plain space here would differ from the served HTML and let
+  //         the unit wrap onto a line of its own.
   function fmtLek(price, currency){
     if(!price || currency !== 'EUR') return '';
     return '<span style="font-size:.78rem;color:#888;font-weight:400"> \u00b7 ' + group(Math.round(price * EUR_TO_LEK / 100) * 100) + '\u00a0L</span>';
   }
 
+  // [UI-016.f] waMsg — the prefilled WhatsApp message, which IS the checkout
+  // NOTES:  there is no cart and no payment page on this site, so this link is
+  //         the whole conversion path. The message carries brand, model and
+  //         reference because the owner answers these on a phone and must not
+  //         have to ask which watch the customer is looking at.
   function waMsg(w){
     var msg = "Salve, sono interessato all'orologio " + w.brand + ' ' + w.model + ' (Rif. ' + (w.reference||'N/A') + ') sul vostro sito.';
     return 'https://api.whatsapp.com/send?phone=355676360510&text=' + encodeURIComponent(msg);
   }
 
+  // [UI-016.g] watchCard — the card markup, and the mirror half of the site
+  // DOES:   builds one <article class="watch-card"> exactly as
+  //         gen_shop_index.card() does: picture/webp source, sold overlay,
+  //         condition badge, sale badge, brand (+ the Swiss tag on Hislon),
+  //         model, ref line, description, price block, Instagram link, CTA.
+  // NOTES:  THIS IS THE MIRROR. Static equals runtime: the page arrives
+  //         pre-rendered by gen_shop_index.py and this function repaints it
+  //         from the same watches.json, so a single differing byte shows up as
+  //         a flicker the moment the fetch lands. Change this and change
+  //         [DB-007.b] in the same edit, or make the change CSS-only. A second
+  //         renderer (watch.js) was deleted once for producing NaN Lek prices;
+  //         do not reintroduce one.
   function watchCard(w){
     var cond = condMap[w.condition] || w.condition;
     var imgHtml = w.image

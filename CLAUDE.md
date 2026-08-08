@@ -25,7 +25,8 @@ watch-repair-shop/          <- working root, NOT a git repo
 Gates run **from the working root** (`python scripts/audit-watches.py`). Generators run **from
 `mina.github.io/`** (`python gen_shop_index.py`) because they import sibling modules.
 
-491 HTML files. 58 live watches, 180 product pages, 15 brand pages, 240 blog articles in 5
+491 HTML files. 58 live watches, 174 product pages (58 x 3; plus 6 noindex redirect stubs the
+gates skip), 15 brand pages, 240 blog articles in 5
 categories, 18 service pages, 12 legal pages. `sitemap.xml` is 466 urls / 1,860 hreflang alternates
 / 348 images.
 
@@ -46,7 +47,7 @@ so it must follow it. `gen_sitemap` fingerprints page **content** to decide `las
 that rewrites HTML must run before it. `gen_blog_index.py` is independent of this chain.
 
 **Never `import gen_product_pages`.** Its page loop is at module level, so importing it regenerates
-all 180 product pages as a side effect. Run it as a script. `tools/test_sync_stock.py` imports
+all 174 product pages as a side effect. Run it as a script. `tools/test_sync_stock.py` imports
 `shop_bits` instead for exactly this reason.
 
 ---
@@ -71,6 +72,46 @@ findings.
 is committed. That is by design: confirm the change was deliberate, then commit.
 
 ---
+
+## Finding your way: the `[TAG-NNN]` index
+
+Every hand-written source file carries a header comment with a bracketed tag. **Grep the tag to
+jump straight to the thing.** The header says what the file is, what it takes, what it emits, and
+which bug each awkward line exists to prevent.
+
+```js
+// [UI-005] booking.js — service-booking form that hands off to WhatsApp
+// DOES:   validates #bookForm, builds a localized message (en/it/sq from <html lang>)
+// IN:     #bookForm fields: service, name, phone (required)
+// OUT:    window.open on api.whatsapp.com with the encoded message
+// NOTES:  falls back to the raw ISO string if toLocaleDateString throws.
+```
+
+Functions get `.a`, `.b`, `.c` in source order under their file's tag. Python modules prepend the
+tag to the existing docstring and keep it. Fields are `DOES: IN: OUT: CALLS: NOTES:`, padded so
+the body starts at a fixed column; only the tag line is mandatory. Cross-reference another tag as
+a bare bracket in prose: `(see [SEC-002])`. Em dashes are fine **here** — the no-em-dash rule is
+about rendered prose, not comments.
+
+**The namespace is shared with the part-tracker repo.** `W:` is this repo, `T:` is the tracker,
+and the registry is `part tracker/docs/CODE_INDEX.md`. Prefixes are a closed set:
+`UI UX API DB CRM SEC PERF ERR UTIL CFG`. Numbers are **sequential per prefix and never reused**,
+including numbers consumed only by a commit subject, so **never allocate one by eye**:
+
+```
+python scripts/check-tags.py      # prints the next free number per prefix, across both
+                                  # repos and both git logs, and fails on duplicates
+```
+
+Commit subjects carry the tags the work consumed, concatenated, ranges as `..`:
+`[UI-005..015][UX-002][SEC-003..004] W5: indexed headers across the site's source`.
+
+Where tags are deliberately absent: `watches-data.js` and the generated HTML (both build output),
+and the 491 pages generally. `shared.js` is minified so it gets a file header only.
+
+**Adding a tag is comment-only work.** Prove it the way commit `8120eec` did: `ast.parse` every
+`.py`, `node --check` every `.js`, then re-run all the generators and confirm each reports
+SKIP / Unchanged / `Written: 0`.
 
 ## Binding rules
 

@@ -1,4 +1,29 @@
-"""Taxonomy and hand-tuned card copy for gen_blog_index.py.
+"""[DB-021] blog_index_data.py — the blog's one category authority, data only.
+DOES:   holds ARTICLES: one dict per trilingual article family, NEWEST FIRST
+        (list position breaks the tie when two families share a date). cat=
+        assigns one of the five categories buying/gifts/care/knowledge/keys and
+        is the ONLY place a category is decided, so chips, section headings and
+        the CollectionPage JSON-LD can no longer drift apart (see [DB-009]).
+        card= is optional: leave it off and the card is derived from the
+        article's own BlogPosting headline + meta description. icon= must name a
+        PROVEN_GLYPHS member.
+IN:     nothing. No imports, no I/O, no functions.
+OUT:    ARTICLES, read by gen_blog_index.py and scripts/verify-blog-index.py.
+NOTES:  No sub-indices below because there is not one def or branch in the file,
+        only the literal; a per-entry tag would go stale on the next article.
+        The card copy here is what verify-blog-index.py check 9 diffs against git
+        HEAD, template by template rather than rendered HTML: rendered cards
+        carry {n} and {u10k}, so comparing HTML made the check fire on every
+        stock change. An intentional copy edit therefore reads red until it is
+        committed, which is the check working, not failing.
+        `gen_blog_index.py --seed` rebuilds this manifest from the rendered
+        indexes, but it asserts the file does not already exist, and it re-emits
+        the docstring below VERBATIM from its own source: a re-seed needs this
+        file deleted first AND drops this header. Put the header back.
+        A glyph outside PROVEN_GLYPHS renders as NOTHING (Font Awesome is
+        subsetted in shared.css) and no text-based check can see it.
+
+Taxonomy and hand-tuned card copy for gen_blog_index.py.
 
 One entry per trilingual article family, newest first (list order is the
 tie-break for equal dates). cat is the single category authority; the EN
