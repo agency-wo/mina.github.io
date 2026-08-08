@@ -19,7 +19,7 @@ from pathlib import Path
 
 from catalog_stats import REVIEWS, lek, nfmt
 from shop_bits import (crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html,
-                       price_html as shared_price_html)
+                       price_html as shared_price_html, stub_html)
 
 BASE = Path(__file__).parent
 
@@ -895,6 +895,19 @@ for w in watches:
         body = raw[3:] if bom else raw
         crlf = body.count(b"\r\n") == body.count(b"\n") and body.count(b"\n") > 0
         html = body.decode("utf-8").replace("\r\n", "\n")
+
+        if w.get("deleted"):
+            stub = stub_html(w, lang)
+            out = (b"\xef\xbb\xbf" if bom else b"") + (
+                stub.replace("\n", "\r\n") if crlf else stub).encode("utf-8")
+            if out == raw:
+                unchanged.append(f"{lang}/shop/{wid}.html")
+                print(f"  SKIP (stub, no change): {lang}/shop/{wid}.html")
+            else:
+                path.write_bytes(out)
+                updated.append(f"{lang}/shop/{wid}.html")
+                print(f"  STUB (deleted): {lang}/shop/{wid}.html")
+            continue
 
         new_html = replace_watch_content(html, build_watch_div(w, lang, cfg))
         new_html = replace_extra(new_html, build_extra_div(w, lang, cfg))

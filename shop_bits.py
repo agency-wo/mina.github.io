@@ -211,3 +211,34 @@ def open_now_html(lang):
         ".open-now.is-shut .open-dot{background:#c0392b}"
         "</style>"
     )
+
+
+# [DB-006] the retired-watch stub (P125 W4) — lives HERE because
+# gen_product_pages runs its page loop at module level and cannot be imported
+# without regenerating every page; tests import this module instead.
+STUB_TEXT = {
+    "en": ("This watch is no longer available.", "Browse the shop"),
+    "it": ("Questo orologio non è più disponibile.", "Vai al negozio"),
+    "sq": ("Kjo orë nuk është më në katalog.", "Shiko dyqanin"),
+}
+
+
+def stub_html(w, lang):
+    """noindex + instant refresh + canonical to the shop (the watch-29 pattern).
+    gen_sitemap drops noindex pages by its own generic rule; the data never
+    leaves watches.json, and clearing the flag regenerates the full page."""
+    name = f'{w.get("brand", "")} {w.get("model", "")}'.strip() or w["id"]
+    text, link = STUB_TEXT[lang]
+    target = f"/{lang}/shop/"
+    return (
+        f'<!DOCTYPE html>\n<html lang="{lang}" dir="ltr">\n<head>\n'
+        '  <meta charset="UTF-8">\n'
+        '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
+        f'  <title>{name} | Iglisi Watch</title>\n'
+        '  <meta name="robots" content="noindex, follow">\n'
+        f'  <meta http-equiv="refresh" content="0; url={target}">\n'
+        f'  <link rel="canonical" href="https://watch.al{target}">\n'
+        '</head>\n<body>\n'
+        f'  <p>{text} <a href="{target}">{link}</a>.</p>\n'
+        '</body>\n</html>\n'
+    )

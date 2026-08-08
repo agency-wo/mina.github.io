@@ -24,7 +24,12 @@ from shop_seo import COPY as SEO_COPY, fill as seo_fill, seo_section_html, faq_j
 
 BASE = Path(__file__).parent
 BOM = b"\xef\xbb\xbf"
-W = json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
+# [DB-006] deleted ≠ sold (P125 W4): a SOLD watch stays fully visible with its
+# badge; a DELETED (retired) entry leaves the grid, the ItemList and the brand
+# pages entirely — its product page becomes a redirect stub. Data stays in
+# watches.json forever; clearing the flag brings everything back.
+W = [w for w in json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
+     if not w.get("deleted")]
 S = catalog_stats.load()
 
 L = {

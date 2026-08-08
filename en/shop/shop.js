@@ -139,7 +139,7 @@
     var wrap = document.getElementById('brandChips');
     if(!wrap) return;
     var counts = {};
-    WATCHES.forEach(function(w){ if(w.brand) counts[w.brand] = (counts[w.brand]||0) + 1; });
+    WATCHES.forEach(function(w){ if(w.brand && !w.deleted) counts[w.brand] = (counts[w.brand]||0) + 1; });
     var brands = Object.keys(counts).sort(function(a,b){ return (counts[b]-counts[a]) || a.localeCompare(b); });
 
     var param = '';
@@ -171,7 +171,10 @@
   }
 
   function renderWatches(watches){
-    var filtered = currentFilter === 'all' ? watches.slice() : watches.filter(function(w){ return w.condition === currentFilter; });
+    // [DB-006] deleted (retired) entries leave the catalog everywhere; SOLD
+    // ones stay visible with their badge — the two must never be confused
+    var filtered = watches.filter(function(w){ return !w.deleted; });
+    if(currentFilter !== 'all') filtered = filtered.filter(function(w){ return w.condition === currentFilter; });
 
     if(currentBrand !== 'all'){
       filtered = filtered.filter(function(w){ return w.brand === currentBrand; });

@@ -64,6 +64,29 @@ class ApplyStock(unittest.TestCase):
         self.assertEqual(changed, [])
         self.assertTrue(ws[0]["sold"])
 
+    def test_deleted_entries_are_nobodys_to_flip(self):
+        ws = [dict(w("a", "X-1"), deleted=True)]
+        changed, rep = apply_stock(ws, {"X-1": 0})
+        self.assertEqual(changed, [])
+        self.assertFalse(ws[0].get("sold"))
+        self.assertNotIn("a", rep["unlinked"])   # not owner-actionable either
+
+
+class DeletedStub(unittest.TestCase):
+    """A retired watch's page becomes the standard noindex redirect stub.
+
+    Imported from shop_bits ON PURPOSE: gen_product_pages runs its page loop
+    at module level — importing IT from a test regenerates all 171 pages."""
+
+    def test_stub_shape(self):
+        sys.path.insert(0, str(BASE))
+        from shop_bits import stub_html
+        s = stub_html({"id": "watch-9", "brand": "Navimarine", "model": "NMM1011"}, "sq")
+        self.assertIn('name="robots" content="noindex, follow"', s)
+        self.assertIn('url=/sq/shop/', s)
+        self.assertIn('canonical" href="https://watch.al/sq/shop/"', s)
+        self.assertIn('Kjo orë nuk është më në katalog.', s)
+
 
 class ByteFormats(unittest.TestCase):
     """A no-op reconcile must be byte-identical or every night commits noise.

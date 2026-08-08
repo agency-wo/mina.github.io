@@ -55,6 +55,8 @@ def apply_stock(watches, stock):
 
     changed, linked, unlinked = [], [], []
     for w in watches:
+        if w.get("deleted"):
+            continue          # [DB-006] retired entries are nobody's to flip
         r = norm(w.get("reference"))
         if not r or r in dups or r not in stock:
             unlinked.append(w.get("id"))

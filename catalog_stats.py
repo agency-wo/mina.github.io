@@ -69,7 +69,9 @@ class Stats:
 
 def load(path=None):
     W = json.loads((path or BASE / "watches.json").read_text(encoding="utf-8-sig"))
-    live = [w for w in W if not w.get("sold")]
+    # [DB-006] deleted (retired) entries never reach a published number;
+    # sold ones are excluded from "live" counts exactly as before
+    live = [w for w in W if not w.get("sold") and not w.get("deleted")]
     assert live, "catalogue is empty"
     prices = [w["price"] for w in live if w.get("price")]
     s = Stats()
