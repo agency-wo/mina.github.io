@@ -1,3 +1,11 @@
+// [UI-011] confession.js — the watch "confession booth": seeded feed + anonymous posts
+// DOES:   renders a per-language feed of seeded confessions, lets a visitor add one
+//         (localStorage only — nothing ever leaves the browser), enforces a 30s
+//         cooldown, and re-ages visitor timestamps every minute.
+// IN:     iwConfession* DOM ids; <html lang> picks the seed set, strings, storage key
+// OUT:    DOM feed rebuilds; localStorage under STR[lang].key (last 20 visitor posts)
+// NOTES:  seeds always precede stored visitor posts and the feed shows the last 8;
+//         a "new" post animates in immediately while the rest stagger.
 /*!
  * Iglisi Watch — Confession Booth  v1.0
  * Language-aware. No backend. localStorage for visitor submissions.
@@ -100,6 +108,9 @@
   /* ----------------------------------------------------------
      LOAD
   ---------------------------------------------------------- */
+  // [UI-011.a] load — seeds + surviving visitor posts into memory
+  // DOES:   parses the stored visitor list (corrupt/absent -> empty) and appends it
+  //         after the seeds, capped to the newest MAX_STORED overall.
   function load() {
     var stored = [];
     try { stored = JSON.parse(localStorage.getItem(S.key) || '[]'); } catch (e) {}
@@ -109,6 +120,9 @@
   /* ----------------------------------------------------------
      SAVE
   ---------------------------------------------------------- */
+  // [UI-011.b] save — persist ONLY visitor posts (seeds are code, not data)
+  // DOES:   writes the newest 20 visitor entries; storage failures are silently
+  //         ignored (private mode / quota), the feed just becomes session-only.
   function save() {
     var visitor = confessions.filter(function (c) { return c.visitor; });
     try { localStorage.setItem(S.key, JSON.stringify(visitor.slice(-20))); } catch (e) {}
@@ -117,6 +131,8 @@
   /* ----------------------------------------------------------
      FORMAT
   ---------------------------------------------------------- */
+  // [UI-011.c] formatText — every confession reads as a quotation
+  // DOES:   wraps the text in curly quotes unless the visitor already typed them.
   function formatText(t) {
     t = t.trim();
     if (t.charAt(0) !== '\u201C') t = '\u201C' + t;
@@ -127,6 +143,10 @@
   /* ----------------------------------------------------------
      RENDER
   ---------------------------------------------------------- */
+  // [UI-011.d] render — full rebuild of the visible feed
+  // DOES:   clears and re-creates the last 8 items via createElement/textContent
+  //         (Trusted-Types safe), staggers their entrance, then scrolls the feed to
+  //         the newest entry.
   function render() {
     while (scrollEl.firstChild) scrollEl.removeChild(scrollEl.firstChild);
 
@@ -174,6 +194,9 @@
   /* ----------------------------------------------------------
      SHAKE
   ---------------------------------------------------------- */
+  // [UI-011.e] shake — rejection feedback for a too-short confession
+  // DOES:   a decaying left-right wobble via transform; no text, the motion is the
+  //         message.
   function shake(el) {
     var steps = [4, -4, 3, -3, 2, -2, 0], i = 0;
     function step() {
@@ -189,6 +212,10 @@
   /* ----------------------------------------------------------
      SUBMIT
   ---------------------------------------------------------- */
+  // [UI-011.f] submit — validate, rate-limit, append, persist
+  // DOES:   rejects entries under 8 chars (shake), enforces the 30s cooldown with a
+  //         localized countdown label, appends the post as the single "new" item,
+  //         saves, re-renders and resets the composer.
   function submit() {
     var val = input.value.trim();
     if (!val || val.length < 8) { shake(input); return; }

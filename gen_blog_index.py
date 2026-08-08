@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""
+"""[DB-009] gen_blog_index.py — regenerates the three blog index pages from the manifest.
+DOES:   rebuilds style block, chips, <main> (featured, Latest strip, five category
+        sections) and the CollectionPage JSON-LD of {en,it,sq}/blog/index.html from
+        blog_index_data.py + the articles' own dates; SKIPs byte-identical files.
+
 gen_blog_index.py
 Regenerates the three blog index pages ({en,it,sq}/blog/index.html) from
 blog_index_data.py plus the articles themselves.
@@ -164,6 +168,8 @@ STYLE = r""".solid-header{background:rgba(6,21,59,.98);border-bottom:2px solid r
 """
 
 
+# [DB-009.a] read_index — load one index and enforce its byte discipline
+# OUT:    (path, raw bytes, LF-normalized text); asserts no BOM and strict CRLF.
 def read_index(lang):
     p = BASE / lang / "blog" / "index.html"
     raw = p.read_bytes()
@@ -172,6 +178,9 @@ def read_index(lang):
     return p, raw, raw.decode("utf-8").replace("\r\n", "\n")
 
 
+# [DB-009.b] write_index — re-CRLF, verify, and write only on change
+# DOES:   prints SKIP when the bytes are identical to what is on disk, so a no-op
+#         rebuild is visibly a no-op.
 def write_index(p, raw, html):
     out = html.replace("\n", "\r\n").encode("utf-8")
     assert out.count(b"\n") == out.count(b"\r\n") and b"\x0c" not in out
@@ -183,7 +192,7 @@ def write_index(p, raw, html):
 
 
 def article_meta(lang, slug):
-    """dates + read-time from the article itself, the single source of truth."""
+    """[DB-009.c] dates + read-time from the article itself, the single source of truth."""
     p = BASE / lang / "blog" / f"{slug}.html"
     t = p.read_text(encoding="utf-8", errors="strict")
     pub = re.search(r'"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})"', t)
@@ -195,7 +204,7 @@ def article_meta(lang, slug):
 
 
 def family_map():
-    """EN slug -> {it: slug, sq: slug} from the EN article's own hreflang links."""
+    """[DB-009.d] EN slug -> {it: slug, sq: slug} from the EN article's own hreflang links."""
     fam = {}
     for p in sorted((BASE / "en" / "blog").glob("*.html")):
         if p.name == "index.html":
@@ -211,11 +220,17 @@ def family_map():
     return fam
 
 
+# [DB-009.e] date_str — "Month YYYY" in that language's own month names
 def date_str(lang, iso):
     y, m, _ = iso.split("-")
     return f"{UI[lang]['months'][int(m) - 1]} {y}"
 
 
+# [DB-009.f] load_manifest — ARTICLES from blog_index_data.py, fully validated
+# DOES:   asserts slugs are unique and exactly match en/blog on disk (noindex stubs
+#         excluded), exactly one featured entry exists, every cat is known and every
+#         icon override is a proven glyph. Drift fails the build loudly.
+# OUT:    (articles list, the featured entry)
 def load_manifest():
     sys.path.insert(0, str(BASE))
     import blog_index_data
@@ -239,7 +254,7 @@ def load_manifest():
 
 
 def card_texts(a, lang, fam):
-    """(title, desc) for the card: manifest override or article-derived fallback."""
+    """[DB-009.g] (title, desc) for the card: manifest override or article-derived fallback."""
     if "card" in a:
         c = a["card"][lang]
         # counts and price bounds are tokens, never literals: the shop publishes
@@ -254,6 +269,9 @@ def card_texts(a, lang, fam):
     return esc(unescape(h.group(1))), esc(d.group(1))
 
 
+# [DB-009.h] meta_html — the read-time + date line of a card
+# DOES:   shows "Updated <month>" only when dateModified genuinely postdates
+#         datePublished, so a card never claims an update its article denies.
 def meta_html(lang, meta):
     pub, mod, rt = meta
     iso, label = (mod, f"{UI[lang]['updated']} {date_str(lang, mod)}") if mod > pub \
@@ -264,6 +282,9 @@ def meta_html(lang, meta):
             f'<time datetime="{iso}">{label}</time></span></div>')
 
 
+# [DB-009.i] card_html — one grid card; dup=True marks a Latest-strip duplicate
+# NOTES:  data-dup="1" is what blog-search.js keys on to hide duplicates while
+#         any filter is active; the ItemList excludes dups for the same reason.
 def card_html(a, lang, fam, meta, dup=False):
     slug = a["slug"] if lang == "en" else fam[a["slug"]][lang]
     title, desc = card_texts(a, lang, fam)
@@ -281,6 +302,7 @@ def card_html(a, lang, fam, meta, dup=False):
           </a>"""
 
 
+# [DB-009.j] feat_html — the single featured (hero) card
 def feat_html(a, lang, fam, meta):
     slug = a["slug"] if lang == "en" else fam[a["slug"]][lang]
     title, desc = card_texts(a, lang, fam)
@@ -299,6 +321,11 @@ def feat_html(a, lang, fam, meta):
         </a>"""
 
 
+# [DB-009.k] build_main — the whole <main> of one blog index
+# DOES:   count line, featured hero, Latest strip (3 newest as dups), the five
+#         category sections in owner order, and the empty state.
+# NOTES:  order is the EN datePublished DESC for ALL languages (mirror-sync rule
+#         in the module docstring); returns (main html, order, latest indexes).
 def build_main(lang, arts, feat, fam, metas):
     u = UI[lang]
     order = sorted(range(len(arts)),
@@ -330,7 +357,7 @@ def build_main(lang, arts, feat, fam, metas):
 
 
 def build_itemlist(lang, arts, feat, fam, order, page):
-    """CollectionPage JSON-LD in DOM order: featured first, then sections."""
+    """[DB-009.l] CollectionPage JSON-LD in DOM order: featured first, then sections."""
     blocks = re.findall(r'<script type="application/ld\+json">.*?</script>', page, re.S)
     src = [b for b in blocks if '"CollectionPage"' in b]
     assert len(src) == 1, f"{lang}: expected one CollectionPage block"
@@ -354,6 +381,9 @@ def build_itemlist(lang, arts, feat, fam, order, page):
     return page.replace(src[0], new)
 
 
+# [DB-009.m] build_chips — the filter chip row, derived from CATS
+# NOTES:  generated from the same taxonomy as the sections, so chips can never
+#         drift from what they filter (the original hand-maintained failure mode).
 def build_chips(lang):
     u = UI[lang]
     rows = [f'<div class="blog-cats" role="group" aria-label="{u["aria"]}">',
@@ -366,6 +396,9 @@ def build_chips(lang):
     return "\n".join(rows)
 
 
+# [DB-009.n] generate — the normal build: rebuild all three indexes in place
+# DOES:   style block, <main>, chips, ItemList, blog-search.js ?v= bump, em-dash
+#         ban, then write_index's changed-only write.
 def generate():
     arts, feat = load_manifest()
     fam = family_map()
@@ -392,7 +425,7 @@ def generate():
 
 # ---------------------------------------------------------------------------- seed
 def seed():
-    """One-off: build blog_index_data.py from the CURRENT hand-tuned indexes."""
+    """[DB-009.o] One-off: build blog_index_data.py from the CURRENT hand-tuned indexes."""
     out = BASE / "blog_index_data.py"
     assert not out.exists(), f"{out} already exists; refusing to overwrite"
     fam = family_map()

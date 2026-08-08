@@ -1,3 +1,11 @@
+// [UI-010] timer.js — "You've been here for…" dwell-time stopwatch with bell chimes
+// DOES:   builds the SVG tick ring, then counts up from page load in mm:ss (hh:mm:ss
+//         past an hour), rotating the miniature hands; at 1/3/5 minutes it strikes
+//         1/2/3 synthesized bells and swaps in a localized message.
+// IN:     iwTimer* DOM ids; <html lang> selects the CHIMES message set
+// OUT:    per-second DOM updates; Web Audio output once a user gesture unlocks it
+// NOTES:  the audio-unlock ritual (silentUnlock/getAudio) is iOS-specific and
+//         deliberately re-arms after suspensions — see the comments on each.
 /*!
  * Iglisi Watch — You've Been Here For…  v1.0
  * Language-aware. Web Audio chimes. No dependencies.
@@ -65,6 +73,7 @@
   ---------------------------------------------------------- */
   var audioCtx = null;
 
+  /* [UI-010.a] silentUnlock — force the AudioContext into 'running' inside a gesture */
   /* Play a 1-sample silent buffer — iOS Safari requires this to truly
      activate the AudioContext; resume() alone is not always enough.
      Only acts when the context is not already running. */
@@ -78,6 +87,9 @@
     audioCtx.resume().catch(function () {});
   }
 
+  /* [UI-010.b] getAudio — lazy AudioContext factory
+     DOES:  creates the context on first use and installs the permanent gesture
+            listeners that keep re-unlocking it (rationale in the inline note). */
   function getAudio() {
     if (!audioCtx) {
       try {
@@ -97,6 +109,10 @@
   ---------------------------------------------------------- */
   var CHIME_FREQ = [659.3, 587.3, 523.3]; /* E5, D5, C5 */
 
+  /* [UI-010.c] playChime — n bell strikes, 0.72s apart
+     DOES:  each strike layers a sine fundamental, a stretched 2nd harmonic and a
+            band-passed noise transient so it reads as a struck bell, not a tone.
+     IN:    n — strike count; pitch walks down E5/D5/C5 per strike. */
   function playChime(n) {
     var ctx = getAudio();
     /* Only play when the context is confirmed running — never try to use
@@ -145,6 +161,7 @@
   /* ----------------------------------------------------------
      HAND ROTATION
   ---------------------------------------------------------- */
+  /* [UI-010.d] setRot — rotate one hand around the small dial's center */
   function setRot(el, deg) {
     el.setAttribute('transform', 'rotate(' + deg.toFixed(3) + ',45,60)');
   }
@@ -152,6 +169,9 @@
   /* ----------------------------------------------------------
      CHIME FIRE
   ---------------------------------------------------------- */
+  /* [UI-010.e] fireChime — one milestone crossing
+     DOES:  plays the strikes, fades the message out/in with the new text, and
+            retriggers the ring's chime animation by dropping/re-adding its class. */
   function fireChime(c) {
     playChime(c.count);
 
@@ -175,6 +195,10 @@
 
   function pad(n) { return n < 10 ? '0' + n : String(n); }
 
+  /* [UI-010.f] tick — the 1s heartbeat
+     DOES:  recomputes elapsed from Date.now() (never accumulates, so throttled
+            background tabs stay correct), updates readout + hands, and fires each
+            chime milestone exactly once via the chimesFired map. */
   function tick() {
     var elapsed = Math.floor((Date.now() - startTime) / 1000);
     var s = elapsed % 60;

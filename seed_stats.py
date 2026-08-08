@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""
+"""[DB-012] seed_stats.py — one-off migration that plants the data-stat markers.
+DOES:   wraps the literal catalogue numbers in the services pages in
+        <span data-stat> markers so gen_stats.py can own them from then on;
+        each page must match at least 3 anchors or the run fails loudly.
+
 seed_stats.py
 One-off: wrap the catalogue numbers in hand-written pages in <span data-stat>
 markers, so gen_stats.py can keep them current from then on.
@@ -57,6 +61,10 @@ COMMON = [
 ]
 
 
+# [DB-012.a] run — apply SUBS + COMMON to every RULES glob, once per page
+# DOES:   skips pages already carrying markers (idempotence), asserts the per-page
+#         hit floor so drifted wording cannot be silently half-seeded.
+# IN:     base — repo root Path; read/write — gen_stats.py's byte-preserving I/O
 def run(base, read, write):
     total = files = 0
     for pattern, lang in RULES:

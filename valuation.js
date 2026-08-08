@@ -1,3 +1,11 @@
+// [UI-006] valuation.js — free-valuation form (Web3Forms) with a non-JS fallback path
+// DOES:   with JS, intercepts #valForm and posts it to api.web3forms.com via fetch,
+//         swapping the form for #valSuccess on success; without JS the form posts
+//         natively and the ?valued=1 return visit shows the same success state.
+// IN:     #valForm fields; location.search for the redirect marker
+// OUT:    display toggles on form/success; alert + re-enabled button on any failure
+// NOTES:  the submit button is disabled for the duration of the request so a slow
+//         network cannot produce duplicate submissions.
 (function(){
   // If redirected back after non-JS form submit, show success state
   if(location.search.indexOf('valued=1') > -1){

@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""
+"""[DB-017] gen_product_pages.py — static product-page renderer (RUNS ON IMPORT).
+DOES:   rewrites every {lang}/shop/{watch-id}.html in place from watches.json:
+        hero div, specs/buy/related sections, crumb, titles/metas/JSON-LD,
+        WhatsApp deep links; deleted watches become redirect stubs.
+NOTES:  the page loop at the bottom is MODULE-LEVEL — importing this file
+        regenerates all pages. Edit comments/docstrings only, never structure.
+
 gen_product_pages.py
 Pre-renders product page body content (H1, price, description, CTA, trust row)
 into static HTML so AI crawlers and non-JS environments see real content.
@@ -171,7 +177,7 @@ LANGS = {
 
 
 def title_for(w, lang):
-    """Product <title>. MUST stay byte-identical to the string watch.js builds at runtime.
+    """[DB-017.a] Product <title>. MUST stay byte-identical to the string watch.js builds at runtime.
     The reference is included only when brand+model is not unique, which is the only
     thing separating watch-1/3/8 (Hislon Classic) and watch-2/5 (Hislon Classic Queen)."""
     cfg = LANGS[lang]
@@ -185,7 +191,7 @@ def title_for(w, lang):
 
 
 def replace_watch_content(html: str, new_div: str) -> str:
-    """Replace <div id="watch-content"...>...</div> with new_div.
+    """[DB-017.b] Replace <div id="watch-content"...>...</div> with new_div.
     Uses depth-counting so it correctly handles nested divs (idempotent)."""
     m = re.search(r'<div id="watch-content"[^>]*>', html)
     if not m:
@@ -210,12 +216,15 @@ def replace_watch_content(html: str, new_div: str) -> str:
 
 
 def build_price_html(price, currency, lang="en"):
-    """SQ leads with Lek, EN/IT with EUR. Mirrored by watch.js."""
+    """[DB-017.c] SQ leads with Lek, EN/IT with EUR. Mirrored by watch.js."""
     if not price:
         return "Price on request"
     return shared_price_html(price, currency, lang)
 
 
+# [DB-017.d] build_img_html — the hero <picture> with condition badge + sale ribbon
+# DOES:   webp source with jpg fallback, eager/high-priority load (it is the LCP),
+#         Sold overrides the condition badge, and the discount ribbon logic below.
 def build_img_html(w, cfg):
     image = w.get("image", "")
     if not image:
@@ -350,7 +359,7 @@ HELP = {
 
 
 def wa_url(kind, w, lang):
-    """Build one WhatsApp deep link. Never emits a placeholder for a missing reference:
+    """[DB-017.e] Build one WhatsApp deep link. Never emits a placeholder for a missing reference:
     the whole parenthetical is dropped instead."""
     name = f'{w["brand"]} {w["model"]}'.strip()
     ref = f' ({REF_WORD[lang]} {w["reference"]})' if w.get("reference") else ""
@@ -367,7 +376,7 @@ def wa_url(kind, w, lang):
 
 
 def rewrite_ambient_wa(html: str, w, lang: str) -> str:
-    """The floating bubble and the header button opened an empty chat, on the one page
+    """[DB-017.f] The floating bubble and the header button opened an empty chat, on the one page
     type where the site knows exactly what the visitor is looking at. They now carry the
     watch, with question intent rather than order intent so the two stay distinguishable
     in the inbox."""
@@ -388,7 +397,7 @@ def rewrite_ambient_wa(html: str, w, lang: str) -> str:
 
 
 def build_help_html(w, lang):
-    """delivery.html says in all three languages that "I do not know which one" is the
+    """[DB-017.g] delivery.html says in all three languages that "I do not know which one" is the
     most common message the shop gets. Until now the product page had no way to send it."""
     text, label = HELP[lang]
     return (f'<div class="pdp-help"><p>{text}</p>'
@@ -397,6 +406,7 @@ def build_help_html(w, lang):
             f'{label}</a></div>')
 
 
+# [DB-017.h] build_risk_html — the risk-reversal box under the buy button
 def build_risk_html(lang):
     r = RISK[lang]
     pts = "".join(f'<span><i class="{i}" aria-hidden="true"></i>{t}</span>'
@@ -406,11 +416,13 @@ def build_risk_html(lang):
             f'<i class="fas fa-chevron-right" aria-hidden="true"></i></a></div>')
 
 
+# [DB-017.i] build_maker_html — the "bought from the watchmaker" aftercare section
 def build_maker_html(lang):
     m = MAKER[lang]
     return f'<section class="pdp-maker"><h2>{m["h"]}</h2><p>{m["p"]}</p></section>'
 
 
+# [DB-017.j] build_rating_html — the Google 5.0 pill linking to the real reviews
 def build_rating_html(lang):
     aria, label = GRATING[lang]
     return (f'<a class="pdp-rating" href="{REVIEWS_URL}" target="_blank" '
@@ -479,6 +491,7 @@ PDP_CSS = "<style id=\"pdp-css\">" + (
 ) + "</style>"
 
 
+# [DB-017.k] replace_pdp_css — refresh the pdp-css style block, or install it once
 def replace_pdp_css(html: str, new: str) -> str:
     if '<style id="pdp-css">' in html:
         out, n = re.subn(r'<style id="pdp-css">.*?</style>', lambda _: new, html,
@@ -490,7 +503,7 @@ def replace_pdp_css(html: str, new: str) -> str:
 
 
 def add_call_bar(html: str, lang: str) -> str:
-    """The sticky phone bar exists on the homepage and the delivery page but never on
+    """[DB-017.l] The sticky phone bar exists on the homepage and the delivery page but never on
     a product page, though shared.css already styles it and pixel.js already lifts the
     consent banner 40px assuming it is there."""
     if 'class="call-bar"' in html:
@@ -565,7 +578,7 @@ ROLE = {
 
 
 def related_for(w, n=4):
-    """Four watches with four different jobs, read left to right as a price ladder.
+    """[DB-017.m] Four watches with four different jobs, read left to right as a price ladder.
 
     The old rule was "same brand, nearest price", which on a Navimarine page, and 22 of
     the 57 watches are Navimarines, showed four more Navimarines within five euro of
@@ -609,6 +622,9 @@ def related_for(w, n=4):
     return [(x, "" if r == "top" and (x.get("price") or 0) <= p else r) for x, r in out]
 
 
+# [DB-017.n] build_specs_html — the Details definition list (empty values dropped)
+# NOTES:  the nfmt(l, lang) call reads the MODULE-LEVEL loop variable `lang`, not a
+#         parameter — correct only because this runs inside that loop; keep it so.
 def build_specs_html(w, cfg):
     rows = [(cfg["spec_brand"], w.get("brand", ""))]
     if w.get("reference"):
@@ -628,12 +644,13 @@ def build_specs_html(w, cfg):
 
 
 def build_buy_html(cfg):
-    """Renders delivery/returns/guarantee that until now existed only inside JSON-LD."""
+    """[DB-017.o] Renders delivery/returns/guarantee that until now existed only inside JSON-LD."""
     lis = "".join(f"<li>{t}</li>" for t in cfg["buy_items"])
     return (f'<section class="watch-buyinfo"><h2>{cfg["buy_h"]}</h2>'
             f'<ul class="buy-list">{lis}</ul></section>')
 
 
+# [DB-017.p] build_related_html — the four related_for() picks as role-labelled cards
 def build_related_html(w, lang, cfg):
     cards = []
     for r, role in related_for(w):
@@ -653,6 +670,10 @@ def build_related_html(w, lang, cfg):
             f'<div class="rel-grid">{"".join(cards)}</div></section>')
 
 
+# [DB-017.q] build_watch_div — the whole #watch-content hero
+# DOES:   image column + info column (identity row, price+rating row, CTA or the
+#         sold/notify state, risk box, description, maker section, open-now + IG,
+#         trust row) in the argument order the layout comment below explains.
 def build_watch_div(w, lang, cfg):
     brand = w.get("brand", "")
     model = w.get("model", "")
@@ -742,7 +763,7 @@ def build_watch_div(w, lang, cfg):
 
 
 def fix_footer_year(html: str) -> str:
-    """#footerYear was filled by watch.js. shared.js fills [data-year] on every other
+    """[DB-017.r] #footerYear was filled by watch.js. shared.js fills [data-year] on every other
     page, so switch to that rather than keep a script alive for one number."""
     out, n = re.subn(r'<span id="footerYear"></span>', '<span data-year></span>', html)
     assert n <= 1
@@ -750,7 +771,7 @@ def fix_footer_year(html: str) -> str:
 
 
 def strip_runtime_renderer(html: str) -> str:
-    """Remove watch.js and the 63 KB watches-data.js it existed to feed.
+    """[DB-017.s] Remove watch.js and the 63 KB watches-data.js it existed to feed.
 
     watch.js re-rendered #watch-content on every load, over static markup that was
     already correct, and every difference it introduced was damage: a NaN Lek price
@@ -771,7 +792,7 @@ def strip_runtime_renderer(html: str) -> str:
 
 
 def pre_render_twitter(html: str, title: str, desc: str, w) -> str:
-    """twitter:title/description/image were set only by watch.js, so every product
+    """[DB-017.t] twitter:title/description/image were set only by watch.js, so every product
     link shared to a chat app rendered bare. Emit them next to twitter:card."""
     img = f'https://watch.al{w["image"]}'
     block = (f'<meta name="twitter:card" content="summary_large_image">\n'
@@ -787,7 +808,7 @@ def pre_render_twitter(html: str, title: str, desc: str, w) -> str:
 
 
 def build_biz_ld(lang):
-    """The 5.0 rating as structured data, on a LocalBusiness node.
+    """[DB-017.u] The 5.0 rating as structured data, on a LocalBusiness node.
 
     Deliberately NOT aggregateRating inside the Product: these are reviews of a repair
     shop, not of a Navimarine NM181-03, and Google treats a business rating dressed up
@@ -808,6 +829,7 @@ def build_biz_ld(lang):
     }, ensure_ascii=False, separators=(",", ":")) + "</script>")
 
 
+# [DB-017.v] replace_biz_ld — refresh the ld-biz block, or install it before </head>
 def replace_biz_ld(html: str, lang: str) -> str:
     new = build_biz_ld(lang)
     if 'id="ld-biz"' in html:
@@ -820,7 +842,7 @@ def replace_biz_ld(html: str, lang: str) -> str:
 
 
 def build_crumb_div(w, lang):
-    """Visible breadcrumb, placed ABOVE #watch-content as a sibling: watch.js
+    """[DB-017.w] Visible breadcrumb, placed ABOVE #watch-content as a sibling: watch.js
     replaces watch-content.innerHTML wholesale, so anything inside it is lost."""
     leaf = f'{w["brand"]} {w["model"]}'.strip()
     return (f'<div id="watch-crumb">{CRUMB_CSS}'
@@ -828,7 +850,7 @@ def build_crumb_div(w, lang):
 
 
 def replace_crumb(html, new_div):
-    """Replace #watch-crumb, else insert just before #watch-content."""
+    """[DB-017.x] Replace #watch-crumb, else insert just before #watch-content."""
     m = re.search(r'<div id="watch-crumb">.*?</nav></div>', html, re.S)
     if m:
         return html[:m.start()] + new_div + html[m.end():]
@@ -837,7 +859,7 @@ def replace_crumb(html, new_div):
 
 
 def build_extra_div(w, lang, cfg):
-    """Specs / delivery / related products.
+    """[DB-017.y] Specs / delivery / related products.
 
     This lives as a SIBLING of #watch-content, never inside it: watch.js replaces
     watch-content.innerHTML wholesale at runtime, so anything nested there is destroyed
@@ -855,7 +877,7 @@ def build_extra_div(w, lang, cfg):
 
 
 def replace_extra(html: str, new_div: str) -> str:
-    """Replace an existing #watch-extra, else insert it right before </main>."""
+    """[DB-017.z] Replace an existing #watch-extra, else insert it right before </main>."""
     m = re.search(r'<div id="watch-extra"[^>]*>', html)
     if m:
         start = m.start()
@@ -882,6 +904,12 @@ updated = []
 skipped_missing = []
 unchanged = []
 
+# [DB-017] THE MODULE-LEVEL PAGE LOOP — runs on import, see the module docstring.
+# DOES:   per watch x language: read the page preserving BOM/CRLF; deleted watches
+#         become redirect stubs; live ones get hero + extra + crumb rebuilt, then
+#         BreadcrumbList / title / og / description / Product-LD availability /
+#         pdp-css / ambient WhatsApp / ld-biz / call bar / footer year / runtime
+#         renderer strip / twitter metas — and the file is written only on change.
 for w in watches:
     wid = w["id"]
     for lang, cfg in LANGS.items():

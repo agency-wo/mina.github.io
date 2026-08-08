@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""
+"""[DB-008] gen_brand_pages.py — builds the 15 brand landing pages from the shop index.
+DOES:   clones each {lang}/shop/index.html, swaps head metadata and <main> for
+        brand-specific copy, a static brand-filtered grid, FAQ + matching JSON-LD;
+        writes {en,it,sq}/shop/brand/{slug}.html, skipping byte-identical output.
+
 gen_brand_pages.py
 Builds brand landing pages at {en,it,sq}/shop/brand/{slug}.html.
 
@@ -97,16 +101,20 @@ from brand_copy import COPY  # localized, owner-verified brand copy
 from shop_bits import crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html
 
 
+# [DB-008.a] esc — minimal HTML escaping for text landing in attributes/titles
 def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 def brand_watches(brand):
-    """Non-sold watches of a brand, cheapest first (a price ladder reads better)."""
+    """[DB-008.b] Non-sold watches of a brand, cheapest first (a price ladder reads better)."""
     return sorted((w for w in WATCHES if w["brand"] == brand and not w.get("sold")),
                   key=lambda w: w["price"])
 
 
+# [DB-008.c] fill — brand-page token substitution
+# DOES:   replaces {brand}/{n}/{lo}/{hi}/{lolek}/{hilek} with values scoped to THIS
+#         brand's items, so brand copy never quotes a sitewide number.
 def fill(text, brand, items, lang='en'):
     prices = [w["price"] for w in items]
     return (text.replace("{brand}", brand)
@@ -117,6 +125,9 @@ def fill(text, brand, items, lang='en'):
                 .replace("{hilek}", nfmt(lek(max(prices)), lang)))
 
 
+# [DB-008.d] build_main — the whole <main> of one brand page
+# DOES:   hero (h1, intro paras, trust row, open-now), crumb, static card grid,
+#         FAQ, WhatsApp CTA and the page-local CSS, assembled from UI + brand COPY.
 def build_main(slug, brand, lang, items):
     ui = {k: (fill(v, brand, items, lang) if isinstance(v, str) else v) for k, v in UI[lang].items()}
     copy = COPY[slug][lang]
@@ -176,6 +187,10 @@ BRAND_CSS = (
 )
 
 
+# [DB-008.e] head_swaps — retarget the cloned head at the brand URL
+# DOES:   rewrites title/description/OG/twitter/canonical and all four hreflang
+#         alternates to the brand page, and re-relativizes asset paths one level
+#         deeper (/shop/ -> /shop/brand/). The \s+ hreflang subtlety is inline.
 def head_swaps(html, slug, brand, lang, items):
     ui = UI[lang]
     title = esc(fill(ui["title"], brand, items, lang))
@@ -210,6 +225,9 @@ def head_swaps(html, slug, brand, lang, items):
     return html
 
 
+# [DB-008.f] build_jsonld — CollectionPage(+ItemList) + BreadcrumbList + FAQPage
+# DOES:   emits the three schema blocks from the same strings the visible page uses,
+#         so schema and page can never diverge.
 def build_jsonld(slug, brand, lang, items):
     ui = UI[lang]
     url = f"https://watch.al/{lang}/shop/brand/{slug}.html"
@@ -242,6 +260,10 @@ def build_jsonld(slug, brand, lang, items):
         for d in (collection, crumbs, faq))
 
 
+# [DB-008.g] build_page — one complete brand page from the cloned shop index
+# DOES:   strips the clone's JSON-LD, installs ours, swaps head + <main>, removes
+#         shop.js and watch-effects (they would fight the static grid), and makes
+#         sure stock-live.js IS loaded; every removal/addition is asserted.
 def build_page(slug, brand, lang):
     items = brand_watches(brand)
     assert items, f"no watches for {brand}"
@@ -275,6 +297,8 @@ def build_page(slug, brand, lang):
     return html
 
 
+# [DB-008.h] main — build all lang x brand pages, write only what changed
+# OUT:    prints SKIP (no change) / OK per page and a final Written: N count.
 def main():
     out = []
     for lang in ("en", "it", "sq"):

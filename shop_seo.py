@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""
+"""[DB-015] shop_seo.py — the shop hub's below-grid SEO/GEO copy + FAQPage schema.
+DOES:   holds the trilingual lead/FAQ/description strings and builds both the
+        visible section and its FAQPage JSON-LD from the SAME strings, with the
+        catalogue numbers filled at build time.
+
 shop_seo.py
 The shop hub's below-the-grid SEO/GEO section (geo lead + 5-question FAQ) and the
 matching FAQPage JSON-LD. Used by gen_shop_index.py.
@@ -148,6 +152,9 @@ COPY = {
 from catalog_stats import lek as _lek, nfmt
 
 
+# [DB-015.a] fill — token substitution scoped to the watch list it is handed
+# DOES:   {n}/{b}/{lo}/{hi}/{lolek}/{hilek} from the given watches, so the same
+#         strings work for the full catalog or any subset.
 def fill(text, watches, lang="en"):
     prices = [w["price"] for w in watches if w.get("price")]
     brands = {w["brand"] for w in watches}
@@ -160,7 +167,7 @@ def fill(text, watches, lang="en"):
 
 
 def seo_section_html(lang, watches):
-    """The visible below-grid section. Marker id shop-seo makes replacement idempotent."""
+    """[DB-015.b] The visible below-grid section. Marker id shop-seo makes replacement idempotent."""
     t = COPY[lang]
     faqs = "".join(
         '<details class="faq-item"><summary class="faq-question">'
@@ -179,6 +186,8 @@ def seo_section_html(lang, watches):
     )
 
 
+# [DB-015.c] faq_jsonld — FAQPage built from the SAME strings as the visible FAQ
+# NOTES:  gen_shop_index.py's sanity block verifies the two never diverge.
 def faq_jsonld(lang, watches):
     return {
         "@context": "https://schema.org",

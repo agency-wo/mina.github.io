@@ -1,3 +1,14 @@
+// [SEC-004] pixel.js — consent-gated Meta Pixel loader (consent map in the note below)
+// DOES:   loads fbevents.js ONLY after analytics consent (its own storage key or
+//         cookie.js's), fires PageView + a product ViewContent when product metas
+//         exist, and buffers [data-fb-contact] clicks made before the pixel loads
+//         so the delayed load loses nothing.
+// IN:     localStorage consent keys; product metas; [data-fb-contact] click targets
+// OUT:    fbq events after consent; builds its own banner ONLY when cookie.js's
+//         #cookie-banner is absent from the page
+// NOTES:  a denial empties the click queue — nothing buffered ever leaves the
+//         browser; returning granted visitors load the pixel on a fixed 5s delay
+//         (perf rationale inline).
 /* ── Cookie Consent + Meta Pixel ──────────────────────────────────────────
    Consent is required before the pixel fires.
    Preference is stored in localStorage under 'iglisi_cookie_consent':
@@ -36,6 +47,10 @@
   var policyUrl = '/' + lang + '/legal/cookies.html';
 
   /* ── Pixel loader ──────────────────────────────────────────────────────── */
+  // [SEC-004.a] loadPixel — the one place the Facebook script enters the page
+  // DOES:   injects fbevents.js once (guarded by _fbPixelLoaded), sets LDU data
+  //         processing, fires PageView, ViewContent when product context exists,
+  //         then flushes every queued Contact event.
   function loadPixel(){
     if(window._fbPixelLoaded) return;
     window._fbPixelLoaded = true;
@@ -73,6 +88,9 @@
              value: v, currency: (c && c.getAttribute('content')) || 'EUR' };
   })();
 
+  // [SEC-004.b] fire — track now, or queue until the pixel exists
+  // DOES:   drops the event entirely under an explicit denial; otherwise sends it
+  //         live or parks it in the in-memory queue that loadPixel() flushes.
   function fire(name, params){
     if(_denied) return;
     if(window._fbPixelLoaded && window.fbq) fbq('track', name, params);
@@ -157,6 +175,10 @@
     '#iglisi-decline:hover{color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.45)}';
   document.head.appendChild(style);
 
+  // [SEC-004.c] dismiss — record the banner decision and act on it
+  // DOES:   persists granted/denied, empties the queue on denial, slides the banner
+  //         away, and on a grant loads the pixel immediately (no 5s delay: the
+  //         visitor just interacted, TTI has passed).
   function dismiss(choice){
     localStorage.setItem(STORAGE_KEY, choice);
     if(choice === 'denied'){ _denied = true; _queue.length = 0; }

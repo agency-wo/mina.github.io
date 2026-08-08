@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""
+"""[DB-013] catalog_stats.py — the one home for catalogue-derived numbers + formatting.
+DOES:   computes Stats (count, brands, price range, Lek bounds, under-10k count,
+        per-brand tallies) from watches.json, owns the half-up Lek conversion,
+        the per-language thousands separator, the {token} vocabulary + fill(),
+        and the owner-reported Google review count.
+
 catalog_stats.py
 The single source for every published number derived from watches.json, and the
 single per-language number formatter.
@@ -47,26 +52,31 @@ UNDER = 10000  # the "watches under 10,000 Lek" threshold: a premise, not a cata
 
 
 def lek(price, currency="EUR"):
-    """Half-up, to match Math.round in shop.js (Python round() is banker's)."""
+    """[DB-013.a] Half-up, to match Math.round in shop.js (Python round() is banker's)."""
     if not price or currency != "EUR":
         return 0
     return int(price * LEK_RATE / 100 + 0.5) * 100
 
 
 def nfmt(v, lang):
-    """Thousands separator for the page's language."""
+    """[DB-013.b] Thousands separator for the page's language."""
     return f"{v:,}".replace(",", SEP[lang])
 
 
+# [DB-013.c] slugify — brand display name -> the slug used in tokens and URLs
 def slugify(brand):
     return brand.lower().replace(" ", "-")
 
 
+# [DB-013.d] Stats — slots-only value bag for the computed catalogue numbers
 class Stats:
     __slots__ = ("n", "b", "lo", "hi", "lolek", "hilek", "u10k",
                  "per_brand", "brands_ranked")
 
 
+# [DB-013.e] load — watches.json -> Stats, over LIVE watches only
+# DOES:   excludes sold and deleted entries from every number (module docstring
+#         explains why {n} is a stock claim); asserts the catalogue is non-empty.
 def load(path=None):
     W = json.loads((path or BASE / "watches.json").read_text(encoding="utf-8-sig"))
     # [DB-006] deleted (retired) entries never reach a published number;
@@ -92,7 +102,7 @@ TOKEN_RE = re.compile(r"\{(n|b|lo|hi|lolek|hilek|u10k|n:[a-z0-9-]+)\}")
 
 
 def fill(text, lang, s=None, brand_items=None):
-    """Replace every {token}. Raises on an unknown token rather than shipping it.
+    """[DB-013.f] Replace every {token}. Raises on an unknown token rather than shipping it.
 
     brand_items scopes {n}/{lo}/{hi} to one brand, which is what the brand pages
     need; without it the tokens are sitewide.

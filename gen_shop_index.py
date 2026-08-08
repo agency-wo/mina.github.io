@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""
+"""[DB-007] gen_shop_index.py — pre-renders the shop hub (grid, schema, SEO section).
+DOES:   rewrites {en,it,sq}/shop/index.html in place: product cards, ItemList
+        JSON-LD, crumb + delivery bar, below-grid SEO/FAQ section, schema
+        descriptions — then asserts the result is internally consistent.
+
 gen_shop_index.py
 Pre-renders the shop grid into {en,it,sq}/shop/index.html so crawlers and non-JS
 visitors see every product card and link. Before this the grid was six skeleton
@@ -50,7 +54,7 @@ _SIZES = {}
 
 
 def img_size(rel):
-    """Intrinsic dimensions for the card <img>. The container already sets
+    """[DB-007.a] Intrinsic dimensions for the card <img>. The container already sets
     aspect-ratio:1/1 so this is correctness rather than a layout-shift fix."""
     if not rel:
         return (0, 0)
@@ -64,6 +68,10 @@ def img_size(rel):
     return _SIZES[rel]
 
 
+# [DB-007.b] card — one static product card, in that language
+# DOES:   mirrors shop.js watchCard() byte for byte (sold overlay, Swiss tag, sale
+#         badge, Lek-first price for SQ, WhatsApp CTA) so runtime hydration is a
+#         visual no-op. gen_brand_pages imports this for its grids too.
 def card(w, lang):
     t = L[lang]
     swiss = " Swiss Watch" if w["brand"] == "Hislon" else ""
@@ -116,6 +124,9 @@ def card(w, lang):
     return "".join(parts)
 
 
+# [DB-007.c] itemlist — the ItemList JSON-LD payload, rebuilt from watches.json
+# DOES:   one Product ListItem per UNSOLD watch (sold cards stay visible in HTML but
+#         never in schema); keeps the old block's non-list fields via dict(old).
 def itemlist(lang, old):
     items = []
     for i, w in enumerate([x for x in W if not x.get("sold")], 1):
@@ -148,6 +159,11 @@ def itemlist(lang, old):
 SCRIPT_RE = re.compile(r'<script type="application/ld\+json"[^>]*>(.*?)</script>', re.S)
 GRID_RE = re.compile(r'(<div class="shop-grid" id="shopGrid"[^>]*>)(.*?)(\n    </div>)', re.S)
 
+# [DB-007.d] main — the per-language rewrite pipeline + sanity block
+# DOES:   steps 1-8 rewrite one shop index in place (grid, ItemList, crumb/delivery,
+#         SEO section, FAQ LD, metas, schema descs, dead tag removal), preserving
+#         each file's BOM and line endings; the sanity block then re-reads the file
+#         and asserts cards/links/schema/FAQ visibility all agree.
 def main():
     for lang in ("en", "it", "sq"):
         f = BASE / lang / "shop" / "index.html"

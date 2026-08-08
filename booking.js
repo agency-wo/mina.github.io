@@ -1,3 +1,11 @@
+// [UI-005] booking.js — service-booking form that hands off to WhatsApp
+// DOES:   validates #bookForm, builds a localized booking message (en/it/sq from
+//         <html lang>) and opens a pre-filled WhatsApp chat; no backend, no storage.
+// IN:     #bookForm fields: service, name, phone (required); date, time, notes (optional)
+// OUT:    window.open on api.whatsapp.com with the encoded message; also sets today
+//         as the minimum pickable date on #bk-date
+// NOTES:  the date line is rendered in a locale matching the page language and falls
+//         back to the raw ISO string if toLocaleDateString throws.
 (function(){
   'use strict';
   var form=document.getElementById('bookForm');
@@ -11,7 +19,13 @@
     sq:{intro:"Pershendetje, dua te rezervoj nje sherbim tek Iglisi Watch:\n\n",svc:'Sherbimi: ',name:'Emri: ',phone:'Telefoni: ',date:'Data: ',time:'Ora: ',notes:'Shenime: '}
   };
   var t=T[lang]||T.en;
+  // [UI-005.a] err — inline "required field" feedback
+  // DOES:   tints the offending field red and focuses it; the tint clears itself on
+  //         the next keystroke. The color IS the message — no error text is shown.
   function err(el){el.style.borderColor='#c0392b';el.addEventListener('input',function(){el.style.borderColor='';},{once:true});el.focus();}
+  // [UI-005.b] submit handler — validate, compose, hand off
+  // DOES:   blocks the native submit, checks the three required fields (first failure
+  //         wins), then assembles the localized message and opens WhatsApp.
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var s=document.getElementById('bk-service'),n=document.getElementById('bk-name'),p=document.getElementById('bk-phone');

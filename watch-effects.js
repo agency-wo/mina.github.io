@@ -1,3 +1,10 @@
+// [UI-012] watch-effects.js — IglisiEffects: the four decorative page effects (UMD)
+// DOES:   exposes loupe / tickIn / trail / balanceWheel plus init(config); each
+//         effect is self-contained and inert when its selector matches nothing.
+// IN:     selectors + option bags per effect (see each concept's header)
+// OUT:    window.IglisiEffects (or the AMD/CommonJS export)
+// NOTES:  only TickIn honors prefers-reduced-motion itself; callers gate the rest
+//         (watch-effects-shop-init.js does exactly that for the balance wheel).
 /*!
  * Iglisi Watch — Interactive Effects  v1.0
  * watch-effects.js
@@ -12,6 +19,14 @@
   /* ============================================================
      CONCEPT 1: WATCHMAKER'S LOUPE
   ============================================================ */
+  /* [UI-012.a] Loupe — watchmaker's magnifier that follows the cursor over cards
+     DOES:   builds the lens chrome (glare, rim, reticle) once per section, then on
+             rAF-throttled mousemove repositions it and recomputes the zoomed
+             background-image of whichever card image the cursor is over.
+     IN:     sectionSel + cardSel selectors; options {size,zoom}
+     OUT:    an absolutely-positioned lens div in the section; card cursor hidden
+     NOTES:  background-image zoom instead of canvas keeps same-origin images free
+             of CORS taint (see the inline note). */
   function Loupe(sectionSel,cardSel,options){
     var opts={size:148,zoom:3};
     if(options){if(options.size)opts.size=options.size;if(options.zoom)opts.zoom=options.zoom;}
@@ -133,6 +148,15 @@
   /* ============================================================
      CONCEPT 2: ESCAPEMENT TICK-IN
   ============================================================ */
+  /* [UI-012.b] TickIn — reveals text character by character with a watch-tick sound
+     DOES:   when a [data-tick-in] element scrolls into view, wraps its text nodes in
+             per-char spans and fades them in at a jittered cadence, optionally
+             ticking per character from a pooled <audio> element.
+     IN:     data-tick-in / data-tick-speed / data-tick-delay / data-tick-sound attrs
+     OUT:    span-wrapped text; a 3-element <audio> pool fed by a WAV built at runtime
+     NOTES:  reduced-motion shows everything at once; audio stays silent until a user
+             gesture unlocks the pool. The <audio>-not-WebAudio choice is explained
+             in the note below. */
   function TickIn(){
     /* Use <audio> elements instead of Web Audio API.
        Web Audio requires AudioContext.resume() which is async and
@@ -268,6 +292,14 @@
   /* ============================================================
      CONCEPT 3: GOLD DUST CURSOR TRAIL
   ============================================================ */
+  /* [UI-012.c] Trail — gold-dust particles that drift up from the cursor
+     DOES:   overlays a pointer-transparent canvas on the section and, per mousemove,
+             spawns short-lived particles that rise, fade and are culled; leaving the
+             section clears them all.
+     IN:     sectionSel; options {color,count,minSize,maxSize,decay,drift}
+     OUT:    a canvas child of the section, redrawn every animation frame
+     NOTES:  the particle cap evicts the oldest, so a fast cursor cannot grow the
+             array unbounded. */
   function Trail(sectionSel,options){
     var opts={color:'#b8953f',count:60,minSize:2,maxSize:5,decay:0.024,drift:0.3};
     if(options){
@@ -333,6 +365,13 @@
   /* ============================================================
      CONCEPT 4: LIVING BALANCE WHEEL
   ============================================================ */
+  /* [UI-012.d] BalanceWheel — a living balance-wheel drawn in SVG
+     DOES:   builds the full wheel (bezel, ticks, screws, hairspring, spokes, hub)
+             into every matched target and oscillates the spoke group with a sine
+             swing, pausing via IntersectionObserver while off-screen.
+     IN:     selector; options {size,swing,speed,color,dark}
+     OUT:    one <svg> appended per target + a rAF loop per instance
+     NOTES:  does NOT check prefers-reduced-motion itself — callers must gate it. */
   function BalanceWheel(selector,options){
     var opts={size:120,swing:38,speed:0.032,color:'#b8953f',dark:true};
     if(options){
@@ -490,6 +529,9 @@
   /* ============================================================
      PUBLIC API
   ============================================================ */
+  /* [UI-012.e] public API — thin constructors + init(config)
+     DOES:   each key instantiates its effect; init() reads a config object so a page
+             can declare its effect set in one literal (see the *-init.js files). */
   return {
     loupe:function(sectionSel,cardSel,options){new Loupe(sectionSel,cardSel,options);},
     tickIn:function(){new TickIn().init();},

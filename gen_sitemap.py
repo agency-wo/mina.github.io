@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""
+"""[DB-010] gen_sitemap.py — the single owner of sitemap.xml.
+DOES:   enumerates every indexable page on disk, derives alternates from each
+        page's own hreflang tags, lifts product images from Product JSON-LD,
+        dates URLs from content fingerprints kept in sitemap_state.json, and
+        SKIPs the write when nothing changed.
+
 gen_sitemap.py
 Owns sitemap.xml. Enumerates every indexable page on disk, reads each page's own
 hreflang tags for its alternates, lifts product images from Product JSON-LD, and
@@ -81,23 +86,31 @@ STATIC_ORDER = ["services.html", "about.html", "b2b.html"]
 ASSET_V = re.compile(r"\?v=\d+")  # the only query-string form on any asset in the repo
 
 
+# [DB-010.a] fingerprint_text — content hash that ignores non-content churn
+# DOES:   normalizes line endings, strips ?v= cache-bust params and collapses
+#         whitespace before hashing, so a cache-bust sweep moves no lastmod.
 def fingerprint_text(t):
     t = t.replace("\r\n", "\n").replace("\r", "\n")
     t = ASSET_V.sub("", t)              # a cache-bust sweep is not a content change
     return hashlib.sha256(re.sub(r"\s+", " ", t).strip().encode("utf-8")).hexdigest()
 
 
+# [DB-010.b] fingerprint — fingerprint_text over a file on disk (BOM-tolerant)
 def fingerprint(p):
     return fingerprint_text(p.read_bytes().decode("utf-8-sig"))
 
 
+# [DB-010.c] url_of — disk path -> canonical URL (index.html becomes the directory)
 def url_of(p):
     rel = p.relative_to(BASE).as_posix()
     return SITE + (rel[:-len("index.html")] if rel.endswith("index.html") else rel)
 
 
 def classify(en_path):
-    """en_path is the EN URL minus https://watch.al/en/ ; '' for the language home."""
+    """[DB-010.d] en_path is the EN URL minus https://watch.al/en/ ; '' for the language home.
+
+    Returns (section, changefreq, priority); unclassifiable paths are a hard error
+    so a new page type must be placed deliberately."""
     if en_path == "":
         return "home", "monthly", "1.0"
     if en_path == "services.html":
@@ -125,7 +138,10 @@ def classify(en_path):
 
 
 def collect():
-    """Every indexable page, grouped into families keyed by the EN url."""
+    """[DB-010.e] Every indexable page, grouped into families keyed by the EN url.
+
+    Skips noindex pages, asserts every page self-canonicalises (apex excepted) and
+    that every family has exactly en/it/sq + x-default==en."""
     pages = {}
     for p in sorted(BASE.rglob("*.html")):
         t = p.read_bytes().decode("utf-8-sig")
@@ -159,7 +175,7 @@ def collect():
 
 
 def product_image(d):
-    """The Product JSON-LD image, asserted equal to og:image and present on disk."""
+    """[DB-010.f] The Product JSON-LD image, asserted equal to og:image and present on disk."""
     for b in re.findall(r'<script type="application/ld\+json"[^>]*>(.*?)</script>',
                         d["text"], re.S):
         try:
@@ -178,7 +194,7 @@ def product_image(d):
 
 
 def ordered_families(fams):
-    """Deterministic order: a new watch appends, a new article inserts cleanly."""
+    """[DB-010.g] Deterministic order: a new watch appends, a new article inserts cleanly."""
     watch_order = {w["id"]: i for i, w in enumerate(
         json.loads((BASE / "watches.json").read_text(encoding="utf-8")))}
     buckets = {s: [] for s in SECTIONS}
@@ -200,6 +216,10 @@ def ordered_families(fams):
     return {s: sorted(buckets[s], key=key[s]) for s in SECTIONS if s != "apex"}
 
 
+# [DB-010.h] render — the full sitemap.xml text (CRLF)
+# DOES:   apex first, then each section under its banner comment; every url block
+#         carries lastmod/changefreq/priority, the four alternates (except the
+#         apex), and an image:image for product pages.
 def render(pages, fams, singles, dates):
     L = ['<?xml version="1.0" encoding="UTF-8"?>',
          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
@@ -239,11 +259,13 @@ def render(pages, fams, singles, dates):
     return "\r\n".join(L)
 
 
+# [DB-010.i] classify_apex — changefreq/priority for the synthetic apex entry
 def classify_apex():
     return "monthly", "1.0"
 
 
 # ------------------------------------------------------------------ state / dates
+# [DB-010.j] load_state — sitemap_state.json ({url: {fp, lastmod}}), or empty
 def load_state():
     if not STATE.exists():
         return {}
@@ -251,7 +273,7 @@ def load_state():
 
 
 def write_state(state):
-    """No timestamp field: it would churn the diff and defeat SKIP."""
+    """[DB-010.k] No timestamp field: it would churn the diff and defeat SKIP."""
     txt = json.dumps(state, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
     out = txt.replace("\n", "\r\n").encode("utf-8")
     if STATE.exists() and json.loads(STATE.read_text(encoding="utf-8")) == state:
@@ -260,13 +282,14 @@ def write_state(state):
     return True
 
 
+# [DB-010.l] git — run git in the repo, stdout as text (errors surface as "")
 def git(*args):
     r = subprocess.run(["git", *args], cwd=BASE, capture_output=True)
     return r.stdout.decode("utf-8", "replace")
 
 
 def seed_date(rel, fp_now, memo):
-    """Newest commit at which this file's fingerprint actually changed.
+    """[DB-010.m] Newest commit at which this file's fingerprint actually changed.
 
     Walks newest-first and exits at the first real change, which is typically one
     to three commits back because the newest commits touching any page are the
@@ -292,6 +315,10 @@ def seed_date(rel, fp_now, memo):
     return revs[-1][0]                    # never changed since it was added
 
 
+# [DB-010.n] main — date every URL (seed/freeze/normal rules), render, SKIP-write
+# DOES:   per URL: new page -> today, unchanged fingerprint (or --freeze) -> held
+#         date, changed -> today; prunes state for pages that left disk; writes
+#         sitemap.xml and sitemap_state.json only when their bytes changed.
 def main():
     seed, freeze = "--seed" in sys.argv, "--freeze" in sys.argv
     if seed and STATE.exists():

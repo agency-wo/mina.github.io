@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""
+"""[DB-014] shop_bits.py — shared HTML building blocks for the three shop generators.
+DOES:   one definition each of the price strings (Lek-first for SQ), the visible
+        shop breadcrumb + its BreadcrumbList, the delivery reassurance bar, the
+        open-now indicator, and the retired-watch redirect stub.
+
 shop_bits.py
 Shared building blocks for the three shop generators (gen_product_pages.py,
 gen_shop_index.py, gen_brand_pages.py).
@@ -35,7 +39,7 @@ CRUMBS = {
 
 
 def price_html(price, currency, lang, small="1.1rem"):
-    """Product-page price line.
+    """[DB-014.a] Product-page price line.
 
     Albanian customers judge the Lek figure, so SQ leads with Lek and shows EUR
     second. EN/IT keep EUR first. Mirrored in watch.js.
@@ -53,7 +57,7 @@ def price_html(price, currency, lang, small="1.1rem"):
 
 
 def card_price_html(price, currency, lang):
-    """Grid-card price line (smaller secondary text). Mirrored in shop.js."""
+    """[DB-014.b] Grid-card price line (smaller secondary text). Mirrored in shop.js."""
     if not price:
         return "Price on request"
     eur = ("€" if currency == "EUR" else str(currency)) + nfmt(price, lang)
@@ -80,7 +84,7 @@ CRUMB_CSS = (
 
 
 def crumb_html(lang, brand=None, leaf=None):
-    """Visible breadcrumb for shop pages.
+    """[DB-014.c] Visible breadcrumb for shop pages.
 
     Deliberately NOT class="breadcrumb": shared.css force-hides that
     (`.breadcrumb{display:none!important}`) sitewide, so reusing it would render nothing.
@@ -140,7 +144,7 @@ DELIVERY_BAR = {
 
 
 def delivery_bar_html(lang):
-    """Slim reassurance strip linking to the delivery, payment and returns page."""
+    """[DB-014.d] Slim reassurance strip linking to the delivery, payment and returns page."""
     *points, link = DELIVERY_BAR[lang]
     items = "".join(
         f'<span><i class="{icon}" aria-hidden="true"></i>{text}</span>' for icon, text in points)
@@ -150,7 +154,7 @@ def delivery_bar_html(lang):
 
 
 def crumb_jsonld(lang, page_url, brand=None, leaf=None):
-    """BreadcrumbList matching crumb_html exactly. watch.js builds the same shape."""
+    """[DB-014.e] BreadcrumbList matching crumb_html exactly. watch.js builds the same shape."""
     c = CRUMBS[lang]
     items = [
         {"@type": "ListItem", "position": 1, "name": c["home"],
@@ -188,7 +192,7 @@ OPEN_NOW_TEXT = {
 
 
 def open_now_html(lang):
-    """Walk-in indicator. The strings ride on data attributes and shared.js does the
+    """[DB-014.f] Walk-in indicator. The strings ride on data attributes and shared.js does the
     work.
 
     It used to carry its own inline <script>, which never ran once: these pages set
@@ -224,7 +228,7 @@ STUB_TEXT = {
 
 
 def stub_html(w, lang):
-    """noindex + instant refresh + canonical to the shop (the watch-29 pattern).
+    """[DB-014.g] noindex + instant refresh + canonical to the shop (the watch-29 pattern).
     gen_sitemap drops noindex pages by its own generic rule; the data never
     leaves watches.json, and clearing the flag regenerates the full page."""
     name = f'{w.get("brand", "")} {w.get("model", "")}'.strip() or w["id"]

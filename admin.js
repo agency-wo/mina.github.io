@@ -1,3 +1,14 @@
+// [CFG-005] admin.js — password-gated panel that publishes a new watch to GitHub
+// DOES:   gates the panel behind a SHA-256-checked password, keeps the GitHub token
+//         AES-GCM-encrypted in localStorage (key derived from that password via
+//         PBKDF2), and on submit uploads the photo then appends the watch to
+//         watches.json through the GitHub contents API — the resulting push is what
+//         triggers the live-site rebuild.
+// IN:     panel form fields, a dropped/picked image file, a GitHub token (repo scope)
+// OUT:    two commits on agency-wo/mina.github.io (image + watches.json); progress UI
+// CALLS:  WebCrypto (PBKDF2 / AES-GCM / SHA-256), api.github.com
+// NOTES:  the password hash only gates the UI — the token is the real credential.
+//         The token is re-encrypted and saved only after a successful publish.
 (function(){
   // Password is stored as SHA-256 hash — never compare plaintext in source
   var PW_HASH = 'e7b2b52f1b9d39adddf8fd2834458ad862aecf4bbca24d7248af4fd1e8f8a7aa';
@@ -23,6 +34,9 @@
   });
 
   // ── Crypto helpers ───────────────────────────────────────────────────────────
+  // [CFG-005.a] deriveKey — password + salt -> AES-GCM key
+  // DOES:   PBKDF2 (100k iterations, SHA-256) so the stored token blob is useless
+  //         without the login password; key is non-extractable.
   function deriveKey(password, salt){
     return crypto.subtle.importKey(
       'raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']
@@ -37,6 +51,8 @@
     });
   }
 
+  // [CFG-005.b] encryptToken — token -> {salt, iv, data} JSON, all base64
+  // DOES:   fresh random salt + IV per encryption, so re-saving never reuses either.
   function encryptToken(token, password){
     var salt = crypto.getRandomValues(new Uint8Array(16));
     var iv   = crypto.getRandomValues(new Uint8Array(12));
@@ -55,6 +71,9 @@
     });
   }
 
+  // [CFG-005.c] decryptToken — the inverse of encryptToken
+  // OUT:    resolves to the plaintext token; rejects on wrong password or a
+  //         corrupted blob (AES-GCM authenticates, so tampering also rejects).
   function decryptToken(storedJson, password){
     var stored = JSON.parse(storedJson);
     var salt = new Uint8Array(atob(stored.salt).split('').map(function(c){ return c.charCodeAt(0); }));
@@ -74,6 +93,7 @@
   var pwInput   = document.getElementById('pw-input');
   var gateError = document.getElementById('gate-error');
 
+  // [CFG-005.d] sha256hex — string -> lowercase hex digest (for the gate check)
   function sha256hex(str){
     var buf = new TextEncoder().encode(str);
     return crypto.subtle.digest('SHA-256', buf).then(function(hash){
@@ -81,6 +101,10 @@
     });
   }
 
+  // [CFG-005.e] tryLogin — the gate
+  // DOES:   compares the hash of the typed password with PW_HASH; on a match keeps
+  //         the plaintext in memory (needed later to decrypt/encrypt the token),
+  //         reveals the panel and tries to restore a saved token.
   function tryLogin(){
     var pw = pwInput.value;
     sha256hex(pw).then(function(hash){
@@ -97,6 +121,10 @@
     });
   }
 
+  // [CFG-005.f] loadSavedToken — restore the encrypted token from a past session
+  // DOES:   decrypts with the session password and validates the token against
+  //         GitHub before showing "connected"; a dead token or failed decryption
+  //         clears storage so a stale credential can never look alive.
   function loadSavedToken(){
     var enc = localStorage.getItem('iglisi_gh_token_enc');
     if(!enc) return;
@@ -122,6 +150,7 @@
       });
   }
 
+  // [CFG-005.g] ghValidateToken — liveness probe: GET /user, true iff 2xx
   function ghValidateToken(token){
     return fetch('https://api.github.com/user', {
       headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' }
@@ -181,6 +210,10 @@
     uploadArea.style.display = 'block';
   });
 
+  // [CFG-005.h] handleFile — accept a photo from the picker or a drop
+  // DOES:   enforces the 5 MB cap, reads the file as a data URL for both preview and
+  //         base64 upload payload, and derives the repo filename from the current
+  //         brand/model/reference fields.
   function handleFile(file){
     if(file.size > 5*1024*1024){ alert('Image is too large. Max 5 MB.'); return; }
     imageFile = file;
@@ -199,6 +232,9 @@
     reader.readAsDataURL(file);
   }
 
+  // [CFG-005.i] generateFilename — brand-model-ref slug + original extension
+  // DOES:   lowercases and hyphenates each part, dropping empties, so the image name
+  //         stays readable in the repo and stable for a given watch.
   function generateFilename(ext){
     var brand = (document.getElementById('f-brand').value.trim() || 'watch').toLowerCase()
       .replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'');
@@ -263,6 +299,12 @@
   });
 
   // ── GitHub publish flow ──────────────────────────────────────────────────────
+  // [CFG-005.j] publishViaGitHub — the whole publish pipeline, with progress UI
+  // DOES:   1) PUT the image, 2) GET watches.json + append the new watch, 3) PUT it
+  //         back with its sha (optimistic-lock against concurrent edits); on success
+  //         re-encrypts and saves the token and resets the form.
+  // IN:     token; data — the validated form fields; done — always-called finisher
+  // OUT:    two commits, step-by-step status dots, or an error panel on any failure
   function publishViaGitHub(token, data, done){
     var statusEl = document.getElementById('submit-status');
     statusEl.style.display = 'block';
@@ -320,6 +362,7 @@
       });
   }
 
+  // [CFG-005.k] ghGet — GET a repo file via the contents API (content + sha)
   function ghGet(token, path){
     return fetch(GH_API + path, {
       headers: { Authorization: 'token '+token, Accept: 'application/vnd.github.v3+json' }
@@ -329,6 +372,9 @@
     });
   }
 
+  // [CFG-005.l] ghPut — create or update a repo file via the contents API
+  // NOTES:  sha present = update (required by GitHub), absent = create; the error
+  //         path surfaces GitHub's response body because "409" alone is useless.
   function ghPut(token, path, contentB64, message, sha){
     var body = { message: message, content: contentB64 };
     if(sha) body.sha = sha;
@@ -343,6 +389,9 @@
   }
 
   // ── Build watch object ───────────────────────────────────────────────────────
+  // [CFG-005.m] buildWatch — form data -> the watches.json record
+  // DOES:   ids continue the watch-N sequence from the array length; optional fields
+  //         (reference, it/sq descriptions) are omitted rather than written empty.
   function buildWatch(arr, data){
     var w = {
       id: 'watch-'+(arr.length+1),
@@ -363,6 +412,7 @@
   }
 
   // ── Reset ────────────────────────────────────────────────────────────────────
+  // [CFG-005.n] resetForm — clear everything back to the "add another" state
   function resetForm(){
     document.getElementById('watch-form').reset();
     document.getElementById('f-year').value = '2025';

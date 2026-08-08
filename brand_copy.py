@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""
+"""[DB-016] brand_copy.py — the owner-verified, trilingual brand-page copy (data only).
+DOES:   exposes COPY[slug][lang] = {paras, faq} for gen_brand_pages.py; no code,
+        no derivation — every factual claim below was cleared by the owner and
+        the numbers are {tokens} filled at build time, never literals.
+
 brand_copy.py
 Localized brand-page copy for gen_brand_pages.py, kept separate so the generator
 stays readable.

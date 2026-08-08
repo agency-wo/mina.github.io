@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""
+"""[DB-011] gen_stats.py — refreshes catalogue numbers embedded in hand-written pages.
+DOES:   sweeps every HTML file for <span data-stat="..."> markers and rewrites
+        their contents from watches.json via catalog_stats; also regenerates
+        llms.txt from llms.tpl. --seed delegates the one-off marker insertion
+        to seed_stats.py.
+
 gen_stats.py
 Keeps every catalogue-derived number in hand-written pages in step with
 watches.json.
@@ -52,6 +57,10 @@ RENDER = {
 }
 
 
+# [DB-011.a] render — one marker's new text
+# DOES:   resolves a data-stat key (including per-brand n:slug) through RENDER;
+#         unknown keys/brands are hard errors, never silently left stale.
+# IN:     key; lang for the separator; s — Stats; ent — keep &euro; entity form
 def render(key, lang, s, ent):
     if key.startswith("n:"):
         slug = key[2:]
@@ -64,6 +73,8 @@ def render(key, lang, s, ent):
 SPAN_RE = re.compile(r'(<span data-stat="([a-z0-9:~-]+)">)(.*?)(</span>)', re.S)
 
 
+# [DB-011.b] read — decode a page while remembering its BOM and CRLF-ness
+# OUT:    (LF-normalized text, had_bom, was_crlf) so write() can restore both.
 def read(p):
     raw = p.read_bytes()
     bom = raw.startswith(BOM)
@@ -72,6 +83,8 @@ def read(p):
     return body.decode("utf-8").replace("\r\n", "\n"), bom, crlf
 
 
+# [DB-011.c] write — re-encode in the page's own byte form; write only on change
+# OUT:    True when the file was actually rewritten (drives the sweep counter).
 def write(p, t, bom, crlf, raw_before):
     out = (BOM if bom else b"") + (t.replace("\n", "\r\n") if crlf else t).encode("utf-8")
     if out == raw_before:
@@ -81,7 +94,7 @@ def write(p, t, bom, crlf, raw_before):
 
 
 def sweep(files=None):
-    """Refresh every marker on disk. Idempotent by construction."""
+    """[DB-011.d] Refresh every marker on disk. Idempotent by construction."""
     s = C.load()
     written = hits = 0
     for p in sorted(files or BASE.rglob("*.html")):
@@ -111,7 +124,7 @@ def sweep(files=None):
 
 
 def render_llms():
-    """llms.txt introduces the shop to language models and was the least accurate
+    """[DB-011.e] llms.txt introduces the shop to language models and was the least accurate
     page on the site: it claimed 75 guides for months. It is a template now."""
     s = C.load()
     n_art = len([f for f in (BASE / "en" / "blog").glob("*.html")
@@ -129,6 +142,7 @@ def render_llms():
         print("  SKIP llms.txt")
 
 
+# [DB-011.f] main — optional --seed migration, then llms.txt, then the sweep
 def main():
     if "--seed" in sys.argv:
         import seed_stats
