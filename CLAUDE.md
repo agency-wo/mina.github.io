@@ -18,17 +18,17 @@ watch-repair-shop/          <- working root, NOT a git repo
 ├── .claude/agents/         <- the lane agents, OUTSIDE git
 └── mina.github.io/         <- THE GIT REPO, deploys to watch.al
     ├── tools/              <- sync_stock.py and the only test file
-    ├── {en,it,sq}/         <- 161 + 161 + 165 pages
+    ├── {en,it,sq}/         <- 162 + 162 + 166 pages
     └── gen_*.py            <- the generators
 ```
 
 Gates run **from the working root** (`python scripts/audit-watches.py`). Generators run **from
 `mina.github.io/`** (`python gen_shop_index.py`) because they import sibling modules.
 
-491 HTML files. 58 live watches, 174 product pages (58 x 3; plus 6 noindex redirect stubs the
-gates skip), 15 brand pages, 240 blog articles in 5
-categories, 18 service pages, 12 legal pages. `sitemap.xml` is 466 urls / 1,860 hreflang alternates
-/ 348 images.
+494 HTML files. 58 live watches, 174 product pages (58 x 3; plus 6 noindex redirect stubs the
+gates skip), 15 brand pages, 243 blog articles in 5
+categories, 18 service pages, 12 legal pages. `sitemap.xml` is 469 urls / 1,872 hreflang alternates
+/ 174 images.
 
 ---
 
@@ -38,13 +38,21 @@ categories, 18 service pages, 12 legal pages. `sitemap.xml` is 466 urls / 1,860 
 python gen_shop_index.py
 python gen_product_pages.py
 python gen_brand_pages.py
+python gen_blog_index.py
 python gen_stats.py
 python gen_sitemap.py        # ALWAYS LAST
 ```
 
 `gen_brand_pages` imports `card()` and `W` from `gen_shop_index` and clones `{lang}/shop/index.html`,
 so it must follow it. `gen_sitemap` fingerprints page **content** to decide `lastmod`, so anything
-that rewrites HTML must run before it. `gen_blog_index.py` is independent of this chain.
+that rewrites HTML must run before it.
+
+`gen_blog_index` does not depend on the shop generators, but it **belongs in this chain and must run
+on every catalogue change**. The featured blog card's copy carries `{n}`, `{u10k}` and `{lolek}`
+tokens that only resolve when this generator runs, and the rendered index carries no `data-stat`
+marker, so `gen_stats.py` cannot heal it afterwards. Leave it out and the blog's front page quietly
+advertises the previous catalogue. That is a real incident: it shipped reading "50 of our 57
+watches" after the counter had moved on.
 
 **Never `import gen_product_pages`.** Its page loop is at module level, so importing it regenerates
 all 174 product pages as a side effect. Run it as a script. `tools/test_sync_stock.py` imports
@@ -203,9 +211,10 @@ The most frequent job here, and the one with the longest ripple.
    `"` and no `&`. Give the watch a **model name unique across the whole catalogue**, or `DUP_NAMES`
    appends a reference and retroactively rewrites the existing watch's title in all three languages.
 3. `scripts/make-new-watch-pages.py` with `NEW_IDS` set.
-4. The generator chain above, in order.
-5. **Fix the prose the count broke.** The shop index, brand pages, sitemaps, `llms.txt` and all
-   `data-stat` markers heal themselves. Blog and service prose does not.
+4. The generator chain above, in order. **`gen_blog_index.py` included** — the featured blog card
+   quotes the catalogue and nothing else can refresh it.
+5. **Fix the prose the count broke.** The shop index, brand pages, blog indexes, sitemaps,
+   `llms.txt` and all `data-stat` markers heal themselves. Article and service prose does not.
 
 Nothing needs a cache-bust: the `watches-data.js?v=` requirement died with the runtime renderer.
 

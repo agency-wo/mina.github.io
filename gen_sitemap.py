@@ -69,7 +69,7 @@ COMMERCIAL = frozenset({
     "mens-watches-albania", "womens-watches-albania", "watches-under-10000-lek",
     "chronograph-vs-three-hand-watch", "what-makes-a-watch-look-expensive",
     "how-long-does-a-cheap-watch-last", "gold-or-steel-watch",
-    "new-year-watch-gifts-albania",
+    "new-year-watch-gifts-albania", "philippe-lauren-watches-albania",
 })
 
 SECTIONS = ["apex", "home", "static", "shopindex", "brand", "product", "shopinfo",

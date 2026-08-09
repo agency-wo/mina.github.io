@@ -16,8 +16,22 @@ RULE: only owner-verified facts appear here.
                 state 5 ATM: the Steel 5ATM Blue and the NT0021-1 (watch-27).
   Hislon        sapphire crystal, marked Swiss, dress category. A higher price buys the
                 dress design and finish, not a better movement or more water resistance.
-  Philippe Lauren  visible facts only: chronograph layouts, steel and black ion-plated
-                steel, one square cushion case, one gold-tone dress model.
+  Philippe Lauren  visible facts only, and the line is NOT all chronographs. It holds three
+                kinds of watch. Four three-counter chronographs, all verified: PL2427-5
+                square cushion, PL2427-1 tonneau, PL2435-2 round steel, PL2435-5 round
+                black IP. Two Steel Sport sharing a faceted bezel, four visible screws and
+                an integrated steel bracelet: PL2924-2 black textured dial, PL2412-8 blue
+                sunburst. Two gold-tone dress: PL2392-4 square crystal-set, PL2394-2 round
+                five-link. PL2412-8 shows three subdials and pushers on the case side but
+                is deliberately NOT on the verified chronograph list in
+                en/blog/chronograph-vs-three-hand-watch.html (which publishes "seven real
+                chronographs, five multifunction" in nine strings per language), so
+                describe its dial and never its function — never the noun chronograph, and
+                never stopwatch/times/timing/elapsed/tachymeter — until the owner confirms
+                it on the bench, and do not move that arithmetic. NEVER state a movement
+                and NEVER state a water resistance for this brand. Say crystal-set, never
+                diamonds. Sub-counts are spelled as WORDS here so verify-stats.py check D
+                cannot see them; the total is always the {n} token.
   Bigotti       visible facts only. NOTHING about the company is owner-verified: no country
                 of origin, no history, no crystal type, no water resistance, no diameter.
                 Quartz is stated ONLY on the two BG.1.10616 squares, so never write that the
@@ -178,47 +192,47 @@ COPY = {
     "philippe-lauren": {
         "en": {
             "paras": [
-                "Philippe Lauren is our chronograph line: {n} models in Durrës from €{lo} to €{hi}. The range runs from all-black ion-plated steel to polished steel and gold-tone dress pieces, for men and women.",
-                "Most of the line is built around a chronograph layout, with three sub-dials and pushers on the case side, plus a date window. The cases and bracelets are stainless steel, with black ion plating on the darker models, and there is a square cushion case in the range for anyone who wants something other than a round watch.",
-                "These are among the sharpest looking watches we sell for the money. Every one comes with our 1-year guarantee, cash on delivery across Albania.",
+                "Philippe Lauren puts three different kinds of watch under one name: {n} models in Durrës from €{lo} to €{hi}. Four of them are three-counter chronographs, two are steel sport watches with a faceted bezel and an integrated bracelet, and two are gold-tone dress watches.",
+                "The four chronographs share the same layout: three sub-dials, pushers on the case side and a date window, in polished steel and black ion-plated steel, and one of them sits in a square cushion case that is the most distinctive shape we sell. The two Steel Sport models share a faceted bezel, four visible screws and an integrated steel bracelet, one with a black textured dial and Roman numerals at 12 and 6, the newer one with a deep blue sunburst dial, three sub-dials and pushers on the case side. We describe that one by what is on its dial, because we call a watch a chronograph only after we have confirmed it ourselves.",
+                "The two gold-tone dress watches are a square case with a crystal-set bezel, a silver dial and black Roman numerals, and a small round case with a silver sunburst dial on a five-link bracelet. The gold tone is plating rather than solid gold, so keep it out of salt water. We do not publish a movement or a water-resistance rating for Philippe Lauren, so ask us about the exact model and we will tell you what we know. Every one comes with our 1-year guarantee, cash on delivery across Albania.",
             ],
             "faq": [
                 ("What kind of watches is Philippe Lauren?",
-                 "It is the chronograph line we stock: {n} models from €{lo} to €{hi}, mostly three-counter chronograph layouts with a date window, in stainless steel and black ion-plated steel, plus gold-tone dress models."),
+                 "It is three kinds of watch under one name: {n} models from €{lo} to €{hi}, made up of four three-counter chronographs with a date window, two steel sport watches with a faceted bezel and an integrated bracelet, and two gold-tone dress watches. The cases and bracelets are stainless steel, with black ion plating on the darker models."),
                 ("How much does a Philippe Lauren watch cost in Albania?",
-                 "Our Philippe Lauren models run from €{lo} to €{hi}, which is roughly {lolek} to {hilek} Lek. That includes a 1-year guarantee, and cash on delivery anywhere in Albania."),
+                 "Our Philippe Lauren models run from €{lo} to €{hi}, which is roughly {lolek} to {hilek} Lek. That includes a 1-year guarantee, and cash on delivery anywhere in Albania. The two gold-tone dress models sit at the bottom of that range and the chronographs at the top."),
                 ("Where can I see Philippe Lauren watches in person?",
-                 "At our workshop on Rruga Aleksander Goga in Durrës, open Monday to Saturday 8:30 to 20:30. We have {n} models in stock and you are welcome to try them on before you buy."),
+                 "At our workshop on Rruga Aleksander Goga in Durrës, open Monday to Saturday 8:30 to 20:30. We have {n} models in stock, so you can see the difference between a chronograph dial and the sport models side by side, and you are welcome to try them on before you buy."),
             ],
         },
         "it": {
             "paras": [
-                "Philippe Lauren è la nostra linea di cronografi: {n} modelli a Durazzo da €{lo} a €{hi}. La gamma va dall’acciaio placcato nero total black all’acciaio lucido e ai pezzi da abito color oro, per uomo e donna.",
-                "Gran parte della linea è costruita attorno a un layout cronografico, con tre contatori e pulsanti sul lato della cassa, più una finestrella data. Casse e bracciali sono in acciaio inossidabile, con placcatura nera sui modelli più scuri, e nella gamma c’è una cassa quadrata a cuscino per chi vuole qualcosa di diverso da un orologio rotondo.",
-                "Sono tra gli orologi più belli che vendiamo per la cifra. Ognuno ha la nostra garanzia di 1 anno, con pagamento alla consegna in tutta l’Albania.",
+                "Philippe Lauren mette tre tipi diversi di orologio sotto un solo nome: {n} modelli a Durazzo da €{lo} a €{hi}. Quattro sono cronografi a tre contatori, due sono orologi sportivi in acciaio con ghiera sfaccettata e bracciale integrato, e due sono orologi da abito color oro.",
+                "I quattro cronografi hanno lo stesso schema: tre contatori, pulsanti sul lato della cassa e una finestrella data, in acciaio lucido e in acciaio placcato nero, e uno di loro sta in una cassa quadrata a cuscino, la forma più riconoscibile che vendiamo. I due modelli Steel Sport condividono ghiera sfaccettata, quattro viti a vista e bracciale integrato in acciaio: uno ha quadrante nero testurizzato con numeri romani alle 12 e alle 6, il più recente ha quadrante blu intenso sunburst, tre contatori e pulsanti sul lato della cassa. Lo descriviamo per quello che c’è sul suo quadrante, perché chiamiamo cronografo un orologio solo dopo averlo verificato noi.",
+                "I due orologi da abito color oro sono una cassa quadrata con ghiera con cristalli, quadrante argentato e numeri romani neri, e una piccola cassa rotonda con quadrante argentato sunburst su bracciale a cinque maglie. Il color oro è una placcatura e non oro massiccio, quindi tenetelo lontano dall’acqua salata. Per Philippe Lauren non pubblichiamo né il movimento né una certificazione di impermeabilità, quindi chiedeteci del modello esatto e vi diremo quello che sappiamo. Ognuno ha la nostra garanzia di 1 anno, con pagamento alla consegna in tutta l’Albania.",
             ],
             "faq": [
                 ("Che tipo di orologi è Philippe Lauren?",
-                 "È la linea di cronografi che teniamo: {n} modelli da €{lo} a €{hi}, in gran parte con layout cronografico a tre contatori e finestrella data, in acciaio inossidabile e acciaio placcato nero, più modelli da abito color oro."),
+                 "Sono tre tipi di orologio sotto un solo nome: {n} modelli da €{lo} a €{hi}, cioè quattro cronografi a tre contatori con finestrella data, due orologi sportivi in acciaio con ghiera sfaccettata e bracciale integrato, e due orologi da abito color oro. Casse e bracciali sono in acciaio inossidabile, con placcatura nera sui modelli più scuri."),
                 ("Quanto costa un orologio Philippe Lauren in Albania?",
-                 "I nostri modelli Philippe Lauren vanno da €{lo} a €{hi}, che sono circa {lolek} a {hilek} Lek. Sono inclusi la garanzia di 1 anno e il pagamento alla consegna in tutta l’Albania."),
+                 "I nostri modelli Philippe Lauren vanno da €{lo} a €{hi}, che sono circa {lolek} a {hilek} Lek. Sono inclusi la garanzia di 1 anno e il pagamento alla consegna in tutta l’Albania. I due modelli da abito color oro stanno in fondo alla gamma e i cronografi in cima."),
                 ("Dove posso vedere gli orologi Philippe Lauren di persona?",
-                 "Nel nostro laboratorio in Rruga Aleksander Goga a Durazzo, aperto dal lunedì al sabato dalle 8:30 alle 20:30. Abbiamo {n} modelli disponibili e potete provarli prima di acquistare."),
+                 "Nel nostro laboratorio in Rruga Aleksander Goga a Durazzo, aperto dal lunedì al sabato dalle 8:30 alle 20:30. Abbiamo {n} modelli disponibili, quindi potete vedere affiancati un quadrante da cronografo e i modelli sportivi, e potete provarli prima di acquistare."),
             ],
         },
         "sq": {
             "paras": [
-                "Philippe Lauren është linja jonë e kronografëve: {n} modele në Durrës nga €{lo} deri €{hi}. Gama shkon nga çeliku i veshur me jon të zi tërësisht i zi te çeliku i lëmuar dhe copat e veshjes në ngjyrë ari, për burra dhe gra.",
-                "Pjesa më e madhe e linjës është ndërtuar rreth një skeme kronografi, me tre nën-ciferblatë dhe butona në anën e kasës, plus një dritare date. Kasat dhe byzylykët janë çelik inoks, me veshje të zezë në modelet më të errëta, dhe në gamë ka një kasë katrore në formë jastëku për ata që duan diçka tjetër nga një orë e rrumbullakët.",
-                "Këto janë ndër orët më të bukura që shesim për paratë. Secila vjen me garancinë tonë 1-vjeçare, me pagesë në dorëzim kudo në Shqipëri.",
+                "Philippe Lauren vendos tre lloje të ndryshme orësh nën një emër të vetëm: {n} modele në Durrës nga €{lo} deri €{hi}. Katër janë kronografë me tre nën-ciferblatë, dy janë orë sportive çeliku me lunetë të faseituar dhe byzylyk të integruar, dhe dy janë orë veshjeje në ngjyrë ari.",
+                "Katër kronografët kanë të njëjtën skemë: tre nën-ciferblatë, butona në anën e kasës dhe një dritare date, në çelik të lëmuar dhe në çelik të veshur me jon të zi, dhe njëri prej tyre rri në një kasë katrore në formë jastëku, forma më e dallueshme që shesim. Dy modelet Steel Sport ndajnë lunetën e faseituar, katër vidat e dukshme dhe byzylykun e integruar çeliku: njëra ka ciferblat të zi me teksturë me numra romakë në 12 dhe 6, më e reja ka ciferblat blu të thellë sunburst, tre nën-ciferblatë dhe butona në anën e kasës. E përshkruajmë sipas asaj që ka në ciferblat, sepse një orë e quajmë kronograf vetëm pasi e kemi verifikuar vetë.",
+                "Dy orët e veshjes në ngjyrë ari janë një kasë katrore me lunetë me kristale, ciferblat argjendi dhe numra romakë të zinj, dhe një kasë e vogël e rrumbullakët me ciferblat argjendi sunburst mbi byzylyk me pesë hallka. Ngjyra e artë është veshje dhe jo ar masiv, ndaj mbajeni larg ujit të kripur. Për Philippe Lauren nuk publikojmë as mekanizëm as rezistencë ndaj ujit, ndaj na pyesni për modelin e saktë dhe ju themi atë që dimë. Secila vjen me garancinë tonë 1-vjeçare, me pagesë në dorëzim kudo në Shqipëri.",
             ],
             "faq": [
                 ("Çfarë lloj orësh është Philippe Lauren?",
-                 "Është linja e kronografëve që mbajmë: {n} modele nga €{lo} deri €{hi}, kryesisht me skema kronografi me tre nën-ciferblatë dhe dritare date, në çelik inoks dhe çelik të veshur me jon të zi, plus modele veshjeje në ngjyrë ari."),
+                 "Janë tre lloje orësh nën një emër të vetëm: {n} modele nga €{lo} deri €{hi}, domethënë katër kronografë me tre nën-ciferblatë dhe dritare date, dy orë sportive çeliku me lunetë të faseituar dhe byzylyk të integruar, dhe dy orë veshjeje në ngjyrë ari. Kasat dhe byzylykët janë çelik inoks, me veshje të zezë me jon te modelet më të errëta."),
                 ("Sa kushton një orë Philippe Lauren në Shqipëri?",
-                 "Modelet tona Philippe Lauren shkojnë nga €{lo} deri €{hi}, që janë afërsisht {lolek} deri {hilek} Lekë. Kjo përfshin një garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri."),
+                 "Modelet tona Philippe Lauren shkojnë nga €{lo} deri €{hi}, që janë afërsisht {lolek} deri {hilek} Lekë. Kjo përfshin një garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri. Dy modelet e veshjes në ngjyrë ari rrinë në fund të gamës dhe kronografët në krye."),
                 ("Ku mund t’i shoh orët Philippe Lauren nga afër?",
-                 "Në punishten tonë në Rrugën Aleksander Goga në Durrës, e hapur nga e hëna në të shtunë 8:30 deri 20:30. Kemi {n} modele në gjendje dhe jeni të mirëseardhur t’i provoni para se të blini."),
+                 "Në punishten tonë në Rrugën Aleksander Goga në Durrës, e hapur nga e hëna në të shtunë 8:30 deri 20:30. Kemi {n} modele në gjendje, ndaj mund ta shihni krah për krah dallimin mes një ciferblati kronografi dhe modeleve sportive, dhe jeni të mirëseardhur t’i provoni para se të blini."),
             ],
         },
     },
