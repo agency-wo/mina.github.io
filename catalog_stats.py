@@ -71,7 +71,7 @@ def slugify(brand):
 # [DB-013.d] Stats — slots-only value bag for the computed catalogue numbers
 class Stats:
     __slots__ = ("n", "b", "lo", "hi", "lolek", "hilek", "u10k",
-                 "per_brand", "brands_ranked")
+                 "per_brand", "brands_ranked", "brand_lo", "brand_hi")
 
 
 # [DB-013.e] load — watches.json -> Stats, over LIVE watches only
@@ -90,15 +90,47 @@ def load(path=None):
     s.lolek, s.hilek = lek(s.lo), lek(s.hi)
     s.u10k = sum(1 for w in live if w.get("price") and lek(w["price"]) < UNDER)
     s.per_brand = {}
+    # Per-brand price bounds, so "Hislon runs 149 to 199 euro" can stop being
+    # typed by hand in ~220 places. Same live-only rule as every other number:
+    # a sold or deleted watch must not set a brand's floor or ceiling.
+    s.brand_lo, s.brand_hi = {}, {}
     for w in live:
-        s.per_brand[slugify(w["brand"])] = s.per_brand.get(slugify(w["brand"]), 0) + 1
+        slug = slugify(w["brand"])
+        s.per_brand[slug] = s.per_brand.get(slug, 0) + 1
+        p = w.get("price")
+        if p:
+            s.brand_lo[slug] = min(s.brand_lo.get(slug, p), p)
+            s.brand_hi[slug] = max(s.brand_hi.get(slug, p), p)
     s.b = len(s.per_brand)
     s.brands_ranked = [b for b, _ in sorted(s.per_brand.items(),
                                             key=lambda kv: (-kv[1], kv[0]))]
     return s
 
 
-TOKEN_RE = re.compile(r"\{(n|b|lo|hi|lolek|hilek|u10k|n:[a-z0-9-]+)\}")
+# The per-brand family is n:/lo:/hi:/lolek:/hilek: + a brand slug. Everything
+# after the colon is validated against the live catalogue, so a brand that sells
+# out raises instead of rendering a stale bound.
+TOKEN_RE = re.compile(
+    r"\{(n|b|lo|hi|lolek|hilek|u10k|(?:n|lo|hi|lolek|hilek):[a-z0-9-]+)\}")
+
+
+# [DB-013.g] brand_value — one per-brand token's value, shared by fill() and
+# gen_stats.render() so the generator and the gate cannot disagree about it.
+# IN:     key like "lo:hislon"; s — a loaded Stats; lang — for the separator
+# OUT:    the rendered string, euro sign included for lo:/hi: exactly as the
+#         sitewide {lo}/{hi} do, so a marker still wraps a whole token.
+# NOTES:  raises on an unknown brand rather than rendering something plausible.
+def brand_value(key, s, lang):
+    kind, slug = key.split(":", 1)
+    table = {"n": s.per_brand, "lo": s.brand_lo, "hi": s.brand_hi,
+             "lolek": s.brand_lo, "hilek": s.brand_hi}[kind]
+    assert slug in table, f"unknown brand in token {{{key}}}"
+    v = table[slug]
+    if kind == "n":
+        return str(v)
+    if kind in ("lolek", "hilek"):
+        return nfmt(lek(v), lang)
+    return f"\u20ac{v}"
 
 
 def fill(text, lang, s=None, brand_items=None):
@@ -118,10 +150,8 @@ def fill(text, lang, s=None, brand_items=None):
 
     def sub(m):
         k = m.group(1)
-        if k.startswith("n:"):
-            slug = k[2:]
-            assert slug in s.per_brand, f"unknown brand in token {{{k}}}"
-            return str(s.per_brand[slug])
+        if ":" in k:
+            return brand_value(k, s, lang)
         if k in local:
             return str(local[k])
         if k in ("lolek", "hilek"):

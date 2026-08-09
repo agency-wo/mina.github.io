@@ -62,10 +62,13 @@ RENDER = {
 #         unknown keys/brands are hard errors, never silently left stale.
 # IN:     key; lang for the separator; s — Stats; ent — keep &euro; entity form
 def render(key, lang, s, ent):
-    if key.startswith("n:"):
-        slug = key[2:]
-        assert slug in s.per_brand, f"unknown brand in data-stat={key!r}"
-        return str(s.per_brand[slug])
+    # The per-brand family (n:/lo:/hi:/lolek:/hilek: + slug) resolves through
+    # catalog_stats so this generator and verify-stats hold one opinion of it.
+    if ":" in key:
+        v = C.brand_value(key, s, lang)
+        # brand_value returns a literal euro sign; a page that writes entities
+        # needs &euro; instead, the same swap RENDER["lo"] makes.
+        return v.replace("\u20ac", "&euro;") if ent else v
     assert key in RENDER, f"unknown data-stat key {key!r}"
     return RENDER[key](s, lang, ent)
 
