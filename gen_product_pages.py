@@ -836,8 +836,11 @@ def build_biz_ld(lang):
         "address": {"@type": "PostalAddress", "streetAddress": "Rruga Aleksander Goga",
                     "addressLocality": "Durrës", "postalCode": "2001",
                     "addressCountry": "AL"},
-        "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0",
-                            "reviewCount": str(REVIEWS), "bestRating": "5"},
+        # No aggregateRating here on purpose. The 5.0 / 104 figure is a real Google
+        # Business Profile rating, but Google does not permit a business to mark up
+        # ratings collected on a third-party platform as its own aggregateRating:
+        # ineligible for rich results, manual-action risk. The visible badge linking
+        # to the Google reviews page stays, and is honest.
     }, ensure_ascii=False, separators=(",", ":")) + "</script>")
 
 
