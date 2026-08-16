@@ -123,9 +123,9 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nmm1011.webp",
     "sold": false,
-    "description_en": "Navimarine NMM1011 - a slim minimalist dress watch in stainless steel with a pale ice-blue dial and applied baton indices. Polished steel bracelet, quartz movement, no date window to clutter the dial. An easy everyday watch that suits a slimmer wrist.",
-    "description_it": "Navimarine NMM1011 - orologio da abito sottile e minimalista in acciaio inox con quadrante azzurro ghiaccio e indici a bastone applicati. Bracciale in acciaio lucido, movimento al quarzo, nessuna finestrella data a disturbare il quadrante. Facile da portare ogni giorno, ideale su un polso sottile.",
-    "description_sq": "Navimarine NMM1011 - orë veshjeje e hollë dhe minimaliste në çelik inoks me ciferblat blu të çelët akulli dhe tregues të aplikuar. Byzylyk çeliku i lëmuar, mekanizëm kuarci, pa dritare date që ngarkon ciferblatin. E lehtë për çdo ditë dhe e përshtatshme për një dorë më të hollë."
+    "description_en": "Navimarine NMM1011 - a slim minimalist dress watch in stainless steel with a pale ice-blue dial and applied baton indices. Polished steel bracelet, quartz movement, no date window to clutter the dial. An easy everyday watch that goes with anything.",
+    "description_it": "Navimarine NMM1011 - orologio da abito sottile e minimalista in acciaio inox con quadrante azzurro ghiaccio e indici a bastone applicati. Bracciale in acciaio lucido, movimento al quarzo, nessuna finestrella data a disturbare il quadrante. Facile da portare ogni giorno, si abbina a tutto.",
+    "description_sq": "Navimarine NMM1011 - orë veshjeje e hollë dhe minimaliste në çelik inoks me ciferblat blu të çelët akulli dhe tregues të aplikuar. Byzylyk çeliku i lëmuar, mekanizëm kuarci, pa dritare date që ngarkon ciferblatin. E lehtë për çdo ditë dhe shkon me gjithçka."
   },
   {
     "id": "watch-10",
@@ -193,9 +193,9 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nt0029-2.webp",
     "sold": false,
-    "description_en": "Navimarine NT0029-2 - a steel multifunction watch with a blue sunburst dial and three subdials. They show the day, the date and 24-hour time rather than a stopwatch. Steel bracelet, quartz movement. A busy, technical-looking dial for a larger wrist.",
-    "description_it": "Navimarine NT0029-2 - orologio multifunzione in acciaio con quadrante blu sunburst e tre contatori. Indicano giorno, data e ore su 24, non un cronometro. Bracciale in acciaio, movimento al quarzo. Un quadrante ricco e tecnico per un polso importante.",
-    "description_sq": "Navimarine NT0029-2 - orë multifunksion në çelik me ciferblat blu sunburst dhe tre ciferblatë të vegjël. Ata tregojnë ditën, datën dhe orën 24-orëshe, jo kronometër. Byzylyk çeliku, mekanizëm kuarci. Një ciferblat i pasur dhe teknik për një dorë më të madhe."
+    "description_en": "Navimarine NT0029-2 - a steel multifunction watch with a blue sunburst dial and three subdials. They show the day, the date and 24-hour time rather than a stopwatch. Steel bracelet, quartz movement. A busy, technical-looking dial with plenty of presence.",
+    "description_it": "Navimarine NT0029-2 - orologio multifunzione in acciaio con quadrante blu sunburst e tre contatori. Indicano giorno, data e ore su 24, non un cronometro. Bracciale in acciaio, movimento al quarzo. Un quadrante ricco e tecnico, di grande presenza.",
+    "description_sq": "Navimarine NT0029-2 - orë multifunksion në çelik me ciferblat blu sunburst dhe tre ciferblatë të vegjël. Ata tregojnë ditën, datën dhe orën 24-orëshe, jo kronometër. Byzylyk çeliku, mekanizëm kuarci. Një ciferblat i pasur dhe teknik, me shumë prani."
   },
   {
     "id": "watch-15",
@@ -235,9 +235,9 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-navi-009-col1.webp",
     "sold": false,
-    "description_en": "Navimarine NAVI 009 Marinemaster - a large black-dial multifunction watch with a marked bezel and three subdials for day, date and 24-hour time. Stainless steel case and bracelet, quartz movement. Built for a bigger wrist.",
-    "description_it": "Navimarine NAVI 009 Marinemaster - grande orologio multifunzione con quadrante nero, lunetta graduata e tre contatori per giorno, data e ore su 24. Cassa e bracciale in acciaio inox, movimento al quarzo. Pensato per un polso grande.",
-    "description_sq": "Navimarine NAVI 009 Marinemaster - orë e madhe multifunksion me ciferblat të zi, lunetë të shkallëzuar dhe tre ciferblatë të vegjël për ditën, datën dhe orën 24-orëshe. Kasë dhe byzylyk çeliku inoks, mekanizëm kuarci. E ndërtuar për një dorë më të madhe."
+    "description_en": "Navimarine NAVI 009 Marinemaster - a large black-dial multifunction watch with a marked bezel and three subdials for day, date and 24-hour time. Stainless steel case and bracelet, quartz movement. Built to be noticed.",
+    "description_it": "Navimarine NAVI 009 Marinemaster - grande orologio multifunzione con quadrante nero, lunetta graduata e tre contatori per giorno, data e ore su 24. Cassa e bracciale in acciaio inox, movimento al quarzo. Pensato per farsi notare.",
+    "description_sq": "Navimarine NAVI 009 Marinemaster - orë e madhe multifunksion me ciferblat të zi, lunetë të shkallëzuar dhe tre ciferblatë të vegjël për ditën, datën dhe orën 24-orëshe. Kasë dhe byzylyk çeliku inoks, mekanizëm kuarci. E ndërtuar për t'u vënë re."
   },
   {
     "id": "watch-18",
@@ -305,9 +305,9 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nm229-06.webp",
     "sold": false,
-    "description_en": "Navimarine NM229-06 - a women's two-tone square dress watch with a white dial, black Roman numerals and screw details on the bezel. Gold-tone and steel bracelet, quartz movement. A quiet classic shape that suits a small wrist.",
-    "description_it": "Navimarine NM229-06 - orologio da donna bicolore con cassa quadrata, quadrante bianco, numeri romani neri e dettagli a vite sulla lunetta. Bracciale acciaio e color oro, movimento al quarzo. Una forma classica e discreta, adatta a un polso piccolo.",
-    "description_sq": "Navimarine NM229-06 - orë veshjeje për femra në dy ngjyra me kasë katrore, ciferblat të bardhë, numra romakë të zinj dhe detaje vidhash në lunetë. Byzylyk çeliku dhe ngjyrë ari, mekanizëm kuarci. Një formë klasike e qetë që i shkon një dore të vogël."
+    "description_en": "Navimarine NM229-06 - a women's two-tone square dress watch with a white dial, black Roman numerals and screw details on the bezel. Gold-tone and steel bracelet, quartz movement. A quiet classic shape for everyday wear.",
+    "description_it": "Navimarine NM229-06 - orologio da donna bicolore con cassa quadrata, quadrante bianco, numeri romani neri e dettagli a vite sulla lunetta. Bracciale acciaio e color oro, movimento al quarzo. Una forma classica e discreta, per tutti i giorni.",
+    "description_sq": "Navimarine NM229-06 - orë veshjeje për femra në dy ngjyra me kasë katrore, ciferblat të bardhë, numra romakë të zinj dhe detaje vidhash në lunetë. Byzylyk çeliku dhe ngjyrë ari, mekanizëm kuarci. Një formë klasike e qetë për çdo ditë."
   },
   {
     "id": "watch-23",
@@ -655,9 +655,9 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-14173.webp",
     "sold": false,
-    "description_en": "Elegant Daniel Klein Premium dress watch in polished stainless steel. Cream dial with black Roman numerals, blued hands and a small date window, on a solid five-link steel bracelet. A refined, timeless quartz piece that suits a slimmer wrist and makes an easy gift.",
-    "description_it": "Elegante orologio da abito Daniel Klein Premium in acciaio inossidabile lucido. Quadrante crema con numeri romani neri, lancette azzurrate e piccola finestrella data, su un solido bracciale in acciaio a cinque maglie. Un pezzo al quarzo raffinato e senza tempo, adatto a un polso sottile e ideale come regalo.",
-    "description_sq": "Orë elegante veshjeje Daniel Klein Premium në çelik inoks të lëmuar. Cadran krem me numra romakë të zinj, akrepa të kaltëruar dhe një dritare të vogël date, mbi një byzylyk solid çeliku me pesë hallka. Një copë kuarci e rafinuar dhe pa kohë, e përshtatshme për një dorë më të hollë dhe ideale si dhuratë."
+    "description_en": "Elegant Daniel Klein Premium dress watch in polished stainless steel. Cream dial with black Roman numerals, blued hands and a small date window, on a solid five-link steel bracelet. A refined, timeless quartz piece that makes an easy gift.",
+    "description_it": "Elegante orologio da abito Daniel Klein Premium in acciaio inossidabile lucido. Quadrante crema con numeri romani neri, lancette azzurrate e piccola finestrella data, su un solido bracciale in acciaio a cinque maglie. Un pezzo al quarzo raffinato e senza tempo, ideale come regalo.",
+    "description_sq": "Orë elegante veshjeje Daniel Klein Premium në çelik inoks të lëmuar. Cadran krem me numra romakë të zinj, akrepa të kaltëruar dhe një dritare të vogël date, mbi një byzylyk solid çeliku me pesë hallka. Një copë kuarci e rafinuar dhe pa kohë, ideale si dhuratë."
   },
   {
     "id": "daniel-klein-14165",
@@ -725,9 +725,9 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/bigotti-bg1-10660-7.webp",
     "sold": false,
-    "description_en": "Bigotti ladies' dress watch in gold-tone stainless steel with a glossy black dial. Applied gold-tone baton indices and hands on a slim round case, finished with a gold-tone five-link bracelet. A classic black-and-gold pairing that suits a slimmer wrist.",
-    "description_it": "Orologio da donna Bigotti in acciaio inossidabile color oro con quadrante nero lucido. Indici a bastone e lancette dorate applicati su una cassa rotonda sottile, con bracciale color oro a cinque maglie. Un classico abbinamento nero e oro, ideale per un polso sottile.",
-    "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks ngjyrë ari me ciferblat të zi të shndritshëm. Tregues shiritash dhe akrepa të artë të aplikuar mbi një kasë të rrumbullakët të hollë, me byzylyk ngjyrë ari me pesë hallka. Një kombinim klasik i zezë me ar, i përshtatshëm për një dorë më të hollë."
+    "description_en": "Bigotti ladies' dress watch in gold-tone stainless steel with a glossy black dial. Applied gold-tone baton indices and hands on a slim round case, finished with a gold-tone five-link bracelet. A classic black-and-gold pairing that never dates.",
+    "description_it": "Orologio da donna Bigotti in acciaio inossidabile color oro con quadrante nero lucido. Indici a bastone e lancette dorate applicati su una cassa rotonda sottile, con bracciale color oro a cinque maglie. Un classico abbinamento nero e oro, che non passa di moda.",
+    "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks ngjyrë ari me ciferblat të zi të shndritshëm. Tregues shiritash dhe akrepa të artë të aplikuar mbi një kasë të rrumbullakët të hollë, me byzylyk ngjyrë ari me pesë hallka. Një kombinim klasik i zezë me ar, që nuk del nga moda."
   },
   {
     "id": "philippe-lauren-pl2924-2",
@@ -753,9 +753,9 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2394-2.webp",
     "sold": false,
-    "description_en": "Philippe Lauren ladies' dress watch in gold-tone stainless steel with a small round case. Silver sunburst dial with slim gold-tone baton indices and matching hands, on a gold-tone five-link bracelet. A quiet, classic watch that suits a slimmer wrist.",
-    "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile color oro con piccola cassa rotonda. Quadrante argentato sunburst con sottili indici a bastone dorati e lancette abbinate, su bracciale color oro a cinque maglie. Un orologio classico e discreto, adatto a un polso sottile.",
-    "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks ngjyrë ari me kasë të vogël të rrumbullakët. Ciferblat argjendi sunburst me tregues shiritash të hollë ngjyrë ari dhe akrepa të përshtatur, mbi byzylyk ngjyrë ari me pesë hallka. Një orë klasike dhe e qetë, e përshtatshme për një dorë më të hollë."
+    "description_en": "Philippe Lauren ladies' dress watch in gold-tone stainless steel with a small round case. Silver sunburst dial with slim gold-tone baton indices and matching hands, on a gold-tone five-link bracelet. A quiet, classic watch for everyday wear.",
+    "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile color oro con piccola cassa rotonda. Quadrante argentato sunburst con sottili indici a bastone dorati e lancette abbinate, su bracciale color oro a cinque maglie. Un orologio classico e discreto, per tutti i giorni.",
+    "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks ngjyrë ari me kasë të vogël të rrumbullakët. Ciferblat argjendi sunburst me tregues shiritash të hollë ngjyrë ari dhe akrepa të përshtatur, mbi byzylyk ngjyrë ari me pesë hallka. Një orë klasike dhe e qetë, për çdo ditë."
   },
   {
     "id": "daniel-klein-14190",
