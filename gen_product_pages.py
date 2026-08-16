@@ -820,6 +820,24 @@ def pre_render_twitter(html: str, title: str, desc: str, w) -> str:
     return out
 
 
+def rewrite_image_refs(html: str, w) -> str:
+    """[DB-017.v] og:image and the Product JSON-LD image were written once by
+    make-new-watch-pages.py and owned by nobody afterwards, while twitter:image
+    above was regenerated every run. So an image RENAME propagated to the body
+    picture and to twitter:image and left og:image and the schema pointing at a
+    file that no longer exists: a 404 in every social preview, silently, because
+    the page still rendered fine. Found when gen_sitemap refused to build after
+    the 2026-08-17 hash rename. These two now regenerate with everything else."""
+    img = f'https://watch.al{w["image"]}'
+    out, n1 = re.subn(r'(<meta property="og:image" id="og-image" content=")[^"]*(">)',
+                      lambda m: m.group(1) + img + m.group(2), html, count=1)
+    out, n2 = re.subn(r'("image":")https://watch\.al/images/watches/[^"]*(")',
+                      lambda m: m.group(1) + img + m.group(2), out, count=1)
+    assert n1 == 1, f"og:image tag not found ({n1})"
+    assert n2 == 1, f"product JSON-LD image not found ({n2})"
+    return out
+
+
 
 def build_biz_ld(lang):
     """[DB-017.u] The 5.0 rating as structured data, on a LocalBusiness node.
@@ -1018,6 +1036,7 @@ for w in watches:
         new_html = fix_footer_year(new_html)
         new_html = strip_runtime_renderer(new_html)
         new_html = pre_render_twitter(new_html, t, meta_desc, w)
+        new_html = rewrite_image_refs(new_html, w)
 
         out = (b"\xef\xbb\xbf" if bom else b"") + (
             new_html.replace("\n", "\r\n") if crlf else new_html).encode("utf-8")
