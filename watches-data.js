@@ -821,7 +821,7 @@ window.WATCHES_DATA = [
     "condition": "New",
     "price": 58,
     "currency": "EUR",
-    "image": "/images/watches/philippe-lauren-pl2374-1.d4177729.webp",
+    "image": "/images/watches/philippe-lauren-pl2374-1.6c3c147e.webp",
     "sold": false,
     "description_en": "Philippe Lauren ladies' dress watch in stainless steel with a rectangular case and bevelled cut corners on the bezel. Silver sunburst dial with applied slim baton indices and matching hands, on a steel bracelet with visible screws on the links. No date window, and a shape that stands apart from the classic round models.",
     "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile con cassa rettangolare e angoli smussati sulla ghiera. Quadrante argentato sunburst con sottili indici a bastone applicati e lancette abbinate, su bracciale in acciaio con viti a vista sulle maglie. Senza finestrella data, e una forma che si distingue dai classici modelli rotondi.",
