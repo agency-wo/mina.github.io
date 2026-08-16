@@ -24,7 +24,8 @@ The site is trilingual: English (/en/), Albanian (/sq/), Italian (/it/).
 
 - Address: Rruga Aleksander Goga, Durrës 2001, Albania
 - Hours: Monday to Saturday, 08:30 to 20:30. Closed Sunday.
-- Phone and WhatsApp: +355 67 636 0510
+- Phone and WhatsApp (English, Italian): +355 67 571 6090
+- Phone and WhatsApp (Albanian / Shqip): +355 67 636 0510
 - Instagram: https://instagram.com/iglisiwatch
 
 ## Albanian (Shqip)

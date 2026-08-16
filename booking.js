@@ -19,6 +19,10 @@
     sq:{intro:"Pershendetje, dua te rezervoj nje sherbim tek Iglisi Watch:\n\n",svc:'Sherbimi: ',name:'Emri: ',phone:'Telefoni: ',date:'Data: ',time:'Ora: ',notes:'Shenime: '}
   };
   var t=T[lang]||T.en;
+  // [CFG-010] the number is a language question: en/it reach the owner, sq reaches
+  // his father, who speaks only Albanian. Mirrors mina.github.io/contact.py.
+  var PHONE={en:'355675716090',it:'355675716090',sq:'355676360510'};
+  var wa=PHONE[lang]||PHONE.en;
   // [UI-005.a] err — inline "required field" feedback
   // DOES:   tints the offending field red and focuses it; the tint clears itself on
   //         the next keystroke. The color IS the message — no error text is shown.
@@ -37,6 +41,6 @@
     if(date){try{var d=new Date(date+'T12:00:00'),loc=lang==='sq'?'sq-AL':lang==='it'?'it-IT':'en-GB';msg+=t.date+d.toLocaleDateString(loc,{weekday:'long',day:'numeric',month:'long'})+'\n';}catch(x){msg+=t.date+date+'\n';}}
     if(time)msg+=t.time+time+'\n';
     if(notes)msg+=t.notes+notes+'\n';
-    window.open('https://api.whatsapp.com/send?phone=355676360510&text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');
+    window.open('https://api.whatsapp.com/send?phone='+wa+'&text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');
   });
 }());

@@ -299,7 +299,7 @@
   //         have to ask which watch the customer is looking at.
   function waMsg(w){
     var msg = "Hi, I\u2019m interested in the " + w.brand + ' ' + w.model + ' (Ref. ' + (w.reference||'N/A') + ') listed on your website.';
-    return 'https://api.whatsapp.com/send?phone=355676360510&text=' + encodeURIComponent(msg);
+    return 'https://api.whatsapp.com/send?phone=355675716090&text=' + encodeURIComponent(msg);
   }
 
   // [UI-016.g] watchCard — the card markup, and the mirror half of the site

@@ -18,7 +18,10 @@ Rules:
  - Placement is BELOW the grid. Nothing is ever added above it (brand-strip lesson).
 """
 
-WA_NUM = "+355 67 636 0510"
+from contact import phone  # [CFG-010] the number is a language question now
+
+# Each block below is already one language, so each simply asks for its own.
+# en/it reach the owner; sq reaches his father, who speaks only Albanian.
 
 COPY = {
     "en": {
@@ -30,7 +33,7 @@ COPY = {
         "faq_h": "Buying a watch from us",
         "faq": [
             ("Can I order a watch online in Albania?",
-             "Yes. Pick a watch on this page and message us on WhatsApp at " + WA_NUM + ". We "
+             "Yes. Pick a watch on this page and message us on WhatsApp at " + phone("en")["text"] + ". We "
              "deliver anywhere in Albania with cash on delivery, so you pay when the watch "
              "arrives. Delivery is free and normally takes 3 to 7 days."),
             ("Do you deliver watches to Tirana?",
@@ -72,7 +75,7 @@ COPY = {
         "faq_h": "Comprare un orologio da noi",
         "faq": [
             ("Posso ordinare un orologio online in Albania?",
-             "Sì. Scegliete un orologio in questa pagina e scriveteci su WhatsApp al " + WA_NUM +
+             "Sì. Scegliete un orologio in questa pagina e scriveteci su WhatsApp al " + phone("it")["text"] +
              ". Consegniamo in tutta l'Albania con pagamento alla consegna, quindi pagate "
              "quando l'orologio arriva. La consegna è gratuita e richiede di norma da 3 a 7 giorni."),
             ("Consegnate orologi a Tirana?",
@@ -114,7 +117,7 @@ COPY = {
         "faq_h": "Si të blini një orë nga ne",
         "faq": [
             ("A mund të porosis një orë online në Shqipëri?",
-             "Po. Zgjidhni një orë në këtë faqe dhe na shkruani në WhatsApp në " + WA_NUM + ". "
+             "Po. Zgjidhni një orë në këtë faqe dhe na shkruani në WhatsApp në " + phone("sq")["text"] + ". "
              "Dërgojmë kudo në Shqipëri me pagesë në dorëzim, pra paguani kur ora të mbërrijë. "
              "Dërgesa është falas dhe zakonisht zgjat 3 deri në 7 ditë."),
             ("A dërgoni orë në Tiranë?",

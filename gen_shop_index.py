@@ -22,6 +22,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 import catalog_stats
+from contact import phone  # [CFG-010] en/it reach the owner, sq reaches his father
 from shop_bits import (card_price_html, crumb_html, CRUMB_CSS,
                        delivery_bar_html, DELIVERY_CSS)
 from shop_seo import COPY as SEO_COPY, fill as seo_fill, seo_section_html, faq_jsonld
@@ -89,7 +90,8 @@ def card(w, lang):
         cta = f'<span style="font-size:.82rem;color:#888">{t["sold"]}</span>'
     else:
         msg = t["msg"].format(b=w["brand"], m=w["model"], r=w.get("reference") or "N/A")
-        url = "https://api.whatsapp.com/send?phone=355676360510&text=" + quote(msg, safe="")
+        url = (f"https://api.whatsapp.com/send?phone={phone(lang)['wa']}&text="
+               + quote(msg, safe=""))
         cta = (f'<a href="{url}" target="_blank" rel="noopener noreferrer" class="watch-cta" '
                f'data-fb-contact="1" aria-label="{t["cta_aria"].format(n=name)}">'
                f'<i class="fab fa-whatsapp" aria-hidden="true"></i> {t["cta"]}</a>')

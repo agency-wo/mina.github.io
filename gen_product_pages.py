@@ -24,6 +24,7 @@ import urllib.parse
 from pathlib import Path
 
 from catalog_stats import REVIEWS, lek, nfmt
+from contact import phone  # [CFG-010] en/it reach the owner, sq reaches his father
 from shop_bits import (crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html,
                        price_html as shared_price_html, stub_html)
 
@@ -371,7 +372,7 @@ def wa_url(kind, w, lang):
     url = f'watch.al/{lang}/shop/{w["id"]}.html'
     msg = WA[lang][kind].format(name=name, ref=ref, price=price, url=url)
     assert "—" not in msg
-    return ("https://api.whatsapp.com/send?phone=355676360510&amp;text="
+    return (f"https://api.whatsapp.com/send?phone={phone(lang)['wa']}&amp;text="
             + urllib.parse.quote(msg))
 
 
@@ -509,8 +510,9 @@ def add_call_bar(html: str, lang: str) -> str:
     if 'class="call-bar"' in html:
         return html
     bar = (f'<div class="call-bar" role="complementary" aria-label="{CALL_BAR_ARIA[lang]}">'
-           f'<a href="tel:+355676360510"><i class="fas fa-phone-alt" aria-hidden="true"></i> '
-           f'+355 67 636 0510</a></div>')
+           f'<a href="tel:{phone(lang)["tel"]}">'
+           f'<i class="fas fa-phone-alt" aria-hidden="true"></i> '
+           f'{phone(lang)["text"]}</a></div>')
     out, n = re.subn(r'(?=<a href="[^"]*" class="whatsapp-float")', lambda _: bar, html, count=1)
     assert n == 1, "whatsapp-float anchor not found for call bar"
     return out
@@ -830,7 +832,7 @@ def build_biz_ld(lang):
     return ('<script type="application/ld+json" id="ld-biz">' + json.dumps({
         "@context": "https://schema.org", "@type": ["Store", "LocalBusiness"],
         "@id": "https://watch.al/#business", "name": "Iglisi Watch",
-        "url": f"https://watch.al/{lang}/shop/", "telephone": "+355676360510",
+        "url": f"https://watch.al/{lang}/shop/", "telephone": phone(lang)["tel"],
         "email": "iglisi@watch.al", "image": "https://watch.al/og-image.png?v=2",
         "priceRange": "€€",
         "address": {"@type": "PostalAddress", "streetAddress": "Rruga Aleksander Goga",

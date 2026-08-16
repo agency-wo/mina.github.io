@@ -26,6 +26,10 @@
   };
   var lang = (document.documentElement.getAttribute('lang') || 'en').slice(0, 2);
   var L = STRINGS[lang] || STRINGS.en;
+  // [CFG-010] the number is a language question: en/it reach the owner, sq reaches
+  // his father, who speaks only Albanian. Mirrors mina.github.io/contact.py.
+  var PHONE = { en: '355675716090', it: '355675716090', sq: '355676360510' };
+  var WA = PHONE[lang] || PHONE.en;
 
   var product = document.getElementById('ld-json') && document.getElementById('watch-content');
   var brandGrid = document.getElementById('brandGrid');
@@ -88,7 +92,7 @@
       a.className = 'watch-cta-main stock-notify';
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
-      a.href = 'https://api.whatsapp.com/send?phone=355676360510&text=' +
+      a.href = 'https://api.whatsapp.com/send?phone=' + WA + '&text=' +
         encodeURIComponent(L.msg.replace('{W}', name).replace('{R}', sku));
       var i = document.createElement('i');
       i.className = 'fab fa-whatsapp';

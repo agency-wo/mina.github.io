@@ -30,6 +30,7 @@ import re
 from pathlib import Path
 
 from catalog_stats import lek, nfmt
+from contact import phone  # [CFG-010] en/it reach the owner, sq reaches his father
 from gen_shop_index import card, W as WATCHES  # same card markup as the shop grid
 
 BASE = Path(__file__).parent
@@ -44,7 +45,9 @@ BRANDS = [
     ("bigotti", "Bigotti"),
 ]
 
-WA = "https://api.whatsapp.com/send?phone=355676360510&amp;text="
+# [CFG-010] built per language at the call site: en/it reach the owner, sq his father
+def wa_base(lang):
+    return f"https://api.whatsapp.com/send?phone={phone(lang)['wa']}&amp;text="
 
 UI = {
     "en": dict(
@@ -141,7 +144,7 @@ def build_main(slug, brand, lang, items):
     trust = " &middot; ".join(
         f'<span style="white-space:nowrap"><i class="fas {ic}" aria-hidden="true"></i> {t}</span>'
         for ic, t in zip(("fa-check-circle", "fa-shield-alt", "fa-map-marker-alt"), ui["trust"]))
-    wa = WA + fill(UI[lang]["wa_msg"], brand, items, lang).replace(" ", "%20").replace(",", "%2C")
+    wa = wa_base(lang) + fill(UI[lang]["wa_msg"], brand, items, lang).replace(" ", "%20").replace(",", "%2C")
     cards = "".join(card(w, lang) for w in items)
     return (
         '<main id="main-content">'
@@ -292,7 +295,7 @@ def build_page(slug, brand, lang):
     # (shop.js merges live stock into its own data), so it is added here.
     if '<script src="/stock-live.js' not in html:
         html = html.replace('<script src="/shared.js?v=23" defer></script>',
-                            '<script src="/shared.js?v=23" defer></script>\n  <script src="/stock-live.js?v=1" defer></script>', 1)
+                            '<script src="/shared.js?v=23" defer></script>\n  <script src="/stock-live.js?v=2" defer></script>', 1)
     assert '<script src="/stock-live.js' in html, f"{lang}/{slug}: stock-live.js missing"
     return html
 
