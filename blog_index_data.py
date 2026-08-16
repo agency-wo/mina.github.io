@@ -40,11 +40,11 @@ ARTICLES = [
         label=dict(en='Buying Guide', it='Guida all’Acquisto', sq='Guidë Blerjeje'),
         card=dict(
             en=dict(title='Philippe Lauren Watches in Albania: Which One to Buy',
-                    desc='{n:philippe-lauren} models from 5,700 L to 7,000 L: four real chronographs, two steel sport watches, two gold-tone dress pieces. Which one to buy, and why.'),
+                    desc='{n:philippe-lauren} models from {lolek:philippe-lauren} L to {hilek:philippe-lauren} L: four real chronographs, three steel dress, two steel sport, two gold-tone dress. Which one to buy, and why.'),
             it=dict(title='Orologi Philippe Lauren in Albania: Quale Comprare',
-                    desc='{n:philippe-lauren} modelli da 5.700 L a 7.000 L: quattro cronografi veri, due sportivi in acciaio, due da abito color oro. Quale comprare, e perché.'),
+                    desc='{n:philippe-lauren} modelli da {lolek:philippe-lauren} L a {hilek:philippe-lauren} L: quattro cronografi veri, tre da abito in acciaio, due sportivi, due da abito color oro. Quale comprare, e perché.'),
             sq=dict(title='Orë Philippe Lauren në Shqipëri: Cilën të Blesh',
-                    desc='{n:philippe-lauren} modele nga 5.700 L deri 7.000 L: katër kronografë të vërtetë, dy sportive çeliku, dy veshjeje ngjyrë ari. Cilën të blesh, dhe pse.'),
+                    desc='{n:philippe-lauren} modele nga {lolek:philippe-lauren} L deri {hilek:philippe-lauren} L: katër kronografë të vërtetë, tri veshjeje çeliku, dy sportive, dy veshjeje ngjyrë ari. Cilën të blesh, dhe pse.'),
         ),
     ),
     dict(

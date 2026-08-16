@@ -811,5 +811,47 @@
     "description_en": "Philippe Lauren men's sport watch in stainless steel with a faceted bezel and four visible screws. Deep blue sunburst dial with three subdials and applied baton indices, a date window, pushers on the case side, and an integrated steel bracelet. The blue counterpart to our black-dial sport model.",
     "description_it": "Orologio sportivo da uomo Philippe Lauren in acciaio inossidabile con ghiera sfaccettata e quattro viti a vista. Quadrante blu intenso sunburst con tre contatori e indici a bastone applicati, finestrella data, pulsanti sul lato della cassa e bracciale integrato in acciaio. La controparte blu del nostro modello sportivo con quadrante nero.",
     "description_sq": "Orë sportive për burra Philippe Lauren në çelik inoks me lunetë të faseituar dhe katër vida të dukshme. Ciferblat blu i thellë sunburst me tre nën-ciferblatë dhe tregues shiritash të aplikuar, dritare date, butona në anën e kasës dhe byzylyk i integruar çeliku. Versioni blu i modelit tonë sportiv me ciferblat të zi."
+  },
+  {
+    "id": "philippe-lauren-pl2374-1",
+    "brand": "Philippe Lauren",
+    "model": "Steel Rectangular",
+    "reference": "PL2374-1",
+    "condition": "New",
+    "price": 58,
+    "currency": "EUR",
+    "image": "/images/watches/philippe-lauren-pl2374-1.webp",
+    "sold": false,
+    "description_en": "Philippe Lauren ladies' dress watch in stainless steel with a rectangular case and bevelled cut corners on the bezel. Silver sunburst dial with applied slim baton indices and matching hands, on a steel bracelet with visible screws on the links. No date window, and a shape that stands apart from the classic round models.",
+    "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile con cassa rettangolare e angoli smussati sulla ghiera. Quadrante argentato sunburst con sottili indici a bastone applicati e lancette abbinate, su bracciale in acciaio con viti a vista sulle maglie. Senza finestrella data, e una forma che si distingue dai classici modelli rotondi.",
+    "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks me kasë drejtkëndore dhe qoshe të prera në lunetë. Ciferblat argjendi sunburst me tregues shiritash të hollë të aplikuar dhe akrepa të përshtatur, mbi byzylyk çeliku me vida të dukshme në hallka. Pa dritare date, dhe një formë që dallohet nga modelet klasike të rrumbullakëta."
+  },
+  {
+    "id": "philippe-lauren-pl2394-1",
+    "brand": "Philippe Lauren",
+    "model": "Steel Classic",
+    "reference": "PL2394-1",
+    "condition": "New",
+    "price": 58,
+    "currency": "EUR",
+    "image": "/images/watches/philippe-lauren-pl2394-1.webp",
+    "sold": false,
+    "description_en": "Philippe Lauren ladies' dress watch in stainless steel with a round case and a plain polished bezel. Silver sunburst dial with applied slim baton indices, matching hands and a thin sweep seconds hand, on a five-link polished steel bracelet. No date window. The steel counterpart to our Gold Classic, the same case family in a cooler finish.",
+    "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile con cassa rotonda e ghiera lucida liscia. Quadrante argentato sunburst con sottili indici a bastone applicati, lancette abbinate e sottile lancetta dei secondi, su bracciale in acciaio lucido a cinque maglie. Senza finestrella data. La controparte in acciaio del nostro Gold Classic, la stessa famiglia di cassa con una finitura più fredda.",
+    "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks me kasë të rrumbullakët dhe lunetë të lëmuar pa zbukurime. Ciferblat argjendi sunburst me tregues shiritash të hollë të aplikuar, akrepa të përshtatur dhe akrep të hollë sekondash, mbi byzylyk çeliku të lëmuar me pesë hallka. Pa dritare date. Versioni në çelik i Gold Classic tonë, e njëjta familje kase me finiturë më të ftohtë."
+  },
+  {
+    "id": "philippe-lauren-steel-crystal-blue",
+    "brand": "Philippe Lauren",
+    "model": "Steel Crystal Blue",
+    "reference": "",
+    "condition": "New",
+    "price": 52,
+    "currency": "EUR",
+    "image": "/images/watches/philippe-lauren-steel-crystal-blue.webp",
+    "sold": false,
+    "description_en": "Philippe Lauren ladies' dress watch in stainless steel with a round case and a crystal-set bezel in two rows. Deep blue sunburst dial with crystal indices and slim polished baton hands, on a five-link polished steel bracelet. No date window, and the dressiest Philippe Lauren on our counter.",
+    "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile con cassa rotonda e ghiera con cristalli su due file. Quadrante blu intenso sunburst con indici con cristalli e sottili lancette a bastone lucide, su bracciale in acciaio lucido a cinque maglie. Senza finestrella data, e il Philippe Lauren più elegante che teniamo.",
+    "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks me kasë të rrumbullakët dhe lunetë me kristale në dy rreshta. Ciferblat blu i thellë sunburst me tregues me kristale dhe akrepa shiritash të hollë e të lëmuar, mbi byzylyk çeliku të lëmuar me pesë hallka. Pa dritare date, dhe Philippe Lauren më elegante që kemi."
   }
 ]
