@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # [UI-003] add_stock_live.py — one-shot: mount stock-live.js on product pages.
-# DOES:   Adds <script src="/stock-live.js?v=1" defer> after shared.js on every
+# DOES:   Adds <script src="/stock-live.js?v=2" defer> after shared.js on every
 #         {lang}/shop/*.html EXCEPT index.html (shop.js merges live stock into
 #         its own data — [UI-002]) and delivery.html (no watch on it). The two
 #         legacy meta-refresh stubs self-exclude: they carry no shared.js.
@@ -16,7 +16,10 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 ANCHOR = '<script src="/shared.js?v=23" defer></script>'
-TAG = '\n  <script src="/stock-live.js?v=1" defer></script>'
+# The version must track the live one. gen_brand_pages.py held a stale ?v=1 here
+# too and silently reverted 15 pages to a cached script on 2026-08-16; a cached
+# stock-live.js serves the pre-split phone number, which reaches the wrong person.
+TAG = '\n  <script src="/stock-live.js?v=2" defer></script>'
 
 def main():
     missing = []
