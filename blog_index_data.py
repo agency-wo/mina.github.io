@@ -41,6 +41,39 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
+        slug='cash-on-delivery-watches-albania', cat='buying',
+        card=dict(
+            en=dict(title='Cash on Delivery in Albania: How Buying a Watch Works',
+                    desc='You pay the courier at the door, with the box open and the watch in your hands. Free delivery anywhere in Albania, 3 to 7 days, and refusing it costs you nothing.'),
+            it=dict(title='Pagamento alla Consegna in Albania: Come Funziona',
+                    desc='Pagate il corriere alla porta, con la scatola aperta e l’orologio nelle vostre mani. Consegna gratuita in tutta l’Albania, dai 3 ai 7 giorni, e potete rifiutarlo senza pagare nulla.'),
+            sq=dict(title='Pagesa në Dorëzim për Orët në Shqipëri: Si Funksionon',
+                    desc='E paguani korrierin te dera, me kutinë e hapur dhe orën në duart tuaja. Dërgesë falas kudo në Shqipëri, 3 deri në 7 ditë, dhe mund ta refuzoni pa ju kushtuar asgjë.'),
+        ),
+    ),
+    dict(
+        slug='watch-returns-exchange-guarantee', cat='buying',
+        card=dict(
+            en=dict(title='Returns, Exchanges and the 1-Year Guarantee',
+                    desc='Refuse it at the door and pay nothing. Thirty days to bring it back to Durrës for an exchange or a refund. A 1-year guarantee on every watch, and what it does not cover.'),
+            it=dict(title='Resi, Cambi e la Garanzia di 1 Anno',
+                    desc='Rifiutatelo alla porta e non pagate nulla. Trenta giorni per riportarlo a Durazzo per un cambio o un rimborso. Garanzia di 1 anno su ogni orologio, e cosa non copre.'),
+            sq=dict(title='Kthimet, Ndërrimet dhe Garancia 1-Vjeçare',
+                    desc='Refuzojeni te dera dhe nuk paguani asgjë. Tridhjetë ditë për ta sjellë në Durrës për ndërrim ose rimbursim. Garanci 1-vjeçare për çdo orë, dhe çfarë nuk mbulon.'),
+        ),
+    ),
+    dict(
+        slug='why-buy-from-a-watchmaker', cat='buying',
+        card=dict(
+            en=dict(title='Why Buy Your Watch from a Watchmaker',
+                    desc='The same hands that repair a watch in Durrës choose and inspect every watch we list. What that changes about what gets claimed, and who honours the guarantee.'),
+            it=dict(title='Perché Comprare l’Orologio da un Orologiaio',
+                    desc='Le stesse mani che riparano un orologio a Durazzo scelgono e controllano ogni orologio che mettiamo in vendita. Cosa cambia in quello che si dichiara e in chi onora la garanzia.'),
+            sq=dict(title='Pse ta Blesh Orën te Orëndreqësi',
+                    desc='Të njëjtat duar që riparojnë një orë në Durrës zgjedhin dhe inspektojnë çdo orë që listojmë. Çfarë ndryshon te ajo që pretendohet dhe te ai që e nderon garancinë.'),
+        ),
+    ),
+    dict(
         slug='philippe-lauren-watches-albania', cat='buying',
         label=dict(en='Buying Guide', it='Guida all’Acquisto', sq='Guidë Blerjeje'),
         card=dict(

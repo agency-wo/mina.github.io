@@ -70,6 +70,8 @@ COMMERCIAL = frozenset({
     "chronograph-vs-three-hand-watch", "what-makes-a-watch-look-expensive",
     "how-long-does-a-cheap-watch-last", "gold-or-steel-watch",
     "new-year-watch-gifts-albania", "philippe-lauren-watches-albania",
+    "cash-on-delivery-watches-albania", "watch-returns-exchange-guarantee",
+    "why-buy-from-a-watchmaker",
 })
 
 SECTIONS = ["apex", "home", "static", "shopindex", "brand", "product", "shopinfo",

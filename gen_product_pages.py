@@ -821,7 +821,7 @@ def pre_render_twitter(html: str, title: str, desc: str, w) -> str:
 
 
 def rewrite_image_refs(html: str, w) -> str:
-    """[DB-017.v] og:image and the Product JSON-LD image were written once by
+    """[DB-017.u] og:image and the Product JSON-LD image were written once by
     make-new-watch-pages.py and owned by nobody afterwards, while twitter:image
     above was regenerated every run. So an image RENAME propagated to the body
     picture and to twitter:image and left og:image and the schema pointing at a
@@ -840,7 +840,7 @@ def rewrite_image_refs(html: str, w) -> str:
 
 
 def build_biz_ld(lang):
-    """[DB-017.u] The 5.0 rating as structured data, on a LocalBusiness node.
+    """[DB-017.v] The 5.0 rating as structured data, on a LocalBusiness node.
 
     Deliberately NOT aggregateRating inside the Product: these are reviews of a repair
     shop, not of a Navimarine NM181-03, and Google treats a business rating dressed up
@@ -864,7 +864,7 @@ def build_biz_ld(lang):
     }, ensure_ascii=False, separators=(",", ":")) + "</script>")
 
 
-# [DB-017.v] replace_biz_ld — refresh the ld-biz block, or install it before </head>
+# [DB-017.w] replace_biz_ld — refresh the ld-biz block, or install it before </head>
 def replace_biz_ld(html: str, lang: str) -> str:
     new = build_biz_ld(lang)
     if 'id="ld-biz"' in html:
@@ -877,7 +877,7 @@ def replace_biz_ld(html: str, lang: str) -> str:
 
 
 def build_crumb_div(w, lang):
-    """[DB-017.w] Visible breadcrumb, placed ABOVE #watch-content as a sibling: watch.js
+    """[DB-017.x] Visible breadcrumb, placed ABOVE #watch-content as a sibling: watch.js
     replaces watch-content.innerHTML wholesale, so anything inside it is lost."""
     leaf = f'{w["brand"]} {w["model"]}'.strip()
     return (f'<div id="watch-crumb">{CRUMB_CSS}'
@@ -885,7 +885,7 @@ def build_crumb_div(w, lang):
 
 
 def replace_crumb(html, new_div):
-    """[DB-017.x] Replace #watch-crumb, else insert just before #watch-content."""
+    """[DB-017.y] Replace #watch-crumb, else insert just before #watch-content."""
     m = re.search(r'<div id="watch-crumb">.*?</nav></div>', html, re.S)
     if m:
         return html[:m.start()] + new_div + html[m.end():]
@@ -894,7 +894,7 @@ def replace_crumb(html, new_div):
 
 
 def build_extra_div(w, lang, cfg):
-    """[DB-017.y] Specs / delivery / related products.
+    """[DB-017.z] Specs / delivery / related products.
 
     This lives as a SIBLING of #watch-content, never inside it: watch.js replaces
     watch-content.innerHTML wholesale at runtime, so anything nested there is destroyed
@@ -912,7 +912,7 @@ def build_extra_div(w, lang, cfg):
 
 
 def replace_extra(html: str, new_div: str) -> str:
-    """[DB-017.z] Replace an existing #watch-extra, else insert it right before </main>."""
+    """[DB-017.aa] Replace an existing #watch-extra, else insert it right before </main>."""
     m = re.search(r'<div id="watch-extra"[^>]*>', html)
     if m:
         start = m.start()

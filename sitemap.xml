@@ -79,7 +79,7 @@
   <!-- about.html -->
   <url>
     <loc>https://watch.al/en/about.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/about.html"/>
@@ -89,7 +89,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/about.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/about.html"/>
@@ -99,7 +99,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/about.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/about.html"/>
@@ -3153,7 +3153,7 @@
   <!-- blog/buy-watch-instagram-albania.html -->
   <url>
     <loc>https://watch.al/en/blog/buy-watch-instagram-albania.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/buy-watch-instagram-albania.html"/>
@@ -3163,7 +3163,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/comprare-orologio-instagram-albania.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/buy-watch-instagram-albania.html"/>
@@ -3173,7 +3173,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/blej-ore-instagram-shqiperi.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/buy-watch-instagram-albania.html"/>
@@ -3184,7 +3184,7 @@
   <!-- blog/buy-watch-without-trying-on.html -->
   <url>
     <loc>https://watch.al/en/blog/buy-watch-without-trying-on.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/buy-watch-without-trying-on.html"/>
@@ -3194,7 +3194,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/comprare-orologio-senza-provare.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/buy-watch-without-trying-on.html"/>
@@ -3204,7 +3204,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/blej-ore-pa-e-provuar.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/buy-watch-without-trying-on.html"/>
@@ -3304,6 +3304,37 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/cartier-santos-primo-orologio-da-polso.html"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/cartier-santos-ora-e-pare-e-dores.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/cartier-santos-first-wristwatch.html"/>
+  </url>
+  <!-- blog/cash-on-delivery-watches-albania.html -->
+  <url>
+    <loc>https://watch.al/en/blog/cash-on-delivery-watches-albania.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/cash-on-delivery-watches-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/pagamento-alla-consegna-orologi.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/pagesa-ne-dorezim-ore.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/cash-on-delivery-watches-albania.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/it/blog/pagamento-alla-consegna-orologi.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/cash-on-delivery-watches-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/pagamento-alla-consegna-orologi.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/pagesa-ne-dorezim-ore.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/cash-on-delivery-watches-albania.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/sq/blog/pagesa-ne-dorezim-ore.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/cash-on-delivery-watches-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/pagamento-alla-consegna-orologi.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/pagesa-ne-dorezim-ore.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/cash-on-delivery-watches-albania.html"/>
   </url>
   <!-- blog/casio-a159wa-legend.html -->
   <url>
@@ -4917,6 +4948,37 @@
     <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/mjetet-riparimit.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/watch-repair-tools.html"/>
   </url>
+  <!-- blog/watch-returns-exchange-guarantee.html -->
+  <url>
+    <loc>https://watch.al/en/blog/watch-returns-exchange-guarantee.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/watch-returns-exchange-guarantee.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/resi-cambio-garanzia-orologi.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/kthimi-nderrimi-garancia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/watch-returns-exchange-guarantee.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/it/blog/resi-cambio-garanzia-orologi.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/watch-returns-exchange-guarantee.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/resi-cambio-garanzia-orologi.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/kthimi-nderrimi-garancia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/watch-returns-exchange-guarantee.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/sq/blog/kthimi-nderrimi-garancia.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/watch-returns-exchange-guarantee.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/resi-cambio-garanzia-orologi.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/kthimi-nderrimi-garancia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/watch-returns-exchange-guarantee.html"/>
+  </url>
   <!-- blog/watch-service-durres.html -->
   <url>
     <loc>https://watch.al/en/blog/watch-service-durres.html</loc>
@@ -5137,7 +5199,7 @@
   <!-- blog/watch-warranty-guide.html -->
   <url>
     <loc>https://watch.al/en/blog/watch-warranty-guide.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/watch-warranty-guide.html"/>
@@ -5147,7 +5209,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/garanzia-orologio-nuovo.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/watch-warranty-guide.html"/>
@@ -5157,7 +5219,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/garancia-ore-te-reja.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/watch-warranty-guide.html"/>
@@ -5385,7 +5447,7 @@
   <!-- blog/where-to-buy-watch-durres.html -->
   <url>
     <loc>https://watch.al/en/blog/where-to-buy-watch-durres.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/where-to-buy-watch-durres.html"/>
@@ -5395,7 +5457,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/dove-comprare-orologio-durazzo.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/where-to-buy-watch-durres.html"/>
@@ -5405,7 +5467,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/ku-te-blesh-ore-durres.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/where-to-buy-watch-durres.html"/>
@@ -5474,6 +5536,37 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/quale-navimarine-comprare.html"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/cilin-navimarine-te-blesh.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/which-navimarine-to-buy.html"/>
+  </url>
+  <!-- blog/why-buy-from-a-watchmaker.html -->
+  <url>
+    <loc>https://watch.al/en/blog/why-buy-from-a-watchmaker.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/why-buy-from-a-watchmaker.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/perche-comprare-da-un-orologiaio.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/pse-te-blesh-tek-orendreqesi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/why-buy-from-a-watchmaker.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/it/blog/perche-comprare-da-un-orologiaio.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/why-buy-from-a-watchmaker.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/perche-comprare-da-un-orologiaio.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/pse-te-blesh-tek-orendreqesi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/why-buy-from-a-watchmaker.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/sq/blog/pse-te-blesh-tek-orendreqesi.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/why-buy-from-a-watchmaker.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/perche-comprare-da-un-orologiaio.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/pse-te-blesh-tek-orendreqesi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/why-buy-from-a-watchmaker.html"/>
   </url>
   <!-- blog/womens-watches-albania.html -->
   <url>

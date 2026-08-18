@@ -124,7 +124,7 @@ TOKEN_RE = re.compile(
     r"\{(b|lo|hi|lolek|hilek|(?:lo|hi|lolek|hilek):[a-z0-9-]+)\}")
 
 
-# [DB-013.g] brand_value — one per-brand token's value, shared by fill() and
+# [DB-013.f] brand_value — one per-brand token's value, shared by fill() and
 # gen_stats.render() so the generator and the gate cannot disagree about it.
 # IN:     key like "lo:hislon"; s — a loaded Stats; lang — for the separator
 # OUT:    the rendered string, euro sign included for lo:/hi: exactly as the
@@ -144,7 +144,7 @@ def brand_value(key, s, lang):
 
 
 def fill(text, lang, s=None, brand_items=None):
-    """[DB-013.f] Replace every {token}. Raises on an unknown token rather than shipping it.
+    """[DB-013.g] Replace every {token}. Raises on an unknown token rather than shipping it.
 
     brand_items scopes {n}/{lo}/{hi} to one brand, which is what the brand pages
     need; without it the tokens are sitewide.
