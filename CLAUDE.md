@@ -177,8 +177,20 @@ Breaking one of these has caused a real incident. They are not style preferences
 - **No Philippe Lauren description states a movement.**
 - **Never call a watch a chronograph without verifying it.** The site counts real chronographs
   separately from lookalikes, having got it wrong once.
-- **No fitting or size work of any kind.** No case diameters, no wrist shots, no size filters, no
-  gender fields. The owner has banned the entire category.
+- **No fitting advice. Specs are fine.** The line, set by the owner on 2026-08-18 after this rule
+  was found to contradict three published article families:
+  - **Banned**: telling a reader what size to pick, asking for a wrist measurement, wrist-size
+    reference tables, "measure your wrist", "send us your wrist size", "what suits your wrist",
+    and size filters, size fields or gender fields on a product.
+  - **Allowed**: a case diameter stated as a neutral fact ("the case is 40mm"), strap and lug
+    widths (a repair fact a customer needs in order to buy the right strap), and **bracelet link
+    adjustment described as a service we perform** ("we size it free at the counter",
+    "lo adattiamo al tuo polso"). The service is the point; the advice is what was banned.
+  - **Say that online buyers are welcome to walk in and have it sized.** Owner, 2026-08-18: the
+    bracelet is adjusted at the counter for anyone who buys in the shop, "but they are welcome to
+    come even if they [buy] online". That is a reason to buy, not a caveat, so it belongs in
+    delivery, returns and buying copy rather than being trimmed away with the fitting advice.
+  - Still banned outright: **wrist shots**.
 - **The six real workshop photos are embargoed** until the owner says the renovation is finished.
 - **Product H1 wording is owner-fixed** and carries search value. Do not rewrite it.
 

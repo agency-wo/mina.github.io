@@ -89,11 +89,11 @@ ARTICLES = [
         slug='chronograph-vs-three-hand-watch', cat='buying',
         card=dict(
             en=dict(title='Chronograph or Three Hands? What Those Subdials Actually Do',
-                    desc='Seven of our watches time something and the rest only look like they do. How to tell in five seconds, what the pushers cost in battery life, and which one to buy.'),
+                    desc='Some of our watches time something and the rest only look like they do. How to tell in five seconds, what the pushers cost in battery life, and which one to buy.'),
             it=dict(title='Cronografo o Tre Sfere? Cosa Fanno Davvero Quei Contatori',
-                    desc='Sette dei nostri orologi cronometrano davvero, gli altri sembrano solo farlo. Come capirlo in cinque secondi, quanto costano in batteria e quale comprare.'),
+                    desc='Alcuni dei nostri orologi cronometrano davvero, gli altri sembrano solo farlo. Come capirlo in cinque secondi, quanto costano in batteria e quale comprare.'),
             sq=dict(title='Kronograf apo Tre Akrepa? &Ccedil;far&euml; B&euml;jn&euml; V&euml;rtet N&euml;n-ciferblat&euml;t',
-                    desc='Shtat&euml; nga or&euml;t tona mat&euml;n koh&euml;n, t&euml; tjerat vet&euml;m duken sikur e b&euml;jn&euml;. Si dallohen p&euml;r pes&euml; sekonda, sa kushtojn&euml; n&euml; bateri dhe cil&euml;n t&euml; blesh.'),
+                    desc='Disa nga or&euml;t tona e matin koh&euml;n, t&euml; tjerat vet&euml;m duken sikur e b&euml;jn&euml;. Si dallohen p&euml;r pes&euml; sekonda, sa kushtojn&euml; n&euml; bateri dhe cil&euml;n t&euml; blesh.'),
         ),
     ),
     dict(
@@ -590,11 +590,11 @@ ARTICLES = [
         slug='which-navimarine-to-buy', cat='buying',
         card=dict(
             en=dict(title='Which Navimarine Should You Buy?',
-                    desc='Sport, classic, or chronograph: a guide to matching the right Navimarine model to your lifestyle and wrist size.'),
+                    desc='Sport, classic, or chronograph: a guide to matching the right Navimarine model to your lifestyle and your budget.'),
             it=dict(title='Quale Navimarine Comprare: Sport, Classic o Chronograph?',
-                    desc='Tre linee Navimarine, tre usi diversi. Come capire quale modello si adatta al tuo polso, al tuo stile e all&rsquo;occasione.'),
+                    desc='Tre linee Navimarine, tre usi diversi. Come capire quale modello si adatta al tuo stile, al tuo budget e all&rsquo;occasione.'),
             sq=dict(title='Cilin Navimarine t&euml; Blesh: Sport, Classic apo Chronograph?',
-                    desc='Tre linja Navimarine, tre p&euml;rdorime t&euml; ndryshme. Si t&euml; kuptoni cili model i p&euml;rshtatet ky&ccedil;it tuaj, stilit tuaj dhe rastit.'),
+                    desc='Tre linja Navimarine, tre p&euml;rdorime t&euml; ndryshme. Si t&euml; kuptoni cili model i p&euml;rshtatet stilit tuaj, buxhetit tuaj dhe rastit.'),
         ),
     ),
     # CONFLICT seeded en=buying it=gifts sq=gifts -> using buying
