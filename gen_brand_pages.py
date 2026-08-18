@@ -52,15 +52,15 @@ def wa_base(lang):
 UI = {
     "en": dict(
         h1="{brand} Watches in Albania",
-        title="{brand} Watches in Albania - {n} models from €{lo} | Iglisi Watch",
-        desc="{brand} watches in stock in Durrës from €{lo}. {n} models, 1-year guarantee, "
-             "cash on delivery across Albania. Try them on or order on WhatsApp.",
+        title="{brand} Watches in Albania - from €{lo} | Iglisi Watch",
+        desc="{brand} watches in stock in Durrës from €{lo}. 1-year guarantee, cash on "
+             "delivery across Albania. Try them on or order on WhatsApp.",
         crumb_home="Home", crumb_shop="Shop",
         faq_h="{brand} questions",
-        all_h="All {n} {brand} watches we sell",
+        all_h="Every {brand} watch we sell",
         cta_h="Not sure which one?",
-        cta_p="Send us a message and we will help you choose based on your wrist, your style and "
-              "your budget. There is no charge for the advice.",
+        cta_p="Send us a message and we will help you choose based on your style and your "
+              "budget. There is no charge for the advice.",
         cta_btn="Ask on WhatsApp",
         back="See all watches",
         wa_msg="Hi, I am interested in your {brand} watches. Which do you have in stock?",
@@ -68,15 +68,15 @@ UI = {
     ),
     "it": dict(
         h1="Orologi {brand} in Albania",
-        title="Orologi {brand} in Albania - {n} modelli da €{lo} | Iglisi Watch",
-        desc="Orologi {brand} disponibili a Durazzo da €{lo}. {n} modelli, garanzia 1 anno, "
-             "pagamento alla consegna in tutta l'Albania. Provali o ordina su WhatsApp.",
+        title="Orologi {brand} in Albania - da €{lo} | Iglisi Watch",
+        desc="Orologi {brand} disponibili a Durazzo da €{lo}. Garanzia 1 anno, pagamento "
+             "alla consegna in tutta l'Albania. Provali o ordina su WhatsApp.",
         crumb_home="Home", crumb_shop="Negozio",
         faq_h="Domande su {brand}",
-        all_h="Tutti i {n} orologi {brand} che vendiamo",
+        all_h="Tutti gli orologi {brand} che vendiamo",
         cta_h="Non sai quale scegliere?",
-        cta_p="Scrivici e ti aiutiamo a scegliere in base al tuo polso, al tuo stile e al tuo "
-              "budget. La consulenza è gratuita.",
+        cta_p="Scrivici e ti aiutiamo a scegliere in base al tuo stile e al tuo budget. "
+              "La consulenza è gratuita.",
         cta_btn="Chiedi su WhatsApp",
         back="Vedi tutti gli orologi",
         wa_msg="Salve, sono interessato agli orologi {brand}. Quali avete disponibili?",
@@ -84,14 +84,14 @@ UI = {
     ),
     "sq": dict(
         h1="Orë {brand} në Shqipëri",
-        title="Orë {brand} në Shqipëri - {n} modele nga €{lo} | Iglisi Watch",
-        desc="Orë {brand} gjendje në Durrës nga €{lo}. {n} modele, garanci 1 vit, pagesë në "
+        title="Orë {brand} në Shqipëri - nga €{lo} | Iglisi Watch",
+        desc="Orë {brand} gjendje në Durrës nga €{lo}. Garanci 1 vit, pagesë në "
              "dorëzim në gjithë Shqipërinë. Provojini ose porositni në WhatsApp.",
         crumb_home="Kryefaqja", crumb_shop="Dyqani",
         faq_h="Pyetje për {brand}",
-        all_h="Të gjitha {n} orët {brand} që shesim",
+        all_h="Të gjitha orët {brand} që shesim",
         cta_h="Nuk jeni i sigurt cilën të zgjidhni?",
-        cta_p="Na shkruani dhe ju ndihmojmë të zgjidhni sipas dorës, stilit dhe buxhetit tuaj. "
+        cta_p="Na shkruani dhe ju ndihmojmë të zgjidhni sipas stilit dhe buxhetit tuaj. "
               "Këshilla është pa pagesë.",
         cta_btn="Pyesni në WhatsApp",
         back="Shiko të gjitha orët",
@@ -116,12 +116,19 @@ def brand_watches(brand):
 
 
 # [DB-008.c] fill — brand-page token substitution
-# DOES:   replaces {brand}/{n}/{lo}/{hi}/{lolek}/{hilek} with values scoped to THIS
+# DOES:   replaces {brand}/{lo}/{hi}/{lolek}/{hilek} with values scoped to THIS
 #         brand's items, so brand copy never quotes a sitewide number.
 def fill(text, brand, items, lang='en'):
+    # {n} is REFUSED here, not filled. This fill() is private to this module and
+    # never consulted catalog_stats.TOKEN_RE, which is exactly how a per-brand
+    # count survived the sitewide purge on all 45 brand pages, in <title> and the
+    # meta description as well as the grid heading. No page states how many
+    # watches: the shop stocks more than it lists.
+    assert "{n}" not in text, (
+        f"gen_brand_pages.fill: {{n}} is retired. No page states how many watches. "
+        f"Rewrite the sentence: {text[:60]!r}")
     prices = [w["price"] for w in items]
     return (text.replace("{brand}", brand)
-                .replace("{n}", str(len(items)))
                 .replace("{lo}", str(min(prices)))
                 .replace("{hi}", str(max(prices)))
                 .replace("{lolek}", nfmt(lek(min(prices)), lang))
