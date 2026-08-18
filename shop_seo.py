@@ -26,7 +26,7 @@ from contact import phone  # [CFG-010] the number is a language question now
 COPY = {
     "en": {
         "lead": ("Every watch on this page is in stock at our shop on Rruga Aleksander Goga in "
-                 "Durrës: {n} models from {b} brands, €{lo} to €{hi}, each brand new with a 1-year "
+                 "Durrës: watches from {b} brands, €{lo} to €{hi}, each brand new with a 1-year "
                  "guarantee. Try them on Monday to Saturday, 8:30 to 20:30, or order on WhatsApp "
                  "with cash on delivery in Tirana, Shkodër, Vlorë, Elbasan, Korçë and anywhere "
                  "else in Albania."),
@@ -60,15 +60,15 @@ COPY = {
                  "on WhatsApp with cash on delivery in Tirana and across Albania, or try them on "
                  "in Durrës."),
         "biz_desc": ("Family-owned watch shop and repair workshop in Durrës, Albania since 2009. "
-                     "{n} brand-new watches from {b} brands for sale, expert watch repair, and "
+                     "Brand-new watches from {b} brands for sale, expert watch repair, and "
                      "key cutting."),
-        "coll_desc": ("{n} brand-new watches from {b} brands at Iglisi Watch in Durrës, Albania, "
+        "coll_desc": ("Brand-new watches from {b} brands at Iglisi Watch in Durrës, Albania, "
                       "€{lo} to €{hi}, each with a 1-year shop guarantee. Cash on delivery "
                       "across Albania."),
     },
     "it": {
         "lead": ("Ogni orologio in questa pagina è disponibile nel nostro negozio in Rruga "
-                 "Aleksander Goga a Durazzo: {n} modelli di {b} marchi, da €{lo} a €{hi}, tutti "
+                 "Aleksander Goga a Durazzo: orologi di {b} marchi, da €{lo} a €{hi}, tutti "
                  "nuovi con garanzia di 1 anno. Provateli dal lunedì al sabato, dalle 8:30 alle "
                  "20:30, oppure ordinate su WhatsApp con pagamento alla consegna a Tirana, "
                  "Scutari, Valona, Elbasan, Coriza e ovunque in Albania."),
@@ -102,15 +102,15 @@ COPY = {
                  "Ordina su WhatsApp con pagamento alla consegna a Tirana e in tutta l'Albania, "
                  "o provali a Durazzo."),
         "biz_desc": ("Negozio di orologi e laboratorio di riparazione a conduzione familiare a "
-                     "Durazzo, Albania, dal 2009. {n} orologi nuovi di {b} marchi in vendita, "
+                     "Durazzo, Albania, dal 2009. Orologi nuovi di {b} marchi in vendita, "
                      "riparazioni esperte e duplicazione chiavi."),
-        "coll_desc": ("{n} orologi nuovi di {b} marchi da Iglisi Watch a Durazzo, Albania, da "
+        "coll_desc": ("Orologi nuovi di {b} marchi da Iglisi Watch a Durazzo, Albania, da "
                       "€{lo} a €{hi}, ognuno con garanzia del negozio di 1 anno. Pagamento alla "
                       "consegna in tutta l'Albania."),
     },
     "sq": {
         "lead": ("Çdo orë në këtë faqe është gjendje në dyqanin tonë në Rrugën Aleksander Goga në "
-                 "Durrës: {n} modele nga {b} marka, nga €{lo} deri €{hi}, të gjitha të reja me "
+                 "Durrës: orë nga {b} marka, nga €{lo} deri €{hi}, të gjitha të reja me "
                  "garanci 1-vjeçare. Provojini nga e hëna në të shtunë, 8:30 deri 20:30, ose "
                  "porositni në WhatsApp me pagesë në dorëzim në Tiranë, Shkodër, Vlorë, Elbasan, "
                  "Korçë dhe kudo tjetër në Shqipëri."),
@@ -143,9 +143,9 @@ COPY = {
         "desc": ("Orë të reja nga €{lo}, shumica nën €100, me garanci 1 vit. Porosit në WhatsApp "
                  "me pagesë në dorëzim në Tiranë dhe në gjithë Shqipërinë, ose provoji në Durrës."),
         "biz_desc": ("Dyqan orësh dhe punishte riparimi familjare në Durrës, Shqipëri, që nga "
-                     "2009. {n} orë të reja nga {b} marka në shitje, riparime eksperte dhe kopjim "
+                     "2009. Orë të reja nga {b} marka në shitje, riparime eksperte dhe kopjim "
                      "çelësash."),
-        "coll_desc": ("{n} orë të reja nga {b} marka te Iglisi Watch në Durrës, Shqipëri, nga "
+        "coll_desc": ("Orë të reja nga {b} marka te Iglisi Watch në Durrës, Shqipëri, nga "
                       "€{lo} deri €{hi}, secila me garanci dyqani 1-vjeçare. Pagesë në dorëzim "
                       "në gjithë Shqipërinë."),
     },
@@ -156,22 +156,28 @@ from catalog_stats import lek as _lek, nfmt
 
 
 # [DB-015.a] fill — token substitution scoped to the watch list it is handed
-# DOES:   {n}/{b}/{lo}/{hi}/{lolek}/{hilek} from the given watches, so the same
+# DOES:   {b}/{lo}/{hi}/{lolek}/{hilek} from the given watches, so the same
 #         strings work for the full catalog or any subset.
+# NOTES:  {n} IS GONE AND MUST NOT COME BACK. It published how many watches are
+#         listed, and the shop holds considerably more stock than it publishes,
+#         so the number understated the shelf every time it rendered. The owner
+#         raised it more than once. Raising here rather than silently ignoring
+#         it, so a {n} left in COPY fails the build instead of shipping.
+#         {b} stays: the brand count is accurate. Prices stay: they are true.
 def fill(text, watches, lang="en"):
-    # P128: count what a buyer can actually BUY. These tokens land in the
-    # visible lead, the meta description and the structured data of the shop
-    # hub ("Every watch on this page… {n} watches from €{lo}"), and they were
-    # taken over a sold-inclusive list — so the moment anything sold, the page
-    # over-reported the shelf and could quote a price band whose cheapest
-    # watch was gone. catalog_stats.load() has excluded sold since P- for the
-    # same reason; this is the last surface that did not.
+    assert "{n}" not in text, (
+        "shop_seo.fill: {n} is retired. No page states how many watches; the "
+        "shop stocks more than it lists. Use {b} or a price token.")
+    # P128: the price tokens must reflect what a buyer can actually BUY. They
+    # land in the visible lead, the meta description and the structured data of
+    # the shop hub, and they were taken over a sold-inclusive list — so the
+    # moment anything sold the page could quote a band whose cheapest watch was
+    # gone. catalog_stats.load() has excluded sold since P- for the same reason.
     live = [w for w in watches if not w.get("sold") and not w.get("deleted")] or list(watches)
     watches = live
     prices = [w["price"] for w in watches if w.get("price")]
     brands = {w["brand"] for w in watches}
-    return (text.replace("{n}", str(len(watches)))
-                .replace("{b}", str(len(brands)))
+    return (text.replace("{b}", str(len(brands)))
                 .replace("{lo}", str(min(prices)))
                 .replace("{hi}", str(max(prices)))
                 .replace("{lolek}", nfmt(_lek(min(prices)), lang))

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """[DB-013] catalog_stats.py — the one home for catalogue-derived numbers + formatting.
 DOES:   computes Stats (count, brands, price range, Lek bounds, under-10k count,
-        per-brand tallies) from watches.json, owns the half-up Lek conversion,
-        the per-language thousands separator, the {token} vocabulary + fill(),
+        per-brand tallies) from watches.json for internal use, owns the half-up
+        Lek conversion, the per-language separator, the {token} vocabulary +
+        fill() — which no longer knows any counting token —
         and the owner-reported Google review count.
 
 catalog_stats.py
@@ -26,10 +27,11 @@ Kept here so there is exactly one definition of:
   * the token vocabulary and fill()
   * the Google review count
 
-{n} EXCLUDES SOLD. Every sentence it lands in is a stock claim ("{n} models in
-stock in Durres"), itemlist() already excludes sold, and a sold watch keeps its
-card only as a merchandising choice. Unified while nothing is sold, so the change
-renders byte-identically.
+COUNTS ARE NOT PUBLISHED AT ALL any more. {n}, {u10k} and {n:brand} are gone
+from TOKEN_RE below: they reported how many watches are LISTED, the shop stocks
+considerably more than it lists, so each one understated the shelf on every page
+it touched. Stats still computes them because the gates and the generators need
+to reason about the catalogue; nothing may print them. {b} and the prices stay.
 """
 import json
 import re
@@ -107,11 +109,19 @@ def load(path=None):
     return s
 
 
-# The per-brand family is n:/lo:/hi:/lolek:/hilek: + a brand slug. Everything
-# after the colon is validated against the live catalogue, so a brand that sells
-# out raises instead of rendering a stale bound.
+# COUNTING TOKENS ARE RETIRED: {n}, {u10k} and the {n:brand} family are NOT in
+# this vocabulary, so fill() raises "unfilled token" on any of them and a count
+# left in copy fails the build instead of shipping. They published how many
+# watches are LISTED, and the shop holds considerably more stock than it
+# publishes, so every one of them understated the shelf. The owner raised it
+# more than once. {b} stays, the brand count is accurate; prices stay, they are
+# true and they sell. Do not add them back — rewrite the sentence instead.
+#
+# The per-brand family is lo:/hi:/lolek:/hilek: + a brand slug. Everything after
+# the colon is validated against the live catalogue, so a brand that sells out
+# raises instead of rendering a stale bound.
 TOKEN_RE = re.compile(
-    r"\{(n|b|lo|hi|lolek|hilek|u10k|(?:n|lo|hi|lolek|hilek):[a-z0-9-]+)\}")
+    r"\{(b|lo|hi|lolek|hilek|(?:lo|hi|lolek|hilek):[a-z0-9-]+)\}")
 
 
 # [DB-013.g] brand_value — one per-brand token's value, shared by fill() and

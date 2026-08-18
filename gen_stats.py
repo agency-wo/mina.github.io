@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """[DB-011] gen_stats.py — refreshes catalogue numbers embedded in hand-written pages.
 DOES:   sweeps every HTML file for <span data-stat="..."> markers and rewrites
-        their contents from watches.json via catalog_stats; also regenerates
+        their contents from watches.json via catalog_stats. Counting markers are
+        REFUSED, not refreshed: no page states how many watches. Also regenerates
         llms.txt from llms.tpl. --seed delegates the one-off marker insertion
         to seed_stats.py.
 
@@ -14,7 +15,7 @@ moves every month, so a number typed into a page is wrong the moment it is typed
 Generated pages already computed theirs. These do not, because no generator owns
 them, so the number is wrapped in a marker instead and this rewrites it:
 
-    Browse our collection of <span data-stat="n">57</span> brand-new watches
+    Watches from <span data-stat="lo">&euro;50</span>, each with a 1-year guarantee
 
 Why a marker span rather than a token in the source, or a phrase-anchored regex:
   * the static HTML keeps a correct value, so a crawler sees a number rather than
@@ -46,9 +47,8 @@ BOM = b"\xef\xbb\xbf"
 # How each key renders. The euro keys include the symbol so the span stays a
 # whole token; the "~" variants keep the approximation sign inside.
 RENDER = {
-    "n": lambda s, lang, ent: str(s.n),
+    # No "n" and no "u10k": counting markers are retired, see render() below.
     "b": lambda s, lang, ent: str(s.b),
-    "u10k": lambda s, lang, ent: str(s.u10k),
     "lo": lambda s, lang, ent: f"{'&euro;' if ent else '€'}{s.lo}",
     "hi": lambda s, lang, ent: f"{'&euro;' if ent else '€'}{s.hi}",
     "lolek": lambda s, lang, ent: f"{C.nfmt(s.lolek, lang)} L",
@@ -61,8 +61,21 @@ RENDER = {
 # DOES:   resolves a data-stat key (including per-brand n:slug) through RENDER;
 #         unknown keys/brands are hard errors, never silently left stale.
 # IN:     key; lang for the separator; s — Stats; ent — keep &euro; entity form
+FORBIDDEN_KEYS = ("n", "u10k")
+
+
 def render(key, lang, s, ent):
-    # The per-brand family (n:/lo:/hi:/lolek:/hilek: + slug) resolves through
+    # Counting markers are retired. data-stat="n", "u10k" and the "n:brand"
+    # family published how many watches are LISTED, and the shop stocks more
+    # than it lists, so each one understated the shelf every time it rendered.
+    # Raising here is the second lock; the first is that catalog_stats.TOKEN_RE
+    # no longer knows the tokens, and the third is the check in verify-stats.
+    if key in FORBIDDEN_KEYS or key.startswith("n:"):
+        raise KeyError(
+            f"gen_stats.render: data-stat={key!r} is retired. No page states how "
+            f"many watches; the shop stocks more than it lists. Rewrite the "
+            f"sentence rather than reviving the marker.")
+    # The per-brand family (lo:/hi:/lolek:/hilek: + slug) resolves through
     # catalog_stats so this generator and verify-stats hold one opinion of it.
     if ":" in key:
         v = C.brand_value(key, s, lang)

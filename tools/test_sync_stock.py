@@ -101,12 +101,25 @@ class RebuildSurvives(unittest.TestCase):
         self.assertIn('stock-notify', src)
         self.assertIn('" stock-oos" if sold else ""', src)
 
-    def test_hub_counts_only_what_can_be_bought(self):
+    def test_hub_prices_only_what_can_be_bought(self):
+        """A sold watch must not set the published price band or the brand count.
+
+        This used to assert through {n}. That token is retired — no page states
+        how many watches, because the shop stocks more than it lists — so the
+        same property is proved through the bounds, which is where a sold watch
+        did real damage: it could advertise a floor whose watch was gone."""
         sys.path.insert(0, str(BASE))
         from shop_seo import fill
         ws = [{"brand": "A", "price": 50}, {"brand": "B", "price": 200, "sold": True}]
-        out = fill("{n} watches from EUR{lo} to EUR{hi}, {b} brands", ws)
-        self.assertEqual(out, "1 watches from EUR50 to EUR50, 1 brands")
+        out = fill("from EUR{lo} to EUR{hi}, {b} brands", ws)
+        self.assertEqual(out, "from EUR50 to EUR50, 1 brands")
+
+    def test_hub_refuses_to_publish_a_count(self):
+        """{n} in copy must fail the build, not render a number that understates."""
+        sys.path.insert(0, str(BASE))
+        from shop_seo import fill
+        with self.assertRaises(AssertionError):
+            fill("{n} watches from EUR{lo}", [{"brand": "A", "price": 50}])
 
 
 class DeletedStub(unittest.TestCase):

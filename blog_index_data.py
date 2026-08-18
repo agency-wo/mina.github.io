@@ -13,9 +13,14 @@ NOTES:  No sub-indices below because there is not one def or branch in the file,
         only the literal; a per-entry tag would go stale on the next article.
         The card copy here is what verify-blog-index.py check 9 diffs against git
         HEAD, template by template rather than rendered HTML: rendered cards
-        carry {n} and {u10k}, so comparing HTML made the check fire on every
-        stock change. An intentional copy edit therefore reads red until it is
+        carry price tokens, so comparing HTML made the check fire on every
+        repricing. An intentional copy edit therefore reads red until it is
         committed, which is the check working, not failing.
+        NO CARD MAY STATE HOW MANY WATCHES. The shop holds considerably more
+        stock than it publishes, so a published count understates it; the owner
+        has said so more than once. Counting tokens are gone from the vocabulary
+        and gen_stats.render refuses them, so this is enforced rather than
+        remembered. Prices stay: they are true and they sell.
         `gen_blog_index.py --seed` rebuilds this manifest from the rendered
         indexes, but it asserts the file does not already exist, and it re-emits
         the docstring below VERBATIM from its own source: a re-seed needs this
@@ -40,11 +45,11 @@ ARTICLES = [
         label=dict(en='Buying Guide', it='Guida all’Acquisto', sq='Guidë Blerjeje'),
         card=dict(
             en=dict(title='Philippe Lauren Watches in Albania: Which One to Buy',
-                    desc='{n:philippe-lauren} models from {lolek:philippe-lauren} L to {hilek:philippe-lauren} L: four real chronographs, three steel dress, two steel sport, two gold-tone dress. Which one to buy, and why.'),
+                    desc='From {lolek:philippe-lauren} L to {hilek:philippe-lauren} L: real chronographs, plain steel dress watches, steel sport and gold-tone dress. Which one to buy, and why.'),
             it=dict(title='Orologi Philippe Lauren in Albania: Quale Comprare',
-                    desc='{n:philippe-lauren} modelli da {lolek:philippe-lauren} L a {hilek:philippe-lauren} L: quattro cronografi veri, tre da abito in acciaio, due sportivi, due da abito color oro. Quale comprare, e perché.'),
+                    desc='Da {lolek:philippe-lauren} L a {hilek:philippe-lauren} L: cronografi veri, essenziali da abito in acciaio, sportivi e da abito color oro. Quale comprare, e perché.'),
             sq=dict(title='Orë Philippe Lauren në Shqipëri: Cilën të Blesh',
-                    desc='{n:philippe-lauren} modele nga {lolek:philippe-lauren} L deri {hilek:philippe-lauren} L: katër kronografë të vërtetë, tri veshjeje çeliku, dy sportive, dy veshjeje ngjyrë ari. Cilën të blesh, dhe pse.'),
+                    desc='Nga {lolek:philippe-lauren} L deri {hilek:philippe-lauren} L: kronografë të vërtetë, veshjeje çeliku të thjeshta, sportive dhe veshjeje ngjyrë ari. Cilën të blesh, dhe pse.'),
         ),
     ),
     dict(
@@ -123,11 +128,11 @@ ARTICLES = [
         label=dict(en='Buying Guide', it='Guida all’Acquisto', sq='Guidë Blerjeje'),
         card=dict(
             en=dict(title='Watches Under 10,000 Lek: What Your Money Actually Buys',
-                    desc='{u10k} of our {n} watches cost under 10,000 Leke, starting at {lolek} L. The counter priced in Lek, band by band, with cash on delivery anywhere in Albania.'),
+                    desc='Most of the watches we list cost under 10,000 Leke, starting at {lolek} L. The counter priced in Lek, band by band, with cash on delivery anywhere in Albania.'),
             it=dict(title='Orologi Sotto i 10.000 Lek: Cosa Compra Davvero il Vostro Denaro',
-                    desc='{u10k} dei nostri {n} orologi costano meno di 10.000 Leke, da {lolek} L. Il banco prezzato in Lek, fascia per fascia, con pagamento alla consegna ovunque.'),
+                    desc='Gran parte degli orologi che proponiamo costa meno di 10.000 Leke, da {lolek} L. Il banco prezzato in Lek, fascia per fascia, con pagamento alla consegna ovunque.'),
             sq=dict(title='Orë Nën 10.000 Lekë: Çfarë Blejnë Vërtet Paratë Tuaja',
-                    desc='{u10k} nga {n} orët tona kushtojnë nën 10.000 Lekë, duke filluar nga {lolek} L. Banaku me çmime në lekë, fashë pas fashe, me pagesë në dorëzim kudo.'),
+                    desc='Pjesa më e madhe e orëve që listojmë kushton nën 10.000 Lekë, duke filluar nga {lolek} L. Banaku me çmime në lekë, fashë pas fashe, me pagesë në dorëzim kudo.'),
         ),
     ),
     dict(
@@ -179,7 +184,7 @@ ARTICLES = [
         slug='are-daniel-klein-watches-good', cat='buying',
         card=dict(
             en=dict(title="Are Daniel Klein Watches Any Good? A Watchmaker's Honest Answer",
-                    desc='Turkish fashion brand, quartz, gold-tone looks for &euro;59 to &euro;89. Where the money is well spent and where it is not, plus all {n:daniel-klein} models we stock.'),
+                    desc='Turkish fashion brand, quartz, gold-tone looks for &euro;59 to &euro;89. Where the money is well spent and where it is not, plus the models we stock.'),
             it=dict(title='Gli Orologi Daniel Klein Sono Buoni? La Risposta Onesta di un Orologiaio',
                     desc='Marchio di moda turco, quarzo, look dorato per &euro;59 a &euro;89. Dove i soldi sono ben spesi e dove no, con tutti gli 8 modelli in stock.'),
             sq=dict(title='A Vlejn&euml; Or&euml;t Daniel Klein? P&euml;rgjigjja e Ndershme e nj&euml; Or&euml;ndreq&euml;si',
