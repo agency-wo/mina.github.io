@@ -2998,7 +2998,7 @@
   <!-- blog/are-daniel-klein-watches-good.html -->
   <url>
     <loc>https://watch.al/en/blog/are-daniel-klein-watches-good.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/are-daniel-klein-watches-good.html"/>
@@ -3008,7 +3008,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/daniel-klein-orologi-opinioni.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/are-daniel-klein-watches-good.html"/>
@@ -3018,7 +3018,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/daniel-klein-ia-vlen.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/are-daniel-klein-watches-good.html"/>
@@ -3149,6 +3149,68 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/migliori-orologi-sotto-200-albania.html"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/ore-me-te-mira-nen-200-shqiperi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/best-watches-under-200-albania.html"/>
+  </url>
+  <!-- blog/bigotti-watches-albania.html -->
+  <url>
+    <loc>https://watch.al/en/blog/bigotti-watches-albania.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/bigotti-watches-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/orologi-bigotti-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/ore-bigotti-shqiperi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/bigotti-watches-albania.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/it/blog/orologi-bigotti-albania.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/bigotti-watches-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/orologi-bigotti-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/ore-bigotti-shqiperi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/bigotti-watches-albania.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/sq/blog/ore-bigotti-shqiperi.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/bigotti-watches-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/orologi-bigotti-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/ore-bigotti-shqiperi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/bigotti-watches-albania.html"/>
+  </url>
+  <!-- blog/blue-dial-watches-albania.html -->
+  <url>
+    <loc>https://watch.al/en/blog/blue-dial-watches-albania.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/blue-dial-watches-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/orologi-quadrante-blu-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/ore-me-kadran-blu-shqiperi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/blue-dial-watches-albania.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/it/blog/orologi-quadrante-blu-albania.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/blue-dial-watches-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/orologi-quadrante-blu-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/ore-me-kadran-blu-shqiperi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/blue-dial-watches-albania.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/sq/blog/ore-me-kadran-blu-shqiperi.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/blue-dial-watches-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/orologi-quadrante-blu-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/ore-me-kadran-blu-shqiperi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/blue-dial-watches-albania.html"/>
   </url>
   <!-- blog/buy-watch-instagram-albania.html -->
   <url>
@@ -3491,6 +3553,37 @@
     <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/citizen-eco-drive-shpjeguar.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/citizen-eco-drive-explained.html"/>
   </url>
+  <!-- blog/daniel-klein-vs-philippe-lauren.html -->
+  <url>
+    <loc>https://watch.al/en/blog/daniel-klein-vs-philippe-lauren.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/daniel-klein-vs-philippe-lauren.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/daniel-klein-vs-philippe-lauren.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/daniel-klein-vs-philippe-lauren.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/daniel-klein-vs-philippe-lauren.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/it/blog/daniel-klein-vs-philippe-lauren.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/daniel-klein-vs-philippe-lauren.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/daniel-klein-vs-philippe-lauren.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/daniel-klein-vs-philippe-lauren.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/daniel-klein-vs-philippe-lauren.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/sq/blog/daniel-klein-vs-philippe-lauren.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/daniel-klein-vs-philippe-lauren.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/daniel-klein-vs-philippe-lauren.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/daniel-klein-vs-philippe-lauren.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/daniel-klein-vs-philippe-lauren.html"/>
+  </url>
   <!-- blog/first-watch-on-the-moon.html -->
   <url>
     <loc>https://watch.al/en/blog/first-watch-on-the-moon.html</loc>
@@ -3587,7 +3680,7 @@
   <!-- blog/gold-or-steel-watch.html -->
   <url>
     <loc>https://watch.al/en/blog/gold-or-steel-watch.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/gold-or-steel-watch.html"/>
@@ -3597,7 +3690,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/orologio-oro-o-acciaio.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/gold-or-steel-watch.html"/>
@@ -3607,7 +3700,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/ore-ari-apo-celik.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/gold-or-steel-watch.html"/>
@@ -4021,7 +4114,7 @@
   <!-- blog/philippe-lauren-watches-albania.html -->
   <url>
     <loc>https://watch.al/en/blog/philippe-lauren-watches-albania.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/philippe-lauren-watches-albania.html"/>
@@ -4031,7 +4124,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/orologi-philippe-lauren-albania.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/philippe-lauren-watches-albania.html"/>
@@ -4041,7 +4134,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/ore-philippe-lauren-shqiperi.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/philippe-lauren-watches-albania.html"/>
@@ -4207,7 +4300,7 @@
   <!-- blog/summer-sea-watch-guide.html -->
   <url>
     <loc>https://watch.al/en/blog/summer-sea-watch-guide.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/summer-sea-watch-guide.html"/>
@@ -4217,7 +4310,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/orologio-mare-estate.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/summer-sea-watch-guide.html"/>
@@ -4227,7 +4320,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/ora-per-plazh-e-det.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/summer-sea-watch-guide.html"/>
@@ -5571,7 +5664,7 @@
   <!-- blog/womens-watches-albania.html -->
   <url>
     <loc>https://watch.al/en/blog/womens-watches-albania.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/womens-watches-albania.html"/>
@@ -5581,7 +5674,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/orologi-donna-albania.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/womens-watches-albania.html"/>
@@ -5591,7 +5684,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/ore-per-femra-shqiperi.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/womens-watches-albania.html"/>

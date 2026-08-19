@@ -71,7 +71,8 @@ COMMERCIAL = frozenset({
     "how-long-does-a-cheap-watch-last", "gold-or-steel-watch",
     "new-year-watch-gifts-albania", "philippe-lauren-watches-albania",
     "cash-on-delivery-watches-albania", "watch-returns-exchange-guarantee",
-    "why-buy-from-a-watchmaker",
+    "why-buy-from-a-watchmaker", "bigotti-watches-albania",
+    "daniel-klein-vs-philippe-lauren", "blue-dial-watches-albania",
 })
 
 SECTIONS = ["apex", "home", "static", "shopindex", "brand", "product", "shopinfo",

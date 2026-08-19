@@ -41,6 +41,40 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
+        slug='bigotti-watches-albania', cat='buying',
+        card=dict(
+            en=dict(title='Bigotti Watches in Albania: Which One to Buy',
+                    desc='Gold and black, a crystal-set square in steel or gold tone, and a steel multifunction with day and date. What each Bigotti on our counter actually is, and which one to buy.'),
+            it=dict(title='Orologi Bigotti in Albania: Quale Comprare',
+                    desc='Oro e nero, un quadrato con cristalli in acciaio o color oro, e un multifunzione in acciaio con giorno e data. Cos&rsquo;è davvero ogni Bigotti sul nostro banco, e quale comprare.'),
+            sq=dict(title='Orë Bigotti në Shqipëri: Cilën të Blesh',
+                    desc='Ar dhe e zezë, një katror me kristale në çelik ose ngjyrë ari, dhe një multifunksionale çeliku me ditë e datë. Çfarë është vërtet secila Bigotti në banakun tonë, dhe cilën të blesh.'),
+        ),
+    ),
+    dict(
+        slug='daniel-klein-vs-philippe-lauren', cat='buying',
+        label=dict(en='Brand Comparison', it='Confronto Marche', sq='Krahasim Markash'),
+        card=dict(
+            en=dict(title='Daniel Klein or Philippe Lauren: Which One to Buy',
+                    desc='Both are fashion quartz watches on the same counter. Philippe Lauren is where the chronographs sit and where the money starts. Daniel Klein is dressier and reaches higher.'),
+            it=dict(title='Daniel Klein o Philippe Lauren: Quale Comprare',
+                    desc='Due marchi fashion al quarzo sullo stesso banco. Philippe Lauren è dove stanno i cronografi e dove comincia la spesa. Daniel Klein è più elegante e arriva più in alto.'),
+            sq=dict(title='Daniel Klein apo Philippe Lauren: Cilën të Blesh',
+                    desc='Dy marka fashion me kuarc në të njëjtin banak. Philippe Lauren është aty ku rrinë kronografët dhe ku nisin paratë. Daniel Klein është më elegante dhe shkon më lart.'),
+        ),
+    ),
+    dict(
+        slug='blue-dial-watches-albania', cat='buying',
+        card=dict(
+            en=dict(title='Blue Dial Watches in Albania: Which Blue to Buy',
+                    desc='Ice blue, navy, and deep blue sunburst that turns almost black indoors. What each blue dial looks like in daylight, what it costs, and which one to buy.'),
+            it=dict(title='Orologi con Quadrante Blu in Albania: Quale Blu Comprare',
+                    desc='Azzurro ghiaccio, blu notte e il blu intenso sunburst che al chiuso diventa quasi nero. Com&rsquo;è alla luce del giorno ogni quadrante blu, quanto costa e quale comprare.'),
+            sq=dict(title='Orë me Ciferblat Blu në Shqipëri: Cilin Blu të Blesh',
+                    desc='Blu akulli, blu i errët dhe blu i thellë sunburst që brenda bëhet thuajse i zi. Si duket në dritë dite secili ciferblat blu, sa kushton dhe cilin të blesh.'),
+        ),
+    ),
+    dict(
         slug='cash-on-delivery-watches-albania', cat='buying',
         card=dict(
             en=dict(title='Cash on Delivery in Albania: How Buying a Watch Works',
