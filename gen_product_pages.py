@@ -856,7 +856,7 @@ def build_biz_ld(lang):
         "address": {"@type": "PostalAddress", "streetAddress": "Rruga Aleksander Goga",
                     "addressLocality": "Durrës", "postalCode": "2001",
                     "addressCountry": "AL"},
-        # No aggregateRating here on purpose. The 5.0 / 104 figure is a real Google
+        # No aggregateRating here on purpose. The 5.0 rating is a real Google
         # Business Profile rating, but Google does not permit a business to mark up
         # ratings collected on a third-party platform as its own aggregateRating:
         # ineligible for rich results, manual-action risk. The visible badge linking

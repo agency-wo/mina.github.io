@@ -145,7 +145,7 @@
   font-display: optional;
   src: url('/webfonts/cormorant-garamond.woff2?v=2') format('woff2');
 }
-  .svc-preview{max-width:480px;margin:0 auto 2rem;border:1px solid var(--border-light);border-radius:var(--radius-card);overflow:hidden;text-align:left}.svc-preview-row{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.25rem;font-size:.9rem;border-bottom:1px solid var(--border-light)}.svc-preview-row:last-child{border-bottom:none}.svc-preview-row i{color:var(--accent-gold);margin-right:.45rem;width:1rem;text-align:center}.svc-preview-tag{font-size:.72rem;font-weight:600;color:var(--accent-gold-accessible);background:rgba(180,148,92,.08);border-radius:9999px;padding:.18rem .65rem;white-space:nowrap}
+  
 </style>
 
   <!-- CRITICAL CSS -->
@@ -400,14 +400,10 @@ details.faq-item[open] .faq-question>i:last-child{transform:rotate(180deg)}
 .footer nav a:hover { color: var(--accent-gold); }
 address a, #contact a:not(.btn-primary):not(.btn-secondary) { text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--accent-gold); }
 address a:hover, #contact a:not(.btn-primary):not(.btn-secondary):hover { color: var(--accent-gold); }
-.trust-badge:hover i { color: var(--accent-gold); transform: scale(1.1); }
 .review-card:hover .star-large i { color: var(--accent-gold); }
 .review-card:hover .font-bold.gold { color: var(--accent-gold); }
-.promise-card:hover i { color: var(--accent-gold); transform: scale(1.1); }
 .inline-flex:hover i { color: var(--accent-gold); transform: scale(1.1); }
 /* Contrast fixes */
-.trust-badge p { color: #2a2a2a; }
-.trust-badge .text-gray-500 { color: #4b5563; }
 span.inline-flex > span { color: #2a2a2a; }
 span.inline-flex > span > strong { color: #2a2a2a; }
 /* Blog preview */
@@ -517,8 +513,6 @@ i.promise-icon,i.faq-icon{display:inline-flex!important;align-items:center;justi
 /* ── HOVER EFFECTS - real-pointer devices only ──────────────────────────── */
 @media (hover: hover) {
   
-  .promise-card:hover i,
-  .trust-badge:hover i    { color: var(--accent-gold); transform: scale(1.12); }
   
   .hero-content .btn-primary:hover::after { animation: none; }
   .footer nav[aria-label="Social media links"] a:hover { transform: translateY(-3px) scale(1.15); }
@@ -529,21 +523,10 @@ i.promise-icon,i.faq-icon{display:inline-flex!important;align-items:center;justi
   /* Icon pop on tap */
   .service-card:active i   { transform: scale(1.18) !important; color: var(--accent-gold) !important; }
   .equipment-card:active i { transform: scale(1.18) !important; color: var(--accent-gold) !important; }
-  .trust-badge:active i    { transform: scale(1.18) !important; color: var(--accent-gold) !important; }
   /* Card lift on tap */
   .service-card:active, .equipment-card:active {
     transform: translateY(-2px);
     box-shadow: 0 10px 28px -8px rgba(180,148,92,.28);
-  }
-  .promise-card:active {
-    border-color: var(--accent-gold);
-    transform: translateY(-3px) !important;
-    box-shadow: 0 10px 20px -5px rgba(180,148,92,.3);
-  }
-  .trust-badge:active {
-    border-color: var(--accent-gold);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px -5px rgba(180,148,92,.3);
   }
   /* Footer social tap */
   .footer nav[aria-label="Social media links"] a:active {
@@ -813,6 +796,55 @@ i.promise-icon,i.faq-icon{display:inline-flex!important;align-items:center;justi
 .bracelet-divider{display:flex;justify-content:center;padding:1rem 1.5rem}
 .bracelet-divider svg{display:block;width:220px;max-width:70%;height:auto}
 @media(prefers-reduced-motion:reduce){.watch-card-footer .watch-price{transform:none;transition:none}}
+
+/* == TRUST BAND / SERVICES MENU / REVIEWS - homepage mid-page redesign 2026-08 == */
+.trust-band{position:relative;background:#06153b;border-top:1px solid rgba(180,148,92,.35);border-bottom:1px solid rgba(180,148,92,.35);padding:5rem 0;overflow:hidden}
+.trust-band::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 95% 85% at 50% 30%,rgba(6,21,59,0) 30%,#06153b 88%),repeating-conic-gradient(from 4deg at 50% 30%,rgba(205,220,255,.05) 0deg 2.5deg,rgba(6,21,59,0) 2.5deg 9deg),radial-gradient(ellipse 70% 55% at 50% 26%,rgba(180,148,92,.16),rgba(6,21,59,0) 72%)}
+.trust-band-inner{position:relative;z-index:2}
+.trust-band-wheel{position:absolute;top:1.5rem;right:3%;opacity:.45;pointer-events:none;z-index:1}
+.trust-band .section-title{color:#f5f0e8}
+.trust-band .gold-display{color:#b4945c!important}
+.trust-kicker{text-transform:uppercase;letter-spacing:.2em;color:#b4945c;font-weight:600;font-size:.75rem;margin-bottom:1rem}
+.trust-lede{color:rgba(255,255,255,.85);font-size:1.1rem;line-height:1.75;max-width:36rem;margin:1.25rem auto 0}
+.trust-stats{display:flex;align-items:stretch;justify-content:center;gap:clamp(1.5rem,4.5vw,4rem);margin-top:3.25rem;flex-wrap:wrap}
+.trust-stat{text-align:center;min-width:9.5rem}
+.trust-num{font-family:'Cormorant Garamond','Cormorant Garamond Fallback',serif;font-weight:800;font-size:clamp(2.8rem,5vw,4rem);line-height:1;color:#b4945c}
+.trust-label{margin-top:.6rem;color:rgba(255,255,255,.72);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+.trust-stars{color:#b4945c;letter-spacing:3px;font-size:.8rem;margin-top:.4rem}
+.trust-tick{width:1px;align-self:stretch;background:linear-gradient(to bottom,rgba(180,148,92,0),rgba(180,148,92,.55),rgba(180,148,92,0))}
+a.trust-stat-link{text-decoration:none;display:block;transition:transform var(--transition-base)}
+a.trust-stat-link:hover{transform:translateY(-3px)}
+.trust-promises{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem 2.25rem;margin:3rem auto 0;padding:1rem 2.25rem;border:1px solid rgba(180,148,92,.3);border-radius:9999px;width:fit-content;list-style:none;background:rgba(255,255,255,.04)}
+.trust-promises li{color:rgba(255,255,255,.88);font-size:.9rem;display:inline-flex;align-items:center;gap:.55rem}
+.trust-promises i{color:#b4945c}
+@media(max-width:900px){.trust-band-wheel{display:none}}
+@media(max-width:640px){.trust-tick{display:none}.trust-band{padding:4rem 0}.trust-promises{border-radius:1.5rem;padding:1rem 1.5rem;gap:.6rem 1.5rem}}
+.svc-section{padding:5rem 0;background:#fff}
+.svc-split{display:grid;grid-template-columns:1fr 1.1fr;gap:3.5rem;align-items:center}
+.svc-kicker{text-transform:uppercase;letter-spacing:.2em;color:var(--accent-gold-accessible);font-weight:600;font-size:.75rem;margin-bottom:1rem}
+.svc-hours{margin-top:1.5rem;color:#4b5563;font-size:.9rem}
+.svc-hours i{color:var(--accent-gold);margin-right:.45rem}
+.svc-menu{background:var(--bg-soft);border:1px solid rgba(180,148,92,.35);border-radius:var(--radius-card);padding:1rem 1.75rem;box-shadow:0 14px 34px -16px rgba(6,21,59,.18)}
+.svc-menu-row{display:flex;align-items:center;gap:.9rem;padding:1.15rem 0;border-bottom:1px solid rgba(180,148,92,.18);transition:transform var(--transition-base)}
+.svc-menu-row:last-child{border-bottom:none}
+.svc-menu-chip{flex-shrink:0;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid rgba(180,148,92,.5);display:inline-flex;align-items:center;justify-content:center;color:var(--accent-gold-accessible);background:#fff;font-size:1.05rem;transition:background var(--transition-base),border-color var(--transition-base),color var(--transition-base)}
+.svc-menu-name{font-weight:600;color:var(--text-primary)}
+.svc-menu-dots{flex:1;min-width:1.25rem;border-bottom:2px dotted rgba(180,148,92,.45);transform:translateY(-.2rem)}
+.svc-menu-val{font-size:.78rem;font-weight:700;color:var(--accent-gold-accessible);text-align:right;line-height:1.4;max-width:11rem}
+@media(hover:hover){.svc-menu-row:hover{transform:translateY(-2px)}.svc-menu-row:hover .svc-menu-chip{background:var(--accent-gold);border-color:var(--accent-gold);color:#fff}}
+@media(max-width:860px){.svc-split{grid-template-columns:1fr;gap:2.5rem}.svc-section{padding:4rem 0}}
+.rev-section{padding:5rem 0;background:#fff}
+.rev-head{text-align:center;margin-bottom:3rem}
+.rev-score{font-family:'Cormorant Garamond','Cormorant Garamond Fallback',serif;font-weight:800;font-size:clamp(3.2rem,6vw,4.5rem);line-height:1;color:var(--accent-gold-accessible)}
+.rev-stars{color:var(--accent-gold);letter-spacing:4px;font-size:1.1rem;margin-top:.5rem}
+.rev-google{margin-top:.75rem;color:#4b5563;font-size:.95rem}
+.rev-google i{color:var(--accent-gold-accessible);margin-right:.4rem}
+.mini-review-card{transition:transform var(--transition-base),border-color var(--transition-base)}
+@media(hover:hover){.mini-review-card:hover{transform:translateY(-2px);border-color:rgba(180,148,92,.55)}}
+.mini-review-author{display:flex;align-items:center;gap:.65rem;margin-top:1.25rem}
+.rev-avatar{width:2.1rem;height:2.1rem;border-radius:50%;background:rgba(180,148,92,.16);border:1px solid rgba(180,148,92,.5);color:#b4945c;font-weight:700;font-size:.9rem;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.rev-name{color:#b4945c;font-weight:700;font-size:.875rem}
+.rev-actions{text-align:center;margin-top:3rem}
 </style>
   <link rel="preconnect" href="https://www.google.com" crossorigin>
   <link rel="stylesheet" href="/shared.css?v=56">
@@ -1427,92 +1459,96 @@ i.promise-icon,i.faq-icon{display:inline-flex!important;align-items:center;justi
     <!-- WHY CHOOSE US - stats + promises (merged) -->
       <div class="bracelet-divider" aria-hidden="true"><svg viewBox="0 0 220 14" width="220" height="14" fill="none" stroke="#b4945c" stroke-width="1.3" opacity=".4" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="4" width="14" height="6" rx="3"/><rect x="25" y="2" width="26" height="10" rx="4"/><rect x="55" y="4" width="14" height="6" rx="3"/><rect x="73" y="2" width="26" height="10" rx="4"/><rect x="103" y="4" width="14" height="6" rx="3"/><rect x="121" y="2" width="26" height="10" rx="4"/><rect x="151" y="4" width="14" height="6" rx="3"/><rect x="169" y="2" width="26" height="10" rx="4"/><rect x="199" y="4" width="14" height="6" rx="3"/></svg></div>
 
-  <section class="py-16 bg-white/70" aria-labelledby="why-heading" data-animate>
-      <div class="max-w-7xl mx-auto px-6">
-        <h2 id="why-heading" data-tick-in class="text-4xl md:text-5xl text-center mb-12 section-title">Perché <span class="gold-display">Sceglierci</span></h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 promise-grid">
-          <div class="trust-badge">
-            <i class="fas fa-calendar-alt text-3xl gold mb-2" aria-hidden="true"></i>
-            <p class="font-bold text-xl">Dal 2009</p>
-            <p class="text-gray-500 text-sm"><span data-years-since="2009">17+</span> anni di esperienza</p>
-          </div>
-          <div class="trust-badge">
-            <i class="fas fa-clock text-3xl gold mb-2" aria-hidden="true"></i>
-            <p class="font-bold text-xl counter" data-target="350000" data-suffix="K+">350K+</p>
-            <p class="text-gray-500 text-sm">Orologi riparati</p>
-          </div>
-          <div class="trust-badge">
-            <i class="fas fa-key text-3xl gold mb-2" aria-hidden="true"></i>
-            <p class="font-bold text-xl counter" data-target="700000" data-suffix="K+">700K+</p>
-            <p class="text-gray-500 text-sm">Chiavi duplicate</p>
-          </div>
-          <div class="trust-badge">
-            <i class="fas fa-smile text-3xl gold mb-2" aria-hidden="true"></i>
-            <p class="font-bold text-xl counter" data-target="15000" data-suffix="K+">15K+</p>
-            <p class="text-gray-500 text-sm">Clienti soddisfatti</p>
-          </div>
+  <!-- WHY CHOOSE US - the trust band -->
+  <section class="trust-band" aria-labelledby="why-heading" data-animate>
+      <div class="max-w-7xl mx-auto px-6 trust-band-inner">
+        <div class="trust-band-wheel" data-balance-wheel aria-hidden="true"></div>
+        <div class="text-center">
+          <p class="trust-kicker">Laboratorio di famiglia &middot; Durazzo</p>
+          <h2 id="why-heading" data-tick-in class="text-4xl md:text-5xl section-title">Perché <span class="gold-display">Sceglierci</span></h2>
+          <p class="trust-lede">Dal 2009 a questo banco lavora lo stesso orologiaio, sei giorni alla settimana. Quanti orologi gli sono passati per le mani, fai tu il conto.</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 promise-grid mt-4">
-          <div class="promise-card">
-            <i class="fas fa-bolt promise-icon" aria-hidden="true"></i>
-            <h3 class="font-bold text-lg">Servizio Veloce</h3>
-            <p class="text-gray-500 text-sm">Batteria in meno di 2 min</p>
+        <div class="trust-stats">
+          <div class="trust-stat">
+            <p class="trust-num"><span data-years-since="2009">17+</span></p>
+            <p class="trust-label">Anni allo stesso banco</p>
           </div>
-          <div class="promise-card">
-            <i class="fas fa-euro-sign promise-icon" aria-hidden="true"></i>
-            <h3 class="font-bold text-lg">Prezzi Onesti</h3>
-            <p class="text-gray-500 text-sm">Nessun costo nascosto</p>
+          <div class="trust-tick" aria-hidden="true"></div>
+          <div class="trust-stat">
+            <p class="trust-num counter" data-target="700000" data-suffix="K+">700K+</p>
+            <p class="trust-label">Chiavi duplicate a questo banco</p>
           </div>
-          <div class="promise-card">
-            <i class="fas fa-gem promise-icon" aria-hidden="true"></i>
-            <h3 class="font-bold text-lg">Lavoro Garantito</h3>
-            <p class="text-gray-500 text-sm">Qualità affidabile</p>
-          </div>
+          <div class="trust-tick" aria-hidden="true"></div>
+          <a class="trust-stat trust-stat-link" href="#reviews-strip">
+            <p class="trust-num">5.0</p>
+            <p class="trust-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="trust-label">Valutazione Google</p>
+          </a>
         </div>
-        <div class="mt-10 text-center">
-          <div data-balance-wheel aria-hidden="true" style="display:inline-block"></div>
-        </div>
+        <ul class="trust-promises" role="list">
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> Prezzi onesti, nessun costo nascosto</li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> Lavoro garantito</li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> Vieni senza appuntamento</li>
+        </ul>
       </div>
     </section>
-    <!-- SERVICES CTA -->
-    <section class="py-16 bg-white" aria-label="Servizi" data-animate>
-      <div class="max-w-3xl mx-auto px-6 text-center">
-        <h2 class="text-4xl md:text-5xl mb-6 section-title">I Nostri <span class="gold-display">Servizi</span></h2>
-        <p class="text-gray-600 text-lg mb-8">Sostituzione batteria in meno di 2 minuti, riparazione orologi, cambio cinturino e copia chiavi - tutto mentre aspetti. Accettiamo senza appuntamento.</p>
-                <div class="svc-preview">
-          <div class="svc-preview-row"><span><i class="fas fa-battery-three-quarters" aria-hidden="true"></i>Sostituzione Batteria</span><span class="svc-preview-tag">Sotto 2 min &middot; Senza appuntamento</span></div>
-          <div class="svc-preview-row"><span><i class="fas fa-tools" aria-hidden="true"></i>Riparazione Orologi</span><span class="svc-preview-tag">Stesso giorno</span></div>
-          <div class="svc-preview-row"><span><i class="fas fa-key" aria-hidden="true"></i>Copia Chiavi</span><span class="svc-preview-tag">Mentre aspetti</span></div>
+    <!-- SERVICES -->
+    <section class="svc-section" aria-labelledby="services-heading" data-animate>
+      <div class="max-w-6xl mx-auto px-6 svc-split">
+        <div>
+          <p class="svc-kicker">Mentre Aspetti</p>
+          <h2 id="services-heading" class="text-4xl md:text-5xl mb-6 section-title">I Nostri <span class="gold-display">Servizi</span></h2>
+          <p class="text-gray-600 text-lg mb-8">Sostituzione batteria, riparazione orologi, cambio cinturino e copia chiavi di precisione, tutto al banco davanti ai tuoi occhi.</p>
+          <a href="/it/services.html" class="btn-primary inline-flex items-center gap-2">
+            <i class="fas fa-tools" aria-hidden="true"></i> Vedi Tutti i Servizi
+          </a>
+          <p class="svc-hours"><i class="fas fa-clock" aria-hidden="true"></i> Lun&ndash;Sab 8:30&ndash;20:30 &middot; Senza appuntamento</p>
         </div>
-        <a href="/it/services.html" class="btn-primary inline-flex items-center gap-2">
-          <i class="fas fa-tools" aria-hidden="true"></i> Vedi Tutti i Servizi
-        </a>
+        <div class="svc-menu">
+          <div class="svc-menu-row">
+            <span class="svc-menu-chip"><i class="fas fa-battery-three-quarters" aria-hidden="true"></i></span>
+            <span class="svc-menu-name">Sostituzione Batteria</span>
+            <span class="svc-menu-dots" aria-hidden="true"></span>
+            <span class="svc-menu-val">Sotto 2 min &middot; 200&ndash;600 Lekë</span>
+          </div>
+          <div class="svc-menu-row">
+            <span class="svc-menu-chip"><i class="fas fa-tools" aria-hidden="true"></i></span>
+            <span class="svc-menu-name">Riparazione Orologi</span>
+            <span class="svc-menu-dots" aria-hidden="true"></span>
+            <span class="svc-menu-val">Stesso giorno</span>
+          </div>
+          <div class="svc-menu-row">
+            <span class="svc-menu-chip"><i class="fas fa-key" aria-hidden="true"></i></span>
+            <span class="svc-menu-name">Copia Chiavi</span>
+            <span class="svc-menu-dots" aria-hidden="true"></span>
+            <span class="svc-menu-val">Mentre aspetti &middot; da 150 Lekë</span>
+          </div>
+        </div>
       </div>
     </section>
     <!-- MINI REVIEWS -->
-    <section class="pt-20 bg-white" aria-label="Recensioni clienti" data-animate>
+    <section id="reviews-strip" class="rev-section" aria-label="Recensioni clienti" data-animate>
       <div class="max-w-5xl mx-auto px-6">
-        <div class="text-center mb-10">
-          <span class="text-2xl gold" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <p class="text-gray-500 text-sm mt-1">5.0 &middot; <span data-review-count>104</span> recensioni Google</p>
+        <div class="rev-head">
+          <p class="rev-score">5.0</p>
+          <p class="rev-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <p class="rev-google"><i class="fab fa-google" aria-hidden="true"></i><span data-review-count>102</span> recensioni Google</p>
         </div>
         <div class="mini-review-grid">
           <div class="mini-review-card">
             <p class="text-gray-700 italic">&ldquo;Lo raccomanderei a tutti coloro che vivono a Durazzo. Apprezzo davvero il lavoro e la professionalit&agrave; che dimostra. 10/10&rdquo;</p>
-            <p class="font-bold gold text-sm mt-4">- Feta Dosti</p>
+            <div class="mini-review-author"><span class="rev-avatar" aria-hidden="true">F</span><span class="rev-name">Feta Dosti</span></div>
           </div>
           <div class="mini-review-card">
             <p class="text-gray-700 italic">&ldquo;Ho portato il mio orologio per la riparazione e l&rsquo;ha sistemato perfettamente. Veloce, affidabile e davvero esperto. Molto soddisfatto.&rdquo;</p>
-            <p class="font-bold gold text-sm mt-4">- Kristian Pando</p>
+            <div class="mini-review-author"><span class="rev-avatar" aria-hidden="true">K</span><span class="rev-name">Kristian Pando</span></div>
           </div>
           <div class="mini-review-card">
             <p class="text-gray-700 italic">&ldquo;Ho mandato il mio orologio per farlo riparare. Me lo hanno restituito in un giorno. Lavoro fantastico.&rdquo;</p>
-            <p class="font-bold gold text-sm mt-4">- Deni Tabaku</p>
+            <div class="mini-review-author"><span class="rev-avatar" aria-hidden="true">D</span><span class="rev-name">Deni Tabaku</span></div>
           </div>
         </div>
-
-
-        <div style="margin-top:2.5rem;border-top:1px solid #e8e2d9;display:flex;align-items:center;justify-content:center;padding:3rem 0;">
+        <div class="rev-actions">
           <a href="/it/about.html#reviews" class="btn-secondary">Leggi Tutte le Recensioni &rarr;</a>
         </div>
       </div>
@@ -1520,7 +1556,7 @@ i.promise-icon,i.faq-icon{display:inline-flex!important;align-items:center;justi
     <!-- Blog preview -->
       <div class="bracelet-divider" aria-hidden="true"><svg viewBox="0 0 220 14" width="220" height="14" fill="none" stroke="#b4945c" stroke-width="1.3" opacity=".4" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="4" width="14" height="6" rx="3"/><rect x="25" y="2" width="26" height="10" rx="4"/><rect x="55" y="4" width="14" height="6" rx="3"/><rect x="73" y="2" width="26" height="10" rx="4"/><rect x="103" y="4" width="14" height="6" rx="3"/><rect x="121" y="2" width="26" height="10" rx="4"/><rect x="151" y="4" width="14" height="6" rx="3"/><rect x="169" y="2" width="26" height="10" rx="4"/><rect x="199" y="4" width="14" height="6" rx="3"/></svg></div>
 
-  <section class="py-32 bg-white" aria-labelledby="blog-preview-heading" data-animate>
+  <section class="py-24 bg-white" aria-labelledby="blog-preview-heading" data-animate>
       <div class="max-w-6xl mx-auto px-6">
         <p class="text-center text-sm font-semibold tracking-widest uppercase gold mb-3">Guide &amp; Approfondimenti</p>
         <h2 id="blog-preview-heading" data-tick-in class="text-4xl md:text-5xl text-center mb-3 section-title">Dal <span class="gold-display">Blog</span></h2>

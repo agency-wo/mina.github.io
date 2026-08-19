@@ -41,8 +41,8 @@ BASE = Path(__file__).parent
 LEK_RATE = 97
 
 # Google reviews. ONE home. The owner reports this; nothing derives it.
-# 107 -> 106 (2026-08-03) -> 104 (2026-08-05).
-REVIEWS = 104
+# 107 -> 106 (2026-08-03) -> 104 (2026-08-05) -> 102 (2026-08-20).
+REVIEWS = 102
 
 # Mirrored byte for byte by group() in {en,it,sq}/shop/shop.js. Never
 # toLocaleString(): the browser's locale data decides the separator, so an
