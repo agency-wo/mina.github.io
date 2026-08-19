@@ -292,10 +292,21 @@ def build_page(slug, brand, lang):
     html = re.sub(r'\s*<script src="\.\./shop\.js[^>]*></script>', "", html)
     assert "shop.js" not in html, f"{lang}/{slug}: shop.js still referenced"
 
-    # watch-effects is a shop-index-only feature. The cloned need-help panel
-    # keeps its [data-balance-wheel] div, but empty; the :empty CSS hides it.
+    # watch-effects is a shop-index-only feature. Any [data-balance-wheel] div it
+    # would have driven is left empty, and the :empty CSS hides it.
     html = re.sub(r'\s*<script src="/watch-effects[^"]*"[^>]*></script>', "", html)
     assert '<script src="/watch-effects' not in html, f"{lang}/{slug}: watch-effects still referenced"
+
+    # The cloned shop index ends with a "Need help choosing?" panel that names ONE
+    # brand and links to that brand's buying guide. Inherited unchanged it put a
+    # Navimarine guide on the Bigotti, Hislon, Daniel Klein and Philippe Lauren
+    # pages. A brand page already carries its own "Not sure which one?" CTA inside
+    # <main>, so the panel is a duplicate as well as a wrong-brand link: drop it.
+    html, n_panel = re.subn(
+        r'\s*<section style="text-align:center[^"]*"[^>]*>(?:(?!</section>).)*?'
+        r'blog-nudge-btn(?:(?!</section>).)*?</section>', "", html, flags=re.S)
+    assert n_panel == 1, f"{lang}/{slug}: need-help panel not found to strip (got {n_panel})"
+    assert "blog-nudge-btn" not in html, f"{lang}/{slug}: need-help panel survived"
 
     # [UI-001] brand grids are static cards — stock-live.js flips them from the
     # CRM feed. The cloned shop index deliberately does NOT carry the tag
