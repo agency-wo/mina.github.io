@@ -41,6 +41,39 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
+        slug='watch-for-working-hands', cat='buying',
+        card=dict(
+            en=dict(title='A Watch for Someone Who Works With Their Hands',
+                    desc='Nothing on our counter is a shock-rated tool watch and we will not pretend otherwise. What we do have is a digital with no crown to catch, a resin case and 100 m water resistance.'),
+            it=dict(title='Un Orologio per Chi Lavora con le Mani',
+                    desc='Sul nostro banco non c&rsquo;è nessun orologio con certificazione antiurto e non facciamo finta del contrario. Quello che abbiamo è un digitale senza corona che sporge, cassa in resina e 100 m.'),
+            sq=dict(title='Një Orë për Dikë që Punon me Duar',
+                    desc='Asnjë orë në banakun tonë nuk ka certifikim kundër goditjeve dhe nuk bëjmë sikur ka. Ajo që kemi është një dixhitale pa kurorë që del jashtë, kasë rezine dhe 100 m rezistencë ndaj ujit.'),
+        ),
+    ),
+    dict(
+        slug='first-job-watch', cat='buying',
+        card=dict(
+            en=dict(title='A Watch for Your First Job: Buying One With Your Own Money',
+                    desc='The first watch nobody gives you. What a first salary can sensibly spend, and what ten years of owning a steel quartz watch really costs once you count the battery.'),
+            it=dict(title='Un Orologio per il Primo Lavoro: Comprarlo con i Tuoi Soldi',
+                    desc='Il primo orologio che nessuno ti regala. Quanto può spendere con criterio un primo stipendio, e quanto costa davvero tenere dieci anni un orologio in acciaio al quarzo.'),
+            sq=dict(title='Një Orë për Punën e Parë: Ta Blini me Paratë Tuaja',
+                    desc='Ora e parë që nuk ua fal njeri. Sa mund të shpenzojë me arsye një rrogë e parë, dhe sa kushton vërtet mbajtja e një ore çeliku me kuarc për dhjetë vjet, bateria brenda.'),
+        ),
+    ),
+    dict(
+        slug='buy-watch-tirana', cat='buying',
+        card=dict(
+            en=dict(title='Buying a Watch in Tirana: What Your Options Are',
+                    desc='What Tirana sells at each end of the market, and the two ways to buy from a Durr&euml;s watchmaker instead: 40 minutes on the highway, or free courier in 3 to 7 days with cash on delivery.'),
+            it=dict(title='Comprare un Orologio a Tirana: Quali Sono le Opzioni',
+                    desc='Cosa vende Tirana ai due estremi del mercato, e i due modi per comprare invece da un orologiaio di Durazzo: 40 minuti di autostrada, oppure corriere gratuito dai 3 ai 7 giorni.'),
+            sq=dict(title='Blerja e një Ore në Tiranë: Cilat Janë Opsionet',
+                    desc='Çfarë shet Tirana në të dy skajet e tregut, dhe dy mënyrat për të blerë te një orëtar në Durrës: 40 minuta autostradë, ose korrier falas brenda 3 deri në 7 ditësh.'),
+        ),
+    ),
+    dict(
         slug='quartz-watch-accuracy', cat='knowledge',
         label=dict(en='Watch Knowledge', it='Conoscenza Orologi', sq='Njohuri Orësh'),
         card=dict(
@@ -162,7 +195,7 @@ ARTICLES = [
                     desc='Five to ten years, and the movement is almost never what fails. The real failure order, the seasonal damage we see every year, and what a decade of ownership actually costs.'),
             it=dict(title='Quanto Dura un Orologio da 70 Euro? Quello Che Vediamo al Banco',
                     desc='Da cinque a dieci anni, e il movimento non è quasi mai ciò che cede. Il vero ordine dei guasti, i danni stagionali e quanto costa davvero un decennio di possesso.'),
-            sq=dict(title='Sa Zgjat nj&euml; Or&euml; 7.000 Lek&euml;? &Ccedil;far&euml; Shohim n&euml; Banak',
+            sq=dict(title='Sa Zgjat nj&euml; Or&euml; 6.800 Lek&euml;? &Ccedil;far&euml; Shohim n&euml; Banak',
                     desc='Nga pes&euml; n&euml; dhjet&euml; vjet, dhe mekanizmi nuk &euml;sht&euml; thuajse kurr&euml; ai q&euml; dor&euml;zohet. Radha e v&euml;rtet&euml; e prishjeve dhe sa kushton vërtet nj&euml; dekad&euml; pron&euml;sie.'),
         ),
     ),
@@ -769,7 +802,7 @@ ARTICLES = [
         ),
     ),
     dict(
-        slug='where-to-buy-watch-tirana', cat='buying',
+        slug='buy-watches-anywhere-albania', cat='buying',
         label=dict(en='Albania Nationwide', it='Albania Nazionale', sq='E gjithë Shqipëria'),
         card=dict(
             en=dict(title='Buy Watches Anywhere in Albania',

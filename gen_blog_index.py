@@ -210,6 +210,13 @@ def family_map():
         if p.name == "index.html":
             continue
         t = p.read_text(encoding="utf-8")
+        # noindex redirect stubs left behind by a slug rename carry no hreflang,
+        # because they are not articles. load_manifest() below already drops them
+        # from the on-disk set by exactly this test; without the same skip here a
+        # single stub crashes the whole blog build on the assert further down.
+        # The Tirana split in 2026-08 put the first such stub under en/blog/.
+        if "noindex" in t.lower():
+            continue
         m = {}
         for lg in ("it", "sq"):
             hit = re.search(
