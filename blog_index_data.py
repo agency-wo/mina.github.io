@@ -41,6 +41,18 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
+        slug='quartz-watch-accuracy', cat='knowledge',
+        label=dict(en='Watch Knowledge', it='Conoscenza Orologi', sq='Njohuri Orësh'),
+        card=dict(
+            en=dict(title='Why a New Quartz Watch Still Gains or Loses a Few Seconds',
+                    desc='The crystal is quoted in seconds per year, the watch behaves in seconds per month, and fifteen seconds a day is a fault. All three are true. What separates normal drift from a movement that needs attention.'),
+            it=dict(title='Perché un Orologio al Quarzo Nuovo Guadagna o Perde Qualche Secondo',
+                    desc='Il cristallo si dichiara in secondi all&rsquo;anno, l&rsquo;orologio si comporta in secondi al mese, e quindici secondi al giorno sono un guasto. Tutti e tre i dati sono veri. Cosa separa lo scarto normale da un movimento da controllare.'),
+            sq=dict(title='Pse një Orë Kuarci e Re Fiton apo Humb disa Sekonda',
+                    desc='Kristali jepet në sekonda në vit, ora sillet në sekonda në muaj, dhe pesëmbëdhjetë sekonda në ditë janë defekt. Të tria janë të vërteta. Ja çfarë e ndan humbjen normale nga një mekanizëm që kërkon vëmendje.'),
+        ),
+    ),
+    dict(
         slug='bigotti-watches-albania', cat='buying',
         card=dict(
             en=dict(title='Bigotti Watches in Albania: Which One to Buy',
@@ -253,9 +265,9 @@ ARTICLES = [
             en=dict(title="Are Daniel Klein Watches Any Good? A Watchmaker's Honest Answer",
                     desc='Turkish fashion brand, quartz, gold-tone looks for &euro;59 to &euro;89. Where the money is well spent and where it is not, plus the models we stock.'),
             it=dict(title='Gli Orologi Daniel Klein Sono Buoni? La Risposta Onesta di un Orologiaio',
-                    desc='Marchio di moda turco, quarzo, look dorato per &euro;59 a &euro;89. Dove i soldi sono ben spesi e dove no, con tutti gli 8 modelli in stock.'),
+                    desc='Marchio di moda turco, quarzo, look dorato per &euro;59 a &euro;89. Dove i soldi sono ben spesi e dove no, con i modelli in stock.'),
             sq=dict(title='A Vlejn&euml; Or&euml;t Daniel Klein? P&euml;rgjigjja e Ndershme e nj&euml; Or&euml;ndreq&euml;si',
-                    desc='Mark&euml; mode turke, kuarc, pamje ari p&euml;r &euro;59 deri &euro;89. Ku shkojn&euml; mir&euml; parat&euml; dhe ku jo, me t&euml; 8 modelet n&euml; stok.'),
+                    desc='Mark&euml; mode turke, kuarc, pamje ari p&euml;r &euro;59 deri &euro;89. Ku shkojn&euml; mir&euml; parat&euml; dhe ku jo, me modelet q&euml; kemi n&euml; stok.'),
         ),
     ),
     dict(
@@ -647,11 +659,11 @@ ARTICLES = [
         slug='buy-watch-without-trying-on', cat='buying',
         card=dict(
             en=dict(title='Is It Safe to Buy a Watch Without Trying It On?',
-                    desc='How to get case size and fit right when ordering remotely. A practical guide to measuring your wrist and choosing the right size with confidence.'),
+                    desc='You pay at the door with the watch in your hands, you can refuse it for nothing, and we size the bracelet free at the counter. Why you do not need to measure anything first.'),
             it=dict(title='&Egrave; Sicuro Comprare un Orologio Senza Provarlo?',
-                    desc='Acquistare online o per regalo senza indossarlo prima &egrave; possibile, se si conoscono le misure giuste. Come misurare il polso e cosa chiedere prima di ordinare.'),
+                    desc='Pagate alla porta con l&rsquo;orologio in mano, potete rifiutarlo senza spendere nulla, e il bracciale lo adattiamo gratis al banco. Perch&eacute; non serve misurare niente.'),
             sq=dict(title='A &euml;sht&euml; e Sigurt&euml; t&euml; Blesh Or&euml; pa e Provuar?',
-                    desc='Blerja online ose si dhuratë pa e veshur m&euml; par&euml; &euml;sht&euml; e mundur, n&euml;se dini p&euml;rmasat e duhura. Si t&euml; matni ky&ccedil;in dhe &ccedil;far&euml; t&euml; pyesni para se t&euml; porosisni.'),
+                    desc='E paguani te dera me or&euml;n n&euml; dor&euml;, mund ta refuzoni pa ju kushtuar asgj&euml;, dhe braceletin ua p&euml;rshtatim falas te banaku. Pse nuk ju duhet t&euml; matni asgj&euml;.'),
         ),
     ),
     dict(
@@ -682,9 +694,9 @@ ARTICLES = [
             en=dict(title='Graduation Watch Ideas Under &euro;200',
                     desc='The right watch for a new graduate entering work. Which brands suit which fields, and how to order with cash on delivery anywhere in Albania.'),
             it=dict(title='Idee Orologio per la Laurea: Come Scegliere il Regalo Giusto',
-                    desc='Il regalo di laurea perfetto &egrave; uno che dura anni. Come scegliere un orologio che il laureato indosser&agrave; davvero - stile, budget e taglia del polso.'),
+                    desc='Il regalo di laurea perfetto &egrave; uno che dura anni. Come scegliere un orologio che il laureato indosser&agrave; davvero - stile, budget e occasione.'),
             sq=dict(title='Ide Or&euml;sh p&euml;r Diplomim: Si t&euml; Zgjidhni Dhuratën e Duhur',
-                    desc='Dhurata e duhur e diplomimit &euml;sht&euml; ajo q&euml; zgjat vite. Si t&euml; zgjidhni or&euml;n q&euml; diplomuari do ta veshë vërtet - stil, buxhet dhe p&euml;rmasa e ky&ccedil;it.'),
+                    desc='Dhurata e duhur e diplomimit &euml;sht&euml; ajo q&euml; zgjat vite. Si t&euml; zgjidhni or&euml;n q&euml; diplomuari do ta veshë vërtet - stil, buxhet dhe rasti.'),
         ),
     ),
     dict(

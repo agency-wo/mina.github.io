@@ -90,6 +90,15 @@
 .svp-step h3{font-size:.95rem;font-weight:800;margin-top:1rem;margin-bottom:.4rem;color:var(--text-primary)}
 .svp-step p{font-size:.82rem;color:var(--text-secondary);line-height:1.55;margin:0}
 .svp-step-arr{display:flex;align-items:center;justify-content:center;height:4.5rem;color:rgba(180,148,92,.32);font-size:1.2rem}
+.svp-price{list-style:none;padding:0;margin:0;border:1px solid var(--border-light);border-radius:1.1rem;overflow:hidden}
+.svp-price-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.25rem;padding:.95rem 1.4rem;border-bottom:1px solid var(--border-light)}
+.svp-price-row:last-child{border-bottom:none}
+.svp-price-row:nth-child(odd){background:var(--bg-soft)}
+.svp-price-name{display:block;font-size:.9rem;font-weight:700;color:var(--text-primary)}
+.svp-price-sub{display:block;font-size:.78rem;color:var(--text-secondary);line-height:1.5;margin-top:.12rem}
+.svp-price-val{font-size:.95rem;font-weight:800;color:var(--accent-gold);white-space:nowrap;justify-self:end}
+.svp-price-note{display:flex;align-items:flex-start;gap:.55rem;font-size:.79rem;color:var(--text-secondary);line-height:1.55;margin:1.1rem 0 0}
+.svp-price-note i{color:var(--accent-gold);margin-top:.2rem;flex-shrink:0}
 .svp-reads-hd{margin-bottom:.85rem}
 .svp-reads-hd h2{font-size:1.2rem;font-weight:800;margin-bottom:.2rem}
 .svp-reads-hd p{font-size:.83rem;color:var(--text-secondary);margin:0}
@@ -153,7 +162,7 @@
 .val-success p{font-size:.84rem;color:var(--text-secondary);line-height:1.6}
 @media(max-width:960px){.svp-cards{grid-template-columns:1fr 1fr}.svp-feat{grid-template-columns:1fr;padding:2rem}.svp-feat-num{display:none}.svp-process{padding:2rem 1.75rem}.svp-faq{padding:2rem 1.75rem}.svp-shop-inner{grid-template-columns:1fr}.svp-shop{padding:2rem}}
 @media(max-width:800px){.val-top{grid-template-columns:1fr;gap:2rem}.val-section{padding:2rem 1.75rem}}
-@media(max-width:640px){.svp-cards{grid-template-columns:1fr}.svp-trust{grid-template-columns:repeat(2,1fr)}.svp-trust-item:nth-child(2){border-right:none}.svp-trust-item{border-bottom:1px solid #f0ebe4}.svp-trust-item:nth-child(3),.svp-trust-item:nth-child(4){border-bottom:none}.svp-steps{grid-template-columns:1fr;gap:1.5rem}.svp-step-arr{display:none}.svp-wrap{padding:1.5rem 1rem 3rem;gap:1.75rem}.svp-cta{padding:2rem 1.5rem}.svp-shop{padding:1.75rem 1.25rem}}
+@media(max-width:640px){.svp-cards{grid-template-columns:1fr}.svp-trust{grid-template-columns:repeat(2,1fr)}.svp-trust-item:nth-child(2){border-right:none}.svp-trust-item{border-bottom:1px solid #f0ebe4}.svp-trust-item:nth-child(3),.svp-trust-item:nth-child(4){border-bottom:none}.svp-steps{grid-template-columns:1fr;gap:1.5rem}.svp-price-row{grid-template-columns:1fr;gap:.3rem}.svp-price-val{justify-self:start}.svp-step-arr{display:none}.svp-wrap{padding:1.5rem 1rem 3rem;gap:1.75rem}.svp-cta{padding:2rem 1.5rem}.svp-shop{padding:1.75rem 1.25rem}}
 @media(max-width:480px){.val-row{grid-template-columns:1fr}.val-section{padding:1.75rem 1.25rem}}</style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -179,10 +188,10 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question", "name": "Çfarë llojesh çelësash kopjoni?", "acceptedAnswer": {"@type": "Answer", "text": "Kopjojmë çelësa shtëpie dhe dere standarde, çelësa zyre dhe dyersh metalike, çelësa kasafortash dhe dollap, si dhe profile sigurie të ndryshme. Nëse keni çelësin origjinal, mundeni ta kopjoni - silleni dhe do t’ju tregojmë menjëherë nëse mund ta bëjmë."}},
+      {"@type": "Question", "name": "Çfarë llojesh çelësash kopjoni?", "acceptedAnswer": {"@type": "Answer", "text": "Kopjojmë çelësa shtëpie dhe dere standarde, çelësa zyre dhe dyersh metalike, çelësa kasafortash dhe dollap, si dhe profile sigurie të ndryshme. Silleni çelësin origjinal dhe do t’ju themi menjëherë nëse mund ta presim. Çelësa makine dhe transponder nuk presim."}},
       {"@type": "Question", "name": "Sa kohë zë kopjimi?", "acceptedAnswer": {"@type": "Answer", "text": "Kopjimi i çelësave standard kryhet ndërsa prisni - zakonisht brenda 5–10 minutave. Profilet e sigurisë mund të marrin pak më shumë kohë varësisht nga kompleksiteti."}},
       {"@type": "Question", "name": "A kopjoni çelësa makinash?", "acceptedAnswer": {"@type": "Answer", "text": "Çelësat e makinave moderne me transponder kërkojnë pajisje elektronike speciale dhe nuk janë në shërbimin tonë aktual. Përqendrohemi në çelësa shtëpie, zyre dhe kasafortash."}},
-      {"@type": "Question", "name": "Sa kushton kopjimi i çelësit?", "acceptedAnswer": {"@type": "Answer", "text": "Çmimi ndryshon varësisht nga lloji i çelësit dhe profilet e tij. Ju tregojmë çmimin para se të fillojmë - asnjë kosto pa miratimin tuaj paraprak. Silleni çelësin origjinal dhe ju japim çmim në vend."}},
+      {"@type": "Question", "name": "Sa kushton kopjimi i çelësit?", "acceptedAnswer": {"@type": "Answer", "text": "Çelësat me prerje janë 150 Lekë. Çelësat kryq janë 300 Lekë, çelësat me pika 300 deri 500 Lekë, çipat e ashensorit 500 Lekë dhe çelësat dopio 1.000 Lekë. Jua konfirmojmë çmimin para se të fillojmë. Çelësa makine dhe transponder nuk presim."}},
       {"@type": "Question", "name": "Çfarë duhet të sjell me vete?", "acceptedAnswer": {"@type": "Answer", "text": "Sillni vetëm çelësin origjinal që dëshironi ta kopjoni. Nuk nevojitet dokument apo rezervim paraprak. Punojmë sipas radhës së mbërritjes."}},
       {"@type": "Question", "name": "A testohet çelësi para dorëzimit?", "acceptedAnswer": {"@type": "Answer", "text": "Po - ku është e mundur testojmë kopjen para se ta dorëzojmë. Ju sigurohemi që kopja funksionon si duhet para se të largoheni nga dyqani."}}
     ]
@@ -322,6 +331,52 @@
           </ul>
           <span class="svp-feat-badge"><i class="fas fa-tachometer-alt" aria-hidden="true"></i>&ensp;Dorëzim i Shpejtë</span>
         </div>
+      </div>
+
+      <!-- Price list -->
+      <div class="svp-process" id="prices" data-animate>
+        <div class="svp-process-hd">
+          <h2>Sa Kushton Prerja e Çelësave</h2>
+          <p>Lista e plotë, në Lekë. Jua konfirmojmë çmimin para se të fillojmë.</p>
+        </div>
+        <ul class="svp-price" role="list">
+          <li class="svp-price-row" role="listitem">
+            <span>
+              <span class="svp-price-name">Çelësa me prerje</span>
+              <span class="svp-price-sub">Çelësa standard shtëpie, dere, zyre dhe dollapi</span>
+            </span>
+            <span class="svp-price-val">150 Lekë</span>
+          </li>
+          <li class="svp-price-row" role="listitem">
+            <span>
+              <span class="svp-price-name">Çelësa kryq</span>
+              <span class="svp-price-sub">Çelësa në formë kryqi, të prerë në më shumë se një anë</span>
+            </span>
+            <span class="svp-price-val">300 Lekë</span>
+          </li>
+          <li class="svp-price-row" role="listitem">
+            <span>
+              <span class="svp-price-name">Çelësa me pika</span>
+              <span class="svp-price-sub">Me gropëza të shpuara në vend të tehut të dhëmbëzuar</span>
+            </span>
+            <span class="svp-price-val">300 deri 500 Lekë</span>
+          </li>
+          <li class="svp-price-row" role="listitem">
+            <span>
+              <span class="svp-price-name">Çelësa dopio</span>
+              <span class="svp-price-sub">Të prerë në të dyja anët e tehut</span>
+            </span>
+            <span class="svp-price-val">1.000 Lekë</span>
+          </li>
+          <li class="svp-price-row" role="listitem">
+            <span>
+              <span class="svp-price-name">Çip ashensori</span>
+              <span class="svp-price-sub">Çipi i hyrjes në ashensorin e pallatit, kopjohet në banak</span>
+            </span>
+            <span class="svp-price-val">500 Lekë</span>
+          </li>
+        </ul>
+        <p class="svp-price-note"><i class="fas fa-exclamation-circle" aria-hidden="true"></i>Profilet e sigurisë së lartë i çmuajmë kur e shohim çelësin. Çelësa makine dhe transponder nuk presim, prandaj as nuk i kopjojmë.</p>
       </div>
 
       <!-- Section label -->
@@ -594,7 +649,7 @@
               <span class="faq-q-label"><i class="fas fa-key faq-icon" aria-hidden="true"></i>Çfarë llojesh çelësash kopjoni?</span>
               <i class="fas fa-chevron-down" aria-hidden="true"></i>
             </summary>
-            <div class="faq-answer"><p>Kopjojmë çelësa shtëpie dhe dere standarde, çelësa zyre dhe dyersh metalike, çelësa kasafortash dhe dollap, si dhe profile sigurie të ndryshme. Nëse keni çelësin origjinal, mundeni ta kopjoni - silleni dhe do t&rsquo;ju tregojmë menjëherë nëse mund ta bëjmë.</p></div>
+            <div class="faq-answer"><p>Kopjojmë çelësa shtëpie dhe dere standarde, çelësa zyre dhe dyersh metalike, çelësa kasafortash dhe dollap, si dhe profile sigurie të ndryshme. Silleni çelësin origjinal dhe do t&rsquo;ju themi menjëherë nëse mund ta presim. Çelësa makine dhe transponder nuk presim.</p></div>
           </details>
           <details class="faq-item">
             <summary class="faq-question">
@@ -612,10 +667,10 @@
           </details>
           <details class="faq-item">
             <summary class="faq-question">
-              <span class="faq-q-label"><i class="fas fa-euro-sign faq-icon" aria-hidden="true"></i>Sa kushton kopjimi i çelësit?</span>
+              <span class="faq-q-label"><i class="fas fa-money-bill faq-icon" aria-hidden="true"></i>Sa kushton kopjimi i çelësit?</span>
               <i class="fas fa-chevron-down" aria-hidden="true"></i>
             </summary>
-            <div class="faq-answer"><p>Çmimi ndryshon varësisht nga lloji i çelësit dhe profilet e tij. Ju tregojmë çmimin para se të fillojmë - asnjë kosto pa miratimin tuaj paraprak. Silleni çelësin origjinal dhe ju japim çmim në vend.</p></div>
+            <div class="faq-answer"><p>Çelësat me prerje janë 150 Lekë. Çelësat kryq janë 300 Lekë, çelësat me pika 300 deri 500 Lekë, çipat e ashensorit 500 Lekë dhe çelësat dopio 1.000 Lekë. Jua konfirmojmë çmimin para se të fillojmë. Çelësa makine dhe transponder nuk presim.</p></div>
           </details>
           <details class="faq-item">
             <summary class="faq-question">

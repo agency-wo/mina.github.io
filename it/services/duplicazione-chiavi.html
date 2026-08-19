@@ -89,6 +89,15 @@
 .svp-step h3{font-size:.95rem;font-weight:800;margin-top:1rem;margin-bottom:.4rem;color:var(--text-primary)}
 .svp-step p{font-size:.82rem;color:var(--text-secondary);line-height:1.55;margin:0}
 .svp-step-arr{display:flex;align-items:center;justify-content:center;height:4.5rem;color:rgba(180,148,92,.32);font-size:1.2rem}
+.svp-price{list-style:none;padding:0;margin:0;border:1px solid var(--border-light);border-radius:1.1rem;overflow:hidden}
+.svp-price-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.25rem;padding:.95rem 1.4rem;border-bottom:1px solid var(--border-light)}
+.svp-price-row:last-child{border-bottom:none}
+.svp-price-row:nth-child(odd){background:var(--bg-soft)}
+.svp-price-name{display:block;font-size:.9rem;font-weight:700;color:var(--text-primary)}
+.svp-price-sub{display:block;font-size:.78rem;color:var(--text-secondary);line-height:1.5;margin-top:.12rem}
+.svp-price-val{font-size:.95rem;font-weight:800;color:var(--accent-gold);white-space:nowrap;justify-self:end}
+.svp-price-note{display:flex;align-items:flex-start;gap:.55rem;font-size:.79rem;color:var(--text-secondary);line-height:1.55;margin:1.1rem 0 0}
+.svp-price-note i{color:var(--accent-gold);margin-top:.2rem;flex-shrink:0}
 .svp-reads-hd{margin-bottom:.85rem}
 .svp-reads-hd h2{font-size:1.2rem;font-weight:800;margin-bottom:.2rem}
 .svp-reads-hd p{font-size:.83rem;color:var(--text-secondary);margin:0}
@@ -152,7 +161,7 @@
 .val-success p{font-size:.84rem;color:var(--text-secondary);line-height:1.6}
 @media(max-width:960px){.svp-cards{grid-template-columns:1fr 1fr}.svp-feat{grid-template-columns:1fr;padding:2rem}.svp-feat-num{display:none}.svp-process{padding:2rem 1.75rem}.svp-faq{padding:2rem 1.75rem}.svp-shop-inner{grid-template-columns:1fr}.svp-shop{padding:2rem}}
 @media(max-width:800px){.val-top{grid-template-columns:1fr;gap:2rem}.val-section{padding:2rem 1.75rem}}
-@media(max-width:640px){.svp-cards{grid-template-columns:1fr}.svp-trust{grid-template-columns:repeat(2,1fr)}.svp-trust-item:nth-child(2){border-right:none}.svp-trust-item{border-bottom:1px solid #f0ebe4}.svp-trust-item:nth-child(3),.svp-trust-item:nth-child(4){border-bottom:none}.svp-steps{grid-template-columns:1fr;gap:1.5rem}.svp-step-arr{display:none}.svp-wrap{padding:1.5rem 1rem 3rem;gap:1.75rem}.svp-cta{padding:2rem 1.5rem}.svp-shop{padding:1.75rem 1.25rem}}
+@media(max-width:640px){.svp-cards{grid-template-columns:1fr}.svp-trust{grid-template-columns:repeat(2,1fr)}.svp-trust-item:nth-child(2){border-right:none}.svp-trust-item{border-bottom:1px solid #f0ebe4}.svp-trust-item:nth-child(3),.svp-trust-item:nth-child(4){border-bottom:none}.svp-steps{grid-template-columns:1fr;gap:1.5rem}.svp-price-row{grid-template-columns:1fr;gap:.3rem}.svp-price-val{justify-self:start}.svp-step-arr{display:none}.svp-wrap{padding:1.5rem 1rem 3rem;gap:1.75rem}.svp-cta{padding:2rem 1.5rem}.svp-shop{padding:1.75rem 1.25rem}}
 @media(max-width:480px){.val-row{grid-template-columns:1fr}.val-section{padding:1.75rem 1.25rem}}</style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -165,8 +174,8 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"Quanto ci vuole per fare una copia di chiave?","acceptedAnswer":{"@type":"Answer","text":"La maggior parte delle chiavi standard è pronta in pochi minuti. Portate l’originale, attendete qualche minuto al bancone e la copia è già testata e pronta da portare."}},
-    {"@type":"Question","name":"Quanto costa il duplicato di una chiave?","acceptedAnswer":{"@type":"Answer","text":"I prezzi partono da pochi euro per le chiavi standard di casa o ufficio. I profili ad alta sicurezza possono costare di più. Vi diciamo il prezzo prima di iniziare - nessuna sorpresa."}},
-    {"@type":"Question","name":"Copiate tutti i tipi di chiave?","acceptedAnswer":{"@type":"Answer","text":"Sì: chiavi casa, ufficio, cassetti, lucchetti e profili ad alta sicurezza. Portate l’originale - se è duplicabile, lo facciamo."}},
+    {"@type":"Question","name":"Quanto costa il duplicato di una chiave?","acceptedAnswer":{"@type":"Answer","text":"Le chiavi a taglio sono 150 Lekë. Le chiavi a croce sono 300 Lekë, le chiavi a punti da 300 a 500 Lekë, i chip ascensore 500 Lekë e le chiavi dopie 1.000 Lekë. Vi confermiamo il prezzo prima di iniziare. Le chiavi per auto e transponder non le facciamo."}},
+    {"@type":"Question","name":"Quali tipi di chiave copiate?","acceptedAnswer":{"@type":"Answer","text":"Chiavi casa, ufficio, cassetti, lucchetti e profili ad alta sicurezza, e insieme a quelle chiavi a croce, chiavi a punti, chiavi dopie e chip ascensore. Chiavi per auto, transponder e telecomandi di veicoli non le facciamo, perché richiedono apparecchiature di programmazione. Portate l’originale e vi diciamo subito se è duplicabile."}},
     {"@type":"Question","name":"La copia funzionerà perfettamente?","acceptedAnswer":{"@type":"Answer","text":"Sì. Ogni copia viene testata prima della consegna. Utilizziamo attrezzatura di precisione per garantire che la chiave entri e giri senza problemi."}},
     {"@type":"Question","name":"Serve l’originale per fare una copia?","acceptedAnswer":{"@type":"Answer","text":"Per la stragrande maggioranza delle chiavi, sì - l’originale è necessario per una copia precisa. In alcuni casi possiamo lavorare da una copia esistente."}},
     {"@type":"Question","name":"Serve un appuntamento?","acceptedAnswer":{"@type":"Answer","text":"No - il taglio chiavi viene eseguito immediatamente senza prenotazione. Entrate, consegnate l’originale e la copia è pronta in pochi minuti."}}
@@ -248,6 +257,52 @@
           <span class="svp-feat-badge"><i class="fas fa-key" aria-hidden="true"></i>&ensp;Pronto in minuti</span>
         </div>
       </div>
+      <!-- Price list -->
+      <div class="svp-process" id="prices" data-animate>
+        <div class="svp-process-hd">
+          <h2>Quanto Costa il Taglio delle Chiavi</h2>
+          <p>La lista completa, in Lek&euml;. Vi confermiamo il prezzo prima di iniziare.</p>
+        </div>
+        <ul class="svp-price" role="list">
+          <li class="svp-price-row" role="listitem">
+            <span>
+              <span class="svp-price-name">Chiavi a taglio</span>
+              <span class="svp-price-sub">Chiavi standard di casa, porta, ufficio e cassetti</span>
+            </span>
+            <span class="svp-price-val">150 Lek&euml;</span>
+          </li>
+          <li class="svp-price-row" role="listitem">
+            <span>
+              <span class="svp-price-name">Chiavi a croce</span>
+              <span class="svp-price-sub">Chiavi a croce, tagliate su pi&ugrave; di una faccia</span>
+            </span>
+            <span class="svp-price-val">300 Lek&euml;</span>
+          </li>
+          <li class="svp-price-row" role="listitem">
+            <span>
+              <span class="svp-price-name">Chiavi a punti</span>
+              <span class="svp-price-sub">Fori punzonati al posto del profilo dentellato</span>
+            </span>
+            <span class="svp-price-val">da 300 a 500 Lek&euml;</span>
+          </li>
+          <li class="svp-price-row" role="listitem">
+            <span>
+              <span class="svp-price-name">Chiavi dopie</span>
+              <span class="svp-price-sub">Tagliate su entrambi i bordi della lama</span>
+            </span>
+            <span class="svp-price-val">1.000 Lek&euml;</span>
+          </li>
+          <li class="svp-price-row" role="listitem">
+            <span>
+              <span class="svp-price-name">Chip ascensore</span>
+              <span class="svp-price-sub">Chip di accesso all&rsquo;ascensore di palazzo, copiato al banco</span>
+            </span>
+            <span class="svp-price-val">500 Lek&euml;</span>
+          </li>
+        </ul>
+        <p class="svp-price-note"><i class="fas fa-exclamation-circle" aria-hidden="true"></i>I profili ad alta sicurezza li quotiamo quando vediamo la chiave. Chiavi per auto e transponder non le facciamo, quindi non le copiamo.</p>
+      </div>
+
       <p class="svp-label" aria-hidden="true">Anche nel nostro laboratorio</p>
       <div class="svp-cards">
         <div class="svp-card" data-animate>
@@ -406,8 +461,8 @@
         <div class="svp-faq-hd"><h2>Domande Frequenti</h2><p>Tutto quello che potreste voler sapere prima di venire da noi.</p></div>
         <div class="svp-faq-body">
           <details class="faq-item"><summary class="faq-question"><span class="faq-q-label"><i class="fas fa-key faq-icon" aria-hidden="true"></i>Quanto ci vuole per fare una copia di chiave?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>La maggior parte delle chiavi standard &egrave; pronta in pochi minuti. Portate l&rsquo;originale, attendete qualche minuto al bancone e la copia &egrave; gi&agrave; testata e pronta da portare.</p></div></details>
-          <details class="faq-item"><summary class="faq-question"><span class="faq-q-label"><i class="fas fa-euro-sign faq-icon" aria-hidden="true"></i>Quanto costa il duplicato di una chiave?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>I prezzi partono da pochi euro per le chiavi standard di casa o ufficio. I profili ad alta sicurezza possono costare di pi&ugrave;. Vi diciamo il prezzo prima di iniziare - nessuna sorpresa.</p></div></details>
-          <details class="faq-item"><summary class="faq-question"><span class="faq-q-label"><i class="fas fa-key faq-icon" aria-hidden="true"></i>Copiate tutti i tipi di chiave?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>S&igrave;: chiavi casa, ufficio, cassetti, lucchetti e profili ad alta sicurezza. Portate l&rsquo;originale - se &egrave; duplicabile, lo facciamo.</p></div></details>
+          <details class="faq-item"><summary class="faq-question"><span class="faq-q-label"><i class="fas fa-money-bill faq-icon" aria-hidden="true"></i>Quanto costa il duplicato di una chiave?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>Le chiavi a taglio sono 150 Lek&euml;. Le chiavi a croce sono 300 Lek&euml;, le chiavi a punti da 300 a 500 Lek&euml;, i chip ascensore 500 Lek&euml; e le chiavi dopie 1.000 Lek&euml;. Vi confermiamo il prezzo prima di iniziare. Le chiavi per auto e transponder non le facciamo.</p></div></details>
+          <details class="faq-item"><summary class="faq-question"><span class="faq-q-label"><i class="fas fa-key faq-icon" aria-hidden="true"></i>Quali tipi di chiave copiate?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>Chiavi casa, ufficio, cassetti, lucchetti e profili ad alta sicurezza, e insieme a quelle chiavi a croce, chiavi a punti, chiavi dopie e chip ascensore. Chiavi per auto, transponder e telecomandi di veicoli non le facciamo, perch&eacute; richiedono apparecchiature di programmazione. Portate l&rsquo;originale e vi diciamo subito se &egrave; duplicabile.</p></div></details>
           <details class="faq-item"><summary class="faq-question"><span class="faq-q-label"><i class="fas fa-star faq-icon" aria-hidden="true"></i>La copia funzioner&agrave; perfettamente?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>S&igrave;. Ogni copia viene testata prima della consegna. Utilizziamo attrezzatura di precisione per garantire che la chiave entri e giri senza problemi.</p></div></details>
           <details class="faq-item"><summary class="faq-question"><span class="faq-q-label"><i class="fas fa-exclamation-circle faq-icon" aria-hidden="true"></i>Serve l&rsquo;originale per fare una copia?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>Per la stragrande maggioranza delle chiavi, s&igrave; - l&rsquo;originale &egrave; necessario per una copia precisa. In alcuni casi possiamo lavorare da una copia esistente.</p></div></details>
           <details class="faq-item"><summary class="faq-question"><span class="faq-q-label"><i class="fas fa-calendar-alt faq-icon" aria-hidden="true"></i>Serve un appuntamento?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="faq-answer"><p>No - il taglio chiavi viene eseguito immediatamente senza prenotazione. Entrate, consegnate l&rsquo;originale e la copia &egrave; pronta in pochi minuti.</p></div></details>

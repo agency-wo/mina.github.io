@@ -73,6 +73,7 @@ COMMERCIAL = frozenset({
     "cash-on-delivery-watches-albania", "watch-returns-exchange-guarantee",
     "why-buy-from-a-watchmaker", "bigotti-watches-albania",
     "daniel-klein-vs-philippe-lauren", "blue-dial-watches-albania",
+    "quartz-watch-accuracy",
 })
 
 SECTIONS = ["apex", "home", "static", "shopindex", "brand", "product", "shopinfo",
