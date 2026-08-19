@@ -829,8 +829,8 @@ ARTICLES = [
         slug='watch-case-sizes', cat='knowledge',
         label=dict(en='Watch Style', it='Stile Orologio', sq='Stili i Orës'),
         card=dict(
-            en=dict(title='Watch Case Sizes Explained: Finding the Right Fit for Your Wrist',
-                    desc="Diameter alone doesn't determine how a watch fits. Lug-to-lug distance and thickness matter just as much. How to read the specs and avoid buying the wrong size."),
+            en=dict(title='Watch Case Sizes Explained: What Each Number Actually Means',
+                    desc="Diameter is only one of three case measurements. Lug-to-lug distance and thickness matter just as much. How to read a specification, and which numbers we will measure for you."),
             it=dict(title='Dimensioni della Cassa: Come Scegliere l&rsquo;Orologio Giusto per il Tuo Polso',
                     desc='36 mm, 40 mm, 44 mm - le dimensioni della cassa cambiano tutto. Come misurare il polso, scegliere lo spessore e capire perché i numeri da soli non bastano.'),
             sq=dict(title='P&euml;rmasat e Kas&euml;s s&euml; Or&euml;s: Si t&euml; Dini N&euml;se i Shkon Ky&ccedil;it',
