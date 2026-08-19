@@ -831,10 +831,10 @@ ARTICLES = [
         card=dict(
             en=dict(title='Watch Case Sizes Explained: What Each Number Actually Means',
                     desc="Diameter is only one of three case measurements. Lug-to-lug distance and thickness matter just as much. How to read a specification, and which numbers we will measure for you."),
-            it=dict(title='Dimensioni della Cassa: Come Scegliere l&rsquo;Orologio Giusto per il Tuo Polso',
-                    desc='36 mm, 40 mm, 44 mm - le dimensioni della cassa cambiano tutto. Come misurare il polso, scegliere lo spessore e capire perché i numeri da soli non bastano.'),
-            sq=dict(title='P&euml;rmasat e Kas&euml;s s&euml; Or&euml;s: Si t&euml; Dini N&euml;se i Shkon Ky&ccedil;it',
-                    desc='Diametri, distanca lug-to-lug dhe trashësia - tre matjet q&euml; realisht p&euml;rcaktojn&euml; sh&euml;ndetin. Tabell&euml; praktike p&euml;r &ccedil;do madhësi ky&ccedil;i.'),
+            it=dict(title='Dimensioni della Cassa dell&rsquo;Orologio Spiegate: Cosa Significa Davvero Ogni Numero',
+                    desc='Il diametro è solo una delle tre misure della cassa. La distanza tra le anse e lo spessore contano quanto lui. Come si legge una scheda tecnica, e quali numeri misuriamo noi per te.'),
+            sq=dict(title='P&euml;rmasat e Kas&euml;s s&euml; Or&euml;s t&euml; Shpjeguara: &Ccedil;far&euml; Do t&euml; Thot&euml; V&euml;rtet Secili Num&euml;r',
+                    desc='Diametri &euml;sht&euml; vet&euml;m nj&euml; nga tre matjet e kas&euml;s. Lug-to-lug dhe trash&euml;sia kan&euml; po aq r&euml;nd&euml;si. Si lexohet nj&euml; sked&euml; teknike, dhe cil&euml;t numra i masim ne p&euml;r ju.'),
         ),
     ),
     dict(
