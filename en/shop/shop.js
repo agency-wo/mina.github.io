@@ -21,8 +21,9 @@
 //         blackholed route neither resolves nor rejects, and an optional feed
 //         must never hold the chips, search and sort hostage. See [UI-002].
 //         The three copies are NOT identical: 269, 195 and 199 lines of code in
-//         en, it and sq before these headers went in. EN alone carries the
-//         dual-handle price slider (PRICE_MIN 50, PRICE_MAX 200, 5-euro snap);
+//         en, it and sq before these headers went in. All three carry the
+//         dual-handle price slider (PRICE_MIN 50, PRICE_MAX 200, 5-euro snap)
+//         since 2026-08-20; before that EN alone did and IT/SQ rendered it dead.
 //         SQ prints Lek first and has an extra lekVal() for it. Nothing ships in
 //         one language: all three change in one edit.
 (function(){
@@ -251,7 +252,9 @@
 
     var count = document.getElementById('shopCount');
     var grid  = document.getElementById('shopGrid');
-    count.textContent = filtered.length + ' watch' + (filtered.length !== 1 ? 'es' : '') + ' available';
+    // sold cards stay in the grid with their badge, but they are not available
+    var avail = filtered.filter(function(w){ return !w.sold; }).length;
+    count.textContent = avail + ' watch' + (avail !== 1 ? 'es' : '') + ' available';
     if(!filtered.length){
       grid.innerHTML = '<p class="no-watches">No watches match this filter right now. Check back soon!</p>';
       return;

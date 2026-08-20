@@ -1,12 +1,12 @@
 // [UI-016] shop.js — the SQ shop index controller: filter state and the grid.
 // DOES:   fetches watches.json, merges the live CRM stock feed into it BEFORE
 //         the first render, then owns every piece of filter state (condition
-//         chip, brand chip, search term, sort) and repaints #shopGrid on each
-//         change. Brand chips are built from the data, seeded from ?brand= and
-//         written back to the URL, so a filtered grid is a link somebody can
-//         send.
+//         chip, brand chip, search term, sort, price window) and repaints
+//         #shopGrid on each change. Brand chips are built from the data, seeded
+//         from ?brand= and written back to the URL, so a filtered grid is a
+//         link somebody can send.
 // IN:     watches.json over the network; .filter-chip, #brandChips, #shopSearch,
-//         #shopSort; ?brand= on the query string.
+//         #shopSort, #priceSliderWrap; ?brand= on the query string.
 // OUT:    #shopGrid innerHTML, the #shopCount line, one WhatsApp link per card.
 // CALLS:  raw.githubusercontent.com for watches.json; api.watch.al/public/stock
 //         (the [UI-002] block below; [SEC-002] owns the CSP that allows it).
@@ -21,12 +21,12 @@
 //         blackholed route neither resolves nor rejects, and an optional feed
 //         must never hold the chips, search and sort hostage. See [UI-002].
 //         The three copies are NOT identical: 269, 195 and 199 lines of code in
-//         en, it and sq before these headers went in. The dual-handle price
-//         slider (PRICE_MIN 50, PRICE_MAX 200) exists in EN only, so this file
-//         has no price control. This file also prints Lek FIRST and carries
-//         lekVal() for it, which no other copy has, so the sub-indices below run
-//         one letter further from .e on. Nothing ships in one language: all
-//         three change in one edit.
+//         en, it and sq before these headers went in. All three carry the
+//         dual-handle price slider (PRICE_MIN 50, PRICE_MAX 200, 5-euro snap)
+//         since 2026-08-20; before that EN alone did and this one rendered dead.
+//         This file also prints Lek FIRST and carries lekVal() for it, which no
+//         other copy has, so the sub-indices below run one letter further from
+//         .e on. Nothing ships in one language: all three change in one edit.
 (function(){
   var condMap = {'New':'I ri','Pre-owned':'I p\u00ebrdorur'};
   var currentFilter = 'all';
@@ -34,6 +34,9 @@
   var currentSearch = '';
   var BRAND_ALL_LABEL = 'Të gjitha markat';
   var currentSort   = 'default';
+  var currentMinPrice = 50;
+  var currentMaxPrice = 200;
+  var PRICE_MIN = 50, PRICE_MAX = 200;
 
   // [UI-002] live CRM stock (P125): merged into the catalog BEFORE any render.
   // Linked refs are governed in both directions; a failed fetch changes
@@ -83,6 +86,75 @@
       var sortEl = document.getElementById('shopSort');
       if(sortEl){
         sortEl.addEventListener('change', function(){ currentSort = this.value; renderWatches(WATCHES); });
+      }
+
+      var priceWrap = document.getElementById('priceSliderWrap');
+      var priceFill = document.getElementById('priceSliderFill');
+      var handleMin = document.getElementById('handleMin');
+      var handleMax = document.getElementById('handleMax');
+      if(priceWrap && handleMin && handleMax){
+        var minVal = PRICE_MIN, maxVal = PRICE_MAX;
+        var pctOf = function(v){ return (v - PRICE_MIN) / (PRICE_MAX - PRICE_MIN) * 100; };
+        var snapVal = function(v){ return Math.round(v / 5) * 5; };
+        var applyPricePos = function(){
+          handleMin.style.left = pctOf(minVal) + '%';
+          handleMax.style.left = pctOf(maxVal) + '%';
+          priceFill.style.left  = pctOf(minVal) + '%';
+          priceFill.style.width = (pctOf(maxVal) - pctOf(minVal)) + '%';
+          handleMin.setAttribute('aria-valuenow', minVal);
+          handleMax.setAttribute('aria-valuenow', maxVal);
+          var disp = document.getElementById('priceRangeDisplay');
+          if(disp) disp.textContent = '€' + minVal + ' - €' + maxVal;
+          currentMinPrice = minVal;
+          currentMaxPrice = maxVal;
+          renderWatches(WATCHES);
+        };
+        var onSliderStart = function(e){
+          e.preventDefault();
+          var cx = e.touches ? e.touches[0].clientX : e.clientX;
+          var rect = priceWrap.getBoundingClientRect();
+          var frac = Math.max(0, Math.min(1, (cx - rect.left) / rect.width));
+          var val  = snapVal(PRICE_MIN + frac * (PRICE_MAX - PRICE_MIN));
+          var isMin = Math.abs(val - minVal) <= Math.abs(val - maxVal);
+          if(isMin) minVal = Math.min(val, maxVal);
+          else maxVal = Math.max(val, minVal);
+          applyPricePos();
+          var onMove = function(ev){
+            ev.preventDefault();
+            var rect2 = priceWrap.getBoundingClientRect();
+            var cx2 = ev.touches ? ev.touches[0].clientX : ev.clientX;
+            var f2  = Math.max(0, Math.min(1, (cx2 - rect2.left) / rect2.width));
+            var v2  = snapVal(PRICE_MIN + f2 * (PRICE_MAX - PRICE_MIN));
+            if(isMin) minVal = Math.min(v2, maxVal);
+            else maxVal = Math.max(v2, minVal);
+            applyPricePos();
+          };
+          var onEnd = function(){
+            document.removeEventListener('mousemove', onMove);
+            document.removeEventListener('mouseup',   onEnd);
+            document.removeEventListener('touchmove', onMove);
+            document.removeEventListener('touchend',  onEnd);
+          };
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('mouseup',   onEnd);
+          document.addEventListener('touchmove', onMove, {passive:false});
+          document.addEventListener('touchend',  onEnd);
+        };
+        priceWrap.addEventListener('mousedown',  onSliderStart);
+        priceWrap.addEventListener('touchstart', onSliderStart, {passive:false});
+        handleMin.addEventListener('keydown', function(e){
+          if(e.key==='ArrowLeft')       minVal = Math.max(PRICE_MIN, minVal-5);
+          else if(e.key==='ArrowRight') minVal = Math.min(maxVal, minVal+5);
+          else return;
+          applyPricePos();
+        });
+        handleMax.addEventListener('keydown', function(e){
+          if(e.key==='ArrowLeft')       maxVal = Math.max(minVal, maxVal-5);
+          else if(e.key==='ArrowRight') maxVal = Math.min(PRICE_MAX, maxVal+5);
+          else return;
+          applyPricePos();
+        });
+        applyPricePos();
       }
     })
     .catch(function(){
@@ -137,8 +209,8 @@
   }
 
   // [UI-016.b] renderWatches — the ONE render path: filter, sort, repaint
-  // DOES:   applies condition, brand and search in that order, sorts, then
-  //         replaces #shopGrid wholesale and rewrites the count line.
+  // DOES:   applies condition, brand, search and the price window in that order,
+  //         sorts, then replaces #shopGrid wholesale and rewrites the count line.
   // NOTES:  full repaint on purpose. Nothing mutates a card in place, so the grid
   //         can never show a half-applied filter. With a search term and sort
   //         left at default, a prefix hit on brand or model is scored to the top,
@@ -160,6 +232,11 @@
       });
     }
 
+    filtered = filtered.filter(function(w){
+      return (w.price||0) >= currentMinPrice && (w.price||0) <= currentMaxPrice;
+    });
+
+    // Sort
     if(currentSearch && currentSort === 'default'){
       var s = currentSearch;
       filtered.sort(function(a,b){
@@ -177,7 +254,9 @@
 
     var count = document.getElementById('shopCount');
     var grid  = document.getElementById('shopGrid');
-    count.textContent = filtered.length + ' or\u00eb e disponueshme';
+    // sold cards stay in the grid with their badge, but they are not available
+    var avail = filtered.filter(function(w){ return !w.sold; }).length;
+    count.textContent = avail + ' or\u00eb e disponueshme';
     if(!filtered.length){
       grid.innerHTML = '<p class="no-watches">Asnj\u00eb or\u00eb nuk p\u00ebrputhet me k\u00ebt\u00eb filtro tani. Kthehuni s\u00eb shpejti!</p>';
       return;
