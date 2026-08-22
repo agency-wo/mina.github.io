@@ -221,6 +221,20 @@ Breaking one of these has caused a real incident. They are not style preferences
   renders as **nothing** and no text-based check can see it. This is the most repeated bug in the
   repo's history.
 
+- **The viewport is `viewport-fit=cover` on every real page, so every bottom-fixed element must
+  carry `env(safe-area-inset-bottom)`** and the header wrap carries `env(safe-area-inset-top)`.
+  That is what lets iPhones and in-app WebViews that lay the page out edge-to-edge keep the header
+  and the call bar clear of the notch, the home indicator and a host app's bar. A new fixed-bottom
+  element without the inset sits under the home indicator in Safari. The 29 noindex stubs are
+  exempt: they refresh in 0s.
+- **In-app browsers are handled by `/inapp.js` + the `html.in-app*` hooks in `shared.css`.** The
+  script loads synchronously right after the viewport meta (before first paint, on purpose) and
+  flags Instagram, Facebook, Messenger, TikTok, WhatsApp and generic WebViews by user agent;
+  `shared.css` unsticks the header and pushes it below the host's translucent bar. Clients were
+  sending screenshots with the logo and call buttons hidden under that bar (2026-08-20). No
+  "open in browser" nudge, ever: the owner declined one. New pages inherit the tag by cloning;
+  `scripts/add-viewport-fit.py` re-sweeps if one is ever missed.
+
 ### Bytes
 
 - `core.autocrlf=true` with **no `.gitattributes`**, so the correct EOL and BOM depend on which
