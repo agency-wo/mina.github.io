@@ -46,7 +46,7 @@ LANGS = {
         "desc_key": "description_en",
         # must equal what watch.js builds at runtime (see its `var desc = ...`)
         "meta_tail": " Available at Iglisi Watch, Durrës, Albania.",
-        "swiss_desc_prefix": "Swiss watch by Hislon. ",
+        "swiss_desc_prefix": "Swiss watch by {brand}. ",
         "back_href": "/en/shop/",
         "back_label": "Back to shop",
         "ref_label": "Ref.",
@@ -90,7 +90,7 @@ LANGS = {
     "it": {
         "desc_key": "description_it",
         "meta_tail": " Disponibile da Iglisi Watch, Durazzo, Albania.",
-        "swiss_desc_prefix": "Orologio svizzero Hislon. ",
+        "swiss_desc_prefix": "Orologio svizzero {brand}. ",
         "back_href": "/it/shop/",
         "back_label": "Torna al negozio",
         "ref_label": "Rif.",
@@ -134,7 +134,7 @@ LANGS = {
     "sq": {
         "desc_key": "description_sq",
         "meta_tail": " E disponueshme tek Iglisi Watch, Durrës, Shqipëri.",
-        "swiss_desc_prefix": "Orë zvicerane Hislon. ",
+        "swiss_desc_prefix": "Orë zvicerane {brand}. ",
         "back_href": "/sq/shop/",
         "back_label": "Kthehu në dyqan",
         "ref_label": "Ref.",
@@ -1009,7 +1009,15 @@ for w in watches:
         # title: these are pre-rendered for crawlers and watch.js overwrites them at runtime,
         # so the static value must equal the runtime one or the two disagree.
         raw_desc = (w.get(cfg["desc_key"]) or w.get("description_en", "")).strip()
-        meta_desc = ((cfg["swiss_desc_prefix"] if w.get("brand") in SWISS_BRANDS else "")
+        # The Swiss prefix NAMES THE BRAND, and it has to be the watch's own.
+        # It was the literal "Swiss watch by Hislon." because Hislon was the only
+        # Swiss brand when it was written. The moment Cortébert joined
+        # SWISS_BRANDS (2026-08-25) every Cortébert page told crawlers and every
+        # social preview that the watch was a Hislon: 9 pages, three languages,
+        # wrong brand, and no gate could see it because the sentence was
+        # perfectly well-formed.
+        meta_desc = ((cfg["swiss_desc_prefix"].format(brand=w["brand"])
+                      if w.get("brand") in SWISS_BRANDS else "")
                      + raw_desc + cfg["meta_tail"])
         assert '"' not in meta_desc and "&" not in meta_desc, f"{wid}: description needs escaping"
         new_html = re.sub(r'(<meta name="description" id="page-desc" content=")[^"]*(")',

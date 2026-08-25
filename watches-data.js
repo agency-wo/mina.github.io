@@ -1081,9 +1081,9 @@ window.WATCHES_DATA = [
       "dress",
       "moonphase"
     ],
-    "description_en": "Swiss Made dress watch in a polished oval steel case. Champagne dial with Roman numerals, a day subdial, a pointer date subdial and a moon phase window at six. Black leather strap with a pin buckle.",
-    "description_it": "Orologio da abito Swiss Made con cassa ovale in acciaio lucido. Quadrante champagne con numeri romani, contatore del giorno, contatore della data a lancetta e finestrella delle fasi lunari alle sei. Cinturino in pelle nera con fibbia ad ardiglione.",
-    "description_sq": "Orë veshjeje Swiss Made me kasë ovale prej çeliku të lëmuar. Cadran shampanjë me numra romakë, nënkadran i ditës, nënkadran i datës me akrep dhe dritare e fazave të hënës në orën gjashtë. Rrip lëkure i zi me tokëz."
+    "description_en": "Dress watch in a polished oval steel case. Champagne dial with Roman numerals, a day subdial, a pointer date subdial and a moon phase window at six. Black leather strap with a pin buckle.",
+    "description_it": "Orologio da abito con cassa ovale in acciaio lucido. Quadrante champagne con numeri romani, contatore del giorno, contatore della data a lancetta e finestrella delle fasi lunari alle sei. Cinturino in pelle nera con fibbia ad ardiglione.",
+    "description_sq": "Orë veshjeje me kasë ovale prej çeliku të lëmuar. Cadran shampanjë me numra romakë, nënkadran i ditës, nënkadran i datës me akrep dhe dritare e fazave të hënës në orën gjashtë. Rrip lëkure i zi me tokëz."
   },
   {
     "id": "cortebert-black-bezel-chronograph",
@@ -1099,9 +1099,9 @@ window.WATCHES_DATA = [
       "chronograph",
       "sport"
     ],
-    "description_en": "Swiss Made chronograph with a black bezel held by six exposed screws. White dial with three counters, a day indicator and a date window, on a two-tone black and steel bracelet. The heaviest watch on the counter and the one that reads fastest at a glance.",
-    "description_it": "Cronografo Swiss Made con lunetta nera fissata da sei viti a vista. Quadrante bianco con tre contatori, indicatore del giorno e finestrella data, su bracciale bicolore nero e acciaio. Il più massiccio del banco e quello che si legge più in fretta.",
-    "description_sq": "Kronograf Swiss Made me bezel të zi të mbajtur nga gjashtë vida të dukshme. Cadran i bardhë me tre nënkadranë, tregues i ditës dhe dritare date, mbi byzylyk dyngjyrësh të zi dhe çelik. Ora më e rëndë e banakut dhe ajo që lexohet më shpejt."
+    "description_en": "Chronograph with a black bezel held by six exposed screws. White dial with three counters, a day indicator and a date window, on a two-tone black and steel bracelet. The heaviest watch on the counter and the one that reads fastest at a glance.",
+    "description_it": "Cronografo con lunetta nera fissata da sei viti a vista. Quadrante bianco con tre contatori, indicatore del giorno e finestrella data, su bracciale bicolore nero e acciaio. Il più massiccio del banco e quello che si legge più in fretta.",
+    "description_sq": "Kronograf me bezel të zi të mbajtur nga gjashtë vida të dukshme. Cadran i bardhë me tre nënkadranë, tregues i ditës dhe dritare date, mbi byzylyk dyngjyrësh të zi dhe çelik. Ora më e rëndë e banakut dhe ajo që lexohet më shpejt."
   },
   {
     "id": "cortebert-rectangular-multifunction",
@@ -1116,9 +1116,9 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
-    "description_en": "Swiss Made multifunction in a curved rectangular steel case. Black textured dial with a day counter, a date counter and a 24 hour counter, applied batons and Arabic numerals at twelve, five and seven. Black leather strap.",
-    "description_it": "Multifunzione Swiss Made con cassa rettangolare curva in acciaio. Quadrante nero testurizzato con contatore del giorno, contatore della data e contatore 24 ore, indici applicati e numeri arabi alle dodici, alle cinque e alle sette. Cinturino in pelle nera.",
-    "description_sq": "Multifunksion Swiss Made me kasë drejtkëndore të lakuar prej çeliku. Cadran i zi me teksturë, nënkadran i ditës, nënkadran i datës dhe nënkadran 24 orësh, indekse të aplikuara dhe numra arabë në dymbëdhjetë, pesë dhe shtatë. Rrip lëkure i zi."
+    "description_en": "Multifunction in a curved rectangular steel case. Black textured dial with a day counter, a date counter and a 24 hour counter, applied batons and Arabic numerals at twelve, five and seven. Black leather strap.",
+    "description_it": "Multifunzione con cassa rettangolare curva in acciaio. Quadrante nero testurizzato con contatore del giorno, contatore della data e contatore 24 ore, indici applicati e numeri arabi alle dodici, alle cinque e alle sette. Cinturino in pelle nera.",
+    "description_sq": "Multifunksion me kasë drejtkëndore të lakuar prej çeliku. Cadran i zi me teksturë, nënkadran i ditës, nënkadran i datës dhe nënkadran 24 orësh, indekse të aplikuara dhe numra arabë në dymbëdhjetë, pesë dhe shtatë. Rrip lëkure i zi."
   },
   {
     "id": "pulsar-crystal-chronograph",
