@@ -1154,5 +1154,23 @@
     "description_en": "POLOTIME ladies' watch in gold-tone steel with a matching bracelet. Champagne sunray dial inside a white outer ring, crystal-set indices at four points and crystal-set panels where the bracelet meets the case. Slim gold-tone hands, no date window.",
     "description_it": "Orologio da donna POLOTIME in acciaio color oro con bracciale abbinato. Quadrante champagne sunray dentro un anello esterno bianco, indici con cristalli in quattro punti e inserti con cristalli dove il bracciale incontra la cassa. Lancette sottili color oro, senza finestrella data.",
     "description_sq": "Orë femrash POLOTIME prej çeliku në ngjyrë ari me byzylyk të njëjtë. Cadran shampanjë sunray brenda një unaze të jashtme të bardhë, indekse me kristale në katër pika dhe pjesë me kristale aty ku byzylyku takon kasën. Akrepa të hollë në ngjyrë ari, pa dritare date."
+  },
+  {
+    "id": "philippe-lauren-pl2391-2",
+    "brand": "Philippe Lauren",
+    "model": "Gold Sunray Crystal",
+    "reference": "PL2391-2",
+    "condition": "New",
+    "price": 58,
+    "currency": "EUR",
+    "image": "/images/watches/philippe-lauren-pl2391-2.webp",
+    "sold": false,
+    "styles": [
+      "dress",
+      "gold-tone"
+    ],
+    "description_en": "Philippe Lauren dress watch in gold-tone steel with a round case, a notched bezel and an integrated three-link bracelet. Silver sunray dial with crystal-set indices at eight points, applied gold-tone batons at the quarters and slim gold-tone hands. No date window.",
+    "description_it": "Orologio da abito Philippe Lauren in acciaio color oro con cassa rotonda, lunetta scanalata e bracciale integrato a tre maglie. Quadrante argentato sunray con indici in cristallo in otto punti, indici applicati color oro ai quarti e lancette sottili color oro. Senza finestrella data.",
+    "description_sq": "Orë veshjeje Philippe Lauren prej çeliku në ngjyrë ari me kasë të rrumbullakët, bezel të gdhendur dhe byzylyk të integruar me tre hallka. Cadran argjendi sunray me indekse kristali në tetë pika, indekse të aplikuara në ngjyrë ari te çerekët dhe akrepa të hollë në ngjyrë ari. Pa dritare date."
   }
 ]

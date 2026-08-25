@@ -27,8 +27,10 @@ RULE: only owner-verified facts appear here.
                 cheapest PL at EUR 52 — it has NO reference, which is deliberate and
                 matches belonni-collection / daniel-klein-mesh / daniel-klein-f /
                 citizen-quartz-gn), PL2394-1 round plain bezel silver sunburst, PL2374-1
-                rectangular with bevelled cut corners. Two gold-tone dress: PL2392-4
-                square crystal-set, PL2394-2 round five-link. PL2412-8 shows three
+                rectangular with bevelled cut corners. Three gold-tone dress: PL2392-4
+                square crystal-set, PL2394-2 round five-link, and PL2391-2 (added
+                2026-08-25) round with a notched bezel, an integrated three-link
+                bracelet and crystal-set indices on a silver sunray dial. PL2412-8 shows three
                 subdials and pushers on the case side but
                 is deliberately NOT on the verified chronograph list in
                 en/blog/chronograph-vs-three-hand-watch.html (which publishes "seven real
