@@ -43,6 +43,9 @@ BRANDS = [
     ("hislon", "Hislon"),
     ("philippe-lauren", "Philippe Lauren"),
     ("bigotti", "Bigotti"),
+    ("cortebert", "Cortébert"),
+    ("pulsar", "Pulsar"),
+    ("polotime", "POLOTIME"),
 ]
 
 # [CFG-010] built per language at the call site: en/it reach the owner, sq his father

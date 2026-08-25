@@ -23,7 +23,7 @@ from urllib.parse import quote
 
 import catalog_stats
 from contact import phone  # [CFG-010] en/it reach the owner, sq reaches his father
-from shop_bits import (card_price_html, crumb_html, CRUMB_CSS,
+from shop_bits import (SWISS_BRANDS, card_price_html, crumb_html, CRUMB_CSS,
                        delivery_bar_html, DELIVERY_CSS)
 from shop_seo import COPY as SEO_COPY, fill as seo_fill, seo_section_html, faq_jsonld
 
@@ -75,7 +75,7 @@ def img_size(rel):
 #         visual no-op. gen_brand_pages imports this for its grids too.
 def card(w, lang):
     t = L[lang]
-    swiss = " Swiss Watch" if w["brand"] == "Hislon" else ""
+    swiss = " Swiss Watch" if w["brand"] in SWISS_BRANDS else ""
     name = f'{w["brand"]} {w["model"]}'
     alt = name + swiss
     webp = re.sub(r"\.jpe?g$", ".webp", w["image"], flags=re.I)
@@ -97,7 +97,7 @@ def card(w, lang):
                f'<i class="fab fa-whatsapp" aria-hidden="true"></i> {t["cta"]}</a>')
     swiss_tag = ('<span style="font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;'
                  'color:#8a9abf;font-weight:500;margin-left:.4rem;vertical-align:middle">Swiss</span>'
-                 ) if w["brand"] == "Hislon" else ""
+                 ) if w["brand"] in SWISS_BRANDS else ""
     sale = '<span class="sale-badge">\u221210%</span>' if w.get("originalPrice") else ""
     was = (f'<p class="was-price-line">{t["was"]}\u20ac{w["originalPrice"]}</p>'
            if w.get("originalPrice") else "")
@@ -136,7 +136,7 @@ def itemlist(lang, old):
             "@type": "ListItem", "position": i,
             "item": {
                 "@type": "Product",
-                "name": f'{w["brand"]} {w["model"]}' + (" Swiss Watch" if w["brand"] == "Hislon" else ""),
+                "name": f'{w["brand"]} {w["model"]}' + (" Swiss Watch" if w["brand"] in SWISS_BRANDS else ""),
                 "sku": w.get("reference", ""),
                 "description": w[f"description_{lang}"],
                 "brand": {"@type": "Brand", "name": w["brand"]},

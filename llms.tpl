@@ -18,7 +18,7 @@ The site is trilingual: English (/en/), Albanian (/sq/), Italian (/it/).
 
 ## Brand pages
 
-- [Navimarine](https://watch.al/en/shop/brand/navimarine.html), [Daniel Klein](https://watch.al/en/shop/brand/daniel-klein.html), [Hislon](https://watch.al/en/shop/brand/hislon.html), [Philippe Lauren](https://watch.al/en/shop/brand/philippe-lauren.html), [Bigotti](https://watch.al/en/shop/brand/bigotti.html)
+- [Navimarine](https://watch.al/en/shop/brand/navimarine.html), [Daniel Klein](https://watch.al/en/shop/brand/daniel-klein.html), [Hislon](https://watch.al/en/shop/brand/hislon.html), [Philippe Lauren](https://watch.al/en/shop/brand/philippe-lauren.html), [Bigotti](https://watch.al/en/shop/brand/bigotti.html), [Cortébert](https://watch.al/en/shop/brand/cortebert.html), [Pulsar](https://watch.al/en/shop/brand/pulsar.html), [POLOTIME](https://watch.al/en/shop/brand/polotime.html)
 
 ## Contact and visit
 

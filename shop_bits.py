@@ -22,12 +22,20 @@ from catalog_stats import LEK_RATE, lek, nfmt  # one definition, see catalog_sta
 
 # Brands that have a landing page. Others fall back to a breadcrumb without a
 # brand level, because a non-final BreadcrumbList item needs a real URL.
+# Watches marked Swiss Made on the physical watch, owner-verified with the case
+# in hand, never inferred from a dial photo. Cortébert joined Hislon 2026-08-24.
+# The three shop.js copies carry a hand-mirrored array of this set.
+SWISS_BRANDS = {"Hislon", "Cortébert"}
+
 BRAND_SLUGS = {
     "Daniel Klein": "daniel-klein",
     "Navimarine": "navimarine",
     "Hislon": "hislon",
     "Philippe Lauren": "philippe-lauren",
     "Bigotti": "bigotti",
+    "Cortébert": "cortebert",
+    "Pulsar": "pulsar",
+    "POLOTIME": "polotime",
 }
 
 # Breadcrumb labels. watch.js carries the same strings; change both together.

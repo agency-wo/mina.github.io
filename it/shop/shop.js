@@ -5,7 +5,7 @@
 //         #shopGrid on each change. Brand chips are built from the data, seeded
 //         from ?brand= and written back to the URL, so a filtered grid is a
 //         link somebody can send.
-// IN:     watches.json over the network; .filter-chip, #brandChips, #shopSearch,
+// IN:     watches.json over the network; .filter-chip, #brandChips, #styleChips, #shopSearch,
 //         #shopSort, #priceSliderWrap; ?brand= on the query string.
 // OUT:    #shopGrid innerHTML, the #shopCount line, one WhatsApp link per card.
 // CALLS:  raw.githubusercontent.com for watches.json; api.watch.al/public/stock
@@ -33,9 +33,15 @@
   var currentSearch = '';
   var BRAND_ALL_LABEL = 'Tutte le marche';
   var currentSort   = 'default';
+  var currentStyle  = 'all';
+  var STYLE_ORDER = ['chronograph','dress','sport','digital','gold-tone','moonphase'];
+  var STYLE_ALL_LABEL = 'Tutti gli stili';
+  var STYLE_LABELS = {'chronograph':'Cronografo','dress':'Da abito','sport':'Sport','digital':'Digitale','gold-tone':'Color oro','moonphase':'Fasi lunari'};
   var currentMinPrice = 50;
   var currentMaxPrice = 200;
   var PRICE_MIN = 50, PRICE_MAX = 200;
+  // Swiss Made marked on the physical watch, owner-verified; mirrors shop_bits.SWISS_BRANDS
+  var SWISS_BRANDS = ['Hislon', 'Cortébert'];
 
   // [UI-002] live CRM stock (P125): merged into the catalog BEFORE any render.
   // Linked refs are governed in both directions; a failed fetch changes
@@ -63,11 +69,12 @@
     })
     .then(function(WATCHES){
       initBrandChips(WATCHES);
+      initStyleChips(WATCHES);
       renderWatches(WATCHES);
 
-      document.querySelectorAll('.filter-chip:not([data-brand])').forEach(function(chip){
+      document.querySelectorAll('.filter-chip:not([data-brand]):not([data-style])').forEach(function(chip){
         chip.addEventListener('click', function(){
-          document.querySelectorAll('.filter-chip:not([data-brand])').forEach(function(c){ c.classList.remove('active'); c.removeAttribute('aria-pressed'); });
+          document.querySelectorAll('.filter-chip:not([data-brand]):not([data-style])').forEach(function(c){ c.classList.remove('active'); c.removeAttribute('aria-pressed'); });
           chip.classList.add('active');
           chip.setAttribute('aria-pressed','true');
           currentFilter = chip.dataset.filter;
@@ -207,6 +214,31 @@
     });
   }
 
+  // styleChips mirrors initBrandChips: data-driven, so a style appears the
+  // moment a watch in watches.json carries it, and vanishes when none does.
+  function initStyleChips(WATCHES){
+    var wrap = document.getElementById('styleChips');
+    if(!wrap) return;
+    var present = STYLE_ORDER.filter(function(s){
+      return WATCHES.some(function(w){ return !w.deleted && (w.styles||[]).indexOf(s) !== -1; });
+    });
+    if(!present.length) return;
+    var html = ['<button class="filter-chip active" aria-pressed="true" data-style="all">' + STYLE_ALL_LABEL + '</button>'];
+    present.forEach(function(s){
+      html.push('<button class="filter-chip" data-style="' + s + '">' + (STYLE_LABELS[s]||s) + '</button>');
+    });
+    wrap.innerHTML = html.join('');
+    wrap.addEventListener('click', function(e){
+      var chip = e.target.closest ? e.target.closest('[data-style]') : null;
+      if(!chip) return;
+      wrap.querySelectorAll('[data-style]').forEach(function(c){ c.classList.remove('active'); c.removeAttribute('aria-pressed'); });
+      chip.classList.add('active');
+      chip.setAttribute('aria-pressed','true');
+      currentStyle = chip.dataset.style;
+      renderWatches(WATCHES);
+    });
+  }
+
   // [UI-016.b] renderWatches — the ONE render path: filter, sort, repaint
   // DOES:   applies condition, brand, search and the price window in that order,
   //         sorts, then replaces #shopGrid wholesale and rewrites the count line.
@@ -224,6 +256,10 @@
       filtered = filtered.filter(function(w){ return w.brand === currentBrand; });
     }
 
+    if(currentStyle !== 'all'){
+      filtered = filtered.filter(function(w){ return (w.styles||[]).indexOf(currentStyle) !== -1; });
+    }
+
     if(currentSearch){
       var s = currentSearch;
       filtered = filtered.filter(function(w){
@@ -232,7 +268,9 @@
     }
 
     filtered = filtered.filter(function(w){
-      return (w.price||0) >= currentMinPrice && (w.price||0) <= currentMaxPrice;
+      // an unpriced watch (Price on request) is exempt from the price window:
+      // 0 would fail the lower bound and the card would vanish on hydration
+      return !w.price || ((w.price||0) >= currentMinPrice && (w.price||0) <= currentMaxPrice);
     });
 
     // Sort
@@ -322,7 +360,7 @@
   function watchCard(w){
     var cond = condMap[w.condition] || w.condition;
     var imgHtml = w.image
-      ? '<a href="/it/shop/' + w.id + '.html" aria-label="' + w.brand + ' ' + w.model + (w.brand === 'Hislon' ? ' Swiss Watch' : '') + '"><picture><source srcset="' + w.image.replace(/\.jpe?g$/i, '.webp') + '" type="image/webp"><img src="' + w.image + '" alt="' + w.brand + ' ' + w.model + (w.brand === 'Hislon' ? ' Swiss Watch' : '') + '" loading="lazy"></picture></a>'
+      ? '<a href="/it/shop/' + w.id + '.html" aria-label="' + w.brand + ' ' + w.model + (SWISS_BRANDS.indexOf(w.brand) !== -1 ? ' Swiss Watch' : '') + '"><picture><source srcset="' + w.image.replace(/\.jpe?g$/i, '.webp') + '" type="image/webp"><img src="' + w.image + '" alt="' + w.brand + ' ' + w.model + (SWISS_BRANDS.indexOf(w.brand) !== -1 ? ' Swiss Watch' : '') + '" loading="lazy"></picture></a>'
       : '<div class="watch-img-placeholder"><i class="fas fa-clock" aria-hidden="true"></i></div>';
     var soldOverlay = w.sold ? '<div class="sold-overlay">Venduto</div>' : '';
     var ctaHtml = w.sold
@@ -334,7 +372,7 @@
       + (w.originalPrice ? '<span class="sale-badge">−10%</span>' : '')
       + '</div>'
       + '<div class="watch-card-body">'
-      + '<p class="watch-brand">' + w.brand + (w.brand === 'Hislon' ? '<span style="font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:#8a9abf;font-weight:500;margin-left:.4rem;vertical-align:middle">Swiss</span>' : '') + '</p>'
+      + '<p class="watch-brand">' + w.brand + (SWISS_BRANDS.indexOf(w.brand) !== -1 ? '<span style="font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:#8a9abf;font-weight:500;margin-left:.4rem;vertical-align:middle">Swiss</span>' : '') + '</p>'
       + '<h2 class="watch-model">' + w.model + '</h2>'
       + (w.reference ? '<p class="watch-ref">Rif. ' + w.reference + '</p>' : '')
       + '<p class="watch-desc">' + (w.description_it || w.description_en || '') + '</p>'

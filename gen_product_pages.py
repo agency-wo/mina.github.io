@@ -25,7 +25,7 @@ from pathlib import Path
 
 from catalog_stats import REVIEWS, lek, nfmt
 from contact import phone  # [CFG-010] en/it reach the owner, sq reaches his father
-from shop_bits import (crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html,
+from shop_bits import (SWISS_BRANDS, crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html,
                        price_html as shared_price_html, stub_html)
 
 BASE = Path(__file__).parent
@@ -694,7 +694,7 @@ def build_watch_div(w, lang, cfg):
     # Hislon's Swiss tag rides inline in the identity row rather than taking a line of
     # its own, so it costs no height above the fold.
     swiss_html = ""
-    if brand == "Hislon":
+    if brand in SWISS_BRANDS:
         swiss_html = f'<span class="pdp-swiss">{cfg["swiss_label"]}</span>'
 
     if sold:
@@ -1008,7 +1008,7 @@ for w in watches:
         # title: these are pre-rendered for crawlers and watch.js overwrites them at runtime,
         # so the static value must equal the runtime one or the two disagree.
         raw_desc = (w.get(cfg["desc_key"]) or w.get("description_en", "")).strip()
-        meta_desc = ((cfg["swiss_desc_prefix"] if w.get("brand") == "Hislon" else "")
+        meta_desc = ((cfg["swiss_desc_prefix"] if w.get("brand") in SWISS_BRANDS else "")
                      + raw_desc + cfg["meta_tail"])
         assert '"' not in meta_desc and "&" not in meta_desc, f"{wid}: description needs escaping"
         new_html = re.sub(r'(<meta name="description" id="page-desc" content=")[^"]*(")',
