@@ -319,9 +319,13 @@ def build_page(slug, brand, lang):
     # [UI-001] brand grids are static cards — stock-live.js flips them from the
     # CRM feed. The cloned shop index deliberately does NOT carry the tag
     # (shop.js merges live stock into its own data), so it is added here.
+    # The anchor matches ANY ?v=, deliberately. It was pinned to v=23 and the
+    # 2026-08-25 bump to v=24 broke it; the assert below caught that, but a
+    # cache-bust sweep must not be able to reach in here at all.
     if '<script src="/stock-live.js' not in html:
-        html = html.replace('<script src="/shared.js?v=23" defer></script>',
-                            '<script src="/shared.js?v=23" defer></script>\n  <script src="/stock-live.js?v=2" defer></script>', 1)
+        html = re.sub(r'(<script src="/shared\.js\?v=\d+" defer></script>)',
+                      r'\1\n  <script src="/stock-live.js?v=2" defer></script>',
+                      html, count=1)
     assert '<script src="/stock-live.js' in html, f"{lang}/{slug}: stock-live.js missing"
     return html
 

@@ -645,7 +645,7 @@ i.promise-icon,i.faq-icon{display:inline-flex!important;align-items:center;justi
   .watch-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
-  .watch-grid { grid-template-columns: 1fr; }
+  .watch-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 }
 .watch-card {
   background: var(--card-bg);
@@ -899,6 +899,24 @@ a.trust-stat-link:hover{transform:translateY(-3px)}
 .rev-avatar{width:2.1rem;height:2.1rem;border-radius:50%;background:rgba(180,148,92,.16);border:1px solid rgba(180,148,92,.5);color:#b4945c;font-weight:700;font-size:.9rem;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .rev-name{color:#b4945c;font-weight:700;font-size:.875rem}
 .rev-actions{text-align:center;margin-top:3rem}
+
+/* FEATURED GRID ON A PHONE (2026-08-25)
+   Two per row below 600px, matching the shop. This sits at the END of the block
+   on purpose: .watch-price is redeclared at ~763 and the swing tag at ~840, both
+   below the 600px media block, and a media query adds no specificity, so an
+   override written up there would silently lose.
+   The card is about 163px wide here. Type comes down to the shop's own 600px
+   values. The swing tag gives back padding it cannot afford at that width, and
+   the Lek half needs !important because it carries an inline font-size. */
+@media (max-width: 600px) {
+  .watch-card-body { padding: 1rem .8rem .85rem; }
+  .watch-model { font-size: 1.1rem; }
+  .watch-desc { font-size: .8rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .watch-cta { font-size: .76rem; padding: .42rem .85rem; }
+  .watch-card-footer { gap: .5rem; padding-top: .8rem; }
+  .watch-card-footer .watch-price { font-size: 1.15rem; padding: .2rem .45rem .2rem 1.05rem; }
+  .watch-card-footer .watch-price span { font-size: .7rem !important; }
+}
 </style>
   <!-- Preconnect for Google Maps embed - saves ~70 ms on LCP -->
   <link rel="preconnect" href="https://www.google.com" crossorigin>
@@ -2007,7 +2025,7 @@ a.trust-stat-link:hover{transform:translateY(-3px)}
 
   <script src="/watch-effects.js?v=7" nonce="aWdsaXNpd2F0Y2g4" defer></script>
   <script src="/watch-effects-init.js?v=3" nonce="aWdsaXNpd2F0Y2g4" defer></script>
-  <script src="/shared.js?v=23" nonce="aWdsaXNpd2F0Y2g4" defer></script>
+  <script src="/shared.js?v=24" nonce="aWdsaXNpd2F0Y2g4" defer></script>
   <script src="/cookie.js" nonce="aWdsaXNpd2F0Y2g4" defer></script>
 </body>
 </html>

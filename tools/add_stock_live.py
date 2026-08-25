@@ -11,14 +11,20 @@
 # NOTES:  Brand pages get their tag from gen_brand_pages.py (they are
 #         regenerated wholesale); new product pages inherit it because
 #         make-new-watch-pages.py clones an existing page.
+import re
 import sys
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
-ANCHOR = '<script src="/shared.js?v=23" defer></script>'
-# The version must track the live one. gen_brand_pages.py held a stale ?v=1 here
-# too and silently reverted 15 pages to a cached script on 2026-08-16; a cached
-# stock-live.js serves the pre-split phone number, which reaches the wrong person.
+# The anchor matches ANY shared.js ?v=, so bump-shared-version.py cannot strand
+# it. It was pinned to v=23 and the 2026-08-25 bump to v=24 stranded it; that
+# failed loudly (every page lands in `missing` and the run exits 1) but it should
+# not have been reachable from a cache-bust sweep in the first place.
+ANCHOR_RE = re.compile(r'<script src="/shared\.js\?v=\d+" defer></script>')
+# stock-live.js's OWN version must still track the live one. gen_brand_pages.py
+# held a stale ?v=1 here and silently reverted 15 pages to a cached script on
+# 2026-08-16; a cached stock-live.js serves the pre-split phone number, which
+# reaches the wrong person.
 TAG = '\n  <script src="/stock-live.js?v=2" defer></script>'
 
 def main():
@@ -34,13 +40,14 @@ def main():
             if "/stock-live.js" in txt:
                 already += 1
                 continue
-            if ANCHOR not in txt:
+            m = ANCHOR_RE.search(txt)
+            if not m:
                 if "shared.js" in txt:
                     missing.append(str(p))     # anchor drifted — surface it
                 else:
                     stubs += 1                 # legacy meta-refresh stub
                 continue
-            txt = txt.replace(ANCHOR, ANCHOR + TAG, 1)
+            txt = txt[:m.end()] + TAG + txt[m.end():]
             p.write_bytes((b"\xef\xbb\xbf" if bom else b"") + txt.encode("utf-8"))
             changed += 1
         print(f"{lang}: changed {changed}, already {already}, stubs {stubs}")
