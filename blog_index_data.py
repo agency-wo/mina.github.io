@@ -216,11 +216,11 @@ ARTICLES = [
         label=dict(en='Gift Guide', it='Guida Regali', sq='Udhëzues Dhuratash'),
         card=dict(
             en=dict(title='New Year Watch Gifts in Albania: What to Buy and When to Order',
-                    desc='Two price levels, nothing in between, and the last day you can order and still have it arrive. Cash on delivery anywhere in Albania, or walk into Durres until 20:30.'),
+                    desc='What each budget actually buys, from a steel watch they can wear every day to a dress piece that feels like a real gift, and the last day you can order and still have it arrive. Cash on delivery anywhere in Albania, or walk into Durres until 20:30.'),
             it=dict(title='Regalo Orologio per Capodanno in Albania: Cosa Comprare e Quando Ordinare',
-                    desc="Due fasce di prezzo, nulla in mezzo, e l'ultimo giorno utile per ordinare e riceverlo in tempo. Pagamento alla consegna in tutta l'Albania, o venite a Durazzo fino alle 20:30."),
+                    desc="Cosa compra davvero ogni budget, da un acciaio da portare tutti i giorni a un orologio da abito che sembra un vero regalo, e l'ultimo giorno utile per ordinare e riceverlo in tempo. Pagamento alla consegna in tutta l'Albania, o venite a Durazzo fino alle 20:30."),
             sq=dict(title='Dhurata Ore p&euml;r Vitin e Ri n&euml; Shqip&euml;ri: &Ccedil;far&euml; t&euml; Blesh dhe Kur t&euml; Porosis&euml;sh',
-                    desc='Dy nivele &ccedil;mimesh, asgj&euml; n&euml; mes, dhe dita e fundit q&euml; mund t&euml; porosisni e t&euml; mb&euml;rrij&euml; n&euml; koh&euml;. Pages&euml; n&euml; dor&euml;zim kudo n&euml; Shqip&euml;ri, ose ejani n&euml; Durr&euml;s deri n&euml; 20:30.'),
+                    desc='&Ccedil;far&euml; blen v&euml;rtet secili buxhet, nga nj&euml; or&euml; &ccedil;eliku p&euml;r &ccedil;do dit&euml; te nj&euml; or&euml; veshjeje q&euml; duket dhurat&euml; e v&euml;rtet&euml;, dhe dita e fundit q&euml; mund t&euml; porosisni e t&euml; mb&euml;rrij&euml; n&euml; koh&euml;. Pages&euml; n&euml; dor&euml;zim kudo n&euml; Shqip&euml;ri, ose ejani n&euml; Durr&euml;s deri n&euml; 20:30.'),
         ),
     ),
     dict(
@@ -263,11 +263,11 @@ ARTICLES = [
         slug='watches-i-would-buy-myself', cat='buying',
         card=dict(
             en=dict(title='The 5 Watches I Would Buy From My Own Shop',
-                    desc="A watchmaker's honest personal picks: the five watches I would spend my own money on, from a &euro;64 Daniel Klein to a &euro;199 Hislon Classic, and why."),
+                    desc="A watchmaker's honest personal picks: the five watches I would spend my own money on. Two Navimarines, a gold-tone Daniel Klein, a Hislon chronograph and a Hislon Classic, and why each one is on the list."),
             it=dict(title='I 5 Orologi che Comprerei dal Mio Stesso Negozio',
-                    desc='Le scelte personali oneste di un orologiaio: i cinque orologi su cui spenderei i miei soldi, da un Daniel Klein da &euro;64 a un Hislon Classic da &euro;199, e perch&eacute;.'),
+                    desc='Le scelte personali oneste di un orologiaio: i cinque orologi su cui spenderei i miei soldi. Due Navimarine, un Daniel Klein color oro, un cronografo Hislon e un Hislon Classic, e perch&eacute; ognuno &egrave; in lista.'),
             sq=dict(title='5 Or&euml;t q&euml; Do t&euml; Blija Vet&euml; nga Dyqani Im',
-                    desc='Zgjedhjet personale t&euml; ndershme t&euml; nj&euml; or&euml;ndreq&euml;si: pes&euml; or&euml;t p&euml;r t&euml; cilat do t&euml; shpenzoja parat&euml; e mia, nga nj&euml; Daniel Klein &euro;64 te nj&euml; Hislon Classic &euro;199, dhe pse.'),
+                    desc='Zgjedhjet personale t&euml; ndershme t&euml; nj&euml; or&euml;ndreq&euml;si: pes&euml; or&euml;t p&euml;r t&euml; cilat do t&euml; shpenzoja parat&euml; e mia. Dy Navimarine, nj&euml; Daniel Klein ngjyr&euml; ari, nj&euml; kronograf Hislon dhe nj&euml; Hislon Classic, dhe pse secila &euml;sht&euml; n&euml; list&euml;.'),
         ),
     ),
     dict(
@@ -296,11 +296,11 @@ ARTICLES = [
         slug='are-daniel-klein-watches-good', cat='buying',
         card=dict(
             en=dict(title="Are Daniel Klein Watches Any Good? A Watchmaker's Honest Answer",
-                    desc='Turkish fashion brand, quartz, gold-tone looks for &euro;59 to &euro;89. Where the money is well spent and where it is not, plus the models we stock.'),
+                    desc='Turkish fashion brand, quartz, gold-tone looks for {lo:daniel-klein} to {hi:daniel-klein}. Where the money is well spent and where it is not, plus the models we stock.'),
             it=dict(title='Gli Orologi Daniel Klein Sono Buoni? La Risposta Onesta di un Orologiaio',
-                    desc='Marchio di moda turco, quarzo, look dorato per &euro;59 a &euro;89. Dove i soldi sono ben spesi e dove no, con i modelli in stock.'),
+                    desc='Marchio di moda turco, quarzo, look dorato per {lo:daniel-klein} a {hi:daniel-klein}. Dove i soldi sono ben spesi e dove no, con i modelli in stock.'),
             sq=dict(title='A Vlejn&euml; Or&euml;t Daniel Klein? P&euml;rgjigjja e Ndershme e nj&euml; Or&euml;ndreq&euml;si',
-                    desc='Mark&euml; mode turke, kuarc, pamje ari p&euml;r &euro;59 deri &euro;89. Ku shkojn&euml; mir&euml; parat&euml; dhe ku jo, me modelet q&euml; kemi n&euml; stok.'),
+                    desc='Mark&euml; mode turke, kuarc, pamje ari p&euml;r {lo:daniel-klein} deri {hi:daniel-klein}. Ku shkojn&euml; mir&euml; parat&euml; dhe ku jo, me modelet q&euml; kemi n&euml; stok.'),
         ),
     ),
     dict(
@@ -555,11 +555,11 @@ ARTICLES = [
         label=dict(en='Buying Guide', it='Guida all’Acquisto', sq='Blerje Orësh'),
         card=dict(
             en=dict(title='How to Buy New Watches in Albania',
-                    desc='Daniel Klein and Navimarine from &euro;60, Hislon from &euro;149, all with a 1-year guarantee. Buy in-store in Durr&euml;s or order on WhatsApp with delivery anywhere in Albania.'),
+                    desc='Daniel Klein from {lo:daniel-klein}, Navimarine from {lo:navimarine}, Hislon from {lo:hislon}, all with a 1-year guarantee. Buy in-store in Durr&euml;s or order on WhatsApp with delivery anywhere in Albania.'),
             it=dict(title='Come Comprare Orologi Nuovi in Albania',
-                    desc='Daniel Klein e Navimarine da &euro;60, Hislon da &euro;149, tutti con garanzia di 1 anno. Acquista in negozio a Durr&euml;s o ordina via WhatsApp con consegna in tutta l&rsquo;Albania.'),
+                    desc='Daniel Klein da {lo:daniel-klein}, Navimarine da {lo:navimarine}, Hislon da {lo:hislon}, tutti con garanzia di 1 anno. Acquista in negozio a Durr&euml;s o ordina via WhatsApp con consegna in tutta l&rsquo;Albania.'),
             sq=dict(title='Si t&euml; Blesh Or&euml; t&euml; Reja n&euml; Shqip&euml;ri - Hislon dhe Navimarine',
-                    desc='Udhëzues për blerjen e orëve të reja në Shqipëri. Daniel Klein, Navimarine dhe Hislon te Iglisi Watch Durrës - çmime nga &euro;60, garanci 1-vjeçare dhe dërgim kudo nëpërmjet WhatsApp.'),
+                    desc='Udhëzues për blerjen e orëve të reja në Shqipëri. Daniel Klein nga {lo:daniel-klein}, Navimarine nga {lo:navimarine} dhe Hislon nga {lo:hislon} te Iglisi Watch Durrës, garanci 1-vjeçare dhe dërgim kudo nëpërmjet WhatsApp.'),
         ),
     ),
     dict(
@@ -602,11 +602,11 @@ ARTICLES = [
         slug='watch-gift-durres-same-day', cat='gifts',
         card=dict(
             en=dict(title='Need a Watch Gift in Durr&euml;s Today? Open Until 20:30',
-                    desc='Walk in, choose from Daniel Klein and Navimarine watches from &euro;60 or Hislon from &euro;149, leave with a gift-ready watch the same day. Open Monday to Saturday until 20:30. No appointment needed.'),
+                    desc='Walk in, choose from Daniel Klein from {lo:daniel-klein}, Navimarine from {lo:navimarine} or Hislon from {lo:hislon}, leave with a gift-ready watch the same day. Open Monday to Saturday until 20:30. No appointment needed.'),
             it=dict(title='Hai Bisogno di un Orologio Come Regalo a Durazzo Oggi?',
-                    desc='Iglisi Watch &egrave; aperto luned&igrave;-sabato fino alle 20:30. Entra, scegli dallo stock e parti con un orologio pronto da regalare. Daniel Klein e Navimarine da &euro;60.'),
+                    desc='Iglisi Watch &egrave; aperto luned&igrave;-sabato fino alle 20:30. Entra, scegli dallo stock e parti con un orologio pronto da regalare. Daniel Klein da {lo:daniel-klein} e Navimarine da {lo:navimarine}.'),
             sq=dict(title='Keni Nevoj&euml; p&euml;r Dhurat&euml; Or&euml; n&euml; Durr&euml;s Sot?',
-                    desc='Iglisi Watch &euml;sht&euml; hapur e h&euml;n&euml;-shtun&euml; deri n&euml; 20:30. Hyni, zgjidhni nga gjend&euml;ja dhe largohuni me or&euml; gati p&euml;r t&rsquo;u dh&euml;n&euml;. Daniel Klein dhe Navimarine nga &euro;60.'),
+                    desc='Iglisi Watch &euml;sht&euml; hapur e h&euml;n&euml;-shtun&euml; deri n&euml; 20:30. Hyni, zgjidhni nga gjend&euml;ja dhe largohuni me or&euml; gati p&euml;r t&rsquo;u dh&euml;n&euml;. Daniel Klein nga {lo:daniel-klein} dhe Navimarine nga {lo:navimarine}.'),
         ),
     ),
     dict(
@@ -806,11 +806,11 @@ ARTICLES = [
         label=dict(en='Albania Nationwide', it='Albania Nazionale', sq='E gjithë Shqipëria'),
         card=dict(
             en=dict(title='Buy Watches Anywhere in Albania',
-                    desc='Brand-new Daniel Klein, Navimarine and Hislon watches from &euro;60 - browse the stock online, message us on WhatsApp, and we arrange the rest. Tirana, Vlor&euml;, Shkod&euml;r, Elbasan or anywhere in Albania.'),
+                    desc='Brand-new Daniel Klein from {lo:daniel-klein}, Navimarine from {lo:navimarine} and Hislon from {lo:hislon} - browse the stock online, message us on WhatsApp, and we arrange the rest. Tirana, Vlor&euml;, Shkod&euml;r, Elbasan or anywhere in Albania.'),
             it=dict(title='Acquista Orologi in Tutta l&rsquo;Albania',
-                    desc='Orologi nuovi Daniel Klein, Navimarine e Hislon da &euro;60 - sfoglia il catalogo online, scrivici su WhatsApp e pensiamo noi al resto. Che tu sia a Tirana, Vlor&euml;, Shkod&euml;r, Elbasan o in qualsiasi altra citt&agrave; d&rsquo;Albania.'),
+                    desc='Orologi nuovi Daniel Klein da {lo:daniel-klein}, Navimarine da {lo:navimarine} e Hislon da {lo:hislon} - sfoglia il catalogo online, scrivici su WhatsApp e pensiamo noi al resto. Che tu sia a Tirana, Vlor&euml;, Shkod&euml;r, Elbasan o in qualsiasi altra citt&agrave; d&rsquo;Albania.'),
             sq=dict(title='Bli Orë në Çdo Qytet të Shqipërisë',
-                    desc='Orë të reja Daniel Klein, Navimarine dhe Hislon nga &euro;60 - shfleto stokun online, dërgo mesazh në WhatsApp dhe ne rregullojmë pjesën tjetër. Tiranë, Vlorë, Shkodër, Elbasan apo kudo tjetër në Shqipëri.'),
+                    desc='Orë të reja Daniel Klein nga {lo:daniel-klein}, Navimarine nga {lo:navimarine} dhe Hislon nga {lo:hislon} - shfleto stokun online, dërgo mesazh në WhatsApp dhe ne rregullojmë pjesën tjetër. Tiranë, Vlorë, Shkodër, Elbasan apo kudo tjetër në Shqipëri.'),
         ),
     ),
     dict(
@@ -818,11 +818,11 @@ ARTICLES = [
         label=dict(en='Watch Buying Guide', it='Guida all’Acquisto', sq='Udhëzues Blerjeje'),
         card=dict(
             en=dict(title='Best Watches Under &euro;200 in Albania (2026)',
-                    desc='An honest look at what&rsquo;s worth buying in Albania at the €100–200 price point - from everyday quartz to weekend sport watches. From a watchmaker who services these pieces daily.'),
+                    desc='An honest look at what is worth buying in Albania under &euro;200: everyday quartz, weekend sport watches and steel dress models. From a watchmaker who services these pieces daily.'),
             it=dict(title='I Migliori Orologi Sotto &euro;200 in Albania (2026)',
-                    desc='Una valutazione onesta di ci&ograve; che vale la pena comprare in Albania nella fascia &euro;100&ndash;200 - da orologi al quarzo quotidiani a modelli sportivi da weekend.'),
+                    desc='Una valutazione onesta di ci&ograve; che vale la pena comprare in Albania sotto i &euro;200: orologi al quarzo quotidiani, sportivi da weekend e modelli da abito in acciaio.'),
             sq=dict(title='Orët më të Mira Nën &euro;200 në Shqipëri (2026)',
-                    desc='Vlerësim i sinqertë i asaj që ia vlen të blihet në Shqipëri në intervalin &euro;100&ndash;200 - nga orë kuarci për çdo ditë deri tek modele sportive për fundjavë.'),
+                    desc='Vlerësim i sinqertë i asaj që ia vlen të blihet në Shqipëri nën &euro;200: orë kuarci për çdo ditë, sportive për fundjavë dhe modele veshjeje çeliku.'),
         ),
     ),
     dict(

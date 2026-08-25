@@ -22,7 +22,7 @@
 //         must never hold the chips, search and sort hostage. See [UI-002].
 //         The three copies are NOT identical: 269, 195 and 199 lines of code in
 //         en, it and sq before these headers went in. All three carry the
-//         dual-handle price slider (PRICE_MIN 50, PRICE_MAX 200, 5-euro snap)
+//         dual-handle price slider (bounds derived from the catalogue, 5-euro snap)
 //         since 2026-08-20; before that EN alone did and this one rendered dead.
 //         This file also prints Lek FIRST and carries lekVal() for it, which no
 //         other copy has, so the sub-indices below run one letter further from
@@ -40,6 +40,7 @@
   var STYLE_LABELS = {'chronograph':'Kronograf','dress':'Veshjeje','sport':'Sportive','digital':'Dixhitale','gold-tone':'Ngjyrë ari','moonphase':'Fazat e hënës'};
   var currentMinPrice = 50;
   var currentMaxPrice = 200;
+  // seeded only; the real bounds are derived from WATCHES below
   var PRICE_MIN = 50, PRICE_MAX = 200;
   // Swiss Made marked on the physical watch, owner-verified; mirrors shop_bits.SWISS_BRANDS
   var SWISS_BRANDS = ['Hislon', 'Cortébert'];
@@ -69,6 +70,24 @@
       });
     })
     .then(function(WATCHES){
+      // [UI-016.f] Slider bounds come from the CATALOGUE, never from a constant.
+      // They were 50 and 200, and renderWatches drops anything above
+      // currentMaxPrice, so a 249 euro watch was unreachable by the filter and
+      // vanished from the pre-rendered grid the moment this script hydrated.
+      // gen_shop_index rewrites this page in place and never touches the slider
+      // markup, so nothing else could have healed it.
+      // Rounded outward to a multiple of 5 because the handles snap in 5s: a
+      // max of 249 could never be reached by a snapped handle.
+      (function(){
+        var ps = [];
+        WATCHES.forEach(function(w){ if(!w.deleted && w.price) ps.push(w.price); });
+        if(!ps.length) return;
+        PRICE_MIN = Math.floor(Math.min.apply(null, ps) / 5) * 5;
+        PRICE_MAX = Math.ceil(Math.max.apply(null, ps) / 5) * 5;
+        if(PRICE_MAX <= PRICE_MIN) PRICE_MAX = PRICE_MIN + 5;
+        currentMinPrice = PRICE_MIN;
+        currentMaxPrice = PRICE_MAX;
+      })();
       initBrandChips(WATCHES);
       initStyleChips(WATCHES);
       renderWatches(WATCHES);
@@ -101,6 +120,10 @@
       var handleMax = document.getElementById('handleMax');
       if(priceWrap && handleMin && handleMax){
         var minVal = PRICE_MIN, maxVal = PRICE_MAX;
+        handleMin.setAttribute('aria-valuemin', PRICE_MIN);
+        handleMin.setAttribute('aria-valuemax', PRICE_MAX);
+        handleMax.setAttribute('aria-valuemin', PRICE_MIN);
+        handleMax.setAttribute('aria-valuemax', PRICE_MAX);
         var pctOf = function(v){ return (v - PRICE_MIN) / (PRICE_MAX - PRICE_MIN) * 100; };
         var snapVal = function(v){ return Math.round(v / 5) * 5; };
         var applyPricePos = function(){

@@ -1,10 +1,13 @@
 # Iglisi Watch, watch.al
 
 > Family-owned watch shop and repair workshop in Durrës, Albania, open since 2009.
-> We sell brand-new watches from €50 (Navimarine, Daniel Klein, Hislon, Philippe
-> Lauren, Bigotti, Casio, Citizen, Belonni, Romanson, Starking) with a 1-year guarantee,
-> and offer expert watch repair, battery replacement, strap fitting, crystal replacement
-> and key cutting. Most services are done while you wait, with no appointment needed.
+> We sell brand-new watches from €50 to €249 (4,600 to 23,000 Lek) across 13
+> brands: Navimarine, Philippe Lauren, Daniel Klein, Hislon, Casio, Bigotti, Cortébert,
+> Belonni, Citizen, POLOTIME, Pulsar, Romanson, Starking. Every watch carries a 1-year
+> guarantee, and you pay the courier on delivery anywhere in Albania with 30 days to
+> return it. We also offer expert watch repair, battery replacement, strap fitting,
+> crystal replacement and key cutting. Most services are done while you wait, with no
+> appointment needed.
 
 The site is trilingual: English (/en/), Albanian (/sq/), Italian (/it/).
 
@@ -30,12 +33,12 @@ The site is trilingual: English (/en/), Albanian (/sq/), Italian (/it/).
 
 ## Albanian (Shqip)
 
-- [Dyqani](https://watch.al/sq/shop/): orë të reja nga €50 me garanci 1-vjeçare
+- [Dyqani](https://watch.al/sq/shop/): orë të reja nga €50 deri €249 me garanci 1-vjeçare
 - [Shërbimet](https://watch.al/sq/services.html): riparim orësh, ndërrim baterie, prerje çelësash
 - [Dërgesa dhe kthimi](https://watch.al/sq/shop/delivery.html): dërgesë falas, paguani korrierin, 30 ditë për ta kthyer
 
 ## Italiano
 
-- [Negozio](https://watch.al/it/shop/): orologi nuovi da €50 con garanzia di 1 anno
+- [Negozio](https://watch.al/it/shop/): orologi nuovi da €50 a €249 con garanzia di 1 anno
 - [Servizi](https://watch.al/it/services.html): riparazione orologi, sostituzione batteria, duplicazione chiavi
 - [Consegna e resi](https://watch.al/it/shop/delivery.html): consegna gratuita, pagate il corriere, 30 giorni per il reso
