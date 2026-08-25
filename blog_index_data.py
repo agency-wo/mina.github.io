@@ -41,6 +41,17 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
+        slug='watch-birthday-gift-albania', cat='gifts',
+        card=dict(
+            en=dict(title='A Watch as a Birthday Gift in Albania',
+                    desc='What to spend, which style suits the person, and the three things we do to a watch before you give it. From €{lo} to €{hi}, cash on delivery anywhere in Albania.'),
+            it=dict(title='Un Orologio come Regalo di Compleanno in Albania',
+                    desc='Quanto spendere, quale stile scegliere e le tre cose che facciamo a un orologio prima che tu lo regali. Da €{lo} a €{hi}, pagamento alla consegna ovunque.'),
+            sq=dict(title='Një Orë si Dhuratë për Ditëlindje në Shqipëri',
+                    desc='Sa të shpenzoni, cili stil i shkon personit dhe tri gjërat që i bëjmë një ore para se ta dhuroni. Nga €{lo} deri €{hi}, me pagesë në dorëzim kudo.'),
+        ),
+    ),
+    dict(
         slug='watch-for-working-hands', cat='buying',
         card=dict(
             en=dict(title='A Watch for Someone Who Works With Their Hands',
