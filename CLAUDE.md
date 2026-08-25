@@ -144,9 +144,18 @@ Breaking one of these has caused a real incident. They are not style preferences
   `gen_stats.py` refreshes. The span must wrap a **whitespace-delimited whole token**, never
   `€<span>50</span>`, because the FAQ visibility probe in `gen_shop_index.py` turns every tag into
   a space. Brand count and prices stay: they are accurate and they sell.
-- **Lek is half-up, never banker's rounding**: `int(EUR * 97 / 100 + 0.5) * 100`. Python's `round()`
-  first disagrees at €50 (4,800 instead of 4,900) and Belonni is €50. There were once six copies of
-  this formula and they had begun to diverge.
+- **Lek is half-up, never banker's rounding**: `int(EUR * LEK_RATE / 100 + 0.5) * 100`, with the
+  rate in `catalog_stats.LEK_RATE`. **It is 92.25 as of 2026-08-25 and it is a float.** Python's
+  `round()` disagrees whenever the product lands on an exact .5: at the old rate of 97 that was €50
+  (4,800 instead of 4,900) and Belonni is €50, so the bug was live on the cheapest watch. **At 92.25
+  the only tie in range is €200** (18,400 instead of 18,500), and nothing costs €200 today, so the
+  next person to price a watch there is the one who finds out. There were once six copies of this
+  formula and they had begun to diverge.
+- **A rate change reprices roughly 3,000 published figures.** The shop, the brand pages, `llms.txt`
+  and every `data-stat` marker heal on a generator run. **Article prose does not**, and neither do
+  the three homepages, which no generator owns. `verify-stats.py` check E is the oracle: it reads
+  every euro/Lek pair in four shapes (parenthesised both ways, and the `·`/`/` separator forms) and
+  proves the arithmetic. Widen that check before a repricing, never after.
 - **Thousands separator: comma in EN, dot in IT and SQ.** All three `shop.js` once called
   `toLocaleString()` with no locale, so an Italian phone reflowed the grid from 18,300 L to 18.300 L
   after hydration.

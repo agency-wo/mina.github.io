@@ -39,6 +39,15 @@ RULE: only owner-verified facts appear here.
                 and NEVER state a water resistance for this brand. Say crystal-set, never
                 diamonds. The model list above is for WRITERS, not for readers: the copy
                 names the KINDS of watch and never how many of each.
+  Cortébert     marked Swiss Made on the dial, confirmed with the case in hand. The black
+                bezel model is a VERIFIED chronograph. Movement and water resistance are
+                NOT verified: never state either. No crystal type. One model is unpriced,
+                so gen_brand_pages.fill excludes falsy prices from the lo/hi bounds.
+  Pulsar        VERIFIED chronograph, checked at the bench. 100M is printed on the dial
+                AND stamped on the caseback, which is why it is safe to state. Nothing
+                about the company is verified, so nothing about it is claimed.
+  POLOTIME      visible facts only. The set stones are CRYSTALS, never diamonds. No
+                movement, no water resistance, no country of origin.
   Bigotti       visible facts only. NOTHING about the company is owner-verified: no country
                 of origin, no history, no crystal type, no water resistance, no diameter.
                 Quartz is stated ONLY on the two BG.1.10616 squares, so never write that the
@@ -292,6 +301,147 @@ COPY = {
                 ("Sa kushton një orë Bigotti në Shqipëri?",
                  "Modelet tona Bigotti shkojnë nga €{lo} deri €{hi}, që janë afërsisht {lolek} deri {hilek} Lekë. Kjo përfshin një garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri."),
                 ("Ku mund t'i shoh orët Bigotti nga afër?",
+                 "Në punishten tonë në Rrugën Aleksander Goga në Durrës, e hapur nga e hëna në të shtunë 8:30 deri 20:30. I kemi në gjendje dhe jeni të mirëseardhur t'i provoni para se të blini."),
+            ],
+        },
+    },
+    "cortebert": {
+        "en": {
+            "paras": [
+                'Cortébert is the Swiss Made end of our counter, in Durrës from €{lo} to €{hi}. Every model we hold carries the Swiss Made marking on the dial, and we check that with the case in hand rather than reading it off a photograph.',
+                'What we keep includes a dress oval in polished steel with Roman numerals, a day counter, a pointer date and a moon phase window at six; a chronograph with a black bezel held by six exposed screws, three counters and a day indicator on a two-tone bracelet; and a curved rectangular case carrying day, date and 24 hour counters on a black textured dial.',
+                'We do not publish a movement or a water resistance figure for this brand, so ask us and we will read you what the caseback actually says. Bracelet links are sized free at our counter, and you are welcome to come in for that even if you ordered online. Every one comes with our 1-year guarantee and cash on delivery across Albania.',
+            ],
+            "faq": [
+                ('What kind of watches is Cortébert?',
+                 'It is the Swiss Made line we stock, from €{lo} to €{hi}, running from a moon phase dress oval through a working chronograph to a rectangular multifunction. Every one carries the Swiss Made marking on the dial.'),
+                ('How much does a Cortébert watch cost in Albania?',
+                 'Our Cortébert models run from €{lo} to €{hi}, which is roughly {lolek} to {hilek} Lek, and there is a model we price on request. That includes a 1-year guarantee, and cash on delivery anywhere in Albania.'),
+                ('Where can I see Cortébert watches in person?',
+                 'At our workshop on Rruga Aleksander Goga in Durrës, open Monday to Saturday 8:30 to 20:30. We have them in stock and you are welcome to try them on before you buy.'),
+            ],
+        },
+        "it": {
+            "paras": [
+                'Cortébert è la parte Swiss Made del nostro banco, a Durazzo da €{lo} a €{hi}. Ogni modello che teniamo porta la dicitura Swiss Made sul quadrante, e lo verifichiamo con la cassa in mano invece di leggerlo da una fotografia.',
+                'Quello che teniamo comprende un ovale da abito in acciaio lucido con numeri romani, contatore del giorno, data a lancetta e finestrella delle fasi lunari alle sei; un cronografo con lunetta nera fissata da sei viti a vista, tre contatori e indicatore del giorno su bracciale bicolore; e una cassa rettangolare curva con contatori di giorno, data e 24 ore su quadrante nero testurizzato.',
+                "Per questo marchio non pubblichiamo né il movimento né un valore di impermeabilità, quindi chiedeteci e vi leggiamo cosa dice davvero il fondello. Le maglie del bracciale si adattano gratis al nostro banco, e siete i benvenuti anche se avete ordinato online. Ognuno arriva con la nostra garanzia di 1 anno e il pagamento alla consegna in tutta l'Albania.",
+            ],
+            "faq": [
+                ('Che tipo di orologi è Cortébert?',
+                 'È la linea Swiss Made che teniamo, da €{lo} a €{hi}, che va da un ovale da abito con fasi lunari a un cronografo vero fino a un multifunzione rettangolare. Ognuno porta la dicitura Swiss Made sul quadrante.'),
+                ('Quanto costa un orologio Cortébert in Albania?',
+                 "I nostri modelli Cortébert vanno da €{lo} a €{hi}, che sono circa {lolek} a {hilek} Lek, e c'è un modello che quotiamo su richiesta. Sono inclusi la garanzia di 1 anno e il pagamento alla consegna in tutta l'Albania."),
+                ('Dove posso vedere gli orologi Cortébert di persona?',
+                 'Nel nostro laboratorio in Rruga Aleksander Goga a Durazzo, aperto dal lunedì al sabato dalle 8:30 alle 20:30. Li abbiamo disponibili e potete provarli prima di acquistare.'),
+            ],
+        },
+        "sq": {
+            "paras": [
+                'Cortébert është pjesa Swiss Made e banakut tonë, në Durrës nga €{lo} deri €{hi}. Çdo model që mbajmë e ka shënimin Swiss Made në cadran, dhe këtë e verifikojmë me kasën në dorë e jo duke e lexuar nga një fotografi.',
+                'Ajo që mbajmë përfshin një ovale veshjeje prej çeliku të lëmuar me numra romakë, nënkadran dite, datë me akrep dhe dritare të fazave të hënës në orën gjashtë; një kronograf me bezel të zi të mbajtur nga gjashtë vida të dukshme, tre nënkadranë dhe tregues dite mbi byzylyk dyngjyrësh; dhe një kasë drejtkëndore të lakuar me nënkadranë dite, date dhe 24 orësh mbi cadran të zi me teksturë.',
+                'Për këtë markë nuk publikojmë as lëvizjen as një vlerë rezistence ndaj ujit, ndaj na pyesni dhe ju lexojmë çfarë shkruan vërtet pjesa e pasme. Hallkat e byzylykut i rregullojmë falas te banaku ynë, dhe jeni të mirëseardhur edhe nëse keni porositur online. Secila vjen me garancinë tonë 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri.',
+            ],
+            "faq": [
+                ('Çfarë lloj orësh është Cortébert?',
+                 'Është linja Swiss Made që mbajmë, nga €{lo} deri €{hi}, që shkon nga një ovale veshjeje me faza hëne te një kronograf i vërtetë e deri te një multifunksion drejtkëndor. Secila e ka shënimin Swiss Made në cadran.'),
+                ('Sa kushton një orë Cortébert në Shqipëri?',
+                 'Modelet tona Cortébert shkojnë nga €{lo} deri €{hi}, që janë afërsisht {lolek} deri {hilek} Lekë, dhe ka një model që e çmojmë me kërkesë. Kjo përfshin një garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri.'),
+                ("Ku mund t'i shoh orët Cortébert nga afër?",
+                 "Në punishten tonë në Rrugën Aleksander Goga në Durrës, e hapur nga e hëna në të shtunë 8:30 deri 20:30. I kemi në gjendje dhe jeni të mirëseardhur t'i provoni para se të blini."),
+            ],
+        },
+    },
+    "pulsar": {
+        "en": {
+            "paras": [
+                'Pulsar is the crystal-set chronograph on our counter, in Durrës from €{lo}. Stainless steel case, a bezel set with crystals all the way round, and a white dial with three counters and a date window.',
+                'The chronograph works. We checked the pushers and the counters at the bench rather than trusting the dial, which matters because plenty of watches at this price wear three subdials that do nothing at all. The dial is marked 100M and the caseback says the same, so rain and a sink of washing up are not a problem.',
+                'It comes on a white leather strap with a croc-grain finish, and we fit and change straps here. Every one comes with our 1-year guarantee and cash on delivery across Albania.',
+            ],
+            "faq": [
+                ('What kind of watch is Pulsar?',
+                 'It is a crystal-set chronograph in stainless steel, from €{lo}, with three counters that genuinely run, a date window, and 100M marked on the dial and on the caseback.'),
+                ('How much does a Pulsar watch cost in Albania?',
+                 'Pulsar starts at €{lo}, which is roughly {lolek} Lek. That includes a 1-year guarantee, and cash on delivery anywhere in Albania.'),
+                ('Where can I see Pulsar watches in person?',
+                 'At our workshop on Rruga Aleksander Goga in Durrës, open Monday to Saturday 8:30 to 20:30. We have them in stock and you are welcome to try them on before you buy.'),
+            ],
+        },
+        "it": {
+            "paras": [
+                'Pulsar è il cronografo con cristalli del nostro banco, a Durazzo da €{lo}. Cassa in acciaio inossidabile, lunetta con cristalli su tutto il giro e quadrante bianco con tre contatori e finestrella data.',
+                'Il cronografo funziona davvero. Abbiamo provato i pulsanti e i contatori al banco invece di fidarci del quadrante, e conta perché a questo prezzo molti orologi portano tre contatori che non fanno nulla. Il quadrante indica 100M e il fondello dice lo stesso, quindi la pioggia e i piatti da lavare non sono un problema.',
+                "Arriva su cinturino in pelle bianca stampa cocco, e i cinturini li montiamo e li cambiamo qui. Ognuno arriva con la nostra garanzia di 1 anno e il pagamento alla consegna in tutta l'Albania.",
+            ],
+            "faq": [
+                ('Che tipo di orologio è Pulsar?',
+                 'È un cronografo con lunetta con cristalli in acciaio inossidabile, da €{lo}, con tre contatori che funzionano davvero, finestrella data e 100M indicati sul quadrante e sul fondello.'),
+                ('Quanto costa un orologio Pulsar in Albania?',
+                 "Pulsar parte da €{lo}, che sono circa {lolek} Lek. Sono inclusi la garanzia di 1 anno e il pagamento alla consegna in tutta l'Albania."),
+                ('Dove posso vedere gli orologi Pulsar di persona?',
+                 'Nel nostro laboratorio in Rruga Aleksander Goga a Durazzo, aperto dal lunedì al sabato dalle 8:30 alle 20:30. Li abbiamo disponibili e potete provarli prima di acquistare.'),
+            ],
+        },
+        "sq": {
+            "paras": [
+                'Pulsar është kronografi me kristale i banakut tonë, në Durrës nga €{lo}. Kasë prej çeliku inoks, bezel me kristale rreth e rrotull dhe cadran i bardhë me tre nënkadranë dhe dritare date.',
+                "Kronografi punon vërtet. Butonat dhe nënkadranët i provuam te banaku në vend që t'i besonim cadranit, dhe kjo ka rëndësi sepse në këtë çmim shumë orë mbajnë tre nënkadranë që nuk bëjnë asgjë. Cadrani shënon 100M dhe pjesa e pasme thotë të njëjtën gjë, ndaj shiu dhe larja e enëve nuk janë problem.",
+                'Vjen me rrip lëkure të bardhë me imitim krokodili, dhe rripat i montojmë e i ndërrojmë këtu. Secila vjen me garancinë tonë 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri.',
+            ],
+            "faq": [
+                ('Çfarë lloj ore është Pulsar?',
+                 'Është një kronograf me bezel me kristale prej çeliku inoks, nga €{lo}, me tre nënkadranë që punojnë vërtet, dritare date dhe 100M të shënuar në cadran dhe në pjesën e pasme.'),
+                ('Sa kushton një orë Pulsar në Shqipëri?',
+                 'Pulsar fillon nga €{lo}, që janë afërsisht {lolek} Lekë. Kjo përfshin një garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri.'),
+                ("Ku mund t'i shoh orët Pulsar nga afër?",
+                 "Në punishten tonë në Rrugën Aleksander Goga në Durrës, e hapur nga e hëna në të shtunë 8:30 deri 20:30. I kemi në gjendje dhe jeni të mirëseardhur t'i provoni para se të blini."),
+            ],
+        },
+    },
+    "polotime": {
+        "en": {
+            "paras": [
+                'POLOTIME is our gold-tone dress line, in Durrës from €{lo}. Gold-tone steel case and a matching bracelet, with a champagne sunray dial set inside a white outer ring.',
+                'The detail is in the crystals. They are set into the dial at the quarters and into the panels where the bracelet meets the case, so it catches light from the side as well as from the front. Slim gold-tone hands, no date window and no subdials.',
+                'The stones are crystals, not diamonds, and we would rather say so than let you assume otherwise. Bracelet links are sized free at our counter, and you are welcome to come in for that even if you ordered online. Every one comes with our 1-year guarantee and cash on delivery across Albania.',
+            ],
+            "faq": [
+                ('What kind of watches is POLOTIME?',
+                 'It is our gold-tone dress line, from €{lo}, in gold-tone steel with a matching bracelet, a champagne sunray dial and crystal-set detail on both the dial and the bracelet.'),
+                ('How much does a POLOTIME watch cost in Albania?',
+                 'POLOTIME starts at €{lo}, which is roughly {lolek} Lek. That includes a 1-year guarantee, and cash on delivery anywhere in Albania.'),
+                ('Where can I see POLOTIME watches in person?',
+                 'At our workshop on Rruga Aleksander Goga in Durrës, open Monday to Saturday 8:30 to 20:30. We have them in stock and you are welcome to try them on before you buy.'),
+            ],
+        },
+        "it": {
+            "paras": [
+                'POLOTIME è la nostra linea da abito color oro, a Durazzo da €{lo}. Cassa in acciaio color oro e bracciale abbinato, con quadrante champagne sunray dentro un anello esterno bianco.',
+                'Il dettaglio sta nei cristalli. Sono incastonati nel quadrante ai quarti e nelle placche dove il bracciale incontra la cassa, così prende luce anche di lato e non solo di fronte. Lancette sottili color oro, senza finestrella data e senza contatori.',
+                "Le pietre sono cristalli, non diamanti, e preferiamo dirlo piuttosto che lasciarvelo immaginare. Le maglie del bracciale si adattano gratis al nostro banco, e siete i benvenuti anche se avete ordinato online. Ognuno arriva con la nostra garanzia di 1 anno e il pagamento alla consegna in tutta l'Albania.",
+            ],
+            "faq": [
+                ('Che tipo di orologi è POLOTIME?',
+                 'È la nostra linea da abito color oro, da €{lo}, in acciaio color oro con bracciale abbinato, quadrante champagne sunray e dettagli con cristalli sul quadrante e sul bracciale.'),
+                ('Quanto costa un orologio POLOTIME in Albania?',
+                 "POLOTIME parte da €{lo}, che sono circa {lolek} Lek. Sono inclusi la garanzia di 1 anno e il pagamento alla consegna in tutta l'Albania."),
+                ('Dove posso vedere gli orologi POLOTIME di persona?',
+                 'Nel nostro laboratorio in Rruga Aleksander Goga a Durazzo, aperto dal lunedì al sabato dalle 8:30 alle 20:30. Li abbiamo disponibili e potete provarli prima di acquistare.'),
+            ],
+        },
+        "sq": {
+            "paras": [
+                'POLOTIME është linja jonë e veshjes në ngjyrë ari, në Durrës nga €{lo}. Kasë çeliku në ngjyrë ari dhe byzylyk i njëjtë, me cadran shampanjë sunray brenda një unaze të jashtme të bardhë.',
+                'Detaji është te kristalet. Janë vendosur në cadran te çerekët dhe në pjesët ku byzylyku takon kasën, ndaj kap dritë edhe anash e jo vetëm nga përpara. Akrepa të hollë në ngjyrë ari, pa dritare date dhe pa nënkadranë.',
+                "Gurët janë kristale, jo diamante, dhe preferojmë ta themi sesa t'ju lëmë ta merrni me mend. Hallkat e byzylykut i rregullojmë falas te banaku ynë, dhe jeni të mirëseardhur edhe nëse keni porositur online. Secila vjen me garancinë tonë 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri.",
+            ],
+            "faq": [
+                ('Çfarë lloj orësh është POLOTIME?',
+                 'Është linja jonë e veshjes në ngjyrë ari, nga €{lo}, prej çeliku në ngjyrë ari me byzylyk të njëjtë, cadran shampanjë sunray dhe detaje me kristale në cadran dhe në byzylyk.'),
+                ('Sa kushton një orë POLOTIME në Shqipëri?',
+                 'POLOTIME fillon nga €{lo}, që janë afërsisht {lolek} Lekë. Kjo përfshin një garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri.'),
+                ("Ku mund t'i shoh orët POLOTIME nga afër?",
                  "Në punishten tonë në Rrugën Aleksander Goga në Durrës, e hapur nga e hëna në të shtunë 8:30 deri 20:30. I kemi në gjendje dhe jeni të mirëseardhur t'i provoni para se të blini."),
             ],
         },

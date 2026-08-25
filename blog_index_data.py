@@ -195,7 +195,7 @@ ARTICLES = [
                     desc='Five to ten years, and the movement is almost never what fails. The real failure order, the seasonal damage we see every year, and what a decade of ownership actually costs.'),
             it=dict(title='Quanto Dura un Orologio da 70 Euro? Quello Che Vediamo al Banco',
                     desc='Da cinque a dieci anni, e il movimento non è quasi mai ciò che cede. Il vero ordine dei guasti, i danni stagionali e quanto costa davvero un decennio di possesso.'),
-            sq=dict(title='Sa Zgjat nj&euml; Or&euml; 6.800 Lek&euml;? &Ccedil;far&euml; Shohim n&euml; Banak',
+            sq=dict(title='Sa Zgjat nj&euml; Or&euml; 70 Euro? &Ccedil;far&euml; Shohim n&euml; Banak',
                     desc='Nga pes&euml; n&euml; dhjet&euml; vjet, dhe mekanizmi nuk &euml;sht&euml; thuajse kurr&euml; ai q&euml; dor&euml;zohet. Radha e v&euml;rtet&euml; e prishjeve dhe sa kushton vërtet nj&euml; dekad&euml; pron&euml;sie.'),
         ),
     ),

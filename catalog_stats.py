@@ -35,10 +35,21 @@ to reason about the catalogue; nothing may print them. {b} and the prices stay.
 """
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 BASE = Path(__file__).parent
-LEK_RATE = 97
+
+# Lek per euro, owner-reported. 97 -> 92.25 (2026-08-25).
+# THE RATE IS A FLOAT NOW. 92.25 is exactly representable in binary, so
+# int(p * 92.25 / 100 + 0.5) and JS Math.round(p * 92.25 / 100) agree on every
+# price from 1 to 500 and both match exact half-up Decimal. That was measured,
+# not assumed, because the four copies of this number outside this file (three
+# shop.js and admin.js) do the arithmetic in JavaScript.
+# Changing this reprices roughly 3,000 published figures. The shop, the brand
+# pages and every data-stat marker heal on a generator run; article prose does
+# not, and verify-stats.py check E is the thing that finds what is left.
+LEK_RATE = 92.25
 
 # Google reviews. ONE home. The owner reports this; nothing derives it.
 # 107 -> 106 (2026-08-03) -> 104 (2026-08-05) -> 102 (2026-08-20).
@@ -67,7 +78,14 @@ def nfmt(v, lang):
 
 # [DB-013.c] slugify — brand display name -> the slug used in tokens and URLs
 def slugify(brand):
-    return brand.lower().replace(" ", "-")
+    # Accents are FOLDED, not kept. Every brand was ASCII until Cortébert
+    # arrived (2026-08-25), and a bare .lower() gave "cortébert" here while
+    # shop_bits.BRAND_SLUGS, the page filename and every {lo:cortebert} token
+    # said "cortebert". The two never met, so brand_lo/brand_hi simply had no
+    # entry for the brand and the token asserted instead of rendering.
+    n = unicodedata.normalize("NFKD", brand)
+    n = "".join(c for c in n if not unicodedata.combining(c))
+    return n.lower().replace(" ", "-")
 
 
 # [DB-013.d] Stats — slots-only value bag for the computed catalogue numbers

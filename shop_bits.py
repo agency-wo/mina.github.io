@@ -46,6 +46,21 @@ CRUMBS = {
 }
 
 
+# A watch with no price yet. ONE home, because it is rendered in four places
+# that must agree byte for byte: price_html and card_price_html below, the
+# product-page template in scripts/make-new-watch-pages.py, and watchCard() in
+# each {lang}/shop/shop.js. Both renderers here used to return the ENGLISH
+# string in all three languages while shop.js returned the translated one, so an
+# Albanian card said "Price on request" until hydration and "Çmimi me kërkesë"
+# after it. Nothing caught it because no watch was priceless until the Cortébert
+# rectangular arrived unpriced on 2026-08-25.
+PRICE_ON_REQUEST = {
+    "en": "Price on request",
+    "it": "Prezzo su richiesta",
+    "sq": "Çmimi me kërkesë",
+}
+
+
 def price_html(price, currency, lang, small="1.1rem"):
     """[DB-014.a] Product-page price line.
 
@@ -53,7 +68,7 @@ def price_html(price, currency, lang, small="1.1rem"):
     second. EN/IT keep EUR first. Mirrored in watch.js.
     """
     if not price:
-        return ""
+        return PRICE_ON_REQUEST[lang]
     eur = f"€{price}"
     l = lek(price, currency)
     if not l:
@@ -67,7 +82,7 @@ def price_html(price, currency, lang, small="1.1rem"):
 def card_price_html(price, currency, lang):
     """[DB-014.b] Grid-card price line (smaller secondary text). Mirrored in shop.js."""
     if not price:
-        return "Price on request"
+        return PRICE_ON_REQUEST[lang]
     eur = ("€" if currency == "EUR" else str(currency)) + nfmt(price, lang)
     l = lek(price, currency)
     if not l:

@@ -304,7 +304,9 @@
 
 
 
-  var EUR_TO_LEK = 97;
+  // Lek per euro. MIRRORS catalog_stats.LEK_RATE -- change both together;
+  // verify-stats.py check C now fails the build if they disagree.
+  var EUR_TO_LEK = 92.25;
   var SEP = '.';
   /* Comma in EN, dot in IT and SQ. Mirrors catalog_stats.SEP byte for byte.
      Never toLocaleString(): it asks the browser for the separator, so an
@@ -317,11 +319,11 @@
   //         rendered page disagreed with the HTML the server had just sent.
   function group(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, SEP); }
   // [UI-016.d] fmt — the euro figure, or an honest fallback
-  // NOTES:  a missing or zero price prints "Çmimi me kërkese", never a
+  // NOTES:  a missing or zero price prints "Çmimi me kërkesë", never a
   //         zero. No price in the data is a data hole, and a hole must never
   //         read as a free watch.
   function fmt(price, currency){
-    if(!price) return '\u00c7mimi me k\u00ebrkese';
+    if(!price) return '\u00c7mimi me k\u00ebrkes\u00eb';
     return (currency === 'EUR' ? '\u20ac' : currency) + group(price);
   }
   // [UI-016.e] lekVal — the Lek figure as a number, for the SQ price line

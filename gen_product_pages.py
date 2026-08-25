@@ -25,7 +25,8 @@ from pathlib import Path
 
 from catalog_stats import REVIEWS, lek, nfmt
 from contact import phone  # [CFG-010] en/it reach the owner, sq reaches his father
-from shop_bits import (SWISS_BRANDS, crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html,
+from shop_bits import (PRICE_ON_REQUEST, SWISS_BRANDS, crumb_html, crumb_jsonld,
+                       CRUMB_CSS, open_now_html,
                        price_html as shared_price_html, stub_html)
 
 BASE = Path(__file__).parent
@@ -219,7 +220,7 @@ def replace_watch_content(html: str, new_div: str) -> str:
 def build_price_html(price, currency, lang="en"):
     """[DB-017.c] SQ leads with Lek, EN/IT with EUR. Mirrored by watch.js."""
     if not price:
-        return "Price on request"
+        return PRICE_ON_REQUEST[lang]
     return shared_price_html(price, currency, lang)
 
 
@@ -789,7 +790,7 @@ def strip_runtime_renderer(html: str) -> str:
 
     watch.js re-rendered #watch-content on every load, over static markup that was
     already correct, and every difference it introduced was damage: a NaN Lek price
-    (render() ran before `var EUR_TO_LEK = 97` was assigned), the sale price dropped,
+    (render() ran before `var EUR_TO_LEK` was assigned), the sale price dropped,
     the open-now block deleted, an em dash where a reference was empty, and a
     toLocaleString() with no locale so an Albanian phone printed 6.800 L against
     Python's 6,800 L. Its reason to exist, the legacy shop/watch.html?id= template,
@@ -1021,9 +1022,33 @@ for w in watches:
             ld["description"] = raw_desc
             # [DB-003] availability follows the CRM-driven sold flag — a sold
             # watch must tell crawlers OutOfStock, never evergreen InStock
-            assert isinstance(ld.get("offers"), dict), f"{wid}: Product LD without offers"
-            ld["offers"]["availability"] = ("https://schema.org/OutOfStock" if w.get("sold")
-                                            else "https://schema.org/InStock")
+            # A watch with no price ships a Product with NO Offer at all rather
+            # than an Offer quoting 0, which would publish a false price in
+            # structured data. schema.org does not require offers, and
+            # verify-product-pages skips the price check when price is falsy.
+            # Every PRICED watch must still carry one: an Offer that went
+            # missing is how a sold watch would keep advertising InStock.
+            if not w.get("price"):
+                assert "offers" not in ld, f"{wid}: unpriced watch still has an Offer"
+            else:
+                assert isinstance(ld.get("offers"), dict), f"{wid}: Product LD without offers"
+                off = ld["offers"]
+                off["availability"] = ("https://schema.org/OutOfStock" if w.get("sold")
+                                       else "https://schema.org/InStock")
+                # PRICES ARE REWRITTEN EVERY RUN, not just at page creation.
+                # They used to be written once by make-new-watch-pages.py and
+                # then owned by nobody, so the 97 -> 92.25 rate change left the
+                # ALL figure stale in the head JSON-LD of every existing page:
+                # 192 audit findings, all of them "ALL price != N", on pages the
+                # generator had just reported as updated. Deriving them here
+                # means the next rate change heals itself.
+                off["price"] = str(w["price"])
+                off["priceCurrency"] = w.get("currency", "EUR")
+                for spec in off.get("priceSpecification", []):
+                    if spec.get("priceCurrency") == "ALL":
+                        spec["price"] = str(lek(w["price"], w.get("currency", "EUR")))
+                    elif spec.get("priceCurrency") == "EUR":
+                        spec["price"] = str(w["price"])
             return m.group(1) + json.dumps(ld, ensure_ascii=False, separators=(",", ":")) + m.group(3)
 
         new_html = re.sub(r'(<script type="application/ld\+json" id="ld-json">)(.*?)(</script>)',

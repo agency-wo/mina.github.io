@@ -1066,5 +1066,94 @@ window.WATCHES_DATA = [
     "description_en": "Philippe Lauren ladies' dress watch in stainless steel with a round case and a crystal-set bezel in two rows. Deep blue sunburst dial with crystal indices and slim polished baton hands, on a five-link polished steel bracelet. No date window, and the dressiest Philippe Lauren on our counter.",
     "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile con cassa rotonda e ghiera con cristalli su due file. Quadrante blu intenso sunburst con indici con cristalli e sottili lancette a bastone lucide, su bracciale in acciaio lucido a cinque maglie. Senza finestrella data, e il Philippe Lauren più elegante che teniamo.",
     "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks me kasë të rrumbullakët dhe lunetë me kristale në dy rreshta. Ciferblat blu i thellë sunburst me tregues me kristale dhe akrepa shiritash të hollë e të lëmuar, mbi byzylyk çeliku të lëmuar me pesë hallka. Pa dritare date, dhe Philippe Lauren më elegante që kemi."
+  },
+  {
+    "id": "cortebert-oval-moonphase",
+    "brand": "Cortébert",
+    "model": "Oval Moonphase",
+    "reference": "",
+    "condition": "New",
+    "price": 141,
+    "currency": "EUR",
+    "image": "/images/watches/cortebert-oval-moonphase.webp",
+    "sold": false,
+    "styles": [
+      "dress",
+      "moonphase"
+    ],
+    "description_en": "Swiss Made dress watch in a polished oval steel case. Champagne dial with Roman numerals, a day subdial, a pointer date subdial and a moon phase window at six. Black leather strap with a pin buckle.",
+    "description_it": "Orologio da abito Swiss Made con cassa ovale in acciaio lucido. Quadrante champagne con numeri romani, contatore del giorno, contatore della data a lancetta e finestrella delle fasi lunari alle sei. Cinturino in pelle nera con fibbia ad ardiglione.",
+    "description_sq": "Orë veshjeje Swiss Made me kasë ovale prej çeliku të lëmuar. Cadran shampanjë me numra romakë, nënkadran i ditës, nënkadran i datës me akrep dhe dritare e fazave të hënës në orën gjashtë. Rrip lëkure i zi me tokëz."
+  },
+  {
+    "id": "cortebert-black-bezel-chronograph",
+    "brand": "Cortébert",
+    "model": "Black Bezel Chronograph",
+    "reference": "",
+    "condition": "New",
+    "price": 249,
+    "currency": "EUR",
+    "image": "/images/watches/cortebert-black-bezel-chronograph.webp",
+    "sold": false,
+    "styles": [
+      "chronograph",
+      "sport"
+    ],
+    "description_en": "Swiss Made chronograph with a black bezel held by six exposed screws. White dial with three counters, a day indicator and a date window, on a two-tone black and steel bracelet. The heaviest watch on the counter and the one that reads fastest at a glance.",
+    "description_it": "Cronografo Swiss Made con lunetta nera fissata da sei viti a vista. Quadrante bianco con tre contatori, indicatore del giorno e finestrella data, su bracciale bicolore nero e acciaio. Il più massiccio del banco e quello che si legge più in fretta.",
+    "description_sq": "Kronograf Swiss Made me bezel të zi të mbajtur nga gjashtë vida të dukshme. Cadran i bardhë me tre nënkadranë, tregues i ditës dhe dritare date, mbi byzylyk dyngjyrësh të zi dhe çelik. Ora më e rëndë e banakut dhe ajo që lexohet më shpejt."
+  },
+  {
+    "id": "cortebert-rectangular-multifunction",
+    "brand": "Cortébert",
+    "model": "Rectangular Multifunction",
+    "reference": "",
+    "condition": "New",
+    "price": 0,
+    "currency": "EUR",
+    "image": "/images/watches/cortebert-rectangular-multifunction.webp",
+    "sold": false,
+    "styles": [
+      "dress"
+    ],
+    "description_en": "Swiss Made multifunction in a curved rectangular steel case. Black textured dial with a day counter, a date counter and a 24 hour counter, applied batons and Arabic numerals at twelve, five and seven. Black leather strap.",
+    "description_it": "Multifunzione Swiss Made con cassa rettangolare curva in acciaio. Quadrante nero testurizzato con contatore del giorno, contatore della data e contatore 24 ore, indici applicati e numeri arabi alle dodici, alle cinque e alle sette. Cinturino in pelle nera.",
+    "description_sq": "Multifunksion Swiss Made me kasë drejtkëndore të lakuar prej çeliku. Cadran i zi me teksturë, nënkadran i ditës, nënkadran i datës dhe nënkadran 24 orësh, indekse të aplikuara dhe numra arabë në dymbëdhjetë, pesë dhe shtatë. Rrip lëkure i zi."
+  },
+  {
+    "id": "pulsar-crystal-chronograph",
+    "brand": "Pulsar",
+    "model": "Crystal Chronograph",
+    "reference": "",
+    "condition": "New",
+    "price": 141,
+    "currency": "EUR",
+    "image": "/images/watches/pulsar-crystal-chronograph.webp",
+    "sold": false,
+    "styles": [
+      "chronograph",
+      "dress"
+    ],
+    "description_en": "Pulsar chronograph in stainless steel with a crystal-set bezel. White dial with three counters and a date window, rated 100M on the dial and on the caseback. Two pushers, white leather strap with a croc-grain finish.",
+    "description_it": "Cronografo Pulsar in acciaio inossidabile con lunetta con cristalli. Quadrante bianco con tre contatori e finestrella data, impermeabilità 100M indicata sul quadrante e sul fondello. Due pulsanti, cinturino in pelle bianca stampa cocco.",
+    "description_sq": "Kronograf Pulsar prej çeliku inox me bezel me kristale. Cadran i bardhë me tre nënkadranë dhe dritare date, me 100M të shënuar në cadran dhe në pjesën e pasme. Dy butona, rrip lëkure i bardhë me imitim krokodili."
+  },
+  {
+    "id": "polotime-gold-crystal",
+    "brand": "POLOTIME",
+    "model": "Gold Crystal",
+    "reference": "",
+    "condition": "New",
+    "price": 76,
+    "currency": "EUR",
+    "image": "/images/watches/polotime-gold-crystal.webp",
+    "sold": false,
+    "styles": [
+      "dress",
+      "gold-tone"
+    ],
+    "description_en": "POLOTIME ladies' watch in gold-tone steel with a matching bracelet. Champagne sunray dial inside a white outer ring, crystal-set indices at four points and crystal-set panels where the bracelet meets the case. Slim gold-tone hands, no date window.",
+    "description_it": "Orologio da donna POLOTIME in acciaio color oro con bracciale abbinato. Quadrante champagne sunray dentro un anello esterno bianco, indici con cristalli in quattro punti e inserti con cristalli dove il bracciale incontra la cassa. Lancette sottili color oro, senza finestrella data.",
+    "description_sq": "Orë femrash POLOTIME prej çeliku në ngjyrë ari me byzylyk të njëjtë. Cadran shampanjë sunray brenda një unaze të jashtme të bardhë, indekse me kristale në katër pika dhe pjesë me kristale aty ku byzylyku takon kasën. Akrepa të hollë në ngjyrë ari, pa dritare date."
   }
 ];

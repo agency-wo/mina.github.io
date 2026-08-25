@@ -303,7 +303,9 @@
 
 
 
-  var EUR_TO_LEK = 97;
+  // Lek per euro. MIRRORS catalog_stats.LEK_RATE -- change both together;
+  // verify-stats.py check C now fails the build if they disagree.
+  var EUR_TO_LEK = 92.25;
   var SEP = '.';
   /* Comma in EN, dot in IT and SQ. Mirrors catalog_stats.SEP byte for byte.
      Never toLocaleString(): it asks the browser for the separator, so an

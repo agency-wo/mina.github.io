@@ -21,7 +21,9 @@
 
   var sessionPassword = ''; // set on successful login, used to encrypt/decrypt token
 
-  var EUR_TO_LEK = 97;
+  // Lek per euro. MIRRORS catalog_stats.LEK_RATE -- change both together;
+  // verify-stats.py check C now fails the build if they disagree.
+  var EUR_TO_LEK = 92.25;
   document.getElementById('f-price').addEventListener('input', function(){
     var price = parseFloat(this.value);
     var preview = document.getElementById('lek-preview');

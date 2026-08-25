@@ -130,7 +130,12 @@ def fill(text, brand, items, lang='en'):
     assert "{n}" not in text, (
         f"gen_brand_pages.fill: {{n}} is retired. No page states how many watches. "
         f"Rewrite the sentence: {text[:60]!r}")
-    prices = [w["price"] for w in items]
+    # Falsy prices are EXCLUDED, the same rule catalog_stats.load() uses. A watch
+    # with no price yet is a real listing but not a bound: the Cortébert
+    # rectangular arrived unpriced (2026-08-25) and an unfiltered min() published
+    # "from €0" in the <title>, the meta description and the intro paragraph.
+    prices = [w["price"] for w in items if w.get("price")]
+    assert prices, f"{brand}: every listed watch is unpriced, so there is no range to state"
     return (text.replace("{brand}", brand)
                 .replace("{lo}", str(min(prices)))
                 .replace("{hi}", str(max(prices)))
