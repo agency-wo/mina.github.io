@@ -134,11 +134,11 @@ ARTICLES = [
         label=dict(en='Brand Comparison', it='Confronto Marche', sq='Krahasim Markash'),
         card=dict(
             en=dict(title='Daniel Klein or Philippe Lauren: Which One to Buy',
-                    desc='Both are fashion quartz watches on the same counter. Philippe Lauren is where the chronographs sit and where the money starts. Daniel Klein is dressier and reaches higher.'),
+                    desc='Both are fashion watches on the same counter. Philippe Lauren is where the chronographs sit and where the money starts. Daniel Klein is dressier and reaches higher.'),
             it=dict(title='Daniel Klein o Philippe Lauren: Quale Comprare',
-                    desc='Due marchi fashion al quarzo sullo stesso banco. Philippe Lauren è dove stanno i cronografi e dove comincia la spesa. Daniel Klein è più elegante e arriva più in alto.'),
+                    desc='Due marchi fashion sullo stesso banco. Philippe Lauren è dove stanno i cronografi e dove comincia la spesa. Daniel Klein è più elegante e arriva più in alto.'),
             sq=dict(title='Daniel Klein apo Philippe Lauren: Cilën të Blesh',
-                    desc='Dy marka fashion me kuarc në të njëjtin banak. Philippe Lauren është aty ku rrinë kronografët dhe ku nisin paratë. Daniel Klein është më elegante dhe shkon më lart.'),
+                    desc='Dy marka fashion në të njëjtin banak. Philippe Lauren është aty ku rrinë kronografët dhe ku nisin paratë. Daniel Klein është më elegante dhe shkon më lart.'),
         ),
     ),
     dict(
