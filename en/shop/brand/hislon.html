@@ -254,7 +254,22 @@ img{display:block;max-width:100%;height:auto}
 .watch-card:hover .watch-card-img::after{animation:none}
 .watch-card-footer .watch-price{transform:none;transition:none}
 }
-</style>
+
+    /* CASCADE ORDER, LOAD-BEARING. The @media(max-width:600px) block earlier in this
+       stylesheet sits ABOVE the base .watch-card rules. A media query carries no extra
+       specificity, so every property it sets that is set again later was silently dead:
+       the phone was getting the 1.45rem desktop price, 1.5rem card padding and the full
+       size CTA. Re-declared here, after those rules, which is the only thing that makes
+       them win. Do not move this above the base rules. */
+    @media(max-width:600px){
+      .watch-card-body{padding:1rem 1rem .85rem}
+      .watch-model{font-size:1.1rem}
+      .watch-desc{font-size:.8rem}
+      .watch-price{font-size:1.2rem}
+      .watch-cta{font-size:.76rem;padding:.42rem .85rem}
+      .watch-card-footer{gap:.5rem}
+    }
+  </style>
 
   <!-- STRUCTURED DATA -->
   
