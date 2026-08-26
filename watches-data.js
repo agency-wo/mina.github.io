@@ -1173,5 +1173,22 @@ window.WATCHES_DATA = [
     "description_en": "Philippe Lauren dress watch in gold-tone steel with a round case, a notched bezel and an integrated three-link bracelet. Silver sunray dial with crystal-set indices at eight points, applied gold-tone batons at the quarters and slim gold-tone hands. No date window.",
     "description_it": "Orologio da abito Philippe Lauren in acciaio color oro con cassa rotonda, lunetta scanalata e bracciale integrato a tre maglie. Quadrante argentato sunray con indici in cristallo in otto punti, indici applicati color oro ai quarti e lancette sottili color oro. Senza finestrella data.",
     "description_sq": "Orë veshjeje Philippe Lauren prej çeliku në ngjyrë ari me kasë të rrumbullakët, bezel të gdhendur dhe byzylyk të integruar me tre hallka. Cadran argjendi sunray me indekse kristali në tetë pika, indekse të aplikuara në ngjyrë ari te çerekët dhe akrepa të hollë në ngjyrë ari. Pa dritare date."
+  },
+  {
+    "id": "bigotti-bg1-10476-1",
+    "brand": "Bigotti",
+    "model": "Steel Sunburst",
+    "reference": "BG.1.10476-1",
+    "condition": "New",
+    "price": 82,
+    "currency": "EUR",
+    "image": "/images/watches/bigotti-bg1-10476-1.webp",
+    "sold": false,
+    "styles": [
+      "dress"
+    ],
+    "description_en": "Bigotti Steel Sunburst, a men's watch in stainless steel with a silver sunburst dial and a polished chapter ring. Applied faceted baton indices, date window at three, a fluted crown and a three-link steel bracelet. A clean everyday steel watch that dresses up without trying.",
+    "description_it": "Orologio da uomo Bigotti in acciaio inossidabile con quadrante argentato sunburst e anello dei minuti lucido. Indici a bastone sfaccettati applicati, finestrella data a ore tre, corona zigrinata e bracciale in acciaio a tre maglie. Un acciaio pulito da tutti i giorni, che sta bene anche in ufficio.",
+    "description_sq": "Orë për burra Bigotti në çelik inoks me ciferblat argjendi sunburst dhe unazë minutash të lëmuar. Tregues shiritash të fasetuar të aplikuar, dritare date në orën tre, kurorë e gdhendur dhe byzylyk çeliku me tre hallka. Një çelik i pastër i përditshëm, që i shkon edhe zyrës."
   }
 ];
