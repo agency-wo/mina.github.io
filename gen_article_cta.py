@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-# [DB-021] gen_article_cta.py — the article shop-bridge button, derived not typed.
-# DOES:   For every blog article carrying a data-shop-bridge box, picks the watch
-#         that currently best fits the article's declared ROLE and rewrites the
-#         box's button to point at that watch's product page in that language.
+# [DB-021] gen_article_cta.py — the article's commercial furniture, derived not typed.
+# DOES:   Two jobs on every blog article. (1) For a data-shop-bridge box, picks
+#         the watch that currently fits the article's declared ROLE and rewrites
+#         the box's button to that watch's product page in that language.
+#         (2) In the cta-card button row, gives every bare WhatsApp link a
+#         prefilled message derived from that page's own title, and repoints any
+#         button aimed at the shop index at the role watch.
 # IN:     watches.json, and one authored attribute per article:
 #             <div class="info-box" data-shop-bridge data-cta-role="battery">
-#         An article with a bridge box and no role is treated as role "entry".
+#         An article with a bridge box and no role is treated as role "popular".
 # OUT:    Rewrites the button paragraph in place. Mirrors each file's own BOM and
 #         EOL, writes only on change, prints a per-role tally.
 # CALLS:  catalog_stats for nothing but the shared load discipline; the picking
@@ -39,8 +42,10 @@
 #         The button carries no price, deliberately. The product page owns the
 #         price and a price in a button is one more thing to go stale.
 import hashlib
+import html
 import json
 import re
+import urllib.parse
 import sys
 from pathlib import Path
 
@@ -156,6 +161,68 @@ LABEL = {"en": "See the {n}", "it": "Vedi il {n}", "sq": "Shihni {n}"}
 ARIA = {"en": "See the {n} in the shop", "it": "Vedi il {n} nel negozio",
         "sq": "Shihni {n} në dyqan"}
 
+# [DB-021.c] the CTA card's button row. Scoped to cta-actions on purpose: the
+# floating WhatsApp chrome button and the nav drawer also carry wa.me hrefs and
+# neither is a call to action for this article.
+ACTIONS_RE = re.compile(r'<div class="cta-actions">(.*?)</div>', re.S)
+SHOP_INDEX_RE = re.compile(r'href="/(en|it|sq)/shop/"')
+
+# A bare WhatsApp button: no text=, so it opens an empty chat.
+WA_BARE_RE = re.compile(r'<a href="(https://api\.whatsapp\.com/send\?phone=\d+)"')
+# One this generator wrote, marked so later runs can MAINTAIN it. Without the
+# marker a prefill would be add-once: change an article's title and the message
+# would keep quoting the old one, which is the staleness this whole file exists
+# to prevent. The marker also protects the 129 hand-written prefills that name a
+# specific watch and are better than anything derived; those carry no marker and
+# are left alone.
+WA_OWNED_RE = re.compile(
+    r'(<a data-cta-msg href="https://api\.whatsapp\.com/send\?phone=\d+&amp;text=)[^"]*(")')
+
+# Derived from the article's OWN title in its OWN language, so it cannot go stale
+# and there is nothing to maintain. An empty chat makes the reader explain
+# themselves from nothing and tells us nothing about where they came from.
+ASK = {
+    "en": "Hi, I am reading your guide on {t} and I have a question.",
+    "it": "Salve, sto leggendo la vostra guida su {t} e ho una domanda.",
+    "sq": "Përshëndetje, po lexoj udhëzuesin tuaj për {t} dhe kam një pyetje.",
+}
+
+
+def _title(t):
+    m = re.search(r"<title>(.*?)</title>", t, re.S)
+    # the suffix is not uniform: "| Iglisi Watch", "| Iglisi Watch Albania",
+    # "| Iglisi Watch Durres" and "| Iglisi Watch Shqiperi" all ship
+    if not m:
+        return ""
+    s = re.sub(r"\s*\|\s*Iglisi Watch.*$", "", html.unescape(m.group(1))).strip()
+    # trailing punctuation reads wrong once the title is dropped mid-sentence:
+    # "...your guide on Should You Buy On Instagram? and I have a question."
+    return s.rstrip("?.:!").strip()
+
+
+def fix_actions(t, lang, prod_href):
+    """[DB-021.d] Give every CTA button a destination and a message.
+
+    Percent-encoded UTF-8, never HTML entities: a WhatsApp text= is a URL, so
+    "e" with a diaeresis is %C3%AB and the Albanian greeting starts
+    P%C3%ABrsh%C3%ABndetje. The & before text= is written &amp; because it is
+    living in an HTML attribute.
+    """
+    m = ACTIONS_RE.search(t)
+    if not m:
+        return t, 0, 0
+    acts = m.group(1)
+    msg = urllib.parse.quote(ASK[lang].format(t=_title(t)), safe="")
+    # maintain the ones we already own, then adopt any that are still bare
+    acts2, n_up = WA_OWNED_RE.subn(rf"\g<1>{msg}\g<2>", acts)
+    acts2, n_new = WA_BARE_RE.subn(rf'<a data-cta-msg href="\g<1>&amp;text={msg}"', acts2)
+    n_wa = n_up + n_new
+    acts2, n_ix = SHOP_INDEX_RE.subn(f'href="{prod_href}"', acts2)
+    if acts2 == acts:
+        return t, 0, 0
+    return t[:m.start(1)] + acts2 + t[m.end(1):], n_wa, n_ix
+
+
 # the box's button paragraph, which is the only part this generator owns
 BTN_RE = re.compile(
     r'(<div class="info-box" data-shop-bridge[^>]*>.*?)'
@@ -170,6 +237,7 @@ def style_of(raw):
 
 def main():
     tally, written, skipped, offered = {}, 0, 0, set()
+    fixed = {"wa": 0, "idx": 0}
     for lang in LANGS:
         for p in sorted((BASE / lang / "blog").glob("*.html")):
             if p.name == "index.html":
@@ -182,9 +250,15 @@ def main():
             # consistency. A mixed file is the real bug.
             assert raw.count(b"\r\n") in (0, raw.count(b"\n")), f"{p}: mixed line endings"
             t = (raw[3:] if bom else raw).decode("utf-8")
-            if "data-shop-bridge" not in t:
+            if "noindex" in t:            # redirect stubs carry no CTA, correctly
                 continue
-            role = (ROLE_RE.search(t).group(1) or "popular")
+            has_bridge = "data-shop-bridge" in t
+            has_cta = '<div class="cta-actions">' in t
+            if not (has_bridge or has_cta):
+                continue
+
+            rm = ROLE_RE.search(t)
+            role = (rm.group(1) if rm and rm.group(1) else "popular")
             # seed on the family, not the file, so the three languages of one
             # article all offer the same watch
             w = pick(role, en_slug_of(lang, p.stem))
@@ -192,15 +266,21 @@ def main():
             href = f'/{lang}/shop/{w["id"]}.html'
             assert (BASE / href.lstrip("/")).exists(), f"{p}: {href} does not exist"
 
-            def sub(m):
-                return (m.group(1) + m.group(2) + href
-                        + f'" class="btn-secondary" aria-label="{ARIA[lang].format(n=name)}">'
-                        + LABEL[lang].format(n=name) + m.group(6))
+            new = t
+            if has_bridge:
+                def sub(m):
+                    return (m.group(1) + m.group(2) + href
+                            + f'" class="btn-secondary" aria-label="{ARIA[lang].format(n=name)}">'
+                            + LABEL[lang].format(n=name) + m.group(6))
 
-            new, n = BTN_RE.subn(sub, t, count=1)
-            assert n == 1, f"{p}: shop-bridge button not matched"
-            tally[role] = tally.get(role, 0) + 1
-            offered.add(w['id'])
+                new, n = BTN_RE.subn(sub, new, count=1)
+                assert n == 1, f"{p}: shop-bridge button not matched"
+                tally[role] = tally.get(role, 0) + 1
+                offered.add(w["id"])
+            if has_cta:
+                new, n_wa, n_ix = fix_actions(new, lang, href)
+                fixed["wa"] += n_wa
+                fixed["idx"] += n_ix
             if new != t:
                 # `t` was decoded from the file's own bytes, so it already carries
                 # that file's line endings. Re-applying eol here would double them.
@@ -210,7 +290,10 @@ def main():
                 skipped += 1
     print("  roles used: " + ", ".join(f"{r}={n}" for r, n in sorted(tally.items())))
     print(f"  distinct watches offered: {len(offered)}")
-    print(f"  bridge buttons: {written} rewritten, {skipped} unchanged")
+    print(f"  bridge buttons: {len(offered)} distinct watches offered")
+    print(f"  whatsapp prefills added: {fixed['wa']}   "
+          f"shop-index CTA buttons repointed: {fixed['idx']}")
+    print(f"  files: {written} rewritten, {skipped} unchanged")
 
 
 if __name__ == "__main__":
