@@ -382,7 +382,7 @@
   //         reference because the owner answers these on a phone and must not
   //         have to ask which watch the customer is looking at.
   function waMsg(w){
-    var msg = 'Pershendetje, jam i interesuar per oren ' + w.brand + ' ' + w.model + ' (Ref. ' + (w.reference||'N/A') + ') ne faqen tuaj.';
+    var msg = 'Pershendetje, jam i interesuar per oren ' + w.brand + ' ' + w.model + (w.reference ? ' (Ref. ' + w.reference + ')' : '') + ' ne faqen tuaj.';
     return 'https://api.whatsapp.com/send?phone=355676360510&text=' + encodeURIComponent(msg);
   }
 

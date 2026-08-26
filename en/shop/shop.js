@@ -370,7 +370,7 @@
   //         reference because the owner answers these on a phone and must not
   //         have to ask which watch the customer is looking at.
   function waMsg(w){
-    var msg = "Hi, I\u2019m interested in the " + w.brand + ' ' + w.model + ' (Ref. ' + (w.reference||'N/A') + ') listed on your website.';
+    var msg = "Hi, I\u2019m interested in the " + w.brand + ' ' + w.model + (w.reference ? ' (Ref. ' + w.reference + ')' : '') + ' listed on your website.';
     return 'https://api.whatsapp.com/send?phone=355675716090&text=' + encodeURIComponent(msg);
   }
 

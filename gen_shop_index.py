@@ -41,13 +41,13 @@ L = {
  "en": dict(sold="Sold", cta="Enquire", ig="See on Instagram", ref="Ref.",
             cta_aria="Enquire about {n} via WhatsApp",
             wa="Hi\u2019s", was="Was ",
-            msg="Hi, I\u2019m interested in the {b} {m} (Ref. {r}) listed on your website."),
+            msg="Hi, I\u2019m interested in the {b} {m}{r} listed on your website."),
  "it": dict(sold="Venduto", cta="Richiedi", ig="Vedi su Instagram", ref="Rif.",
             cta_aria="Richiedi info su {n} via WhatsApp", was="Prima ",
-            msg="Salve, sono interessato all'orologio {b} {m} (Rif. {r}) sul vostro sito."),
+            msg="Salve, sono interessato all'orologio {b} {m}{r} sul vostro sito."),
  "sq": dict(sold="Shitur", cta="Pyesni", ig="Shiko n\u00eb Instagram", ref="Ref.",
             cta_aria="Pyesni per {n} ne WhatsApp", was="M\u00eb par\u00eb ",
-            msg="Pershendetje, jam i interesuar per oren {b} {m} (Ref. {r}) ne faqen tuaj."),
+            msg="Pershendetje, jam i interesuar per oren {b} {m}{r} ne faqen tuaj."),
 }
 
 
@@ -89,7 +89,12 @@ def card(w, lang):
     if w.get("sold"):
         cta = f'<span style="font-size:.82rem;color:#888">{t["sold"]}</span>'
     else:
-        msg = t["msg"].format(b=w["brand"], m=w["model"], r=w.get("reference") or "N/A")
+        # No reference is a data gap, not a value. "(Ref. N/A)" went out in the
+        # message that IS the checkout on this site. The segment is dropped
+        # instead; mirrored by waMsg() in all three shop.js.
+        ref = w.get("reference")
+        msg = t["msg"].format(b=w["brand"], m=w["model"],
+                              r=f" ({t['ref']} {ref})" if ref else "")
         url = (f"https://api.whatsapp.com/send?phone={phone(lang)['wa']}&text="
                + quote(msg, safe=""))
         cta = (f'<a href="{url}" target="_blank" rel="noopener noreferrer" class="watch-cta" '
