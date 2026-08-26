@@ -208,7 +208,13 @@ Breaking one of these has caused a real incident. They are not style preferences
 
 - **No em dashes.** Not `—`, not `&mdash;`, not `&#8212;`. Several gates assert this.
 - **No AI filler.** No "in today's world", no "it's worth noting", no throat-clearing.
-- **Every CTA links to an exact product page**, never to the shop index.
+- **Every CTA links to an exact product page**, never to the shop index. **Match the anchor text,
+  never the href**: every article also carries a *breadcrumb* to the shop index, and a sweep on
+  `href="/xx/shop/"` alone hits all 279 of them and deletes the site's navigation. The breadcrumb
+  label is not even constant — Italian articles use the English word `Shop`, Albanian mixes `Shop`
+  and `Dyqan`. A prose link that writes `watch.al/xx/shop/` as an address, or that genuinely means
+  the whole catalogue ("see the full stock on the shop page"), is correct and stays: repointing it
+  at one watch makes the sentence false.
 - Nothing ships in one language. EN, IT and SQ go together, with localised slugs and reciprocal
   hreflang.
 
