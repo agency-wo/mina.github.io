@@ -41,6 +41,28 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
+        slug='how-much-to-spend-on-a-watch-gift', cat='gifts', icon='fa-balance-scale',
+        card=dict(
+            en=dict(title='How Much to Spend on a Watch as a Birthday Gift',
+                    desc='Everyone answers this with etiquette and nobody answers it with money. What a watch gift costs for a parent, a partner, a friend and a colleague, in euro and in Lek.'),
+            it=dict(title='Quanto Spendere per un Orologio come Regalo di Compleanno',
+                    desc='Tutti rispondono con il galateo e nessuno con i prezzi. Quanto costa un orologio da regalare a un genitore, al partner, a un amico e a un collega, in euro e in Lek.'),
+            sq=dict(title='Sa të Shpenzoni për një Orë si Dhuratë Ditëlindjeje',
+                    desc='Të gjithë përgjigjen me etikë dhe askush me çmime. Sa kushton një orë dhuratë për prindin, partnerin, një shok dhe një koleg, në euro dhe në lekë.'),
+        ),
+    ),
+    dict(
+        slug='milestone-birthday-watch-gift', cat='gifts', icon='fa-star',
+        card=dict(
+            en=dict(title='A Watch for a Milestone Birthday: 18, 30, 40, 50 and 60',
+                    desc='A round-number birthday asks for a different watch than an ordinary one. Which model fits each decade, and where the extra money actually goes.'),
+            it=dict(title='Regalo Orologio per il Diciottesimo, i 30, i 40, i 50 e i 60 Anni',
+                    desc='Un compleanno importante chiede un orologio diverso da uno qualsiasi. Quale modello si adatta a ogni età e dove finiscono davvero i soldi in più.'),
+            sq=dict(title='Orë Dhuratë për 18, 30, 40, 50 dhe 60 Vjet',
+                    desc='Një ditëlindje e rrumbullakët kërkon një orë tjetër nga një e zakonshme. Cili model i shkon secilës moshë dhe ku shkojnë vërtet paratë e tepërta.'),
+        ),
+    ),
+    dict(
         slug='watch-birthday-gift-albania', cat='gifts',
         card=dict(
             en=dict(title='A Watch as a Birthday Gift in Albania',
@@ -715,9 +737,9 @@ ARTICLES = [
         card=dict(
             en=dict(title='Best Watch Gifts for Men in Albania',
                     desc='Which watches make good gifts, which budgets make sense, and how to order anywhere in Albania without leaving home.'),
-            it=dict(title='I Migliori Regali Orologio per Uomo in Albania (2026)',
+            it=dict(title='I Migliori Regali Orologio per Uomo in Albania',
                     desc='Idee regalo pratiche per gli uomini che gi&agrave; hanno tutto - orologi che durano, che si indossano ogni giorno e che si ricordano.'),
-            sq=dict(title='Dhuratat m&euml; t&euml; Mira Or&euml; p&euml;r Burra n&euml; Shqip&euml;ri (2026)',
+            sq=dict(title='Dhuratat m&euml; t&euml; Mira Or&euml; p&euml;r Burra n&euml; Shqip&euml;ri',
                     desc='Ide dhuratash praktike p&euml;r burrat q&euml; kan&euml; gjithka - or&euml; q&euml; zgjasin, q&euml; vishen &ccedil;do dit&euml; dhe q&euml; kujtohen.'),
         ),
     ),
@@ -726,9 +748,9 @@ ARTICLES = [
         card=dict(
             en=dict(title='Best Watch Gifts for Women in Albania',
                     desc="What to look for in a women's watch gift, which styles work for different occasions, and how to order with delivery anywhere in Albania."),
-            it=dict(title='I Migliori Regali Orologio per Donna in Albania (2026)',
+            it=dict(title='I Migliori Regali Orologio per Donna in Albania',
                     desc='Come scegliere un orologio per una donna - stile, dimensioni e budget - con suggerimenti concreti dalla nostra selezione in Albania.'),
-            sq=dict(title='Dhuratat m&euml; t&euml; Mira Or&euml; p&euml;r Gra n&euml; Shqip&euml;ri (2026)',
+            sq=dict(title='Dhuratat m&euml; t&euml; Mira Or&euml; p&euml;r Gra n&euml; Shqip&euml;ri',
                     desc='Si t&euml; zgjidhni or&euml; si dhuratë p&euml;r nj&euml; grua - stil, p&euml;rmasa dhe buxhet - me sugjerime konkrete nga selekcioni yn&euml; n&euml; Shqip&euml;ri.'),
         ),
     ),
@@ -828,11 +850,11 @@ ARTICLES = [
         slug='best-watches-under-200-albania', cat='buying',
         label=dict(en='Watch Buying Guide', it='Guida all’Acquisto', sq='Udhëzues Blerjeje'),
         card=dict(
-            en=dict(title='Best Watches Under &euro;200 in Albania (2026)',
+            en=dict(title='Best Watches Under &euro;200 in Albania',
                     desc='An honest look at what is worth buying in Albania under &euro;200: everyday quartz, weekend sport watches and steel dress models. From a watchmaker who services these pieces daily.'),
-            it=dict(title='I Migliori Orologi Sotto &euro;200 in Albania (2026)',
+            it=dict(title='I Migliori Orologi Sotto &euro;200 in Albania',
                     desc='Una valutazione onesta di ci&ograve; che vale la pena comprare in Albania sotto i &euro;200: orologi al quarzo quotidiani, sportivi da weekend e modelli da abito in acciaio.'),
-            sq=dict(title='Orët më të Mira Nën &euro;200 në Shqipëri (2026)',
+            sq=dict(title='Orët më të Mira Nën &euro;200 në Shqipëri',
                     desc='Vlerësim i sinqertë i asaj që ia vlen të blihet në Shqipëri nën &euro;200: orë kuarci për çdo ditë, sportive për fundjavë dhe modele veshjeje çeliku.'),
         ),
     ),

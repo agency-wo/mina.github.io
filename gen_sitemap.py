@@ -66,6 +66,8 @@ NO_ALTERNATES = frozenset({SITE})
 # blog_index_data.cat: four are buying, three knowledge, one gifts. This set IS
 # the editorial decision.
 COMMERCIAL = frozenset({
+    "how-much-to-spend-on-a-watch-gift",
+    "milestone-birthday-watch-gift",
     "watch-birthday-gift-albania",
     "mens-watches-albania", "womens-watches-albania", "watches-under-10000-lek",
     "chronograph-vs-three-hand-watch", "what-makes-a-watch-look-expensive",
