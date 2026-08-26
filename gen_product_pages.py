@@ -33,6 +33,12 @@ BASE = Path(__file__).parent
 
 watches = json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
 
+# slug -> category, read from the blog manifest rather than guessed, so the reading
+# strip can prefer commercial articles without holding a second opinion about which
+# ones those are. blog_index_data is a bare data module: no imports, no functions.
+from blog_index_data import ARTICLES as _BLOG_ARTICLES  # noqa: E402
+CATS = {a["slug"]: a["cat"] for a in _BLOG_ARTICLES}
+
 
 # brand+model is not unique for the Hislon Classic / Classic Queen families, so those
 # titles get the reference appended to stay distinct.
@@ -86,6 +92,7 @@ LANGS = {
             "Try it on first at our workshop on Rruga Aleksander Goga, Durrës.",
         ],
         "related_h": "What else we would show you at the counter",
+        "reading_h": "Worth reading before you decide",
     },
     "it": {
         "desc_key": "description_it",
@@ -130,6 +137,7 @@ LANGS = {
             "Provalo prima nel nostro laboratorio in Rruga Aleksander Goga, Durazzo.",
         ],
         "related_h": "Cosa vi mostreremmo al banco",
+        "reading_h": "Da leggere prima di decidere",
     },
     "sq": {
         "desc_key": "description_sq",
@@ -174,6 +182,7 @@ LANGS = {
             "Provojeni fillimisht në punishten tonë në Rrugën Aleksander Goga, Durrës.",
         ],
         "related_h": "Çfarë do t’ju tregonim te banaku",
+        "reading_h": "Ia vlen ta lexoni para se të vendosni",
     },
 }
 
@@ -530,6 +539,16 @@ EXTRA_CSS = (
     ".watch-extra section{background:var(--card-bg,#fff);border:1px solid var(--border-light,#eaeaea);"
     "border-radius:1rem;padding:1.5rem}"
     ".watch-related{grid-column:1/-1}"
+    ".watch-reading{grid-column:1/-1}"
+    ".read-list{margin:0;padding:0;list-style:none;display:grid;"
+    "grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.85rem}"
+    ".read-list li{display:flex;flex-direction:column;gap:.2rem;padding:.7rem .9rem;"
+    "border:1px solid var(--border-light,#eaeaea);border-radius:.7rem;line-height:1.35}"
+    ".read-list a{color:var(--btn-start,#06153b);font-weight:600;font-size:.9rem;"
+    "text-decoration:none}"
+    ".read-list a:hover{text-decoration:underline}"
+    ".read-role{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;"
+    "color:var(--accent-gold-accessible,#7a6240)}"
     ".spec-list{margin:0}"
     ".spec-row{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;"
     "border-bottom:1px solid var(--border-light,#eaeaea)}"
@@ -653,6 +672,120 @@ def build_buy_html(cfg):
             f'<ul class="buy-list">{lis}</ul></section>')
 
 
+READ_ROLE = {
+    "en": {"this": "About this watch", "brand": "About the brand", "guide": "Buying guide"},
+    "it": {"this": "Su questo orologio", "brand": "Sul marchio", "guide": "Guida all'acquisto"},
+    "sq": {"this": "P&euml;r k&euml;t&euml; or&euml;", "brand": "P&euml;r mark&euml;n",
+           "guide": "Udh&euml;zues blerjeje"},
+}
+
+_ARTICLES = None
+
+
+# [DB-017.ab] article_index — which articles talk about which watch, read off the corpus
+# DOES:   builds {watch id -> [slug]}, {brand -> [slug]}, and the commercial fallback
+#         list, plus per-language slug and title for every article.
+# WHY:    the reverse funnel did not exist. 69 of 70 product pages linked to zero
+#         articles, so every article pushed authority at the shop and nothing came
+#         back, and a hesitant buyer on a product page had no route to the writing
+#         that would answer them.
+# NOTES:  association is DERIVED, not curated: an article is about a watch if it
+#         links to that watch. That keeps this correct as articles are written and
+#         rewritten, with nothing to maintain by hand. 65 of 68 live watches are
+#         named by at least one article and 63 by two or more, so the specific tier
+#         almost always fills; the brand and guide tiers cover the rest.
+#         The per-language slug comes from the EN article's own hreflang block,
+#         which is the only place that mapping is stored anywhere in this repo.
+def article_index():
+    global _ARTICLES
+    if _ARTICLES is not None:
+        return _ARTICLES
+    blog = BASE / "en" / "blog"
+    by_watch, by_brand, meta, commercial = {}, {}, {}, []
+    live = {x["id"]: x for x in watches if not x.get("sold")}
+    for p in sorted(blog.glob("*.html")):
+        if p.name == "index.html":
+            continue
+        t = p.read_text(encoding="utf-8-sig")
+        if "noindex" in t:                       # redirect stubs are not articles
+            continue
+        slug = p.stem
+        body = t[t.find("<main"):t.find("</main>")]
+        langs = {"en": (slug, _title_of(t))}
+        ok = True
+        for lg in ("it", "sq"):
+            m = re.search(rf'hreflang="{lg}" href="https://watch\.al/{lg}/blog/([\w-]+)\.html"', t)
+            f = BASE / lg / "blog" / f"{m.group(1)}.html" if m else None
+            if not f or not f.exists():
+                ok = False
+                break
+            langs[lg] = (m.group(1), _title_of(f.read_text(encoding="utf-8-sig")))
+        if not ok:                               # never link a family that is not complete
+            continue
+        meta[slug] = langs
+        seen_brands = {}
+        for wid in set(re.findall(r'href="/en/shop/([\w-]+)\.html"', body)):
+            if wid in live:
+                by_watch.setdefault(wid, []).append(slug)
+                b = live[wid]["brand"]
+                seen_brands[b] = seen_brands.get(b, 0) + 1
+        # keep the COUNT, not just the fact: an article naming five Hislons is a
+        # better brand read than one that mentions a single Hislon in passing, and
+        # picking alphabetically sent a men's steel Hislon page at the women's guide.
+        for b, n in seen_brands.items():
+            by_brand.setdefault(b, []).append((n, slug))
+        if CATS.get(slug) in ("buying", "gifts"):
+            commercial.append(slug)
+    _ARTICLES = (by_watch, by_brand, meta, sorted(commercial))
+    return _ARTICLES
+
+
+def _title_of(t):
+    m = re.search(r"<title>(.*?)</title>", t, re.S)
+    # the suffix is not uniform across the corpus: "| Iglisi Watch", "| Iglisi Watch
+    # Albania" and "| Iglisi Watch Shqiperi" all ship, so cut at the pipe
+    return re.sub(r"\s*\|\s*Iglisi Watch.*$", "", m.group(1)).strip() if m else ""
+
+
+# [DB-017.ac] reading_for — up to three articles for one watch, three different jobs
+# NOTES:  same shape as related_for: specific first, then adjacent, then a pick
+#         rotated by a hash of the id so 68 pages do not all send everyone to the
+#         same guide. Rotation is on the id, never on list order, so the output is
+#         stable across runs and independent of how watches.json happens to be sorted.
+def reading_for(w, n=3):
+    by_watch, by_brand, meta, commercial = article_index()
+    picks, roles = [], []
+
+    def take(cands, role):
+        for s in cands:
+            if s in meta and s not in picks:
+                picks.append(s)
+                roles.append(role)
+                return
+
+    def rotated(seq):
+        if not seq:
+            return []
+        i = int(hashlib.md5((w["id"] + seq[0]).encode()).hexdigest(), 16) % len(seq)
+        return [seq[(i + k) % len(seq)] for k in range(len(seq))]
+
+    take(sorted(by_watch.get(w["id"], [])), "this")
+    # brand tier: rank by how many of that brand's watches the article actually
+    # names, then rotate within the strongest few. Ranking alphabetically instead
+    # pointed a men's steel Hislon page at the women's guide, because that guide
+    # mentions one Hislon in passing and sorted first.
+    brand = sorted(by_brand.get(w["brand"], []), key=lambda t: (-t[0], t[1]))
+    take(rotated([s for _, s in brand[:5]]), "brand")
+    take(rotated(commercial), "guide")
+    for s in rotated(commercial):                # fall-through, deliberately unlabelled
+        if len(picks) >= n:
+            break
+        if s not in picks:
+            picks.append(s)
+            roles.append("")
+    return list(zip(picks[:n], roles[:n]))
+
+
 # [DB-017.p] build_related_html — the four related_for() picks as role-labelled cards
 def build_related_html(w, lang, cfg):
     cards = []
@@ -671,6 +804,25 @@ def build_related_html(w, lang, cfg):
         )
     return (f'<section class="watch-related"><h2>{cfg["related_h"]}</h2>'
             f'<div class="rel-grid">{"".join(cards)}</div></section>')
+
+
+# [DB-017.ad] build_reading_html — the reading_for() picks as role-labelled links
+# NOTES:  text links rather than image cards. The related-products strip above it
+#         already carries four images; a second image grid would bury the buy CTA
+#         under two screens of thumbnails on a phone.
+#         Returns "" rather than an empty section when nothing resolves, so a page
+#         never ships a heading with no list under it.
+def build_reading_html(w, lang, cfg):
+    _, _, meta, _ = article_index()
+    items = []
+    for slug, role in reading_for(w):
+        s, title = meta[slug][lang]
+        role_html = f'<span class="read-role">{READ_ROLE[lang][role]}</span>' if role else ""
+        items.append(f'<li><a href="/{lang}/blog/{s}.html">{title}</a>{role_html}</li>')
+    if not items:
+        return ""
+    return (f'<section class="watch-reading"><h2>{cfg["reading_h"]}</h2>'
+            f'<ul class="read-list">{"".join(items)}</ul></section>')
 
 
 # [DB-017.q] build_watch_div — the whole #watch-content hero
@@ -908,6 +1060,7 @@ def build_extra_div(w, lang, cfg):
         f"{build_buy_html(cfg)}"
         f"{build_help_html(w, lang)}"
         f"{build_related_html(w, lang, cfg)}"
+        f"{build_reading_html(w, lang, cfg)}"
         f"</div>"
     )
 
