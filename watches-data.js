@@ -1190,5 +1190,22 @@ window.WATCHES_DATA = [
     "description_en": "Bigotti Steel Sunburst, a men's watch in stainless steel with a silver sunburst dial and a polished chapter ring. Applied faceted baton indices, date window at three, a fluted crown and a three-link steel bracelet. A clean everyday steel watch that dresses up without trying.",
     "description_it": "Orologio da uomo Bigotti in acciaio inossidabile con quadrante argentato sunburst e anello dei minuti lucido. Indici a bastone sfaccettati applicati, finestrella data a ore tre, corona zigrinata e bracciale in acciaio a tre maglie. Un acciaio pulito da tutti i giorni, che sta bene anche in ufficio.",
     "description_sq": "Orë për burra Bigotti në çelik inoks me ciferblat argjendi sunburst dhe unazë minutash të lëmuar. Tregues shiritash të fasetuar të aplikuar, dritare date në orën tre, kurorë e gdhendur dhe byzylyk çeliku me tre hallka. Një çelik i pastër i përditshëm, që i shkon edhe zyrës."
+  },
+  {
+    "id": "bigotti-bg1-10416-2",
+    "brand": "Bigotti",
+    "model": "Blue Rose Gold Multifunction",
+    "reference": "BG.1.10416-2",
+    "condition": "New",
+    "price": 92,
+    "currency": "EUR",
+    "image": "/images/watches/bigotti-bg1-10416-2.webp",
+    "sold": false,
+    "styles": [
+      "sport"
+    ],
+    "description_en": "Bigotti in stainless steel with a deep blue sunburst dial and a blue bezel carrying a numbered scale. Three subdials showing the day, the date and 24-hour time rather than a stopwatch, applied rose gold-tone indices and hands, a date window at four and a three-link steel bracelet. The most colour we put on a steel watch.",
+    "description_it": "Bigotti in acciaio inossidabile con quadrante blu intenso sunburst e ghiera blu con scala numerata. Tre contatori che mostrano il giorno, la data e le 24 ore invece di un cronometro, indici e lancette applicati in tonalità oro rosa, finestrella data a ore quattro e bracciale in acciaio a tre maglie. Il colore più deciso che mettiamo su un acciaio.",
+    "description_sq": "Bigotti në çelik inoks me ciferblat blu të thellë sunburst dhe lunetë blu me shkallë të numëruar. Tre numëratorë që tregojnë ditën, datën dhe 24 orët në vend të një kronometri, tregues dhe akrepa të aplikuar në ngjyrë ari rozë, dritare date në orën katër dhe byzylyk çeliku me tre hallka. Ngjyra më e guximshme që vendosim mbi një çelik."
   }
 ];
