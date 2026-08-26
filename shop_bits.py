@@ -82,7 +82,11 @@ def price_html(price, currency, lang, small="1.1rem"):
 def card_price_html(price, currency, lang):
     """[DB-014.b] Grid-card price line (smaller secondary text). Mirrored in shop.js."""
     if not price:
-        return PRICE_ON_REQUEST[lang]
+        # A span, not a bare string. The phrase must not inherit the tag's 1.45rem
+        # display serif: at that size it runs ~190px in EN and ~220px in IT, which
+        # overflows the 344px card footer in the 3-column desktop grid and wraps the
+        # Enquire button onto its own row. Mirrored by fmt() in all three shop.js.
+        return f'<span class="por">{PRICE_ON_REQUEST[lang]}</span>'
     eur = ("€" if currency == "EUR" else str(currency)) + nfmt(price, lang)
     l = lek(price, currency)
     if not l:

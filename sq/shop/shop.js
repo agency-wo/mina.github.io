@@ -346,7 +346,7 @@
   //         zero. No price in the data is a data hole, and a hole must never
   //         read as a free watch.
   function fmt(price, currency){
-    if(!price) return '\u00c7mimi me k\u00ebrkes\u00eb';
+    if(!price) return '<span class="por">\u00c7mimi me k\u00ebrkes\u00eb</span>';
     return (currency === 'EUR' ? '\u20ac' : currency) + group(price);
   }
   // [UI-016.e] lekVal — the Lek figure as a number, for the SQ price line

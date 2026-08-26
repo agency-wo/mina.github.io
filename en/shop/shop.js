@@ -343,7 +343,7 @@
   //         zero. No price in the data is a data hole, and a hole must never
   //         read as a free watch.
   function fmt(price, currency){
-    if(!price) return 'Price on request';
+    if(!price) return '<span class="por">Price on request</span>';
     return (currency === 'EUR' ? '\u20ac' : currency) + group(price);
   }
   // [UI-016.e] fmtLek — the Lek line that rides beside the euro price
