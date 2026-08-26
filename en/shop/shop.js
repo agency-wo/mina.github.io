@@ -263,7 +263,7 @@
 
   // [UI-016.b] renderWatches — the ONE render path: filter, sort, repaint
   // DOES:   applies condition, brand, search and the price window in that order,
-  //         sorts, then replaces #shopGrid wholesale and rewrites the count line.
+  //         sorts, then replaces #shopGrid wholesale. It writes no count.
   // NOTES:  full repaint on purpose. Nothing mutates a card in place, so the grid
   //         can never show a half-applied filter. With a search term and sort
   //         left at default, a prefix hit on brand or model is scored to the top,
@@ -311,11 +311,17 @@
       filtered.sort(function(a,b){ return (a.brand+a.model).localeCompare(b.brand+b.model); });
     }
 
-    var count = document.getElementById('shopCount');
     var grid  = document.getElementById('shopGrid');
-    // sold cards stay in the grid with their badge, but they are not available
-    var avail = filtered.filter(function(w){ return !w.sold; }).length;
-    count.textContent = avail + ' watch' + (avail !== 1 ? 'es' : '') + ' available';
+    // NO COUNT HERE, DELIBERATELY. This used to write "<n> watches available"
+    // into #shopCount on every render. That is a published count of the
+    // catalogue, which CLAUDE.md forbids in digits or in words, because the
+    // shop holds more stock than it lists and any number understates the
+    // shelf. It survived because all three layers that enforce the rule read
+    // static HTML (catalog_stats.TOKEN_RE, gen_stats.render, verify-stats
+    // check G) and this number was assembled at runtime. #shopCount now
+    // carries a fixed line in the HTML. Do not write to it, and do not add a
+    // count back: verify-stats.py check H reads this file and will fail.
+    // Sold cards stay in the grid with their badge; they are simply not for sale.
     if(!filtered.length){
       grid.innerHTML = '<p class="no-watches">No watches match this filter right now. Check back soon!</p>';
       return;
