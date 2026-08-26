@@ -236,6 +236,18 @@ Breaking one of these has caused a real incident. They are not style preferences
 - **Font Awesome is subsetted to 64 declared glyphs** in `shared.css`. A class outside the subset
   renders as **nothing** and no text-based check can see it. This is the most repeated bug in the
   repo's history.
+- **A media query adds no specificity, so a responsive override must come LAST.** Put
+  `@media(max-width:600px){.watch-price{font-size:1.2rem}}` above the base `.watch-price{...
+  font-size:1.45rem}` and the phone silently gets 1.45rem: same specificity, later rule wins.
+  Nothing reports it. The declaration is present, spelled correctly, and dead. This has now bitten
+  twice: the three homepages, then the shop index and the 24 brand hubs that clone it, where seven
+  declarations had never once applied and the phone was rendering desktop padding and a desktop
+  serif price. **Append responsive overrides at the end of the block**, and when a page looks wrong
+  at one breakpoint only, check the rule ORDER before rewriting the value:
+  ```python
+  # a page is clean when, for every (selector, property), the winning declaration
+  # by (specificity, document order) is not a base rule that a media query meant to beat
+  ```
 
 - **The viewport is `viewport-fit=cover` on every real page, so every bottom-fixed element must
   carry `env(safe-area-inset-bottom)`** and the header wrap carries `env(safe-area-inset-top)`.
