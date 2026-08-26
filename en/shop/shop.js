@@ -8,7 +8,7 @@
 // IN:     watches.json over the network; .filter-chip, #brandChips, #styleChips, #shopSearch,
 //         #shopSort, #priceSliderWrap; ?brand= on the query string.
 // OUT:    #shopGrid innerHTML, the #shopCount line, one WhatsApp link per card.
-// CALLS:  raw.githubusercontent.com for watches.json; api.watch.al/public/stock
+// CALLS:  /watches.json, same-origin; api.watch.al/public/stock
 //         (the [UI-002] block below; [SEC-002] owns the CSP that allows it).
 // NOTES:  THE INVARIANT: watchCard() mirrors gen_shop_index.card() ([DB-007.b])
 //         BYTE FOR BYTE, down to the \u00a0 before the L in a Lek price. The
@@ -54,7 +54,7 @@
     new Promise(function(res){ setTimeout(function(){ res(null); }, 4000); })
   ]).catch(function(){ return null; });
 
-  fetch('https://raw.githubusercontent.com/agency-wo/mina.github.io/main/watches.json?v=3')
+  fetch('/watches.json?v=3')
     .then(function(r){ return r.json(); })
     .then(function(WATCHES){
       return stockFetch.then(function(live){

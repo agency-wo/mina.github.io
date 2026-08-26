@@ -795,8 +795,15 @@ def build_related_html(w, lang, cfg):
         price_html = (f'<span class="rel-price">€{price}'
                       + (f' · {nfmt(l, lang)} L' if l else "") + "</span>") if price else ""
         img = r.get("image", "")
-        img_html = (f'<img src="{re.sub(r".webp$", ".jpg", img, flags=re.I)}" alt="{r["brand"]} {r["model"]}"'
-                    f' loading="lazy" width="300" height="300">') if img else ""
+        # <picture>, not a bare <img>. This rewrote .webp to .jpg and shipped the
+        # heavier twin on all 207 product pages, four thumbnails each, while the
+        # webp sat unused on disk: 3,582 KB of jpg against 1,995 KB of webp for
+        # the same images. gen_shop_index.card() has always emitted a picture
+        # with a jpg fallback; this path had drifted away from it.
+        img_html = (f'<picture><source srcset="{img}" type="image/webp">'
+                    f'<img src="{re.sub(r".webp$", ".jpg", img, flags=re.I)}" '
+                    f'alt="{r["brand"]} {r["model"]}"'
+                    f' loading="lazy" width="300" height="300"></picture>') if img else ""
         role_html = (f'<span class="rel-role">{ROLE[lang][role]}</span>' if role else "")
         cards.append(
             f'<a class="rel-card" href="/{lang}/shop/{r["id"]}.html">{img_html}{role_html}'

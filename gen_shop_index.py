@@ -150,7 +150,7 @@ def itemlist(lang, old):
                     "@type": "Offer", "priceCurrency": w.get("currency", "EUR"),
                     "price": str(w["price"]),
                     "availability": "https://schema.org/InStock",
-                    "priceValidUntil": "2026-12-31",
+                    "priceValidUntil": "2027-12-31",  # == scripts/add-price-valid-until.VALID_UNTIL
                     "itemCondition": "https://schema.org/NewCondition",
                     "seller": {"@type": "Organization", "name": "Iglisi Watch"},
                     "url": f'https://watch.al/{lang}/shop/{w["id"]}.html',
