@@ -202,7 +202,7 @@ img{display:block;max-width:100%;height:auto}
 .shop-count{font-size:.85rem;color:#888}
 .shop-grid{max-width:80rem;margin:0 auto;padding:0 1.5rem 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
 @media(max-width:1024px){.shop-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.shop-grid{grid-template-columns:repeat(2,1fr);gap:1rem;padding:0 .75rem 3rem}.shop-controls{flex-direction:column;align-items:stretch;padding:.75rem 1rem;gap:.6rem}.shop-hero{padding:2.5rem 1rem 2rem}.shop-search-wrap{order:-1;max-width:100%}.shop-search{font-size:1rem;padding:.55rem 1rem .55rem 2.4rem}.watch-card-body{padding:1rem 1rem .85rem}.watch-model{font-size:1.1rem}.watch-desc{font-size:.8rem;-webkit-line-clamp:3;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}.watch-price{font-size:1.2rem}.watch-cta{font-size:.76rem;padding:.42rem .85rem}.watch-card-footer{gap:.5rem}.shop-count{padding:0 .75rem .5rem}}
+@media(max-width:600px){.shop-grid{grid-template-columns:repeat(2,1fr);gap:1rem;padding:0 .75rem 3rem}.shop-controls{flex-direction:column;align-items:stretch;padding:.75rem 1rem;gap:.6rem}.shop-hero{padding:2.5rem 1rem 2rem}.shop-search-wrap{order:-1;max-width:100%}.shop-search-wrap i{display:none}.shop-search{font-size:1rem;padding:.55rem 1rem}.watch-card-body{padding:1rem 1rem .85rem}.watch-model{font-size:1.1rem}.watch-desc{font-size:.8rem;-webkit-line-clamp:3;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}.watch-price{font-size:1.2rem}.watch-cta{font-size:.76rem;padding:.42rem .85rem}.watch-card-footer{gap:.5rem}.shop-count{padding:0 .75rem .5rem}}
 .watch-card{background:var(--card-bg);border:1px solid var(--border-light);border-radius:var(--radius-card);overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06);display:flex;flex-direction:column;transition:transform var(--transition-base),box-shadow var(--transition-base)}
 .watch-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px -8px rgba(180,148,92,.22)}
 .watch-card.sold-card{opacity:.6;pointer-events:none}
@@ -328,7 +328,7 @@ img{display:block;max-width:100%;height:auto}
       .watch-cta{font-size:.76rem;padding:.42rem .85rem}
       .watch-card-footer{gap:.5rem}
     }
-  </style>
+  @media(min-width:601px){#brandChips{flex:1 1 60%;min-width:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent)}#brandChips::-webkit-scrollbar{display:none}#brandChips>.filter-chip{flex:0 0 auto}}</style>
 
   <script type="application/ld+json">
   {
