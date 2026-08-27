@@ -530,11 +530,24 @@
     return out;
   }
 
+  // Never lets a slow CRM hold up the stock list. The feed only decides which
+  // rows are badged, so timing out degrades to 'could not check' and the panel
+  // still works; without this a hung request meant the list never rendered at
+  // all, because fetch() has no timeout of its own and Promise.all waits for it.
+  // Resolves, never rejects: an unreachable CRM is an expected state here.
   function loadCrm(){
-    return fetch(CRM_FEED, { cache: 'no-store' })
-      .then(function(r){ return r.ok ? r.json() : null; })
-      .then(function(d){ crmStock = (d && d.stock) || null; })
-      .catch(function(){ crmStock = null; });
+    return new Promise(function(resolve){
+      var done = false;
+      function finish(stock){
+        if(done) return;
+        done = true; clearTimeout(timer); crmStock = stock; resolve();
+      }
+      var timer = setTimeout(function(){ finish(null); }, 6000);
+      fetch(CRM_FEED, { cache: 'no-store' })
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(d){ finish((d && d.stock) || null); })
+        .catch(function(){ finish(null); });
+    });
   }
 
   function rowHtml(w, archived, governed){
