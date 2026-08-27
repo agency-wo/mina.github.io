@@ -52,6 +52,21 @@
     /* GITHUB TOKEN CARD */
     .token-card { background: #f0f6ff; border: 1.5px solid #c5d8f5; }
     .token-card h3 { color: #1a3a6b; border-bottom-color: #c5d8f5; }
+    .stock-group { border: 1px solid #e6e6e6; border-radius: 10px; margin-bottom: .5rem; background: #fff; }
+    .stock-group > summary { cursor: pointer; padding: .6rem .8rem; font-weight: 600; font-size: .92rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .stock-group > summary::-webkit-details-marker { display: none; }
+    .stock-group > summary .count { color: #888; font-weight: 500; font-size: .82rem; }
+    .stock-row { display: flex; align-items: center; gap: .7rem; padding: .5rem .8rem; border-top: 1px solid #f0f0f0; }
+    .stock-row img { width: 40px; height: 40px; object-fit: contain; background: #fafafa; border-radius: 6px; flex-shrink: 0; }
+    .stock-meta { flex: 1; min-width: 0; font-size: .86rem; line-height: 1.35; }
+    .stock-meta span { display: block; color: #888; font-size: .78rem; }
+    .stock-acts { display: flex; gap: .35rem; flex-shrink: 0; flex-wrap: wrap; }
+    .stock-acts button { border: 1px solid #d5d5d5; background: #fff; border-radius: 7px; padding: .3rem .6rem; font-size: .76rem; cursor: pointer; }
+    .stock-acts button:hover { background: #f4f4f4; }
+    .stock-acts button[data-act="archive"] { border-color: #e0c2c2; color: #a33; }
+    .stock-acts button[data-act="restore"] { border-color: #b9d9c2; color: #1a7a3f; font-weight: 600; }
+    .tag-sold { display: inline-block; background: #f3e8e8; color: #a33; border-radius: 5px; padding: 0 .35rem; font-size: .7rem; margin-left: .35rem; vertical-align: middle; }
+    @media (max-width: 600px) { .stock-row { flex-wrap: wrap; } .stock-acts { width: 100%; justify-content: flex-end; } }
     .token-status { font-size: .82rem; margin-top: .4rem; font-weight: 600; }
     .token-status.ok { color: #1a7a3f; }
     .token-status.err { color: #c0392b; }
@@ -153,6 +168,24 @@
         </div>
         <p class="form-hint" style="color:#c0392b">No token? The watch cannot be published automatically - contact your admin.</p>
       </div>
+    </div>
+
+    <!-- CURRENT STOCK -->
+    <div class="card" id="stock-card">
+      <h3>Current stock</h3>
+      <p class="form-hint">Grouped by brand so you do not have to scroll. Open a brand to see its
+        watches. <strong>Archive</strong> takes a watch off the shop but keeps its record, so when
+        the same piece comes back in you can bring it back with one click.</p>
+      <input type="search" id="stock-search" placeholder="Filter by brand, model or reference"
+             style="width:100%;padding:.55rem .7rem;margin:.6rem 0 .9rem;border:1px solid #d5d5d5;border-radius:8px;font-size:.9rem">
+      <div id="stock-groups"><p class="form-hint">Loading…</p></div>
+
+      <h3 style="margin-top:1.8rem">Archived</h3>
+      <p class="form-hint">Off the shop, still on file. Bring one back and it returns to the grid,
+        the brand page and the sitemap on the next rebuild.</p>
+      <div id="archive-groups"></div>
+
+      <div class="token-status" id="stock-status" style="margin-top:.9rem"></div>
     </div>
 
     <!-- WATCH FORM -->

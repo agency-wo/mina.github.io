@@ -115,6 +115,7 @@
         gateEl.style.display = 'none';
         panelEl.style.display = 'block';
         loadSavedToken();
+        loadStock();
       } else {
         gateError.textContent = 'Incorrect password. Try again.';
         pwInput.value = '';
@@ -452,5 +453,148 @@
       setTimeout(function(){ btn.textContent = 'Copy to clipboard'; note.style.display = 'none'; }, 2000);
     }
   });
+
+  // ── Stock list ───────────────────────────────────────────────────────────────
+  // [CFG-005.o] the panel's read side: what is on the shelf, grouped by brand.
+  // NOTES:  archive/restore only set and clear the `deleted` flag. Every generator
+  //         already honours it (gen_shop_index drops it from the grid and ItemList,
+  //         gen_product_pages turns its page into a noindex stub, catalog_stats and
+  //         shop_seo drop it from every number, all three shop.js filter it), which
+  //         is why this is a flag write and not a subsystem.
+  var stockList = null;
+
+  function currentToken(){
+    var el = document.getElementById('gh-token');
+    return el ? el.value.trim() : '';
+  }
+  function stockMsg(s){
+    var el = document.getElementById('stock-status');
+    if(el) el.textContent = s || '';
+  }
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c];
+    });
+  }
+
+  // Reads through the API when a token is present, because that is repo HEAD and
+  // therefore what a write will be based on. Without a token it falls back to the
+  // deployed file, which is fine for looking but may lag by a rebuild.
+  function loadStock(){
+    var token = currentToken();
+    var p = token
+      ? ghGet(token, 'watches.json').then(function(res){ return JSON.parse(b64ToUtf8(res.content)); })
+      : fetch('/watches.json', { cache: 'no-store' }).then(function(r){ return r.json(); });
+    return p.then(function(list){
+      stockList = list;
+      renderStock();
+    }).catch(function(err){
+      stockMsg('Could not load the stock list: ' + err.message);
+    });
+  }
+
+  function rowHtml(w, archived){
+    var img   = w.image ? '<img src="' + esc(w.image) + '" alt="" loading="lazy">' : '';
+    var price = w.price ? '\u20ac' + w.price : 'Price on request';
+    var sold  = w.sold ? ' <span class="tag-sold">Sold</span>' : '';
+    var acts  = archived
+      ? '<button type="button" data-act="restore" data-id="' + esc(w.id) + '">Bring back</button>'
+      : '<button type="button" data-act="sold" data-id="' + esc(w.id) + '">'
+        + (w.sold ? 'Back in stock' : 'Mark sold') + '</button>'
+        + '<button type="button" data-act="archive" data-id="' + esc(w.id) + '">Archive</button>';
+    return '<div class="stock-row">' + img
+      + '<div class="stock-meta"><strong>' + esc(w.brand) + ' ' + esc(w.model) + '</strong>' + sold
+      + '<span>' + esc(w.reference || 'no reference') + ' \u00b7 ' + price + '</span></div>'
+      + '<div class="stock-acts">' + acts + '</div></div>';
+  }
+
+  // Biggest brand first: the point of the grouping is that the longest list is the
+  // one you most want collapsed by default.
+  function groupHtml(list, q, archived){
+    var by = {}, n = 0;
+    list.forEach(function(w){
+      var hay = (w.brand + ' ' + w.model + ' ' + (w.reference || '')).toLowerCase();
+      if(q && hay.indexOf(q) < 0) return;
+      (by[w.brand] = by[w.brand] || []).push(w);
+      n++;
+    });
+    if(!n) return '<p class="form-hint">' + (q ? 'Nothing matches that.' : 'Nothing here.') + '</p>';
+    return Object.keys(by).sort(function(a, b){
+      return by[b].length - by[a].length || a.localeCompare(b);
+    }).map(function(brand){
+      return '<details class="stock-group"' + (q ? ' open' : '') + '><summary>'
+        + esc(brand) + '<span class="count">' + by[brand].length + '</span></summary>'
+        + by[brand].map(function(w){ return rowHtml(w, archived); }).join('')
+        + '</details>';
+    }).join('');
+  }
+
+  function renderStock(){
+    if(!stockList) return;
+    var sEl = document.getElementById('stock-search');
+    var q = (sEl && sEl.value || '').trim().toLowerCase();
+    var live = [], gone = [];
+    stockList.forEach(function(w){ (w.deleted ? gone : live).push(w); });
+    document.getElementById('stock-groups').innerHTML = groupHtml(live, q, false);
+    document.getElementById('archive-groups').innerHTML = groupHtml(gone, q, true);
+  }
+
+  // [CFG-005.p] setFlag — the only write this panel makes to an existing record.
+  // NOTES:  re-reads watches.json immediately before writing so the sha is current
+  //         and a stale tab cannot clobber a change made elsewhere; GitHub rejects a
+  //         stale sha rather than silently overwriting.
+  //         `sold` exists on every record, so it is set. `deleted` exists on none, so
+  //         it is added and then removed, which keeps watches.json free of
+  //         "deleted": false noise.
+  function setFlag(id, key, val, label){
+    var token = currentToken();
+    if(!token){ stockMsg('Connect a GitHub token first \u2014 see GitHub Connection above.'); return; }
+    stockMsg('Saving\u2026');
+    ghGet(token, 'watches.json').then(function(res){
+      var arr = JSON.parse(b64ToUtf8(res.content)), w = null;
+      for(var i = 0; i < arr.length; i++){ if(arr[i].id === id){ w = arr[i]; break; } }
+      if(!w) throw new Error(id + ' is no longer in watches.json');
+      if(key === 'sold'){ w.sold = !!val; }
+      else if(val){ w.deleted = true; }
+      else { delete w.deleted; }
+      var body = btoa(unescape(encodeURIComponent(JSON.stringify(arr, null, 2))));
+      return ghPut(token, 'watches.json', body,
+                   label + ': ' + w.brand + ' ' + w.model, res.sha);
+    }).then(function(){
+      stockMsg(label + ' saved. The site rebuilds itself; give it a minute or two.');
+      return loadStock();
+    }).catch(function(err){
+      stockMsg('Failed: ' + err.message);
+    });
+  }
+
+  function findWatch(id){
+    for(var i = 0; stockList && i < stockList.length; i++){
+      if(stockList[i].id === id) return stockList[i];
+    }
+    return null;
+  }
+
+  var stockCard = document.getElementById('stock-card');
+  if(stockCard){
+    stockCard.addEventListener('click', function(e){
+      var btn = e.target && e.target.closest ? e.target.closest('button[data-act]') : null;
+      if(!btn) return;
+      var id = btn.getAttribute('data-id'), act = btn.getAttribute('data-act');
+      var w = findWatch(id);
+      if(!w) return;
+      if(act === 'sold'){
+        setFlag(id, 'sold', !w.sold, w.sold ? 'Back in stock' : 'Marked sold');
+      } else if(act === 'archive'){
+        if(!confirm('Archive ' + w.brand + ' ' + w.model + '?\n\nIt leaves the shop but keeps its '
+                    + 'record, so you can bring it back when the same piece comes in.')) return;
+        setFlag(id, 'deleted', true, 'Archive');
+      } else if(act === 'restore'){
+        setFlag(id, 'deleted', false, 'Restore');
+      }
+    });
+    var searchEl = document.getElementById('stock-search');
+    if(searchEl) searchEl.addEventListener('input', renderStock);
+  }
 
 })();
