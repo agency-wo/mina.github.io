@@ -41,6 +41,18 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
+        slug='christmas-watch-gifts-albania', cat='gifts', icon='fa-gift',
+        label=dict(en='Gift Guide', it='Guida Regali', sq='Udhëzues Dhuratash'),
+        card=dict(
+            en=dict(title='Christmas Watch Gifts in Albania: What to Buy and When to Order',
+                    desc='What each budget actually buys, from a steel watch under &euro;60 to the cheapest sapphire we stock, plus the last sensible day to order so it is boxed before the 25th.'),
+            it=dict(title='Regalo Orologio per Natale in Albania: Cosa Comprare e Quando Ordinare',
+                    desc='Cosa compra davvero ogni budget, da un acciaio sotto i &euro;60 al vetro zaffiro pi&ugrave; economico che teniamo, e l&rsquo;ultimo giorno sensato per ordinare e averlo prima del 25.'),
+            sq=dict(title='Dhurata Or&euml; p&euml;r Krishtlindje n&euml; Shqip&euml;ri: &Ccedil;&rsquo;t&euml; Blesh dhe Kur t&euml; Porosis',
+                    desc='&Ccedil;far&euml; blen v&euml;rtet secili buxhet, nga nj&euml; or&euml; &ccedil;eliku nën &euro;60 te xhami safir m&euml; i lir&euml; q&euml; mbajm&euml;, dhe dita e fundit e arsyeshme p&euml;r porosi.'),
+        ),
+    ),
+    dict(
         slug='how-much-to-spend-on-a-watch-gift', cat='gifts', icon='fa-balance-scale',
         card=dict(
             en=dict(title='How Much to Spend on a Watch as a Birthday Gift',

@@ -79,7 +79,7 @@
   <!-- about.html -->
   <url>
     <loc>https://watch.al/en/about.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/about.html"/>
@@ -89,7 +89,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/about.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/about.html"/>
@@ -99,7 +99,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/about.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/about.html"/>
@@ -3378,7 +3378,7 @@
   <!-- blog/ -->
   <url>
     <loc>https://watch.al/en/blog/</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/"/>
@@ -3388,7 +3388,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/"/>
@@ -3398,7 +3398,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/"/>
@@ -3965,6 +3965,37 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/casio-vs-citizen.html"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/casio-vs-citizen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/casio-vs-citizen.html"/>
+  </url>
+  <!-- blog/christmas-watch-gifts-albania.html -->
+  <url>
+    <loc>https://watch.al/en/blog/christmas-watch-gifts-albania.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/christmas-watch-gifts-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/regalo-orologio-natale-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/dhurata-ore-krishtlindje-shqiperi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/christmas-watch-gifts-albania.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/it/blog/regalo-orologio-natale-albania.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/christmas-watch-gifts-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/regalo-orologio-natale-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/dhurata-ore-krishtlindje-shqiperi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/christmas-watch-gifts-albania.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/sq/blog/dhurata-ore-krishtlindje-shqiperi.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/christmas-watch-gifts-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/blog/regalo-orologio-natale-albania.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/blog/dhurata-ore-krishtlindje-shqiperi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/blog/christmas-watch-gifts-albania.html"/>
   </url>
   <!-- blog/chronograph-vs-three-hand-watch.html -->
   <url>
