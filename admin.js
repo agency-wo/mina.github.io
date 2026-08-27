@@ -462,6 +462,9 @@
   //         shop_seo drop it from every number, all three shop.js filter it), which
   //         is why this is a flag write and not a subsystem.
   var stockList = null;
+  var crmStock = null;
+  // The CRM's one public route, read-only and credential-free ([API-001]).
+  var CRM_FEED = 'https://api.watch.al/public/stock';
 
   function currentToken(){
     var el = document.getElementById('gh-token');
@@ -485,23 +488,68 @@
     var p = token
       ? ghGet(token, 'watches.json').then(function(res){ return JSON.parse(b64ToUtf8(res.content)); })
       : fetch('/watches.json', { cache: 'no-store' }).then(function(r){ return r.json(); });
-    return p.then(function(list){
-      stockList = list;
+    return Promise.all([p, loadCrm()]).then(function(r){
+      stockList = r[0];
       renderStock();
     }).catch(function(err){
       stockMsg('Could not load the stock list: ' + err.message);
     });
   }
 
-  function rowHtml(w, archived){
+  // [CFG-005.q] crmGoverned — which watches the CRM, not this panel, owns.
+  // DOES:   Returns {id:true} for every LIVE watch whose reference the CRM feed
+  //         publishes, using apply_stock's exact linking rule.
+  // WHY:    tools/sync_stock.py reconciles watches.json against the CRM every
+  //         night at 05:17 UTC, and for a linked watch the CRM wins: it flips
+  //         `sold` back and the owner's click disappears overnight with nothing
+  //         on screen to explain it. Rather than let the panel lose that race, it
+  //         does not offer the control. Sell it in the CRM and the site follows
+  //         by itself, which is the direction that already works.
+  // NOTES:  The rule must MATCH sync_stock.apply_stock or the two disagree about
+  //         who owns a watch: reference present in the feed AND unique among LIVE
+  //         entries. A retired entry's reference is excluded on both sides, so
+  //         archiving a sold watch never blocks the restock that replaces it.
+  //         Archive/Restore stay on every row: apply_stock skips retired records,
+  //         so the CRM can never undo them.
+  //         The feed is public, credential-free and CORS *, so the browser reads
+  //         it directly. Unreachable is not an error here, it just means the
+  //         panel cannot prove ownership and says so.
+  function crmGoverned(list){
+    var out = {}, seen = {};
+    if(!crmStock) return out;
+    list.forEach(function(w){
+      if(w.deleted) return;
+      var r = String(w.reference || '').trim().toUpperCase();
+      if(r) (seen[r] = seen[r] || []).push(w.id);
+    });
+    Object.keys(seen).forEach(function(r){
+      if(seen[r].length === 1 && Object.prototype.hasOwnProperty.call(crmStock, r)){
+        out[seen[r][0]] = true;
+      }
+    });
+    return out;
+  }
+
+  function loadCrm(){
+    return fetch(CRM_FEED, { cache: 'no-store' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){ crmStock = (d && d.stock) || null; })
+      .catch(function(){ crmStock = null; });
+  }
+
+  function rowHtml(w, archived, governed){
     var img   = w.image ? '<img src="' + esc(w.image) + '" alt="" loading="lazy">' : '';
     var price = w.price ? '\u20ac' + w.price : 'Price on request';
     var sold  = w.sold ? ' <span class="tag-sold">Sold</span>' : '';
+    var soldBtn = governed
+      ? '<span class="tag-crm" title="This watch is linked to the CRM by its reference. '
+        + 'Mark it sold there and the site follows within a day. A change made here '
+        + 'would be reverted by the nightly sync.">CRM-managed</span>'
+      : '<button type="button" data-act="sold" data-id="' + esc(w.id) + '">'
+        + (w.sold ? 'Back in stock' : 'Mark sold') + '</button>';
     var acts  = archived
       ? '<button type="button" data-act="restore" data-id="' + esc(w.id) + '">Bring back</button>'
-      : '<button type="button" data-act="sold" data-id="' + esc(w.id) + '">'
-        + (w.sold ? 'Back in stock' : 'Mark sold') + '</button>'
-        + '<button type="button" data-act="archive" data-id="' + esc(w.id) + '">Archive</button>';
+      : soldBtn + '<button type="button" data-act="archive" data-id="' + esc(w.id) + '">Archive</button>';
     return '<div class="stock-row">' + img
       + '<div class="stock-meta"><strong>' + esc(w.brand) + ' ' + esc(w.model) + '</strong>' + sold
       + '<span>' + esc(w.reference || 'no reference') + ' \u00b7 ' + price + '</span></div>'
@@ -510,7 +558,7 @@
 
   // Biggest brand first: the point of the grouping is that the longest list is the
   // one you most want collapsed by default.
-  function groupHtml(list, q, archived){
+  function groupHtml(list, q, archived, governed){
     var by = {}, n = 0;
     list.forEach(function(w){
       var hay = (w.brand + ' ' + w.model + ' ' + (w.reference || '')).toLowerCase();
@@ -524,7 +572,7 @@
     }).map(function(brand){
       return '<details class="stock-group"' + (q ? ' open' : '') + '><summary>'
         + esc(brand) + '<span class="count">' + by[brand].length + '</span></summary>'
-        + by[brand].map(function(w){ return rowHtml(w, archived); }).join('')
+        + by[brand].map(function(w){ return rowHtml(w, archived, governed && governed[w.id]); }).join('')
         + '</details>';
     }).join('');
   }
@@ -535,8 +583,13 @@
     var q = (sEl && sEl.value || '').trim().toLowerCase();
     var live = [], gone = [];
     stockList.forEach(function(w){ (w.deleted ? gone : live).push(w); });
-    document.getElementById('stock-groups').innerHTML = groupHtml(live, q, false);
-    document.getElementById('archive-groups').innerHTML = groupHtml(gone, q, true);
+    var governed = crmGoverned(stockList);
+    // Unreachable CRM is not an error, but the panel must not imply it checked.
+    var note = crmStock ? '' : '<p class="form-hint">Could not reach the CRM just now, '
+      + 'so rows it manages are not marked. A watch the CRM tracks has its sold state '
+      + 'set there, not here.</p>';
+    document.getElementById('stock-groups').innerHTML = note + groupHtml(live, q, false, governed);
+    document.getElementById('archive-groups').innerHTML = groupHtml(gone, q, true, governed);
   }
 
   // [CFG-005.p] setFlag — the only write this panel makes to an existing record.
@@ -549,6 +602,12 @@
   function setFlag(id, key, val, label){
     var token = currentToken();
     if(!token){ stockMsg('Connect a GitHub token first \u2014 see GitHub Connection above.'); return; }
+    // A stale tab can still be showing a Sold button for a watch the CRM has
+    // since taken over. Writing it would be undone by the next reconcile.
+    if(key === 'sold' && crmGoverned(stockList || [])[id]){
+      stockMsg('The CRM manages that watch. Mark it sold there and the site follows.');
+      return;
+    }
     stockMsg('Saving\u2026');
     ghGet(token, 'watches.json').then(function(res){
       var arr = JSON.parse(b64ToUtf8(res.content)), w = null;

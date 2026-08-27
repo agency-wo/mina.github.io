@@ -53,8 +53,17 @@ def apply_stock(watches, stock):
     among site entries. Duplicated refs are never guessed at; absent refs are
     left owner-managed. Both directions: 0 → sold, >0 → back on sale.
     """
+    # [DB-006] Archived records are excluded from the duplicate scan, not only
+    # from the flip loop below. A retired watch keeps its shifra forever, so when
+    # the same model came back in — the restock this archive exists to make easy —
+    # the new entry collided with the retired one, the pair read as ambiguous, and
+    # the LIVE watch was refused CRM linking silently, for good. A retired entry is
+    # nobody's to flip; it is equally nobody's to block. Two LIVE entries sharing a
+    # reference is still a real ambiguity and still blocks both.
     seen = {}
     for w in watches:
+        if w.get("deleted"):
+            continue
         r = norm(w.get("reference"))
         if r:
             seen.setdefault(r, []).append(w.get("id"))

@@ -72,6 +72,74 @@ class ApplyStock(unittest.TestCase):
         self.assertNotIn("a", rep["unlinked"])   # not owner-actionable either
 
 
+class NeverConflicts(unittest.TestCase):
+    """The guarantees the owner asked for: the CRM and the site cannot corrupt
+    each other, whichever side an edit happens on.
+
+    The two stores deliberately hold different sets. The CRM has watches the
+    site has never published (46 of 56 references, measured 2026-08-27) and the
+    site has watches the CRM has never seen (59 of 69). Only 10 are linked.
+    Every test here is a property of that overlap, not of today's catalogue.
+    """
+
+    def test_crm_only_watch_selling_touches_nothing(self):
+        """A watch in the CRM but not on the site is inert, in every state.
+
+        apply_stock iterates SITE entries, so a CRM key nothing references is
+        never read. This is the owner's stated worry and the answer is
+        structural rather than a check that could be removed."""
+        ws = [w("site", "AAA")]
+        before = json.dumps(ws, sort_keys=True)
+        changed, _ = apply_stock(ws, {"AAA": 1, "CRM-ONLY-A": 0, "CRM-ONLY-B": 7})
+        self.assertEqual(changed, [])
+        self.assertEqual(json.dumps(ws, sort_keys=True), before)
+
+    def test_admin_edit_survives_the_nightly_reconcile(self):
+        """A watch the CRM has never seen belongs to the admin panel alone.
+
+        59 of 69 records are in this class, so this is the ordinary case rather
+        than the edge one: marking one sold in the panel must still be true
+        after the 05:17 reconcile runs."""
+        ws = [w("no-ref", "", sold=True), w("unknown-ref", "ZZZ", sold=True)]
+        changed, rep = apply_stock(ws, {"AAA": 5})
+        self.assertEqual(changed, [])
+        self.assertTrue(all(x["sold"] for x in ws))
+        self.assertEqual(sorted(rep["unlinked"]), ["no-ref", "unknown-ref"])
+
+    def test_archive_outranks_crm_availability(self):
+        """Archiving is an editorial decision and the CRM cannot undo it.
+
+        A restock in the CRM must never silently republish a watch the owner
+        pulled off the site."""
+        ws = [dict(w("arch", "AAA", sold=True), deleted=True)]
+        changed, _ = apply_stock(ws, {"AAA": 9})
+        self.assertEqual(changed, [])
+        self.assertTrue(ws[0]["deleted"])
+
+    def test_archived_ref_does_not_block_the_watch_that_replaces_it(self):
+        """The restock path the archive exists for: retire the sold one, put its
+        identical twin back on sale.
+
+        A retired record keeps its shifra forever, so both entries carried the
+        same reference, the duplicate guard read them as ambiguous and refused
+        to link EITHER. The live watch could then never follow the CRM again.
+        Silent, and permanent until someone read the linking report."""
+        ws = [dict(w("retired", "NM-12", sold=True), deleted=True),
+              w("back-in-stock", "NM-12")]
+        changed, rep = apply_stock(ws, {"NM-12": 0})
+        self.assertEqual(changed, ["back-in-stock"])
+        self.assertEqual(rep["dups"], {})
+        self.assertTrue(ws[1]["sold"])
+
+    def test_two_live_entries_sharing_a_ref_still_block(self):
+        """The fix above must not weaken the real ambiguity beside it."""
+        ws = [w("a", "NM-12"), w("b", "NM-12")]
+        changed, rep = apply_stock(ws, {"NM-12": 0})
+        self.assertEqual(changed, [])
+        self.assertIn("NM-12", rep["dups"])
+        self.assertFalse(ws[0].get("sold"))
+
+
 class RebuildSurvives(unittest.TestCase):
     """P128: two ordinary events used to kill the whole rebuild leg for good.
 

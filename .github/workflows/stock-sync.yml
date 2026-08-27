@@ -59,7 +59,12 @@ jobs:
           if git diff --cached --quiet; then
             echo "no change — already reconciled"
           else
-            git commit -m "[DB-002] stock-sync: CRM availability -> sold flags + regen"
+            # the two paths leave very different diffs; the log should say which
+            MSG="[DB-002] stock-sync: CRM availability -> sold flags + regen"
+            if [ "${{ github.event_name }}" = "push" ]; then
+              MSG="[DB-002] stock-sync: regenerate the site after an admin edit"
+            fi
+            git commit -m "$MSG"
             git pull --rebase origin main
             git push
           fi
