@@ -157,8 +157,29 @@ def en_slug_of(lang, stem):
     return _EN_SLUG.get((lang, stem), stem)
 
 
-LABEL = {"en": "See the {n}", "it": "Vedi il {n}", "sq": "Shihni {n}"}
-ARIA = {"en": "See the {n} in the shop", "it": "Vedi il {n} nel negozio",
+# Italian takes the article from it_article() rather than hardcoding "il", because
+# Hislon begins with a silent H and Italian elides: l'Hislon, not il Hislon. That
+# was going out on 13 Italian articles.
+LABEL = {"en": "See the {n}", "it": "Vedi {n}", "sq": "Shihni {n}"}
+
+def it_article(name):
+    """Italian definite article for a product name: il, lo or l'.
+
+    Only the elision case actually bit here (l'Hislon), but lo is included
+    because s-plus-consonant and z are the other shapes a watch brand can
+    take, and getting it wrong reads as badly as il Hislon did.
+    """
+    n = name.lstrip()
+    if not n:
+        return name
+    first = n[0].lower()
+    if first in "aeiouhàèéìòóù":
+        return "l'" + n
+    if first == "z" or (first == "s" and len(n) > 1 and n[1].lower() not in "aeiou"):
+        return "lo " + n
+    return "il " + n
+
+ARIA = {"en": "See the {n} in the shop", "it": "Vedi {n} nel negozio",
         "sq": "Shihni {n} në dyqan"}
 
 # [DB-021.c] the CTA card's button row. Scoped to cta-actions on purpose: the
@@ -263,6 +284,7 @@ def main():
             # article all offer the same watch
             w = pick(role, en_slug_of(lang, p.stem))
             name = f'{w["brand"]} {w["model"]}'.strip()
+            label_n = it_article(name) if lang == "it" else name
             href = f'/{lang}/shop/{w["id"]}.html'
             assert (BASE / href.lstrip("/")).exists(), f"{p}: {href} does not exist"
 
@@ -270,8 +292,8 @@ def main():
             if has_bridge:
                 def sub(m):
                     return (m.group(1) + m.group(2) + href
-                            + f'" class="btn-secondary" aria-label="{ARIA[lang].format(n=name)}">'
-                            + LABEL[lang].format(n=name) + m.group(6))
+                            + f'" class="btn-secondary" aria-label="{ARIA[lang].format(n=label_n)}">'
+                            + LABEL[lang].format(n=label_n) + m.group(6))
 
                 new, n = BTN_RE.subn(sub, new, count=1)
                 assert n == 1, f"{p}: shop-bridge button not matched"
