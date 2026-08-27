@@ -37,16 +37,9 @@ BASE = Path(__file__).parent
 BOM = b"\xef\xbb\xbf"
 SCRIPT_RE = re.compile(r'<script type="application/ld\+json"[^>]*>(.*?)</script>', re.S)
 
-BRANDS = [
-    ("daniel-klein", "Daniel Klein"),
-    ("navimarine", "Navimarine"),
-    ("hislon", "Hislon"),
-    ("philippe-lauren", "Philippe Lauren"),
-    ("bigotti", "Bigotti"),
-    ("cortebert", "Cortébert"),
-    ("pulsar", "Pulsar"),
-    ("polotime", "POLOTIME"),
-]
+# BRANDS now lives in shop_bits, because shop_seo links these hubs from the
+# shop index and cannot import this module without a cycle.
+from shop_bits import BRANDS  # noqa: E402
 
 # [CFG-010] built per language at the call site: en/it reach the owner, sq his father
 def wa_base(lang):

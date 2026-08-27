@@ -273,3 +273,20 @@ def stub_html(w, lang):
         f'  <p>{text} <a href="{target}">{link}</a>.</p>\n'
         '</body>\n</html>\n'
     )
+
+
+# [DB-014.e] BRANDS — slug to display name for every brand with a hub page.
+# Lives here rather than in gen_brand_pages because shop_seo needs it too, to
+# link the hubs from the shop index, and gen_brand_pages imports gen_shop_index,
+# which imports shop_seo. Two copies of this list would drift the day a brand is
+# added and only one of them was edited.
+BRANDS = [
+    ("daniel-klein", "Daniel Klein"),
+    ("navimarine", "Navimarine"),
+    ("hislon", "Hislon"),
+    ("philippe-lauren", "Philippe Lauren"),
+    ("bigotti", "Bigotti"),
+    ("cortebert", "Cortébert"),
+    ("pulsar", "Pulsar"),
+    ("polotime", "POLOTIME"),
+]

@@ -18,6 +18,7 @@ Rules:
  - Placement is BELOW the grid. Nothing is ever added above it (brand-strip lesson).
 """
 
+from shop_bits import BRANDS
 from contact import phone  # [CFG-010] the number is a language question now
 
 # Each block below is already one language, so each simply asks for its own.
@@ -31,6 +32,7 @@ COPY = {
                  "with cash on delivery in Tirana, Shkodër, Vlorë, Elbasan, Korçë and anywhere "
                  "else in Albania."),
         "faq_h": "Buying a watch from us",
+        "brands_h": "Browse by brand",
         "faq": [
             ("Can I order a watch online in Albania?",
              "Yes. Pick a watch on this page and message us on WhatsApp at " + phone("en")["text"] + ". We "
@@ -73,6 +75,7 @@ COPY = {
                  "20:30, oppure ordinate su WhatsApp con pagamento alla consegna a Tirana, "
                  "Scutari, Valona, Elbasan, Coriza e ovunque in Albania."),
         "faq_h": "Comprare un orologio da noi",
+        "brands_h": "Sfoglia per marca",
         "faq": [
             ("Posso ordinare un orologio online in Albania?",
              "Sì. Scegliete un orologio in questa pagina e scriveteci su WhatsApp al " + phone("it")["text"] +
@@ -115,6 +118,7 @@ COPY = {
                  "porositni në WhatsApp me pagesë në dorëzim në Tiranë, Shkodër, Vlorë, Elbasan, "
                  "Korçë dhe kudo tjetër në Shqipëri."),
         "faq_h": "Si të blini një orë nga ne",
+        "brands_h": "Shfleto sipas markës",
         "faq": [
             ("A mund të porosis një orë online në Shqipëri?",
              "Po. Zgjidhni një orë në këtë faqe dhe na shkruani në WhatsApp në " + phone("sq")["text"] + ". "
@@ -198,10 +202,36 @@ def seo_section_html(lang, watches):
         'border-top:1px solid var(--border-light,#eaeaea);padding:3rem 1.5rem 3.5rem">'
         '<div style="max-width:50rem;margin:0 auto">'
         f'<p style="color:var(--text-secondary,#4a4a4a);line-height:1.65">{fill(t["lead"], watches, lang)}</p>'
-        f'<h2 style="font-size:1.5rem;margin:2rem 0 .75rem">{t["faq_h"]}</h2>'
-        f'<div class="space-y-2">{faqs}</div>'
-        "</div></section>"
+        # explicit + on BOTH sides: the rest of this return is implicit string
+        # concatenation, and a call spliced into the middle of that is a syntax
+        # error unless every neighbour is joined explicitly
+        + brand_links_html(lang, watches)
+        + f'<h2 style="font-size:1.5rem;margin:2rem 0 .75rem">{t["faq_h"]}</h2>'
+        + f'<div class="space-y-2">{faqs}</div>'
+        + "</div></section>"
     )
+
+
+# [DB-015.d] brand_links_html — crawlable links from the shop hub to the brand hubs.
+# The shop index is the most-linked page in the tree and it carried NO link to any
+# /shop/brand/ page: the brand chips above the grid are JS filters built after a
+# fetch, so a crawler saw none of them. Two hubs had a single inbound link each.
+# These are the pages that can rank for a brand plus a city, so they should not be
+# reachable only from prose.
+# A brand with nothing live is skipped rather than linked to an empty hub, which
+# is the same rule gen_brand_pages applies when it refuses to build one.
+def brand_links_html(lang, watches):
+    live = {w["brand"] for w in watches if not w.get("sold")}
+    a = ('<a href="/{lang}/shop/brand/{slug}.html" style="color:'
+         'var(--accent-gold-accessible,#7a6240);text-decoration:underline;'
+         'text-underline-offset:2px">{name}</a>')
+    links = [a.format(lang=lang, slug=slug, name=name)
+             for slug, name in BRANDS if name in live]
+    if not links:
+        return ""
+    return ('<h2 style="font-size:1.5rem;margin:2rem 0 .75rem">%s</h2>'
+            '<p style="color:var(--text-secondary,#4a4a4a);line-height:2">%s</p>'
+            % (COPY[lang]["brands_h"], " &middot; ".join(links)))
 
 
 # [DB-015.c] faq_jsonld — FAQPage built from the SAME strings as the visible FAQ
