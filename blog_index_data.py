@@ -53,6 +53,54 @@ ARTICLES = [
         ),
     ),
     dict(
+        slug='mothers-day-watch-gifts-albania', cat='gifts', icon='fa-gem',
+        label=dict(en='Gift Guide', it='Guida Regali', sq='Udhëzues Dhuratash'),
+        card=dict(
+            en=dict(title='Mother&rsquo;s Day Watch Gifts in Albania: What to Buy and When to Order',
+                    desc='Albania keeps it on 8 March. What each budget buys, the last day to order, and the one decision that settles whether it is worn in June or admired once.'),
+            it=dict(title='Regalo Orologio per la Festa della Mamma in Albania: l&rsquo;8 Marzo',
+                    desc='In Albania si festeggia l&rsquo;8 marzo e non a maggio. Cosa compra ogni budget, l&rsquo;ultimo giorno per ordinare, e la scelta che decide se lo porter&agrave; tutto l&rsquo;anno.'),
+            sq=dict(title='Dhurata Or&euml; p&euml;r Dit&euml;n e N&euml;n&euml;s n&euml; Shqip&euml;ri: 8 Marsi',
+                    desc='&Ccedil;far&euml; blen secili buxhet, dita e fundit p&euml;r porosi, dhe vendimi i vetëm q&euml; përcakton n&euml;se mbahet n&euml; qershor apo admirohet nj&euml; her&euml;.'),
+        ),
+    ),
+    dict(
+        slug='watch-gift-for-your-father', cat='gifts', icon='fa-cogs',
+        label=dict(en='Gift Guide', it='Guida Regali', sq='Udhëzues Dhuratash'),
+        card=dict(
+            en=dict(title='A Watch for Your Father, When He Says He Wants Nothing',
+                    desc='He is not being polite. What each budget buys, what to do about the watch already in his drawer, and why buying from the bench that repairs them changes what happens in year three.'),
+            it=dict(title='Un Orologio per tuo Padre, Quando Dice che Non Vuole Niente',
+                    desc='Non lo dice per educazione. Cosa compra ogni budget, cosa fare dell&rsquo;orologio nel cassetto, e perch&eacute; comprarlo da chi lo ripara cambia le cose al terzo anno.'),
+            sq=dict(title='Nj&euml; Or&euml; p&euml;r Babain, Kur Thot&euml; se Nuk Do Asgj&euml;',
+                    desc='Nuk po b&euml;n sjellje. &Ccedil;far&euml; blen secili buxhet, &ccedil;far&euml; t&euml; b&euml;sh me or&euml;n n&euml; sirtar, dhe pse ka r&euml;nd&euml;si ta blesh nga kush i riparon.'),
+        ),
+    ),
+    dict(
+        slug='watch-gift-for-a-friend', cat='gifts', icon='fa-star',
+        label=dict(en='Gift Guide', it='Guida Regali', sq='Udhëzues Dhuratash'),
+        card=dict(
+            en=dict(title='A Watch as a Gift for a Friend: How Much Is Too Much',
+                    desc='The one question that decides it is not which watch but how much, and the honest answer is less than you think. Where the line sits and why the cheaper one is often the better gift.'),
+            it=dict(title='Un Orologio in Regalo per un Amico: Quanto &Egrave; Troppo',
+                    desc='La domanda che conta non &egrave; quale orologio ma quanto, e la risposta onesta &egrave; meno di quanto pensi. Dov&rsquo;&egrave; il limite e perch&eacute; quello pi&ugrave; economico &egrave; spesso il regalo migliore.'),
+            sq=dict(title='Nj&euml; Or&euml; Dhurat&euml; p&euml;r nj&euml; Shok: Sa &euml;sht&euml; Shum&euml;',
+                    desc='Pyetja q&euml; ka r&euml;nd&euml;si nuk &euml;sht&euml; cila or&euml; por sa, dhe p&euml;rgjigjja e ndershme &euml;sht&euml; m&euml; pak nga sa mendon. Ku &euml;sht&euml; kufiri dhe pse m&euml; e lira &euml;sht&euml; shpesh m&euml; e mira.'),
+        ),
+    ),
+    dict(
+        slug='watch-gift-for-brother-or-sister', cat='gifts', icon='fa-heart',
+        label=dict(en='Gift Guide', it='Guida Regali', sq='Udhëzues Dhuratash'),
+        card=dict(
+            en=dict(title='A Watch as a Gift for a Brother or Sister',
+                    desc='The one present they will wear in front of you every week, which is why it is the hardest easy gift there is. What works for a brother, for a sister, and when you are buying for two.'),
+            it=dict(title='Un Orologio in Regalo per un Fratello o una Sorella',
+                    desc='L&rsquo;unico regalo che porteranno davanti a te ogni settimana, ed &egrave; per questo che &egrave; il regalo facile pi&ugrave; difficile. Cosa funziona per un fratello, per una sorella, e se ne compri due.'),
+            sq=dict(title='Nj&euml; Or&euml; Dhurat&euml; p&euml;r nj&euml; V&euml;lla ose nj&euml; Motër',
+                    desc='Dhurata e vetme q&euml; do ta mbajn&euml; para teje &ccedil;do jav&euml;, dhe pikërisht prandaj &euml;sht&euml; m&euml; e vështira. &Ccedil;far&euml; shkon p&euml;r nj&euml; v&euml;lla, p&euml;r nj&euml; motër, dhe kur blen dy.'),
+        ),
+    ),
+    dict(
         slug='how-much-to-spend-on-a-watch-gift', cat='gifts', icon='fa-balance-scale',
         card=dict(
             en=dict(title='How Much to Spend on a Watch as a Birthday Gift',
