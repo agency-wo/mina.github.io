@@ -49,7 +49,7 @@ ARTICLES = [
             it=dict(title='Orologi Color Oro in Albania: Tutti Quelli che Teniamo e Che Cosa Sia Quell&rsquo;Oro',
                     desc='Placcati oro, mai oro massiccio, e lo diciamo per primo. Color oro pieno, bicolore e oro rosa da &euro;58 a &euro;199, quali quadranti stanno con cosa, quali hanno vetro zaffiro e come mantenere la placcatura.'),
             sq=dict(title='Or&euml; Ngjyr&euml; Ari n&euml; Shqip&euml;ri: T&euml; Gjitha Ato q&euml; Mbajm&euml; dhe &Ccedil;far&euml; &Euml;sht&euml; Ai Ar',
-                    desc='T&euml; praruara me ar, kurr&euml; ar masiv, dhe e themi t&euml; par&euml;n. Ngjyr&euml; ari e plot&euml;, dy-ngjyr&euml;sh dhe ar roz&euml; nga &euro;58 n&euml; &euro;199, cil&euml;t ciferblat&euml; shkojn&euml; me &ccedil;far&euml;, cilat kan&euml; xham safiri dhe si ta mbani prarimin.'),
+                    desc='T&euml; praruara me ar, kurr&euml; ar masiv, dhe e themi q&euml; n&euml; fillim. Ngjyr&euml; ari e plot&euml;, dy-ngjyr&euml;sh dhe ar roz&euml; nga &euro;58 n&euml; &euro;199, cil&euml;t ciferblat&euml; shkojn&euml; me &ccedil;far&euml;, cilat kan&euml; xham safiri dhe si ta mbani prarimin.'),
         ),
     ),
     dict(
