@@ -58,8 +58,8 @@ ARTICLES = [
         card=dict(
             en=dict(title='Mother&rsquo;s Day Watch Gifts in Albania: What to Buy and When to Order',
                     desc='Albania keeps it on 8 March. What each budget buys, the last day to order, and the one decision that settles whether it is worn in June or admired once.'),
-            it=dict(title='Regalo Orologio per la Festa della Mamma in Albania: l&rsquo;8 Marzo',
-                    desc='In Albania si festeggia l&rsquo;8 marzo e non a maggio. Cosa compra ogni budget, l&rsquo;ultimo giorno per ordinare, e la scelta che decide se lo porter&agrave; tutto l&rsquo;anno.'),
+            it=dict(title='Regalo Orologio per la Festa della Mamma: Maggio in Italia, 8 Marzo in Albania',
+                    desc='Due date e due scadenze per ordinare. La mimosa dura tre giorni: cosa compra ogni budget, e la scelta del metallo che decide se lo porter&agrave; ancora a giugno.'),
             sq=dict(title='Dhurata Or&euml; p&euml;r Dit&euml;n e N&euml;n&euml;s n&euml; Shqip&euml;ri: 8 Marsi',
                     desc='&Ccedil;far&euml; blen secili buxhet, dita e fundit p&euml;r porosi, dhe vendimi i vetëm q&euml; përcakton n&euml;se mbahet n&euml; qershor apo admirohet nj&euml; her&euml;.'),
         ),
