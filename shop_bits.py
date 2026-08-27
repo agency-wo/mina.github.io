@@ -289,4 +289,6 @@ BRANDS = [
     ("cortebert", "Cortébert"),
     ("pulsar", "Pulsar"),
     ("polotime", "POLOTIME"),
+    ("casio", "Casio"),
+    ("citizen", "Citizen"),
 ]

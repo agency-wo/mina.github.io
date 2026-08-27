@@ -69,6 +69,94 @@ Placeholders filled at build time: {b} brands, {lo}/{hi} price range, {lolek}/{h
 """
 
 COPY = {
+    # Casio and Citizen carry no verified-fact block in CLAUDE.md the way the
+    # other brands do, so every sentence here restates something already
+    # published in watches.json. Nothing is claimed about either company.
+    "casio": {
+        "en": {
+            "paras": [
+                'Casio is the way into our counter and the digital half of it, in Durrës from €{lo} to €{hi}. It covers two different things: steel analogue watches you can wear to work, and resin digitals built to be knocked about.',
+                'On the analogue side the MTP-VD01 sits at the bottom of the range, a steel sports-dress watch with a black dial, luminous baton indices and a date window. The MTP-B145D sits at the top with a green sunburst dial, a faceted bezel and an integrated steel bracelet. Between them is the A159WA, the retro digital in stainless steel that has been essentially unchanged since the early 1980s.',
+                'The resin sport digitals are the ones that survive a summer. The AE-1500WH is all black with a stealth negative display and 100m water resistance, and the W-737HX carries gold Illuminator accents over a large positive LCD with day and date. We change batteries and fit straps here, and every watch comes with our 1-year guarantee and cash on delivery across Albania.',
+            ],
+            "faq": [
+                ('What kind of Casio watches do you stock in Durrës?',
+                 'Two kinds. Steel analogue watches from €{lo} that read as dress watches, and resin sport digitals, one of them rated to 100m. The range runs to €{hi}, and the retro A159WA in stainless steel sits between the two.'),
+                ('How much does a Casio cost in Albania?',
+                 'Casio starts at €{lo}, which is roughly {lolek} Lek, and runs to €{hi}. That includes a 1-year guarantee and cash on delivery anywhere in Albania.'),
+                ('Can you change a Casio battery in Durrës?',
+                 'Yes. Battery replacement is done at the counter on Rruga Aleksander Goga, for watches bought from us and for watches that were not.'),
+            ],
+        },
+        "it": {
+            "paras": [
+                "Casio è l'ingresso al nostro banco e la sua metà digitale, a Durazzo da €{lo} a €{hi}. Copre due cose diverse: orologi analogici in acciaio da portare al lavoro, e digitali in resina fatti per essere presi a spallate.",
+                "Sul lato analogico l'MTP-VD01 sta in fondo alla gamma, un acciaio sport-elegante con quadrante nero, indici a bastoncino luminosi e finestrella data. L'MTP-B145D sta in cima, con quadrante verde sunburst, lunetta sfaccettata e bracciale in acciaio integrato. In mezzo c'è l'A159WA, il digitale retrò in acciaio inossidabile rimasto sostanzialmente invariato dai primi anni Ottanta.",
+                "I digitali sportivi in resina sono quelli che sopravvivono a un'estate. L'AE-1500WH è tutto nero con display negativo e impermeabilità 100m, e il W-737HX porta accenti Illuminator dorati su un ampio LCD positivo con giorno e data. Le batterie le cambiamo qui e i cinturini li montiamo qui, e ogni orologio arriva con la nostra garanzia di 1 anno e il pagamento alla consegna in tutta l'Albania.",
+            ],
+            "faq": [
+                ('Che orologi Casio avete a Durazzo?',
+                 "Di due tipi. Analogici in acciaio da €{lo} che si leggono come orologi da abito, e digitali sportivi in resina, uno dei quali con impermeabilità 100m. La gamma arriva a €{hi}, e l'A159WA retrò in acciaio sta fra i due."),
+                ('Quanto costa un Casio in Albania?',
+                 "Casio parte da €{lo}, che sono circa {lolek} Lek, e arriva a €{hi}. Sono inclusi la garanzia di 1 anno e il pagamento alla consegna in tutta l'Albania."),
+                ('Cambiate la batteria a un Casio a Durazzo?',
+                 'Sì. La sostituzione della batteria si fa al banco in Rruga Aleksander Goga, sia per gli orologi comprati da noi sia per quelli comprati altrove.'),
+            ],
+        },
+        "sq": {
+            "paras": [
+                "Casio është hyrja te banaku ynë dhe gjysma e tij dixhitale, në Durrës nga €{lo} deri në €{hi}. Mbulon dy gjëra të ndryshme: orë analoge prej çeliku për në punë, dhe orë dixhitale prej rezine të bëra për t'u përplasur.",
+                'Nga ana analoge, MTP-VD01 rri në fund të gamës, një çelik sport-elegant me ciferblat të zi, tregues bastuni me lumë dhe dritare date. MTP-B145D rri në majë, me ciferblat jeshil sunburst, lunetë me faseta dhe byzylyk çeliku të integruar. Mes tyre është A159WA, dixhitalja retro prej çeliku inoks që ka mbetur pothuajse e pandryshuar që nga fillimi i viteve tetëdhjetë.',
+                'Dixhitalet sportive prej rezine janë ato që i mbijetojnë një vere. AE-1500WH është krejt e zezë me ekran negativ dhe rezistencë ndaj ujit 100m, ndërsa W-737HX mban theks Illuminator në ngjyrë ari mbi një LCD të madh pozitiv me ditë dhe datë. Bateritë i ndërrojmë këtu dhe rripat i montojmë këtu, dhe çdo orë vjen me garancinë tonë 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri.',
+            ],
+            "faq": [
+                ('Çfarë orësh Casio mbani në Durrës?',
+                 'Dy llojesh. Orë analoge prej çeliku nga €{lo} që lexohen si orë veshjeje, dhe orë dixhitale sportive prej rezine, njëra prej tyre me rezistencë 100m. Gama shkon deri në €{hi}, dhe A159WA retro prej çeliku rri mes të dyjave.'),
+                ('Sa kushton një Casio në Shqipëri?',
+                 'Casio fillon nga €{lo}, që janë afërsisht {lolek} Lekë, dhe shkon deri në €{hi}. Kjo përfshin garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri.'),
+                ('A e ndërroni baterinë e një Casio në Durrës?',
+                 'Po. Zëvendësimi i baterisë bëhet te banaku në Rrugën Aleksander Goga, si për orët e blera te ne ashtu edhe për ato të blera diku tjetër.'),
+            ],
+        },
+    },
+    "citizen": {
+        "en": {
+            "paras": [
+                'Citizen on our counter is a single dress watch, in Durrës at €{lo}. Japanese quartz in a gold-plated stainless steel case and bracelet, with a mineral glass crystal and a clean dial.',
+                'It is the quiet end of gold-tone: an elegant golden finish from every angle, without crystals or a busy dial. It comes with our 1-year guarantee, cash on delivery anywhere in Albania, and we size the bracelet at the counter.',
+            ],
+            "faq": [
+                ('What Citizen watch do you have in Durrës?',
+                 'A gold-plated stainless steel dress watch with Japanese quartz, a mineral glass crystal and a clean dial, at €{lo}. It is in stock and can be tried on at the counter.'),
+                ('How much is a Citizen watch in Albania?',
+                 '€{lo}, which is roughly {lolek} Lek, with a 1-year guarantee and cash on delivery anywhere in Albania.'),
+            ],
+        },
+        "it": {
+            "paras": [
+                'Citizen sul nostro banco è un solo orologio da abito, a Durazzo a €{lo}. Quarzo giapponese in cassa e bracciale di acciaio inossidabile placcati oro, con vetro minerale e quadrante pulito.',
+                "È l'estremo discreto del color oro: una finitura dorata elegante da ogni angolazione, senza cristalli e senza un quadrante affollato. Arriva con la nostra garanzia di 1 anno e il pagamento alla consegna in tutta l'Albania, e il bracciale lo adattiamo al banco.",
+            ],
+            "faq": [
+                ('Che Citizen avete a Durazzo?',
+                 'Un orologio da abito in acciaio inossidabile placcato oro con quarzo giapponese, vetro minerale e quadrante pulito, a €{lo}. È disponibile e si può provare al banco.'),
+                ('Quanto costa un Citizen in Albania?',
+                 "€{lo}, che sono circa {lolek} Lek, con garanzia di 1 anno e pagamento alla consegna in tutta l'Albania."),
+            ],
+        },
+        "sq": {
+            "paras": [
+                'Citizen te banaku ynë është një orë e vetme veshjeje, në Durrës me €{lo}. Kuarc japonez në kasë dhe byzylyk prej çeliku inoks të praruar me ar, me xham mineral dhe ciferblat të pastër.',
+                'Është skaji i qetë i ngjyrës ari: një përfundim i artë elegant nga çdo kënd, pa kristale dhe pa ciferblat të ngarkuar. Vjen me garancinë tonë 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri, dhe byzylykun e përshtatim te banaku.',
+            ],
+            "faq": [
+                ('Çfarë Citizen keni në Durrës?',
+                 'Një orë veshjeje prej çeliku inoks të praruar me ar, me kuarc japonez, xham mineral dhe ciferblat të pastër, me €{lo}. Është në stok dhe mund të provohet te banaku.'),
+                ('Sa kushton një Citizen në Shqipëri?',
+                 '€{lo}, që janë afërsisht {lolek} Lekë, me garanci 1-vjeçare dhe pagesë në dorëzim kudo në Shqipëri.'),
+            ],
+        },
+    },
     "daniel-klein": {
         "en": {
             "paras": [

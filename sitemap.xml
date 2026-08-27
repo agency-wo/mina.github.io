@@ -204,6 +204,68 @@
     <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/brand/bigotti.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/brand/bigotti.html"/>
   </url>
+  <!-- shop/brand/casio.html -->
+  <url>
+    <loc>https://watch.al/en/shop/brand/casio.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/brand/casio.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/shop/brand/casio.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/brand/casio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/brand/casio.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/it/shop/brand/casio.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/brand/casio.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/shop/brand/casio.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/brand/casio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/brand/casio.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/sq/shop/brand/casio.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/brand/casio.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/shop/brand/casio.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/brand/casio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/brand/casio.html"/>
+  </url>
+  <!-- shop/brand/citizen.html -->
+  <url>
+    <loc>https://watch.al/en/shop/brand/citizen.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/brand/citizen.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/shop/brand/citizen.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/brand/citizen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/brand/citizen.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/it/shop/brand/citizen.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/brand/citizen.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/shop/brand/citizen.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/brand/citizen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/brand/citizen.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/sq/shop/brand/citizen.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/brand/citizen.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/shop/brand/citizen.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/brand/citizen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/brand/citizen.html"/>
+  </url>
   <!-- shop/brand/cortebert.html -->
   <url>
     <loc>https://watch.al/en/shop/brand/cortebert.html</loc>

@@ -444,7 +444,7 @@
     "lastmod": "2026-08-25"
   },
   "https://watch.al/en/shop/": {
-    "fp": "819312797e1e2df113dfbeecda4c14163fa17f2bc9420f02dd5f84e9b24cfde4",
+    "fp": "46d29f89588e9d6e621e93c0491b7c42bb24e3c571494753932a29af6861dd56",
     "lastmod": "2026-08-27"
   },
   "https://watch.al/en/shop/belonni-collection.html": {
@@ -477,6 +477,14 @@
   },
   "https://watch.al/en/shop/brand/bigotti.html": {
     "fp": "6e1a3ed39d7dfe98603fa59822020388dc34fca3825a273249a1edbfa6004981",
+    "lastmod": "2026-08-27"
+  },
+  "https://watch.al/en/shop/brand/casio.html": {
+    "fp": "29a7cf541b509760abd18d127e99965e913f35d1c532148fb76575268f61dd20",
+    "lastmod": "2026-08-27"
+  },
+  "https://watch.al/en/shop/brand/citizen.html": {
+    "fp": "1ab3337cf3d43f2beed7b48a91b21c13edfc13f1d2496c5e01c8c28ba9ff623c",
     "lastmod": "2026-08-27"
   },
   "https://watch.al/en/shop/brand/cortebert.html": {
@@ -1200,7 +1208,7 @@
     "lastmod": "2026-08-25"
   },
   "https://watch.al/it/shop/": {
-    "fp": "0dc8a271eebd8f3394c7cfa3ccaefea1d0b0f67efae076259b946bc236a8607b",
+    "fp": "1888fa2ade88fecbd5990c88f00185de6bf82d862ca7dfdf4938d05b7121801b",
     "lastmod": "2026-08-27"
   },
   "https://watch.al/it/shop/belonni-collection.html": {
@@ -1233,6 +1241,14 @@
   },
   "https://watch.al/it/shop/brand/bigotti.html": {
     "fp": "ae49d668acd13d6ac50ab2dfd659c10f889a3812bcd3304771a64a8bbe2dcc48",
+    "lastmod": "2026-08-27"
+  },
+  "https://watch.al/it/shop/brand/casio.html": {
+    "fp": "dd24114e4b2b5384ee92f9c3dfb07c4c470256bb81d13d1d3058074cf866f7e5",
+    "lastmod": "2026-08-27"
+  },
+  "https://watch.al/it/shop/brand/citizen.html": {
+    "fp": "030ac2f8369185bb245c725c6f06c49a865c08b8c774f12f9192daa1d191dfa4",
     "lastmod": "2026-08-27"
   },
   "https://watch.al/it/shop/brand/cortebert.html": {
@@ -1956,7 +1972,7 @@
     "lastmod": "2026-08-25"
   },
   "https://watch.al/sq/shop/": {
-    "fp": "463ddffacd029338b137f8207463f2aa7dbec1c60754b8600d4a49ba18019d71",
+    "fp": "09dd6b10601931cf006661d236bb2c1f27e06238e6f0300c4282683a05c5a252",
     "lastmod": "2026-08-27"
   },
   "https://watch.al/sq/shop/belonni-collection.html": {
@@ -1989,6 +2005,14 @@
   },
   "https://watch.al/sq/shop/brand/bigotti.html": {
     "fp": "2748043713ecd557a91e20442883511d78b7b6cf2b6fcc85a972a6913b70d97e",
+    "lastmod": "2026-08-27"
+  },
+  "https://watch.al/sq/shop/brand/casio.html": {
+    "fp": "e5c90e3a56523d183ec8666506fa81f54d034d9de699c2d8b89f5423776cc6e2",
+    "lastmod": "2026-08-27"
+  },
+  "https://watch.al/sq/shop/brand/citizen.html": {
+    "fp": "fe48e79468fc968961655ceda1ac7355dac0c9b82ab8438b9dddd485a093b00b",
     "lastmod": "2026-08-27"
   },
   "https://watch.al/sq/shop/brand/cortebert.html": {
