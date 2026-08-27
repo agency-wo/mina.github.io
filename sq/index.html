@@ -356,10 +356,10 @@ h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 800; let
 @media (max-width: 768px) { .review-badge { display: none; } }
 .hero-bg { position: relative; overflow: hidden; background: linear-gradient(145deg,#020b1e 0%,#06153b 30%,#0c2060 65%,#091d4f 100%); border-bottom: 2px solid rgba(180,148,92,0.2); }
 .hero-bg::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(180,148,92,0.15) 1px, transparent 1px), radial-gradient(circle, rgba(32,178,170,0.08) 1px, transparent 1px); background-size: 40px 40px, 60px 60px; background-position: 0 0, 20px 20px; z-index: 1; pointer-events: none; }
-.hero-bg::after { content: ''; position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 380px; height: 380px; background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2295%22 fill=%22none%22 stroke=%22white%22 stroke-width=%223%22/%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2285%22 fill=%22none%22 stroke=%22white%22 stroke-width=%221%22 opacity=%22.4%22/%3E%3Cline x1=%22100%22 y1=%228%22 x2=%22100%22 y2=%2222%22 stroke=%22white%22 stroke-width=%224%22 stroke-linecap=%22round%22/%3E%3Cline x1=%22100%22 y1=%22178%22 x2=%22100%22 y2=%22192%22 stroke=%22white%22 stroke-width=%224%22 stroke-linecap=%22round%22/%3E%3Cline x1=%228%22 y1=%22100%22 x2=%2222%22 y2=%22100%22 stroke=%22white%22 stroke-width=%224%22 stroke-linecap=%22round%22/%3E%3Cline x1=%22178%22 y1=%22100%22 x2=%22192%22 y2=%22100%22 stroke=%22white%22 stroke-width=%224%22 stroke-linecap=%22round%22/%3E%3Cline x1=%2255.4%22 y1=%2255.4%22 x2=%2265.5%22 y2=%2265.5%22 stroke=%22white%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cline x1=%22144.6%22 y1=%2255.4%22 x2=%22134.5%22 y2=%2265.5%22 stroke=%22white%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cline x1=%2255.4%22 y1=%22144.6%22 x2=%2265.5%22 y2=%22134.5%22 stroke=%22white%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cline x1=%22144.6%22 y1=%22144.6%22 x2=%22134.5%22 y2=%22134.5%22 stroke=%22white%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cline x1=%22100%22 y1=%22100%22 x2=%2255%22 y2=%2268%22 stroke=%22white%22 stroke-width=%225%22 stroke-linecap=%22round%22/%3E%3Cline x1=%22100%22 y1=%22100%22 x2=%22165%22 y2=%2262%22 stroke=%22white%22 stroke-width=%223%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%224%22 fill=%22white%22/%3E%3Crect x=%22193%22 y=%2291%22 width=%229%22 height=%2218%22 rx=%223%22 fill=%22none%22 stroke=%22white%22 stroke-width=%222%22/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; opacity: 0.08; z-index: 1; pointer-events: none; }
+
 .hero-content { position: relative; z-index: 2; min-height: 380px; display: flex; flex-direction: column; justify-content: center; }
 .hero-title { text-shadow: 2px 2px 8px rgba(0,0,0,0.5); font-weight: 900; }
-@media (max-width: 768px) { .hero-content { min-height: 0; padding-top: 0; padding-bottom: 0; } .hero-title { font-size: 2rem; } .hero-bg::after { width: 220px; height: 220px; right: auto; left: 50%; top: 50%; transform: translate(-50%,-50%); opacity: 0.06; } }
+@media (max-width: 768px) { .hero-content { min-height: 0; padding-top: 0; padding-bottom: 0; } .hero-title { font-size: 2rem; }  }
 .section-title { position: relative; display: inline-block; padding-bottom: 16px; cursor: default; }
 .section-title::after { content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 48px; height: 1.5px; background: rgba(180,148,92,0.6); pointer-events: none; }
 
@@ -461,7 +461,6 @@ i.promise-icon,i.faq-icon{display:inline-flex!important;align-items:center;justi
 
 /* ── SECTION TITLE underline - centre-origin for centred headings ────────── */
 
-
 /* ── ICON ANIMATION KEYFRAMES ───────────────────────────────────────────── */
 @keyframes gear-cw   { to { transform: rotate( 360deg); } }
 @keyframes gear-ccw  { to { transform: rotate(-360deg); } }
@@ -511,8 +510,7 @@ i.promise-icon,i.faq-icon{display:inline-flex!important;align-items:center;justi
 
 /* ── HOVER EFFECTS - real-pointer devices only ──────────────────────────── */
 @media (hover: hover) {
-  
-  
+
   .hero-content .btn-primary:hover::after { animation: none; }
   .footer nav[aria-label="Social media links"] a:hover { transform: translateY(-3px) scale(1.15); }
 }
@@ -760,7 +758,6 @@ i.promise-icon,i.faq-icon{display:inline-flex!important;align-items:center;justi
   user-select: none;
 }
 
-  
 /* ── LIVE CLOCK ───────────────────────────────────────────── */
 .clock-section{background:#06153b;padding:2rem 1.5rem 1.75rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;border-bottom:1px solid rgba(180,148,92,.18)}
 .clock-inner{display:flex;flex-direction:column;align-items:center;gap:1.5rem;max-width:860px;width:100%}
@@ -864,7 +861,7 @@ a.trust-stat-link:hover{transform:translateY(-3px)}
 }
 </style>
   <link rel="preconnect" href="https://www.google.com" crossorigin>
-  <link rel="stylesheet" href="/shared.css?v=57">
+  <link rel="stylesheet" href="/shared.css?v=58">
 
   <!-- STRUCTURED DATA -->
   <script type="application/ld+json">
@@ -1213,8 +1210,6 @@ a.trust-stat-link:hover{transform:translateY(-3px)}
 </head>
 <body class="text-gray-800 antialiased lang-sq">
 
-
-
   <a href="https://api.whatsapp.com/send?phone=355676360510&text=P%C3%ABrsh%C3%ABndetje%2C%20kam%20nj%C3%AB%20pyetje%20p%C3%ABr%20nj%C3%AB%20or%C3%AB%20ose%20nj%C3%AB%20riparim." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Na dërgoni mesazh në WhatsApp">
     <i class="fab fa-whatsapp" aria-hidden="true"></i>
   </a>
@@ -1290,6 +1285,7 @@ a.trust-stat-link:hover{transform:translateY(-3px)}
 
     <!-- HERO -->
     <section class="hero-bg relative py-12" aria-labelledby="hero-heading">
+      <div class="hero-dial" aria-hidden="true"><svg viewBox="0 0 200 200" role="img" aria-label="Watch dial" focusable="false"><circle class="dial-ring" cx="100" cy="100" r="96" stroke-width="1.5"/><circle class="dial-track" cx="100" cy="100" r="82" stroke-width="0.75"/><line class="dial-tick" x1="109.2" y1="12.48" x2="109.62" y2="8.5" stroke-width="0.8"/><line class="dial-tick" x1="118.3" y1="13.92" x2="119.13" y2="10.01" stroke-width="0.8"/><line class="dial-tick" x1="127.19" y1="16.31" x2="128.43" y2="12.5" stroke-width="0.8"/><line class="dial-tick" x1="135.79" y1="19.61" x2="137.42" y2="15.95" stroke-width="0.8"/><line class="dial-tick" x1="151.73" y1="28.81" x2="154.08" y2="25.57" stroke-width="0.8"/><line class="dial-tick" x1="158.88" y1="34.6" x2="161.56" y2="31.63" stroke-width="0.8"/><line class="dial-tick" x1="165.4" y1="41.12" x2="168.37" y2="38.44" stroke-width="0.8"/><line class="dial-tick" x1="171.19" y1="48.27" x2="174.43" y2="45.92" stroke-width="0.8"/><line class="dial-tick" x1="180.39" y1="64.21" x2="184.05" y2="62.58" stroke-width="0.8"/><line class="dial-tick" x1="183.69" y1="72.81" x2="187.5" y2="71.57" stroke-width="0.8"/><line class="dial-tick" x1="186.08" y1="81.7" x2="189.99" y2="80.87" stroke-width="0.8"/><line class="dial-tick" x1="187.52" y1="90.8" x2="191.5" y2="90.38" stroke-width="0.8"/><line class="dial-tick" x1="187.52" y1="109.2" x2="191.5" y2="109.62" stroke-width="0.8"/><line class="dial-tick" x1="186.08" y1="118.3" x2="189.99" y2="119.13" stroke-width="0.8"/><line class="dial-tick" x1="183.69" y1="127.19" x2="187.5" y2="128.43" stroke-width="0.8"/><line class="dial-tick" x1="180.39" y1="135.79" x2="184.05" y2="137.42" stroke-width="0.8"/><line class="dial-tick" x1="171.19" y1="151.73" x2="174.43" y2="154.08" stroke-width="0.8"/><line class="dial-tick" x1="165.4" y1="158.88" x2="168.37" y2="161.56" stroke-width="0.8"/><line class="dial-tick" x1="158.88" y1="165.4" x2="161.56" y2="168.37" stroke-width="0.8"/><line class="dial-tick" x1="151.73" y1="171.19" x2="154.08" y2="174.43" stroke-width="0.8"/><line class="dial-tick" x1="135.79" y1="180.39" x2="137.42" y2="184.05" stroke-width="0.8"/><line class="dial-tick" x1="127.19" y1="183.69" x2="128.43" y2="187.5" stroke-width="0.8"/><line class="dial-tick" x1="118.3" y1="186.08" x2="119.13" y2="189.99" stroke-width="0.8"/><line class="dial-tick" x1="109.2" y1="187.52" x2="109.62" y2="191.5" stroke-width="0.8"/><line class="dial-tick" x1="90.8" y1="187.52" x2="90.38" y2="191.5" stroke-width="0.8"/><line class="dial-tick" x1="81.7" y1="186.08" x2="80.87" y2="189.99" stroke-width="0.8"/><line class="dial-tick" x1="72.81" y1="183.69" x2="71.57" y2="187.5" stroke-width="0.8"/><line class="dial-tick" x1="64.21" y1="180.39" x2="62.58" y2="184.05" stroke-width="0.8"/><line class="dial-tick" x1="48.27" y1="171.19" x2="45.92" y2="174.43" stroke-width="0.8"/><line class="dial-tick" x1="41.12" y1="165.4" x2="38.44" y2="168.37" stroke-width="0.8"/><line class="dial-tick" x1="34.6" y1="158.88" x2="31.63" y2="161.56" stroke-width="0.8"/><line class="dial-tick" x1="28.81" y1="151.73" x2="25.57" y2="154.08" stroke-width="0.8"/><line class="dial-tick" x1="19.61" y1="135.79" x2="15.95" y2="137.42" stroke-width="0.8"/><line class="dial-tick" x1="16.31" y1="127.19" x2="12.5" y2="128.43" stroke-width="0.8"/><line class="dial-tick" x1="13.92" y1="118.3" x2="10.01" y2="119.13" stroke-width="0.8"/><line class="dial-tick" x1="12.48" y1="109.2" x2="8.5" y2="109.62" stroke-width="0.8"/><line class="dial-tick" x1="12.48" y1="90.8" x2="8.5" y2="90.38" stroke-width="0.8"/><line class="dial-tick" x1="13.92" y1="81.7" x2="10.01" y2="80.87" stroke-width="0.8"/><line class="dial-tick" x1="16.31" y1="72.81" x2="12.5" y2="71.57" stroke-width="0.8"/><line class="dial-tick" x1="19.61" y1="64.21" x2="15.95" y2="62.58" stroke-width="0.8"/><line class="dial-tick" x1="28.81" y1="48.27" x2="25.57" y2="45.92" stroke-width="0.8"/><line class="dial-tick" x1="34.6" y1="41.12" x2="31.63" y2="38.44" stroke-width="0.8"/><line class="dial-tick" x1="41.12" y1="34.6" x2="38.44" y2="31.63" stroke-width="0.8"/><line class="dial-tick" x1="48.27" y1="28.81" x2="45.92" y2="25.57" stroke-width="0.8"/><line class="dial-tick" x1="64.21" y1="19.61" x2="62.58" y2="15.95" stroke-width="0.8"/><line class="dial-tick" x1="72.81" y1="16.31" x2="71.57" y2="12.5" stroke-width="0.8"/><line class="dial-tick" x1="81.7" y1="13.92" x2="80.87" y2="10.01" stroke-width="0.8"/><line class="dial-tick" x1="90.8" y1="12.48" x2="90.38" y2="8.5" stroke-width="0.8"/><line class="dial-index" x1="100" y1="24" x2="100" y2="8" stroke-width="2.4"/><line class="dial-index" x1="140" y1="30.72" x2="146" y2="20.33" stroke-width="1.6"/><line class="dial-index" x1="169.28" y1="60" x2="179.67" y2="54" stroke-width="1.6"/><line class="dial-index" x1="176" y1="100" x2="192" y2="100" stroke-width="2.4"/><line class="dial-index" x1="169.28" y1="140" x2="179.67" y2="146" stroke-width="1.6"/><line class="dial-index" x1="140" y1="169.28" x2="146" y2="179.67" stroke-width="1.6"/><line class="dial-index" x1="100" y1="176" x2="100" y2="192" stroke-width="2.4"/><line class="dial-index" x1="60" y1="169.28" x2="54" y2="179.67" stroke-width="1.6"/><line class="dial-index" x1="30.72" y1="140" x2="20.33" y2="146" stroke-width="1.6"/><line class="dial-index" x1="24" y1="100" x2="8" y2="100" stroke-width="2.4"/><line class="dial-index" x1="30.72" y1="60" x2="20.33" y2="54" stroke-width="1.6"/><line class="dial-index" x1="60" y1="30.72" x2="54" y2="20.33" stroke-width="1.6"/><line class="dial-hand" x1="109.83" y1="106.88" x2="60.68" y2="72.47" stroke-width="4.0"/><line class="dial-hand" x1="86.14" y1="108" x2="160.62" y2="65" stroke-width="3.0"/><line class="dial-second" x1="100" y1="120" x2="100" y2="22" stroke-width="1.2"/><circle class="dial-cap" cx="100" cy="100" r="3.2"/></svg></div>
       <div class="hero-content max-w-7xl mx-auto px-6 text-center text-white">
         <span class="gold-display uppercase tracking-widest text-sm font-semibold">Durrës &middot; Punishte Familjare &middot; Est. 2009</span>
         <div class="hero-kicker-line" aria-hidden="true"></div>
@@ -1302,7 +1298,7 @@ a.trust-stat-link:hover{transform:translateY(-3px)}
         <div class="flex flex-wrap gap-4 justify-center items-center">
           <a href="/sq/shop/" class="btn-primary">Shfletoni Orët</a>
           <a href="#contact" class="btn-secondary">Vizitoni Punishten</a>
-          <a href="/sq/services.html#watch-valuation" class="btn-val-ghost"><i class="fas fa-gem" aria-hidden="true"></i> Vlerësim Falas</a>
+          <a href="/sq/services.html#watch-valuation" class="btn-val-ghost"><i class="fas fa-gem" aria-hidden="true"></i> Vlerësim Falas <span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
         <div class="hero-trust-strip">
           <a href="https://search.google.com/local/reviews?placeid=ChIJU3JyAljB0RMRdoAB2vYR5oo" target="_blank" rel="noopener noreferrer" class="hero-trust-pill"><span class="pill-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&nbsp;Vler&#235;sime Google</a>
