@@ -33,6 +33,70 @@ BASE = Path(__file__).parent
 
 watches = json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
 
+# --------------------------------------------------------------- reviews --
+# [DB-017.r] The shape a per-watch customer review takes in watches.json.
+# NOTHING READS IT YET, and that is deliberate. The field is defined and
+# validated now so the first real review has somewhere to go that was decided in
+# advance, instead of being invented in a hurry by whoever collects it.
+#
+#   "reviews": [
+#     {
+#       "author":  "Ardit Hoxha",      the name the customer gave, not initials
+#       "rating":  5,                  integer, 1 to 5
+#       "date":    "2026-08-27",       ISO, the day it was written
+#       "body_en": "...",              one per language, like description_*
+#       "body_it": "...",
+#       "body_sq": "..."
+#     }
+#   ]
+#
+# All 3 languages are required because description_en/_it/_sq already work that
+# way, and a review that exists on one language's page and not the others makes
+# the 3 versions of a product disagree about what a customer said.
+#
+# TWO RULES FOR WHOEVER WIRES THIS UP, both from Google's own documentation and
+# both easy to get wrong from the best of intentions:
+#
+#   1. A review may only be marked up if a visitor can SEE it on that page.
+#      Emitting review JSON-LD with nothing rendered is not a shortcut to stars,
+#      it is grounds for a manual action. Build the visible block FIRST.
+#   2. aggregateRating is REQUIRED once more than one review is marked up, and
+#      it has to be computed from them rather than typed. Leaving it out is
+#      precisely what put 8 items in the invalid column on the about pages, and
+#      a typed figure that disagrees with the reviews under it is worse again.
+#
+# Why this field is worth having at all: a per-product review can earn stars
+# where a shop review never will. The reviewed entity is the watch, not Iglisi
+# Watch, so it is not self-serving, and self-serving is the rule that makes the
+# about pages ineligible no matter how correct their markup becomes.
+REVIEW_KEYS = ("author", "rating", "date", "body_en", "body_it", "body_sq")
+
+
+def check_reviews(items):
+    """Fail the build on a malformed review rather than shipping one.
+
+    Silent today, because no watch carries the field. The day one does, a
+    missing language or a rating of 6 stops the build instead of reaching a
+    page and then a search result.
+    """
+    seen = 0
+    for w in items:
+        revs = w.get("reviews")
+        if not revs:
+            continue
+        assert isinstance(revs, list), "%s: reviews must be a list" % w.get("id")
+        for i, r in enumerate(revs):
+            where = "%s review %d" % (w.get("id"), i)
+            missing = [k for k in REVIEW_KEYS if not str(r.get(k, "")).strip()]
+            assert not missing, "%s: missing %s" % (where, missing)
+            assert isinstance(r["rating"], int) and 1 <= r["rating"] <= 5,                 "%s: rating %r is not an integer 1 to 5" % (where, r["rating"])
+            assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(r["date"])),                 "%s: date %r is not ISO yyyy-mm-dd" % (where, r["date"])
+            seen += 1
+    return seen
+
+
+REVIEWS_ON_FILE = check_reviews(watches)
+
 # slug -> category, read from the blog manifest rather than guessed, so the reading
 # strip can prefer commercial articles without holding a second opinion about which
 # ones those are. blog_index_data is a bare data module: no imports, no functions.
