@@ -335,7 +335,7 @@
         return ghGet(token, 'watches.json');
       })
       .then(function(res){
-        var currentArr = JSON.parse(atob(res.content.replace(/\n/g,'')));
+        var currentArr = JSON.parse(b64ToUtf8(res.content.replace(/\n/g,'')));
         var newWatch = buildWatch(currentArr, data);
         currentArr.push(newWatch);
         var newContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentArr, null, 2))));
@@ -362,6 +362,16 @@
         statusEl.innerHTML = '<strong>Error:</strong> ' + err.message + '<br><small>Check your GitHub token has repo scope and try again.</small>';
         done();
       });
+  }
+
+  // [CFG-005.n] b64ToUtf8 — the inverse of btoa(unescape(encodeURIComponent(s)))
+  // NOTES:  atob() alone hands back a byte string, so every non-ASCII character
+  //         in watches.json returned mojibake and was then re-encoded that way.
+  //         One publish would have rewritten Cortébert as CortÃ©bert and
+  //         wrecked every Albanian and Italian description in the file. The
+  //         write side was already correct, which is exactly why nobody saw it.
+  function b64ToUtf8(b64){
+    return decodeURIComponent(escape(atob(String(b64).replace(/\n/g, ''))));
   }
 
   // [CFG-005.k] ghGet — GET a repo file via the contents API (content + sha)
