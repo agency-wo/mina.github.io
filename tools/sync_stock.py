@@ -31,8 +31,15 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 FEED = "https://api.watch.al/public/stock"
+# The full chain, in CLAUDE.md's order. gen_blog_index is NOT optional on a
+# catalogue change: the featured card carries {lolek}/{hilek} price tokens that
+# only it resolves, and the rendered index has no data-stat marker for gen_stats
+# to heal afterwards, so leaving it out quietly advertises the previous
+# catalogue. gen_article_cta re-points every article bridge when stock moves.
+# gen_sitemap stays LAST: it fingerprints page content to decide lastmod.
 GENERATORS = ("gen_shop_index.py", "gen_product_pages.py",
-              "gen_brand_pages.py", "gen_sitemap.py")
+              "gen_brand_pages.py", "gen_blog_index.py",
+              "gen_article_cta.py", "gen_stats.py", "gen_sitemap.py")
 
 
 def norm(s):
@@ -103,7 +110,29 @@ def data_js_bytes(data, eol="\n", bom=True):
     return (b"\xef\xbb\xbf" if bom else b"") + body.replace("\n", eol).encode("utf-8")
 
 
+def regenerate(watches, why):
+    """Rewrite both data files from `watches`, heal any stub, run the chain."""
+    import make_shells
+    j_eol, j_bom = style_of((BASE / "watches.json").read_bytes())
+    d_eol, d_bom = style_of((BASE / "watches-data.js").read_bytes())
+    (BASE / "watches.json").write_bytes(json_bytes(watches, j_eol, j_bom))
+    (BASE / "watches-data.js").write_bytes(data_js_bytes(watches, d_eol, d_bom))
+    # a watch whose `deleted` was just cleared still has a redirect stub, and
+    # gen_product_pages refuses to patch one back into a full page
+    make_shells.restore_missing(watches)
+    for g in GENERATORS:
+        print(f"— {g} —")
+        subprocess.run([sys.executable, str(BASE / g)], cwd=BASE, check=True)
+    print(why)
+
+
 def main():
+    # --regen: rebuild from whatever watches.json says now, no CRM call. This is
+    # the admin-panel path: the flag is already written, the site has to catch up.
+    if "--regen" in sys.argv:
+        watches = json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
+        regenerate(watches, f"regenerated from watches.json ({len(watches)} watches)")
+        return
     stock = fetch_stock()
     if stock is None:
         sys.exit(2)
@@ -122,14 +151,7 @@ def main():
     if not changed:
         print("already reconciled — zero diff by design")
         return
-    j_eol, j_bom = style_of((BASE / "watches.json").read_bytes())
-    d_eol, d_bom = style_of((BASE / "watches-data.js").read_bytes())
-    (BASE / "watches.json").write_bytes(json_bytes(watches, j_eol, j_bom))
-    (BASE / "watches-data.js").write_bytes(data_js_bytes(watches, d_eol, d_bom))
-    for g in GENERATORS:
-        print(f"— {g} —")
-        subprocess.run([sys.executable, str(BASE / g)], cwd=BASE, check=True)
-    print(f"reconciled: {len(changed)} flag(s) flipped → {changed}")
+    regenerate(watches, f"reconciled: {len(changed)} flag(s) flipped → {changed}")
 
 
 if __name__ == "__main__":

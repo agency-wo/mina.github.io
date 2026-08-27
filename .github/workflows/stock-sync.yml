@@ -9,6 +9,14 @@
 name: stock-sync
 
 on:
+  # An admin-panel edit commits watches.json and nothing else. This is what
+  # turns that one flag into a rebuilt site, so the owner never has to open a
+  # terminal after archiving or restoring a watch. It cannot loop: the commit
+  # in the last step is pushed with the default GITHUB_TOKEN, and GitHub does
+  # not trigger workflows from those pushes.
+  push:
+    paths:
+      - 'watches.json'
   repository_dispatch:
     types: [stock-sync]
   schedule:
@@ -35,8 +43,14 @@ jobs:
           python tools/test_sync_stock.py
           python tools/test_sync_stock.py
           python tools/test_sync_stock.py
-      - name: reconcile stock
+      - name: reconcile stock (CRM)
+        if: github.event_name != 'push'
         run: python tools/sync_stock.py
+      # the admin path: watches.json already carries the change, the site
+      # has to catch up. Skips the CRM call entirely.
+      - name: regenerate from watches.json (admin edit)
+        if: github.event_name == 'push'
+        run: python tools/sync_stock.py --regen
       - name: commit if changed
         run: |
           git config user.name "stock-sync"
