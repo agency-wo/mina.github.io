@@ -104,7 +104,8 @@ UI = {
 }
 
 from brand_copy import COPY  # localized, owner-verified brand copy
-from shop_bits import crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html
+from shop_bits import (crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html,
+                       delivery_bar_html, DELIVERY_CSS)
 
 
 # [DB-008.a] esc — minimal HTML escaping for text landing in attributes/titles
@@ -174,6 +175,12 @@ def build_main(slug, brand, lang, items):
         # crumb sits on the LIGHT content area below the hero. Never above it: a pale
         # band between the dark sticky header and the dark hero cuts the page in half.
         + crumb_html(lang, brand=brand)
+        # Same strip the shop index carries, in the same place: directly under the
+        # crumb, above the grid. A brand hub is where someone chooses a watch, and
+        # it was the one buying page that never told them delivery is free, that
+        # they pay the courier, or that they have 30 days. Same component, so the
+        # terms can never drift between the two pages.
+        + DELIVERY_CSS + delivery_bar_html(lang)
         + '<div class="max-w-7xl mx-auto px-6">'
         f'<h2 class="brand-grid-h">{ui["all_h"]}</h2>'
         f'<div class="shop-grid" id="brandGrid" aria-label="{brand}">{cards}</div>'
