@@ -1,4 +1,4 @@
-"""[DB-021] blog_index_data.py — the blog's one category authority, data only.
+"""[DB-022] blog_index_data.py — the blog's one category authority, data only.
 DOES:   holds ARTICLES: one dict per trilingual article family, NEWEST FIRST
         (list position breaks the tie when two families share a date). cat=
         assigns one of the five categories buying/gifts/care/knowledge/keys and

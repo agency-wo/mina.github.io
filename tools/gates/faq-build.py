@@ -571,7 +571,7 @@ def build(wave, apply):
 
 
 # ---------------------------------------------------------------- verification
-# [DB-020.x] reapply — push an EDITED override onto a page that already shows its FAQ
+# [DB-020.w] reapply — push an EDITED override onto a page that already shows its FAQ
 # DOES:   for each "path#i" in the manifest, replaces mainEntity[i]'s answer in the
 #         JSON-LD and the matching <p> in the visible block, from the same one
 #         source string, exactly as build() does.
@@ -660,7 +660,7 @@ def reapply(apply):
 
 
 def cmd_verify(blog_only=False):
-    """[DB-020.w] Walks every page, not just {lang}/blog/.
+    """[DB-020.x] Walks every page, not just {lang}/blog/.
 
     It used to walk the blog alone, which is the only reason 18 broken service pages stayed
     invisible through the whole FAQ sweep: the icon half of this check was already sitewide

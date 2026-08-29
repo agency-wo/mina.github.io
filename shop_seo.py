@@ -212,7 +212,7 @@ def seo_section_html(lang, watches):
     )
 
 
-# [DB-015.d] brand_links_html — crawlable links from the shop hub to the brand hubs.
+# [DB-015.c] brand_links_html — crawlable links from the shop hub to the brand hubs.
 # The shop index is the most-linked page in the tree and it carried NO link to any
 # /shop/brand/ page: the brand chips above the grid are JS filters built after a
 # fetch, so a crawler saw none of them. Two hubs had a single inbound link each.
@@ -234,7 +234,7 @@ def brand_links_html(lang, watches):
             % (COPY[lang]["brands_h"], " &middot; ".join(links)))
 
 
-# [DB-015.c] faq_jsonld — FAQPage built from the SAME strings as the visible FAQ
+# [DB-015.d] faq_jsonld — FAQPage built from the SAME strings as the visible FAQ
 # NOTES:  gen_shop_index.py's sanity block verifies the two never diverge.
 def faq_jsonld(lang, watches):
     return {

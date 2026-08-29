@@ -70,7 +70,7 @@
       });
     })
     .then(function(WATCHES){
-      // [UI-016.f] Slider bounds come from the CATALOGUE, never from a constant.
+      // [UI-016.a] Slider bounds come from the CATALOGUE, never from a constant.
       // They were 50 and 200, and renderWatches drops anything above
       // currentMaxPrice, so a 249 euro watch was unreachable by the filter and
       // vanished from the pre-rendered grid the moment this script hydrated.
@@ -195,7 +195,7 @@
       if(g) g.innerHTML = '<p class="no-watches">Nuk mund të ngarkohen orët. Rifresko faqen.</p>';
     });
 
-  // [UI-016.a] initBrandChips — the brand row is DERIVED, never a typed list
+  // [UI-016.b] initBrandChips — the brand row is DERIVED, never a typed list
   // DOES:   tallies live watches per brand, orders by count then name, draws the
   //         chip row and wires ONE delegated click handler on the wrapper.
   // NOTES:  nothing here is hard-coded, so a new brand appears the moment it
@@ -263,7 +263,7 @@
     });
   }
 
-  // [UI-016.b] renderWatches — the ONE render path: filter, sort, repaint
+  // [UI-016.c] renderWatches — the ONE render path: filter, sort, repaint
   // DOES:   applies condition, brand, search and the price window in that order,
   //         sorts, then replaces #shopGrid wholesale. It writes no count.
   // NOTES:  full repaint on purpose. Nothing mutates a card in place, so the grid
@@ -341,13 +341,13 @@
      Never toLocaleString(): it asks the browser for the separator, so an
      Italian phone reflowed the grid from 18,300 L to 18.300 L after hydration
      and the rendered page disagreed with the HTML the server sent. */
-  // [UI-016.c] group — the thousands separator, fixed per language by hand
+  // [UI-016.d] group — the thousands separator, fixed per language by hand
   // NOTES:  the note just above is the reason. The browser is never asked:
   //         toLocaleString() reads the phone's locale, and an Italian phone
   //         reflowed the grid from 18,300 L to 18.300 L after hydration, so the
   //         rendered page disagreed with the HTML the server had just sent.
   function group(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, SEP); }
-  // [UI-016.d] fmt — the euro figure, or an honest fallback
+  // [UI-016.e] fmt — the euro figure, or an honest fallback
   // NOTES:  a missing or zero price prints "Çmimi me kërkesë", never a
   //         zero. No price in the data is a data hole, and a hole must never
   //         read as a free watch.
@@ -355,7 +355,7 @@
     if(!price) return '<span class="por">\u00c7mimi me k\u00ebrkes\u00eb</span>';
     return (currency === 'EUR' ? '\u20ac' : currency) + group(price);
   }
-  // [UI-016.e] lekVal — the Lek figure as a number, for the SQ price line
+  // [UI-016.f] lekVal — the Lek figure as a number, for the SQ price line
   // NOTES:  SQ leads with Lek and demotes the euro figure to the aside, because
   //         Albanian customers judge the Lek number; EN and IT do the opposite
   //         and never needed the value split out of its markup. Same half-up
@@ -365,7 +365,7 @@
     if(!price || currency !== 'EUR') return 0;
     return Math.round(price * EUR_TO_LEK / 100) * 100;
   }
-  // [UI-016.f] fmtLek — the euro-first Lek suffix, and DEAD in this file
+  // [UI-016.g] fmtLek — the euro-first Lek suffix, and DEAD in this file
   // NOTES:  nothing here calls it. watchCard() below builds the SQ price line
   //         itself from lekVal(), and this stayed behind when the order flipped.
   //         It is the byte-for-byte twin of the EN and IT copies, which is the
@@ -376,7 +376,7 @@
     return '<span style="font-size:.78rem;color:#888;font-weight:400"> \u00b7 ' + group(Math.round(price * EUR_TO_LEK / 100) * 100) + '\u00a0L</span>';
   }
 
-  // [UI-016.g] waMsg — the prefilled WhatsApp message, which IS the checkout
+  // [UI-016.h] waMsg — the prefilled WhatsApp message, which IS the checkout
   // NOTES:  there is no cart and no payment page on this site, so this link is
   //         the whole conversion path. The message carries brand, model and
   //         reference because the owner answers these on a phone and must not
@@ -386,7 +386,7 @@
     return 'https://api.whatsapp.com/send?phone=355676360510&text=' + encodeURIComponent(msg);
   }
 
-  // [UI-016.h] watchCard — the card markup, and the mirror half of the site
+  // [UI-016.i] watchCard — the card markup, and the mirror half of the site
   // DOES:   builds one <article class="watch-card"> exactly as
   //         gen_shop_index.card() does: picture/webp source, sold overlay,
   //         condition badge, sale badge, brand (+ the Swiss tag on Hislon),

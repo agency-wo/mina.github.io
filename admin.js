@@ -365,7 +365,7 @@
       });
   }
 
-  // [CFG-005.n] b64ToUtf8 — the inverse of btoa(unescape(encodeURIComponent(s)))
+  // [CFG-005.k] b64ToUtf8 — the inverse of btoa(unescape(encodeURIComponent(s)))
   // NOTES:  atob() alone hands back a byte string, so every non-ASCII character
   //         in watches.json returned mojibake and was then re-encoded that way.
   //         One publish would have rewritten Cortébert as CortÃ©bert and
@@ -375,7 +375,7 @@
     return decodeURIComponent(escape(atob(String(b64).replace(/\n/g, ''))));
   }
 
-  // [CFG-005.k] ghGet — GET a repo file via the contents API (content + sha)
+  // [CFG-005.l] ghGet — GET a repo file via the contents API (content + sha)
   function ghGet(token, path){
     return fetch(GH_API + path, {
       headers: { Authorization: 'token '+token, Accept: 'application/vnd.github.v3+json' }
@@ -385,7 +385,7 @@
     });
   }
 
-  // [CFG-005.l] ghPut — create or update a repo file via the contents API
+  // [CFG-005.m] ghPut — create or update a repo file via the contents API
   // NOTES:  sha present = update (required by GitHub), absent = create; the error
   //         path surfaces GitHub's response body because "409" alone is useless.
   function ghPut(token, path, contentB64, message, sha){
@@ -402,7 +402,7 @@
   }
 
   // ── Build watch object ───────────────────────────────────────────────────────
-  // [CFG-005.m] buildWatch — form data -> the watches.json record
+  // [CFG-005.n] buildWatch — form data -> the watches.json record
   // DOES:   ids continue the watch-N sequence from the array length; optional fields
   //         (reference, it/sq descriptions) are omitted rather than written empty.
   function buildWatch(arr, data){
@@ -425,7 +425,7 @@
   }
 
   // ── Reset ────────────────────────────────────────────────────────────────────
-  // [CFG-005.n] resetForm — clear everything back to the "add another" state
+  // [CFG-005.o] resetForm — clear everything back to the "add another" state
   function resetForm(){
     document.getElementById('watch-form').reset();
     document.getElementById('f-year').value = '2025';
@@ -455,7 +455,7 @@
   });
 
   // ── Stock list ───────────────────────────────────────────────────────────────
-  // [CFG-005.o] the panel's read side: what is on the shelf, grouped by brand.
+  // [CFG-005.p] the panel's read side: what is on the shelf, grouped by brand.
   // NOTES:  archive/restore only set and clear the `deleted` flag. Every generator
   //         already honours it (gen_shop_index drops it from the grid and ItemList,
   //         gen_product_pages turns its page into a noindex stub, catalog_stats and
@@ -779,7 +779,7 @@
     if(reopened && (wasOpen || q)) reopened.open = true;
   }
 
-  // [CFG-005.p] setFlag — the only write this panel makes to an existing record.
+  // [CFG-005.t] setFlag — the only write this panel makes to an existing record.
   // NOTES:  re-reads watches.json immediately before writing so the sha is current
   //         and a stale tab cannot clobber a change made elsewhere; GitHub rejects a
   //         stale sha rather than silently overwriting.
