@@ -1207,5 +1207,23 @@ window.WATCHES_DATA = [
     "description_en": "Bigotti in stainless steel with a deep blue sunburst dial and a blue bezel carrying a numbered scale. Three subdials showing the day, the date and 24-hour time rather than a stopwatch, applied rose gold-tone indices and hands, a date window at four and a three-link steel bracelet. The most colour we put on a steel watch.",
     "description_it": "Bigotti in acciaio inossidabile con quadrante blu intenso sunburst e ghiera blu con scala numerata. Tre contatori che mostrano il giorno, la data e le 24 ore invece di un cronometro, indici e lancette applicati in tonalità oro rosa, finestrella data a ore quattro e bracciale in acciaio a tre maglie. Il colore più deciso che mettiamo su un acciaio.",
     "description_sq": "Bigotti në çelik inoks me ciferblat blu të thellë sunburst dhe lunetë blu me shkallë të numëruar. Tre numëratorë që tregojnë ditën, datën dhe 24 orët në vend të një kronometri, tregues dhe akrepa të aplikuar në ngjyrë ari rozë, dritare date në orën katër dhe byzylyk çeliku me tre hallka. Ngjyra më e guximshme që vendosim mbi një çelik."
+  },
+  {
+    "id": "bigotti-bg1-10409-5",
+    "brand": "Bigotti",
+    "model": "Two Tone Roman",
+    "reference": "BG.1.10409-5",
+    "condition": "New",
+    "price": 74,
+    "currency": "EUR",
+    "image": "/images/watches/bigotti-bg1-10409-5.webp",
+    "sold": false,
+    "styles": [
+      "dress",
+      "gold-tone"
+    ],
+    "description_en": "Bigotti Two Tone Roman in stainless steel with a gold-tone bezel and a two-tone bracelet. White dial with a fine wave texture, gold-tone Roman numerals at twelve, three, six and nine with applied batons between them, gold-tone hands and no date window. Steel and gold in one bracelet, so it sits with whatever you already wear.",
+    "description_it": "Bigotti in acciaio inossidabile con lunetta dorata e bracciale bicolore. Quadrante bianco con un motivo ondulato fine, numeri romani dorati alle dodici, alle tre, alle sei e alle nove con indici a bastone applicati tra loro, lancette dorate e nessuna finestrella data. Acciaio e oro nello stesso bracciale, si abbina a quello che già porti.",
+    "description_sq": "Bigotti në çelik inoks me lunetë të artë dhe byzylyk dyngjyrësh. Ciferblat i bardhë me teksturë të imët valëzuar, numra romakë të artë në orën dymbëdhjetë, tre, gjashtë dhe nëntë me tregues shiritash të aplikuar mes tyre, akrepa të artë dhe pa dritare date. Çelik dhe ar në të njëjtin byzylyk, i shkon asaj që ke veshur."
   }
 ];
