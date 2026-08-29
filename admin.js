@@ -496,38 +496,203 @@
     });
   }
 
-  // [CFG-005.q] crmGoverned — which watches the CRM, not this panel, owns.
-  // DOES:   Returns {id:true} for every LIVE watch whose reference the CRM feed
-  //         publishes, using apply_stock's exact linking rule.
-  // WHY:    tools/sync_stock.py reconciles watches.json against the CRM every
-  //         night at 05:17 UTC, and for a linked watch the CRM wins: it flips
-  //         `sold` back and the owner's click disappears overnight with nothing
-  //         on screen to explain it. Rather than let the panel lose that race, it
-  //         does not offer the control. Sell it in the CRM and the site follows
-  //         by itself, which is the direction that already works.
-  // NOTES:  The rule must MATCH sync_stock.apply_stock or the two disagree about
-  //         who owns a watch: reference present in the feed AND unique among LIVE
-  //         entries. A retired entry's reference is excluded on both sides, so
-  //         archiving a sold watch never blocks the restock that replaces it.
-  //         Archive/Restore stay on every row: apply_stock skips retired records,
-  //         so the CRM can never undo them.
-  //         The feed is public, credential-free and CORS *, so the browser reads
-  //         it directly. Unreachable is not an error here, it just means the
-  //         panel cannot prove ownership and says so.
-  function crmGoverned(list){
-    var out = {}, seen = {};
-    if(!crmStock) return out;
+  // This field is PUBLIC (schema.org sku, the visible spec table and the customer's
+  // WhatsApp message), and the box is offered at the exact moment the panel has just
+  // said "record the sale", so a price typed here would ship to watch.al in three
+  // languages within two minutes. But a code shape cannot simply be spelled out: real
+  // references in this catalogue include DK 1.12576.2 (a SPACE) and 001808-COL02
+  // (leading DIGITS), so rules like "no spaces" or "must start with a letter" reject
+  // genuine data. Refuse the money shapes instead, and require at least one letter,
+  // which every reference has and no price does. 40 matches the tracker's maxlength.
+  var REF_OK = /^[A-Za-z0-9 .\/-]{1,40}$/;
+  var REF_HAS_LETTER = /[A-Za-z]/;
+  var REF_MONEY = /(^|[^A-Za-z])(eur|euro|lek|leke|usd|gbp|sold|shit|cmimi|price)([^A-Za-z]|$)/i;
+
+  // [CFG-005.q] linkState — how each watch stands with the tracker, in five states.
+  // DOES:   Returns {id: state} for EVERY watch, live and archived, where state is
+  //         'noref' | 'dup' | 'unknown' | 'linked' | 'stale'.
+  // WHY:    tools/sync_stock.py reconciles watches.json against the tracker, and for
+  //         a linked watch the tracker wins. A boolean collapsed five different
+  //         situations into "not governed", and the copy below has to tell them
+  //         apart or it lies to the owner about whether a sale reached his books.
+  // NOTES:  The rule must MATCH sync_stock.apply_stock or the two disagree about who
+  //         owns a watch: reference in the feed AND unique among LIVE entries. The
+  //         duplicate scan skips retired entries, mirroring [DB-006], so archiving a
+  //         sold watch never blocks the restock that replaces it.
+  //         'noref' and 'dup' are decidable from watches.json alone and are assigned
+  //         EVEN WHEN THE FEED IS DOWN, so an outage does not blind the panel to the
+  //         ten codeless watches. Only the last three need crmStock.
+  //         NEVER returns null. Object.keys(null) throws inside renderStock, which is
+  //         bound straight to the search box with no try/catch, so one slow feed would
+  //         make every keystroke throw and freeze the list on "Loading".
+  //         'stale' is the un-sell trap: sold here, but the tracker still counts one in
+  //         stock, so the next reconcile flips it back on sale. See soldMsg.
+  function linkState(list){
+    var out = {}, seen = {}, dup = {};
     list.forEach(function(w){
       if(w.deleted) return;
       var r = String(w.reference || '').trim().toUpperCase();
       if(r) (seen[r] = seen[r] || []).push(w.id);
     });
-    Object.keys(seen).forEach(function(r){
-      if(seen[r].length === 1 && Object.prototype.hasOwnProperty.call(crmStock, r)){
-        out[seen[r][0]] = true;
-      }
+    Object.keys(seen).forEach(function(r){ if(seen[r].length > 1) dup[r] = true; });
+    list.forEach(function(w){
+      var r = String(w.reference || '').trim().toUpperCase();
+      if(!r){ out[w.id] = 'noref'; return; }
+      if(dup[r]){ out[w.id] = 'dup'; return; }
+      if(!crmStock) return;                 // feed down: cannot classify the rest, say nothing
+      if(!Object.prototype.hasOwnProperty.call(crmStock, r)){ out[w.id] = 'unknown'; return; }
+      out[w.id] = (w.sold && crmStock[r] > 0) ? 'stale' : 'linked';
     });
     return out;
+  }
+
+  // Kept so its two call sites do not change. Output stays what it always was:
+  // live watches the tracker owns, and {} while the feed is unreachable.
+  function crmGoverned(list){
+    var st = linkState(list), out = {};
+    list.forEach(function(w){
+      if(w.deleted) return;
+      if(st[w.id] === 'linked' || st[w.id] === 'stale') out[w.id] = true;
+    });
+    return out;
+  }
+
+  // One owner for the five phrasings, so the strip and the list cannot disagree
+  // about what the panel is entitled to claim.
+  function linkNote(w, state){
+    // wrapped so a long-press selects the whole code when an in-app browser
+    // refuses the clipboard API and the Copy button falls back to nothing
+    var code = '<span class="stock-code">'
+      + esc(String(w.reference || '').trim()) + '</span>';
+    if(state === 'noref') return 'No code on this watch, so the tracker cannot match it.';
+    if(state === 'dup') return 'Two watches here share the code ' + code
+      + ', so the tracker cannot tell them apart.';
+    if(state === 'unknown') return 'The tracker has no watch with the code ' + code + '.';
+    if(state === 'stale') return 'The tracker still lists ' + code + ' as in stock, so the next '
+      + 'sync will put this watch back on sale. Archive it here to stop that.';
+    return '';
+  }
+
+  function refEditHtml(w){
+    return '<span class="ref-add">'
+      + '<input type="text" id="ref-' + esc(w.id) + '" maxlength="40" list="crm-codes" '
+      + 'placeholder="Code, e.g. DK.1.12906-3">'
+      + '<button type="button" data-act="setref" data-id="' + esc(w.id) + '">Save code</button>'
+      + '</span>';
+  }
+
+  // navigator.clipboard needs a secure context, which watch.al has, but an in-app
+  // browser can still refuse it. Falls back rather than hanging with the button
+  // still saying "Copy code", which is what a missing .catch would do.
+  function copyRef(text, btn){
+    var label = btn.textContent;
+    function done(ok){
+      btn.textContent = ok ? 'Copied' : 'Copy failed';
+      setTimeout(function(){ btn.textContent = label; }, 1600);
+    }
+    function fallback(){
+      try{
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        done(ok);
+      }catch(e){ done(false); }
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ done(true); }, fallback);
+    } else { fallback(); }
+  }
+
+  function alertRow(w, state){
+    var code = String(w.reference || '').trim();
+    return '<div class="stock-row"><div class="stock-meta">'
+      + '<strong>' + esc(w.brand) + ' ' + esc(w.model) + '</strong>'
+      + '<span class="stock-note">' + linkNote(w, state) + '</span></div>'
+      + '<div class="stock-acts">'
+      + (code ? '<button type="button" data-act="copyref" data-id="' + esc(w.id)
+                + '">Copy code</button>' : '')
+      + (w.deleted ? '' : '<button type="button" data-act="archive-sold" data-id="' + esc(w.id)
+                          + '">Archive</button>')
+      + (state === 'noref' ? refEditHtml(w) : '')
+      + '</div></div>';
+  }
+
+  // [CFG-005.r] alertsHtml — sales the tracker cannot confirm.
+  // NOTES:  Covers ARCHIVED watches too. Archiving is the correct first step, so if
+  //         this list dropped a row on archive it would clear its own warning in one
+  //         tap with the sale still missing from the books. The row leaves only when
+  //         the tracker confirms it, which is state 'linked'.
+  //         Empty today: nothing is sold.
+  function alertsHtml(all, link){
+    var rows = all.filter(function(w){
+      var s = link[w.id];
+      return w.sold && s && s !== 'linked';
+    });
+    if(!rows.length) return '';
+    return '<div class="stock-alert">'
+      + '<h4>Sold here, not recorded in the tracker</h4>'
+      + '<p>You marked these sold on the site. The tracker cannot confirm the sale, so it will not '
+      + 'reach Bilanci, the printed reports or the export. Archive each one here first, then add it '
+      + 'in the tracker under Stoku i Oreve, Shto ore, and record what it sold for.</p>'
+      + rows.map(function(w){ return alertRow(w, link[w.id]); }).join('')
+      + '</div>';
+  }
+
+  // [CFG-005.s] unlinkedHtml — the standing worklist, collapsed.
+  // NOTES:  The only surface that works whether or not Mark sold is ever pressed.
+  //         Honours the search box, or filtering would hide the brand groups and
+  //         leave all sixty rows here. Open state is restored by renderStock.
+  function unlinkedHtml(live, link, q){
+    var rows = live.filter(function(w){
+      var s = link[w.id];
+      if(!s || s === 'linked' || s === 'stale') return false;
+      if(!q) return true;
+      return (w.brand + ' ' + w.model + ' ' + (w.reference || '')).toLowerCase().indexOf(q) >= 0;
+    });
+    if(!rows.length) return '';
+    var taken = {};
+    live.forEach(function(w){
+      var r = String(w.reference || '').trim().toUpperCase();
+      if(r) taken[r] = true;
+    });
+    var free = crmStock ? Object.keys(crmStock).filter(function(r){ return !taken[r]; }).sort() : [];
+    return '<details class="stock-group" id="unlinked-details">'
+      + '<summary>Not linked to the tracker<span class="count">' + rows.length + '</span></summary>'
+      + '<p class="form-hint">Marking one of these sold on this page records the sale nowhere else. '
+      + 'Give the watch a code here, then add it in the tracker under Stoku i Oreve, Shto ore, with '
+      + 'the same code in the Shifra / referenca box. It links itself on the next page load.</p>'
+      + '<datalist id="crm-codes">'
+      + free.map(function(r){ return '<option value="' + esc(r) + '">'; }).join('')
+      + '</datalist>'
+      + rows.map(function(w){ return alertRow(w, link[w.id]); }).join('')
+      + '</details>';
+  }
+
+  // Never implies a sale reached the books when it did not, and always gives the
+  // ORDER. Archiving first is what makes the sale survive: apply_stock skips retired
+  // records in both its flip loop and its duplicate scan, so the tracker can never
+  // undo them. Do it the other way round and adding the tracker row fires a full
+  // reconcile that finds the code in stock and puts the watch back on sale.
+  function soldMsg(id){
+    var w = findWatch(id);
+    if(!w) return 'Marked sold saved.';
+    if(!crmStock) return 'Saved. I could not reach the tracker, so I cannot tell you whether this '
+      + 'sale will reach your books. Check it in Stoku i Oreve.';
+    var s = linkState(stockList || [])[id], code = String(w.reference || '').trim();
+    if(s === 'linked' || s === 'stale') return 'Marked sold saved.';
+    var why = s === 'noref'
+      ? 'This watch has no code, so the tracker cannot match it'
+      : s === 'dup'
+        ? 'Two watches here share the code ' + code + ', so the tracker cannot tell which one sold'
+        : 'The tracker has no watch with the code ' + code;
+    return 'Saved. ' + why + ', so this sale will not reach Bilanci or the reports. Archive it here '
+      + 'first, then add it in the tracker under Stoku i Oreve.';
   }
 
   // Never lets a slow CRM hold up the stock list. The feed only decides which
@@ -596,13 +761,22 @@
     var q = (sEl && sEl.value || '').trim().toLowerCase();
     var live = [], gone = [];
     stockList.forEach(function(w){ (w.deleted ? gone : live).push(w); });
+    var link = linkState(stockList);
     var governed = crmGoverned(stockList);
-    // Unreachable CRM is not an error, but the panel must not imply it checked.
-    var note = crmStock ? '' : '<p class="form-hint">Could not reach the CRM just now, '
-      + 'so rows it manages are not marked. A watch the CRM tracks has its sold state '
-      + 'set there, not here.</p>';
+    // Unreachable tracker is not an error, but the panel must not imply it checked.
+    var note = crmStock ? '' : '<p class="form-hint">Could not reach the tracker just now, '
+      + 'so rows it manages are not marked, and a sale marked now cannot be confirmed as '
+      + 'recorded. A watch the tracker knows has its sold state set there, not here.</p>';
+    // read the disclosure state before the rewrite, or the section snaps shut on every
+    // keystroke and after every code saved
+    var det = document.getElementById('unlinked-details');
+    var wasOpen = !!(det && det.open);
+    document.getElementById('stock-alerts').innerHTML = alertsHtml(stockList, link);
     document.getElementById('stock-groups').innerHTML = note + groupHtml(live, q, false, governed);
+    document.getElementById('stock-unlinked').innerHTML = unlinkedHtml(live, link, q);
     document.getElementById('archive-groups').innerHTML = groupHtml(gone, q, true, governed);
+    var reopened = document.getElementById('unlinked-details');
+    if(reopened && (wasOpen || q)) reopened.open = true;
   }
 
   // [CFG-005.p] setFlag — the only write this panel makes to an existing record.
@@ -617,9 +791,30 @@
     if(!token){ stockMsg('Connect a GitHub token first \u2014 see GitHub Connection above.'); return; }
     // A stale tab can still be showing a Sold button for a watch the CRM has
     // since taken over. Writing it would be undone by the next reconcile.
-    if(key === 'sold' && crmGoverned(stockList || [])[id]){
-      stockMsg('The CRM manages that watch. Mark it sold there and the site follows.');
+    if((key === 'sold' || key === 'reference') && crmGoverned(stockList || [])[id]){
+      stockMsg('The tracker manages that watch. Mark it sold there and the site follows.');
       return;
+    }
+    if(key === 'reference'){
+      var code = String(val || '').trim();
+      if(!code){ stockMsg('Type a code first.'); return; }
+      if(!REF_OK.test(code) || !REF_HAS_LETTER.test(code) || REF_MONEY.test(code)){
+        stockMsg('That does not look like a code. Use the code from the watch tag, up to '
+                 + '40 characters, letters and numbers with dots or dashes. This is not '
+                 + 'where a price goes.');
+        return;
+      }
+      var clash = null;
+      (stockList || []).forEach(function(x){
+        if(x.id !== id && !x.deleted
+           && String(x.reference || '').trim().toUpperCase() === code.toUpperCase()) clash = x;
+      });
+      if(clash){
+        stockMsg('That code is already on ' + clash.brand + ' ' + clash.model + '. Two '
+                 + 'watches with the same code can never link, so give this one its own.');
+        return;
+      }
+      val = code;
     }
     stockMsg('Saving\u2026');
     ghGet(token, 'watches.json').then(function(res){
@@ -627,13 +822,18 @@
       for(var i = 0; i < arr.length; i++){ if(arr[i].id === id){ w = arr[i]; break; } }
       if(!w) throw new Error(id + ' is no longer in watches.json');
       if(key === 'sold'){ w.sold = !!val; }
+      else if(key === 'reference'){ w.reference = val; }
       else if(val){ w.deleted = true; }
       else { delete w.deleted; }
       var body = btoa(unescape(encodeURIComponent(JSON.stringify(arr, null, 2))));
       return ghPut(token, 'watches.json', body,
                    label + ': ' + w.brand + ' ' + w.model, res.sha);
     }).then(function(){
-      stockMsg(label + ' saved. The site rebuilds itself; give it a minute or two.');
+      stockMsg(key === 'sold' && val ? soldMsg(id)
+        : key === 'reference'
+          ? 'Code saved. Add the same code in the tracker under Stoku i Oreve, Shto ore, in '
+            + 'the Shifra / referenca box.'
+          : label + ' saved. The site rebuilds itself; give it a minute or two.');
       return loadStock();
     }).catch(function(err){
       stockMsg('Failed: ' + err.message);
@@ -663,6 +863,18 @@
         setFlag(id, 'deleted', true, 'Archive');
       } else if(act === 'restore'){
         setFlag(id, 'deleted', false, 'Restore');
+      } else if(act === 'archive-sold'){
+        // its own confirm: archiving from the alert strip is about protecting a sale,
+        // not about the restock story the ordinary Archive button tells
+        if(!confirm('Archive ' + w.brand + ' ' + w.model + '?\n\nThis takes it off the shop '
+                    + 'and protects the sale from being undone by the tracker sync. It stays '
+                    + 'on this list until the tracker knows about the sale.')) return;
+        setFlag(id, 'deleted', true, 'Archive');
+      } else if(act === 'copyref'){
+        copyRef(String(w.reference || '').trim(), btn);
+      } else if(act === 'setref'){
+        var inp = document.getElementById('ref-' + id);
+        setFlag(id, 'reference', inp ? inp.value : '', 'Code');
       }
     });
     var searchEl = document.getElementById('stock-search');
