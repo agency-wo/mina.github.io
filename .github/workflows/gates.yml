@@ -1,0 +1,53 @@
+# [ERR-014] gates.yml — run all eight gates on every push.
+#
+# WHY THIS DID NOT EXIST BEFORE. The gates lived in watch-repair-shop/scripts/, OUTSIDE this
+# repository, so Actions could not see them. They moved into tools/gates/ for exactly this.
+#
+# WHAT THIS CAN AND CANNOT DO. GitHub Pages publishes from main regardless of any workflow, so
+# this is DETECTION WITHIN A MINUTE, not prevention. That is still the difference between
+# knowing and not: check-tags.py sat red with 12 findings and nothing said so.
+#
+# THE CRLF STEP IS LOAD-BEARING, DO NOT REMOVE IT. This repo runs core.autocrlf=true with no
+# .gitattributes, so sitemap.xml, sitemap_state.json and the three blog indexes are CRLF in the
+# working tree and would arrive as pure LF on a Linux runner. Six assertions would then fail in
+# CI and only in CI: verify-sitemap's two strict-CRLF checks, verify-blog-index's three, and the
+# sitemap idempotence check, because gen_sitemap joins with \r\n. Setting autocrlf BEFORE
+# checkout makes the runner's tree match the contract the gates assert.
+# The alternative, committing a .gitattributes, was rejected: in a repo already running autocrlf
+# it can trigger a mass renormalisation on the next checkout on the owner's machine.
+# Relaxing the assertions is not an option - the blog indexes have a fixed no-BOM strict-CRLF
+# contract recorded in CLAUDE.md.
+name: gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# read-only on purpose: stock-sync.yml is the workflow that writes. This one only looks.
+permissions:
+  contents: read
+
+concurrency:
+  group: gates-${{ github.ref }}
+  cancel-in-progress: true    # a superseded commit's result is noise
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: match the working tree's line endings
+        run: git config --global core.autocrlf true
+
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # No pip install: every gate is stdlib plus this repo's own modules. node is preinstalled,
+      # which matters because audit-watches check 6 shells out to `node --check` and skips
+      # itself when node is absent - on a dev machine without node that check silently does
+      # nothing, so CI is the only place it reliably runs.
+      - name: gates
+        run: python tools/gates/run.py
