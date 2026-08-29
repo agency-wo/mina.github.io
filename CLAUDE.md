@@ -18,20 +18,22 @@ watch-repair-shop/          <- working root, NOT a git repo
 ├── .claude/agents/         <- the lane agents, OUTSIDE git
 └── mina.github.io/         <- THE GIT REPO, deploys to watch.al
     ├── tools/              <- sync_stock.py and the only test file
-    ├── {en,it,sq}/         <- 168 + 168 + 172 pages
+    ├── {en,it,sq}/         <- the three language trees
     └── gen_*.py            <- the generators
 ```
 
 Gates run **from the working root** (`python scripts/audit-watches.py`). Generators run **from
 `mina.github.io/`** (`python gen_shop_index.py`) because they import sibling modules.
 
-512 HTML files. 61 live watches, 183 product pages (61 x 3; plus noindex redirect stubs the
-gates skip), 15 brand pages, 84 article families in 5 categories, 18 service pages, 12 legal
-pages. `sitemap.xml` is 487 urls / 1,944 hreflang alternates / 183 images.
+The site is the three language trees plus the shop, the brand hubs, the article families in 5
+categories, the service pages and the legal pages.
 
-These figures go stale on every catalogue or article change and **nothing regenerates this file**.
-Do not quote them at a visitor and never copy one into a page. Read them off the gates instead:
-`verify-product-pages.py` prints the product-page count, `verify-sitemap.py` the sitemap totals.
+**No counts are written here.** Every one that used to be gave a wrong number: this file said 512
+HTML files against 605 real, 61 watches against 70, 487 sitemap locs against 577. The rules were
+fine; the numbers rotted, and a reader who spot-checks one stops trusting the section it sits in.
+A `SessionStart` hook now computes them from the working tree and injects them, so they are
+always current. On demand: `verify-product-pages.py` prints the product-page count,
+`verify-sitemap.py` the sitemap totals. Never copy one into a page.
 
 ---
 
@@ -59,7 +61,7 @@ advertises the previous catalogue. That is a real incident: it shipped reading "
 watches" after the counter had moved on, which is also why counts are no longer published at all.
 
 **Never `import gen_product_pages`.** Its page loop is at module level, so importing it regenerates
-all 183 product pages as a side effect. Run it as a script. `tools/test_sync_stock.py` imports
+every product page as a side effect. Run it as a script. `tools/test_sync_stock.py` imports
 `shop_bits` instead for exactly this reason.
 
 ---
@@ -120,7 +122,7 @@ Commit subjects carry the tags the work consumed, concatenated, ranges as `..`:
 `[UI-005..015][UX-002][SEC-003..004] W5: indexed headers across the site's source`.
 
 Where tags are deliberately absent: `watches-data.js` and the generated HTML (both build output),
-and the 491 pages generally. `shared.js` is minified so it gets a file header only.
+and the generated pages generally. `shared.js` is minified so it gets a file header only.
 
 **Adding a tag is comment-only work.** Prove it the way commit `8120eec` did: `ast.parse` every
 `.py`, `node --check` every `.js`, then re-run all the generators and confirm each reports
@@ -210,7 +212,7 @@ Breaking one of these has caused a real incident. They are not style preferences
 - **No AI filler.** No "in today's world", no "it's worth noting", no throat-clearing.
 - **Every CTA links to an exact product page**, never to the shop index. **Match the anchor text,
   never the href**: every article also carries a *breadcrumb* to the shop index, and a sweep on
-  `href="/xx/shop/"` alone hits all 279 of them and deletes the site's navigation. The breadcrumb
+  `href="/xx/shop/"` alone hits every one of them and deletes the site's navigation. The breadcrumb
   label is not even constant — Italian articles use the English word `Shop`, Albanian mixes `Shop`
   and `Dyqan`. A prose link that writes `watch.al/xx/shop/` as an address, or that genuinely means
   the whole catalogue ("see the full stock on the shop page"), is correct and stays: repointing it
@@ -240,7 +242,7 @@ Breaking one of these has caused a real incident. They are not style preferences
   `@media(max-width:600px){.watch-price{font-size:1.2rem}}` above the base `.watch-price{...
   font-size:1.45rem}` and the phone silently gets 1.45rem: same specificity, later rule wins.
   Nothing reports it. The declaration is present, spelled correctly, and dead. This has now bitten
-  twice: the three homepages, then the shop index and the 24 brand hubs that clone it, where seven
+  twice: the three homepages, then the shop index and the brand hubs that clone it, where seven
   declarations had never once applied and the phone was rendering desktop padding and a desktop
   serif price. **Append responsive overrides at the end of the block**, and when a page looks wrong
   at one breakpoint only, check the rule ORDER before rewriting the value:
@@ -253,7 +255,7 @@ Breaking one of these has caused a real incident. They are not style preferences
   carry `env(safe-area-inset-bottom)`** and the header wrap carries `env(safe-area-inset-top)`.
   That is what lets iPhones and in-app WebViews that lay the page out edge-to-edge keep the header
   and the call bar clear of the notch, the home indicator and a host app's bar. A new fixed-bottom
-  element without the inset sits under the home indicator in Safari. The 29 noindex stubs are
+  element without the inset sits under the home indicator in Safari. The noindex stubs are
   exempt: they refresh in 0s.
 - **In-app browsers are handled by `/inapp.js` + the `html.in-app*` hooks in `shared.css`.** The
   script loads synchronously right after the viewport meta (before first paint, on purpose) and
@@ -273,8 +275,8 @@ Breaking one of these has caused a real incident. They are not style preferences
   ```
   A gate must assert a file is internally consistent (all-CRLF or all-LF), never a fixed shape. The
   blog indexes are the one exception with a fixed contract: no BOM, strict CRLF.
-- **Albanian and Italian mix encodings inside a single file** — 151 of 165 SQ files carry both
-  `&euml;` and a literal `ë`, and 129 IT files carry entities. **Any sweep must match both forms** or
+- **Albanian and Italian mix encodings inside a single file** — most SQ files carry both
+  `&euml;` and a literal `ë`, and most IT files carry entities. **Any sweep must match both forms** or
   it will report a corrupt corpus clean.
 
 ---
@@ -304,7 +306,7 @@ Nothing needs a cache-bust: the `watches-data.js?v=` requirement died with the r
 
 Work is divided between agents in `../.claude/agents/`. Each owns a file set no other lane writes.
 
-`shop` · catalogue and buying path — `blog` · the 240 articles — `funnel` · homepages, services,
+`shop` · catalogue and buying path — `blog` · the articles — `funnel` · homepages, services,
 about, b2b, delivery, legal — `seo` · sitemap, stats, llms.txt, robots, FAQ, schema — `ui` ·
 `shared.css`, chrome, glyphs, assets (CSS-only) — `lang` · all Italian and Albanian prose —
 `verify` · the gates.
@@ -318,7 +320,7 @@ case a second writer can only produce a stale value, never a conflicting one.
 **An article declares a CTA role, never a watch.** `data-cta-role="battery"` on the bridge box is the
 editorial decision and it is authored once; `gen_article_cta.py` picks the watch that currently fits
 that role out of `watches.json` on every build, so a sell-out re-points the article and an arrival can
-win the slot back. Writing a watch id into 114 boxes would have created 114 things to go stale the
+win the slot back. Writing a watch id into every bridge box would have created one more thing to go stale the
 first time one of them sold. The rotation is anchored on PRICE rather than on a list index: an index
 shifts for every article when any watch sells, and a test doing exactly that moved 30 articles and
 would have churned 90 sitemap lastmod dates for a stock change.
