@@ -1,0 +1,57 @@
+{
+  "en/blog/matching-watches-for-couples.html": [
+    "123"
+  ],
+  "it/blog/orologi-coppia-abbinati.html": [
+    "123"
+  ],
+  "sq/blog/ora-per-cifte.html": [
+    "123"
+  ],
+  "_why": "123 euro is the sum of two watches (a 59 and a 64), not a single price. Every other price pair on the site must be a real catalogue price.",
+  "_check_f": {
+    "_why": "2026-08-29: three entries added, one per language, for the power-reserve family. Their 70 is hours of reserve and collided with the catalogue reaching 70 records when the Bigotti Two Tone Roman was added. They are waived rather than wrapped because the only marker that would fit is data-stat=\"n\", the retired count token, and no page states how many watches. They delete themselves the next time the catalogue moves. Previously: 2026-08-27: three entries added, one per language, all the same FAQ sentence; each carries its own reason and date. They arrived with the Christmas gift guide committed in a581e1e earlier the same day. An earlier draft of this note blamed the gate for under-scanning, which was WRONG: the blog page count moved from 289 to 304 because seven commits between 11:35 and 13:29 added exactly 15 blog files, five article families in three languages. The gate was right the whole time. The plain-paragraph mentions of the same figure were wrapped in data-stat markers rather than waived. Previously: Empty again as of 2026-08-25. It was empty by design from 2026-08-17, gained three entries that same day, and has now shed them. The three blog indexes were the original permanent entries, held because the featured card rendered a catalogue count from the {n} and {u10k} tokens; those tokens are retired, because no page states how many watches. The three age entries that replaced them existed only because the 92.25 repricing moved u10k to 55, which collided with 'a 25-year-old and a 55-year-old' in one sentence. Adding the Philippe Lauren PL2391-2 moved u10k to 56, the collision vanished, and the ratchet reported all three as having no hit left. That is exactly what each entry's own reason said would happen and what it said to do. Deleted, not renumbered: an allowlist that only ever shrinks is the point.",
+    "en/blog/christmas-watch-gifts-albania.html": {
+      "reason": "The 50 is inside a FAQ answer, and a FAQ answer exists twice: visible and in its FAQPage JSON-LD twin. A data-stat span cannot go there, because the marker lands in the JSON string too and injects HTML into schema, which is the bug that once broke the Italian and Albanian homepages. The plain-paragraph mentions on this same page WERE wrapped and are not waived. On a repricing, update this answer in scripts/faq-overrides.json and let faq-build.py --reapply write both copies; never edit it in the page.",
+      "date": "2026-08-27",
+      "values": [
+        "50"
+      ]
+    },
+    "it/blog/regalo-orologio-natale-albania.html": {
+      "reason": "The 50 is inside a FAQ answer, and a FAQ answer exists twice: visible and in its FAQPage JSON-LD twin. A data-stat span cannot go there, because the marker lands in the JSON string too and injects HTML into schema, which is the bug that once broke the Italian and Albanian homepages. The plain-paragraph mentions on this same page WERE wrapped and are not waived. On a repricing, update this answer in scripts/faq-overrides.json and let faq-build.py --reapply write both copies; never edit it in the page.",
+      "date": "2026-08-27",
+      "values": [
+        "50"
+      ]
+    },
+    "sq/blog/dhurata-ore-krishtlindje-shqiperi.html": {
+      "reason": "The 50 is inside a FAQ answer, and a FAQ answer exists twice: visible and in its FAQPage JSON-LD twin. A data-stat span cannot go there, because the marker lands in the JSON string too and injects HTML into schema, which is the bug that once broke the Italian and Albanian homepages. The plain-paragraph mentions on this same page WERE wrapped and are not waived. On a repricing, update this answer in scripts/faq-overrides.json and let faq-build.py --reapply write both copies; never edit it in the page.",
+      "date": "2026-08-27",
+      "values": [
+        "50"
+      ]
+    },
+    "en/blog/watch-power-reserve.html": {
+      "reason": "The 70 is a power-reserve duration in HOURS, not a catalogue count. It only became a finding because adding bigotti-bg1-10409-5 moved the catalogue to 70 and check F matches whatever the catalogue holds right now beside a catalogue noun. Do NOT wrap it: data-stat=\"n\" is the retired catalogue-count token and no page may state how many watches, so the marker would revive the banned claim on a number that does not mean it. This entry is self-cleaning. The next watch moves the catalogue off 70, the ratchet reports these three as carrying no live number, and they must be deleted then.",
+      "date": "2026-08-29",
+      "values": [
+        "70"
+      ]
+    },
+    "it/blog/riserva-di-carica-orologio.html": {
+      "reason": "The 70 is a power-reserve duration in HOURS, not a catalogue count. It only became a finding because adding bigotti-bg1-10409-5 moved the catalogue to 70 and check F matches whatever the catalogue holds right now beside a catalogue noun. Do NOT wrap it: data-stat=\"n\" is the retired catalogue-count token and no page may state how many watches, so the marker would revive the banned claim on a number that does not mean it. This entry is self-cleaning. The next watch moves the catalogue off 70, the ratchet reports these three as carrying no live number, and they must be deleted then.",
+      "date": "2026-08-29",
+      "values": [
+        "70"
+      ]
+    },
+    "sq/blog/rezerva-energjise.html": {
+      "reason": "The 70 is a power-reserve duration in HOURS, not a catalogue count. It only became a finding because adding bigotti-bg1-10409-5 moved the catalogue to 70 and check F matches whatever the catalogue holds right now beside a catalogue noun. Do NOT wrap it: data-stat=\"n\" is the retired catalogue-count token and no page may state how many watches, so the marker would revive the banned claim on a number that does not mean it. This entry is self-cleaning. The next watch moves the catalogue off 70, the ratchet reports these three as carrying no live number, and they must be deleted then.",
+      "date": "2026-08-29",
+      "values": [
+        "70"
+      ]
+    }
+  }
+}

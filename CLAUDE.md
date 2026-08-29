@@ -14,16 +14,17 @@ prefilled WhatsApp message with cash on delivery, or a walk-in to the shop.
 
 ```
 watch-repair-shop/          <- working root, NOT a git repo
-├── scripts/                <- gates and one-shot migrations, OUTSIDE git
+├── scripts/                <- one-shots and operator tools, OUTSIDE git
 ├── .claude/agents/         <- the lane agents, OUTSIDE git
 └── mina.github.io/         <- THE GIT REPO, deploys to watch.al
-    ├── tools/              <- sync_stock.py and the only test file
+    ├── tools/              <- sync_stock.py, make_shells.py
+    │   └── gates/          <- the 8 gates + run.py, IN git so CI can run them
     ├── {en,it,sq}/         <- the three language trees
     └── gen_*.py            <- the generators
 ```
 
-Gates run **from the working root** (`python scripts/audit-watches.py`). Generators run **from
-`mina.github.io/`** (`python gen_shop_index.py`) because they import sibling modules.
+Gates run **from the working root** (`python mina.github.io/tools/gates/run.py`). Generators run
+**from `mina.github.io/`** (`python gen_shop_index.py`) because they import sibling modules.
 
 The site is the three language trees plus the shop, the brand hubs, the article families in 5
 categories, the service pages and the legal pages.
@@ -68,9 +69,9 @@ every product page as a side effect. Run it as a script. `tools/test_sync_stock.
 
 ## The gates
 
-None are wired into CI. `.github/workflows/stock-sync.yml` (daily CRM reconcile) is the only
-automatic job, so verification depends on somebody running these. All are read-only and exit 1 on
-findings.
+All are read-only and exit 1 on findings. `tools/gates/run.py` runs all eight in ONE process so
+`tools/gates/corpus.py` can cache the corpus across them: measured 9,565 reads served from 620
+actual file opens, where the eight separate processes did ~13,000 opens of 848 files.
 
 | command (from the working root) | PASS line |
 |---|---|
