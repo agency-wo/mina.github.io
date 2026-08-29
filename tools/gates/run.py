@@ -29,8 +29,8 @@ HERE = Path(__file__).resolve().parent
 BASE = HERE.parents[1]
 
 # Order is the cheap-first order, so a fast failure surfaces before the slow gates run.
-GATES = ["verify-product-pages", "verify-blog-index", "verify-contact", "audit-watches",
-         "faq-build", "verify-sitemap", "verify-stats"]
+GATES = ["verify-chain", "verify-product-pages", "verify-blog-index", "verify-contact",
+         "audit-watches", "faq-build", "verify-sitemap", "verify-stats"]
 
 # Entry point per gate. Six expose main() and exit; faq-build exposes cmd_verify() and RETURNS
 # its code, because the file is also the FAQ builder and its __main__ is an argparse dispatch.
