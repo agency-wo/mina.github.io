@@ -92,42 +92,25 @@ is committed. That is by design: confirm the change was deliberate, then commit.
 ## Finding your way: the `[TAG-NNN]` index
 
 Every hand-written source file carries a header comment with a bracketed tag. **Grep the tag to
-jump straight to the thing.** The header says what the file is, what it takes, what it emits, and
-which bug each awkward line exists to prevent.
+jump straight to the thing.** Functions get `.a`, `.b`, `.c` **in source order** under their
+file's tag.
 
-```js
-// [UI-005] booking.js — service-booking form that hands off to WhatsApp
-// DOES:   validates #bookForm, builds a localized message (en/it/sq from <html lang>)
-// IN:     #bookForm fields: service, name, phone (required)
-// OUT:    window.open on api.whatsapp.com with the encoded message
-// NOTES:  falls back to the raw ISO string if toLocaleDateString throws.
-```
-
-Functions get `.a`, `.b`, `.c` in source order under their file's tag. Python modules prepend the
-tag to the existing docstring and keep it. Fields are `DOES: IN: OUT: CALLS: NOTES:`, padded so
-the body starts at a fixed column; only the tag line is mandatory. Cross-reference another tag as
-a bare bracket in prose: `(see [SEC-002])`. Em dashes are fine **here** — the no-em-dash rule is
-about rendered prose, not comments.
-
-**The namespace is shared with the part-tracker repo.** `W:` is this repo, `T:` is the tracker,
-and the registry is `part tracker/docs/CODE_INDEX.md`. Prefixes are a closed set:
-`UI UX API DB CRM SEC PERF ERR UTIL CFG`. Numbers are **sequential per prefix and never reused**,
-including numbers consumed only by a commit subject, so **never allocate one by eye**:
+The namespace is shared with the part-tracker repo, prefixes are a closed set, and numbers are
+**sequential per prefix and never reused** - including numbers consumed only by a commit
+subject, so **never allocate one by eye**:
 
 ```
-python scripts/check-tags.py      # prints the next free number per prefix, across both
-                                  # repos and both git logs, and fails on duplicates
+python scripts/check-tags.py      # next free number per prefix, across both repos and both
+                                  # git logs; fails on duplicates and on out-of-order letters
+python scripts/renumber-tags.py <file> <TAG>   # fixes an ordering finding; --apply to write
 ```
 
-Commit subjects carry the tags the work consumed, concatenated, ranges as `..`:
-`[UI-005..015][UX-002][SEC-003..004] W5: indexed headers across the site's source`.
+**Adding a tag is comment-only work.** Prove it: `ast.parse` every `.py`, `node --check` every
+`.js`, then re-run all the generators and confirm each reports SKIP / `Updated: 0` /
+`Written: 0`.
 
-Where tags are deliberately absent: `watches-data.js` and the generated HTML (both build output),
-and the generated pages generally. `shared.js` is minified so it gets a file header only.
-
-**Adding a tag is comment-only work.** Prove it the way commit `8120eec` did: `ast.parse` every
-`.py`, `node --check` every `.js`, then re-run all the generators and confirm each reports
-SKIP / Unchanged / `Written: 0`.
+Full format spec - header fields, the worked example, the commit-subject convention, where tags
+are deliberately absent: `docs/reference/tags.md`.
 
 ## Binding rules
 
@@ -284,20 +267,19 @@ Breaking one of these has caused a real incident. They are not style preferences
 
 ## Adding a watch
 
-The most frequent job here, and the one with the longest ripple.
+The most frequent job here, and the one with the longest ripple. Run `/add-watch`, which carries
+the full procedure and its footguns. The five steps:
 
-1. `scripts/process-new-watch-images.py` — set `JOBS` to **only** the new watch. It overwrites
-   unconditionally, so a stale entry re-encodes an existing image and dirties the diff for a watch
-   nobody touched. Output: 800×800 white-canvas `.webp` + `.jpg`.
-2. Append to **both** `watches.json` and `watches-data.js`, written from one source using
+1. `scripts/process-new-watch-images.py` - set `JOBS` to **only** the new watch. It overwrites
+   unconditionally, so a stale entry re-encodes a published image.
+2. Append to **both** `watches.json` and `watches-data.js` from one source, via
    `tools/sync_stock.py`'s `style_of` / `json_bytes` / `data_js_bytes`. Descriptions must contain no
-   `"` and no `&`. Give the watch a **model name unique across the whole catalogue**, or `DUP_NAMES`
-   appends a reference and retroactively rewrites the existing watch's title in all three languages.
-3. `scripts/make-new-watch-pages.py` with `NEW_IDS` set.
-4. The generator chain above, in order. **`gen_blog_index.py` included** — the featured blog card
-   quotes the catalogue and nothing else can refresh it.
-5. **Fix the prose the count broke.** The shop index, brand pages, blog indexes, sitemaps,
-   `llms.txt` and all `data-stat` markers heal themselves. Article and service prose does not.
+   `"` and no `&`. The model name must be **unique across the whole catalogue**, or `DUP_NAMES`
+   retroactively rewrites the existing watch's title in all three languages.
+3. `python tools/make_shells.py <id>` from `mina.github.io/`.
+4. The generator chain above, in order. **`gen_blog_index.py` included.**
+5. **Fix the prose the count broke.** Everything generated heals itself; article and service
+   prose does not.
 
 Nothing needs a cache-bust: the `watches-data.js?v=` requirement died with the runtime renderer.
 
@@ -305,26 +287,17 @@ Nothing needs a cache-bust: the `watches-data.js?v=` requirement died with the r
 
 ## The lanes
 
-Work is divided between agents in `../.claude/agents/`. Each owns a file set no other lane writes.
+Work is divided between agents in `../.claude/agents/`: `shop` `blog` `funnel` `seo` `ui` `lang`
+`verify`, each owning a file set no other lane writes. Five derived regions are written by a lane
+that does not own the surrounding file, which is correct rather than a conflict.
 
-`shop` · catalogue and buying path — `blog` · the articles — `funnel` · homepages, services,
-about, b2b, delivery, legal — `seo` · sitemap, stats, llms.txt, robots, FAQ, schema — `ui` ·
-`shared.css`, chrome, glyphs, assets (CSS-only) — `lang` · all Italian and Albanian prose —
-`verify` · the gates.
-
-Five **derived regions** are written by a lane that does not own the surrounding file, and this is
-correct rather than a conflict: `gen_stats.py` owns what is inside a `data-stat` span, `ui` owns the
-`?v=` cache-bust sweep, `verify` owns the CSP meta, `faq-build.py` owns both copies of a FAQ
-answer, and `gen_article_cta.py` owns the button inside an article's `data-shop-bridge` box. In each
-case a second writer can only produce a stale value, never a conflicting one.
-
-**An article declares a CTA role, never a watch.** `data-cta-role="battery"` on the bridge box is the
-editorial decision and it is authored once; `gen_article_cta.py` picks the watch that currently fits
-that role out of `watches.json` on every build, so a sell-out re-points the article and an arrival can
-win the slot back. Writing a watch id into every bridge box would have created one more thing to go stale the
-first time one of them sold. The rotation is anchored on PRICE rather than on a list index: an index
-shifts for every article when any watch sells, and a test doing exactly that moved 30 articles and
-would have churned 90 sitemap lastmod dates for a stock change.
+**An article declares a CTA role, never a watch.** `data-cta-role="battery"` on the bridge box is
+the editorial decision and it is authored once; `gen_article_cta.py` picks the watch that fits
+that role out of `watches.json` on every build, so a sell-out re-points the article and an
+arrival can win the slot back.
 
 **Agents stop at green gates.** They run the gates that cover their surface, report the exact
 output, and leave committing and pushing to the owner.
+
+Who owns what, the five derived regions in full, and why the rotation is anchored on price
+rather than a list index: `docs/reference/lanes.md`.
