@@ -20,6 +20,7 @@ Idempotent: safe to run multiple times.
 import hashlib
 import json
 import re
+from datetime import date
 import urllib.parse
 from pathlib import Path
 
@@ -1276,6 +1277,15 @@ for w in watches:
                 # means the next rate change heals itself.
                 off["price"] = str(w["price"])
                 off["priceCurrency"] = w.get("currency", "EUR")
+                # Exactly the lesson above, one field later. priceValidUntil was written once by
+                # scripts/add-price-valid-until.py and then owned by nobody, so it sat at
+                # 2026-12-31 on every product page while gen_shop_index emitted 2027-12-31 for
+                # the SAME catalogue, under a comment claiming the two matched. audit-watches
+                # flags an expired value, so the suite would have gone red on 2027-01-01, and
+                # the owning script could not have fixed it: its idempotency guard skips any
+                # page that already carries the field, so a re-run changes nothing and says so
+                # cheerfully. Derived here, it cannot expire and cannot drift.
+                off["priceValidUntil"] = f"{date.today().year + 1}-12-31"
                 for spec in off.get("priceSpecification", []):
                     if spec.get("priceCurrency") == "ALL":
                         spec["price"] = str(lek(w["price"], w.get("currency", "EUR")))

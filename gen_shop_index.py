@@ -18,6 +18,7 @@ Idempotent.
 """
 import json
 import re
+from datetime import date
 from pathlib import Path
 from urllib.parse import quote
 
@@ -150,7 +151,12 @@ def itemlist(lang, old):
                     "@type": "Offer", "priceCurrency": w.get("currency", "EUR"),
                     "price": str(w["price"]),
                     "availability": "https://schema.org/InStock",
-                    "priceValidUntil": "2027-12-31",  # == scripts/add-price-valid-until.VALID_UNTIL
+                    # computed, not typed: see gen_product_pages, which owns the same field
+                    # on the product pages. The comment that used to sit here claimed this
+                    # equalled scripts/add-price-valid-until.VALID_UNTIL. It did not - that
+                    # script said 2026-12-31 and this said 2027-12-31, a year apart for one
+                    # catalogue.
+                    "priceValidUntil": f"{date.today().year + 1}-12-31",
                     "itemCondition": "https://schema.org/NewCondition",
                     "seller": {"@type": "Organization", "name": "Iglisi Watch"},
                     "url": f'https://watch.al/{lang}/shop/{w["id"]}.html',
