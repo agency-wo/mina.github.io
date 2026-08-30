@@ -146,8 +146,11 @@ Breaking one of these has caused a real incident. They are not style preferences
 - **Thousands separator: comma in EN, dot in IT and SQ.** All three `shop.js` once called
   `toLocaleString()` with no locale, so an Italian phone reflowed the grid from 18,300 L to 18.300 L
   after hydration.
-- **Reviews = 102**, owner-reported, one home in `catalog_stats.REVIEWS`. A dropping count is normal
-  and must always match what Google shows. `scripts/fix-reviews.py` is retired and raises if run.
+- **The review count is owner-reported and lives once, in `catalog_stats.REVIEWS`.** The number is
+  deliberately not repeated here: it is external, it moves, and a frozen copy in an instruction
+  file cannot follow Google. Read it from that constant, and confirm it against the profile before
+  publishing it anywhere. A dropping count is normal. `scripts/fix-reviews.py` is retired and
+  raises if run.
 - Some counts must be **recomputed, not incremented** (steel watches, blue dials, subdials). When a
   new item cannot be classified, **drop the total rather than guess at it.**
 
