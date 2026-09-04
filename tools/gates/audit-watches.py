@@ -311,7 +311,10 @@ def main():
     VERIFIED_CHRONOGRAPHS = {'philippe-lauren-pl2427-5', 'philippe-lauren-pl2427-1',
                              'philippe-lauren-pl2435-2', 'philippe-lauren-pl2435-5',
                              'watch-23', 'daniel-klein-14243', 'watch-4',
-                             'cortebert-black-bezel-chronograph', 'pulsar-crystal-chronograph'}
+                             'cortebert-black-bezel-chronograph', 'pulsar-crystal-chronograph',
+                             # Owner-confirmed 2026-09-04: two pushers flanking the crown,
+                             # three subdials and a 24-hour counter, pushers working.
+                             'lorus-orange-sport-chronograph'}
     styled_chronos = set()
     for w in j.values():
         for s in w.get('styles', []):

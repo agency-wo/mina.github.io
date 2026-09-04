@@ -3,8 +3,8 @@
 > Family-owned watch shop and repair workshop in Durrës, Albania, open since 2009.
 > We sell brand-new watches from €{lo} to €{hi} ({lolek} to {hilek} Lek) across {b}
 > brands: Navimarine, Philippe Lauren, Daniel Klein, Hislon, Casio, Bigotti, Cortébert,
-> Belonni, Citizen, POLOTIME, Pulsar, Romanson, Starking. Every watch carries a 1-year
-> guarantee, and you pay the courier on delivery anywhere in Albania with 30 days to
+> Belonni, Citizen, Lorus, POLOTIME, Pulsar, Romanson, Starking. Every watch carries a
+> 1-year guarantee, and you pay the courier on delivery anywhere in Albania with 30 days to
 > return it. We also offer expert watch repair, battery replacement, strap fitting,
 > crystal replacement and key cutting. Most services are done while you wait, with no
 > appointment needed.

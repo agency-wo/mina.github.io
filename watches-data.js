@@ -1225,5 +1225,41 @@ window.WATCHES_DATA = [
     "description_en": "Bigotti Two Tone Roman in stainless steel with a gold-tone bezel and a two-tone bracelet. White dial with a fine wave texture, gold-tone Roman numerals at twelve, three, six and nine with applied batons between them, gold-tone hands and no date window. Steel and gold in one bracelet, so it sits with whatever you already wear.",
     "description_it": "Bigotti in acciaio inossidabile con lunetta dorata e bracciale bicolore. Quadrante bianco con un motivo ondulato fine, numeri romani dorati alle dodici, alle tre, alle sei e alle nove con indici a bastone applicati tra loro, lancette dorate e nessuna finestrella data. Acciaio e oro nello stesso bracciale, si abbina a quello che già porti.",
     "description_sq": "Bigotti në çelik inoks me lunetë të artë dhe byzylyk dyngjyrësh. Ciferblat i bardhë me teksturë të imët valëzuar, numra romakë të artë në orën dymbëdhjetë, tre, gjashtë dhe nëntë me tregues shiritash të aplikuar mes tyre, akrepa të artë dhe pa dritare date. Çelik dhe ar në të njëjtin byzylyk, i shkon asaj që ke veshur."
+  },
+  {
+    "id": "lorus-orange-sport-chronograph",
+    "brand": "Lorus",
+    "model": "Orange Sport Chronograph",
+    "reference": "",
+    "condition": "New",
+    "price": 184,
+    "currency": "EUR",
+    "image": "/images/watches/lorus-orange-sport-chronograph.webp",
+    "sold": false,
+    "styles": [
+      "chronograph",
+      "sport"
+    ],
+    "description_en": "Lorus sport chronograph with a white textured dial, orange accents and a black 60-minute bezel. Three subdials with working pushers, a 24-hour counter, steel case and bracelet, water resistant to 100m.",
+    "description_it": "Cronografo sportivo Lorus con quadrante bianco testurizzato, dettagli arancioni e lunetta nera da 60 minuti. Tre contatori con pulsanti funzionanti, indicatore 24 ore, cassa e bracciale in acciaio, impermeabile fino a 100m.",
+    "description_sq": "Kronograf sportiv Lorus me ciferblat të bardhë me teksturë, detaje portokalli dhe lunetë të zezë 60 minutash. Tre nën-ciferblatë me butona kronografi funksionalë, tregues 24-orësh, kuti dhe byzylyk çeliku, rezistent ndaj ujit deri në 100m."
+  },
+  {
+    "id": "daniel-klein-13828",
+    "brand": "Daniel Klein",
+    "model": "Premium Black Dial",
+    "reference": "DK.1.13828-3",
+    "condition": "New",
+    "price": 65,
+    "currency": "EUR",
+    "image": "/images/watches/daniel-klein-13828.webp",
+    "sold": false,
+    "styles": [
+      "dress",
+      "gold-tone"
+    ],
+    "description_en": "Daniel Klein Premium in gold-tone steel with a black dial and applied gold bar indices. Slim polished bezel, a double baton at 12, gold-tone hands and a three-link bracelet. Quiet contrast, dressed for the evening.",
+    "description_it": "Daniel Klein Premium in acciaio color oro con quadrante nero e indici a barra applicati dorati. Ghiera sottile lucida, doppio indice alle 12, lancette dorate e bracciale a tre maglie. Contrasto discreto, elegante per la sera.",
+    "description_sq": "Daniel Klein Premium në çelik në ngjyrë ari me ciferblat të zi dhe tregues shiritash të aplikuar artë. Unazë e hollë e lëmuar, tregues i dyfishtë në orën 12, akrepa të artë dhe byzylyk me tre hallka. Kontrast i qetë, elegant për mbrëmje."
   }
 ];
