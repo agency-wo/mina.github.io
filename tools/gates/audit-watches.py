@@ -314,7 +314,13 @@ def main():
                              'cortebert-black-bezel-chronograph', 'pulsar-crystal-chronograph',
                              # Owner-confirmed 2026-09-04: two pushers flanking the crown,
                              # three subdials and a 24-hour counter, pushers working.
-                             'lorus-orange-sport-chronograph'}
+                             'lorus-orange-sport-chronograph',
+                             # Owner-confirmed 2026-09-07, pushers pressed on both.
+                             # daniel-klein-14237 is deliberately ABSENT: it also has two
+                             # pushers and three subdials, but they read DAY, 24 and DUAL
+                             # TIME, which are displays and not elapsed-time counters. That
+                             # watch is exactly what this list exists to keep out.
+                             'navimarine-nvm148-d4', 'daniel-klein-14248'}
     styled_chronos = set()
     for w in j.values():
         for s in w.get('styles', []):
