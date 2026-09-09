@@ -171,7 +171,9 @@ Breaking one of these has caused a real incident. They are not style preferences
 
 ### Claims
 
-- **Sapphire crystal** is claimable only on the 7 Hislons and `romanson-bh3054gbr`.
+- **Sapphire crystal** is claimable only on Hislon and `romanson-bh3054gbr`. Every Hislon
+  prints SAPPHIRE on its dial, so the rule is per-brand on purpose: it used to read "the 7
+  Hislons" and went stale the moment an eighth arrived.
 - Say **"crystal-set"**, never "diamonds".
 - **No Philippe Lauren description states a movement.**
 - **Never call a watch a chronograph without verifying it.** The site counts real chronographs

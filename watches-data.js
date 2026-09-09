@@ -1387,5 +1387,57 @@ window.WATCHES_DATA = [
     "description_en": "Navimarine 001808 in two-tone - a steel watch with a gold-tone 24-hour bezel numbered on black, black dial, luminous round markers and a date window. A fourth arrow-tipped hand reads a second time zone against that bezel. Two-tone five-link jubilee bracelet, quartz movement.",
     "description_it": "Navimarine 001808 bicolore - orologio in acciaio con lunetta color oro graduata su 24 ore su fondo nero, quadrante nero, indici tondi luminescenti e finestrella data. Una quarta lancetta a freccia legge un secondo fuso orario su quella lunetta. Bracciale jubilee a cinque maglie bicolore, movimento al quarzo.",
     "description_sq": "Navimarine 001808 dyngjyrësh - orë çeliku me lunetë në ngjyrë ari me numra 24-orësh mbi sfond të zi, ciferblat i zi, tregues të rrumbullakët ndriçues dhe dritare date. Një akrep i katërt me majë shigjete lexon një zonë të dytë kohore mbi atë lunetë. Byzylyk jubilee me pesë hallka dyngjyrësh, mekanizëm kuarci."
+  },
+  {
+    "id": "hislon-ql124s-05ss",
+    "brand": "Hislon",
+    "model": "Classic Silver Sunburst",
+    "reference": "QL124S-05SS",
+    "condition": "New",
+    "price": 129,
+    "currency": "EUR",
+    "image": "/images/watches/hislon-ql124s-05ss.webp",
+    "sold": false,
+    "styles": [
+      "dress"
+    ],
+    "description_en": "Hislon in stainless steel with a fluted bezel and a five-link jubilee bracelet. Silver sunburst dial, applied baton indices, a date window at 3 and a sapphire crystal. Quartz movement.",
+    "description_it": "Hislon in acciaio inossidabile con lunetta zigrinata e bracciale jubilee a cinque maglie. Quadrante argentato sunburst, indici a bastone applicati, finestrella data alle 3 e vetro zaffiro. Movimento al quarzo.",
+    "description_sq": "Hislon në çelik inoks me lunetë të gdhendur dhe byzylyk jubilee me pesë hallka. Ciferblat argjendi sunburst, tregues shiritash të aplikuar, dritare date në orën 3 dhe xham safiri. Mekanizëm kuarci."
+  },
+  {
+    "id": "hislon-ql139s-09ss",
+    "brand": "Hislon",
+    "model": "Queen Crystal Bezel",
+    "reference": "QL139S-09SS",
+    "condition": "New",
+    "price": 151,
+    "currency": "EUR",
+    "image": "/images/watches/hislon-ql139s-09ss.webp",
+    "sold": false,
+    "styles": [
+      "dress"
+    ],
+    "description_en": "Hislon in stainless steel with a crystal-set bezel and a beaded bracelet. Mother-of-pearl dial with green stone markers at 12, 3, 6 and 9, a green stone in the crown, sapphire crystal, hour and minute hands only and no date. Quartz movement.",
+    "description_it": "Hislon in acciaio inossidabile con lunetta con cristalli e bracciale a maglie tonde. Quadrante in madreperla con indici in pietra verde alle 12, 3, 6 e 9, una pietra verde nella corona, vetro zaffiro, solo lancette di ore e minuti e nessuna data. Movimento al quarzo.",
+    "description_sq": "Hislon në çelik inoks me lunetë me kristale dhe byzylyk me hallka të rrumbullakëta. Ciferblat sedefi me tregues prej guri të gjelbër në orën 12, 3, 6 dhe 9, një gur i gjelbër në kurorë, xham safiri, vetëm akrepat e orës dhe të minutave dhe pa datë. Mekanizëm kuarci."
+  },
+  {
+    "id": "hislon-ql145t-05sg",
+    "brand": "Hislon",
+    "model": "Queen Two Tone Black",
+    "reference": "QL145T-05SG",
+    "condition": "New",
+    "price": 183,
+    "currency": "EUR",
+    "image": "/images/watches/hislon-ql145t-05sg.webp",
+    "sold": false,
+    "styles": [
+      "dress",
+      "gold-tone"
+    ],
+    "description_en": "Hislon in two-tone steel with a gold-tone fluted bezel and a two-tone jubilee bracelet. Black dial, gold-tone applied baton indices, a date window at 3 and a sapphire crystal. Quartz movement.",
+    "description_it": "Hislon in acciaio bicolore con lunetta zigrinata color oro e bracciale jubilee bicolore. Quadrante nero, indici a bastone applicati dorati, finestrella data alle 3 e vetro zaffiro. Movimento al quarzo.",
+    "description_sq": "Hislon në çelik dyngjyrësh me lunetë të gdhendur në ngjyrë ari dhe byzylyk jubilee dyngjyrësh. Ciferblat i zi, tregues shiritash të aplikuar artë, dritare date në orën 3 dhe xham safiri. Mekanizëm kuarci."
   }
 ];
