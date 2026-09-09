@@ -1369,5 +1369,23 @@ window.WATCHES_DATA = [
     "description_en": "Daniel Klein Exclusive chronograph in stainless steel with an anthracite dial and applied luminous batons. Three subdials, a date window and working chronograph pushers. Solid steel bracelet, quartz movement.",
     "description_it": "Cronografo Daniel Klein Exclusive in acciaio inossidabile con quadrante antracite e indici a bastone luminescenti applicati. Tre contatori, finestrella data e pulsanti cronografici funzionanti. Bracciale solido in acciaio, movimento al quarzo.",
     "description_sq": "Kronograf Daniel Klein Exclusive në çelik inoks me ciferblat antracit dhe tregues shiritash ndriçues të aplikuar. Tre nën-ciferblatë, dritare date dhe butona kronografi funksionalë. Byzylyk solid çeliku, mekanizëm kuarci."
+  },
+  {
+    "id": "navimarine-001808-col07",
+    "brand": "Navimarine",
+    "model": "001808-color07",
+    "reference": "001808-COL07",
+    "condition": "New",
+    "price": 98,
+    "currency": "EUR",
+    "image": "/images/watches/navimarine-001808-col07.webp",
+    "sold": false,
+    "styles": [
+      "sport",
+      "gold-tone"
+    ],
+    "description_en": "Navimarine 001808 in two-tone - a steel watch with a gold-tone 24-hour bezel numbered on black, black dial, luminous round markers and a date window. A fourth arrow-tipped hand reads a second time zone against that bezel. Two-tone five-link jubilee bracelet, quartz movement.",
+    "description_it": "Navimarine 001808 bicolore - orologio in acciaio con lunetta color oro graduata su 24 ore su fondo nero, quadrante nero, indici tondi luminescenti e finestrella data. Una quarta lancetta a freccia legge un secondo fuso orario su quella lunetta. Bracciale jubilee a cinque maglie bicolore, movimento al quarzo.",
+    "description_sq": "Navimarine 001808 dyngjyrësh - orë çeliku me lunetë në ngjyrë ari me numra 24-orësh mbi sfond të zi, ciferblat i zi, tregues të rrumbullakët ndriçues dhe dritare date. Një akrep i katërt me majë shigjete lexon një zonë të dytë kohore mbi atë lunetë. Byzylyk jubilee me pesë hallka dyngjyrësh, mekanizëm kuarci."
   }
 ];
