@@ -217,6 +217,35 @@ def main():
         if n_url != 3:
             flag(f"{i}: sitemap has {n_url} <url> blocks (expect 3)")
 
+    # Still group 3, extended rather than renumbered: the SHOP INDEX ItemList must obey the
+    # same no-false-price rule as the product pages above. It did not. gen_shop_index wrote
+    # str(w["price"]) unconditionally, so the unpriced Cortebert published an Offer quoting
+    # "0" on all three shop indexes while every product-page check above passed, because
+    # nothing here had ever looked at the index. A price of zero is not a missing price, it
+    # is a claim that the watch is free.
+    for lang in LANGS:
+        idx = BASE / lang / "shop" / "index.html"
+        if not idx.exists():
+            continue
+        html_idx = corpus.sig(idx)
+        for m in re.finditer(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>',
+                             html_idx, re.S):
+            try:
+                node = json.loads(m.group(1))
+            except ValueError:
+                continue          # group 7 owns unparseable JSON-LD
+            for li in (node.get("itemListElement") or []):
+                prod = li.get("item", {})
+                off = prod.get("offers")
+                url = (off or {}).get("url", "")
+                wid = url.rsplit("/", 1)[-1][:-5] if url.endswith(".html") else ""
+                if off and str(off.get("price")) in ("0", "None", ""):
+                    flag(f"{wid or prod.get('name')} [{lang}]: shop-index ItemList Offer "
+                         f"quotes price {off.get('price')!r}")
+                if wid and wid in j and not j[wid].get("price") and off:
+                    flag(f"{wid} [{lang}]: unpriced watch carries an Offer in the "
+                         f"shop-index ItemList")
+
     # --- 4. orphan shop pages (pages without data) ---
     for lang in LANGS:
         for p in sorted((BASE / lang / "shop").glob("*.html")):

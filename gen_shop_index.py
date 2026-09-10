@@ -138,31 +138,37 @@ def card(w, lang):
 def itemlist(lang, old):
     items = []
     for i, w in enumerate([x for x in W if not x.get("sold")], 1):
-        items.append({
-            "@type": "ListItem", "position": i,
-            "item": {
-                "@type": "Product",
-                "name": f'{w["brand"]} {w["model"]}' + (" Swiss Watch" if w["brand"] in SWISS_BRANDS else ""),
-                "sku": w.get("reference", ""),
-                "description": w[f"description_{lang}"],
-                "brand": {"@type": "Brand", "name": w["brand"]},
-                "image": "https://watch.al" + re.sub(r"\.jpe?g$", ".webp", w["image"], flags=re.I),
-                "offers": {
-                    "@type": "Offer", "priceCurrency": w.get("currency", "EUR"),
-                    "price": str(w["price"]),
-                    "availability": "https://schema.org/InStock",
-                    # computed, not typed: see gen_product_pages, which owns the same field
-                    # on the product pages. The comment that used to sit here claimed this
-                    # equalled scripts/add-price-valid-until.VALID_UNTIL. It did not - that
-                    # script said 2026-12-31 and this said 2027-12-31, a year apart for one
-                    # catalogue.
-                    "priceValidUntil": f"{date.today().year + 1}-12-31",
-                    "itemCondition": "https://schema.org/NewCondition",
-                    "seller": {"@type": "Organization", "name": "Iglisi Watch"},
-                    "url": f'https://watch.al/{lang}/shop/{w["id"]}.html',
-                },
-            },
-        })
+        item = {
+            "@type": "Product",
+            "name": f'{w["brand"]} {w["model"]}' + (" Swiss Watch" if w["brand"] in SWISS_BRANDS else ""),
+            "sku": w.get("reference", ""),
+            "description": w[f"description_{lang}"],
+            "brand": {"@type": "Brand", "name": w["brand"]},
+            "image": "https://watch.al" + re.sub(r"\.jpe?g$", ".webp", w["image"], flags=re.I),
+        }
+        # A watch with no price ships NO Offer at all, exactly as gen_product_pages does
+        # (see its "would publish a false price" note). This used to be str(w["price"])
+        # unconditionally, so the unpriced Cortebert published price "0" in the ItemList on
+        # all three shop indexes while its own product page correctly omitted the Offer and
+        # its card read "price on request". Two gates enforce that rule on the product page
+        # and neither looked at the index, so a false zero sat on the three highest-traffic
+        # shop pages. Falsy, not None: the field is an int 0.
+        if w.get("price"):
+            item["offers"] = {
+                "@type": "Offer", "priceCurrency": w.get("currency", "EUR"),
+                "price": str(w["price"]),
+                "availability": "https://schema.org/InStock",
+                # computed, not typed: see gen_product_pages, which owns the same field
+                # on the product pages. The comment that used to sit here claimed this
+                # equalled scripts/add-price-valid-until.VALID_UNTIL. It did not - that
+                # script said 2026-12-31 and this said 2027-12-31, a year apart for one
+                # catalogue.
+                "priceValidUntil": f"{date.today().year + 1}-12-31",
+                "itemCondition": "https://schema.org/NewCondition",
+                "seller": {"@type": "Organization", "name": "Iglisi Watch"},
+                "url": f'https://watch.al/{lang}/shop/{w["id"]}.html',
+            }
+        items.append({"@type": "ListItem", "position": i, "item": item})
     new = dict(old)
     new["numberOfItems"] = len(items)
     new["itemListElement"] = items
