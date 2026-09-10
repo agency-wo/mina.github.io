@@ -220,6 +220,16 @@ ARIA = {"en": "See the {n} in the shop", "it": "Vedi {n} nel negozio",
 # neither is a call to action for this article.
 ACTIONS_RE = re.compile(r'<div class="cta-actions">(.*?)</div>', re.S)
 SHOP_INDEX_RE = re.compile(r'href="/(en|it|sq)/shop/"')
+# The card's shop-side button, once this generator has adopted it. SHOP_INDEX_RE above
+# is add-once by construction: it only matches a bare "/xx/shop/", so the first run
+# rewrites the href to a product page and no later run can ever see that card again.
+# The label beside it is authored prose and never moves, so the two drift apart, and
+# 175 closing cards across the corpus now name a watch their own page stopped offering.
+# This pattern owns BOTH halves, which is the only way the label cannot lie about the
+# href. It is opt-in per card, so the hand-written cards that say something better than
+# anything derived are left alone.
+CTA_SHOP_RE = re.compile(
+    r'(<a data-cta-shop href=")[^"]*("[^>]*class="btn-outline"[^>]*>)[^<]*(</a>)')
 
 # A bare WhatsApp button: no text=, so it opens an empty chat.
 # The optional marker in the middle is not decoration. Five gift articles ship
@@ -261,7 +271,7 @@ def _title(t):
     return s.rstrip("?.:!").strip()
 
 
-def fix_actions(t, lang, prod_href):
+def fix_actions(t, lang, prod_href, prod_label=""):
     """[DB-021.d] Give every CTA button a destination and a message.
 
     Percent-encoded UTF-8, never HTML entities: a WhatsApp text= is a URL, so
@@ -279,6 +289,20 @@ def fix_actions(t, lang, prod_href):
     acts2, n_new = WA_BARE_RE.subn(rf'<a data-cta-msg href="\g<1>&amp;text={msg}"', acts2)
     n_wa = n_up + n_new
     acts2, n_ix = SHOP_INDEX_RE.subn(f'href="{prod_href}"', acts2)
+    # An OWNED shop button, marked so later runs can maintain it. SHOP_INDEX_RE above
+    # only ever matches a bare "/xx/shop/", so the moment it rewrites a card that card
+    # can never be seen again: add-once, which is the exact staleness WA_OWNED_RE was
+    # invented to prevent. Measured across the corpus, 175 of the closing cards point at
+    # a watch their own page no longer offers. The marker is opt-in per card so the
+    # hand-written anchor text of the others is left alone, per the house rule to match
+    # the anchor text and never the href.
+    acts2, n_shop = CTA_SHOP_RE.subn(
+        rf"\g<1>{prod_href}\g<2>{LABEL[lang].format(n=prod_label)}\g<3>", acts2)
+    if "data-cta-shop" in acts and not n_shop:
+        raise SystemExit("cta-shop marker present but not rewritten; the card's shape "
+                         "drifted from CTA_SHOP_RE. Five gift articles once shipped a "
+                         "button that opened a blank chat exactly this way.")
+    n_ix += n_shop
     if acts2 == acts:
         return t, 0, 0
     return t[:m.start(1)] + acts2 + t[m.end(1):], n_wa, n_ix
@@ -390,12 +414,15 @@ def main():
             if has_cta:
                 # the closing card takes the LAST box's watch, which is the one directly above
                 # it; on a page with no bridge at all it falls back to a rotated pick as before
-                if page_offered:
-                    href = f'/{lang}/shop/{page_offered[-1]}.html'
-                else:
-                    href = f'/{lang}/shop/{pick("popular", fam)["id"]}.html'
+                wid = page_offered[-1] if page_offered else pick("popular", fam)["id"]
+                href = f'/{lang}/shop/{wid}.html'
                 assert (BASE / href.lstrip("/")).exists(), f"{p}: {href} does not exist"
-                new, n_wa, n_ix = fix_actions(new, lang, href)
+                # the same name the bridge buttons print, built the same way, so a card
+                # that names its watch cannot drift away from the watch it links
+                wc = by_id[wid]
+                nmc = f'{wc["brand"]} {wc["model"]}'.strip()
+                new, n_wa, n_ix = fix_actions(
+                    new, lang, href, it_article(nmc) if lang == "it" else nmc)
                 fixed["wa"] += n_wa
                 fixed["idx"] += n_ix
             if new != t:
