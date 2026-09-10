@@ -15,7 +15,12 @@ Rules:
    copy can never go stale.
  - Facts only: COD, free 3-7 day delivery, 1-year guarantee, 30-day in-store
    returns, Mon-Sat 8:30-20:30, Rruga Aleksander Goga. All owner-established.
- - Placement is BELOW the grid. Nothing is ever added above it (brand-strip lesson).
+ - The SEO prose block is below the grid. "Nothing is ever added above it" used to be
+   written here as an absolute and it was already false when it was written: #newArrivals
+   ships six cards above the grid, and the brand nav now sits there too. What the
+   brand-strip lesson actually established is narrower and still holds: nothing may be
+   added INSIDE #shopGrid, because shop.js replaces that div's innerHTML wholesale and
+   would wipe it on the first filter click. Outside that div is safe and proven.
 """
 
 from shop_bits import BRANDS
@@ -202,10 +207,12 @@ def seo_section_html(lang, watches):
         'border-top:1px solid var(--border-light,#eaeaea);padding:3rem 1.5rem 3.5rem">'
         '<div style="max-width:50rem;margin:0 auto">'
         f'<p style="color:var(--text-secondary,#4a4a4a);line-height:1.65">{fill(t["lead"], watches, lang)}</p>'
-        # explicit + on BOTH sides: the rest of this return is implicit string
-        # concatenation, and a call spliced into the middle of that is a syntax
-        # error unless every neighbour is joined explicitly
-        + brand_links_html(lang, watches)
+        # The brand links used to sit HERE, and that was the problem. This section is
+        # below the product grid, so a reader or a crawler met the ten hub links only
+        # after eighty-eight product cards. They now render above the grid as
+        # brand_nav_html, called from gen_shop_index. Do not put them back here as well:
+        # two copies on one page means every hub gets a duplicate anchor and the
+        # "Browse by brand" heading appears twice in one document.
         + f'<h2 style="font-size:1.5rem;margin:2rem 0 .75rem">{t["faq_h"]}</h2>'
         + f'<div class="space-y-2">{faqs}</div>'
         + "</div></section>"
@@ -220,18 +227,39 @@ def seo_section_html(lang, watches):
 # reachable only from prose.
 # A brand with nothing live is skipped rather than linked to an empty hub, which
 # is the same rule gen_brand_pages applies when it refuses to build one.
-def brand_links_html(lang, watches):
+def _brand_link_list(lang, watches):
+    """The anchors themselves, with no wrapper, so one definition serves both shapes."""
     live = {w["brand"] for w in watches if not w.get("sold")}
     a = ('<a href="/{lang}/shop/brand/{slug}.html" style="color:'
          'var(--accent-gold-accessible,#7a6240);text-decoration:underline;'
          'text-underline-offset:2px">{name}</a>')
-    links = [a.format(lang=lang, slug=slug, name=name)
-             for slug, name in BRANDS if name in live]
+    return [a.format(lang=lang, slug=slug, name=name)
+            for slug, name in BRANDS if name in live]
+
+
+def brand_links_html(lang, watches):
+    """The old below-the-grid shape. Kept for any caller that still wants a prose run."""
+    links = _brand_link_list(lang, watches)
     if not links:
         return ""
     return ('<h2 style="font-size:1.5rem;margin:2rem 0 .75rem">%s</h2>'
             '<p style="color:var(--text-secondary,#4a4a4a);line-height:2">%s</p>'
             % (COPY[lang]["brands_h"], " &middot; ".join(links)))
+
+
+# [DB-015.d] brand_nav_html — the same links, ABOVE the grid, where they are reachable.
+# A <nav> of plain text links on purpose, not chips: #brandChips sits directly above this
+# and is a row of pill BUTTONS that filter the grid in place. Two rows of pills would read
+# as one broken control. Text links say "these are other pages" without competing.
+def brand_nav_html(lang, watches):
+    links = _brand_link_list(lang, watches)
+    if not links:
+        return ""
+    return ('\n    <nav class="brand-nav" aria-label="%s" style="max-width:80rem;'
+            'margin:0 auto 1.25rem;padding:0 1.5rem;color:var(--text-secondary,#4a4a4a);'
+            'font-size:.92rem;line-height:1.9">'
+            '<strong style="font-weight:700">%s:</strong> %s</nav>\n'
+            % (COPY[lang]["brands_h"], COPY[lang]["brands_h"], " &middot; ".join(links)))
 
 
 # [DB-015.d] faq_jsonld — FAQPage built from the SAME strings as the visible FAQ

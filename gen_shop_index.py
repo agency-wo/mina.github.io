@@ -26,7 +26,8 @@ import catalog_stats
 from contact import phone  # [CFG-010] en/it reach the owner, sq reaches his father
 from shop_bits import (SWISS_BRANDS, card_price_html, crumb_html, CRUMB_CSS,
                        delivery_bar_html, DELIVERY_CSS)
-from shop_seo import COPY as SEO_COPY, fill as seo_fill, seo_section_html, faq_jsonld
+from shop_seo import (COPY as SEO_COPY, fill as seo_fill, seo_section_html, faq_jsonld,
+                      brand_nav_html)
 
 BASE = Path(__file__).parent
 BOM = b"\xef\xbb\xbf"
@@ -211,6 +212,9 @@ NEW_SUB = {
 SEE_ALL = {"en": "See them all.", "it": "Vedili tutti.",
            "sq": "Shihini të gjitha."}
 NEW_RE = re.compile(r'\s*<section id="newArrivals".*?</section>\n', re.S)
+# Same strip-before-insert contract as NEW_RE. Without it a second build stacks a second
+# copy of the brand nav rather than replacing the first.
+BRAND_NAV_RE = re.compile(r'\s*<nav class="brand-nav".*?</nav>\n', re.S)
 
 
 def arrivals():
@@ -426,6 +430,14 @@ def main():
         anchor = '\n    <p class="shop-count"'
         assert norm.count(anchor) == 1, f"{lang}: shop-count anchor x{norm.count(anchor)}"
         norm = norm.replace(anchor, arrivals_html(lang) + anchor, 1)
+
+        # 1c. the brand nav, above the grid. These ten links used to render only inside
+        #     #shop-seo, which is BELOW the grid, so the shop index reached its own brand
+        #     hubs only after eighty-eight product cards. Same strip-then-insert shape as
+        #     New Arrivals above, and it goes OUTSIDE #shopGrid for the same reason: shop.js
+        #     replaces that div's innerHTML on every filter click and would wipe it.
+        norm = BRAND_NAV_RE.sub("\n", norm)
+        norm = norm.replace(anchor, brand_nav_html(lang, W) + anchor, 1)
     
         # 2. regenerate the static ItemList JSON-LD from watches.json
         done = False
