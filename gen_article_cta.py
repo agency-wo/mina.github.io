@@ -56,6 +56,7 @@ BASE = Path(__file__).parent
 LANGS = ("en", "it", "sq")
 
 watches = json.loads((BASE / "watches.json").read_text(encoding="utf-8-sig"))
+by_id = {w["id"]: w for w in watches}
 
 
 def _live():
@@ -114,7 +115,7 @@ ROLES = {
 FIXED = {"entry", "top"}
 
 
-def pick(role, seed="", brand=None):
+def pick(role, seed="", brand=None, exclude=()):
     """[DB-021.a] The current best watch for a role. Raises rather than returns None.
 
     Everything except entry and top is ROTATED by a hash of the article slug. The
@@ -156,7 +157,15 @@ def pick(role, seed="", brand=None):
         hi = max(w["price"] for w in cands)
         frac = int(hashlib.md5(f"{role}:{seed}".encode()).hexdigest(), 16) % 1000 / 1000
         target = lo + frac * (hi - lo)
-        return min(cands, key=lambda w: (abs(w["price"] - target), w["id"]))
+        ranked = sorted(cands, key=lambda w: (abs(w["price"] - target), w["id"]))
+        # `exclude` holds what this PAGE already offers higher up. Two boxes showing the same
+        # watch is worse than one box, so the nearest unused candidate wins instead. Measured
+        # against current stock this path fires on 3 of 76 pages, which is exactly the kind of
+        # rarely-taken branch that ships broken, so it is checked on those pages by name.
+        for cand in ranked:
+            if cand["id"] not in exclude:
+                return cand
+        return ranked[0]      # a repeat beats a build failure if a tier is fully used up
     raise AssertionError(f"role {role!r} resolved to no watch; is anything in stock?")
 
 
@@ -213,7 +222,14 @@ ACTIONS_RE = re.compile(r'<div class="cta-actions">(.*?)</div>', re.S)
 SHOP_INDEX_RE = re.compile(r'href="/(en|it|sq)/shop/"')
 
 # A bare WhatsApp button: no text=, so it opens an empty chat.
-WA_BARE_RE = re.compile(r'<a href="(https://api\.whatsapp\.com/send\?phone=\d+)"')
+# The optional marker in the middle is not decoration. Five gift articles ship
+# `<a data-cta-msg href="...?phone=...">` with NO text=, which matched NEITHER this pattern
+# (it required href to come first) nor WA_OWNED_RE (it requires an existing &amp;text=). They
+# were unreachable by the generator and shipped a button that opens a blank chat: christmas,
+# mothers-day, father, friend and brother-or-sister, which are the highest-intent pages on the
+# site. Matching either attribute order makes them adoptable and keeps them maintained after.
+WA_BARE_RE = re.compile(
+    r'<a(?:\s+data-cta-msg)?\s+href="(https://api\.whatsapp\.com/send\?phone=\d+)"')
 # One this generator wrote, marked so later runs can MAINTAIN it. Without the
 # marker a prefill would be add-once: change an article's title and the message
 # would keep quoting the old one, which is the staleness this whole file exists
@@ -268,18 +284,25 @@ def fix_actions(t, lang, prod_href):
     return t[:m.start(1)] + acts2 + t[m.end(1):], n_wa, n_ix
 
 
-# the box's button paragraph, which is the only part this generator owns
+# the box's button paragraph, which is the only part this generator owns.
+# Group 2 captures the OPENING DIV'S ATTRIBUTES, so each box carries its own role and brand
+# rather than the page carrying one. A page may hold several boxes: one early, where a reader
+# who bounces still sees an offer, and one late. The `.*?` is non-greedy under re.S, so each
+# match runs from one box's div to that same box's button and never spans two boxes.
 BTN_RE = re.compile(
-    r'(<div class="info-box" data-shop-bridge[^>]*>.*?)'
+    r'(<div class="info-box" data-shop-bridge([^>]*)>.*?)'
     r'(<p style="margin-top:1rem"><a href=")([^"]*)("[^>]*class="btn-secondary"[^>]*>)([^<]*)(</a></p>)',
     re.S)
-ROLE_RE = re.compile(r'<div class="info-box" data-shop-bridge(?:\s+data-cta-role="([a-z-]+)")?')
-# The optional brand scope, read separately rather than bolted onto ROLE_RE. Two reasons:
-# ROLE_RE expects data-cta-role IMMEDIATELY after data-shop-bridge, so anything wedged between
-# them makes the role read fail and fall silently back to "popular" (which is how "popular"
-# already ended up holding half the boxes); and brand names here carry spaces and an accent
-# (Philippe Lauren, Cortebert), so the role's [a-z-]+ class cannot hold them.
-BRAND_RE = re.compile(r'<div class="info-box" data-shop-bridge[^>]*?data-cta-brand="([^"]+)"')
+# Read out of ONE box's attribute string, not out of the whole page. These used to be page-wide
+# `.search` calls, which meant a second box silently inherited the first box's role.
+# Brand names carry spaces and an accent (Philippe Lauren, Cortebert), so the role's narrow
+# [a-z-]+ class cannot hold them and they get their own pattern.
+BOX_RE = re.compile(r'<div class="info-box" data-shop-bridge([^>]*)>')
+ATTR_ROLE_RE = re.compile(r'\bdata-cta-role="([a-z-]+)"')
+ATTR_BRAND_RE = re.compile(r'\bdata-cta-brand="([^"]+)"')
+# The authored position name. Absent means "the box this page has always had", which keeps the
+# bare family seed and therefore the pick that is already published.
+ATTR_SLOT_RE = re.compile(r'\bdata-cta-slot="([a-z-]+)"')
 
 
 def style_of(raw):
@@ -289,6 +312,7 @@ def style_of(raw):
 def main():
     tally, written, skipped, offered = {}, 0, 0, set()
     fixed = {"wa": 0, "idx": 0}
+    boxes = {}          # how many pages carry 1 box, 2 boxes, ...
     for lang in LANGS:
         for p in sorted((BASE / lang / "blog").glob("*.html")):
             if p.name == "index.html":
@@ -308,32 +332,69 @@ def main():
             if not (has_bridge or has_cta):
                 continue
 
-            rm = ROLE_RE.search(t)
-            role = (rm.group(1) if rm and rm.group(1) else "popular")
-            bm = BRAND_RE.search(t)
-            brand = bm.group(1) if bm else None
-            assert not brand or any(x["brand"] == brand for x in watches), \
-                f"{p}: data-cta-brand={brand!r} matches no brand in watches.json"
-            # seed on the family, not the file, so the three languages of one
-            # article all offer the same watch
-            w = pick(role, en_slug_of(lang, p.stem), brand)
-            name = f'{w["brand"]} {w["model"]}'.strip()
-            label_n = it_article(name) if lang == "it" else name
-            href = f'/{lang}/shop/{w["id"]}.html'
-            assert (BASE / href.lstrip("/")).exists(), f"{p}: {href} does not exist"
-
+            # seed on the FAMILY, not the file, so the three languages of one article
+            # all offer the same watch
+            fam = en_slug_of(lang, p.stem)
             new = t
-            if has_bridge:
-                def sub(m):
-                    return (m.group(1) + m.group(2) + href
-                            + f'" class="btn-secondary" aria-label="{ARIA[lang].format(n=label_n)}">'
-                            + LABEL[lang].format(n=label_n) + m.group(6))
+            page_offered = []
 
-                new, n = BTN_RE.subn(sub, new, count=1)
-                assert n == 1, f"{p}: shop-bridge button not matched"
-                tally[role] = tally.get(role, 0) + 1
-                offered.add(w["id"])
+            if has_bridge:
+                # Resolve every box on the page BEFORE rewriting any of it, because the two
+                # things that make a pick depend on the whole page: a box must not repeat a
+                # watch shown above it, and a box's seed must not depend on where in the
+                # document it happens to sit.
+                #
+                # The seed is the AUTHORED slot, not the ordinal. An ordinal renumbers every
+                # box below it the moment one is inserted: adding an early box shifted 162
+                # already-published picks in exactly that way, because the pre-existing box
+                # slid from position 0 to position 1. A slot name is stable under insertion,
+                # and a box with no slot keeps the bare family seed it has always had.
+                #
+                # Slotless boxes resolve FIRST so a newly added box can never bump a published
+                # one out of the way through the exclude set.
+                spec = [(m.group(1), ATTR_SLOT_RE.search(m.group(1))) for m in BOX_RE.finditer(t)]
+                order = [i for i, (_, s) in enumerate(spec) if not s] + \
+                        [i for i, (_, s) in enumerate(spec) if s]
+                chosen = {}
+                for i in order:
+                    attrs, sm = spec[i]
+                    arm = ATTR_ROLE_RE.search(attrs)
+                    role_i = arm.group(1) if arm else "popular"
+                    abm = ATTR_BRAND_RE.search(attrs)
+                    brand_i = abm.group(1) if abm else None
+                    assert not brand_i or any(x["brand"] == brand_i for x in watches), \
+                        f"{p}: data-cta-brand={brand_i!r} matches no brand in watches.json"
+                    seed = fam if not sm else f"{fam}:{sm.group(1)}"
+                    wi = pick(role_i, seed, brand_i, exclude=set(chosen.values()))
+                    chosen[i] = wi["id"]
+                    tally[role_i] = tally.get(role_i, 0) + 1
+                    offered.add(wi["id"])
+                page_offered.extend(chosen[i] for i in sorted(chosen))
+
+                seq = iter(sorted(chosen))
+
+                def sub(m):
+                    wi = by_id[chosen[next(seq)]]
+                    nm = f'{wi["brand"]} {wi["model"]}'.strip()
+                    lab = it_article(nm) if lang == "it" else nm
+                    h = f'/{lang}/shop/{wi["id"]}.html'
+                    assert (BASE / h.lstrip("/")).exists(), f"{p}: {h} does not exist"
+                    return (m.group(1) + m.group(3) + h
+                            + f'" class="btn-secondary" aria-label="{ARIA[lang].format(n=lab)}">'
+                            + LABEL[lang].format(n=lab) + m.group(7))
+
+                new, n = BTN_RE.subn(sub, new)
+                assert n == len(spec), \
+                    f"{p}: {len(spec)} bridge box(es) but {n} button(s) matched"
+                boxes[n] = boxes.get(n, 0) + 1
             if has_cta:
+                # the closing card takes the LAST box's watch, which is the one directly above
+                # it; on a page with no bridge at all it falls back to a rotated pick as before
+                if page_offered:
+                    href = f'/{lang}/shop/{page_offered[-1]}.html'
+                else:
+                    href = f'/{lang}/shop/{pick("popular", fam)["id"]}.html'
+                assert (BASE / href.lstrip("/")).exists(), f"{p}: {href} does not exist"
                 new, n_wa, n_ix = fix_actions(new, lang, href)
                 fixed["wa"] += n_wa
                 fixed["idx"] += n_ix
@@ -344,6 +405,7 @@ def main():
                 written += 1
             else:
                 skipped += 1
+    print("  boxes per page: " + ", ".join(f"{k}x={v}" for k, v in sorted(boxes.items())))
     print("  roles used: " + ", ".join(f"{r}={n}" for r, n in sorted(tally.items())))
     print(f"  distinct watches offered: {len(offered)}")
     print(f"  bridge buttons: {len(offered)} distinct watches offered")
