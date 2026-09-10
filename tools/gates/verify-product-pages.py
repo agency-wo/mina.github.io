@@ -214,6 +214,58 @@ def main():
                     flag(f"{rel}: NaN in structured data")
                 if d.get("aggregateRating"):
                     flag(f"{rel}: aggregateRating on Product (these are shop reviews)")
+                if d.get("review"):
+                    flag(f"{rel}: review on Product (the reviews are of the shop)")
+
+                # This check used to be four NEGATIVES and nothing else: it asserted the
+                # block parsed, held no NaN and carried no rating, and never once asserted
+                # that a required field was PRESENT. That is how countryOfOrigin came to
+                # exist on 21 of 246 pages, and how a return policy for a watch with no
+                # price survived on three. Every field below is either written by this
+                # generator or inherited from a page template that no longer has an owner,
+                # so the gate is now the owner.
+                for k in ("name", "brand", "description", "image"):
+                    if not d.get(k):
+                        flag(f"{rel}: Product JSON-LD missing {k}")
+                # sku and mpn track the reference: both present when there is one, both
+                # absent when there is not. Never the empty string, which claims a part
+                # number that is empty rather than claiming nothing.
+                for k in ("sku", "mpn"):
+                    if w.get("reference"):
+                        if d.get(k) != w["reference"]:
+                            flag(f"{rel}: {k}={d.get(k)!r}, expected {w['reference']!r}")
+                    elif k in d:
+                        flag(f"{rel}: {k} present on a watch with no reference")
+
+                off = d.get("offers")
+                if w.get("price"):
+                    if not isinstance(off, dict):
+                        flag(f"{rel}: priced watch with no Offer")
+                    else:
+                        if off.get("price") != str(w["price"]):
+                            flag(f"{rel}: offer price {off.get('price')!r} "
+                                 f"!= {str(w['price'])!r}")
+                        want = ("https://schema.org/OutOfStock" if w.get("sold")
+                                else "https://schema.org/InStock")
+                        if off.get("availability") != want:
+                            flag(f"{rel}: availability {off.get('availability')!r}, "
+                                 f"expected {want!r}")
+                        # Inherited from the page template and owned by nobody until now.
+                        for k in ("priceCurrency", "itemCondition", "seller", "url",
+                                  "shippingDetails", "hasMerchantReturnPolicy"):
+                            if not off.get(k):
+                                flag(f"{rel}: offers.{k} missing")
+                else:
+                    # The price-on-request watch. It ships no Offer on purpose, and
+                    # therefore must ship nothing that only makes sense inside one.
+                    if off is not None:
+                        flag(f"{rel}: unpriced watch carries an Offer")
+                    if d.get("hasMerchantReturnPolicy"):
+                        flag(f"{rel}: return policy on a watch with no price or offer")
+                # The policy belongs to the Offer. At Product level Google does not read
+                # it as the offer's policy, and it outlives the Offer when one is stripped.
+                if d.get("hasMerchantReturnPolicy"):
+                    flag(f"{rel}: hasMerchantReturnPolicy at Product level, not in offers")
 
             # 7. social cards resolve without JS
             for name in ("twitter:title", "twitter:description", "twitter:image"):
