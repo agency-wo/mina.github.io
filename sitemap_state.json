@@ -1,10 +1,10 @@
 {
   "https://watch.al/": {
-    "fp": "a6d3e4e95980415b71152f2840b8d78deb0c15f1ce43466f99782d01d87b2502",
+    "fp": "fd1acf5bf2bb9439320dfb31c36a7045eeb06896b32bed4cf804302f176df06f",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/": {
-    "fp": "a6d3e4e95980415b71152f2840b8d78deb0c15f1ce43466f99782d01d87b2502",
+    "fp": "fd1acf5bf2bb9439320dfb31c36a7045eeb06896b32bed4cf804302f176df06f",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/about.html": {
@@ -452,7 +452,7 @@
     "lastmod": "2026-09-04"
   },
   "https://watch.al/en/shop/": {
-    "fp": "7664950935bfe4acc6b3fe6603da50ffec0c594e313dde6e8f30871955935393",
+    "fp": "2290cba6c5443a311e782e27c98c4c498d3d960903843f404b78a3955f118ba5",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/belonni-collection.html": {
@@ -651,6 +651,10 @@
     "fp": "c228db3edbdf697e1cc3a5313428dd4b4b914d14cfbd247d62b3f52346468c93",
     "lastmod": "2026-09-10"
   },
+  "https://watch.al/en/shop/new.html": {
+    "fp": "725347cd9c90c250eafea3e1b5803b28b8e6d8839f06808701aa453841bfff1f",
+    "lastmod": "2026-09-10"
+  },
   "https://watch.al/en/shop/philippe-lauren-pl2374-1.html": {
     "fp": "91d425229dcd726a16159b5d7367693b2508f7f58eedf235c01581e93e746ef5",
     "lastmod": "2026-09-10"
@@ -828,7 +832,7 @@
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/": {
-    "fp": "08b57efb1da1f440471a5f2b3b16f6faeddb6809214d150cfab18a99b07cf9d8",
+    "fp": "d9985b1f29331a1fb811c6d90de8e1b5d546a5f9f8d9e4ec84ac774346ce9ff9",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/about.html": {
@@ -1276,7 +1280,7 @@
     "lastmod": "2026-09-04"
   },
   "https://watch.al/it/shop/": {
-    "fp": "bf82b5e17cdcbb6102a10b14b898f2ad61838f09c6a0d76d75d52321bafa39e5",
+    "fp": "fbe4812ba0294df0dba6aaacf03aba97193dc7a7123a907b809c15627436861a",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/belonni-collection.html": {
@@ -1475,6 +1479,10 @@
     "fp": "644aa96a331dbeb741d4e0d6b2c86ae3852a7e626e488e61f03ed8d594fe33c9",
     "lastmod": "2026-09-10"
   },
+  "https://watch.al/it/shop/new.html": {
+    "fp": "c48570526e38f7b596a206e1917b88d7a57b70f8a19a1a8e73d1202b8cb41082",
+    "lastmod": "2026-09-10"
+  },
   "https://watch.al/it/shop/philippe-lauren-pl2374-1.html": {
     "fp": "c04ad8ab69efc6e9aa9a9c3c71a86490f0e2dce9f62ad96e2320a1a70afdf8ed",
     "lastmod": "2026-09-10"
@@ -1652,7 +1660,7 @@
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/": {
-    "fp": "f716940f836ecb39e3b493c5c17daa072c6b25169f540cd04c079e647957ee1b",
+    "fp": "3011f81bb36381832c8e103ef0e818d7052c3a78556d7219d077db90bef77d37",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/about.html": {
@@ -2100,7 +2108,7 @@
     "lastmod": "2026-09-04"
   },
   "https://watch.al/sq/shop/": {
-    "fp": "445322f9e2b88065a11aa54cf3c3c938332fcc7d4a38d3b92e66bcea917df142",
+    "fp": "1b035d7f51d22a3461d227ae69e0b36b72afcea7a51cb46f012d86cb02432f24",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/belonni-collection.html": {
@@ -2297,6 +2305,10 @@
   },
   "https://watch.al/sq/shop/navimarine-steel-5atm-blue.html": {
     "fp": "05df82f4eb2677cb5d3ef0f46ed4eea7cf57d841c45d31095a4739f51839e8d3",
+    "lastmod": "2026-09-10"
+  },
+  "https://watch.al/sq/shop/new.html": {
+    "fp": "230bbc8e09543e367949699db29727f938d292c4602da90d858cbd5ee57e0a1f",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2374-1.html": {

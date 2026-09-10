@@ -156,8 +156,11 @@ def classify(en_path):
         return "shopindex", "weekly", "0.9"
     if en_path.startswith("shop/brand/"):
         return "brand", "monthly", "0.8"
-    if en_path == "shop/delivery.html":
-        return "shopinfo", "monthly", "0.8"
+    # delivery.html and new.html are both PAGES under shop/, not products. Bucketing
+    # them as "product" sends them to a sort key that indexes watch_order by the file
+    # stem, which raises KeyError on a stem that is not a watch id.
+    if en_path in ("shop/delivery.html", "shop/new.html"):
+        return "shopinfo", "weekly" if en_path == "shop/new.html" else "monthly", "0.8"
     if en_path.startswith("shop/"):
         return "product", "monthly", "0.8"
     if en_path.startswith("services/"):

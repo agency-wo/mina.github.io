@@ -197,6 +197,8 @@ NEW_SUB = {
     "it": "Gli orologi arrivati pi&ugrave; di recente sul banco, dal pi&ugrave; nuovo.",
     "sq": "Orët më të fundit në banak, duke nisur nga më e reja.",
 }
+SEE_ALL = {"en": "See them all.", "it": "Vedili tutti.",
+           "sq": "Shihini të gjitha."}
 NEW_RE = re.compile(r'\s*<section id="newArrivals".*?</section>\n', re.S)
 
 
@@ -206,6 +208,146 @@ def arrivals():
     live = [(i, w) for i, w in enumerate(W) if not w.get("sold") and w.get("added")]
     live.sort(key=lambda p: (p[1]["added"], p[0]), reverse=True)
     return [w for _, w in live[:NEW_N]]
+
+
+# [DB-007.g] the dedicated New Arrivals page, {lang}/shop/new.html.
+# Built by cloning the shop index the same way gen_brand_pages clones it, because that page
+# already carries the header, filters chrome, footer and CSP this site needs and cloning is the
+# established pattern rather than a new one. It sits at the SAME depth as the shop index, so
+# unlike the brand hubs it needs no ../ asset rewriting.
+NEW_PAGE_N = 12
+PAGE = {
+ "en": dict(
+   title="New Arrivals: The Latest Watches at Iglisi Watch, Durr&euml;s",
+   desc="The most recently listed watches on our counter in Durr&euml;s, newest first. Every one "
+        "is brand new with a 1-year guarantee and cash on delivery anywhere in Albania.",
+   h1="New Arrivals",
+   intro="These are the watches that most recently joined the counter, newest first. Everything "
+         "here is brand new, carries our 1-year guarantee, and can be paid for at the door "
+         "anywhere in Albania. Bracelets are sized free at the counter, and you are welcome to "
+         "come in for that even if you ordered online.",
+   crumb="New Arrivals", home="Home", shop="Shop"),
+ "it": dict(
+   title="Nuovi Arrivi: Gli Ultimi Orologi da Iglisi Watch, Durazzo",
+   desc="Gli orologi aggiunti pi&ugrave; di recente al nostro banco a Durazzo, dal pi&ugrave; "
+        "nuovo. Ognuno &egrave; nuovo, con garanzia di 1 anno e pagamento alla consegna in tutta "
+        "l&rsquo;Albania.",
+   h1="Nuovi Arrivi",
+   intro="Questi sono gli orologi arrivati pi&ugrave; di recente sul banco, dal pi&ugrave; nuovo. "
+         "Tutto qui &egrave; nuovo, ha la nostra garanzia di 1 anno e si paga alla consegna in "
+         "tutta l&rsquo;Albania. I bracciali si adattano gratis al banco, e siete i benvenuti a "
+         "passare anche se avete ordinato online.",
+   crumb="Nuovi Arrivi", home="Home", shop="Negozio"),
+ "sq": dict(
+   title="T&euml; Sapoardhura: Or&euml;t m&euml; t&euml; Fundit te Iglisi Watch, Durr&euml;s",
+   desc="Or&euml;t e shtuara m&euml; s&euml; fundmi n&euml; banakun ton&euml; n&euml; "
+        "Durr&euml;s, duke nisur nga m&euml; e reja. &Ccedil;do or&euml; &euml;sht&euml; e re me "
+        "garanci 1-vje&ccedil;are dhe pages&euml; n&euml; dor&euml;zim kudo n&euml; "
+        "Shqip&euml;ri.",
+   h1="T&euml; Sapoardhura",
+   intro="K&euml;to jan&euml; or&euml;t q&euml; iu shtuan banakut m&euml; s&euml; fundmi, duke "
+         "nisur nga m&euml; e reja. Gjithçka k&euml;tu &euml;sht&euml; e re, ka garancin&euml; "
+         "ton&euml; 1-vje&ccedil;are dhe paguhet n&euml; dor&euml;zim kudo n&euml; "
+         "Shqip&euml;ri. Byzylyk&euml;t p&euml;rshtaten falas te banaku, dhe jeni t&euml; "
+         "mir&euml;pritur t&euml; kaloni edhe n&euml;se keni porositur online.",
+   crumb="T&euml; Sapoardhura", home="Kryefaqja", shop="Dyqani"),
+}
+
+
+def new_page_items():
+    live = [(i, w) for i, w in enumerate(W) if not w.get("sold") and w.get("added")]
+    live.sort(key=lambda p: (p[1]["added"], p[0]), reverse=True)
+    return [w for _, w in live[:NEW_PAGE_N]]
+
+
+def build_new_page(lang, src):
+    ui = PAGE[lang]
+    items = new_page_items()
+    url = f"https://watch.al/{lang}/shop/new.html"
+    img = "https://watch.al" + re.sub(r"\.jpe?g$", ".webp", items[0]["image"], flags=re.I)
+    plain = lambda s: re.sub(r"&[a-z]+;", lambda m: {
+        "&euml;": "ë", "&Euml;": "Ë", "&egrave;": "è", "&ugrave;": "ù",
+        "&ccedil;": "ç", "&Ccedil;": "Ç", "&rsquo;": "’",
+        "&eacute;": "é", "&agrave;": "à"}.get(m.group(0), m.group(0)), s)
+
+    # every JSON-LD block from the clone goes; the shop index's FAQPage and ItemList describe the
+    # whole catalogue and would be a lie on a page showing part of it
+    html = SCRIPT_RE.sub("", src)
+    ld = {
+        "@context": "https://schema.org", "@type": "CollectionPage",
+        "name": plain(ui["h1"]), "description": plain(ui["desc"]), "url": url,
+    }
+    crumbs = {
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": ui["home"],
+             "item": f"https://watch.al/{lang}/"},
+            {"@type": "ListItem", "position": 2, "name": ui["shop"],
+             "item": f"https://watch.al/{lang}/shop/"},
+            {"@type": "ListItem", "position": 3, "name": plain(ui["crumb"]), "item": url},
+        ]}
+    # the ItemList on THIS page is the arrivals, not the catalogue
+    els = []
+    for i, w in enumerate(items, 1):
+        item = {"@type": "Product",
+                "name": f'{w["brand"]} {w["model"]}'
+                        + (" Swiss Watch" if w["brand"] in SWISS_BRANDS else ""),
+                "url": f'https://watch.al/{lang}/shop/{w["id"]}.html',
+                "image": "https://watch.al" + re.sub(r"\.jpe?g$", ".webp", w["image"],
+                                                     flags=re.I)}
+        if w.get("price"):
+            item["offers"] = {"@type": "Offer", "priceCurrency": w.get("currency", "EUR"),
+                              "price": str(w["price"]),
+                              "availability": "https://schema.org/InStock"}
+        els.append({"@type": "ListItem", "position": i, "item": item})
+    ld["mainEntity"] = {"@type": "ItemList", "numberOfItems": len(els), "itemListElement": els}
+    blocks = "".join(
+        '  <script type="application/ld+json">\n  '
+        + json.dumps(d, indent=2, ensure_ascii=False).replace("\n", "\n  ")
+        + "\n  </script>\n" for d in (ld, crumbs))
+    html = html.replace("</head>", blocks + "</head>", 1)
+
+    for pat, rep in [
+        (r"<title>[^<]*</title>", "<title>%s</title>" % ui["title"]),
+        (r'(<meta name="description" content=")[^"]*(")', r"\g<1>" + ui["desc"] + r"\g<2>"),
+        (r'(<meta property="og:title" content=")[^"]*(")', r"\g<1>" + ui["title"] + r"\g<2>"),
+        (r'(<meta property="og:description" content=")[^"]*(")', r"\g<1>" + ui["desc"] + r"\g<2>"),
+        (r'(<meta property="og:url" content=")[^"]*(")', r"\g<1>" + url + r"\g<2>"),
+        (r'(<meta property="og:image" content=")[^"]*(")', r"\g<1>" + img + r"\g<2>"),
+        (r'(<meta name="twitter:title" content=")[^"]*(")', r"\g<1>" + ui["title"] + r"\g<2>"),
+        (r'(<meta name="twitter:description" content=")[^"]*(")',
+         r"\g<1>" + ui["desc"] + r"\g<2>"),
+        (r'(<link rel="canonical" href=")[^"]*(")', r"\g<1>" + url + r"\g<2>"),
+    ]:
+        html = re.sub(pat, rep, html, count=1)
+    for lg in ("en", "it", "sq"):
+        html = re.sub(rf'(<link rel="alternate" hreflang="{lg}"\s+href=")[^"]*(")',
+                      r"\g<1>" + f"https://watch.al/{lg}/shop/new.html" + r"\g<2>", html, count=1)
+    html = re.sub(r'(<link rel="alternate" hreflang="x-default"\s+href=")[^"]*(")',
+                  r"\g<1>" + "https://watch.al/en/shop/new.html" + r"\g<2>", html, count=1)
+
+    cards = "\n        ".join(card(w, lang) for w in items)
+    body = (
+      '<main id="main-content">\n'
+      f'    <nav class="shop-crumb" aria-label="Breadcrumb"><div class="breadcrumb-inner">'
+      f'<a href="/{lang}/">{ui["home"]}</a>'
+      f'<i class="fas fa-chevron-right" aria-hidden="true"></i>'
+      f'<a href="/{lang}/shop/">{ui["shop"]}</a>'
+      f'<i class="fas fa-chevron-right" aria-hidden="true"></i>'
+      f'<span aria-current="page">{ui["crumb"]}</span></div></nav>\n'
+      '    <section style="max-width:80rem;margin:0 auto;padding:2rem 1.5rem 0">\n'
+      f'      <h1 style="font-size:2rem;margin:0 0 .75rem">{ui["h1"]}</h1>\n'
+      f'      <p style="max-width:46rem;color:#555;margin:0 0 1.75rem">{ui["intro"]}</p>\n'
+      '      <div class="shop-grid">\n        ' + cards + '\n      </div>\n'
+      f'      <p style="margin:2rem 0 0"><a href="/{lang}/shop/" '
+      f'style="color:var(--accent-gold);text-decoration:underline;text-underline-offset:3px">'
+      f'{ui["shop"]}</a></p>\n'
+      '    </section>\n  </main>')
+    i, j = html.index("<main"), html.index("</main>") + len("</main>")
+    html = html[:i] + body + html[j:]
+    # shop.js would hydrate the grid from the FULL catalogue and wipe the arrivals
+    html = re.sub(r'\s*<script src="shop\.js[^>]*></script>', "", html)
+    return html
 
 
 def home_strip(lang):
@@ -226,8 +368,8 @@ def home_strip(lang):
         f'{w["brand"]} {w["model"]}</a>'
         + ("" if i == len(arrivals()[:4]) - 1 else '<span class="text-gray-400"> &middot; </span>')
         for i, w in enumerate(arrivals()[:4]))
-    return ('<span class="gold font-semibold tracking-widest uppercase text-xs">'
-            f'{label}</span><span class="text-gray-400"> &middot; </span>'
+    return (f'<a href="/{lang}/shop/new.html" class="gold font-semibold tracking-widest uppercase text-xs">'
+            f'{label}</a><span class="text-gray-400"> &middot; </span>'
             f'<span class="text-sm">{links}</span>')
 
 
@@ -239,8 +381,11 @@ def arrivals_html(lang):
     return (
         '\n    <section id="newArrivals" style="max-width:80rem;margin:0 auto;'
         'padding:1.5rem 1.5rem 0">\n'
-        f'      <h2 style="font-size:1.25rem;margin:0 0 .25rem">{NEW_TITLE[lang]}</h2>\n'
-        f'      <p style="font-size:.85rem;color:#888;margin:0 0 1rem">{NEW_SUB[lang]}</p>\n'
+        f'      <h2 style="font-size:1.25rem;margin:0 0 .25rem"><a href="/{lang}/shop/new.html" '
+        f'style="color:inherit;text-decoration:none">{NEW_TITLE[lang]}</a></h2>\n'
+        f'      <p style="font-size:.85rem;color:#888;margin:0 0 1rem">{NEW_SUB[lang]} '
+        f'<a href="/{lang}/shop/new.html" style="color:var(--accent-gold);'
+        f'text-decoration:underline;text-underline-offset:3px">{SEE_ALL[lang]}</a></p>\n'
         '      <div class="shop-grid">\n        ' + cards + '\n      </div>\n'
         '    </section>\n')
 
@@ -382,7 +527,9 @@ def main():
         linked = set(re.findall(rf'href="/{lang}/shop/([a-z0-9.-]+)\.html"', chk))
         ids = {w["id"] for w in W}
         assert ids <= linked, f"{lang}: unlinked products {sorted(ids - linked)}"
-        assert not (linked - ids - {"delivery"}), f"{lang}: stray shop links {sorted(linked - ids - {'delivery'})}"
+        # `delivery` and `new` are PAGES under shop/, not products, so neither is a stray link
+        stray = sorted(linked - ids - {"delivery", "new"})
+        assert not stray, f"{lang}: stray shop links {stray}"
         n_links = len(ids)
         il = [json.loads(b) for b in SCRIPT_RE.findall(chk) if b.strip() and '"ItemList"' in b][0]
         # the New Arrivals row re-renders NEW_N of the same watches above the grid, so the page
@@ -410,6 +557,24 @@ def main():
         assert "shop-ld-list" not in chk, f"{lang}: empty ld tag still present"
         print(f"{lang}/shop/index.html: {n_cards} cards, {n_links} links, "
               f"ItemList {il['numberOfItems']}, FAQ {n_faq_vis}, crumb OK")
+
+    # --- the dedicated New Arrivals page, cloned from the index just written ------------------
+    for lang in ("en", "it", "sq"):
+        src = (BASE / lang / "shop" / "index.html").read_text(encoding="utf-8-sig")
+        html = build_new_page(lang, src)
+        p = BASE / lang / "shop" / "new.html"
+        old = p.read_text(encoding="utf-8-sig") if p.exists() else None
+        if old != html:
+            p.write_bytes(html.encode("utf-8"))
+        chk = p.read_text(encoding="utf-8-sig")
+        assert chk.count('rel="canonical"') == 1 and f"/{lang}/shop/new.html" in chk, \
+            f"{lang}: new.html canonical"
+        assert len(re.findall(r'rel="alternate" hreflang=', chk)) == 4, \
+            f"{lang}: new.html hreflang set is not four"
+        for b in SCRIPT_RE.findall(chk):
+            if b.strip():
+                json.loads(b)
+        print(f"{lang}/shop/new.html: {chk.count('<article class=\"watch-card')} cards")
 
     # --- the Just Arrived line on the three hand-written homepages ---------------------------
     for lang in ("en", "it", "sq"):

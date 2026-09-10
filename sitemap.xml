@@ -3798,6 +3798,37 @@
     <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/delivery.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/delivery.html"/>
   </url>
+  <!-- shop/new.html -->
+  <url>
+    <loc>https://watch.al/en/shop/new.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/new.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/shop/new.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/new.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/new.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/it/shop/new.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/new.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/shop/new.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/new.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/new.html"/>
+  </url>
+  <url>
+    <loc>https://watch.al/sq/shop/new.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/new.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://watch.al/it/shop/new.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://watch.al/sq/shop/new.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://watch.al/en/shop/new.html"/>
+  </url>
 
   <!-- ──────────── SERVICE PAGES ──────────── -->
   <!-- services/battery-replacement.html -->

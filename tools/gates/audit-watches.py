@@ -251,7 +251,8 @@ def main():
         for p in sorted((BASE / lang / "shop").glob("*.html")):
             # index.html, the legacy ?id= query-param template (special-cased in watch.js),
             # and delivery.html, the hand-built ordering/payment/returns page
-            if p.stem in ("index", "watch", "delivery") or p.stem in j:
+            # ... and new.html, the generated New Arrivals page
+            if p.stem in ("index", "watch", "delivery", "new") or p.stem in j:
                 continue
             html = corpus.sig(p)
             if 'http-equiv="refresh"' in html and 'noindex' in html:
