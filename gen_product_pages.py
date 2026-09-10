@@ -789,16 +789,25 @@ def article_index():
             continue
         meta[slug] = langs
         seen_brands = {}
-        for wid in set(re.findall(r'href="/en/shop/([\w-]+)\.html"', body)):
-            if wid in live:
-                by_watch.setdefault(wid, []).append(slug)
-                b = live[wid]["brand"]
-                seen_brands[b] = seen_brands.get(b, 0) + 1
+        linked = [wid for wid in set(re.findall(r'href="/en/shop/([\w-]+)\.html"', body))
+                  if wid in live]
+        for wid in linked:
+            # carry the article's BREADTH beside the slug. An article that links two
+            # watches and includes this one is ABOUT it; one that links four dozen is
+            # a round-up that merely mentions it. Without this the tier sorted purely
+            # alphabetically, so the day a city guide linking sixteen watches shipped,
+            # it took the "about this watch" slot on the Casio pages from the article
+            # actually about that Casio, on nothing but the letter b beating c.
+            by_watch.setdefault(wid, []).append((len(linked), slug))
+            b = live[wid]["brand"]
+            seen_brands[b] = seen_brands.get(b, 0) + 1
         # keep the COUNT, not just the fact: an article naming five Hislons is a
         # better brand read than one that mentions a single Hislon in passing, and
         # picking alphabetically sent a men's steel Hislon page at the women's guide.
+        # Breadth again, for the same reason: a raw count alone ranks a sixteen-watch
+        # city guide naming five Casios above a Casio article naming four.
         for b, n in seen_brands.items():
-            by_brand.setdefault(b, []).append((n, slug))
+            by_brand.setdefault(b, []).append((n, len(linked), slug))
         if CATS.get(slug) in ("buying", "gifts"):
             commercial.append(slug)
     _ARTICLES = (by_watch, by_brand, meta, sorted(commercial))
@@ -834,13 +843,38 @@ def reading_for(w, n=3):
         i = int(hashlib.md5((w["id"] + seq[0]).encode()).hexdigest(), 16) % len(seq)
         return [seq[(i + k) % len(seq)] for k in range(len(seq))]
 
-    take(sorted(by_watch.get(w["id"], [])), "this")
-    # brand tier: rank by how many of that brand's watches the article actually
-    # names, then rotate within the strongest few. Ranking alphabetically instead
-    # pointed a men's steel Hislon page at the women's guide, because that guide
-    # mentions one Hislon in passing and sorted first.
-    brand = sorted(by_brand.get(w["brand"], []), key=lambda t: (-t[0], t[1]))
-    take(rotated([s for _, s in brand[:5]]), "brand")
+    # What makes an article ABOUT a watch is that its title says so. Two cheaper
+    # signals were tried and both shipped nonsense. Sorting the slugs alphabetically
+    # worked only while the article about a watch happened to sort first, and broke
+    # the day a city guide starting with "buy-" outranked "casio-a159wa-legend" on a
+    # Casio page. Sorting by fewest watches linked was worse: every history piece
+    # carries exactly one generated CTA link, so "narrowest" came to mean "has a CTA
+    # box", and a Hislon page was handed Cartier Santos as its "about this watch".
+    def names_it(slug):
+        t = meta[slug]["en"][1].lower()
+        brand, model = str(w.get("brand", "")).lower(), str(w.get("model", "")).lower()
+        has_brand = bool(brand) and brand in t
+        return -(3 if has_brand and model and model in t else 1 if has_brand else 0)
+
+    # (title score, breadth, slug): the title decides, breadth breaks the tie so a
+    # focused piece beats a round-up when neither names the watch, slug last so the
+    # result is stable across runs.
+    take([s for _, _, s in
+          sorted((names_it(s), b, s) for b, s in by_watch.get(w["id"], []))], "this")
+    # brand tier: title match first, then what SHARE of the article is this brand,
+    # then the raw count. Ranking alphabetically pointed a men's steel Hislon page at
+    # the women's guide, because that guide mentions one Hislon in passing and sorted
+    # first. Raw count alone is wrong the other way: a city guide listing sixteen
+    # watches, five of them Casio, outranks a Casio article listing four, which is how
+    # two city pages came to be labelled "about the brand" on the Casio pages.
+    brand = sorted(by_brand.get(w["brand"], []),
+                   key=lambda t: (names_it(t[2]), -t[0], t[2]))
+    # Rotate only among articles that actually name the brand, when any do. Without
+    # this the pool is polluted by knowledge pieces whose single generated CTA link
+    # happens to be this brand, and rotation handed a Casio page "Watch Power Reserve"
+    # as its "about the brand" read while the Casio comparison sat one slot below.
+    named = [t for t in brand if names_it(t[2]) < 0]
+    take(rotated([s for _, _, s in (named or brand)[:5]]), "brand")
     take(rotated(commercial), "guide")
     for s in rotated(commercial):                # fall-through, deliberately unlabelled
         if len(picks) >= n:
