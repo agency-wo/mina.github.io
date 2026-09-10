@@ -361,11 +361,13 @@ def main():
     if not styled_chronos <= VERIFIED_CHRONOGRAPHS:
         flag(f"chronograph style on unverified watch(es): {sorted(styled_chronos - VERIFIED_CHRONOGRAPHS)}")
 
-    brand_slugs = {"daniel-klein": "Daniel Klein", "navimarine": "Navimarine",
-                   "hislon": "Hislon", "philippe-lauren": "Philippe Lauren",
-                   "bigotti": "Bigotti",
-                   "cortebert": "Cortébert", "pulsar": "Pulsar",
-                   "polotime": "POLOTIME"}
+    # Imported, never re-typed. This was a hand-written copy of shop_bits.BRANDS and it
+    # was eight entries long while BRANDS was ten, so the gate that exists to check the
+    # brand hubs could not see the Casio or Citizen hubs at all. They were the two that
+    # were broken. A checker holding its own copy of the thing it checks is not a
+    # checker.
+    from shop_bits import BRANDS
+    brand_slugs = dict(BRANDS)
     for slug, brand in brand_slugs.items():
         # [DB-006] gen_brand_pages drops retired watches from the hub, so they
         # must not be expected here either.

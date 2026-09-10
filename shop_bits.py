@@ -18,7 +18,7 @@ Kept here so there is exactly one definition of:
   * the "open now" walk-in indicator
 """
 
-from catalog_stats import LEK_RATE, lek, nfmt  # one definition, see catalog_stats.py
+from catalog_stats import LEK_RATE, lek, nfmt, slugify  # one definition, see catalog_stats.py
 
 # Brands that have a landing page. Others fall back to a breadcrumb without a
 # brand level, because a non-final BreadcrumbList item needs a real URL.
@@ -27,16 +27,18 @@ from catalog_stats import LEK_RATE, lek, nfmt  # one definition, see catalog_sta
 # The three shop.js copies carry a hand-mirrored array of this set.
 SWISS_BRANDS = {"Hislon", "Cortébert"}
 
-BRAND_SLUGS = {
-    "Daniel Klein": "daniel-klein",
-    "Navimarine": "navimarine",
-    "Hislon": "hislon",
-    "Philippe Lauren": "philippe-lauren",
-    "Bigotti": "bigotti",
-    "Cortébert": "cortebert",
-    "Pulsar": "pulsar",
-    "POLOTIME": "polotime",
-}
+# BRAND_SLUGS is DERIVED from BRANDS, at the bottom of this file. It used to be a
+# literal here, and it drifted exactly as the comment above BRANDS warned it would:
+# Casio and Citizen were added to BRANDS, their hub pages were built, and this dict
+# was not touched. crumb_html and crumb_jsonld read this dict, so for months every
+# Casio and Citizen product page shipped a three-step breadcrumb with no brand in it
+# and no link to its own hub, while every other brand shipped four:
+#     Home > Shop > Casio A159WA
+#     Home > Shop > Hislon > Hislon Classic
+# That is why casio.html had one inbound link in the whole repository. A third copy
+# of the same mapping lived in tools/gates/audit-watches.py and was also eight
+# entries long, so the gate was blind to precisely the two brands that were broken.
+# Both are gone. There is one list now, and it is BRANDS.
 
 # Breadcrumb labels. watch.js carries the same strings; change both together.
 CRUMBS = {
@@ -292,3 +294,16 @@ BRANDS = [
     ("casio", "Casio"),
     ("citizen", "Citizen"),
 ]
+
+# Display name -> slug, derived so it can never again disagree with BRANDS. Declared
+# after BRANDS rather than beside the other constants at the top because it needs
+# BRANDS to exist; crumb_html and crumb_jsonld resolve it at call time, not at import,
+# so the order is safe. The assert is the point of the whole exercise: catalog_stats
+# .slugify is the accent-folding authority every token and filename already uses, and
+# if a future brand's slug stops agreeing with it, the build stops here rather than
+# shipping a breadcrumb that quietly drops the brand.
+BRAND_SLUGS = {name: slug for slug, name in BRANDS}
+assert all(slugify(name) == slug for slug, name in BRANDS), \
+    "BRANDS slug disagrees with catalog_stats.slugify: " + ", ".join(
+        "%s -> %s, expected %s" % (name, slug, slugify(name))
+        for slug, name in BRANDS if slugify(name) != slug)
