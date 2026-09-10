@@ -96,7 +96,15 @@ ROLES = {
     # rotated: the name means "a watch of this kind", and there are many
     "popular":     lambda: [_mid(), _live()],
     "battery":     lambda: [_desc(r"\b\d+[- ]year battery"), _style("digital"), _live()],
-    "water":       lambda: [_desc(r"\b\d+\s*(?:ATM|BAR)\b|\b\d{2,3}\s*m water"), _style("sport"), _live()],
+    # The third alternative exists because the second one assumes a word ORDER. It matches
+    # "50m water resistant" and misses "water resistant to 100m", which is how the Lorus
+    # description happens to be written. Measured: the first tier caught 9 watches and missed
+    # exactly one, and the one it missed is the only steel-bracelet 100m watch on the counter.
+    # A predicate that depends on which side of the number the noun sits is a predicate that
+    # silently drops stock.
+    "water":       lambda: [_desc(r"\b\d+\s*(?:ATM|BAR)\b|\b\d{2,3}\s*m water"
+                                  r"|water\s*resistan\w*\s*to\s*\d{2,3}\s*m"),
+                            _style("sport"), _live()],
     "sapphire":    lambda: [_desc(r"sapphire"), _live()],
     "bracelet":    lambda: [_desc(r"steel bracelet|five-link|three-link"), _mid(), _live()],
     "chronograph": lambda: [_style("chronograph"), _live()],
@@ -106,7 +114,7 @@ ROLES = {
 FIXED = {"entry", "top"}
 
 
-def pick(role, seed=""):
+def pick(role, seed="", brand=None):
     """[DB-021.a] The current best watch for a role. Raises rather than returns None.
 
     Everything except entry and top is ROTATED by a hash of the article slug. The
@@ -116,9 +124,22 @@ def pick(role, seed=""):
     tier never once offered it." Rotating on the slug rather than on list order
     keeps the choice stable across runs and independent of how watches.json is
     sorted, while spreading the offer across the range.
+
+    `brand` narrows each tier before picking, for articles ABOUT one brand. Roles are
+    otherwise brand-agnostic, and an audit found 7 of 12 brand articles offering a
+    competitor at their own conversion point: the Navimarine buying guide sold a Casio,
+    the Bigotti guide a Navimarine, the Hislon Queen guide a Daniel Klein. No choice of
+    role fixed it, because none of them can express "a watch of this brand".
+
+    The filter NARROWS, never raises: a brand with nothing in a tier falls through to the
+    next tier and finally to _live(), so a brand selling out cannot turn a bridge into a
+    build failure. That matters because this generator is a step of the stock-sync Action,
+    and gen_brand_pages already learned that lesson the hard way.
     """
     assert role in ROLES, f"unknown cta role {role!r}; known: {sorted(ROLES)}"
     for cands in ROLES[role]():
+        if brand:
+            cands = [w for w in cands if w["brand"] == brand]
         if not cands:
             continue
         if role in FIXED:
@@ -253,6 +274,12 @@ BTN_RE = re.compile(
     r'(<p style="margin-top:1rem"><a href=")([^"]*)("[^>]*class="btn-secondary"[^>]*>)([^<]*)(</a></p>)',
     re.S)
 ROLE_RE = re.compile(r'<div class="info-box" data-shop-bridge(?:\s+data-cta-role="([a-z-]+)")?')
+# The optional brand scope, read separately rather than bolted onto ROLE_RE. Two reasons:
+# ROLE_RE expects data-cta-role IMMEDIATELY after data-shop-bridge, so anything wedged between
+# them makes the role read fail and fall silently back to "popular" (which is how "popular"
+# already ended up holding half the boxes); and brand names here carry spaces and an accent
+# (Philippe Lauren, Cortebert), so the role's [a-z-]+ class cannot hold them.
+BRAND_RE = re.compile(r'<div class="info-box" data-shop-bridge[^>]*?data-cta-brand="([^"]+)"')
 
 
 def style_of(raw):
@@ -283,9 +310,13 @@ def main():
 
             rm = ROLE_RE.search(t)
             role = (rm.group(1) if rm and rm.group(1) else "popular")
+            bm = BRAND_RE.search(t)
+            brand = bm.group(1) if bm else None
+            assert not brand or any(x["brand"] == brand for x in watches), \
+                f"{p}: data-cta-brand={brand!r} matches no brand in watches.json"
             # seed on the family, not the file, so the three languages of one
             # article all offer the same watch
-            w = pick(role, en_slug_of(lang, p.stem))
+            w = pick(role, en_slug_of(lang, p.stem), brand)
             name = f'{w["brand"]} {w["model"]}'.strip()
             label_n = it_article(name) if lang == "it" else name
             href = f'/{lang}/shop/{w["id"]}.html'
