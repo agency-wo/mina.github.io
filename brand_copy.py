@@ -12,8 +12,11 @@ RULE: only owner-verified facts appear here.
   Daniel Klein  Turkish brand, quartz, 3-5 BAR (state as a range, tell readers to ask
                 per model), gold-tone is plated. NEVER claim a crystal type.
   Navimarine    quartz, solid steel cases and bracelets. CRYSTAL TYPE IS NOT VERIFIED:
-                do not claim one until the owner confirms it on the bench. Two models
-                state 5 ATM: the Steel 5ATM Blue and the NT0021-1 (watch-27).
+                do not claim one until the owner confirms it on the bench. A rating of
+                5 ATM is claimable on the models whose own description states it, and
+                that set grows: this line used to name "two models" and was wrong the
+                day the NAVI S046 and the NMM1031 arrived. Read watches.json, do not
+                tally it here.
   Hislon        sapphire crystal, marked Swiss, dress category. A higher price buys the
                 dress design and finish, not a better movement or more water resistance.
   Philippe Lauren  visible facts only, and the line is NOT all chronographs. It holds FOUR
@@ -33,8 +36,10 @@ RULE: only owner-verified facts appear here.
                 bracelet and crystal-set indices on a silver sunray dial. PL2412-8 shows three
                 subdials and pushers on the case side but
                 is deliberately NOT on the verified chronograph list in
-                en/blog/chronograph-vs-three-hand-watch.html (which publishes "seven real
-                chronographs, five multifunction" in nine strings per language), so
+                en/blog/chronograph-vs-three-hand-watch.html (the authority is
+                VERIFIED_CHRONOGRAPHS in tools/gates/audit-watches.py, which the gate
+                asserts the style tag never exceeds; this line used to quote "seven real
+                chronographs, five multifunction" and that arithmetic has since moved), so
                 describe its dial and never its function — never the noun chronograph, and
                 never stopwatch/times/timing/elapsed/tachymeter — until the owner confirms
                 it on the bench, and do not move that arithmetic. NEVER state a movement
