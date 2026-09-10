@@ -141,11 +141,22 @@ def itemlist(lang, old):
         item = {
             "@type": "Product",
             "name": f'{w["brand"]} {w["model"]}' + (" Swiss Watch" if w["brand"] in SWISS_BRANDS else ""),
-            "sku": w.get("reference", ""),
+            # The per-item URL, which is what a crawler follows out of a summary page.
+            # The arrivals ItemList below has always emitted it and this one never did,
+            # so the site's two ItemList builders disagreed about the same watches.
+            "url": f'https://watch.al/{lang}/shop/{w["id"]}.html',
             "description": w[f"description_{lang}"],
             "brand": {"@type": "Brand", "name": w["brand"]},
             "image": "https://watch.al" + re.sub(r"\.jpe?g$", ".webp", w["image"], flags=re.I),
         }
+        # sku only when there IS one. This was w.get("reference", ""), so eleven watches
+        # published an EMPTY identifier, which is worse than publishing none: it asserts
+        # the product has a stock number and that the number is the empty string. The
+        # product pages already omit the key in the same situation.
+        if w.get("reference"):
+            item["sku"] = w["reference"]
+            # the reference is a manufacturer part number and is honest as both
+            item["mpn"] = w["reference"]
         # A watch with no price ships NO Offer at all, exactly as gen_product_pages does
         # (see its "would publish a false price" note). This used to be str(w["price"])
         # unconditionally, so the unpriced Cortebert published price "0" in the ItemList on
