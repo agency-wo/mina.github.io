@@ -35,10 +35,13 @@
 #         back. Verified by marking two watches sold and re-running: water,
 #         sapphire, bracelet and entry all moved, the rest held.
 #         Two predicates read description_en because there is no water-resistance
-#         or crystal field on a watch. That is sound here: the sapphire predicate
-#         matches exactly the 8 watches CLAUDE.md permits to claim it, the seven
-#         Hislons plus romanson-bh3054gbr, so the description already IS the
-#         source of truth for the claim.
+#         or crystal field on a watch. That is sound here: CLAUDE.md grants the
+#         sapphire claim PER BRAND, to Hislon plus romanson-bh3054gbr, and every
+#         watch it grants prints SAPPHIRE on its dial, so the description already
+#         IS the source of truth for the claim. Never restate that permission as
+#         a count here. This comment used to say "the 8 watches ... the seven
+#         Hislons" and was wrong the moment an eighth arrived, which is the same
+#         rot CLAUDE.md dropped its own count to avoid.
 #         The button carries no price, deliberately. The product page owns the
 #         price and a price in a button is one more thing to go stale.
 import hashlib
