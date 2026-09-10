@@ -178,6 +178,72 @@ def itemlist(lang, old):
 SCRIPT_RE = re.compile(r'<script type="application/ld\+json"[^>]*>(.*?)</script>', re.S)
 GRID_RE = re.compile(r'(<div class="shop-grid" id="shopGrid"[^>]*>)(.*?)(\n    </div>)', re.S)
 
+# [DB-007.e] the New Arrivals row.
+# WHY:    a newly listed watch used to be announced NOWHERE. It appeared at the bottom of this
+#         grid, which renders in catalogue order (oldest first), behind seventy older cards.
+# HOW:    ordered by the `added` date on the record, which was backfilled from the commit that
+#         first introduced each id. NOT by list position: gen_article_cta:117 promises its own
+#         picking is "independent of how watches.json is sorted", and a feature that silently
+#         depends on list order would break the first time anything re-sorts the file.
+# WHERE:  its own <section> OUTSIDE #shopGrid, because shop.js replaces that grid's innerHTML
+#         wholesale on every filter change and would wipe the row on first interaction.
+# CHURN:  this row moves whenever stock does, which is the point, but it is why the recency idea
+#         is confined to a handful of generated pages rather than sprinkled through the article
+#         corpus. See the same reasoning at gen_article_cta:120-134.
+NEW_N = 6
+NEW_TITLE = {"en": "New Arrivals", "it": "Nuovi Arrivi", "sq": "Të Sapoardhura"}
+NEW_SUB = {
+    "en": "The most recent watches on the counter, newest first.",
+    "it": "Gli orologi arrivati pi&ugrave; di recente sul banco, dal pi&ugrave; nuovo.",
+    "sq": "Orët më të fundit në banak, duke nisur nga më e reja.",
+}
+NEW_RE = re.compile(r'\s*<section id="newArrivals".*?</section>\n', re.S)
+
+
+def arrivals():
+    """The newest live watches, newest first. Ties inside one day keep append order, latest
+    first, because two watches listed the same day were still added in a known sequence."""
+    live = [(i, w) for i, w in enumerate(W) if not w.get("sold") and w.get("added")]
+    live.sort(key=lambda p: (p[1]["added"], p[0]), reverse=True)
+    return [w for _, w in live[:NEW_N]]
+
+
+def home_strip(lang):
+    """[DB-007.f] The Just Arrived line on the three language homepages.
+
+    The homepages are HAND-WRITTEN and no generator owns their markup (CLAUDE.md says so
+    outright), which is exactly why this strip is generated into a marker region rather than
+    typed: a hand-typed "just arrived" naming three watches is false the day the fourth lands.
+    Same contract as gen_stats' data-stat spans, which is the existing precedent for a generator
+    reaching into these files.
+
+    It lists NAMES and links only, no prices. A price here would have to be paired with its Lek
+    twin to satisfy verify-stats check E, and the product page already owns the price.
+    """
+    label = {"en": "Just Arrived", "it": "Appena Arrivati", "sq": "Sapo Ardhur"}[lang]
+    links = " ".join(
+        f'<a href="/{lang}/shop/{w["id"]}.html" class="underline hover:no-underline">'
+        f'{w["brand"]} {w["model"]}</a>'
+        + ("" if i == len(arrivals()[:4]) - 1 else '<span class="text-gray-400"> &middot; </span>')
+        for i, w in enumerate(arrivals()[:4]))
+    return ('<span class="gold font-semibold tracking-widest uppercase text-xs">'
+            f'{label}</span><span class="text-gray-400"> &middot; </span>'
+            f'<span class="text-sm">{links}</span>')
+
+
+HOME_RE = re.compile(r'(<div data-new-arrivals[^>]*>)(.*?)(</div>)', re.S)
+
+
+def arrivals_html(lang):
+    cards = "\n        ".join(card(w, lang) for w in arrivals())
+    return (
+        '\n    <section id="newArrivals" style="max-width:80rem;margin:0 auto;'
+        'padding:1.5rem 1.5rem 0">\n'
+        f'      <h2 style="font-size:1.25rem;margin:0 0 .25rem">{NEW_TITLE[lang]}</h2>\n'
+        f'      <p style="font-size:.85rem;color:#888;margin:0 0 1rem">{NEW_SUB[lang]}</p>\n'
+        '      <div class="shop-grid">\n        ' + cards + '\n      </div>\n'
+        '    </section>\n')
+
 # [DB-007.d] main — the per-language rewrite pipeline + sanity block
 # DOES:   steps 1-8 rewrite one shop index in place (grid, ItemList, crumb/delivery,
 #         SEO section, FAQ LD, metas, schema descs, dead tag removal), preserving
@@ -197,6 +263,13 @@ def main():
         assert m, f"{lang}: shopGrid block not found"
         cards = "\n      " + "\n      ".join(card(w, lang) for w in W) + "\n    "
         norm = norm[:m.start(2)] + cards + norm[m.end(2):]
+
+        # 1b. the New Arrivals row, above the count line and the grid. Strip any previous
+        #     render first so repeated builds replace it instead of stacking copies.
+        norm = NEW_RE.sub("\n", norm)
+        anchor = '\n    <p class="shop-count"'
+        assert norm.count(anchor) == 1, f"{lang}: shop-count anchor x{norm.count(anchor)}"
+        norm = norm.replace(anchor, arrivals_html(lang) + anchor, 1)
     
         # 2. regenerate the static ItemList JSON-LD from watches.json
         done = False
@@ -312,7 +385,10 @@ def main():
         assert not (linked - ids - {"delivery"}), f"{lang}: stray shop links {sorted(linked - ids - {'delivery'})}"
         n_links = len(ids)
         il = [json.loads(b) for b in SCRIPT_RE.findall(chk) if b.strip() and '"ItemList"' in b][0]
-        assert n_cards == len(W), f"{lang}: {n_cards} cards != {len(W)}"
+        # the New Arrivals row re-renders NEW_N of the same watches above the grid, so the page
+        # legitimately carries more cards than the catalogue has watches
+        assert n_cards == len(W) + len(arrivals()), \
+            f"{lang}: {n_cards} cards != {len(W)} + {len(arrivals())} arrivals"
         assert "delivery" in linked, f"{lang}: delivery page not linked from the shop index"
         # itemlist() excludes sold, so this must compare against the live count, not
         # len(W). It asserted len(W) and would have crashed the first time a watch
@@ -334,7 +410,23 @@ def main():
         assert "shop-ld-list" not in chk, f"{lang}: empty ld tag still present"
         print(f"{lang}/shop/index.html: {n_cards} cards, {n_links} links, "
               f"ItemList {il['numberOfItems']}, FAQ {n_faq_vis}, crumb OK")
-    
+
+    # --- the Just Arrived line on the three hand-written homepages ---------------------------
+    for lang in ("en", "it", "sq"):
+        f = BASE / lang / "index.html"
+        raw = f.read_bytes()
+        bom = raw.startswith(BOM)
+        eol = "\r\n" if b"\r\n" in raw else "\n"
+        norm = raw.decode("utf-8-sig").replace("\r\n", "\n")
+        m = HOME_RE.search(norm)
+        assert m, f"{lang}: no <div data-new-arrivals> region on the homepage"
+        norm = norm[:m.start(2)] + home_strip(lang) + norm[m.end(2):]
+        f.write_bytes((BOM if bom else b"") + norm.replace("\n", eol).encode("utf-8"))
+        chk = f.read_text(encoding="utf-8-sig")
+        for w in arrivals()[:4]:
+            assert f'/{lang}/shop/{w["id"]}.html' in chk, \
+                f"{lang}: homepage strip lost {w['id']}"
+        print(f"{lang}/index.html: Just Arrived line rebuilt")
 
 
 if __name__ == "__main__":

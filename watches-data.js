@@ -10,6 +10,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-cl213s-02ss.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress"
     ],
@@ -27,6 +28,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-ql145t-09sg.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress",
       "gold-tone"
@@ -46,6 +48,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-cl213g-02sg.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "gold-tone"
     ],
@@ -63,6 +66,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-ms201s-04ss.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "chronograph",
       "sport"
@@ -81,6 +85,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-ql113g-09sg.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "gold-tone"
     ],
@@ -98,6 +103,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-ql113g-09ss.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress"
     ],
@@ -115,6 +121,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nm268-06.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress",
       "gold-tone"
@@ -133,6 +140,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-cl214s-04ss.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress",
       "gold-tone"
@@ -151,6 +159,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nmm1011.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress"
     ],
@@ -168,6 +177,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nm232-04.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress"
     ],
@@ -185,6 +195,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-navi-009-col6.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "sport",
       "gold-tone"
@@ -203,6 +214,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nvm141-a1.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress",
       "gold-tone"
@@ -221,6 +233,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nm181-03.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "sport"
     ],
@@ -238,6 +251,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nt0029-2.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "sport"
     ],
@@ -255,6 +269,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nm282-04.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress",
       "gold-tone"
@@ -273,6 +288,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nvm112-b4.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress",
       "gold-tone"
@@ -291,6 +307,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-navi-009-col1.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "sport"
     ],
@@ -308,6 +325,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nm001101-col06.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress",
       "gold-tone"
@@ -326,6 +344,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nt0031-1.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "sport"
     ],
@@ -343,6 +362,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nm001404-col04-removebg-preview.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "sport"
     ],
@@ -360,6 +380,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-001808-col02.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "sport"
     ],
@@ -377,6 +398,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nm229-06.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress",
       "gold-tone"
@@ -395,6 +417,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nvm180-a2.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "chronograph"
     ],
@@ -412,6 +435,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nm001101-col02.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress"
     ],
@@ -429,6 +453,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nmm1013.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress",
       "gold-tone"
@@ -447,6 +472,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nm182-01.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "sport"
     ],
@@ -464,6 +490,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nt0021-1.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "dress"
     ],
@@ -481,6 +508,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/NAVIMARINE_NM001404-color01-removebg-preview.webp",
     "sold": false,
+    "added": "2026-04-12",
     "styles": [
       "sport"
     ],
@@ -498,6 +526,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/casio-mtp-vd01.webp",
     "sold": false,
+    "added": "2026-05-19",
     "styles": [
       "dress",
       "sport"
@@ -516,6 +545,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/bigotti-bg1-10154-1.webp",
     "sold": false,
+    "added": "2026-06-03",
     "styles": [
       "sport"
     ],
@@ -532,6 +562,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-steel-5atm-blue.webp",
     "sold": false,
+    "added": "2026-06-03",
     "styles": [
       "dress"
     ],
@@ -550,6 +581,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/citizen-quartz-gn.webp",
     "sold": false,
+    "added": "2026-06-25",
     "styles": [
       "dress",
       "gold-tone"
@@ -568,6 +600,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/belonni-collection.webp",
     "sold": false,
+    "added": "2026-06-25",
     "styles": [
       "dress"
     ],
@@ -585,6 +618,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/romanson-bh3054gbr.webp",
     "sold": false,
+    "added": "2026-06-25",
     "styles": [
       "dress",
       "gold-tone"
@@ -603,6 +637,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-premium.webp",
     "sold": false,
+    "added": "2026-06-25",
     "styles": [
       "dress",
       "gold-tone"
@@ -621,6 +656,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-mesh.webp",
     "sold": false,
+    "added": "2026-06-25",
     "styles": [
       "dress",
       "gold-tone"
@@ -639,6 +675,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-blue.webp",
     "sold": false,
+    "added": "2026-06-25",
     "styles": [
       "sport"
     ],
@@ -656,6 +693,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-f.webp",
     "sold": false,
+    "added": "2026-07-05",
     "styles": [
       "dress",
       "gold-tone"
@@ -674,6 +712,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/starking-bm-664.webp",
     "sold": false,
+    "added": "2026-07-05",
     "styles": [
       "dress",
       "gold-tone"
@@ -692,6 +731,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/casio-mtp-b145d.webp",
     "sold": false,
+    "added": "2026-07-05",
     "styles": [
       "dress"
     ],
@@ -709,6 +749,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2427-1.webp",
     "sold": false,
+    "added": "2026-07-08",
     "styles": [
       "chronograph",
       "dress"
@@ -727,6 +768,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2435-5.webp",
     "sold": false,
+    "added": "2026-07-08",
     "styles": [
       "chronograph",
       "sport"
@@ -745,6 +787,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2435-2.webp",
     "sold": false,
+    "added": "2026-07-10",
     "styles": [
       "chronograph",
       "sport"
@@ -763,6 +806,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/casio-a159wa.webp",
     "sold": false,
+    "added": "2026-07-10",
     "styles": [
       "digital"
     ],
@@ -780,6 +824,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/casio-w-737hx.webp",
     "sold": false,
+    "added": "2026-07-12",
     "styles": [
       "sport",
       "digital"
@@ -798,6 +843,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/casio-ae-1500wh.webp",
     "sold": false,
+    "added": "2026-07-12",
     "styles": [
       "sport",
       "digital"
@@ -816,6 +862,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-14173.webp",
     "sold": false,
+    "added": "2026-07-13",
     "styles": [
       "dress"
     ],
@@ -833,6 +880,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-14165.webp",
     "sold": false,
+    "added": "2026-07-15",
     "styles": [
       "dress",
       "gold-tone"
@@ -851,6 +899,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-14243.webp",
     "sold": false,
+    "added": "2026-07-18",
     "styles": [
       "chronograph",
       "sport"
@@ -869,6 +918,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2427-5.webp",
     "sold": false,
+    "added": "2026-07-24",
     "styles": [
       "chronograph"
     ],
@@ -886,6 +936,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2392-4.webp",
     "sold": false,
+    "added": "2026-07-27",
     "styles": [
       "dress",
       "gold-tone"
@@ -904,6 +955,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/bigotti-bg1-10660-7.webp",
     "sold": false,
+    "added": "2026-07-27",
     "styles": [
       "dress",
       "gold-tone"
@@ -922,6 +974,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2924-2.webp",
     "sold": false,
+    "added": "2026-07-31",
     "styles": [
       "sport"
     ],
@@ -939,6 +992,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2394-2.webp",
     "sold": false,
+    "added": "2026-07-31",
     "styles": [
       "dress",
       "gold-tone"
@@ -957,6 +1011,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-14190.webp",
     "sold": false,
+    "added": "2026-08-02",
     "styles": [
       "dress"
     ],
@@ -974,6 +1029,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/bigotti-bg1-10616-2.webp",
     "sold": false,
+    "added": "2026-08-04",
     "styles": [
       "dress"
     ],
@@ -991,6 +1047,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/bigotti-bg1-10616-7.webp",
     "sold": false,
+    "added": "2026-08-04",
     "styles": [
       "dress",
       "gold-tone"
@@ -1009,6 +1066,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2412-8.webp",
     "sold": false,
+    "added": "2026-08-08",
     "styles": [
       "sport"
     ],
@@ -1026,6 +1084,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2374-1.6c3c147e.webp",
     "sold": false,
+    "added": "2026-08-16",
     "styles": [
       "dress"
     ],
@@ -1043,6 +1102,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2394-1.7cd4f6f4.webp",
     "sold": false,
+    "added": "2026-08-16",
     "styles": [
       "dress"
     ],
@@ -1060,6 +1120,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-steel-crystal-blue.8e25a15e.webp",
     "sold": false,
+    "added": "2026-08-16",
     "styles": [
       "dress"
     ],
@@ -1077,6 +1138,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/cortebert-oval-moonphase.webp",
     "sold": false,
+    "added": "2026-08-25",
     "styles": [
       "dress",
       "moonphase"
@@ -1095,6 +1157,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/cortebert-black-bezel-chronograph.webp",
     "sold": false,
+    "added": "2026-08-25",
     "styles": [
       "chronograph",
       "sport"
@@ -1113,6 +1176,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/cortebert-rectangular-multifunction.webp",
     "sold": false,
+    "added": "2026-08-25",
     "styles": [
       "dress"
     ],
@@ -1130,6 +1194,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/pulsar-crystal-chronograph.webp",
     "sold": false,
+    "added": "2026-08-25",
     "styles": [
       "chronograph",
       "dress"
@@ -1148,6 +1213,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/polotime-gold-crystal.webp",
     "sold": false,
+    "added": "2026-08-25",
     "styles": [
       "dress",
       "gold-tone"
@@ -1166,6 +1232,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/philippe-lauren-pl2391-2.webp",
     "sold": false,
+    "added": "2026-08-25",
     "styles": [
       "dress",
       "gold-tone"
@@ -1184,6 +1251,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/bigotti-bg1-10476-1.webp",
     "sold": false,
+    "added": "2026-08-26",
     "styles": [
       "dress"
     ],
@@ -1201,6 +1269,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/bigotti-bg1-10416-2.webp",
     "sold": false,
+    "added": "2026-08-26",
     "styles": [
       "sport"
     ],
@@ -1218,6 +1287,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/bigotti-bg1-10409-5.webp",
     "sold": false,
+    "added": "2026-08-29",
     "styles": [
       "dress",
       "gold-tone"
@@ -1236,6 +1306,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/lorus-orange-sport-chronograph.webp",
     "sold": false,
+    "added": "2026-09-04",
     "styles": [
       "chronograph",
       "sport"
@@ -1254,6 +1325,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-13828.webp",
     "sold": false,
+    "added": "2026-09-04",
     "styles": [
       "dress",
       "gold-tone"
@@ -1272,6 +1344,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-navi-s046-col4.webp",
     "sold": false,
+    "added": "2026-09-07",
     "styles": [
       "dress",
       "sport"
@@ -1290,6 +1363,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nmm1031-col03.webp",
     "sold": false,
+    "added": "2026-09-07",
     "styles": [
       "dress",
       "sport"
@@ -1308,6 +1382,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-001808-col06.webp",
     "sold": false,
+    "added": "2026-09-07",
     "styles": [
       "sport",
       "gold-tone"
@@ -1326,6 +1401,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-nvm148-d4.webp",
     "sold": false,
+    "added": "2026-09-07",
     "styles": [
       "chronograph",
       "gold-tone"
@@ -1344,6 +1420,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-14237.webp",
     "sold": false,
+    "added": "2026-09-07",
     "styles": [
       "dress",
       "gold-tone"
@@ -1362,6 +1439,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-14248.webp",
     "sold": false,
+    "added": "2026-09-07",
     "styles": [
       "chronograph",
       "sport"
@@ -1380,6 +1458,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/navimarine-001808-col07.webp",
     "sold": false,
+    "added": "2026-09-09",
     "styles": [
       "sport",
       "gold-tone"
@@ -1398,6 +1477,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-ql124s-05ss.webp",
     "sold": false,
+    "added": "2026-09-09",
     "styles": [
       "dress"
     ],
@@ -1415,6 +1495,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-ql139s-09ss.webp",
     "sold": false,
+    "added": "2026-09-09",
     "styles": [
       "dress"
     ],
@@ -1432,6 +1513,7 @@ window.WATCHES_DATA = [
     "currency": "EUR",
     "image": "/images/watches/hislon-ql145t-05sg.webp",
     "sold": false,
+    "added": "2026-09-09",
     "styles": [
       "dress",
       "gold-tone"
