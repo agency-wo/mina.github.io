@@ -36,6 +36,18 @@ COPY = {
                  "guarantee. Try them on Monday to Saturday, 8:30 to 20:30, or order on WhatsApp "
                  "with cash on delivery in Tirana, Shkodër, Vlorë, Elbasan, Korçë and anywhere "
                  "else in Albania."),
+        # The top of the range, named. "premium watches albania" ranks at position 8.9 and
+        # earns nothing, because the only "premium" on this site is the Daniel Klein
+        # Premium line at EUR 64, so Google matches a model name and the searcher lands on
+        # an entry-level watch. The claim here is deliberately RELATIVE, "the premium end
+        # of what we stock", never premium as an absolute: these are EUR 189 to EUR 249
+        # watches. Swiss is claimable on Hislon and Cortebert only, and every Hislon prints
+        # SAPPHIRE on its dial, so both halves of this are house-verified facts.
+        "top": ("If you want the premium end of what we stock rather than the entry point, "
+                "that is the Swiss-marked shelf: Hislon and Cort&eacute;bert, up to "
+                "&euro;{hi}. Every Hislon prints SAPPHIRE on the dial and the "
+                "Cort&eacute;bert is marked Swiss Made. Same 1-year guarantee, same free "
+                "delivery, same cash on delivery as everything else on this page."),
         "faq_h": "Buying a watch from us",
         "brands_h": "Browse by brand",
         "faq": [
@@ -79,6 +91,12 @@ COPY = {
                  "nuovi con garanzia di 1 anno. Provateli dal lunedì al sabato, dalle 8:30 alle "
                  "20:30, oppure ordinate su WhatsApp con pagamento alla consegna a Tirana, "
                  "Scutari, Valona, Elbasan, Coriza e ovunque in Albania."),
+        "top": ("Se cercate la fascia alta di quello che teniamo e non l&rsquo;entrata, &egrave; "
+                "lo scaffale con marcatura svizzera: Hislon e Cort&eacute;bert, fino a "
+                "&euro;{hi}. Ogni Hislon porta SAPPHIRE stampato sul quadrante e il "
+                "Cort&eacute;bert &egrave; marcato Swiss Made. Stessa garanzia di 1 anno, "
+                "stessa consegna gratuita e stesso pagamento alla consegna del resto della "
+                "pagina."),
         "faq_h": "Comprare un orologio da noi",
         "brands_h": "Sfoglia per marca",
         "faq": [
@@ -122,6 +140,11 @@ COPY = {
                  "garanci 1-vjeçare. Provojini nga e hëna në të shtunë, 8:30 deri 20:30, ose "
                  "porositni në WhatsApp me pagesë në dorëzim në Tiranë, Shkodër, Vlorë, Elbasan, "
                  "Korçë dhe kudo tjetër në Shqipëri."),
+        "top": ("Nëse doni pjesën më të lartë të asaj që mbajmë dhe jo hyrjen, është rafti me "
+                "shenjë zvicerane: Hislon dhe Cort&eacute;bert, deri në &euro;{hi}. Çdo Hislon "
+                "e ka SAPPHIRE të shtypur mbi ciferblat dhe Cort&eacute;bert është i shënuar "
+                "Swiss Made. E njëjta garanci 1-vjeçare, e njëjta dërgesë falas dhe e njëjta "
+                "pagesë në dorëzim si gjithçka tjetër në këtë faqe."),
         "faq_h": "Si të blini një orë nga ne",
         "brands_h": "Shfleto sipas markës",
         "faq": [
@@ -207,6 +230,9 @@ def seo_section_html(lang, watches):
         'border-top:1px solid var(--border-light,#eaeaea);padding:3rem 1.5rem 3.5rem">'
         '<div style="max-width:50rem;margin:0 auto">'
         f'<p style="color:var(--text-secondary,#4a4a4a);line-height:1.65">{fill(t["lead"], watches, lang)}</p>'
+        # The top of the range, in the slot the brand links vacated.
+        + f'<p style="color:var(--text-secondary,#4a4a4a);line-height:1.65;margin-top:1rem">'
+          f'{fill(t["top"], watches, lang)}</p>'
         # The brand links used to sit HERE, and that was the problem. This section is
         # below the product grid, so a reader or a crawler met the ten hub links only
         # after eighty-eight product cards. They now render above the grid as
