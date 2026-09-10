@@ -59,6 +59,7 @@ UI = {
               "budget. There is no charge for the advice.",
         cta_btn="Ask on WhatsApp",
         back="See all watches",
+        others_h="Other brands we stock",
         wa_msg="Hi, I am interested in your {brand} watches. Which do you have in stock?",
         trust=["Cash on delivery", "1-year guarantee", "Delivery across Albania"],
     ),
@@ -75,6 +76,7 @@ UI = {
               "La consulenza è gratuita.",
         cta_btn="Chiedi su WhatsApp",
         back="Vedi tutti gli orologi",
+        others_h="Altre marche che teniamo",
         wa_msg="Salve, sono interessato agli orologi {brand}. Quali avete disponibili?",
         trust=["Pagamento alla consegna", "Garanzia 1 anno", "Consegna in tutta l'Albania"],
     ),
@@ -91,6 +93,7 @@ UI = {
               "Këshilla është pa pagesë.",
         cta_btn="Pyesni në WhatsApp",
         back="Shiko të gjitha orët",
+        others_h="Marka të tjera që mbajmë",
         wa_msg="Pershendetje, jam i interesuar per oret {brand}. Cilat keni ne gjendje?",
         trust=["Para në dorëzim", "Garanci 1 vit", "Dërgesa në gjithë Shqipërinë"],
     ),
@@ -183,10 +186,45 @@ def build_main(slug, brand, lang, items):
         f'<i class="fab fa-whatsapp" aria-hidden="true"></i> {ui["cta_btn"]}</a>'
         f'<a class="btn-secondary" style="margin-left:.75rem" href="/{lang}/shop/">{ui["back"]}</a></p>'
         '</section>'
-        '</div>'
+        # [DB-014.j] Every other brand hub. Until this existed the hubs linked each other
+        # exactly zero times: gen_brand_pages replaces <main> wholesale when it clones the
+        # shop index, so the shop index's own brand nav never survives onto a hub. A reader
+        # who landed on the Casio page from search could reach a product or the shop index
+        # and nothing else.
+        # A <nav>, deliberately not a centred <section> and with no blog-nudge-btn, or the
+        # need-help strip above would match it and its assert n_panel == 1 would fire.
+        + brand_siblings_html(lang, slug, ui)
+        + '</div>'
         f'{BRAND_CSS}'
         '</main>'
     )
+
+
+# [DB-014.i] brand_siblings_html — every OTHER brand hub, from the hub you are on.
+# Self-exclusion is free here because slug is in scope, which is the reason this lives in
+# build_main rather than being cloned in from the shop index.
+#
+# Every brand with live stock is listed, including the one-watch hubs. The plan for this
+# change said to leave those three out, on the argument that a hub wrapped around a single
+# card should not be handed more link equity. That argument is right for the article
+# bridge, where the alternative is a direct product link the reader wants more. It is
+# wrong here: this is a navigation row, its whole job is to say what else the shop carries,
+# and a reader who counts nine brands on the shop index and six here has found a bug, not a
+# ranking strategy. The shop index already links all ten in three languages, so omitting
+# them here would suppress nothing and cost consistency.
+def brand_siblings_html(lang, slug, ui):
+    a = ('<a href="/{lang}/shop/brand/{s}.html" style="color:'
+         'var(--accent-gold-accessible,#7a6240);text-decoration:underline;'
+         'text-underline-offset:2px">{name}</a>')
+    links = [a.format(lang=lang, s=s, name=name) for s, name in BRANDS
+             if s != slug and brand_watches(name)]
+    if not links:
+        return ""
+    return ('<nav class="brand-siblings" aria-label="%s" style="margin:2.5rem 0 0;'
+            'padding-top:1.5rem;border-top:1px solid var(--border-light,#eaeaea);'
+            'color:var(--text-secondary,#4a4a4a);font-size:.92rem;line-height:1.9">'
+            '<strong style="font-weight:700">%s:</strong> %s</nav>'
+            % (ui["others_h"], ui["others_h"], " &middot; ".join(links)))
 
 
 BRAND_CSS = (
