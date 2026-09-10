@@ -41,6 +41,39 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
+        slug='buy-watch-vlore', cat='buying',
+        card=dict(
+            en=dict(title='Buying a Watch in Vlor&euml;: Salt, Sun and What We Will Not Claim',
+                    desc='What a coastal summer does to a plated case, a leather strap and a gasket, which watches state a water resistance rating and which say nothing at all. Silent does not mean waterproof, and we will not invent a figure.'),
+            it=dict(title='Comprare un Orologio a Valona: Sale, Sole e Cosa Non Promettiamo',
+                    desc='Cosa fa un&rsquo;estate di mare a una cassa placcata, a un cinturino in pelle e a una guarnizione, quali orologi dichiarano una resistenza all&rsquo;acqua e quali non dicono nulla. Silenzio non vuol dire impermeabile.'),
+            sq=dict(title='Blerja e nj&euml; Ore n&euml; Vlor&euml;: Kripa, Dielli dhe &Ccedil;far&euml; Nuk e Premtojm&euml;',
+                    desc='&Ccedil;far&euml; i b&euml;n nj&euml; ver&euml; bregdetare nj&euml; kase t&euml; praruar, nj&euml; rripi l&euml;kure dhe nj&euml; guarnicioni, cilat or&euml; deklarojn&euml; nj&euml; vler&euml; rezistence ndaj uj&euml;t dhe cilat nuk thon&euml; asgj&euml;. Heshtja nuk do t&euml; thot&euml; e papërshkueshme.'),
+        ),
+    ),
+    dict(
+        slug='buy-watch-shkoder', cat='buying',
+        card=dict(
+            en=dict(title='Buying a Watch in Shkod&euml;r: Delivered and Paid at the Door',
+                    desc='The courier waits while you open the box, and if it is not right you hand it back and pay nothing. What protects you when you cannot simply walk the watch back, and the one part of the arrangement that is not symmetrical.'),
+            it=dict(title='Comprare un Orologio a Scutari: Consegna e Pagamento alla Porta',
+                    desc='Il corriere aspetta mentre aprite la scatola, e se non va bene lo restituite senza pagare nulla. Cosa vi protegge quando non potete semplicemente riportare l&rsquo;orologio, e la parte del patto che non &egrave; simmetrica.'),
+            sq=dict(title='Blerja e nj&euml; Ore n&euml; Shkod&euml;r: D&euml;rgesa dhe Pagesa te Dera',
+                    desc='Korrieri pret nd&euml;rsa ju hapni kutin&euml;, dhe n&euml;se nuk &euml;sht&euml; n&euml; rregull ia ktheni pa paguar asgj&euml;. &Ccedil;far&euml; ju mbron kur nuk mund ta &ccedil;oni thjesht or&euml;n mbrapsht, dhe pjesa e marr&euml;veshjes q&euml; nuk &euml;sht&euml; simetrike.'),
+        ),
+    ),
+    dict(
+        slug='buy-watch-elbasan', cat='buying',
+        card=dict(
+            en=dict(title='Buying a Watch in Elbasan: Who You Are Buying From',
+                    desc='A watchmaker sees which movements come back and which do not, and sells from the same bench that repairs them. What that is worth when you are not local, and the honest limit: servicing happens in Durr&euml;s, in person.'),
+            it=dict(title='Comprare un Orologio a Elbasan: da Chi State Comprando',
+                    desc='Un orologiaio vede quali movimenti tornano indietro e quali no, e vende dallo stesso banco su cui li ripara. Quanto vale quando non siete del posto, e il limite onesto: l&rsquo;assistenza si fa a Durazzo, di persona.'),
+            sq=dict(title='Blerja e nj&euml; Ore n&euml; Elbasan: Nga Kush Po Blini',
+                    desc='Nj&euml; or&euml;ndreq&euml;s sheh cil&euml;t mekanizma kthehen dhe cil&euml;t jo, dhe shet nga i nj&euml;jti bank ku i riparon. Sa vlen kjo kur nuk jeni nga vendi, dhe kufiri i ndersh&euml;m: servisi b&euml;het n&euml; Durr&euml;s, personalisht.'),
+        ),
+    ),
+    dict(
         slug='dress-watches-albania', cat='buying',
         card=dict(
             en=dict(title='Dress Watches in Albania: How to Buy One That Looks Expensive',
