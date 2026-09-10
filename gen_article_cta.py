@@ -52,6 +52,12 @@ import urllib.parse
 import sys
 from pathlib import Path
 
+# The brand-to-slug map, imported rather than restated. This file used to carry no
+# brand-hub knowledge at all, which is why every generated CTA on the site pointed at a
+# single SKU and skipped the category layer. shop_bits is a data module, not a gen_*
+# module, so importing it runs no work.
+from shop_bits import BRAND_SLUGS
+
 BASE = Path(__file__).parent
 LANGS = ("en", "it", "sq")
 
@@ -215,6 +221,12 @@ def it_article(name):
 ARIA = {"en": "See the {n} in the shop", "it": "Vedi {n} nel negozio",
         "sq": "Shihni {n} në dyqan"}
 
+# The category line under the button. Deliberately NOT run through it_article(): "gli
+# orologi Casio" needs no elision, which is the only case that function exists for.
+# "all", never a number: no page may state how many watches we hold.
+HUB_LABEL = {"en": "Browse all {n} watches", "it": "Sfoglia tutti gli orologi {n}",
+             "sq": "Shfleto të gjitha orët {n}"}
+
 # [DB-021.c] the CTA card's button row. Scoped to cta-actions on purpose: the
 # floating WhatsApp chrome button and the nav drawer also carry wa.me hrefs and
 # neither is a call to action for this article.
@@ -327,6 +339,47 @@ ATTR_BRAND_RE = re.compile(r'\bdata-cta-brand="([^"]+)"')
 # The authored position name. Absent means "the box this page has always had", which keeps the
 # bare family seed and therefore the pick that is already published.
 ATTR_SLOT_RE = re.compile(r'\bdata-cta-slot="([a-z-]+)"')
+# Opt-in: this box also links its brand's hub. Bare, with no value, because the brand is
+# already on the box as data-cta-brand and a second copy of the same fact is exactly the
+# bug that left Casio and Citizen with no hub link for months.
+ATTR_HUB_RE = re.compile(r"\bdata-cta-hub\b")
+# The line this generator owns, matched so a run can strip its own previous output before
+# writing the next one. Without the strip the paragraph would accumulate one copy per run.
+HUB_RE = re.compile(r'(\r?\n)[ \t]*<p class="cta-hub"[^>]*>.*?</p>', re.S)
+
+
+def hub_para(attrs, prev, lang, p):
+    """[DB-021.f] The optional "browse all X" line under a bridge button.
+
+    THE SHAPE IS LOAD-BEARING. It must never carry class="btn-secondary" and never the
+    `<p style="margin-top:1rem">` prefix. BTN_RE's group 1 is `(<div ... >.*?)` non-greedy
+    under re.S, so the next box's match would lock onto this paragraph instead of its own
+    button and rewrite the wrong anchor. Keep the class and the inline style as they are.
+
+    Returns "" for a box that did not opt in, so with no authored attributes anywhere the
+    whole feature is a byte no-op on all 324 files.
+    """
+    if not ATTR_HUB_RE.search(attrs):
+        return ""
+    bm = ATTR_BRAND_RE.search(attrs)
+    assert bm, f"{p}: data-cta-hub with no data-cta-brand, so there is no brand to link"
+    brand = bm.group(1)
+    slug = BRAND_SLUGS.get(brand)
+    assert slug, (f"{p}: data-cta-hub for {brand!r}, which has no hub page. "
+                  f"Brands with a hub: {sorted(BRAND_SLUGS)}")
+    # A brand can go out of stock; that is a stock event, not an authoring error, so it
+    # is skipped and PRINTED rather than raised. Silence is how a broken CTA ships.
+    if not any(x["brand"] == brand and not x.get("sold") for x in watches):
+        print(f"  hub link suppressed, no live {brand} stock: {p}")
+        return ""
+    href = f"/{lang}/shop/brand/{slug}.html"
+    assert (BASE / href.lstrip("/")).exists(), f"{p}: {href} does not exist"
+    # Mirror the button paragraph's own break and indent, taken from the text directly
+    # above it, so this works in a CRLF file and an LF file without knowing which.
+    m = re.search(r"(\r?\n)([ \t]*)$", prev)
+    nl, ind = (m.group(1), m.group(2)) if m else ("\n", "        ")
+    return (f'{nl}{ind}<p class="cta-hub" style="margin-top:.75rem;font-size:.9rem">'
+            f'<a href="{href}">{HUB_LABEL[lang].format(n=brand)}</a></p>')
 
 
 def style_of(raw):
@@ -336,6 +389,8 @@ def style_of(raw):
 def main():
     tally, written, skipped, offered = {}, 0, 0, set()
     fixed = {"wa": 0, "idx": 0}
+    # a one-slot list, not an int: sub() is a closure and cannot rebind an outer int
+    hubs = [0]
     boxes = {}          # how many pages carry 1 box, 2 boxes, ...
     for lang in LANGS:
         for p in sorted((BASE / lang / "blog").glob("*.html")):
@@ -359,7 +414,11 @@ def main():
             # seed on the FAMILY, not the file, so the three languages of one article
             # all offer the same watch
             fam = en_slug_of(lang, p.stem)
-            new = t
+            # Strip this generator's own previous hub lines before writing the next ones.
+            # Emission and strip must be exactly symmetric or the file churns on every
+            # build and moves a sitemap lastmod forever; the proof is that a second
+            # consecutive run reports 0 rewritten.
+            new = HUB_RE.sub("", t)
             page_offered = []
 
             if has_bridge:
@@ -398,14 +457,20 @@ def main():
                 seq = iter(sorted(chosen))
 
                 def sub(m):
-                    wi = by_id[chosen[next(seq)]]
+                    # bind the index, not just the id: hub_para needs this box's own
+                    # attribute string and spec is ordered the same way seq is
+                    i = next(seq)
+                    wi = by_id[chosen[i]]
                     nm = f'{wi["brand"]} {wi["model"]}'.strip()
                     lab = it_article(nm) if lang == "it" else nm
                     h = f'/{lang}/shop/{wi["id"]}.html'
                     assert (BASE / h.lstrip("/")).exists(), f"{p}: {h} does not exist"
+                    hp = hub_para(spec[i][0], m.group(1), lang, p)
+                    if hp:
+                        hubs[0] += 1
                     return (m.group(1) + m.group(3) + h
                             + f'" class="btn-secondary" aria-label="{ARIA[lang].format(n=lab)}">'
-                            + LABEL[lang].format(n=lab) + m.group(7))
+                            + LABEL[lang].format(n=lab) + m.group(7) + hp)
 
                 new, n = BTN_RE.subn(sub, new)
                 assert n == len(spec), \
@@ -436,6 +501,7 @@ def main():
     print("  roles used: " + ", ".join(f"{r}={n}" for r, n in sorted(tally.items())))
     print(f"  distinct watches offered: {len(offered)}")
     print(f"  bridge buttons: {len(offered)} distinct watches offered")
+    print(f"  brand-hub links emitted: {hubs[0]}")
     print(f"  whatsapp prefills added: {fixed['wa']}   "
           f"shop-index CTA buttons repointed: {fixed['idx']}")
     print(f"  files: {written} rewritten, {skipped} unchanged")
