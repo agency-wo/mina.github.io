@@ -1287,6 +1287,24 @@ for w in watches:
         def _set_ld_desc(m):
             ld = json.loads(m.group(2))
             ld["description"] = raw_desc
+            # mpn beside sku. The reference IS a manufacturer part number, so publishing
+            # it as both is honest and free, and the shop-index ItemList already does it.
+            # Omitted, never empty: eleven watches have no reference, and an empty
+            # identifier asserts the product has a part number that is the empty string.
+            if w.get("reference"):
+                ld["mpn"] = w["reference"]
+            else:
+                ld.pop("mpn", None)
+            # THE RETURN POLICY BELONGS TO THE OFFER, and moving it fixes a live bug.
+            # It was written once by a page-creation script that is not even in this
+            # repository, sat at Product level ever since, and no generator or gate has
+            # ever touched it. That mattered because drop_offers() strips the whole offers
+            # object for a price-on-request watch, taking shipping, condition, seller and
+            # offer URL with it, while this field survived outside. The three unpriced
+            # Cortebert pages were therefore publishing a 30-day free-return policy for a
+            # product with no offer and no price. Inside the Offer it goes when there is an
+            # Offer, and vanishes with it when there is not.
+            policy = ld.pop("hasMerchantReturnPolicy", None)
             # [DB-003] availability follows the CRM-driven sold flag — a sold
             # watch must tell crawlers OutOfStock, never evergreen InStock
             # A watch with no price ships a Product with NO Offer at all rather
@@ -1325,6 +1343,8 @@ for w in watches:
                         spec["price"] = str(lek(w["price"], w.get("currency", "EUR")))
                     elif spec.get("priceCurrency") == "EUR":
                         spec["price"] = str(w["price"])
+                if policy is not None:
+                    off["hasMerchantReturnPolicy"] = policy
             return m.group(1) + json.dumps(ld, ensure_ascii=False, separators=(",", ":")) + m.group(3)
 
         new_html = re.sub(r'(<script type="application/ld\+json" id="ld-json">)(.*?)(</script>)',
