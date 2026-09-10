@@ -41,6 +41,39 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
+        slug='dress-watches-albania', cat='buying',
+        card=dict(
+            en=dict(title='Dress Watches in Albania: How to Buy One That Looks Expensive',
+                    desc='Slim case, clean dial, applied markers that throw a shadow, and how the bracelet finishes. What separates a dress watch that looks expensive from one that does not, at the prices we actually charge.'),
+            it=dict(title='Orologi Eleganti in Albania: Come Comprarne Uno che Sembra Costoso',
+                    desc='Cassa sottile, quadrante pulito, indici applicati che fanno ombra e come finisce il bracciale. Cosa distingue un orologio elegante che sembra costoso da uno che non lo sembra, ai prezzi che facciamo davvero.'),
+            sq=dict(title='Or&euml; Elegante n&euml; Shqip&euml;ri: Si t&euml; Blini nj&euml; q&euml; Duket e Shtrenjt&euml;',
+                    desc='Kas&euml; e holl&euml;, ciferblat i past&euml;r, tregues t&euml; aplikuar q&euml; hedhin hije dhe si mbaron br&euml;zi. &Ccedil;far&euml; e ndan nj&euml; or&euml; elegante q&euml; duket e shtrenjt&euml; nga nj&euml; q&euml; nuk duket, me &ccedil;mimet q&euml; b&euml;jm&euml; ne.'),
+        ),
+    ),
+    dict(
+        slug='sapphire-crystal-watches-under-7000-lek', cat='buying', icon='fa-gem',
+        card=dict(
+            en=dict(title='Sapphire Crystal Watches Under 7,000 Lek',
+                    desc='Sapphire normally costs more than this. One Swiss quartz Romanson carries it under 7,000 Lek, and above that sapphire on our counter means Hislon. What the crystal buys you in daily wear, and how to check a watch really has one.'),
+            it=dict(title='Orologi con Vetro Zaffiro Sotto 7.000 Lek',
+                    desc='Lo zaffiro di solito costa di pi&ugrave;. Un Romanson al quarzo svizzero lo porta sotto i 7.000 lek, e sopra quella cifra lo zaffiro sul nostro banco vuol dire Hislon. Cosa vi d&agrave; il vetro ogni giorno e come verificarlo.'),
+            sq=dict(title='Or&euml; me Xham Safiri N&euml;n 7.000 Lek&euml;',
+                    desc='Safiri zakonisht kushton m&euml; shum&euml;. Nj&euml; Romanson me kuarc zviceran e mban n&euml;n 7.000 lek&euml;, dhe sip&euml;r asaj shifre safiri n&euml; banakun ton&euml; do t&euml; thot&euml; Hislon. &Ccedil;far&euml; ju jep xhami &ccedil;do dit&euml; dhe si ta verifikoni.'),
+        ),
+    ),
+    dict(
+        slug='are-navimarine-watches-good', cat='buying',
+        card=dict(
+            en=dict(title='Are Navimarine Watches Good? An Honest Answer From the Bench',
+                    desc='A watchmaker who sells them and also repairs them answers straight: what Navimarine is and is not, what the money actually buys, and the claims we refuse to make about it.'),
+            it=dict(title='Orologi Navimarine: il Parere Onesto di un Orologiaio',
+                    desc='Un orologiaio che li vende e li ripara risponde chiaro: cosa &egrave; e cosa non &egrave; Navimarine, cosa comprano davvero i soldi, e le affermazioni che ci rifiutiamo di fare.'),
+            sq=dict(title='A Jan&euml; t&euml; Mira Or&euml;t Navimarine? P&euml;rgjigjja e Ndershme',
+                    desc='Nj&euml; or&euml;ndreq&euml;s q&euml; i shet dhe i riparon p&euml;rgjigjet drejt: &ccedil;far&euml; &euml;sht&euml; dhe &ccedil;far&euml; nuk &euml;sht&euml; Navimarine, &ccedil;far&euml; blejn&euml; v&euml;rtet parat&euml;, dhe pretendimet q&euml; nuk i b&euml;jm&euml;.'),
+        ),
+    ),
+    dict(
         slug='hislon-classic-queen-guide', cat='buying', icon='fa-heart',
         label=dict(en='Buying Guide', it="Guida all'Acquisto", sq='Udh&euml;zues Blerje'),
         card=dict(
