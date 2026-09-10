@@ -41,6 +41,30 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
+        slug='hislon-classic-queen-guide', cat='buying', icon='fa-heart',
+        label=dict(en='Buying Guide', it="Guida all'Acquisto", sq='Udh&euml;zues Blerje'),
+        card=dict(
+            en=dict(title='Hislon Classic Queen: Which One to Buy',
+                    desc='The women&rsquo;s dress ladder, walked rung by rung from steel with a mother-of-pearl dial up to rose gold-tone. Which one carries the crystal-set bezel, which one is black rather than mother-of-pearl, and what the extra money actually buys.'),
+            it=dict(title='Hislon Classic Queen: Quale Comprare',
+                    desc='La scala degli orologi da donna, gradino per gradino, dall&rsquo;acciaio con quadrante in madreperla fino all&rsquo;oro rosa. Quale ha la lunetta con cristalli, quale &egrave; nera invece che in madreperla, e cosa comprano davvero i soldi in pi&ugrave;.'),
+            sq=dict(title='Hislon Classic Queen: Cil&euml;n t&euml; Blesh',
+                    desc='Shkalla e or&euml;ve p&euml;r femra, shkall&euml;z pas shkall&euml;zi, nga &ccedil;eliku me ciferblat sedefi deri te ari roz&euml;. Cila e ka lunet&euml;n me kristale, cila &euml;sht&euml; e zez&euml; n&euml; vend se sedefi, dhe &ccedil;far&euml; blejn&euml; v&euml;rtet parat&euml; shtes&euml;.'),
+        ),
+    ),
+    dict(
+        slug='cortebert-watches-albania', cat='buying', icon='fa-star',
+        label=dict(en='Buying Guide', it="Guida all'Acquisto", sq='Udh&euml;zues Blerje'),
+        card=dict(
+            en=dict(title='Cort&eacute;bert Watches in Albania: What We Stock and Which to Buy',
+                    desc='A moon phase dress oval, a working chronograph that is the dearest watch we sell, and a rectangular multifunction priced on request. What each one actually is, and the two things we deliberately will not claim about any of them.'),
+            it=dict(title='Orologi Cort&eacute;bert in Albania: Cosa Teniamo e Quale Comprare',
+                    desc='Un ovale da abito con fase lunare, un cronografo vero che &egrave; l&rsquo;orologio pi&ugrave; caro che vendiamo, e un multifunzione rettangolare con prezzo su richiesta. Cos&rsquo;&egrave; davvero ognuno, e le due cose che non dichiariamo.'),
+            sq=dict(title='Or&euml; Cort&eacute;bert n&euml; Shqip&euml;ri: &Ccedil;far&euml; Mbajm&euml; dhe Cil&euml;n t&euml; Blesh',
+                    desc='Nj&euml; oval veshjeje me faz&euml; h&euml;ne, nj&euml; kronograf i v&euml;rtet&euml; q&euml; &euml;sht&euml; ora m&euml; e shtrenjt&euml; q&euml; shesim, dhe nj&euml; multifunksion drejtk&euml;nd&euml;sh me &ccedil;mim me k&euml;rkes&euml;. &Ccedil;far&euml; &euml;sht&euml; secila, dhe dy gj&euml;rat q&euml; nuk i deklarojm&euml;.'),
+        ),
+    ),
+    dict(
         slug='gold-watches-albania', cat='buying', icon='fa-gem',
         label=dict(en='Buying Guide', it="Guida all'Acquisto", sq='Udh&euml;zues Blerje'),
         card=dict(

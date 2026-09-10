@@ -16,8 +16,8 @@
     "lastmod": "2026-08-27"
   },
   "https://watch.al/en/blog/": {
-    "fp": "44c19f4c6f38c80095520ad21b2aecd23753652f93bf603c321582a003a586c2",
-    "lastmod": "2026-09-09"
+    "fp": "8ca7f477c963ff65865a74c2fd96a2cb9dbb94ac31bea7e6dd4e649f5c7cca1f",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/blog/are-daniel-klein-watches-good.html": {
     "fp": "f419df402708e4134cd8093b165713d8e91c4fac96b9e2a066369a0ca25bec67",
@@ -103,6 +103,10 @@
     "fp": "5eede4537e54d1cc499146314a8faa5e1753ffcfdae838e796b3f74d1bedffc3",
     "lastmod": "2026-09-10"
   },
+  "https://watch.al/en/blog/cortebert-watches-albania.html": {
+    "fp": "232528810809583799301f5387feed81e26798e1891c977870a70f1a722b24fc",
+    "lastmod": "2026-09-10"
+  },
   "https://watch.al/en/blog/daniel-klein-vs-philippe-lauren.html": {
     "fp": "37b6205fea6cb28b375e2c516e07d821ceebfa6157d4a82c513f4b97ee9d04e5",
     "lastmod": "2026-09-10"
@@ -138,6 +142,10 @@
   "https://watch.al/en/blog/hamilton-military-watches.html": {
     "fp": "2c3d67d521f8f32d947042491e44de1fd7c463de3bf5e67dc70fbdd81ce5b488",
     "lastmod": "2026-08-27"
+  },
+  "https://watch.al/en/blog/hislon-classic-queen-guide.html": {
+    "fp": "1e363f237a79eb57391b05c7179f0f630a7f6b5df245d5117a35e70f5773e1dd",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/blog/hislon-classic-review.html": {
     "fp": "4f26e519b527b0f38fa381f060548924b0b365eecd8b1722536c4b8de6a44685",
@@ -448,36 +456,36 @@
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/belonni-collection.html": {
-    "fp": "1259269860a2568f3def541c516f7faf95276bcc2e5c9bab55ffa8fefb4ddfcb",
+    "fp": "ad1ed3def285a26f8452ccef152f6efe02228289ec100a74692728f1378b7acd",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/bigotti-bg1-10154-1.html": {
-    "fp": "62e6c781bc64589f41bec7fc6418cd43e065d063c21e98e77c125a1bae6fd87c",
-    "lastmod": "2026-09-07"
+    "fp": "da7b6386bf35817301a4d8b34fea2f56d00fb73275d41b7a1b1771498b5801dd",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/bigotti-bg1-10409-5.html": {
-    "fp": "c31749e9afff87b4bf7242fa5302360a4e238f9bc41ec50aa57e4cf46f214079",
-    "lastmod": "2026-09-07"
+    "fp": "bc9568d4cd520010626b095958b632d5c00d5578190658bf65df5e1c33085173",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/bigotti-bg1-10416-2.html": {
-    "fp": "11df38644cef78462ed5292c518b2cf5d7961a5b9f53467df2913e564d994215",
-    "lastmod": "2026-09-09"
+    "fp": "c3f9131ce40777581d54a67e9b61ef5f19ec931e97adaeca11f7eda6aeee2ca6",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/bigotti-bg1-10476-1.html": {
-    "fp": "4cce3cedca1df686a8d6f631118ac4f9c150424ba887c0b382a243c1c761a7f8",
-    "lastmod": "2026-09-07"
+    "fp": "fdebd580c76926d8d3dbc2cfc0286650eea5a204e8bc118a1c9d926a94200ff0",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/bigotti-bg1-10616-2.html": {
-    "fp": "c196bf14f6ac594ee65a31654094b0c64b7f019efdcd4f147ea8518617ac2f2b",
-    "lastmod": "2026-09-09"
+    "fp": "17d21106075187e497ee594be4af9e6b3ac1f3c4890329617eb2214dee40387d",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/bigotti-bg1-10616-7.html": {
-    "fp": "98ff4f01d244fa5effe9dbb65c10d0efd033bcab77a0a6d95db68a78e3ca487c",
-    "lastmod": "2026-09-09"
+    "fp": "4fc9d60cc2f2f8d9bb06a7d304408fb1528ef3b8e02cd76554e236eb05a1c9cb",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/bigotti-bg1-10660-7.html": {
-    "fp": "81f61631af7e51282499259ef3806281a15a860ac8ea5154ab266672586c0026",
-    "lastmod": "2026-09-07"
+    "fp": "11a64cae41771f938928a90167bc5085b4ab2cef8a605941c6b88f8f7337041b",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/brand/bigotti.html": {
     "fp": "07ca63c8b23bb64a8c6ba58f2bdbdbd7d87b0aeb7d0352c38ca7867c7f1cba9f",
@@ -520,303 +528,303 @@
     "lastmod": "2026-08-27"
   },
   "https://watch.al/en/shop/casio-a159wa.html": {
-    "fp": "00d6bdf2ed381959c66a6974d64333dba07be185b8b7e21f4876e944f7014ba4",
-    "lastmod": "2026-08-27"
+    "fp": "e5304d7b6e2f24dc40e61c66484ee40e15e64aae893ece9be12fea1561b2a53d",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/casio-ae-1500wh.html": {
-    "fp": "84df1f9a069d20e0668af7a6a565dafdd9546e9c268437ea3572d21b3527dbfe",
-    "lastmod": "2026-08-27"
+    "fp": "f2acb83a6bf8b9d107b584161bd6ea6736d38d6eab01d72cdb7312b07e6227fe",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/casio-mtp-b145d.html": {
-    "fp": "8101dcd2d5b083258d4595d44813ecced860b975226631cadd4418caec6aedb5",
-    "lastmod": "2026-09-09"
+    "fp": "216bd9e847da12c714d42374190f236a7b047e4106e546fb70da84d479b16666",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/casio-mtp-vd01.html": {
-    "fp": "635be7bd7798c1148c6e82be61b3208624a89671c811296a26cacbce6f3dcfda",
-    "lastmod": "2026-09-04"
+    "fp": "aa7761d3090fd9afa50788fb2331e51842215894a143bf09c55b5d5ef4e311b5",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/casio-w-737hx.html": {
-    "fp": "eecc1d903078643d697e9862860c446ff243fd4da9738ecc939604ddbac6d0d0",
-    "lastmod": "2026-08-27"
+    "fp": "6ef787543451d80c34ea61f545439bf2c885d2128592de2d3cd61a59095df7c1",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/citizen-quartz-gn.html": {
-    "fp": "13e156fc847ac36e2026a3e215c7b0dd6d9ed5602672dbaff18f92ab18c92b4f",
-    "lastmod": "2026-08-27"
+    "fp": "4033c2fc5a2a22762ab78b0d9f702b93ff5ffb886a6bf2ea84195fc39928ccc8",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/cortebert-black-bezel-chronograph.html": {
-    "fp": "6e488a59d9b8c68f4feb12ff5d84bff50d8ff69a89ce173179f13d56ba13a8f2",
-    "lastmod": "2026-09-09"
+    "fp": "c58c1752b0e69e5a973b878a6bf731a4a9b4ea881c8fb2639471f8afbb4f1015",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/cortebert-oval-moonphase.html": {
-    "fp": "a1089c2f95ebddf65322c3fde2ec18efbd8bab3eb80b5f26c4c710dbace63829",
+    "fp": "1dd90c850cef4f810a796ac57d7179eda22ada877b074e5e7bbfa0055b7c7953",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/cortebert-rectangular-multifunction.html": {
-    "fp": "0b43a66bc1ba7a2d5821d45895346dc812d18608cb9bcc18c059dd6831c8eb67",
+    "fp": "706955dd9c73db219ba733909b20c53adb413a9eff4a6cd011a140bbd7e6f6a9",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-13828.html": {
-    "fp": "d1a5ab6e40e54f88fdb82e2141064359ef7ffa211333bc3b2f529bfe3d77cdc6",
-    "lastmod": "2026-09-07"
+    "fp": "f0358491e176e421e3f57e184c751312ff98dbed5bbdc68138dd7af9e06c7dce",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-14165.html": {
-    "fp": "69d6df0be9a7c6dfb778622a7347854af1abde5891bbcde51093dd13067d68ec",
-    "lastmod": "2026-09-09"
+    "fp": "9a8a7239bf05830efcc692910dd25bdb081a885d30202affa0d4f897a0a6b8e0",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-14173.html": {
-    "fp": "170097d95a00a9f4446838bdb9624758e1f70165250ac3dd738f2d8edf0abd9d",
-    "lastmod": "2026-09-09"
+    "fp": "c1b2f2b919984a6afd93f4f8f31acf068eafae3b88d6b5b0566cf6d850088523",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-14190.html": {
-    "fp": "9e164eaea1aca49fcb5bd368adfd77c7f2e40e5183696f3e369b25ddd4f39e2f",
-    "lastmod": "2026-09-07"
+    "fp": "95f90c2ada2725c88168c04bc471b51760c6414879741947deb92e774dc4770f",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-14237.html": {
-    "fp": "08eb469c8cf20ce9f1d3948b9844ce2bd64a852a0f177ef6728df326c4e9ef1e",
-    "lastmod": "2026-09-09"
+    "fp": "c026707753650c6ab0e65931411a2d7c15e0debe9acb4e0073ad81c96f839c5e",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-14243.html": {
-    "fp": "0554adff7de7f3aa3e037aa363f6053fc06abb68f557430717a5d059439c3bf7",
-    "lastmod": "2026-09-09"
+    "fp": "016f94144228397607c8a0c186bdf5c8e94d0f35d6778e9289d65e8c21ee9eeb",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-14248.html": {
-    "fp": "9f36cfe8c72bc94ec0f3c1a1ff14fad0cb1436f74dd250ebd1747c5bd0d370ac",
-    "lastmod": "2026-09-09"
+    "fp": "eabc57bbe2c0ccded9c45d58223019d81276fa636ad96d4473d8224796cb4921",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-blue.html": {
-    "fp": "32984381522dd5636f4829416e79168af152319ec5bd69a98d276b84784101d6",
-    "lastmod": "2026-09-07"
+    "fp": "87b5d50e75d8e5b7fc6e26dac2fb0b8634283b2b6fda9b5db1807df7655fc748",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-f.html": {
-    "fp": "633ef27cda44b8d20a8acc00f3a1df3f4bad274a20fb3267ae9743ba39503ef5",
-    "lastmod": "2026-08-27"
+    "fp": "45ad7a15efe102b9f13a40c6e61a8ddfeb3df07515a727624adec858c8c6daf4",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-mesh.html": {
-    "fp": "3104eda6b7ef08f516ae3827435562804cf20948bd8c023c2e52b86c788f3b7a",
-    "lastmod": "2026-09-07"
+    "fp": "4aa3c63a5bcf7c57bad7bfdc3348110cf61ef138cfa99e48431819d22d5d93ca",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/daniel-klein-premium.html": {
-    "fp": "bf757a9b803de6ce37d4110eed793fbb837dfcd137ad952247c732f2b49ad7dd",
-    "lastmod": "2026-09-07"
+    "fp": "94bfbc60a59b972f2c8e59dbe2e9160809f4600abef853d005437f4c8be9c932",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/delivery.html": {
     "fp": "a22b40e5c64b2cce0ef1395e297b251e19269071732ccf16e93358f1259656b7",
     "lastmod": "2026-08-22"
   },
   "https://watch.al/en/shop/hislon-ql124s-05ss.html": {
-    "fp": "523952444930f657af3e35475f3bdeb81a19508aa05f93cc5967b1519b50370f",
+    "fp": "3864b102143207d5bb2e10d3ba13a22f7cbae8eaf7f95047097d8218a4f19f1b",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/hislon-ql139s-09ss.html": {
-    "fp": "093e8e71fcd79d961b873bac4b0ca34bdf875ef18243613e2249383e241c261d",
+    "fp": "60b43e7abb565608eb2bfd3e47a5c06ce46c0b46290bf8e1185f469c22ffbdcb",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/hislon-ql145t-05sg.html": {
-    "fp": "61248a579fd8c154c25cbc4820f99671a3d51f970c5f2edac4d2db8ce65f4185",
+    "fp": "93dae09460ff2e48ef1497ccf0ad74d5446bb2dfd33564d1b1c2c07e56849eeb",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/lorus-orange-sport-chronograph.html": {
-    "fp": "46d09db3864c091bac1122408d7e8ce753de8b52e9126e5a1556c3a149758e46",
-    "lastmod": "2026-09-09"
+    "fp": "edd18cb4e540fa1796bc0dff25a95b3d39aaea1e0372388cc91f689fa2882103",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/navimarine-001808-col06.html": {
-    "fp": "2015f252b601b24f49fac617a724ca25420012544b5875f672f11388d5c4998d",
-    "lastmod": "2026-09-09"
+    "fp": "64607897a07174595cedfa98d871e3efca712d6c33d8a5abff9a8e7b860c739a",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/navimarine-001808-col07.html": {
-    "fp": "05a32e3a9f6978ab90a57b4a9aea774c1d9f6b91ddf4f54b6a473b5cda264d3a",
-    "lastmod": "2026-09-09"
+    "fp": "71e55c8a0d07a4c760d62baa2ae59d17b67577be3a352a102bb6280326ee8271",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/navimarine-navi-s046-col4.html": {
-    "fp": "9a1dfce70e5c4d30f26677b613763146e9b7e05a7c09efd5e8a7f0df28d65bc8",
-    "lastmod": "2026-09-09"
+    "fp": "ad5046c1d376fe450a57b8c32c6eaad7b8e532f6d45250fa33ac3bccbb8406fd",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/navimarine-nmm1031-col03.html": {
-    "fp": "983491b28e6e9698a3197104905c340d749bc476b036bcfaa1a7aefc3532686e",
-    "lastmod": "2026-09-09"
+    "fp": "d0cba437e3375f22a67d250a04c72ba7edaeeb250a15085343f5093812b32953",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/navimarine-nvm148-d4.html": {
-    "fp": "1bc20b2fe9f4172c66fa9cf2d0e3ab36b34428c98e350cd99c8715f31d762d80",
-    "lastmod": "2026-09-09"
+    "fp": "07092efa601f530552eb88893bf9ebd7a654b7dffcc06723095b0aee12f340f7",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/navimarine-steel-5atm-blue.html": {
-    "fp": "d185e5c056c4da5b8101a0de89666a751b8f278fbe5d80534563b7312419f2e7",
-    "lastmod": "2026-09-09"
+    "fp": "c228db3edbdf697e1cc3a5313428dd4b4b914d14cfbd247d62b3f52346468c93",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2374-1.html": {
-    "fp": "eb0279a358674c264f7e6aaa998cdae1449a8b78b2518368c74fa3956e3333dd",
-    "lastmod": "2026-08-29"
+    "fp": "91d425229dcd726a16159b5d7367693b2508f7f58eedf235c01581e93e746ef5",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2391-2.html": {
-    "fp": "f52ab2869b6f230029afa38e74c8997d8506e4e2e8818b717c6444e1683b1455",
-    "lastmod": "2026-08-29"
+    "fp": "2eb259c8e97650adb2002acf5420459e9cdbb5871a7b2abbcbcaec5b3c7b8873",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2392-4.html": {
-    "fp": "bcdca9b11a757eced0623cd171dd9e0e8d85032302a54a04dd1b26847e10aac7",
-    "lastmod": "2026-08-29"
+    "fp": "4fbfaa9d972090bd4e39d80c66d70c34725da55a30fcd2da9cd6bdff26c910ea",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2394-1.html": {
-    "fp": "a3274109c601fd60411195a3ba402355eafe9118871f8db47919f11eb29c8464",
-    "lastmod": "2026-08-29"
+    "fp": "de6009d8c58ff66f1c2b56ba616720e93ed4c1ca4d361dd82c1d6cdb9b6f23e8",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2394-2.html": {
-    "fp": "d6403818a49e731d476d8e6e5be1c0ee9986aeb76bb298069c7a4802898b0128",
-    "lastmod": "2026-08-29"
+    "fp": "ff5dadf7bacc2fbc24ae178d52eb29a5f71bd6eb2dfc60e88376ddc37da281ca",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2412-8.html": {
-    "fp": "c09aa961e4db1163eeb9541703a6534f706d6da66e120c3692df3a053a6ef4b8",
-    "lastmod": "2026-08-29"
+    "fp": "e0b410615b1b7d226cd0f2b89ca868278522fa400f0d63dbc5eb12f10b8ad14a",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2427-1.html": {
     "fp": "ebfe915f8447e613b595f2162345b71316894d4f43f6bfc806462a323e734517",
-    "lastmod": "2026-08-29"
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2427-5.html": {
-    "fp": "1ae02ef22266d290c724e16d2703f8641ece4ae8e6861078ccc395c1232bb73e",
-    "lastmod": "2026-08-27"
+    "fp": "e0af37fe5c3ccb01064aad4b2b3f54b2b5b27f5415300aed03347ed5da2b4711",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2435-2.html": {
-    "fp": "96664be89ce7e27e209db3dc40e5d9d88e368ada51e6bb235b519c1f923c15c2",
-    "lastmod": "2026-08-29"
+    "fp": "7b227b8309d510bb59cc2c7b1f9fc4c50956690f33bbbc539f14d244bb80e3e9",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2435-5.html": {
-    "fp": "bfb259e79c78cc8fcf5a2a2b7e9109e82a435e8ba17083335f9c4d083db2066c",
-    "lastmod": "2026-08-29"
+    "fp": "f8cd4fc80321504c173e20ea66b491e10bd643713c182d6d052dc55b52f82f06",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-pl2924-2.html": {
-    "fp": "e934b9b453ba3ca32603ea514edfcab247245aeef3da24682f4a2338d776517c",
-    "lastmod": "2026-08-27"
+    "fp": "20e26917b785c092b39587efc02d6a62b81d554f4b621149599b271722f437e3",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/philippe-lauren-steel-crystal-blue.html": {
-    "fp": "ae47c70a13e61f6b51169621f254a200e1b6d6f387b348bb2be44387955bc682",
-    "lastmod": "2026-09-04"
+    "fp": "00c1e1ec9538f492ae5b199d4ae5f2559d9a40f826b7299d59f0ed7ce6e2e756",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/polotime-gold-crystal.html": {
-    "fp": "6b9213c6c33a5ad984e120353ad16c760f2bcb3b67f725ac1e94aaa7882ed44e",
-    "lastmod": "2026-09-09"
+    "fp": "7cfb8f2e02e805cd8d088ea1f5cf095f2537b64366ec24393413a508b9196426",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/pulsar-crystal-chronograph.html": {
-    "fp": "9f296e5df2320b2587fffbd02e3cc5099f3766c697293786691ab661f59cd828",
-    "lastmod": "2026-09-09"
+    "fp": "d52ebe3d84bfea9839e14aba2fe6d97bf7903a44801fa773646eb75687b23816",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/romanson-bh3054gbr.html": {
-    "fp": "c6b3282fcb460492a6fba1e7ce33280214dff7a143088db051c1ace8bd0bdf8d",
+    "fp": "7191d303a340e8fbe90a934cc618c298bf5e1a4584d16c0be4601ec471939977",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/starking-bm-664.html": {
-    "fp": "29e99c419efd47f23e2144c7c7cc3e0748fc9b6d5534b438011e47bec8de56b3",
-    "lastmod": "2026-08-29"
+    "fp": "6a14541cf4c0399c5973987d6454f823264206eead05e2d74d2d5f63d725db4a",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-1.html": {
-    "fp": "fe8a7a13906ae685d534aedaf2a7dd1f2ceca6f1b60d4c717a10a335a7c2cd68",
+    "fp": "cf184be2584f89d7567e72424d1754d5f0767f6a8268d9629c6481fe6f08c378",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-10.html": {
-    "fp": "fdd2e00ecc7cf7386c98d4ddf63fdb8a04b5b539c7248a18b6f3cdb38c32fe5d",
+    "fp": "d17bb872a23c4427011adbfcf4e2be2d1447277f6a6dfddd4f1b054fa7302e05",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-11.html": {
-    "fp": "01fc7ac9e5faa5a0602c54220fa598b2f790508fc2a89778a20862406dc45f09",
+    "fp": "cf2498e289762285c3aab37fe32e228ee767b310886ed5c26a4ec4f6fe81b314",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-12.html": {
-    "fp": "c7785e1315f2fcd1f7a38a6387125a5ce7f6f412cfbc273456f23b0bc6786244",
-    "lastmod": "2026-09-09"
+    "fp": "3f305789ebaa6208670454c87464f7249128ca41767a522b414aa6163e420faf",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-13.html": {
-    "fp": "152de07446eb65f26627a6fa41b153fa0bffd68616e8a9e2a7409d5e0eb2cbf0",
-    "lastmod": "2026-09-09"
+    "fp": "67b5fdd4ca3dd76a815ceb92b822ef2f8b79cc24e297f5920f51fb324f9f1f9b",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-14.html": {
     "fp": "f7ef331dd4db63ffd40efc4511d0265d8f31a5518f1c6fede38ca99ed2f633e3",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-15.html": {
-    "fp": "eab8cb1ba41d586c1166f2efa0c94a23261264262f63d56efefb94fab0d7c759",
-    "lastmod": "2026-09-09"
+    "fp": "5c43cfd09f2b36cb46f7286b27c9513c34b8118b6aa6c3fbb4af12f96e7a490b",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-16.html": {
-    "fp": "0606378da485ff0c3dc2418aa37545509c1ac9f320fba2816f8e57b058823a75",
+    "fp": "b580be1f3e9c5c0aac18d3d26e857babaf3b3c614fe189ccee10629aa2ef72d4",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-17.html": {
-    "fp": "c6acbc4fae79a02b0c253be5ab3195cb5a2972a81a1b94095e0ca6426de02962",
-    "lastmod": "2026-09-09"
+    "fp": "116dac52623a0ed3a731a28e1f7f7c907956924b4db29e79a9ce9f3e18c86cbf",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-18.html": {
-    "fp": "e67a16dd5e3002efbe8865126699664776d9a846f3093671c2c9669c0d7fe804",
+    "fp": "95977776d19b1d327b1ae2346a4e1ceeb7ffa6381b8ac15fa1f26efc6ae59f60",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-19.html": {
-    "fp": "21edba9e199245a6f9b605cf43aa4677a58489927befd4849d3462ff26bb5489",
-    "lastmod": "2026-09-09"
+    "fp": "5039554250cea970d09c82d02c22be0682fccba124a5c1144288ca6f1dec5e47",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-2.html": {
-    "fp": "a8f6f37ef8bf40658e47287eb57bb486f609ec19d7e736c43ccc73bfe39521db",
+    "fp": "3105a79c32c6ba647034dba611cd719cac7f0cb639ab2e49f6ae6279a65b0532",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-20.html": {
-    "fp": "e0c2a89ece6c582951624d1ae39ddf61f09d76a0d7a7c7345b9ba5a114785020",
-    "lastmod": "2026-08-27"
+    "fp": "3603aeac520f572ddd76d91675ddcb3a9abab3fcc62cffd9dd4cf845c96a6f58",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-21.html": {
-    "fp": "4d94d89d0ede8e5fb9297c408c8f67bf6cdc8b77f5b44a719e7f3111d87713fe",
-    "lastmod": "2026-09-09"
+    "fp": "76fc5974cdde9757654dbc31a8e8d89be65e1ff60b2b269870b9685c60ed3c56",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-22.html": {
-    "fp": "e87adcab4fc2b01722bcbb13b9309aa31c43da7d369aa7a56e7033258d420102",
-    "lastmod": "2026-09-09"
+    "fp": "0b322056a9cc3bc8900decaa049dc4592388fcaacc25c80040f9128994dcda6f",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-23.html": {
-    "fp": "55c1a364288253d28acb3101caa35ce6c2d1169735b547f946cd2fa2b834447b",
+    "fp": "2aca4c18e4a744606e6ab4d4fb60540182b0f53d6f7d4c4b3ba1e6ec58871bc0",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-24.html": {
-    "fp": "39ea16bfc09bf1ac4d29bedac4bbc391e45ad141eeaea10134c2d9c1b2f5b59c",
-    "lastmod": "2026-09-09"
+    "fp": "78d33cfe169e4ff20e88ac2c5d50c7bdab00f0f52506be8f1518957d20583b6b",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-25.html": {
-    "fp": "58950bbd6bed5fe5597bbed933db54c1bf6d70857a76487d05dd07652b5e3346",
-    "lastmod": "2026-09-09"
+    "fp": "b634bd4e9c72b3783447166dd4a49f052a3c4c5fcd4faef22ddac67d59724ec2",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-26.html": {
-    "fp": "f8fa5bb7c78c50ffd252c73b8f0483fe5ab16bd66aa1aee9e8bfb65a72dfc6a3",
-    "lastmod": "2026-09-09"
+    "fp": "9e578a5d8c7ed6a02110b4e626b9666f5c42113e932fec0faf285ef7b43dc3e2",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-27.html": {
-    "fp": "841d64b732d0fa08d29ce1fa2805a7086e05f1c3ad6899a1bd4d23db4e1dae72",
-    "lastmod": "2026-09-09"
+    "fp": "0e39ab2e1c27879aab10727987e00e0a4bac2501d629c796f3fea57ba2883918",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-28.html": {
-    "fp": "c95d0086dc0c879b3320e98d300796337b7e6847138f226fbb21138e97dbcdcb",
+    "fp": "040858d05e64a5fb8b8d795563120e8a98b9617a0fa586c4dbbfbdc5a41d85f4",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-3.html": {
-    "fp": "026f2bd5ccf51fdbf1afcc9c3609e02c5af3f9c5b431826fd6b06de17e6c74e8",
+    "fp": "afc4f924a5eb04597c0286c9bb47ef82b2e184638187360a6aa742909556d558",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-4.html": {
-    "fp": "55d143c1512874d5720b5733366512441f2286f686cec8b5c80b1e0511ee8373",
+    "fp": "31ee5a3fbb1e2b7b21c600e8e81d17d2335bb3d3d9bdfb22179023192fc62699",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-5.html": {
-    "fp": "c5ba6352c9e2c2b47ea04dbf08f61118ac80efc7a5982038ca358d25e94752ab",
+    "fp": "1aa0b65857538f3edbda14def23599d440aab409b04a1f2fddc3f76a9eb37322",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-6.html": {
-    "fp": "15b596a31bff44617d3affc9fa032cea6dbbaa101502c8243427344704160d85",
+    "fp": "c1593b271bd227013094ecba097c8eab0d7040e704e1c579fb700f957d05b68b",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-7.html": {
-    "fp": "594946e77cc4ab84535bf7593f9781c24f892deac3fa297065453d1b25a0acd7",
-    "lastmod": "2026-09-09"
+    "fp": "c80e41c510c831b479d70b3955c739fd16ccd3d0c8b0f03e98e6b5371c50f72a",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-8.html": {
-    "fp": "3a2cb5d61eb70c8f423c6eda4572252f7e1d1757d11ceca496a3739bee47c63e",
+    "fp": "f091158b640608bdb8477df1d36a8bbc5c36106f7ce3e4d20098a953e22e89ed",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/en/shop/watch-9.html": {
-    "fp": "d29b01599c6f34b3ef6e819418179131adb07036c760aa94dcef161ed11842b1",
+    "fp": "80f34f5917d52f3ea3d9c9ec0344689e323c0fa88820bcb10f5ef0afe1f66d21",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/": {
@@ -832,8 +840,8 @@
     "lastmod": "2026-08-27"
   },
   "https://watch.al/it/blog/": {
-    "fp": "4f0176befd2b7b8cf8b1ed893660720eed88bc7b6027183cb3956fc786f007a0",
-    "lastmod": "2026-09-09"
+    "fp": "1b7656b389544a081a33daa6369c2d6eeb752622fa368fd0e72a8315d8097cd7",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/blog/caldo-umidita-orologio.html": {
     "fp": "a94e78c88c1154049313bfb75ff5615f52f6d353f6e2fed857834300e9c91463",
@@ -947,6 +955,10 @@
     "fp": "19d972cfa885be843d41d35c87fc03a53dbab456b81332d29c7bf4e6ebaed197",
     "lastmod": "2026-09-07"
   },
+  "https://watch.al/it/blog/guida-hislon-classic-queen.html": {
+    "fp": "2c0f0aeba800aa1b6f0c87cd6f8dcf139873ebaa73448a4fb079fc1f7765fef5",
+    "lastmod": "2026-09-10"
+  },
   "https://watch.al/it/blog/guida-larghezza-cinturino-orologio.html": {
     "fp": "af055131ed50e7deb27055c5c7930b9f3f552580b47e0a3191da63a19a6d44cd",
     "lastmod": "2026-08-26"
@@ -1013,6 +1025,10 @@
   },
   "https://watch.al/it/blog/orologi-coppia-abbinati.html": {
     "fp": "a3a320d4ffb1ccff327de0adef57a37f69bc057f2ecfc41ed2fd0d69e983b264",
+    "lastmod": "2026-09-10"
+  },
+  "https://watch.al/it/blog/orologi-cortebert-albania.html": {
+    "fp": "a1c65ac9a926b1a924b49b7843b9e80c401da538d1c8eeb8517ac76a270ced90",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/blog/orologi-donna-albania.html": {
@@ -1264,36 +1280,36 @@
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/belonni-collection.html": {
-    "fp": "16b73987a8fbd77b62c22a5509db3170d054391bde5792cd3348cdd784e02ea6",
+    "fp": "6022784175cd1729ec7969a50ed34f2aab517e38669576810e2fddf23233a2b3",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/bigotti-bg1-10154-1.html": {
-    "fp": "88fd06588e22395fda4645e60166f329e9eaa0159ffef18cbd14f2bef94ea5d4",
-    "lastmod": "2026-09-07"
+    "fp": "0d3226e882562007b742e199085459cb7fb532c4ea70dadf771aff146a6c3727",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/bigotti-bg1-10409-5.html": {
-    "fp": "aa4e3168eec83d3164438fb381fbe36364e7541dba98c999333d919487783af8",
-    "lastmod": "2026-09-07"
+    "fp": "091a810ed036715834c20c071d38560454779866ad815f89e7258c405b192142",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/bigotti-bg1-10416-2.html": {
-    "fp": "d9e5f3dad77c30ddcabf37909e94462d46c468c626fdbd95e4e0bcdd919bf00f",
-    "lastmod": "2026-09-09"
+    "fp": "dc9393dc1fead7ac39b48a63ea4cab8b08b05efaee80185dd99eb82049c998dd",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/bigotti-bg1-10476-1.html": {
-    "fp": "b61977c03a3704c56f4b17d5d3b0c8ad9e640369dc18882841293657ac192f42",
-    "lastmod": "2026-09-07"
+    "fp": "3bfb1d2172f3359252704b11266e6423a92d1a43aa10ea8a78ce4cf3c3c845e5",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/bigotti-bg1-10616-2.html": {
-    "fp": "9adefd63076fa90c3fbad2608d6a96481ac71f868e94d1fabf3a600befead430",
-    "lastmod": "2026-09-09"
+    "fp": "665ed437c946129f8bb705ab98c926134d8577b37a7e4c65b4f94e7564c2eb9a",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/bigotti-bg1-10616-7.html": {
-    "fp": "42dbf65034cbee791083d58af0d807c4666be0b60fabed7d29b1b45fd4d04b95",
-    "lastmod": "2026-09-09"
+    "fp": "3bd1fb8fac7c2f3681d60bf2c9ffe086cfd54aa4a6f93409718c2c996ac25254",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/bigotti-bg1-10660-7.html": {
-    "fp": "25c81050aae1a828b0f2bbc563a20593733d37d100aefe895bc5e099b2a95faf",
-    "lastmod": "2026-09-07"
+    "fp": "7eb1f7eb90cab0292d55cd93aa8de344c6c7682492c1d84d6c8b1f925968e918",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/brand/bigotti.html": {
     "fp": "087c8476ee949df2db5540ac53b6afcc6e3ffb8f54591ea0e995b3fae3ad036c",
@@ -1336,303 +1352,303 @@
     "lastmod": "2026-08-27"
   },
   "https://watch.al/it/shop/casio-a159wa.html": {
-    "fp": "61a2e4ec025ee6311f8b0c936555956b6cde4d5b233b0f17ba087d4e81acec0e",
-    "lastmod": "2026-08-27"
+    "fp": "6748bb44cb67397c1a222d8aaa9f8864efffe4bd566d417cdc97d45b612750bd",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/casio-ae-1500wh.html": {
-    "fp": "969bead21e7c1006cc9ea044cf986eef14422be4e97f925bfa0d83ed33ab322e",
-    "lastmod": "2026-08-27"
+    "fp": "5a6b8b0877973bad63bbf68ebbc89bde21a46d94120efdf7de79b8405c1be4f9",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/casio-mtp-b145d.html": {
-    "fp": "6b5c2b28cba4f43245ce0412892f4a97c34516bd28eae22bf8fecdbde2512078",
-    "lastmod": "2026-09-09"
+    "fp": "a5f634537618e6744a080332cdb08e494eeffdc8b2d5596e4f4b5973d3c393c0",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/casio-mtp-vd01.html": {
-    "fp": "e65925c519016e279b51912477333a2fe407cd56fff02324438c3964c76b4fc3",
-    "lastmod": "2026-09-04"
+    "fp": "69ef5a05c12017f9852b6ec077a104770daca2ffbfcb958347548da6bc1ee370",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/casio-w-737hx.html": {
-    "fp": "deb0f26a6a581e0eb3ddae1f8d56f02d13cf3f32654ed252927c9d27bb739dc1",
-    "lastmod": "2026-08-27"
+    "fp": "3ed8837ec739f6bd59d8c5ed15f69f4cedff9243aae199d808d640cbece028c5",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/citizen-quartz-gn.html": {
-    "fp": "78ba216ede7c1507ba8b6e6fd5f66e6825707ca676d3776f83d31c47c088474e",
-    "lastmod": "2026-08-27"
+    "fp": "d86f4a5d1ee8ed265d8321e17caea523953aca73b211b64ae8e00e4376bfc7ce",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/cortebert-black-bezel-chronograph.html": {
-    "fp": "ea2d4e17cb9cbcd87b3723dd77ae37ccf1269e34365cf7666a9baa8534d3b169",
-    "lastmod": "2026-09-09"
+    "fp": "1993cf3e7611cf8b023215b12e35f522afef8b1d400f7aa9334f373c5981e62d",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/cortebert-oval-moonphase.html": {
-    "fp": "c1c6d4550c226c00e256e9f3b992d8561a64da5f6a0d7e2e81ba56876b7b86c1",
+    "fp": "338e242d8bf487c1698e1b4fbd0edf45b5e28083c15116d75e881483b79e2308",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/cortebert-rectangular-multifunction.html": {
-    "fp": "cefa79d44d2f51424e866522ad44f6efb14ec955177cb5c9698bf3db670fa43a",
+    "fp": "c68003d6d722aa0902220cc14eb236cdff09d683659c65a7cc2711f25197d3a3",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-13828.html": {
-    "fp": "22cb97720c56428182ea9c0142850e1dc983eee4a05076427d63b03e0289a980",
-    "lastmod": "2026-09-07"
+    "fp": "f4c887cdbcebe78b41e71bc92478da3f1bef0ab229753cfde2cf96a153988a62",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-14165.html": {
-    "fp": "829978748a85faa9aaf45c8ae005d0fc6af4d93ecf444b89132b6b71526bb494",
-    "lastmod": "2026-09-09"
+    "fp": "ed30dcc29eb9c9e6d7b4c2214c0f309e2a389b20d0883902081cbc25f43eec21",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-14173.html": {
-    "fp": "0680757df98fd8cbc66536562a694da27b30a3ee7319449269f237cffc7c6653",
-    "lastmod": "2026-09-09"
+    "fp": "c4364ae5d63e11c65c27341d78795d3de423fa20a42418e6a9ebf54f3f59cdba",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-14190.html": {
-    "fp": "e4905e51aa465a4200f49a4a22563c6ffb04f66014f40c0bfa346abf93572609",
-    "lastmod": "2026-09-07"
+    "fp": "d52ee8f63d9b176c93662c548e5967aa695072bbbc5a3300dff30cab0c3582f1",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-14237.html": {
-    "fp": "a778dc8027041a7098fb9dc72ac994b62035ac5147df6016b98945c69b01b3f2",
-    "lastmod": "2026-09-09"
+    "fp": "52c0f87bab2631ea3c97d5361958057d0a49a806f05b099e0ba2274d4df99e18",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-14243.html": {
-    "fp": "6ccef55f48037fa587245ea768a3e9c3d13ebf351d74d794d4934520bc7f5c34",
-    "lastmod": "2026-09-09"
+    "fp": "2e63cb0e9d507b84f553ab064f0f622d9b612d5dd33c7c960b250890ee3bc39d",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-14248.html": {
-    "fp": "b92c272db15a9895a9983eb3d3295c0d1afe6f2236e82bc4b406cd5893bf7574",
-    "lastmod": "2026-09-09"
+    "fp": "7e12ef666ffa04f39ff45aeca09a11c4eeef550b195b757688be65fe4ea5a22c",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-blue.html": {
-    "fp": "43c6f342281301b94a4179c278e5e8d27b34e0d3e8a1f121782886d83f6e09ff",
-    "lastmod": "2026-09-07"
+    "fp": "7c2bccfc16da6393fc1577697d891c1a375a7b8c5bcdf004d18103d0cad37644",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-f.html": {
-    "fp": "4e5a052412a4ddffc2d778b958c50a2db41726d3d6ec6db2fde49a30ea41c9ac",
-    "lastmod": "2026-08-27"
+    "fp": "552579ed774375a57e8c47730411dfb23c3da639eea45caac24f5a156d8f867c",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-mesh.html": {
-    "fp": "5359fab12257c2f12e901da70cd3af541a9408a511cef2e191c561940a0b90da",
-    "lastmod": "2026-09-07"
+    "fp": "226964d9942c1ba22726930673aa4608da95a68e41953a23f674259456008fde",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/daniel-klein-premium.html": {
-    "fp": "024164b7275ac637e80309f96d45c6a74cadf79f341d4a9b567db345291409fe",
-    "lastmod": "2026-09-07"
+    "fp": "3dbc4e04c5f9383ff3718a530674817d663c0f3a7259372a77c8b4078fa79c4a",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/delivery.html": {
     "fp": "346779a5d23423fd4dcc60637162c614d6ecfdf081ba75ed89de6fa1eb2e3a2a",
     "lastmod": "2026-08-22"
   },
   "https://watch.al/it/shop/hislon-ql124s-05ss.html": {
-    "fp": "2dded0c02b4031c2f3e2fd920f4ccbac1ffa0f5b3a3ae0947aed28d9cf0c07ee",
+    "fp": "5448e621724d85a76f4fe8a5e44af9c819a9a64c09f49ed4f3fa99271cd5199c",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/hislon-ql139s-09ss.html": {
-    "fp": "e13260bc4a286861271fc90e69736079dc500e5a90631b357f6a9f231bb226a1",
+    "fp": "d39117e72aa1e5bd3254d4687990086f973fe725e03f7d1f957fe878f0089638",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/hislon-ql145t-05sg.html": {
-    "fp": "051fb8469dbbd938046a5ee2668d7d90cd52a6e5b361babd39fb6ad689812d7d",
+    "fp": "878862a2089986b80d3cd84ae1878ff978f7dc4bc3388489c3453ba86698293b",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/lorus-orange-sport-chronograph.html": {
-    "fp": "1ca4155ab32936e129d71b468519e73e6fabee9bf7155d3a62ab0ddb138e305b",
-    "lastmod": "2026-09-09"
+    "fp": "b9c46bb3d882440935cf24812aed802bd539f29e169dd49d1a3484265ab4bb29",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/navimarine-001808-col06.html": {
-    "fp": "4ccb9f706b060cd665a6bfd0ade358866f7e18c760484f267922d0a400c91e57",
-    "lastmod": "2026-09-09"
+    "fp": "94ac99240febdd5fc2c7b8aa1824cc22ac1fafcd11dc4256559cf13edd4aafba",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/navimarine-001808-col07.html": {
-    "fp": "f687b73bf824383f70e0b02fc4b18838a4d45c7e4164872ffee4bb065e496e85",
-    "lastmod": "2026-09-09"
+    "fp": "5d0c91acaab7205649e8b07b76b9a8625d7a82471a04d91ad2acf2a32693eef1",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/navimarine-navi-s046-col4.html": {
-    "fp": "ee5aa40eb19ae5af238f4afd23f10f3fb1948fdd07a423c8c6faffc2ec682d84",
-    "lastmod": "2026-09-09"
+    "fp": "6e64f3a6735e70e3c4e11e564dd905719b9ced8984f1ac0e9ba52cac645aed1b",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/navimarine-nmm1031-col03.html": {
-    "fp": "8d131918d025c3fd5c9b0edd525c4e477043bff7f658d6b6b7f797500c1d04cb",
-    "lastmod": "2026-09-09"
+    "fp": "88fc886f60ac1aa7ef9e32f1e59e7ea17ef7eee504836985a6104a68b537e82f",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/navimarine-nvm148-d4.html": {
-    "fp": "13be696e85ea3ff9450223e33738907ae596c453d02ebd4fd8ee956b5553829f",
-    "lastmod": "2026-09-09"
+    "fp": "eb320d42011c3d978f26044bc1028cc68af30d812c7e54df1889f2ecb5baa53f",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/navimarine-steel-5atm-blue.html": {
-    "fp": "755e0f695c74097b71a8d9711d462a6c26ef320db3837c0208275b4f4eb2f1c4",
-    "lastmod": "2026-09-09"
+    "fp": "644aa96a331dbeb741d4e0d6b2c86ae3852a7e626e488e61f03ed8d594fe33c9",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2374-1.html": {
-    "fp": "c919688ae708028d84ddf0cb57be103d6fd9b652ad1f8e379158d4bc66d527ef",
-    "lastmod": "2026-08-29"
+    "fp": "c04ad8ab69efc6e9aa9a9c3c71a86490f0e2dce9f62ad96e2320a1a70afdf8ed",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2391-2.html": {
-    "fp": "56f65a320c212b54278f42b0a5bbbac00a39f5eba828146090c4d45d84731d26",
-    "lastmod": "2026-08-29"
+    "fp": "769a332954c326481a95df7247c2f861e3e03267c99b256556c27e4c816f38c3",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2392-4.html": {
-    "fp": "bcdb6818f75142d297a3214cfc94f2441b4f527e62cf055c9b15b2c795b9f938",
-    "lastmod": "2026-08-29"
+    "fp": "595d542c91caaf7eb04b944af596bf4dda797548877da13cd2806eeb7b07ee2c",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2394-1.html": {
-    "fp": "a3a58eabb9c6eb83eb1ad150da039cb6c5ed6a493df66c416b383485dd357fb8",
-    "lastmod": "2026-08-29"
+    "fp": "ca590122a6d84f707547b084a16aaf33b22fdaa70353e16a7ba9b1c727cbe6cb",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2394-2.html": {
-    "fp": "566d9d5a4e9366978c8dd6d1758c33e4885c78bd2036da1f90b6acef0b3f8534",
-    "lastmod": "2026-08-29"
+    "fp": "86c76d498308774adb2fd846683ef6bc7eb21f2a6c3eab7675e1f13e6ad049e4",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2412-8.html": {
-    "fp": "0b7a13f571c41ffffcb54ff9044ef13f2a1074d8de6ef429c07573fe7014ae98",
-    "lastmod": "2026-08-29"
+    "fp": "da778f4a17b4544d041e26e03afbbbd790947ffd9bae26c0448dbd60f0e53717",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2427-1.html": {
     "fp": "9b07d853d253998fdfa3bd8d8790a241ed39da6ccc53ae8b3316c1c1da8fb0d6",
-    "lastmod": "2026-08-29"
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2427-5.html": {
-    "fp": "2ed4b7bd9330b8a238ec579b26654bd8a6a29e9ff7ca0442d31b92ffc05caeaa",
-    "lastmod": "2026-08-27"
+    "fp": "96c3b2f192c0aeef50b0b9257fd6f13c444494eec9c657bef0257fc117a4a87c",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2435-2.html": {
-    "fp": "0aa0bb5ae2b8fa82216bdc744b782e52c77383fab47c5f55b39054ff5318f512",
-    "lastmod": "2026-08-29"
+    "fp": "28e039b2b92dda396575a751ddfb84ca1d8cf50270b0e6e2c59645f2d4968c6e",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2435-5.html": {
-    "fp": "4446c290a7fa1880337cf23f4ecb3a25a2536530d529aa8a1e957c1f4f1ae1ed",
-    "lastmod": "2026-08-29"
+    "fp": "ad959bfdd10551d2113d6afb69708d57f652b4293b3f197ffbecd0356a61c5c5",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-pl2924-2.html": {
-    "fp": "fd56f56d5e09d101becc19922f32a0c28bd572ec3cafaa515f06d3b8b9f8af41",
-    "lastmod": "2026-08-27"
+    "fp": "870a53cda2c27e9bd13cf51517aa887dbb2796cb0bf622c10a1a30d2bfa7b9ec",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/philippe-lauren-steel-crystal-blue.html": {
-    "fp": "1f58e8018d3dfb286d325df4a321bfb75c7f9b2a5f06e360058aa596c84d86a6",
-    "lastmod": "2026-09-04"
+    "fp": "21449ac68b53a419599c2cb24e67a70d486630ba18fa1561b8b77c9b62c64ce7",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/polotime-gold-crystal.html": {
-    "fp": "a609ea015850dd5a5a6ca5659f25dce30bd482574eed7f5db829749592dda1da",
-    "lastmod": "2026-09-09"
+    "fp": "8b24a2d54f07e7b724c884737ce4e4c5f3a21dba1946f13e3361c9efe2f717c2",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/pulsar-crystal-chronograph.html": {
-    "fp": "9d430c5faaa0647c30e7ee76028c52c3703a7abef0b0e9eab95fa4a7c459b047",
-    "lastmod": "2026-09-09"
+    "fp": "19d052d173a65cec7d08eb70086d73731e748044ad77d8bdd6ec1dd1036b3b20",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/romanson-bh3054gbr.html": {
-    "fp": "e3033f97d42fd8c247890f9099f4c6d3c5ee57a39bc6d5f9d568bfa421614e58",
+    "fp": "ff78a2164e4e07563b98e32f554ea68096ed11d14e0ca5ba7e9a50b8111eebcb",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/starking-bm-664.html": {
-    "fp": "c0910068e03602b8ed495a4fac2f17e9448e1b2dc74971ebd02ac78e25540b61",
-    "lastmod": "2026-08-29"
+    "fp": "241bbc227bce5a6b33d39070aabb90a923bde9db1be29cf8398f64c173049925",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-1.html": {
-    "fp": "67611fd80db0efdf12ed154520d16ef952d8dc3d3dc1f4fb18bffdc5224da635",
+    "fp": "8bf60edc8c7fa1651f35c28ecbb3365ef50c04ea36b92627d507301e55011bff",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-10.html": {
-    "fp": "8f00fe733dc630c58b0e0e9429b9c55e7703b6935a61ecf5c8c816a27f980f77",
+    "fp": "47ac08d1ee8a0e2d131227cc74ae03303e40d0455559bf11d09b4ab4daad9c4f",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-11.html": {
-    "fp": "981b7afae118d2125ddf6b3d2f1c9c63affc430c815507525f1cd17a60b7ac84",
+    "fp": "b64bda37535c4727f87ee99cecbeac316d1c52afe8ddae09ead782ca02fade9a",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-12.html": {
-    "fp": "e0fafa350b3b19b184106a48c89ffb12bc7f987903a06648eeea360d1594516a",
-    "lastmod": "2026-09-09"
+    "fp": "af5ad33732903e152978d5caa63d9465e5d96cc05b6c464b5905f7d798753d86",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-13.html": {
-    "fp": "35cc33b065b66b201141b48f053cd96271f0e271ff6032511d00dea1bd2c4d42",
-    "lastmod": "2026-09-09"
+    "fp": "2bbc3bf5ae735760961eb91ee69aa39b4ab3a53abe0ce73388d045bef06193b1",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-14.html": {
     "fp": "f07ee3f424485cd288e88f5c7b5e4407ae5a3dfbee81b7e32259587409413da4",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-15.html": {
-    "fp": "f309dccff4869053630d7329deb1cadfa332ee2f9921d82fc30c63b7a27b93a0",
-    "lastmod": "2026-09-09"
+    "fp": "2594f2e39aebd7c9e17aaf6acab03ef23f2f430f8c985b2691a27d430c836f78",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-16.html": {
-    "fp": "3db92e3d87f9106ef709a5b09334315f8ea11c33feef1ee777429350a50583cb",
+    "fp": "41051bcad41a2b68e0b4b382e64db9c72ad028a783e323ea76fa7150a5a7a3f6",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-17.html": {
-    "fp": "fbb8f15abced971900a563bc7b10690e3d4933349fcc233929a20cd65c1e1f44",
-    "lastmod": "2026-09-09"
+    "fp": "4a83a328a9ed50a5f27f91d3e7b84474033ec4eb87d4c3659663ebeefa0f8793",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-18.html": {
-    "fp": "66dd0f123487c8759687d304dffc0ffa55ab870839cfad0770d33c9e7ecdb9d4",
+    "fp": "574261a46ddb12ad370377adc88c37ff8f647b2021df67b568782b59f28c16b4",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-19.html": {
-    "fp": "9cdc76fde2dfc94907c7ed7a4f6eb3183ba4e7cbff522052660026764cf1616a",
-    "lastmod": "2026-09-09"
+    "fp": "221cf72ae0bc41a7349822173490f5a99e26863b948318eb7644448d1f34e486",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-2.html": {
-    "fp": "b56b13804d152cfe5853e15290cc8dae1f4546d18e608b8199939e73ae47d947",
+    "fp": "db45425b0b0845b912a62ec928255e89d0cfb2ebbd2f66751896f5c1fad735c3",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-20.html": {
-    "fp": "e3a6e06a0adc4deaa0a1ec658187781c696f42843fb384b43b65fdcd1dba5fed",
-    "lastmod": "2026-08-27"
+    "fp": "c568f4c86f70873f3851f17f0dd98f6bdf19fa09611ab91193196595cf00132c",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-21.html": {
-    "fp": "766e9a49818b4df30066bec6896dd5e2052c40d4a53a11a1b001599798999486",
-    "lastmod": "2026-09-09"
+    "fp": "6680eda9c2fff9431aa72f674c7a3ab5d9e6dbceff411fc43b373cf777bd2ff6",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-22.html": {
-    "fp": "f15996bad6a967d458a3e2bf45015c96735af41007f16687d59cdef69257bfbe",
-    "lastmod": "2026-09-09"
+    "fp": "50e7ea95e62cf327bea5fe4ef046643196f87afd5211b9cd76d68b3b943f61ee",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-23.html": {
-    "fp": "d6f27869cb4fb94d7205acb578295fdf261058c26c4518669c856d0d5dfd1791",
+    "fp": "7ff2dc0de39c9bfefbd869dd7a9b02889502aa6e24229fa49ea20bf03751826b",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-24.html": {
-    "fp": "bf168691eeed8eabed6309074a256703c967869d478287d83cd4c3af43cac5b7",
-    "lastmod": "2026-09-09"
+    "fp": "f9b16d6c5bc8e9eb366421132bcc9e4f050d855d692127f2356c58751afb973e",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-25.html": {
-    "fp": "05e7dbdc6e2257c28b3c3a51adcb472a41155e39a27566e7a6e4e46be9be86cd",
-    "lastmod": "2026-09-09"
+    "fp": "7742ac3dbb6484e6735226bfac5ba42dd8273316e49db4c032cf18e95edf5e86",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-26.html": {
-    "fp": "0c3b44a56cff38fa0ec862d67afc9d5ffa6e7bef7ba4a5cf811d2676432849ca",
-    "lastmod": "2026-09-09"
+    "fp": "c452683a337a9fcb2eed45d46a1ed001d8a50e617830cba93d52a08cb114e3a3",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-27.html": {
-    "fp": "6e6ac7592836d479dd9c62e13c4764b1dc0caa70155d29fb8e2cb0372105e94d",
-    "lastmod": "2026-09-09"
+    "fp": "83ddb103d4fb945f22297829b5abef23dec39f88475412fe961b9dd5858d44fc",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-28.html": {
-    "fp": "4d8328451ed669230fc7eb2c90291ae08d870c64315bc9b199255f73b1aed88b",
+    "fp": "5fd83b2e9db065d54ec862a4cee40bc3dd1e433103cbafbd7af87ebfccfc5686",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-3.html": {
-    "fp": "92030bd99372e4496ab7eaa7ff41477436b2e37a0e9eef88698c0f9159421194",
+    "fp": "1bd784830ddba80da718c3a513ea5b0319b40ad1cddd06a0a2f89a142f014f19",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-4.html": {
-    "fp": "c693b0a903a52b9e477e569d23d33b8fc884f4fc7f9f35476174a2750a890a0b",
+    "fp": "9a864c13f47cb59bd1d686191090c6946c7d3c049b7f6d59efb94091f35ce24b",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-5.html": {
-    "fp": "939176f160070cf6fac2a22678545d1b8dffa38491bb20b86aaf743be057c0da",
+    "fp": "3f78e7bdd6715700342597edb7a5272379f3157abf7a86d53eeff544fcbb5e9c",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-6.html": {
-    "fp": "1702fa21f9f641c207dbaa81419aa73677bcfe59729769089f3c573a65e3f9b5",
+    "fp": "626fcb367309311859ae0a83b5549acb0c5f92ae9131f163922311896e497106",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-7.html": {
-    "fp": "6fad10a0c67f28b998cd666829024340c1d98ae096ffefeee272fcaea86879dd",
-    "lastmod": "2026-09-09"
+    "fp": "de54af8248114617d5b2f8926dc263804996534dbd7fbd8101087fdc8894e2b7",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-8.html": {
-    "fp": "5c5f40057f0b62dbf86c70f09ec92a3aff5fc10e6925db1968621e51868ab67c",
+    "fp": "35271210777fb7fbf31863cce6aa9e6ba6df7d63d6301f6380d7ff5bd9a64f91",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/it/shop/watch-9.html": {
-    "fp": "64ab84efc33c917ee912c5a3d2dc0d98d41ad7e0d3862dc1e19c6988339bc39e",
+    "fp": "c8bd38db829bcd081264e449e5e6a837dfff09814d648c55fc7444915c16ddcd",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/": {
@@ -1648,8 +1664,8 @@
     "lastmod": "2026-08-27"
   },
   "https://watch.al/sq/blog/": {
-    "fp": "ee5209722bd7dd19b9b6b63bc013a1814a84cb1c4a727249a08d45d6a34577a9",
-    "lastmod": "2026-09-09"
+    "fp": "d72c395ddde3c02018270019e9ba9630d1b8fe63a1bd740cc7930b8c47956534",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/blog/blej-ore-instagram-shqiperi.html": {
     "fp": "29f486e91a4d61c7e75a93027be3caae3d9fbda2911aaad0b2e6e9fa94ca9cf2",
@@ -1891,6 +1907,10 @@
     "fp": "5f8f4af43cfae73e0a6e02eab603a878ea69914d92ce083c1453600bf6bd2fc7",
     "lastmod": "2026-09-10"
   },
+  "https://watch.al/sq/blog/ore-cortebert-shqiperi.html": {
+    "fp": "bcbecd668842b28a082883a35273fde9f02286c234edfd1735e95262e404a2cb",
+    "lastmod": "2026-09-10"
+  },
   "https://watch.al/sq/blog/ore-dhurate-dasme-shqiperi.html": {
     "fp": "fbbd504fc851caa199e4f2f0ee7df4b3aa5f8fdc31f164ecb43ec041117fef54",
     "lastmod": "2026-09-10"
@@ -2035,6 +2055,10 @@
     "fp": "f4f88563aab52ad899af2779ce1d7b04e188048255d4098357cbd08085bcb444",
     "lastmod": "2026-08-26"
   },
+  "https://watch.al/sq/blog/udhezues-hislon-classic-queen.html": {
+    "fp": "93908b01cf9b06a26f66b84c0e36b1c04ce1c61da0b2e5d12d3c96e9ccb5759d",
+    "lastmod": "2026-09-10"
+  },
   "https://watch.al/sq/blog/watch-battery-size-guide.html": {
     "fp": "4fdb5e84bdcbc1155af65af5d56992b45e3d313f80d8da59b1d130a6c02f7627",
     "lastmod": "2026-08-26"
@@ -2080,36 +2104,36 @@
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/belonni-collection.html": {
-    "fp": "12671bc46ca247c7a7f1278b6e04b23cd7205e32748154fb30576440110193a1",
+    "fp": "88c51423e5fca270d13143f363aab7a5d21e7d7d60a34277123c3024c3dd243a",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/bigotti-bg1-10154-1.html": {
-    "fp": "0b6a48ed43770ccbd75f6dc42736bca2d8f736e6bc39c6f78f339b5b4a10c731",
-    "lastmod": "2026-09-07"
+    "fp": "cacce133ac4404f838c6400bb18ea9bcf5b11fe4f266ac965149a90925b5e6ea",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/bigotti-bg1-10409-5.html": {
-    "fp": "7a395d32b735e9ea950f7bb2abba09337a47cd7c0d157721cb5235a170316423",
-    "lastmod": "2026-09-07"
+    "fp": "02692a13c4d8d0a107cf87c4ed9761b003bb4d89204d3eeb0b246a3cb05abb5f",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/bigotti-bg1-10416-2.html": {
-    "fp": "ecd1b3d44420463fa8118f5908f701df912f2ffabcf97b3c224a34d148fa88ac",
-    "lastmod": "2026-09-09"
+    "fp": "c1b62e52427178841850e8c94032077db92f297c5e58791450fe004a0526d5d9",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/bigotti-bg1-10476-1.html": {
-    "fp": "f9004e927efd8b089f85f978108deaed0927bda38f6f677c2f432e7ea958a965",
-    "lastmod": "2026-09-07"
+    "fp": "9432185c969f645072a6d696cd4e1a0bbe6f6555782ed63fd1804c9a804fc6df",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/bigotti-bg1-10616-2.html": {
-    "fp": "8c4f60b6e6e09c90def2e766be289802afc538bb822707e36e34520fdccaccdc",
-    "lastmod": "2026-09-09"
+    "fp": "d5410beff46462d984710ceef3e5ddd0fa9141fc0b511e9bc41f378327b69487",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/bigotti-bg1-10616-7.html": {
-    "fp": "f5970fa3af4d08e8fa36bb94a8e197750ecd6071d3d21806df4a8bff936a16aa",
-    "lastmod": "2026-09-09"
+    "fp": "775d4e2ca6edad7019e82713f9989fed904f386ad60927ebd0f7578cb8b6cc6c",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/bigotti-bg1-10660-7.html": {
-    "fp": "dfd2f5213da3059b6ece367943a2ba84ec8ca37d302151821e2bbc8a060144ea",
-    "lastmod": "2026-09-07"
+    "fp": "95d97989d2d287d732e30d01ea14416002e2c3656182b5ae5f70d30d1b5e94cb",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/brand/bigotti.html": {
     "fp": "48e1ef7be1c8774f6f788ade732df9993f73eb0790c9a1f8993faa8ab1eaa109",
@@ -2152,303 +2176,303 @@
     "lastmod": "2026-08-27"
   },
   "https://watch.al/sq/shop/casio-a159wa.html": {
-    "fp": "9f492ed2a71ae69db287529700ca683de76f9c806f929b3b1c600344c4a1a6dc",
-    "lastmod": "2026-08-27"
+    "fp": "4a318a3c9133c4b596aad1a31fa7c9aef8ee7760d336381f27cd5f50e2c4830c",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/casio-ae-1500wh.html": {
-    "fp": "7f4dc0577a6c193236a16e43e315ac0c8e70af9ac7701bd347903fabc2a2d2b5",
-    "lastmod": "2026-08-27"
+    "fp": "c81f7defbc6c92178282bfbafd9b672e3c2f5d5e3ad389aa9967f28a628c883d",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/casio-mtp-b145d.html": {
-    "fp": "f6dbc4f9ddedc8856d5b1dffe4835a856514bb2a13f29ce3c677ec29ce6285a9",
-    "lastmod": "2026-09-09"
+    "fp": "2e98b93f6b791872f5c942701d0e7de110a142822229adf77069231d124e8d06",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/casio-mtp-vd01.html": {
-    "fp": "2f9d218e260f80ca27d63074188c00cd6d55726a137cd135a71c4e4295c5cade",
-    "lastmod": "2026-09-04"
+    "fp": "7ceaa6c0c6205da981e9746a587f490c35a916b7847ddeb366edd3c1a309fe31",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/casio-w-737hx.html": {
-    "fp": "cf841a7ab1ce41562096b7920183e4182909f511ee8803e1ceee3c741da2c570",
-    "lastmod": "2026-08-27"
+    "fp": "e442c6e444d9c27e3782a0af28842bd7b0056d48eb16f012150f13d771cf3f5e",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/citizen-quartz-gn.html": {
-    "fp": "07fb76b68231c5e8d84f52bcc65a6b8ba0e09b9c2e421b36e51a2f2a1860bf68",
-    "lastmod": "2026-08-27"
+    "fp": "129040cd4174fa5587a932b6652789df2e020fbcee26cde9a59d6eea4b14ede5",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/cortebert-black-bezel-chronograph.html": {
-    "fp": "b2cd83df49e19c70a974f82149cc86002c3d2cd33b26f360d56877368b23efec",
-    "lastmod": "2026-09-09"
+    "fp": "52fe9d7d0371188f4de1b4f32a2b91440e034d4e97e1d18ed20d19f6338d8b6b",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/cortebert-oval-moonphase.html": {
-    "fp": "7baeb67cfe173d4c01f28e1da7d7ce703dd366a087ca09cd300b258ccee337a1",
+    "fp": "1e0443088b999b46b3663cc291cf19dfbbf8fcd9f33b7d97bafd6bf736722c41",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/cortebert-rectangular-multifunction.html": {
-    "fp": "e58b59388d10b023558f9d33ec991c70150adea072eca33fd6bddc7323990b46",
+    "fp": "b9dd47a48d834874262399519e69f98c37b3efa5bdcda45f7aca20acbbca693b",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-13828.html": {
-    "fp": "58b3ef65911c4f56f8ca0d7d1c1c84d7cbd87d34f290398dba371384c282597e",
-    "lastmod": "2026-09-07"
+    "fp": "41583343adcffb70844a2d4465aa5fa61927d0ae4e23b58ebe00e9ffbcffb3a3",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-14165.html": {
-    "fp": "eec576c29babe72baf7172ce1c0cb13af2110f38820bb2bc1893065ecedf90c8",
-    "lastmod": "2026-09-09"
+    "fp": "ef9556954a50ff1dd33935944974f9dbcd2fbd6e58c51038170bc14161df6217",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-14173.html": {
-    "fp": "ee51126182b92f352476a040f16c8f3e29a4f997d83b58197df1d8ec9832ea00",
-    "lastmod": "2026-09-09"
+    "fp": "7fa68f8d52f5a418b35bb2747b25d0746d4b06890c350039b9a9e0b8ea2b6599",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-14190.html": {
-    "fp": "d456b5f1bd177ba744eeae5afe5044c9b4e040be53cd2eca64c285d9bd482647",
-    "lastmod": "2026-09-07"
+    "fp": "cda12a03900a32c22156da972915472b54302be7ad8c805f97e211748fbb0c08",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-14237.html": {
-    "fp": "3855ae770111a8f81c32236f1d1ee8a2b2ef3803d7213aa338a6c8a67d12c212",
-    "lastmod": "2026-09-09"
+    "fp": "95d1bf6f5b28359405f68d285e9c9082b2939a161b99f906e7bf4e15e92797fd",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-14243.html": {
-    "fp": "08d18fa32904c12a6f863cc9e2eb1f8dfa4ce930a9bc6634a7b9fed8fdf64f6a",
-    "lastmod": "2026-09-09"
+    "fp": "d80fe6c9bb76c0afbb539d21e6ebf1bfcede2ab2d69083d086fb6407fb5c49ab",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-14248.html": {
-    "fp": "54f1888a14620372a67353c516a4d6e2c0b0489c0f313b42fc98c5fac2622a05",
-    "lastmod": "2026-09-09"
+    "fp": "b987bad4d545a53d0d2a64a5a1aebe8f32a20ee2e2ad5fe2e85acea3ad3c7ba5",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-blue.html": {
-    "fp": "5b2ad9249c5a6bd32cd25ee65e03154a1e6ba02b3e5bc8d43c678482472f977b",
-    "lastmod": "2026-09-07"
+    "fp": "3b0d96cbcb42f9b2fdd0ffa97d318aa93b2211c3cf9242afe0a63fea8a16ca18",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-f.html": {
-    "fp": "31bf6e412e6aeb09ed578e38332643a4df9bf2e233e4a59057e4cd997775e2f3",
-    "lastmod": "2026-08-27"
+    "fp": "a78399ccf6210d2f2091d96ca3a2ee3fbe81ce152dc110f5f4ed98775dc5aa2f",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-mesh.html": {
-    "fp": "65ff34a75c797a407a10917f4368e43a70b7f472fac64c5626083bbe51e1e104",
-    "lastmod": "2026-09-07"
+    "fp": "af5e1fd4d2c90cb9e1d1370eb82581d457d3bfc18e4189bc788b081109611d11",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/daniel-klein-premium.html": {
-    "fp": "6245afd9a8f53a399d03c95dbe1d9023225cb14b460c1cabaa806069862acfaf",
-    "lastmod": "2026-09-07"
+    "fp": "e842e17597c9f2fd513e77e163e14b96342cd490280f8514505d59802ad69eb9",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/delivery.html": {
     "fp": "b61cd5b1a89c32658c046369bd53cf2f55c25e22ca1e388f0525bb12511b30ed",
     "lastmod": "2026-08-27"
   },
   "https://watch.al/sq/shop/hislon-ql124s-05ss.html": {
-    "fp": "f59ef001fbc5b83a73b855939aa875be23c7d88e63878e581f61305fb9ec27d7",
+    "fp": "32188a1de7406fc3fd348eec6a1f1671e735085de883f5b1df2f340e11a83b0b",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/hislon-ql139s-09ss.html": {
-    "fp": "e5f6797a74e514360deea0c2245a38318653510b2ee0aaeca4f1ac67a85a28d0",
+    "fp": "8a433d6634b3fbaeda1a559906b2192e76021d4e6cb3969398f4c6169b335beb",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/hislon-ql145t-05sg.html": {
-    "fp": "c69460565cd84a667697d47a189df34ac681b375d0e69f26b815567dc9faa645",
+    "fp": "0ba17c16dc6069f1a06401d99dea8b72efcedd1410160ded4078e882ba6ff2a9",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/lorus-orange-sport-chronograph.html": {
-    "fp": "076023cf473ee04dcda461c80909527200d96d94edb9eb1e5d37ef0f5b394a3c",
-    "lastmod": "2026-09-09"
+    "fp": "251a152caaf70c96bf6bd5d1b174e09043c98c165dfdc3360a3dcaaa7e0f3aca",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/navimarine-001808-col06.html": {
-    "fp": "291a0e2dcfaf54f43400534281af3c68089b9596e5235b4ce49c1d7a8ef1265d",
-    "lastmod": "2026-09-09"
+    "fp": "82b6536db9aa39a66f23fcb30360882cbb525eaf4101597d27e40ebc240fdd5e",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/navimarine-001808-col07.html": {
-    "fp": "61150ca738d8885b7f1e597df011cab52833010b08a7c375494841bbaace0470",
-    "lastmod": "2026-09-09"
+    "fp": "142605cc58e6d0898e5f3186940da4fc60a9fc15375a41624e5498b4e7c6918e",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/navimarine-navi-s046-col4.html": {
-    "fp": "7ad3aa90c0deaab93ce322dccba0280816cc62a3a83665aeb4a8d3b9ca9652be",
-    "lastmod": "2026-09-09"
+    "fp": "37d3b4d157aa9ca0c7fd9e002f382c483efc779feace8174abb59147ed627d67",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/navimarine-nmm1031-col03.html": {
-    "fp": "9877dc53678a43dcb834b475ab07c7f4cc4536cf317d0de6bbd3daf2f92166ac",
-    "lastmod": "2026-09-09"
+    "fp": "f92cdfe5177eb7528b572bf66d34c484eb6e1874e4979d7f0d9109cabc17ad08",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/navimarine-nvm148-d4.html": {
-    "fp": "b77e30ca4352085409512e395f9e496212d91798de71098155a0bcf5fdabbfd1",
-    "lastmod": "2026-09-09"
+    "fp": "dcda0c936690d9e9562c04619044610bcbac9ef1c949f304456e10fc950e97b4",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/navimarine-steel-5atm-blue.html": {
-    "fp": "a331cb4ba72138200367586dc84907ca048d52b0835328fab52e9590a0ad276f",
-    "lastmod": "2026-09-09"
+    "fp": "05df82f4eb2677cb5d3ef0f46ed4eea7cf57d841c45d31095a4739f51839e8d3",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2374-1.html": {
-    "fp": "7dd9ef85421aeeccd08c60b206b6b6332da66103781a3d9e47b82485bc831259",
-    "lastmod": "2026-08-29"
+    "fp": "898e823dc342708576043dae5283449bf630a4a055ff391fe00ef5aa04446087",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2391-2.html": {
-    "fp": "ce63a68f8485bfc683c39db59299cff3a202119a6fbd87d7e47dbd12dd08c578",
-    "lastmod": "2026-08-29"
+    "fp": "3d97cdb5d67af7a082126bc86b3bccd5eb430f76e4e4f01cc7303b5a785da870",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2392-4.html": {
-    "fp": "0f8756ac573104266864707f668cfa4b1a42ed311f301cf1dd76ae01a51090ae",
-    "lastmod": "2026-08-29"
+    "fp": "01c2e175934487abf7f790e9bc1b51f231eba03f2e124ce3a98da93441547645",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2394-1.html": {
-    "fp": "6a3f82eb1f1a1e979ba0c4fb5603d3cc75dfd282cd81de8e5f2016377e4aebad",
-    "lastmod": "2026-08-29"
+    "fp": "9d320822d126d9c5daabcad47b1abd632a0ef33d9fcb16ef70d00b46e5682e5a",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2394-2.html": {
-    "fp": "0eac55ae8fc955a50949c5da613e2a6a5d888f58bc5c73fc77887bac31575309",
-    "lastmod": "2026-08-29"
+    "fp": "8c5721ad3ccd9d895226cb53f7739809e6437b23c2ba1aec7e7d05b72474253a",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2412-8.html": {
-    "fp": "1300a56a8e2df64a0eab4385dee5c189120aa8f6becef24a27dc443a043a80e8",
-    "lastmod": "2026-08-29"
+    "fp": "fa90da2f7b89d06dd258825d65cef23b5e88406a9bd9d42567a12f26b6391218",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2427-1.html": {
     "fp": "152cd0fa09b96557c3fea6f265b942a526abf184de718b3678d908b737e86f61",
-    "lastmod": "2026-08-29"
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2427-5.html": {
-    "fp": "2358ce826efddae0335a18241361f86370e635f9be1cea8ee0f98495083b91ab",
-    "lastmod": "2026-08-27"
+    "fp": "a60b8d355dbab8fd27b07327f47c778f7f9eea997bc67d7eb62f5eb63f42d3f8",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2435-2.html": {
-    "fp": "de8ae0787c95e4a3805d4f2d93e11e02b6a42452c0316a865d060f5e4f233498",
-    "lastmod": "2026-08-29"
+    "fp": "8efff410df723efd065d51c23c00606dcb56a1993cdad464659064aab3eab4ce",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2435-5.html": {
-    "fp": "7a58b589ed6b7a2cdc88425b3c792050ca927a4dcfeb11632fd2a59b60d3253f",
-    "lastmod": "2026-08-29"
+    "fp": "c150614477d44b5a108590415a204ec6831305a1c448c009d26f0856f9986a15",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-pl2924-2.html": {
-    "fp": "dca80b3ed63debe53b1d7958991f5e8efea908a2289bc1fe68902fdc738624c1",
-    "lastmod": "2026-08-27"
+    "fp": "c65f6c2dc613722c96931f111f9260d16c227007628fbc4c6994b891cc7121de",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/philippe-lauren-steel-crystal-blue.html": {
-    "fp": "f2d3ded6345558d53aefa2b0bd77b096b6040f6130fd472f2f1470dfebb840c9",
-    "lastmod": "2026-09-04"
+    "fp": "c568c06f6524f7d94c69693a28434b9bad34b262c2f9c6bf2e87c92c9994ab1f",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/polotime-gold-crystal.html": {
-    "fp": "09be43219ed283bfd90c2fd8c1eae380b6f8ec05967135f60157752172bcc3f8",
-    "lastmod": "2026-09-09"
+    "fp": "70d046efafc641ecc7d8ea28d0fa13d5f0e0e7b8e21c45e9584ccef744c97785",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/pulsar-crystal-chronograph.html": {
-    "fp": "1164ca99e7459788e431923ff4822c852b4375bdb024e405afde1adfcab78ddc",
-    "lastmod": "2026-09-09"
+    "fp": "9cc3063baecf14e1de75f9bb7e247ce1c77f7bdb46fe3d6fec7155acf9511a58",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/romanson-bh3054gbr.html": {
-    "fp": "cf080c0ba898e12facf31e5ec46f9f90b9ffd36e33a57a5129e81b812919a428",
+    "fp": "9f40bd1d844ff44635b0f8d7512e0ccbefb47a1b5d07cd2ec09bf684be1182c5",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/starking-bm-664.html": {
-    "fp": "f0810c11d7169295a7357111f9522d010b656c4480d7e6bd4d076e72ad8c3b81",
-    "lastmod": "2026-08-29"
+    "fp": "bc45f396b3554c557bd454c67399921b16b6c7c728ce73c9fe813689ae89c077",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-1.html": {
-    "fp": "093f7a2d89a64e6a5321fe6aa1b45c3da34c754b3901d7f1a4208d2c06edc077",
+    "fp": "55c2c8f9fa1db99d6cd0f87892c37f0831224ab35b34874c89f35cf0cb8b6709",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-10.html": {
-    "fp": "f67b7245d59c1c3d3c5b13b0c7f6ce90301479879db92780fe6af39ed0272bd9",
+    "fp": "80d3a3fda5ff93002c30d3b3ec97cead6ccd8a56f153ad6ddd9519518557f8f0",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-11.html": {
-    "fp": "10584bc3312134f069416d1093ce9cfaab48945c679f444eacedc18385857a71",
+    "fp": "8c8506b1c6b8e7b18a81b7ad91eaa62c5245b1c514eb9b62e14dfb8c048e541e",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-12.html": {
-    "fp": "ae9ebdae4b5e85d2837fe457d986af1e2239a96c17c916dcfc99740c72eec95f",
-    "lastmod": "2026-09-09"
+    "fp": "13d6a4f34248852899ec50f9eae9932e528666b96bb966fab19fc39f67b48830",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-13.html": {
-    "fp": "3d41d470b31abad2dc6682aaf7abdc7b39930ccae91bec6227bec55660e6033f",
-    "lastmod": "2026-09-09"
+    "fp": "ebe6f6f85e25c223f65fdada4278529824715c23dfefe59ad35b03ef27fd4123",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-14.html": {
     "fp": "dc75751b624b08ee3d1f33df494b0ca458cc99c3e89438edccfec5ae10767d12",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-15.html": {
-    "fp": "4395e97f96db2fad08e591208adb025de23d2081d4d095f4177fd4536ea05adb",
-    "lastmod": "2026-09-09"
+    "fp": "b41f45d70538bfebcd5e54204ac090eab8a54a46388384edb4bd9c5a4fe58a4d",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-16.html": {
-    "fp": "c6d29f74310c86351f19344110604b78ad5447364a65fbe92b9b8887569098b9",
+    "fp": "3e98d0d34cdf15660671efebe146c7a347296009c55c641c910e18b2adfd1b1d",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-17.html": {
-    "fp": "5ff21fcd08a79fc820ca137b2f3f3bd8b95e7cbbf8149bf83bab02d676cae5e4",
-    "lastmod": "2026-09-09"
+    "fp": "ec74c6b99054067a1cb023b0a69d8b69661df7de05ab32f144dfe751517f719f",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-18.html": {
-    "fp": "e34bcfbe1d3bf87eaccf321c575374747b3f90746800c21e9fe39a5336ce23f2",
+    "fp": "3af32674d5abe05a03e74f8042592167d236490dc3902f69ca21c21a03e7c802",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-19.html": {
-    "fp": "6e16ca310f80555e20a0273341ef44d0cbb38100256b061f4a880cd2a1af41e1",
-    "lastmod": "2026-09-09"
+    "fp": "240bfb6527299b7ad51b993215747944deba781adb6b2b187ebb4971ffe189d1",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-2.html": {
-    "fp": "57f3f1b81f2bda7531058122d07a1cea1a3ec0325740030aeed9cf9f2a4b4603",
+    "fp": "ba89ed068e026d6d8cdfd87d2267f2cadbe91b1f6ad993ea24cffbdfb8d2a47c",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-20.html": {
-    "fp": "81ee38bcbf8c42c76aace80e914d608d7bc89e374b24cdb6de2c5d354da9a9c9",
-    "lastmod": "2026-08-27"
+    "fp": "2e85579e5d2693e28cf84e9f3f83b5543d6ca159dbb9d4195aaa00855dac294f",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-21.html": {
-    "fp": "bad441542c93aa6d796b88df8a99ffd783b8672da4fa36f740a4876f94d4299e",
-    "lastmod": "2026-09-09"
+    "fp": "7e5fd8e6295e87eea3e4072300ba0e98ed210d408539c4c9705103ad1556aea9",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-22.html": {
-    "fp": "3b68d60425d6688bf9942ad8cc13f277c7cb740de1787ee1bc80be646bd8913a",
-    "lastmod": "2026-09-09"
+    "fp": "2d2aed34ccf4ae898c37c00c6b856154238ac26563fb24ecd175247011fedd08",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-23.html": {
-    "fp": "dd5f28d0d82eaf893cbbfa982b9ccc07be04c2838724dd60573b5de7ae104e74",
+    "fp": "f66ccb2a2b51682fb2f3c93d5a2b6a2780ca3b0931382d169fd571f58b16e9f4",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-24.html": {
-    "fp": "a1613cdf300200caf0bb174cf1092cce78b3c54012ee81b2c072cef95aaba9a9",
-    "lastmod": "2026-09-09"
+    "fp": "3ff71db7cdd27b429099f10fc79dba4c248224e526646876c4d43a2ff333ab21",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-25.html": {
-    "fp": "329f8756fd6af36609af7e24c7acfa68c8c0ec923ae692aa389ab770e267e347",
-    "lastmod": "2026-09-09"
+    "fp": "00a434e97521292a159a8b84776ba309d16ef61fb0296f52e22c7e4be05a0384",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-26.html": {
-    "fp": "c6299929266e44e59390e4cef5ee1933df198f3e244e43d3710dd4504f1dc922",
-    "lastmod": "2026-09-09"
+    "fp": "5f545dd420488385eaa90b62feb5f697b59dfa09e5e59711c38020b3bc31dbef",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-27.html": {
-    "fp": "713dd47aa9392c01aabdf115aa2f8adb1b4241fbfe5d91e66a30ac1c23c515d9",
-    "lastmod": "2026-09-09"
+    "fp": "710f40283c9b62bcdf3c78c4529bdc8d5cf17e72c01d8ee3b69355e5e45e4550",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-28.html": {
-    "fp": "e82c88af65697c676fec3c4116ca7e71525f38ec75501cede8dc2d8a7e348b74",
+    "fp": "5c289e7a63749afaad882ade643d4277d8dc37d387d19f5dfe71069df12d05b9",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-3.html": {
-    "fp": "259d5a7136dbb92b74e22afb665a9fff9d6cb88430f0b5c7c3893d1cefc81fb0",
+    "fp": "ddd103afb38eb8c881013a8bdadd03974c17239c54dcde0e32ebf74e7c853acf",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-4.html": {
-    "fp": "c2549eee737a4b78607f58c425b4e74739bb1acb4b614138a729bc0ad7acac94",
+    "fp": "716902e26cef955a9e92b7a426910199d9af87a1789ddbe5998a90c633b85e93",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-5.html": {
-    "fp": "785860437718743a1a37e0a085f148ae574eba77b1a639d105bcc09004142ffc",
+    "fp": "6ed147c445d1f8fbc0d86b293980f8dfcd9b3cbcacee49d2ce6fc5fa529fadfd",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-6.html": {
-    "fp": "a546852d9d1c577c778f5a72617728eb509e7f18007a621b388cae33fa0d3da0",
+    "fp": "9d25838f4fa656ee7fe7b37a53a1ef300055a80cfd3c78213b4e7f30407333e8",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-7.html": {
-    "fp": "26df253cea53d75562680fa3a9697ab9005ed3a66ef49ae64999cbfe42edfc33",
-    "lastmod": "2026-09-09"
+    "fp": "e4d39dd15fef01617658ba26657f4e65f09c844750947c11841a41ff88ee4f98",
+    "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-8.html": {
-    "fp": "6a4a8029cde8579ae9d1daf7d9e2f7d98e58f9987726d3925927a1498673b45b",
+    "fp": "f3eff386b8cfcc800f3ee29e90e68ca22f4324e3527424fb977827868d1e1d5b",
     "lastmod": "2026-09-10"
   },
   "https://watch.al/sq/shop/watch-9.html": {
-    "fp": "ea39dcb842d02fe59e1cb8efa298b8c23bcb10efbe0865625cc669583313ba5b",
+    "fp": "4ac5bd28e4ef46f55172a99d4a00e1175cc98e2ad461d42d97704e300675aa17",
     "lastmod": "2026-09-10"
   }
 }
