@@ -98,7 +98,7 @@
           chip.classList.add('active');
           chip.setAttribute('aria-pressed','true');
           currentFilter = chip.dataset.filter;
-          renderWatches(WATCHES);
+          renderSoon(WATCHES);
         });
       });
 
@@ -137,7 +137,7 @@
           if(disp) disp.textContent = '€' + minVal + ' - €' + maxVal;
           currentMinPrice = minVal;
           currentMaxPrice = maxVal;
-          renderWatches(WATCHES);
+          renderSoon(WATCHES);
         };
         var onSliderStart = function(e){
           e.preventDefault();
@@ -234,7 +234,7 @@
         else u.searchParams.set('brand', currentBrand);
         history.replaceState(null, '', u.pathname + (u.search || '') + (u.hash || ''));
       } catch(err){}
-      renderWatches(WATCHES);
+      renderSoon(WATCHES);
     });
   }
 
@@ -259,7 +259,7 @@
       chip.classList.add('active');
       chip.setAttribute('aria-pressed','true');
       currentStyle = chip.dataset.style;
-      renderWatches(WATCHES);
+      renderSoon(WATCHES);
     });
   }
 
@@ -425,5 +425,17 @@
       + '<a href="https://instagram.com/iglisiwatch" target="_blank" rel="noopener noreferrer" class="watch-ig-link" aria-label="Shiko n\u00eb Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>'
       + ctaHtml
       + '</div></div></article>';
+  }
+
+  // [UI-016.j] renderSoon - let the tap paint first, then repaint the grid
+  // DOES:   runs renderWatches one frame plus one task later, so the pressed chip or
+  //         released slider handle is drawn before the full grid is rebuilt.
+  // NOTES:  INP counts from the tap to the next paint, and a synchronous repaint of
+  //         every card made that paint wait for the whole grid (field data: 352 ms on
+  //         button.active.filter-chip). Each call reads the filter state when it runs,
+  //         so two quick taps still land on the second tap's result. The first render,
+  //         search typing and the sort select stay synchronous on purpose.
+  function renderSoon(watches){
+    requestAnimationFrame(function(){ setTimeout(function(){ renderWatches(watches); }, 0); });
   }
 })();
