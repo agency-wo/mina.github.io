@@ -41,61 +41,6 @@ category card label where the old index carried nuance ("Watch History",
 
 ARTICLES = [
     dict(
-        slug='buy-watch-vlore', cat='buying',
-        card=dict(
-            en=dict(title='Buying a Watch in Vlor&euml;: Salt, Sun and What We Will Not Claim',
-                    desc='What a coastal summer does to a plated case, a leather strap and a gasket, which watches state a water resistance rating and which say nothing at all. Silent does not mean waterproof, and we will not invent a figure.'),
-            it=dict(title='Comprare un Orologio a Valona: Sale, Sole e Cosa Non Promettiamo',
-                    desc='Cosa fa un&rsquo;estate di mare a una cassa placcata, a un cinturino in pelle e a una guarnizione, quali orologi dichiarano una resistenza all&rsquo;acqua e quali non dicono nulla. Silenzio non vuol dire impermeabile.'),
-            sq=dict(title='Blerja e nj&euml; Ore n&euml; Vlor&euml;: Kripa, Dielli dhe &Ccedil;far&euml; Nuk e Premtojm&euml;',
-                    desc='&Ccedil;far&euml; i b&euml;n nj&euml; ver&euml; bregdetare nj&euml; kase t&euml; praruar, nj&euml; rripi l&euml;kure dhe nj&euml; guarnicioni, cilat or&euml; deklarojn&euml; nj&euml; vler&euml; rezistence ndaj uj&euml;t dhe cilat nuk thon&euml; asgj&euml;. Heshtja nuk do t&euml; thot&euml; e papërshkueshme.'),
-        ),
-    ),
-    dict(
-        slug='buy-watch-shkoder', cat='buying',
-        card=dict(
-            en=dict(title='Buying a Watch in Shkod&euml;r: Delivered and Paid at the Door',
-                    desc='The courier waits while you open the box, and if it is not right you hand it back and pay nothing. What protects you when you cannot simply walk the watch back, and the one part of the arrangement that is not symmetrical.'),
-            it=dict(title='Comprare un Orologio a Scutari: Consegna e Pagamento alla Porta',
-                    desc='Il corriere aspetta mentre aprite la scatola, e se non va bene lo restituite senza pagare nulla. Cosa vi protegge quando non potete semplicemente riportare l&rsquo;orologio, e la parte del patto che non &egrave; simmetrica.'),
-            sq=dict(title='Blerja e nj&euml; Ore n&euml; Shkod&euml;r: D&euml;rgesa dhe Pagesa te Dera',
-                    desc='Korrieri pret nd&euml;rsa ju hapni kutin&euml;, dhe n&euml;se nuk &euml;sht&euml; n&euml; rregull ia ktheni pa paguar asgj&euml;. &Ccedil;far&euml; ju mbron kur nuk mund ta &ccedil;oni thjesht or&euml;n mbrapsht, dhe pjesa e marr&euml;veshjes q&euml; nuk &euml;sht&euml; simetrike.'),
-        ),
-    ),
-    dict(
-        slug='buy-watch-elbasan', cat='buying',
-        card=dict(
-            en=dict(title='Buying a Watch in Elbasan: Who You Are Buying From',
-                    desc='A watchmaker sees which movements come back and which do not, and sells from the same bench that repairs them. What that is worth when you are not local, and the honest limit: servicing happens in Durr&euml;s, in person.'),
-            it=dict(title='Comprare un Orologio a Elbasan: da Chi State Comprando',
-                    desc='Un orologiaio vede quali movimenti tornano indietro e quali no, e vende dallo stesso banco su cui li ripara. Quanto vale quando non siete del posto, e il limite onesto: l&rsquo;assistenza si fa a Durazzo, di persona.'),
-            sq=dict(title='Blerja e nj&euml; Ore n&euml; Elbasan: Nga Kush Po Blini',
-                    desc='Nj&euml; or&euml;ndreq&euml;s sheh cil&euml;t mekanizma kthehen dhe cil&euml;t jo, dhe shet nga i nj&euml;jti bank ku i riparon. Sa vlen kjo kur nuk jeni nga vendi, dhe kufiri i ndersh&euml;m: servisi b&euml;het n&euml; Durr&euml;s, personalisht.'),
-        ),
-    ),
-    dict(
-        slug='dress-watches-albania', cat='buying',
-        card=dict(
-            en=dict(title='Dress Watches in Albania: How to Buy One That Looks Expensive',
-                    desc='Slim case, clean dial, applied markers that throw a shadow, and how the bracelet finishes. What separates a dress watch that looks expensive from one that does not, at the prices we actually charge.'),
-            it=dict(title='Orologi Eleganti in Albania: Come Comprarne Uno che Sembra Costoso',
-                    desc='Cassa sottile, quadrante pulito, indici applicati che fanno ombra e come finisce il bracciale. Cosa distingue un orologio elegante che sembra costoso da uno che non lo sembra, ai prezzi che facciamo davvero.'),
-            sq=dict(title='Or&euml; Elegante n&euml; Shqip&euml;ri: Si t&euml; Blini nj&euml; q&euml; Duket e Shtrenjt&euml;',
-                    desc='Kas&euml; e holl&euml;, ciferblat i past&euml;r, tregues t&euml; aplikuar q&euml; hedhin hije dhe si mbaron br&euml;zi. &Ccedil;far&euml; e ndan nj&euml; or&euml; elegante q&euml; duket e shtrenjt&euml; nga nj&euml; q&euml; nuk duket, me &ccedil;mimet q&euml; b&euml;jm&euml; ne.'),
-        ),
-    ),
-    dict(
-        slug='sapphire-crystal-watches-under-7000-lek', cat='buying', icon='fa-gem',
-        card=dict(
-            en=dict(title='Sapphire Crystal Watches Under 7,000 Lek',
-                    desc='Sapphire normally costs more than this. One Swiss quartz Romanson carries it under 7,000 Lek, and above that sapphire on our counter means Hislon. What the crystal buys you in daily wear, and how to check a watch really has one.'),
-            it=dict(title='Orologi con Vetro Zaffiro Sotto 7.000 Lek',
-                    desc='Lo zaffiro di solito costa di pi&ugrave;. Un Romanson al quarzo svizzero lo porta sotto i 7.000 lek, e sopra quella cifra lo zaffiro sul nostro banco vuol dire Hislon. Cosa vi d&agrave; il vetro ogni giorno e come verificarlo.'),
-            sq=dict(title='Or&euml; me Xham Safiri N&euml;n 7.000 Lek&euml;',
-                    desc='Safiri zakonisht kushton m&euml; shum&euml;. Nj&euml; Romanson me kuarc zviceran e mban n&euml;n 7.000 lek&euml;, dhe sip&euml;r asaj shifre safiri n&euml; banakun ton&euml; do t&euml; thot&euml; Hislon. &Ccedil;far&euml; ju jep xhami &ccedil;do dit&euml; dhe si ta verifikoni.'),
-        ),
-    ),
-    dict(
         slug='are-navimarine-watches-good', cat='buying',
         card=dict(
             en=dict(title='Are Navimarine Watches Good? An Honest Answer From the Bench',
@@ -104,30 +49,6 @@ ARTICLES = [
                     desc='Un orologiaio che li vende e li ripara risponde chiaro: cosa &egrave; e cosa non &egrave; Navimarine, cosa comprano davvero i soldi, e le affermazioni che ci rifiutiamo di fare.'),
             sq=dict(title='A Jan&euml; t&euml; Mira Or&euml;t Navimarine? P&euml;rgjigjja e Ndershme',
                     desc='Nj&euml; or&euml;ndreq&euml;s q&euml; i shet dhe i riparon p&euml;rgjigjet drejt: &ccedil;far&euml; &euml;sht&euml; dhe &ccedil;far&euml; nuk &euml;sht&euml; Navimarine, &ccedil;far&euml; blejn&euml; v&euml;rtet parat&euml;, dhe pretendimet q&euml; nuk i b&euml;jm&euml;.'),
-        ),
-    ),
-    dict(
-        slug='hislon-classic-queen-guide', cat='buying', icon='fa-heart',
-        label=dict(en='Buying Guide', it="Guida all'Acquisto", sq='Udh&euml;zues Blerje'),
-        card=dict(
-            en=dict(title='Hislon Classic Queen: Which One to Buy',
-                    desc='The women&rsquo;s dress ladder, walked rung by rung from steel with a mother-of-pearl dial up to rose gold-tone. Which one carries the crystal-set bezel, which one is black rather than mother-of-pearl, and what the extra money actually buys.'),
-            it=dict(title='Hislon Classic Queen: Quale Comprare',
-                    desc='La scala degli orologi da donna, gradino per gradino, dall&rsquo;acciaio con quadrante in madreperla fino all&rsquo;oro rosa. Quale ha la lunetta con cristalli, quale &egrave; nera invece che in madreperla, e cosa comprano davvero i soldi in pi&ugrave;.'),
-            sq=dict(title='Hislon Classic Queen: Cil&euml;n t&euml; Blesh',
-                    desc='Shkalla e or&euml;ve p&euml;r femra, shkall&euml;z pas shkall&euml;zi, nga &ccedil;eliku me ciferblat sedefi deri te ari roz&euml;. Cila e ka lunet&euml;n me kristale, cila &euml;sht&euml; e zez&euml; n&euml; vend se sedefi, dhe &ccedil;far&euml; blejn&euml; v&euml;rtet parat&euml; shtes&euml;.'),
-        ),
-    ),
-    dict(
-        slug='cortebert-watches-albania', cat='buying', icon='fa-star',
-        label=dict(en='Buying Guide', it="Guida all'Acquisto", sq='Udh&euml;zues Blerje'),
-        card=dict(
-            en=dict(title='Cort&eacute;bert Watches in Albania: What We Stock and Which to Buy',
-                    desc='A moon phase dress oval, a working chronograph that is the dearest watch we sell, and a rectangular multifunction priced on request. What each one actually is, and the two things we deliberately will not claim about any of them.'),
-            it=dict(title='Orologi Cort&eacute;bert in Albania: Cosa Teniamo e Quale Comprare',
-                    desc='Un ovale da abito con fase lunare, un cronografo vero che &egrave; l&rsquo;orologio pi&ugrave; caro che vendiamo, e un multifunzione rettangolare con prezzo su richiesta. Cos&rsquo;&egrave; davvero ognuno, e le due cose che non dichiariamo.'),
-            sq=dict(title='Or&euml; Cort&eacute;bert n&euml; Shqip&euml;ri: &Ccedil;far&euml; Mbajm&euml; dhe Cil&euml;n t&euml; Blesh',
-                    desc='Nj&euml; oval veshjeje me faz&euml; h&euml;ne, nj&euml; kronograf i v&euml;rtet&euml; q&euml; &euml;sht&euml; ora m&euml; e shtrenjt&euml; q&euml; shesim, dhe nj&euml; multifunksion drejtk&euml;nd&euml;sh me &ccedil;mim me k&euml;rkes&euml;. &Ccedil;far&euml; &euml;sht&euml; secila, dhe dy gj&euml;rat q&euml; nuk i deklarojm&euml;.'),
         ),
     ),
     dict(
@@ -152,54 +73,6 @@ ARTICLES = [
                     desc='Cosa compra davvero ogni budget, da un acciaio sotto i &euro;60 al vetro zaffiro pi&ugrave; economico che teniamo, e l&rsquo;ultimo giorno sensato per ordinare e averlo prima del 25.'),
             sq=dict(title='Dhurata Or&euml; p&euml;r Krishtlindje n&euml; Shqip&euml;ri: &Ccedil;&rsquo;t&euml; Blesh dhe Kur t&euml; Porosis',
                     desc='&Ccedil;far&euml; blen v&euml;rtet secili buxhet, nga nj&euml; or&euml; &ccedil;eliku nën &euro;60 te xhami safir m&euml; i lir&euml; q&euml; mbajm&euml;, dhe dita e fundit e arsyeshme p&euml;r porosi.'),
-        ),
-    ),
-    dict(
-        slug='mothers-day-watch-gifts-albania', cat='gifts', icon='fa-gem',
-        label=dict(en='Gift Guide', it='Guida Regali', sq='Udhëzues Dhuratash'),
-        card=dict(
-            en=dict(title='Mother&rsquo;s Day Watch Gifts in Albania: What to Buy and When to Order',
-                    desc='Albania keeps it on 8 March. What each budget buys, the last day to order, and the one decision that settles whether it is worn in June or admired once.'),
-            it=dict(title='Regalo Orologio per la Festa della Mamma: Maggio in Italia, 8 Marzo in Albania',
-                    desc='Due date e due scadenze per ordinare. La mimosa dura tre giorni: cosa compra ogni budget, e la scelta del metallo che decide se lo porter&agrave; ancora a giugno.'),
-            sq=dict(title='Dhurata Or&euml; p&euml;r Dit&euml;n e N&euml;n&euml;s n&euml; Shqip&euml;ri: 8 Marsi',
-                    desc='&Ccedil;far&euml; blen secili buxhet, dita e fundit p&euml;r porosi, dhe vendimi i vetëm q&euml; përcakton n&euml;se mbahet n&euml; qershor apo admirohet nj&euml; her&euml;.'),
-        ),
-    ),
-    dict(
-        slug='watch-gift-for-your-father', cat='gifts', icon='fa-cogs',
-        label=dict(en='Gift Guide', it='Guida Regali', sq='Udhëzues Dhuratash'),
-        card=dict(
-            en=dict(title='A Watch for Your Father, When He Says He Wants Nothing',
-                    desc='He is not being polite. What each budget buys, what to do about the watch already in his drawer, and why buying from the bench that repairs them changes what happens in year three.'),
-            it=dict(title='Un Orologio per tuo Padre, Quando Dice che Non Vuole Niente',
-                    desc='Non lo dice per educazione. Cosa compra ogni budget, cosa fare dell&rsquo;orologio nel cassetto, e perch&eacute; comprarlo da chi lo ripara cambia le cose al terzo anno.'),
-            sq=dict(title='Nj&euml; Or&euml; p&euml;r Babain, Kur Thot&euml; se Nuk Do Asgj&euml;',
-                    desc='Nuk po b&euml;n sjellje. &Ccedil;far&euml; blen secili buxhet, &ccedil;far&euml; t&euml; b&euml;sh me or&euml;n n&euml; sirtar, dhe pse ka r&euml;nd&euml;si ta blesh nga kush i riparon.'),
-        ),
-    ),
-    dict(
-        slug='watch-gift-for-a-friend', cat='gifts', icon='fa-star',
-        label=dict(en='Gift Guide', it='Guida Regali', sq='Udhëzues Dhuratash'),
-        card=dict(
-            en=dict(title='A Watch as a Gift for a Friend: How Much Is Too Much',
-                    desc='The one question that decides it is not which watch but how much, and the honest answer is less than you think. Where the line sits and why the cheaper one is often the better gift.'),
-            it=dict(title='Un Orologio in Regalo per un Amico: Quanto &Egrave; Troppo',
-                    desc='La domanda che conta non &egrave; quale orologio ma quanto, e la risposta onesta &egrave; meno di quanto pensi. Dov&rsquo;&egrave; il limite e perch&eacute; quello pi&ugrave; economico &egrave; spesso il regalo migliore.'),
-            sq=dict(title='Nj&euml; Or&euml; Dhurat&euml; p&euml;r nj&euml; Shok: Sa &euml;sht&euml; Shum&euml;',
-                    desc='Pyetja q&euml; ka r&euml;nd&euml;si nuk &euml;sht&euml; cila or&euml; por sa, dhe p&euml;rgjigjja e ndershme &euml;sht&euml; m&euml; pak nga sa mendon. Ku &euml;sht&euml; kufiri dhe pse m&euml; e lira &euml;sht&euml; shpesh m&euml; e mira.'),
-        ),
-    ),
-    dict(
-        slug='watch-gift-for-brother-or-sister', cat='gifts', icon='fa-heart',
-        label=dict(en='Gift Guide', it='Guida Regali', sq='Udhëzues Dhuratash'),
-        card=dict(
-            en=dict(title='A Watch as a Gift for a Brother or Sister',
-                    desc='The one present they will wear in front of you every week, which is why it is the hardest easy gift there is. What works for a brother, for a sister, and when you are buying for two.'),
-            it=dict(title='Un Orologio in Regalo per un Fratello o una Sorella',
-                    desc='L&rsquo;unico regalo che porteranno davanti a te ogni settimana, ed &egrave; per questo che &egrave; il regalo facile pi&ugrave; difficile. Cosa funziona per un fratello, per una sorella, e se ne compri due.'),
-            sq=dict(title='Nj&euml; Or&euml; Dhurat&euml; p&euml;r nj&euml; V&euml;lla ose nj&euml; Motër',
-                    desc='Dhurata e vetme q&euml; do ta mbajn&euml; para teje &ccedil;do jav&euml;, dhe pikërisht prandaj &euml;sht&euml; m&euml; e vështira. &Ccedil;far&euml; shkon p&euml;r nj&euml; v&euml;lla, p&euml;r nj&euml; motër, dhe kur blen dy.'),
         ),
     ),
     dict(

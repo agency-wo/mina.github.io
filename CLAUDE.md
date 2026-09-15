@@ -8,6 +8,23 @@ Cloudflare, deployed on push to `main`, live about a minute later.
 else is a means to that end. There is no cart and no checkout: the whole conversion path ends in a
 prefilled WhatsApp message with cash on delivery, or a walk-in to the shop.
 
+**Publishing freeze, in force from 2026-09-15.** On 2026-09-07 the whole site's Google search
+visibility fell by about 90% and stayed down. Real visits fell with it. It is not a technical fault:
+penalties, removals, Googlebot access, Cloudflare, indexing and every deploy were checked and ruled
+out. The best-supported cause is Google reassessing the site after a summer of rapid templated
+publishing. Until the owner lifts this, and it overrides the standing brief and every lane:
+
+- **Add no new article families, city pages or bulk pages, in any language.**
+- **Eleven families are set to noindex and removed from the blog index** as a first recovery pass:
+  the Vlorë, Shkodër and Elbasan city pages, dress, sapphire under 7,000 Lek, Cortébert, the Hislon
+  Queen guide, and the friend, father, sibling and Mother's Day gift pages. Do not re-index them,
+  re-card them or point new links at them without the owner's decision.
+- **A Search Console day that is three or more days old and still far below trend is not reporting
+  lag.** Treat it as real.
+
+The full evidence record and recovery plan are at `~/.claude/plans/use-agent-to-do-temporal-meadow.md`,
+outside the repo.
+
 ---
 
 ## Geography
