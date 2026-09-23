@@ -692,11 +692,11 @@ ARTICLES = [
         slug='watch-battery-replacement-durres', cat='care',
         card=dict(
             en=dict(title='Watch Battery Replacement in Durr&euml;s: Done While You Wait',
-                    desc='Walk in with a dead watch, walk out with a working one. Battery replacements take 10-15 minutes. No appointment needed, any brand welcome.'),
+                    desc='Walk in with a dead watch, walk out with a working one. Battery replacements take a few minutes. No appointment needed, any brand welcome.'),
             it=dict(title='Sostituzione Batteria Orologio a Durr&euml;s - Pronto Mentre Aspetti',
-                    desc='Portate il vostro orologio da Iglisi Watch a Durr&euml;s. Nessun appuntamento, pronto in 10-15 minuti, ispezione della guarnizione inclusa. Qualsiasi marca.'),
+                    desc='Portate il vostro orologio da Iglisi Watch a Durr&euml;s. Nessun appuntamento, pronto in pochi minuti, ispezione della guarnizione inclusa. Qualsiasi marca.'),
             sq=dict(title='Z&euml;vend&euml;simi i Bateris&euml; s&euml; Or&euml;s n&euml; Durr&euml;s - Gati Nd&euml;rkoh&euml; q&euml; Prisni',
-                    desc='Ejani tek Iglisi Watch n&euml; Durr&euml;s. Gati n&euml; 10-15 minuta, pa takim paraprak, inspektim i garnitur&euml;s i p&euml;rfshir&euml;. &Ccedil;do mark&euml; e mirëpritur.'),
+                    desc='Ejani tek Iglisi Watch n&euml; Durr&euml;s. Gati n&euml; pak minuta, pa takim paraprak, inspektim i garnitur&euml;s i p&euml;rfshir&euml;. &Ccedil;do mark&euml; e mirëpritur.'),
         ),
     ),
     dict(
