@@ -121,7 +121,16 @@ ROLES = {
 FIXED = {"entry", "top"}
 
 
-def pick(role, seed="", brand=None, exclude=()):
+# Articles written for one side (owner, 2026-09-23). A box in a men's guide never offers a
+# women's watch and the reverse; unisex and not-yet-sorted watches suit both. Before this the
+# men's gift guide opened with "a single idea for him" and resolved it to a Hislon Classic
+# Queen, in three languages. Keyed by EN family; the IT and SQ twins follow via en_slug_of.
+AUDIENCE = {"mens-watches-albania": "men", "best-watch-gifts-men-albania": "men",
+            "womens-watches-albania": "women", "best-watch-gifts-women-albania": "women"}
+_OTHER_SIDE = {"men": "women", "women": "men"}
+
+
+def pick(role, seed="", brand=None, exclude=(), audience=None):
     """[DB-021.a] The current best watch for a role. Raises rather than returns None.
 
     Everything except entry and top is ROTATED by a hash of the article slug. The
@@ -142,11 +151,18 @@ def pick(role, seed="", brand=None, exclude=()):
     next tier and finally to _live(), so a brand selling out cannot turn a bridge into a
     build failure. That matters because this generator is a step of the stock-sync Action,
     and gen_brand_pages already learned that lesson the hard way.
+
+    `audience` narrows the same way for articles written for men or for women (AUDIENCE),
+    dropping only watches sorted to the other side. If no tier has a watch left for that
+    side, the pick is redone without it: a box offering the wrong side is a copy problem,
+    a stock-sync that raises is a site that stops following the shop.
     """
     assert role in ROLES, f"unknown cta role {role!r}; known: {sorted(ROLES)}"
     for cands in ROLES[role]():
         if brand:
             cands = [w for w in cands if w["brand"] == brand]
+        if audience:
+            cands = [w for w in cands if w.get("gender") != _OTHER_SIDE[audience]]
         if not cands:
             continue
         if role in FIXED:
@@ -172,6 +188,8 @@ def pick(role, seed="", brand=None, exclude=()):
             if cand["id"] not in exclude:
                 return cand
         return ranked[0]      # a repeat beats a build failure if a tier is fully used up
+    if audience:
+        return pick(role, seed, brand, exclude)   # nothing on this side in stock
     raise AssertionError(f"role {role!r} resolved to no watch; is anything in stock?")
 
 
@@ -448,7 +466,8 @@ def main():
                     assert not brand_i or any(x["brand"] == brand_i for x in watches), \
                         f"{p}: data-cta-brand={brand_i!r} matches no brand in watches.json"
                     seed = fam if not sm else f"{fam}:{sm.group(1)}"
-                    wi = pick(role_i, seed, brand_i, exclude=set(chosen.values()))
+                    wi = pick(role_i, seed, brand_i, exclude=set(chosen.values()),
+                              audience=AUDIENCE.get(fam))
                     chosen[i] = wi["id"]
                     tally[role_i] = tally.get(role_i, 0) + 1
                     offered.add(wi["id"])
@@ -479,7 +498,7 @@ def main():
             if has_cta:
                 # the closing card takes the LAST box's watch, which is the one directly above
                 # it; on a page with no bridge at all it falls back to a rotated pick as before
-                wid = page_offered[-1] if page_offered else pick("popular", fam)["id"]
+                wid = page_offered[-1] if page_offered else pick("popular", fam, audience=AUDIENCE.get(fam))["id"]
                 href = f'/{lang}/shop/{wid}.html'
                 assert (BASE / href.lstrip("/")).exists(), f"{p}: {href} does not exist"
                 # the same name the bridge buttons print, built the same way, so a card
