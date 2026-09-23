@@ -199,7 +199,11 @@ Breaking one of these has caused a real incident. They are not style preferences
   was found to contradict three published article families:
   - **Banned**: telling a reader what size to pick, asking for a wrist measurement, wrist-size
     reference tables, "measure your wrist", "send us your wrist size", "what suits your wrist",
-    and size filters, size fields or gender fields on a product.
+    and size filters or size fields on a product.
+  - **Allowed since 2026-09-23 (owner)**: a Men / Women / Unisex category on a watch, meaning who it
+    is made for, as the shop filter and a product label (`gender` in `watches.json`). It never
+    states or implies a size or a fit: "above 38mm reads as a men's piece" is still fit advice.
+    Unisex watches appear under both Men and Women; there is no Unisex button.
   - **Allowed**: a case diameter stated as a neutral fact ("the case is 40mm"), strap and lug
     widths (a repair fact a customer needs in order to buy the right strap), and **bracelet link
     adjustment described as a service we perform** ("we size it free at the counter",

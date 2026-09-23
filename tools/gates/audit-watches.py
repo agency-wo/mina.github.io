@@ -105,7 +105,7 @@ def main():
 
     # --- 2. field consistency ---
     for i in sorted(set(j) & set(d)):
-        for k in ("brand", "model", "reference", "price", "image", "sold", "condition", "currency"):
+        for k in ("brand", "model", "reference", "price", "image", "sold", "condition", "currency", "gender"):
             if j[i].get(k) != d[i].get(k):
                 flag(f"{i}.{k} drift: json={j[i].get(k)!r} js={d[i].get(k)!r}")
 
@@ -360,6 +360,39 @@ def main():
             styled_chronos.add(w['id'])
     if not styled_chronos <= VERIFIED_CHRONOGRAPHS:
         flag(f"chronograph style on unverified watch(es): {sorted(styled_chronos - VERIFIED_CHRONOGRAPHS)}")
+
+    # --- 12. gender: who the watch is made for (owner, 2026-09-23; CLAUDE.md "No fitting advice").
+    # A finding here, never an assert in a generator: the admin panel can publish a watch before it
+    # is sorted, and the stock-sync that follows runs every generator. An unsorted watch simply shows
+    # under both shop filters until this is fixed.
+    GENDER_VOCAB = {'men', 'women', 'unisex'}
+    for w in j.values():
+        if w.get('deleted'):
+            continue
+        g = w.get('gender')
+        if g is None:
+            flag(f"{w['id']}: no gender (shows under both Men and Women until sorted)")
+        elif g not in GENDER_VOCAB:
+            flag(f"{w['id']}: unknown gender {g!r}")
+    # The owner's own guides are the classification of record: a watch one of them recommends
+    # editorially may never sit on the opposite side. Generated regions are stripped first (the
+    # shop-bridge box, the closing cta-actions row, the brand-hub line), because gen_article_cta
+    # picks those by role and they are what this check exists to police, not a source of truth.
+    guides = {'mens-watches-albania': 'men', 'best-watch-gifts-men-albania': 'men',
+              'womens-watches-albania': 'women', 'best-watch-gifts-women-albania': 'women'}
+    generated = (r'<div class="info-box" data-shop-bridge.*?</div>',
+                 r'<div class="cta-actions".*?</div>', r'<p class="cta-hub".*?</p>')
+    for slug, side in guides.items():
+        p = BASE / "en" / "blog" / f"{slug}.html"
+        if not p.exists():
+            continue
+        t = corpus.sig(p)
+        for rx in generated:
+            t = re.sub(rx, " ", t, flags=re.S)
+        opposite = 'women' if side == 'men' else 'men'
+        for i in sorted(set(re.findall(r'href="/en/shop/([a-z0-9.-]+)\.html"', t))):
+            if i in j and j[i].get('gender') == opposite:
+                flag(f"{i}: gender {opposite!r} but the {side}'s guide {slug} recommends it")
 
     # Imported, never re-typed. This was a hand-written copy of shop_bits.BRANDS and it
     # was eight entries long while BRANDS was ten, so the gate that exists to check the

@@ -85,6 +85,13 @@ def flag(m):
 #         because that is per-language data rather than arithmetic. SQ must lead
 #         with Lek, EN and IT with euro, and the check asserts the lead as well as
 #         the value.
+GENDER_ROW = {
+    "en": ("For", {"men": "Men", "women": "Women", "unisex": "Men and women"}),
+    "it": ("Tipo", {"men": "Da uomo", "women": "Da donna", "unisex": "Da uomo e da donna"}),
+    "sq": ("Për", {"men": "Burra", "women": "Gra", "unisex": "Burra dhe gra"}),
+}
+
+
 def main():
     sys.path.insert(0, str(BASE))
     from catalog_stats import nfmt
@@ -295,6 +302,27 @@ def main():
                 if wrong:
                     flag(f"{rel}: meta description opens by naming {wrong[0]}, "
                          f"but this is a {w['brand']}")
+
+            # 10. who the watch is made for (owner, 2026-09-23): the Details row and the
+            # Product audience must both follow watches.json, and both vanish together when a
+            # watch has not been sorted yet. The labels are written out here rather than
+            # imported, so the gate can disagree with gen_product_pages instead of agreeing
+            # with it by construction (the same reason the Lek rate is restated above).
+            g = w.get("gender")
+            label, values = GENDER_ROW[lang]
+            aud = (d.get("audience") or {}).get("suggestedGender") if ld else None
+            if g in values:
+                row = f"<dt>{label}</dt><dd>{values[g]}</dd>"
+                if row not in t:
+                    flag(f"{rel}: Details should read {label}: {values[g]}")
+                want_sg = {"men": "male", "women": "female", "unisex": "unisex"}[g]
+                if aud != want_sg:
+                    flag(f"{rel}: audience.suggestedGender {aud!r}, expected {want_sg!r}")
+            else:
+                if f"<dt>{label}</dt>" in t:
+                    flag(f"{rel}: a {label} row on a watch with no gender")
+                if aud is not None:
+                    flag(f"{rel}: audience on a watch with no gender")
 
     print(f"\n  {pages} product pages | {len(glyphs)} glyphs in the subset")
     print("PRODUCT PAGE GATE PASS" if not findings else f"{len(findings)} FINDINGS")

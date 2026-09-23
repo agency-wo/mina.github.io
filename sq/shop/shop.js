@@ -5,8 +5,8 @@
 //         #shopGrid on each change. Brand chips are built from the data, seeded
 //         from ?brand= and written back to the URL, so a filtered grid is a
 //         link somebody can send.
-// IN:     watches.json over the network; .filter-chip, #brandChips, #styleChips, #shopSearch,
-//         #shopSort, #priceSliderWrap; ?brand= on the query string.
+// IN:     watches.json over the network; .filter-chip, #brandChips, #styleChips, #genderChips, #shopSearch,
+//         #shopSort, #priceSliderWrap; ?brand= and ?gender= on the query string.
 // OUT:    #shopGrid innerHTML, the #shopCount line, one WhatsApp link per card.
 // CALLS:  /watches.json, same-origin; api.watch.al/public/stock
 //         (the [UI-002] block below; [SEC-002] owns the CSP that allows it).
@@ -35,6 +35,8 @@
   var BRAND_ALL_LABEL = 'Të gjitha markat';
   var currentSort   = 'default';
   var currentStyle  = 'all';
+  var currentGender = 'all';
+  var LOADED = null;   // the catalogue once it arrives; gender chips answer before it does
   var STYLE_ORDER = ['chronograph','dress','sport','digital','gold-tone','moonphase'];
   var STYLE_ALL_LABEL = 'Të gjitha stilet';
   var STYLE_LABELS = {'chronograph':'Kronograf','dress':'Veshjeje','sport':'Sportive','digital':'Dixhitale','gold-tone':'Ngjyrë ari','moonphase':'Fazat e hënës'};
@@ -55,6 +57,8 @@
     fetch('https://api.watch.al/public/stock').then(function(r){ return r.ok ? r.json() : null; }),
     new Promise(function(res){ setTimeout(function(){ res(null); }, 4000); })
   ]).catch(function(){ return null; });
+
+  initGenderChips();
 
   fetch('/watches.json?v=3')
     .then(function(r){ return r.json(); })
@@ -88,13 +92,14 @@
         currentMinPrice = PRICE_MIN;
         currentMaxPrice = PRICE_MAX;
       })();
+      LOADED = WATCHES;
       initBrandChips(WATCHES);
       initStyleChips(WATCHES);
       renderWatches(WATCHES);
 
-      document.querySelectorAll('.filter-chip:not([data-brand]):not([data-style])').forEach(function(chip){
+      document.querySelectorAll('.filter-chip:not([data-brand]):not([data-style]):not([data-gender])').forEach(function(chip){
         chip.addEventListener('click', function(){
-          document.querySelectorAll('.filter-chip:not([data-brand]):not([data-style])').forEach(function(c){ c.classList.remove('active'); c.removeAttribute('aria-pressed'); });
+          document.querySelectorAll('.filter-chip:not([data-brand]):not([data-style]):not([data-gender])').forEach(function(c){ c.classList.remove('active'); c.removeAttribute('aria-pressed'); });
           chip.classList.add('active');
           chip.setAttribute('aria-pressed','true');
           currentFilter = chip.dataset.filter;
@@ -263,8 +268,42 @@
     });
   }
 
+  // genderChips: a STATIC row in the page, so it adds no layout shift, wired at script
+  // start so a tap counts even before the catalogue arrives; the first render applies it.
+  // ?gender= is read and written like ?brand=: replaceState, never pushState, so the back
+  // button leaves the shop. Unisex watches, and any not sorted yet, show under both chips
+  // (renderWatches). There is deliberately no count on any chip.
+  function initGenderChips(){
+    var wrap = document.getElementById('genderChips');
+    if(!wrap) return;
+    var param = '';
+    try { param = (new URLSearchParams(window.location.search).get('gender') || '').toLowerCase(); } catch(e){}
+    if(param === 'men' || param === 'women') currentGender = param;
+    function paint(){
+      wrap.querySelectorAll('[data-gender]').forEach(function(c){
+        var on = c.dataset.gender === currentGender;
+        c.classList.toggle('active', on);
+        if(on) c.setAttribute('aria-pressed','true'); else c.removeAttribute('aria-pressed');
+      });
+    }
+    paint();
+    wrap.addEventListener('click', function(e){
+      var chip = e.target.closest ? e.target.closest('[data-gender]') : null;
+      if(!chip) return;
+      currentGender = chip.dataset.gender;
+      paint();
+      try {
+        var u = new URL(window.location.href);
+        if(currentGender === 'all') u.searchParams.delete('gender');
+        else u.searchParams.set('gender', currentGender);
+        history.replaceState(null, '', u.pathname + (u.search || '') + (u.hash || ''));
+      } catch(err){}
+      if(LOADED) renderSoon(LOADED);
+    });
+  }
+
   // [UI-016.c] renderWatches — the ONE render path: filter, sort, repaint
-  // DOES:   applies condition, brand, search and the price window in that order,
+  // DOES:   applies condition, brand, style, gender, search and the price window in that order,
   //         sorts, then replaces #shopGrid wholesale. It writes no count.
   // NOTES:  full repaint on purpose. Nothing mutates a card in place, so the grid
   //         can never show a half-applied filter. With a search term and sort
@@ -282,6 +321,11 @@
 
     if(currentStyle !== 'all'){
       filtered = filtered.filter(function(w){ return (w.styles||[]).indexOf(currentStyle) !== -1; });
+    }
+
+    // unisex watches, and any the admin panel published before sorting, show under both
+    if(currentGender !== 'all'){
+      filtered = filtered.filter(function(w){ return !w.gender || w.gender === currentGender || w.gender === 'unisex'; });
     }
 
     if(currentSearch){

@@ -143,6 +143,8 @@ LANGS = {
         "title_tail": "Buy in Durrës, Albania",
         "specs_h": "Details",
         "spec_brand": "Brand",
+        "spec_gender": "For",
+        "gender_val": {"men": "Men", "women": "Women", "unisex": "Men and women"},
         "spec_ref": "Reference",
         "spec_cond": "Condition",
         "spec_price": "Price",
@@ -188,6 +190,8 @@ LANGS = {
         "title_tail": "Orologi a Durazzo",
         "specs_h": "Dettagli",
         "spec_brand": "Marca",
+        "spec_gender": "Tipo",
+        "gender_val": {"men": "Da uomo", "women": "Da donna", "unisex": "Da uomo e da donna"},
         "spec_ref": "Riferimento",
         "spec_cond": "Condizione",
         "spec_price": "Prezzo",
@@ -233,6 +237,8 @@ LANGS = {
         "title_tail": "Blej Orë në Durrës",
         "specs_h": "Detaje",
         "spec_brand": "Marka",
+        "spec_gender": "Për",
+        "gender_val": {"men": "Burra", "women": "Gra", "unisex": "Burra dhe gra"},
         "spec_ref": "Referenca",
         "spec_cond": "Gjendja",
         "spec_price": "Çmimi",
@@ -714,6 +720,10 @@ def related_for(w, n=4):
 #         parameter — correct only because this runs inside that loop; keep it so.
 def build_specs_html(w, cfg):
     rows = [(cfg["spec_brand"], w.get("brand", ""))]
+    # who it is made for (owner, 2026-09-23). A category, never a size: the fitting ban in
+    # CLAUDE.md still stands. Skipped, not asserted, when a watch has not been sorted yet.
+    if w.get("gender") in cfg["gender_val"]:
+        rows.append((cfg["spec_gender"], cfg["gender_val"][w["gender"]]))
     if w.get("reference"):
         rows.append((cfg["spec_ref"], w["reference"]))
     rows.append((cfg["spec_cond"], w.get("condition", "")))
@@ -1295,6 +1305,15 @@ for w in watches:
                 ld["mpn"] = w["reference"]
             else:
                 ld.pop("mpn", None)
+            # Who the watch is made for, which Google's merchant listings read as
+            # audience.suggestedGender. Derived every run like the price, removed when the
+            # watch is not sorted yet, and never asserted: the admin panel can publish an
+            # unsorted watch and the stock-sync that follows runs this generator.
+            sg = {"men": "male", "women": "female", "unisex": "unisex"}.get(w.get("gender"))
+            if sg:
+                ld["audience"] = {"@type": "PeopleAudience", "suggestedGender": sg}
+            else:
+                ld.pop("audience", None)
             # THE RETURN POLICY BELONGS TO THE OFFER, and moving it fixes a live bug.
             # It was written once by a page-creation script that is not even in this
             # repository, sat at Product level ever since, and no generator or gate has

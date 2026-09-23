@@ -14,6 +14,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "men",
     "description_en": "Clean, understated elegance in stainless steel. Fluted bezel, horizontal-stripe silver dial, sapphire crystal, and date window. A reliable everyday dress watch.",
     "description_it": "Eleganza sobria in acciaio inossidabile. Lunetta zigrinata, quadrante argentato a righe orizzontali, cristallo zaffiro e finestrella data. Un orologio da giorno affidabile.",
     "description_sq": "Elegancë e thjeshtë në çelik inox. Bezel i gdhendur, cadran argjendi me vija horizontale, xham safiri dhe dritare date. Orë e besueshme për çdo ditë."
@@ -33,6 +34,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "A refined ladies' watch with a rose gold-tone case and bracelet. Slim profile, elegant dial, sapphire crystal, and reliable quartz movement - effortless everyday style.",
     "description_it": "Orologio da donna raffinato con cassa e bracciale in oro rosa. Profilo sottile, quadrante elegante, cristallo zaffiro e movimento al quarzo affidabile.",
     "description_sq": "Orë elegante për femra me kasë dhe byzylyk në ngjyrë ari rozë. Profil i hollë, cadran elegant, xham safiri dhe lëvizje kuarci e besueshme."
@@ -52,6 +54,7 @@ window.WATCHES_DATA = [
     "styles": [
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "The Classic in full gold-tone stainless steel. Fluted bezel, horizontal-stripe silver dial, gold-tone hands and indices, sapphire crystal, and date window.",
     "description_it": "Il Classic in acciaio inossidabile total gold. Lunetta zigrinata, quadrante argentato a righe, lancette e indici dorati, cristallo zaffiro e finestrella data.",
     "description_sq": "Classic-u në çelik inox total gold. Bezel i gdhendur, cadran argjendi me vija, tregues dhe akrepë të artë, xham safiri dhe dritare date."
@@ -71,6 +74,7 @@ window.WATCHES_DATA = [
       "chronograph",
       "sport"
     ],
+    "gender": "men",
     "description_en": "A bold sport-chic chronograph with a jet-black dial, sapphire crystal, and stainless steel bracelet. Three subdials, red accent details, and a date window - precision with attitude.",
     "description_it": "Cronografo sport-chic audace con quadrante nero, cristallo zaffiro e bracciale in acciaio. Tre sotto-quadranti, dettagli rossi e finestrella data - precisione con carattere.",
     "description_sq": "Kronograf sport me cadran të zi, xham safiri dhe byzylyk çeliku. Tre nën-cadranë, detaje të kuqe dhe dritare date - precizion me karakter."
@@ -89,6 +93,7 @@ window.WATCHES_DATA = [
     "styles": [
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "A ladies' classic in full gold-tone steel with a mother-of-pearl dial set with crystal indices, sapphire crystal, blue hands, and a date window. Timeless femininity.",
     "description_it": "Orologio da donna classico in acciaio dorato con quadrante madreperla, indici con cristalli, cristallo zaffiro, lancette blu e finestrella data. Femminilità senza tempo.",
     "description_sq": "Orë klasike për femra në çelik të artë me cadran sedef, tregues me kristale, xham safiri, akrepë blu dhe dritare date. Femërorësi pa kohë."
@@ -107,6 +112,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "women",
     "description_en": "The Women Classic Queen in stainless steel with a mother-of-pearl dial, crystal indices, sapphire crystal, blue hands, and a date window. Understated elegance for every day.",
     "description_it": "La Women Classic Queen in acciaio inossidabile con quadrante madreperla, indici con cristalli, cristallo zaffiro, lancette blu e finestrella data. Eleganza sobria per ogni giorno.",
     "description_sq": "Women Classic Queen në çelik inox me cadran sedef, tregues me kristale, xham safiri, akrepë blu dhe dritare date. Elegancë e thjeshtë për çdo ditë."
@@ -126,6 +132,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Navimarine NM268-06 - a women's two-tone dress watch with a curved case, crystal-set bezel and a blue sunburst dial with gold-tone Roman numerals. Two-tone bracelet, quartz movement. The most jewellery-like watch on our counter.",
     "description_it": "Navimarine NM268-06 - orologio da donna bicolore con cassa sagomata, lunetta con cristalli e quadrante blu sunburst con numeri romani color oro. Bracciale bicolore, movimento al quarzo. L'orologio piu simile a un gioiello che abbiamo in negozio.",
     "description_sq": "Navimarine NM268-06 - orë veshjeje për femra në dy ngjyra me kasë të lakuar, lunetë me kristale dhe ciferblat blu sunburst me numra romakë ngjyrë ari. Byzylyk në dy ngjyra, mekanizëm kuarci. Ora që i ngjan më shumë një bizhuterie në banakun tonë."
@@ -145,6 +152,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "The Classic CL214S-04SS in two-tone stainless steel - silver case with gold-tone accents. Fluted bezel, clean silver dial with gold-tone hands and indices, sapphire crystal, and date window. Timeless dress elegance at its finest.",
     "description_it": "Il Classic CL214S-04SS in acciaio inossidabile bicolore - cassa argentata con dettagli dorati. Lunetta zigrinata, quadrante argentato con lancette e indici dorati, cristallo zaffiro e finestrella data. Eleganza senza tempo.",
     "description_sq": "Classic CL214S-04SS ne celiku inox dy-tone - kase argjendi me detaje te arta. Bezel i gdhendur, cadran argjendi me akrape dhe tregues te arte, xham safiri dhe dritare date. Elegance klasike ne kulmin e saj."
@@ -163,6 +171,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "men",
     "description_en": "Navimarine NMM1011 - a slim minimalist dress watch in stainless steel with a pale ice-blue dial and applied baton indices. Polished steel bracelet, quartz movement, no date window to clutter the dial. An easy everyday watch that goes with anything.",
     "description_it": "Navimarine NMM1011 - orologio da abito sottile e minimalista in acciaio inox con quadrante azzurro ghiaccio e indici a bastone applicati. Bracciale in acciaio lucido, movimento al quarzo, nessuna finestrella data a disturbare il quadrante. Facile da portare ogni giorno, si abbina a tutto.",
     "description_sq": "Navimarine NMM1011 - orë veshjeje e hollë dhe minimaliste në çelik inoks me ciferblat blu të çelët akulli dhe tregues të aplikuar. Byzylyk çeliku i lëmuar, mekanizëm kuarci, pa dritare date që ngarkon ciferblatin. E lehtë për çdo ditë dhe shkon me gjithçka."
@@ -181,6 +190,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "unisex",
     "description_en": "Navimarine NM232-04 - stainless steel watch with a black sunburst dial, applied baton indices and a five-link jubilee-style bracelet. Quartz movement, clean and legible at a glance. A straightforward everyday watch that works with a shirt or a t-shirt.",
     "description_it": "Navimarine NM232-04 - orologio in acciaio inox con quadrante nero sunburst, indici a bastone applicati e bracciale jubilee a cinque maglie. Movimento al quarzo, pulito e leggibile a colpo d'occhio. Un orologio semplice per tutti i giorni, con la camicia o con la maglietta.",
     "description_sq": "Navimarine NM232-04 - orë në çelik inoks me ciferblat të zi sunburst, tregues të aplikuar dhe byzylyk me pesë hallka. Mekanizëm kuarci, i pastër dhe i lexueshëm me një shikim. Një orë e thjeshtë për çdo ditë, me këmishë ose me bluzë."
@@ -200,6 +210,7 @@ window.WATCHES_DATA = [
       "sport",
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "Navimarine NAVI 009 in gold-tone - a large multifunction watch with a black bezel, black dial and three subdials for day, date and 24-hour time. Gold-tone plated bracelet, quartz movement. Keep the plating away from salt water and it will hold its finish.",
     "description_it": "Navimarine NAVI 009 color oro - grande orologio multifunzione con lunetta nera, quadrante nero e tre contatori per giorno, data e ore su 24. Bracciale placcato color oro, movimento al quarzo. Tenetelo lontano dall'acqua salata e la finitura durera.",
     "description_sq": "Navimarine NAVI 009 ngjyrë ari - orë e madhe multifunksion me lunetë të zezë, ciferblat të zi dhe tre ciferblatë të vegjël për ditën, datën dhe orën 24-orëshe. Byzylyk i veshur ngjyrë ari, mekanizëm kuarci. Mbajeni larg ujit të kripur dhe finitura do të zgjasë."
@@ -219,6 +230,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Navimarine NVM141-A1 - a women's dress watch with a crystal-set bezel, champagne dial and gold-tone Roman numerals. Faceted stainless steel case on a matching steel bracelet, quartz movement. A gift watch that looks well above its price.",
     "description_it": "Navimarine NVM141-A1 - orologio da donna con lunetta con cristalli, quadrante champagne e numeri romani color oro. Cassa in acciaio inox sfaccettata su bracciale in acciaio abbinato, movimento al quarzo. Un orologio da regalo che sembra molto piu caro di quanto costa.",
     "description_sq": "Navimarine NVM141-A1 - orë veshjeje për femra me lunetë me kristale, ciferblat shampanjë dhe numra romakë ngjyrë ari. Kasë çeliku inoks e fasetuar mbi byzylyk çeliku të njëjtë, mekanizëm kuarci. Një orë dhuratë që duket shumë më e shtrenjtë se sa kushton."
@@ -237,6 +249,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Navimarine NM181-03 - a blue dive-style watch with a rotating blue bezel, navy dial, luminous round markers and a yellow seconds hand. Stainless steel case and bracelet, quartz movement, date window. The sportiest watch in the range.",
     "description_it": "Navimarine NM181-03 - orologio in stile subacqueo con lunetta girevole blu, quadrante blu notte, indici tondi luminosi e lancetta dei secondi gialla. Cassa e bracciale in acciaio inox, movimento al quarzo, finestrella data. Il piu sportivo della gamma.",
     "description_sq": "Navimarine NM181-03 - orë në stil zhytjeje me lunetë rrotulluese blu, ciferblat blu të errët, tregues të rrumbullakët ndriçues dhe akrep sekondash të verdhë. Kasë dhe byzylyk çeliku inoks, mekanizëm kuarci, dritare date. Ora më sportive e gamës."
@@ -255,6 +268,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Navimarine NT0029-2 - a steel multifunction watch with a blue sunburst dial and three subdials. They show the day, the date and 24-hour time rather than a stopwatch. Steel bracelet, quartz movement. A busy, technical-looking dial with plenty of presence.",
     "description_it": "Navimarine NT0029-2 - orologio multifunzione in acciaio con quadrante blu sunburst e tre contatori. Indicano giorno, data e ore su 24, non un cronometro. Bracciale in acciaio, movimento al quarzo. Un quadrante ricco e tecnico, di grande presenza.",
     "description_sq": "Navimarine NT0029-2 - orë multifunksion në çelik me ciferblat blu sunburst dhe tre ciferblatë të vegjël. Ata tregojnë ditën, datën dhe orën 24-orëshe, jo kronometër. Byzylyk çeliku, mekanizëm kuarci. Një ciferblat i pasur dhe teknik, me shumë prani."
@@ -274,6 +288,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Navimarine NM282-04 - a women's two-tone dress watch with a cushion-square case, crystal-set bezel and a deep green dial with Roman numerals. Gold-tone and steel bracelet, quartz movement. Jewellery styling without the jewellery price.",
     "description_it": "Navimarine NM282-04 - orologio da donna bicolore con cassa quadrata a cuscino, lunetta con cristalli e quadrante verde scuro con numeri romani. Bracciale acciaio e color oro, movimento al quarzo. Stile gioiello senza il prezzo del gioiello.",
     "description_sq": "Navimarine NM282-04 - orë veshjeje për femra në dy ngjyra me kasë katrore, lunetë me kristale dhe ciferblat jeshil të errët me numra romakë. Byzylyk çeliku dhe ngjyrë ari, mekanizëm kuarci. Stil bizhuterie pa çmimin e bizhuterisë."
@@ -293,6 +308,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "unisex",
     "description_en": "Navimarine NVM112-B4 - a full gold-tone dress watch with a faceted bezel, champagne sunburst dial and a date window. Gold-tone steel bracelet, quartz movement. The gold watch most people picture when they ask for one.",
     "description_it": "Navimarine NVM112-B4 - orologio da abito interamente color oro con lunetta sfaccettata, quadrante champagne sunburst e finestrella data. Bracciale in acciaio color oro, movimento al quarzo. L'orologio d'oro che la maggior parte delle persone immagina quando ne chiede uno.",
     "description_sq": "Navimarine NVM112-B4 - orë veshjeje krejt ngjyrë ari me lunetë të fasetuar, ciferblat shampanjë sunburst dhe dritare date. Byzylyk çeliku ngjyrë ari, mekanizëm kuarci. Ora e artë që shumica e njerëzve imagjinon kur kërkon një të tillë."
@@ -311,6 +327,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Navimarine NAVI 009 Marinemaster - a large black-dial multifunction watch with a marked bezel and three subdials for day, date and 24-hour time. Stainless steel case and bracelet, quartz movement. Built to be noticed.",
     "description_it": "Navimarine NAVI 009 Marinemaster - grande orologio multifunzione con quadrante nero, lunetta graduata e tre contatori per giorno, data e ore su 24. Cassa e bracciale in acciaio inox, movimento al quarzo. Pensato per farsi notare.",
     "description_sq": "Navimarine NAVI 009 Marinemaster - orë e madhe multifunksion me ciferblat të zi, lunetë të shkallëzuar dhe tre ciferblatë të vegjël për ditën, datën dhe orën 24-orëshe. Kasë dhe byzylyk çeliku inoks, mekanizëm kuarci. E ndërtuar për t'u vënë re."
@@ -330,6 +347,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "Navimarine NM001101 in gold-tone - a slim minimalist dress watch with a champagne dial, fine baton indices and a date window. Full gold-tone steel bracelet, quartz movement. Understated gold for the office or an occasion.",
     "description_it": "Navimarine NM001101 color oro - orologio da abito sottile e minimalista con quadrante champagne, indici a bastone sottili e finestrella data. Bracciale in acciaio interamente color oro, movimento al quarzo. Oro discreto per l'ufficio o per un'occasione.",
     "description_sq": "Navimarine NM001101 ngjyrë ari - orë veshjeje e hollë dhe minimaliste me ciferblat shampanjë, tregues të hollë dhe dritare date. Byzylyk çeliku krejt ngjyrë ari, mekanizëm kuarci. Ar i qetë për zyrë ose për një rast të veçantë."
@@ -348,6 +366,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Navimarine NT0031-1 - a steel multifunction watch with a silver dial and three subdials for day, date and 24-hour time. Steel bracelet, quartz movement. The lighter, dressier version of the multifunction look.",
     "description_it": "Navimarine NT0031-1 - orologio multifunzione in acciaio con quadrante argentato e tre contatori per giorno, data e ore su 24. Bracciale in acciaio, movimento al quarzo. La versione piu chiara ed elegante del look multifunzione.",
     "description_sq": "Navimarine NT0031-1 - orë multifunksion në çelik me ciferblat argjendi dhe tre ciferblatë të vegjël për ditën, datën dhe orën 24-orëshe. Byzylyk çeliku, mekanizëm kuarci. Versioni më i ndritshëm dhe më elegant i pamjes multifunksion."
@@ -366,6 +385,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Navimarine NM001404 in blue - a steel sport-luxe watch with an integrated bracelet, faceted case and a deep blue sunburst dial with a date window. Quartz movement. The integrated-bracelet look that normally starts much further up the price list.",
     "description_it": "Navimarine NM001404 blu - orologio sportivo elegante in acciaio con bracciale integrato, cassa sfaccettata e quadrante blu intenso sunburst con finestrella data. Movimento al quarzo. Il look col bracciale integrato che di solito parte da molto piu in alto.",
     "description_sq": "Navimarine NM001404 blu - orë sportive elegante në çelik me byzylyk të integruar, kasë të fasetuar dhe ciferblat blu të thellë sunburst me dritare date. Mekanizëm kuarci. Pamja me byzylyk të integruar që zakonisht fillon shumë më lart në çmim."
@@ -384,6 +404,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Navimarine 001808 - stainless steel watch with a black 24-hour numbered bezel, black dial, luminous round markers and a date window. Five-link jubilee-style bracelet, quartz movement. The travel-watch look, in plain steel.",
     "description_it": "Navimarine 001808 - orologio in acciaio inox con lunetta nera graduata su 24 ore, quadrante nero, indici tondi luminosi e finestrella data. Bracciale jubilee a cinque maglie, movimento al quarzo. Il look da orologio da viaggio, in acciaio.",
     "description_sq": "Navimarine 001808 - orë në çelik inoks me lunetë të zezë me numra 24-orësh, ciferblat të zi, tregues të rrumbullakët ndriçues dhe dritare date. Byzylyk me pesë hallka, mekanizëm kuarci. Pamja e orës së udhëtimit, në çelik të thjeshtë."
@@ -403,6 +424,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Navimarine NM229-06 - a women's two-tone square dress watch with a white dial, black Roman numerals and screw details on the bezel. Gold-tone and steel bracelet, quartz movement. A quiet classic shape for everyday wear.",
     "description_it": "Navimarine NM229-06 - orologio da donna bicolore con cassa quadrata, quadrante bianco, numeri romani neri e dettagli a vite sulla lunetta. Bracciale acciaio e color oro, movimento al quarzo. Una forma classica e discreta, per tutti i giorni.",
     "description_sq": "Navimarine NM229-06 - orë veshjeje për femra në dy ngjyra me kasë katrore, ciferblat të bardhë, numra romakë të zinj dhe detaje vidhash në lunetë. Byzylyk çeliku dhe ngjyrë ari, mekanizëm kuarci. Një formë klasike e qetë për çdo ditë."
@@ -421,6 +443,7 @@ window.WATCHES_DATA = [
     "styles": [
       "chronograph"
     ],
+    "gender": "men",
     "description_en": "Navimarine NVM180-A2 - a steel chronograph with a black dial, two large ringed subdials and a date window. Steel bracelet, working chronograph pushers, quartz movement. The boldest dial in the range for anyone who likes a busy face.",
     "description_it": "Navimarine NVM180-A2 - cronografo in acciaio con quadrante nero, due grandi contatori cerchiati e finestrella data. Bracciale in acciaio, pulsanti cronografici funzionanti, movimento al quarzo. Il quadrante più deciso della gamma, per chi ama un quadrante ricco.",
     "description_sq": "Navimarine NVM180-A2 - kronograf çeliku me ciferblat të zi, dy ciferblatë të mëdhenj me rreth dhe dritare date. Byzylyk çeliku, butona kronografi funksionalë, mekanizëm kuarci. Ciferblati më i guximshëm i gamës, për këdo që pëlqen një ciferblat të pasur."
@@ -439,6 +462,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "men",
     "description_en": "Navimarine NM001101 in steel - the same slim minimalist dress case with a black dial, fine baton indices and a date window. Polished stainless steel bracelet, quartz movement. A first proper watch that will not look dated in five years.",
     "description_it": "Navimarine NM001101 in acciaio - la stessa cassa da abito sottile e minimalista con quadrante nero, indici a bastone sottili e finestrella data. Bracciale in acciaio inox lucido, movimento al quarzo. Un primo orologio serio che non passera di moda.",
     "description_sq": "Navimarine NM001101 në çelik - e njëjta kasë e hollë dhe minimaliste veshjeje me ciferblat të zi, tregues të hollë dhe dritare date. Byzylyk çeliku inoks të lëmuar, mekanizëm kuarci. Një orë e parë serioze që nuk do të duket e vjetruar pas pesë vjetësh."
@@ -458,6 +482,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Navimarine NMM1013 - a women's two-tone watch with a crystal-set bezel and a green malachite-look dial with crystal hour markers. Gold-tone and steel bracelet, quartz movement. The one that gets noticed.",
     "description_it": "Navimarine NMM1013 - orologio da donna bicolore con lunetta con cristalli e quadrante verde effetto malachite con indici in cristallo. Bracciale acciaio e color oro, movimento al quarzo. Quello che si fa notare.",
     "description_sq": "Navimarine NMM1013 - orë për femra në dy ngjyra me lunetë me kristale dhe ciferblat jeshil me pamje malakiti me tregues kristali. Byzylyk çeliku dhe ngjyrë ari, mekanizëm kuarci. Ajo që bie në sy."
@@ -476,6 +501,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Navimarine NM182-01 - stainless steel watch with a fluted bezel, black dial with applied indices and a five-link jubilee-style bracelet. Quartz movement. The classic dress-sport shape, in steel, for a fraction of what that look usually costs.",
     "description_it": "Navimarine NM182-01 - orologio in acciaio inox con lunetta zigrinata, quadrante nero con indici applicati e bracciale jubilee a cinque maglie. Movimento al quarzo. La classica forma elegante-sportiva, in acciaio, a una frazione di quanto costa di solito.",
     "description_sq": "Navimarine NM182-01 - orë në çelik inoks me lunetë të valëzuar, ciferblat të zi me tregues të aplikuar dhe byzylyk me pesë hallka. Mekanizëm kuarci. Forma klasike elegante-sportive, në çelik, me një pjesë të vogël të çmimit që ka zakonisht ai stil."
@@ -494,6 +520,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "men",
     "description_en": "Navimarine NT0021-1 - stainless steel watch with a blue sunburst dial, a day window at twelve and a date window at six. Steel bracelet, quartz movement, 5 ATM. Practical for daily wear and legible at arm's length.",
     "description_it": "Navimarine NT0021-1 - orologio in acciaio inox con quadrante blu sunburst, finestrella del giorno a ore dodici e finestrella data a ore sei. Bracciale in acciaio, movimento al quarzo, 5 ATM. Pratico da portare ogni giorno e leggibile a distanza di braccio.",
     "description_sq": "Navimarine NT0021-1 - orë në çelik inoks me ciferblat blu sunburst, dritare dite te ora dymbëdhjetë dhe dritare date te ora gjashtë. Byzylyk çeliku, mekanizëm kuarci, 5 ATM. Praktike për çdo ditë dhe e lexueshme nga larg."
@@ -512,6 +539,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Navimarine NM001404 in white - a steel sport-luxe watch with an integrated bracelet, faceted case and a clean white dial with a date window. Quartz movement. The dressiest way to wear the integrated-bracelet shape.",
     "description_it": "Navimarine NM001404 bianco - orologio sportivo elegante in acciaio con bracciale integrato, cassa sfaccettata e quadrante bianco pulito con finestrella data. Movimento al quarzo. Il modo piu elegante di portare la forma col bracciale integrato.",
     "description_sq": "Navimarine NM001404 i bardhë - orë sportive elegante në çelik me byzylyk të integruar, kasë të fasetuar dhe ciferblat të bardhë të pastër me dritare date. Mekanizëm kuarci. Mënyra më elegante për të veshur formën me byzylyk të integruar."
@@ -531,6 +559,7 @@ window.WATCHES_DATA = [
       "dress",
       "sport"
     ],
+    "gender": "men",
     "description_en": "Bold stainless steel sports-dress watch by Casio. Black dial with luminous baton indices, date window at 3 o'clock, 50m water resistance, and reliable Japanese quartz movement. Sharp enough for the office, tough enough for everyday wear.",
     "description_it": "Orologio Casio in acciaio inossidabile dal carattere sportivo ed elegante. Quadrante nero con indici a bastone luminosi, finestrella data alle 3, resistenza all'acqua 50m e preciso movimento al quarzo giapponese. Adatto all'ufficio come all'uso quotidiano.",
     "description_sq": "Orë sportive-elegante Casio në çelik inox. Cadran i zi me indikatorë bastun luminozë, fenestrë date në pozicionin 3, rezistencë ndaj ujit 50m dhe lëvizje kuarci japoneze e besueshme. Elegante për zyrën, e qëndrueshme për çdo ditë."
@@ -549,6 +578,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Bigotti BG1.10154.1 - stainless steel multi-function watch with a white dial, day-date display, and multiple subdials. Clean baton indices, three-pusher chronograph case, and brushed steel bracelet. A sharp, functional timepiece at an excellent price.",
     "description_it": "Bigotti BG1.10154.1 - orologio multifunzione in acciaio inossidabile con quadrante bianco, display giorno-data e più contatori. Indici a bastone puliti, cassa con tre pulsanti e bracciale in acciaio spazzolato. Un orologio preciso e funzionale a un ottimo prezzo.",
     "description_sq": "Bigotti BG1.10154.1 - orë multifunksionale çeliku inox me ciferblat të bardhë, tregues dite-date dhe nën-cadranë të shumtë. Indikatorë bastun të pastër, kuti me tre butona dhe byzylyk çeliku të brushuar. Orë precize dhe funksionale me çmim të shkëlqyer."
@@ -566,6 +596,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "men",
     "description_en": "Navimarine Steel 5ATM - classic stainless steel watch with a deep blue sunburst dial and Roman numeral hour markers. Date display at 3 o'clock, 5 ATM water resistance, and a solid brushed steel bracelet. A confident, elegant everyday watch.",
     "description_it": "Navimarine Steel 5ATM - orologio classico in acciaio inossidabile con quadrante blu sunburst e numeri romani. Data alle 3, resistenza all'acqua 5 ATM e bracciale in acciaio spazzolato solido. Un orologio quotidiano elegante e deciso.",
     "description_sq": "Navimarine Steel 5ATM - orë klasike çeliku inox me ciferblat blu sunburst dhe tregues numrash romakë. Datë në pozicionin 3, rezistencë ndaj ujit 5 ATM dhe byzylyk çeliku solid të brushuar. Orë e përditshme elegante dhe e sigurt.",
@@ -586,6 +617,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "Citizen Japanese quartz with mineral glass crystal and gold-plated stainless steel case and bracelet. Clean dial, reliable movement, and an elegant golden finish from every angle.",
     "description_it": "Quarzo giapponese Citizen con vetro minerale e cassa in acciaio inossidabile placcata oro. Quadrante pulito, movimento affidabile e finitura dorata elegante da ogni angolazione.",
     "description_sq": "Kuarc japonez Citizen me xham mineral dhe kuti çeliku inox me veshje ari. Ciferblat i pastër, lëvizje e besueshme dhe finiturë elegante ari nga çdo kënd."
@@ -604,6 +636,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "men",
     "description_en": "Belonni Collection all-stainless-steel watch with a clean white dial, Arabic numeral markers, date display at 3, and a fluted coin-edge bezel. 3 ATM water resistant with a five-link Jubilee-style bracelet.",
     "description_it": "Belonni Collection in acciaio inossidabile con quadrante bianco pulito, indicatori numerici arabi, data alle 3 e ghiera a bordo moneta. Resistente all'acqua 3 ATM con bracciale a cinque maglie stile Jubilee.",
     "description_sq": "Belonni Collection çelik inox me ciferblat të bardhë, tregues numrash arabë, datë në pozicionin 3 dhe unazë me skaj monedhe. Rezistente ndaj ujit 3 ATM me byzylyk me pesë hallka stil Jubilee."
@@ -623,6 +656,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Romanson Parie Swiss quartz with sapphire crystal glass and full gold-plated case and bracelet. Elegant rectangular case with sunburst dial, dot and bar markers, date display, and Swiss-made precision.",
     "description_it": "Quarzo svizzero Romanson Parie con vetro in zaffiro e cassa e bracciale interamente placcati oro. Cassa rettangolare elegante con quadrante sunburst, indicatori a punti e barre, data e precisione svizzera.",
     "description_sq": "Kuarc zviceran Romanson Parie me xham safir dhe kuti dhe byzylyk plotësisht të artë. Kuti drejtkëndëshe elegante me ciferblat sunburst, tregues pikash dhe shiritash, datë dhe precizion zviceran."
@@ -642,6 +676,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "Daniel Klein Premium gold-plated watch with a silver sunburst dial, applied gold bar indices, and a fluted coin-edge bezel. Date display at 3, Roman numeral chapter ring, and a three-link gold-tone bracelet. Classic elegance with a bold Datejust-inspired profile.",
     "description_it": "Orologio Daniel Klein Premium placcato oro con quadrante sunburst argento, indici a barra applicati dorati e ghiera zigrinata a bordo moneta. Data alle 3, anello delle ore con numeri romani e bracciale a tre maglie in color oro. Eleganza classica con un profilo audace ispirato al Datejust.",
     "description_sq": "Orë Daniel Klein Premium me veshje ari me ciferblat sunburst argjendi, tregues shiritash të aplikuar artë dhe unazë me skaj të gdhendur. Datë në pozicionin 3, unazë orësh me numra romakë dhe byzylyk me tre hallka në ngjyrë ari. Elegancë klasike me profil të guximshëm."
@@ -661,6 +696,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Daniel Klein Mesh minimalist watch with a clean white dial, applied gold bar indices, and a slim gold-plated case. The woven Milanese mesh bracelet in gold-tone adds a refined finish. Simple, elegant, and effortlessly stylish.",
     "description_it": "Orologio minimalista Daniel Klein Mesh con quadrante bianco pulito, indici a barra applicati dorati e cassa sottile placcata oro. Il bracciale a maglia milanese in color oro aggiunge una finitura raffinata. Semplice, elegante e di stile senza sforzo.",
     "description_sq": "Orë minimaliste Daniel Klein Mesh me ciferblat të bardhë të pastër, tregues shiritash të aplikuar artë dhe kuti të hollë me veshje ari. Byzylyk milanez i endur në ngjyrë ari shton një finiturë elegante. E thjeshtë, elegante dhe me stil."
@@ -679,6 +715,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Daniel Klein stainless steel watch with a deep blue gradient sunburst dial, coin-edge bezel, and red seconds hand. Date display at 3, applied bar and dot markers, and a solid steel bracelet. A bold everyday watch with a sporty edge.",
     "description_it": "Orologio Daniel Klein in acciaio inossidabile con quadrante blu sfumato sunburst, ghiera a bordo moneta e lancetta dei secondi rossa. Data alle 3, indicatori applicati a barre e punti e bracciale in acciaio solido. Un orologio quotidiano audace con un tocco sportivo.",
     "description_sq": "Orë Daniel Klein çelik inox me ciferblat blu gradient sunburst, unazë me skaj monedhe dhe akrep sekondash të kuq. Datë në pozicionin 3, tregues të aplikuar shiritash dhe pikash dhe byzylyk i fortë çeliku. Një orë e guximshme për çdo ditë me karakter sportiv."
@@ -698,6 +735,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Daniel Klein women's watch with a slim stainless steel case, a soft white sunburst dial, and rose gold-tone stick indices and hands. A polished bracelet and clean minimalist face make it an elegant everyday piece for any occasion.",
     "description_it": "Orologio da donna Daniel Klein con cassa sottile in acciaio inossidabile, quadrante bianco sunburst delicato e indici e lancette in color oro rosa. Il bracciale lucido e il quadrante minimalista lo rendono un pezzo elegante per ogni occasione.",
     "description_sq": "Orë Daniel Klein për femra me kasë të hollë prej çeliku inox, ciferblat të bardhë sunburst dhe tregues e akrepë në ngjyrë ari rozë. Byzylyku i lëmuar dhe ciferblati minimalist e bëjnë një copë elegante për çdo rast."
@@ -717,6 +755,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "Starking men's gold-tone dress watch with a tonneau-shaped case, a textured champagne dial, and crystal-set hour accents. Date display at 6, a slim quartz movement, and a polished gold-plated bracelet. Refined elegance for formal occasions.",
     "description_it": "Orologio elegante da uomo Starking in color oro con cassa a forma di tonneau, quadrante champagne testurizzato e accenti alle ore con cristalli. Data alle 6, movimento al quarzo sottile e bracciale placcato oro lucido. Eleganza raffinata per le occasioni formali.",
     "description_sq": "Orë elegante Starking për burra në ngjyrë ari me kasë tonneau, ciferblat champagne të teksturuar dhe detaje me kristale te orët. Datë në pozicionin 6, mekanizëm kuarci i hollë dhe byzylyk i praruar me ar. Elegancë e rafinuar për raste formale."
@@ -735,6 +774,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "men",
     "description_en": "Casio stainless steel watch with a striking green sunburst dial, faceted bezel, and integrated steel bracelet. Luminous baton indices, date window at 3, and 50m water resistance, powered by a reliable Japanese quartz movement. A sharp modern-retro everyday watch.",
     "description_it": "Orologio Casio in acciaio inossidabile con quadrante verde sunburst, lunetta sfaccettata e bracciale integrato in acciaio. Indici a bastone luminosi, finestrella data alle 3 e resistenza all'acqua 50m, con affidabile movimento al quarzo giapponese. Un orologio moderno-retrò per ogni giorno.",
     "description_sq": "Orë Casio në çelik inox me ciferblat jeshil sunburst, bezel të fasetuar dhe byzylyk të integruar çeliku. Tregues bastun luminozë, dritare date në pozicionin 3 dhe rezistencë ndaj ujit 50m, me lëvizje kuarci japoneze të besueshme. Një orë moderne-retro për çdo ditë."
@@ -754,6 +794,7 @@ window.WATCHES_DATA = [
       "chronograph",
       "dress"
     ],
+    "gender": "men",
     "description_en": "Philippe Lauren men's chronograph with a cushion-shaped stainless steel case, a silver sunburst dial, and three chronograph sub-dials. Date window, applied indices, and a polished steel bracelet. A refined dress chronograph with a distinctive tonneau profile.",
     "description_it": "Cronografo da uomo Philippe Lauren con cassa in acciaio inossidabile a forma di cuscino, quadrante argento sunburst e tre contatori cronografici. Finestrella data, indici applicati e bracciale in acciaio lucido. Un cronografo elegante dal profilo tonneau distintivo.",
     "description_sq": "Kronograf për burra Philippe Lauren me kasë prej çeliku inox në formë jastëku, ciferblat argjendi sunburst dhe tre nën-ciferblatë kronografi. Dritare date, tregues të aplikuar dhe byzylyk çeliku i lëmuar. Një kronograf elegant me profil tonneau dallues."
@@ -773,6 +814,7 @@ window.WATCHES_DATA = [
       "chronograph",
       "sport"
     ],
+    "gender": "men",
     "description_en": "Philippe Lauren men's chronograph in black ion-plated stainless steel, with a black dial, three chronograph sub-dials, and luminous applied indices. Date window and a matching black steel bracelet. A bold, all-black sport-dress chronograph.",
     "description_it": "Cronografo da uomo Philippe Lauren in acciaio inossidabile placcato nero, con quadrante nero, tre contatori cronografici e indici applicati luminosi. Finestrella data e bracciale in acciaio nero abbinato. Un cronografo sport-elegante total black e deciso.",
     "description_sq": "Kronograf për burra Philippe Lauren në çelik inox të veshur me jon të zi, me ciferblat të zi, tre nën-ciferblatë kronografi dhe tregues të aplikuar luminozë. Dritare date dhe byzylyk çeliku i zi i përshtatur. Një kronograf sportiv-elegant tërësisht i zi dhe i guximshëm."
@@ -792,6 +834,7 @@ window.WATCHES_DATA = [
       "chronograph",
       "sport"
     ],
+    "gender": "men",
     "description_en": "Philippe Lauren men's chronograph in polished stainless steel with a black dial, three chronograph sub-dials, and luminous applied indices. Date window, a round case, and a solid steel bracelet. A versatile sport-dress chronograph that pairs with anything.",
     "description_it": "Cronografo da uomo Philippe Lauren in acciaio inossidabile lucido con quadrante nero, tre contatori cronografici e indici applicati luminosi. Finestrella data, cassa rotonda e bracciale in acciaio massiccio. Un cronografo sport-elegante versatile, abbinabile a tutto.",
     "description_sq": "Kronograf për burra Philippe Lauren në çelik inox të lëmuar me ciferblat të zi, tre nën-ciferblatë kronografi dhe tregues të aplikuar luminozë. Dritare date, kasë rrumbullake dhe byzylyk çeliku i fortë. Një kronograf sportiv-elegant i gjithanshëm, që shkon me gjithçka."
@@ -810,6 +853,7 @@ window.WATCHES_DATA = [
     "styles": [
       "digital"
     ],
+    "gender": "unisex",
     "description_en": "The legendary Casio A159WA-N1 retro digital, essentially unchanged since the early 1980s. Stainless steel case and bracelet, black bezel, LCD with alarm, stopwatch, day and date, LED light, and water resistance. An icon of everyday reliability weighing next to nothing.",
     "description_it": "Il leggendario Casio A159WA-N1 digitale rétro, praticamente immutato dai primi anni '80. Cassa e bracciale in acciaio inossidabile, ghiera nera, LCD con sveglia, cronometro, giorno e data, luce LED e resistenza all'acqua. Un'icona di affidabilità quotidiana dal peso piuma.",
     "description_sq": "Casio A159WA-N1 legjendar dixhital retro, praktikisht i pandryshuar që nga fillimi i viteve '80. Kasë dhe byzylyk çeliku inox, unazë e zezë, LCD me alarm, kronometër, ditë e datë, dritë LED dhe rezistencë ndaj ujit. Një ikonë e besueshmërisë së përditshme me peshë pendë."
@@ -829,6 +873,7 @@ window.WATCHES_DATA = [
       "sport",
       "digital"
     ],
+    "gender": "men",
     "description_en": "Bold black resin sport watch by Casio with gold Illuminator accents. Large positive LCD with day, date and seconds, 100m water resistance, LED backlight, alarm, stopwatch and countdown timer, all on a 10-year battery. Tough, legible and built for everyday wear.",
     "description_it": "Robusto orologio sportivo Casio in resina nera con dettagli dorati Illuminator. Ampio display LCD positivo con giorno, data e secondi, resistenza all'acqua 100m, retroilluminazione LED, sveglia, cronometro e timer con conto alla rovescia, il tutto con batteria a 10 anni. Resistente, leggibile e pronto all'uso quotidiano.",
     "description_sq": "Orë sportive e fortë Casio në rezinë të zezë me detaje të arta Illuminator. Ekran i madh LCD pozitiv me ditë, datë dhe sekonda, rezistencë ndaj ujit 100m, ndriçim LED, alarm, kronometër dhe timer numërimi mbrapsht, të gjitha me bateri 10-vjeçare. E fortë, e lexueshme dhe e bërë për përdorim të përditshëm."
@@ -848,6 +893,7 @@ window.WATCHES_DATA = [
       "sport",
       "digital"
     ],
+    "gender": "men",
     "description_en": "All-black digital sport watch by Casio with a stealth negative display. Large round resin case, 100m water resistance, LED Illuminator backlight, 5 daily alarms, stopwatch and countdown timer, all on a 10-year battery. A big, easy-to-read everyday watch with a blacked-out look.",
     "description_it": "Orologio sportivo digitale Casio tutto nero con display negativo dallo stile stealth. Ampia cassa rotonda in resina, resistenza all'acqua 100m, retroilluminazione LED Illuminator, 5 sveglie giornaliere, cronometro e timer con conto alla rovescia, il tutto con batteria a 10 anni. Un orologio quotidiano grande e facile da leggere dal look total black.",
     "description_sq": "Orë sportive dixhitale Casio krejt e zezë me ekran negativ me pamje stealth. Kasë e madhe rrethore prej rezine, rezistencë ndaj ujit 100m, ndriçim LED Illuminator, 5 alarme ditore, kronometër dhe timer numërimi mbrapsht, të gjitha me bateri 10-vjeçare. Një orë e përditshme e madhe dhe e lehtë për t'u lexuar me pamje krejt të zezë."
@@ -866,6 +912,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "unisex",
     "description_en": "Elegant Daniel Klein Premium dress watch in polished stainless steel. Cream dial with black Roman numerals, blued hands and a small date window, on a solid five-link steel bracelet. A refined, timeless quartz piece that makes an easy gift.",
     "description_it": "Elegante orologio da abito Daniel Klein Premium in acciaio inossidabile lucido. Quadrante crema con numeri romani neri, lancette azzurrate e piccola finestrella data, su un solido bracciale in acciaio a cinque maglie. Un pezzo al quarzo raffinato e senza tempo, ideale come regalo.",
     "description_sq": "Orë elegante veshjeje Daniel Klein Premium në çelik inoks të lëmuar. Cadran krem me numra romakë të zinj, akrepa të kaltëruar dhe një dritare të vogël date, mbi një byzylyk solid çeliku me pesë hallka. Një copë kuarci e rafinuar dhe pa kohë, ideale si dhuratë."
@@ -885,6 +932,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Elegant Daniel Klein Premium dress watch in gold-tone stainless steel with a tonneau case. Silver dial with a fine wave texture, black Roman numerals and blued hands, framed by a raised inner border, on a matching gold-tone bracelet. A refined quartz piece and a standout gift for her.",
     "description_it": "Elegante orologio da abito Daniel Klein Premium in acciaio inossidabile color oro con cassa tonneau. Quadrante argentato con fine texture a onde, numeri romani neri e lancette azzurrate, incorniciato da un bordo interno in rilievo, su un bracciale abbinato color oro. Un raffinato pezzo al quarzo, un regalo di grande effetto per lei.",
     "description_sq": "Orë elegante veshjeje Daniel Klein Premium në çelik inoks ngjyrë ari me kasë tonneau. Cadran argjendi me teksturë të hollë valëzore, numra romakë të zinj dhe akrepa të kaltëruar, të kornizuar nga një buzë e brendshme e ngritur, mbi një byzylyk ngjyrë ari të njëjtë. Një copë kuarci e rafinuar, një dhuratë që lë mbresë për të."
@@ -904,6 +952,7 @@ window.WATCHES_DATA = [
       "chronograph",
       "sport"
     ],
+    "gender": "men",
     "description_en": "Daniel Klein Exclusive chronograph in stainless steel with a deep blue sunburst dial and a rotating dive-style bezel. Three subdials, luminous baton indices and hands, a date window, and a solid steel bracelet. A bold sport chronograph on a reliable quartz movement, built to stand out.",
     "description_it": "Cronografo Daniel Klein Exclusive in acciaio inossidabile con quadrante blu sunburst e ghiera girevole in stile subacqueo. Tre contatori, indici a bastone e lancette luminescenti, finestrella data e solido bracciale in acciaio. Un deciso cronografo sportivo con affidabile movimento al quarzo, fatto per farsi notare.",
     "description_sq": "Kronograf Daniel Klein Exclusive në çelik inoks me ciferblat blu sunburst dhe lunetë rrotulluese në stil zhytjeje. Tre nën-cadranë, tregues shiritash dhe akrepa ndriçues, dritare date dhe byzylyk solid çeliku. Një kronograf sportiv i guximshëm me lëvizje të besueshme kuarci, i bërë për t'u dalluar."
@@ -922,6 +971,7 @@ window.WATCHES_DATA = [
     "styles": [
       "chronograph"
     ],
+    "gender": "men",
     "description_en": "Philippe Lauren men's chronograph in black ion-plated stainless steel with a square cushion case. Black dial with three chronograph subdials, silver-tone baton indices and hands, a date window, and a matching black steel bracelet. A sharp, modern all-black chronograph with a distinctive square silhouette.",
     "description_it": "Cronografo da uomo Philippe Lauren in acciaio inossidabile placcato nero con cassa quadrata a cuscino. Quadrante nero con tre contatori cronografici, indici a bastone e lancette color argento, finestrella data e bracciale in acciaio nero abbinato. Un cronografo total black moderno e deciso, con una silhouette quadrata distintiva.",
     "description_sq": "Kronograf për burra Philippe Lauren në çelik inoks të veshur me jon të zi, me kasë katrore në formë jastëku. Ciferblat i zi me tre nën-ciferblatë kronografi, tregues shiritash dhe akrepa në ngjyrë argjendi, dritare date dhe byzylyk çeliku i zi i përshtatur. Një kronograf tërësisht i zi, modern dhe i mprehtë, me siluetë katrore dalluese."
@@ -941,6 +991,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Philippe Lauren ladies' dress watch in gold-tone stainless steel with a square case and a crystal-set bezel. Silver dial with black Roman numerals and gold-tone hands, on a matching gold-tone bracelet. A sparkling, elegant everyday dress watch.",
     "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile color oro con cassa quadrata e ghiera con cristalli. Quadrante argentato con numeri romani neri e lancette dorate, su bracciale abbinato color oro. Un orologio da abito elegante e brillante per ogni giorno.",
     "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks ngjyrë ari me kasë katrore dhe lunetë me kristale. Ciferblat argjendi me numra romakë të zinj dhe akrepa të artë, mbi byzylyk të njëjtë ngjyrë ari. Një orë elegante dhe shkëlqyese për çdo ditë."
@@ -960,6 +1011,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Bigotti ladies' dress watch in gold-tone stainless steel with a glossy black dial. Applied gold-tone baton indices and hands on a slim round case, finished with a gold-tone five-link bracelet. A classic black-and-gold pairing that never dates.",
     "description_it": "Orologio da donna Bigotti in acciaio inossidabile color oro con quadrante nero lucido. Indici a bastone e lancette dorate applicati su una cassa rotonda sottile, con bracciale color oro a cinque maglie. Un classico abbinamento nero e oro, che non passa di moda.",
     "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks ngjyrë ari me ciferblat të zi të shndritshëm. Tregues shiritash dhe akrepa të artë të aplikuar mbi një kasë të rrumbullakët të hollë, me byzylyk ngjyrë ari me pesë hallka. Një kombinim klasik i zezë me ar, që nuk del nga moda."
@@ -978,6 +1030,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Philippe Lauren men's sport watch in stainless steel with a faceted bezel and four visible screws. Black textured dial with Roman numerals at 12 and 6, applied baton indices, a date window, and an integrated steel bracelet. A bold everyday steel watch with a distinctive bezel.",
     "description_it": "Orologio sportivo da uomo Philippe Lauren in acciaio inossidabile con ghiera sfaccettata e quattro viti a vista. Quadrante nero testurizzato con numeri romani alle 12 e alle 6, indici a bastone applicati, finestrella data e bracciale integrato in acciaio. Un deciso orologio quotidiano in acciaio con una ghiera distintiva.",
     "description_sq": "Orë sportive për burra Philippe Lauren në çelik inoks me lunetë të faseituar dhe katër vida të dukshme. Ciferblat i zi me teksturë, numra romakë në 12 dhe 6, tregues shiritash të aplikuar, dritare date dhe byzylyk i integruar çeliku. Një orë e guximshme e përditshme çeliku me lunetë dalluese."
@@ -997,6 +1050,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Philippe Lauren ladies' dress watch in gold-tone stainless steel with a small round case. Silver sunburst dial with slim gold-tone baton indices and matching hands, on a gold-tone five-link bracelet. A quiet, classic watch for everyday wear.",
     "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile color oro con piccola cassa rotonda. Quadrante argentato sunburst con sottili indici a bastone dorati e lancette abbinate, su bracciale color oro a cinque maglie. Un orologio classico e discreto, per tutti i giorni.",
     "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks ngjyrë ari me kasë të vogël të rrumbullakët. Ciferblat argjendi sunburst me tregues shiritash të hollë ngjyrë ari dhe akrepa të përshtatur, mbi byzylyk ngjyrë ari me pesë hallka. Një orë klasike dhe e qetë, për çdo ditë."
@@ -1015,6 +1069,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "women",
     "description_en": "Daniel Klein Premium Steel Crystal, a women's dress watch in polished stainless steel with a silver sunburst dial. Eight crystal-set hour markers sit between applied baton indices at twelve, three, six and nine, on slim hands and a three-link steel bracelet. Reliable quartz movement, and no date window to clutter the dial.",
     "description_it": "Daniel Klein Premium Steel Crystal, orologio da donna in acciaio inossidabile lucido con quadrante argentato sunburst. Otto indici delle ore con cristalli si alternano agli indici a bastone applicati a mezzogiorno, alle tre, alle sei e alle nove, con lancette sottili e bracciale in acciaio a tre maglie. Movimento al quarzo affidabile, senza finestrella data a disturbare il quadrante.",
     "description_sq": "Daniel Klein Premium Steel Crystal, orë veshjeje për femra në çelik inoks të lëmuar me ciferblat argjendi sunburst. Tetë tregues orësh me kristale alternohen me tregues të aplikuar te dymbëdhjeta, treshi, gjashta dhe nënta, me akrepa të hollë dhe byzylyk çeliku me tre hallka. Mekanizëm kuarci i besueshëm, pa dritare date që ngarkon ciferblatin."
@@ -1033,6 +1088,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "women",
     "description_en": "Bigotti Steel Square Crystal, a women's dress watch in polished stainless steel with a square case and a crystal-set bezel on all four sides. Silver sunburst dial, applied baton indices and a five-link bracelet, quartz movement, no date window. Sparkle you can wear every day.",
     "description_it": "Orologio da donna Bigotti in acciaio inossidabile lucido con cassa quadrata e lunetta con cristalli su tutti e quattro i lati. Quadrante argentato sunburst, indici a bastone applicati e bracciale in acciaio a cinque maglie, movimento al quarzo, senza finestrella data. Brillante quanto basta, ogni giorno.",
     "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks të lëmuar me kasë katrore dhe lunetë me kristale në të katër anët. Ciferblat argjendi sunburst, tregues shiritash të aplikuar dhe byzylyk çeliku me pesë hallka, mekanizëm kuarci, pa dritare date. Shkëlqim që vishet çdo ditë."
@@ -1052,6 +1108,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Bigotti Gold Square Crystal, a women's dress watch in gold-tone stainless steel with a square case and a crystal-set bezel on all four sides. Glossy black dial, applied baton indices and a matching five-link bracelet, quartz movement, no date window. The dressiest square we stock.",
     "description_it": "Orologio da donna Bigotti in acciaio inossidabile color oro con cassa quadrata e lunetta con cristalli su tutti e quattro i lati. Quadrante nero lucido, indici a bastone dorati applicati e bracciale abbinato a cinque maglie, movimento al quarzo, senza finestrella data. Il quadrato più elegante che teniamo.",
     "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks ngjyrë ari me kasë katrore dhe lunetë me kristale në të katër anët. Ciferblat i zi i shndritshëm, tregues shiritash të artë të aplikuar dhe byzylyk i njëjtë me pesë hallka, mekanizëm kuarci, pa dritare date. Katrori më elegant që kemi."
@@ -1070,6 +1127,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Philippe Lauren men's sport watch in stainless steel with a faceted bezel and four visible screws. Deep blue sunburst dial with three subdials and applied baton indices, a date window, pushers on the case side, and an integrated steel bracelet. The blue counterpart to our black-dial sport model.",
     "description_it": "Orologio sportivo da uomo Philippe Lauren in acciaio inossidabile con ghiera sfaccettata e quattro viti a vista. Quadrante blu intenso sunburst con tre contatori e indici a bastone applicati, finestrella data, pulsanti sul lato della cassa e bracciale integrato in acciaio. La controparte blu del nostro modello sportivo con quadrante nero.",
     "description_sq": "Orë sportive për burra Philippe Lauren në çelik inoks me lunetë të faseituar dhe katër vida të dukshme. Ciferblat blu i thellë sunburst me tre nën-ciferblatë dhe tregues shiritash të aplikuar, dritare date, butona në anën e kasës dhe byzylyk i integruar çeliku. Versioni blu i modelit tonë sportiv me ciferblat të zi."
@@ -1088,6 +1146,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "women",
     "description_en": "Philippe Lauren ladies' dress watch in stainless steel with a rectangular case and bevelled cut corners on the bezel. Silver sunburst dial with applied slim baton indices and matching hands, on a steel bracelet with visible screws on the links. No date window, and a shape that stands apart from the classic round models.",
     "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile con cassa rettangolare e angoli smussati sulla ghiera. Quadrante argentato sunburst con sottili indici a bastone applicati e lancette abbinate, su bracciale in acciaio con viti a vista sulle maglie. Senza finestrella data, e una forma che si distingue dai classici modelli rotondi.",
     "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks me kasë drejtkëndore dhe qoshe të prera në lunetë. Ciferblat argjendi sunburst me tregues shiritash të hollë të aplikuar dhe akrepa të përshtatur, mbi byzylyk çeliku me vida të dukshme në hallka. Pa dritare date, dhe një formë që dallohet nga modelet klasike të rrumbullakëta."
@@ -1106,6 +1165,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "women",
     "description_en": "Philippe Lauren ladies' dress watch in stainless steel with a round case and a plain polished bezel. Silver sunburst dial with applied slim baton indices, matching hands and a thin sweep seconds hand, on a five-link polished steel bracelet. No date window. The steel counterpart to our Gold Classic, the same case family in a cooler finish.",
     "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile con cassa rotonda e ghiera lucida liscia. Quadrante argentato sunburst con sottili indici a bastone applicati, lancette abbinate e sottile lancetta dei secondi, su bracciale in acciaio lucido a cinque maglie. Senza finestrella data. La controparte in acciaio del nostro Gold Classic, la stessa famiglia di cassa con una finitura più fredda.",
     "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks me kasë të rrumbullakët dhe lunetë të lëmuar pa zbukurime. Ciferblat argjendi sunburst me tregues shiritash të hollë të aplikuar, akrepa të përshtatur dhe akrep të hollë sekondash, mbi byzylyk çeliku të lëmuar me pesë hallka. Pa dritare date. Versioni në çelik i Gold Classic tonë, e njëjta familje kase me finiturë më të ftohtë."
@@ -1124,6 +1184,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "women",
     "description_en": "Philippe Lauren ladies' dress watch in stainless steel with a round case and a crystal-set bezel in two rows. Deep blue sunburst dial with crystal indices and slim polished baton hands, on a five-link polished steel bracelet. No date window, and the dressiest Philippe Lauren on our counter.",
     "description_it": "Orologio da donna Philippe Lauren in acciaio inossidabile con cassa rotonda e ghiera con cristalli su due file. Quadrante blu intenso sunburst con indici con cristalli e sottili lancette a bastone lucide, su bracciale in acciaio lucido a cinque maglie. Senza finestrella data, e il Philippe Lauren più elegante che teniamo.",
     "description_sq": "Orë veshjeje për femra Philippe Lauren në çelik inoks me kasë të rrumbullakët dhe lunetë me kristale në dy rreshta. Ciferblat blu i thellë sunburst me tregues me kristale dhe akrepa shiritash të hollë e të lëmuar, mbi byzylyk çeliku të lëmuar me pesë hallka. Pa dritare date, dhe Philippe Lauren më elegante që kemi."
@@ -1143,6 +1204,7 @@ window.WATCHES_DATA = [
       "dress",
       "moonphase"
     ],
+    "gender": "unisex",
     "description_en": "Dress watch in a polished oval steel case. Champagne dial with Roman numerals, a day subdial, a pointer date subdial and a moon phase window at six. Black leather strap with a pin buckle.",
     "description_it": "Orologio da abito con cassa ovale in acciaio lucido. Quadrante champagne con numeri romani, contatore del giorno, contatore della data a lancetta e finestrella delle fasi lunari alle sei. Cinturino in pelle nera con fibbia ad ardiglione.",
     "description_sq": "Orë veshjeje me kasë ovale prej çeliku të lëmuar. Cadran shampanjë me numra romakë, nënkadran i ditës, nënkadran i datës me akrep dhe dritare e fazave të hënës në orën gjashtë. Rrip lëkure i zi me tokëz."
@@ -1162,6 +1224,7 @@ window.WATCHES_DATA = [
       "chronograph",
       "sport"
     ],
+    "gender": "men",
     "description_en": "Chronograph with a black bezel held by six exposed screws. White dial with three counters, a day indicator and a date window, on a two-tone black and steel bracelet. The heaviest watch on the counter and the one that reads fastest at a glance.",
     "description_it": "Cronografo con lunetta nera fissata da sei viti a vista. Quadrante bianco con tre contatori, indicatore del giorno e finestrella data, su bracciale bicolore nero e acciaio. Il più massiccio del banco e quello che si legge più in fretta.",
     "description_sq": "Kronograf me bezel të zi të mbajtur nga gjashtë vida të dukshme. Cadran i bardhë me tre nënkadranë, tregues i ditës dhe dritare date, mbi byzylyk dyngjyrësh të zi dhe çelik. Ora më e rëndë e banakut dhe ajo që lexohet më shpejt."
@@ -1180,6 +1243,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "men",
     "description_en": "Multifunction in a curved rectangular steel case. Black textured dial with a day counter, a date counter and a 24 hour counter, applied batons and Arabic numerals at twelve, five and seven. Black leather strap.",
     "description_it": "Multifunzione con cassa rettangolare curva in acciaio. Quadrante nero testurizzato con contatore del giorno, contatore della data e contatore 24 ore, indici applicati e numeri arabi alle dodici, alle cinque e alle sette. Cinturino in pelle nera.",
     "description_sq": "Multifunksion me kasë drejtkëndore të lakuar prej çeliku. Cadran i zi me teksturë, nënkadran i ditës, nënkadran i datës dhe nënkadran 24 orësh, indekse të aplikuara dhe numra arabë në dymbëdhjetë, pesë dhe shtatë. Rrip lëkure i zi."
@@ -1199,6 +1263,7 @@ window.WATCHES_DATA = [
       "chronograph",
       "dress"
     ],
+    "gender": "women",
     "description_en": "Pulsar chronograph in stainless steel with a crystal-set bezel. White dial with three counters and a date window, rated 100M on the dial and on the caseback. Two pushers, white leather strap with a croc-grain finish.",
     "description_it": "Cronografo Pulsar in acciaio inossidabile con lunetta con cristalli. Quadrante bianco con tre contatori e finestrella data, impermeabilità 100M indicata sul quadrante e sul fondello. Due pulsanti, cinturino in pelle bianca stampa cocco.",
     "description_sq": "Kronograf Pulsar prej çeliku inox me bezel me kristale. Cadran i bardhë me tre nënkadranë dhe dritare date, me 100M të shënuar në cadran dhe në pjesën e pasme. Dy butona, rrip lëkure i bardhë me imitim krokodili."
@@ -1218,6 +1283,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "POLOTIME ladies' watch in gold-tone steel with a matching bracelet. Champagne sunray dial inside a white outer ring, crystal-set indices at four points and crystal-set panels where the bracelet meets the case. Slim gold-tone hands, no date window.",
     "description_it": "Orologio da donna POLOTIME in acciaio color oro con bracciale abbinato. Quadrante champagne sunray dentro un anello esterno bianco, indici con cristalli in quattro punti e inserti con cristalli dove il bracciale incontra la cassa. Lancette sottili color oro, senza finestrella data.",
     "description_sq": "Orë femrash POLOTIME prej çeliku në ngjyrë ari me byzylyk të njëjtë. Cadran shampanjë sunray brenda një unaze të jashtme të bardhë, indekse me kristale në katër pika dhe pjesë me kristale aty ku byzylyku takon kasën. Akrepa të hollë në ngjyrë ari, pa dritare date."
@@ -1237,6 +1303,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Philippe Lauren dress watch in gold-tone steel with a round case, a notched bezel and an integrated three-link bracelet. Silver sunray dial with crystal-set indices at eight points, applied gold-tone batons at the quarters and slim gold-tone hands. No date window.",
     "description_it": "Orologio da abito Philippe Lauren in acciaio color oro con cassa rotonda, lunetta scanalata e bracciale integrato a tre maglie. Quadrante argentato sunray con indici in cristallo in otto punti, indici applicati color oro ai quarti e lancette sottili color oro. Senza finestrella data.",
     "description_sq": "Orë veshjeje Philippe Lauren prej çeliku në ngjyrë ari me kasë të rrumbullakët, bezel të gdhendur dhe byzylyk të integruar me tre hallka. Cadran argjendi sunray me indekse kristali në tetë pika, indekse të aplikuara në ngjyrë ari te çerekët dhe akrepa të hollë në ngjyrë ari. Pa dritare date."
@@ -1255,6 +1322,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "men",
     "description_en": "Bigotti Steel Sunburst, a men's watch in stainless steel with a silver sunburst dial and a polished chapter ring. Applied faceted baton indices, date window at three, a fluted crown and a three-link steel bracelet. A clean everyday steel watch that dresses up without trying.",
     "description_it": "Orologio da uomo Bigotti in acciaio inossidabile con quadrante argentato sunburst e anello dei minuti lucido. Indici a bastone sfaccettati applicati, finestrella data a ore tre, corona zigrinata e bracciale in acciaio a tre maglie. Un acciaio pulito da tutti i giorni, che sta bene anche in ufficio.",
     "description_sq": "Orë për burra Bigotti në çelik inoks me ciferblat argjendi sunburst dhe unazë minutash të lëmuar. Tregues shiritash të fasetuar të aplikuar, dritare date në orën tre, kurorë e gdhendur dhe byzylyk çeliku me tre hallka. Një çelik i pastër i përditshëm, që i shkon edhe zyrës."
@@ -1273,6 +1341,7 @@ window.WATCHES_DATA = [
     "styles": [
       "sport"
     ],
+    "gender": "men",
     "description_en": "Bigotti in stainless steel with a deep blue sunburst dial and a blue bezel carrying a numbered scale. Three subdials showing the day, the date and 24-hour time rather than a stopwatch, applied rose gold-tone indices and hands, a date window at four and a three-link steel bracelet. The most colour we put on a steel watch.",
     "description_it": "Bigotti in acciaio inossidabile con quadrante blu intenso sunburst e ghiera blu con scala numerata. Tre contatori che mostrano il giorno, la data e le 24 ore invece di un cronometro, indici e lancette applicati in tonalità oro rosa, finestrella data a ore quattro e bracciale in acciaio a tre maglie. Il colore più deciso che mettiamo su un acciaio.",
     "description_sq": "Bigotti në çelik inoks me ciferblat blu të thellë sunburst dhe lunetë blu me shkallë të numëruar. Tre numëratorë që tregojnë ditën, datën dhe 24 orët në vend të një kronometri, tregues dhe akrepa të aplikuar në ngjyrë ari rozë, dritare date në orën katër dhe byzylyk çeliku me tre hallka. Ngjyra më e guximshme që vendosim mbi një çelik."
@@ -1292,6 +1361,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "unisex",
     "description_en": "Bigotti Two Tone Roman in stainless steel with a gold-tone bezel and a two-tone bracelet. White dial with a fine wave texture, gold-tone Roman numerals at twelve, three, six and nine with applied batons between them, gold-tone hands and no date window. Steel and gold in one bracelet, so it sits with whatever you already wear.",
     "description_it": "Bigotti in acciaio inossidabile con lunetta dorata e bracciale bicolore. Quadrante bianco con un motivo ondulato fine, numeri romani dorati alle dodici, alle tre, alle sei e alle nove con indici a bastone applicati tra loro, lancette dorate e nessuna finestrella data. Acciaio e oro nello stesso bracciale, si abbina a quello che già porti.",
     "description_sq": "Bigotti në çelik inoks me lunetë të artë dhe byzylyk dyngjyrësh. Ciferblat i bardhë me teksturë të imët valëzuar, numra romakë të artë në orën dymbëdhjetë, tre, gjashtë dhe nëntë me tregues shiritash të aplikuar mes tyre, akrepa të artë dhe pa dritare date. Çelik dhe ar në të njëjtin byzylyk, i shkon asaj që ke veshur."
@@ -1311,6 +1381,7 @@ window.WATCHES_DATA = [
       "chronograph",
       "sport"
     ],
+    "gender": "men",
     "description_en": "Lorus sport chronograph with a white textured dial, orange accents and a black 60-minute bezel. Three subdials with working pushers, a 24-hour counter, steel case and bracelet, water resistant to 100m.",
     "description_it": "Cronografo sportivo Lorus con quadrante bianco testurizzato, dettagli arancioni e lunetta nera da 60 minuti. Tre contatori con pulsanti funzionanti, indicatore 24 ore, cassa e bracciale in acciaio, impermeabile fino a 100m.",
     "description_sq": "Kronograf sportiv Lorus me ciferblat të bardhë me teksturë, detaje portokalli dhe lunetë të zezë 60 minutash. Tre nën-ciferblatë me butona kronografi funksionalë, tregues 24-orësh, kuti dhe byzylyk çeliku, rezistent ndaj ujit deri në 100m."
@@ -1330,6 +1401,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "unisex",
     "description_en": "Daniel Klein Premium in gold-tone steel with a black dial and applied gold bar indices. Slim polished bezel, a double baton at 12, gold-tone hands and a three-link bracelet. Quiet contrast, dressed for the evening.",
     "description_it": "Daniel Klein Premium in acciaio color oro con quadrante nero e indici a barra applicati dorati. Ghiera sottile lucida, doppio indice alle 12, lancette dorate e bracciale a tre maglie. Contrasto discreto, elegante per la sera.",
     "description_sq": "Daniel Klein Premium në çelik në ngjyrë ari me ciferblat të zi dhe tregues shiritash të aplikuar artë. Unazë e hollë e lëmuar, tregues i dyfishtë në orën 12, akrepa të artë dhe byzylyk me tre hallka. Kontrast i qetë, elegant për mbrëmje."
@@ -1349,6 +1421,7 @@ window.WATCHES_DATA = [
       "dress",
       "sport"
     ],
+    "gender": "men",
     "description_en": "Navimarine NAVI S046 - a steel sport-luxe watch with an octagonal bezel, integrated bracelet and a deep blue dial in fine horizontal ribbing. Applied baton indices, hour and minute hands only, and no date window. Stated 5 ATM water resistance.",
     "description_it": "Navimarine NAVI S046 - orologio sport-luxe in acciaio con lunetta ottagonale, bracciale integrato e quadrante blu profondo a righe orizzontali fini. Indici a bastone applicati, solo lancette di ore e minuti, nessuna finestrella data. Impermeabilità dichiarata 5 ATM.",
     "description_sq": "Navimarine NAVI S046 - orë sport-luxe prej çeliku me lunetë tetëkëndore, byzylyk të integruar dhe ciferblat blu të thellë me vija horizontale të imëta. Tregues shiritash të aplikuar, vetëm akrepa orësh dhe minutash, pa dritare date. Rezistencë ndaj ujit e deklaruar 5 ATM."
@@ -1368,6 +1441,7 @@ window.WATCHES_DATA = [
       "dress",
       "sport"
     ],
+    "gender": "men",
     "description_en": "Navimarine NMM1031 - a steel sport-luxe watch with a rounded-square bezel, integrated bracelet and a deep blue dial in fine horizontal ribbing. Applied luminous batons, a seconds hand and a date window at 3. Stated 5 ATM water resistance.",
     "description_it": "Navimarine NMM1031 - orologio sport-luxe in acciaio con lunetta quadrata dagli angoli arrotondati, bracciale integrato e quadrante blu profondo a righe orizzontali fini. Indici a bastone luminescenti applicati, lancetta dei secondi e finestrella data alle 3. Impermeabilità dichiarata 5 ATM.",
     "description_sq": "Navimarine NMM1031 - orë sport-luxe prej çeliku me lunetë katrore me kënde të rrumbullakosura, byzylyk të integruar dhe ciferblat blu të thellë me vija horizontale të imëta. Tregues shiritash ndriçues të aplikuar, akrep sekondash dhe dritare date në orën 3. Rezistencë ndaj ujit e deklaruar 5 ATM."
@@ -1387,6 +1461,7 @@ window.WATCHES_DATA = [
       "sport",
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "Navimarine 001808 in gold-tone - a gold-tone watch with a black 24-hour numbered bezel, black dial, luminous round markers and a date window. A fourth arrow-tipped hand reads a second time zone against that bezel. Five-link jubilee bracelet, quartz movement.",
     "description_it": "Navimarine 001808 in color oro - orologio color oro con lunetta nera numerata su 24 ore, quadrante nero, indici rotondi luminescenti e finestrella data. Una quarta lancetta a freccia legge un secondo fuso orario su quella lunetta. Bracciale jubilee a cinque maglie, movimento al quarzo.",
     "description_sq": "Navimarine 001808 në ngjyrë ari - orë në ngjyrë ari me lunetë të zezë të numëruar 24-orëshe, ciferblat të zi, tregues të rrumbullakët ndriçues dhe dritare date. Një akrep i katërt me majë shigjete lexon një zonë të dytë kohore mbi atë lunetë. Byzylyk jubilee me pesë hallka, mekanizëm kuarci."
@@ -1406,6 +1481,7 @@ window.WATCHES_DATA = [
       "chronograph",
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "Navimarine NVM148-D4 - a two-tone chronograph in steel and gold-tone with a fluted gold-tone bezel and a champagne sunray dial. Three subdials, a date window and working chronograph pushers. Two-tone jubilee bracelet, quartz movement.",
     "description_it": "Navimarine NVM148-D4 - cronografo bicolore in acciaio e color oro con ghiera zigrinata dorata e quadrante champagne sunray. Tre contatori, finestrella data e pulsanti cronografici funzionanti. Bracciale jubilee bicolore, movimento al quarzo.",
     "description_sq": "Navimarine NVM148-D4 - kronograf dyngjyrësh prej çeliku dhe ari me lunetë të gdhendur të artë dhe ciferblat champagne sunray. Tre nën-ciferblatë, dritare date dhe butona kronografi funksionalë. Byzylyk jubilee dyngjyrësh, mekanizëm kuarci."
@@ -1425,6 +1501,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "Daniel Klein Exclusive in gold-tone with a black textured dial and an integrated bracelet. Three subdials show the day, the time on a 24-hour scale and a second time zone rather than a stopwatch, with a date window beside them. Applied gold-tone batons, quartz movement.",
     "description_it": "Daniel Klein Exclusive in color oro con quadrante nero testurizzato e bracciale integrato. Tre contatori mostrano il giorno, l'ora su 24 ore e un secondo fuso orario invece di un cronometro, con finestrella data accanto. Indici a bastone dorati applicati, movimento al quarzo.",
     "description_sq": "Daniel Klein Exclusive në ngjyrë ari me ciferblat të zi me teksturë dhe byzylyk të integruar. Tre nën-ciferblatë tregojnë ditën, orën në shkallë 24-orëshe dhe një zonë të dytë kohore në vend të një kronometri, me dritare date pranë tyre. Tregues shiritash të artë të aplikuar, mekanizëm kuarci."
@@ -1444,6 +1521,7 @@ window.WATCHES_DATA = [
       "chronograph",
       "sport"
     ],
+    "gender": "men",
     "description_en": "Daniel Klein Exclusive chronograph in stainless steel with an anthracite dial and applied luminous batons. Three subdials, a date window and working chronograph pushers. Solid steel bracelet, quartz movement.",
     "description_it": "Cronografo Daniel Klein Exclusive in acciaio inossidabile con quadrante antracite e indici a bastone luminescenti applicati. Tre contatori, finestrella data e pulsanti cronografici funzionanti. Bracciale solido in acciaio, movimento al quarzo.",
     "description_sq": "Kronograf Daniel Klein Exclusive në çelik inoks me ciferblat antracit dhe tregues shiritash ndriçues të aplikuar. Tre nën-ciferblatë, dritare date dhe butona kronografi funksionalë. Byzylyk solid çeliku, mekanizëm kuarci."
@@ -1463,6 +1541,7 @@ window.WATCHES_DATA = [
       "sport",
       "gold-tone"
     ],
+    "gender": "men",
     "description_en": "Navimarine 001808 in two-tone - a steel watch with a gold-tone 24-hour bezel numbered on black, black dial, luminous round markers and a date window. A fourth arrow-tipped hand reads a second time zone against that bezel. Two-tone five-link jubilee bracelet, quartz movement.",
     "description_it": "Navimarine 001808 bicolore - orologio in acciaio con lunetta color oro graduata su 24 ore su fondo nero, quadrante nero, indici tondi luminescenti e finestrella data. Una quarta lancetta a freccia legge un secondo fuso orario su quella lunetta. Bracciale jubilee a cinque maglie bicolore, movimento al quarzo.",
     "description_sq": "Navimarine 001808 dyngjyrësh - orë çeliku me lunetë në ngjyrë ari me numra 24-orësh mbi sfond të zi, ciferblat i zi, tregues të rrumbullakët ndriçues dhe dritare date. Një akrep i katërt me majë shigjete lexon një zonë të dytë kohore mbi atë lunetë. Byzylyk jubilee me pesë hallka dyngjyrësh, mekanizëm kuarci."
@@ -1481,6 +1560,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "women",
     "description_en": "Hislon in stainless steel with a fluted bezel and a five-link jubilee bracelet. Silver sunburst dial, applied baton indices, a date window at 3 and a sapphire crystal. Quartz movement.",
     "description_it": "Hislon in acciaio inossidabile con lunetta zigrinata e bracciale jubilee a cinque maglie. Quadrante argentato sunburst, indici a bastone applicati, finestrella data alle 3 e vetro zaffiro. Movimento al quarzo.",
     "description_sq": "Hislon në çelik inoks me lunetë të gdhendur dhe byzylyk jubilee me pesë hallka. Ciferblat argjendi sunburst, tregues shiritash të aplikuar, dritare date në orën 3 dhe xham safiri. Mekanizëm kuarci."
@@ -1499,6 +1579,7 @@ window.WATCHES_DATA = [
     "styles": [
       "dress"
     ],
+    "gender": "women",
     "description_en": "Hislon in stainless steel with a crystal-set bezel and a beaded bracelet. Mother-of-pearl dial with green stone markers at 12, 3, 6 and 9, a green stone in the crown, sapphire crystal, hour and minute hands only and no date. Quartz movement.",
     "description_it": "Hislon in acciaio inossidabile con lunetta con cristalli e bracciale a maglie tonde. Quadrante in madreperla con indici in pietra verde alle 12, 3, 6 e 9, una pietra verde nella corona, vetro zaffiro, solo lancette di ore e minuti e nessuna data. Movimento al quarzo.",
     "description_sq": "Hislon në çelik inoks me lunetë me kristale dhe byzylyk me hallka të rrumbullakëta. Ciferblat sedefi me tregues prej guri të gjelbër në orën 12, 3, 6 dhe 9, një gur i gjelbër në kurorë, xham safiri, vetëm akrepat e orës dhe të minutave dhe pa datë. Mekanizëm kuarci."
@@ -1518,6 +1599,7 @@ window.WATCHES_DATA = [
       "dress",
       "gold-tone"
     ],
+    "gender": "women",
     "description_en": "Hislon in two-tone steel with a gold-tone fluted bezel and a two-tone jubilee bracelet. Black dial, gold-tone applied baton indices, a date window at 3 and a sapphire crystal. Quartz movement.",
     "description_it": "Hislon in acciaio bicolore con lunetta zigrinata color oro e bracciale jubilee bicolore. Quadrante nero, indici a bastone applicati dorati, finestrella data alle 3 e vetro zaffiro. Movimento al quarzo.",
     "description_sq": "Hislon në çelik dyngjyrësh me lunetë të gdhendur në ngjyrë ari dhe byzylyk jubilee dyngjyrësh. Ciferblat i zi, tregues shiritash të aplikuar artë, dritare date në orën 3 dhe xham safiri. Mekanizëm kuarci."
