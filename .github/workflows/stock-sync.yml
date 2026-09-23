@@ -46,6 +46,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      # gen_shop_index reads each card image's width and height with Pillow and quietly
+      # drops the attributes when Pillow is missing. The first run after the CRLF fix did
+      # exactly that on 38 pages and re-dated 36 sitemap entries, so every rebuild here
+      # would have fought every rebuild on the owner's machine. Same version as there.
+      - name: install Pillow (card image dimensions)
+        run: python -m pip install --quiet pillow==12.2.0
       # The CRM path tests first, then writes. The admin path cannot: an admin
       # save commits watches.json alone, so watches-data.js is stale by design
       # until --regen rewrites both, and the byte-format self-test would fail
