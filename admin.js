@@ -270,6 +270,7 @@
     var year      = parseInt(document.getElementById('f-year').value,10) || 2025;
     var price     = parseFloat(document.getElementById('f-price').value) || 0;
     var condition = document.getElementById('f-condition').value;
+    var gender    = document.getElementById('f-gender').value;
     var descEn    = document.getElementById('f-desc-en').value.trim();
     var descIt    = document.getElementById('f-desc-it').value.trim();
     var descSq    = document.getElementById('f-desc-sq').value.trim();
@@ -284,12 +285,17 @@
       alert('Please select a photo of the watch.');
       return;
     }
+    // who the watch is for decides which shop filter shows it (Men, Women, or both)
+    if(!GENDER_LABELS[gender]){
+      alert('Please choose who the watch is for: Men, Women, or Men and women.');
+      return;
+    }
 
     var addBtn = document.getElementById('add-btn');
     addBtn.disabled = true;
 
     if(token){
-      publishViaGitHub(token, {brand:brand,model:model,reference:reference,year:year,price:price,condition:condition,descEn:descEn,descIt:descIt,descSq:descSq,sold:sold}, function(){
+      publishViaGitHub(token, {brand:brand,model:model,reference:reference,year:year,price:price,condition:condition,gender:gender,descEn:descEn,descIt:descIt,descSq:descSq,sold:sold}, function(){
         addBtn.disabled = false;
       });
     } else {
@@ -414,6 +420,7 @@
       model: data.model,
       year: data.year,
       condition: data.condition,
+      gender: data.gender,
       price: data.price,
       currency: 'EUR',
       image: '/'+imagePath,
@@ -575,6 +582,25 @@
     return '';
   }
 
+  // Who a watch is for (owner, 2026-09-23). The shop's Men and Women filters read it;
+  // "unisex" shows under both. The keys are the values watches.json stores.
+  var GENDER_LABELS = {men: 'Men', women: 'Women', unisex: 'Men and women'};
+
+  // A select plus its own Save button, like the code editor below it: a change is a
+  // commit and a full site rebuild, so a mis-tap on the select alone must publish nothing.
+  function genderEditHtml(w){
+    var cur = GENDER_LABELS[w.gender] ? w.gender : '';
+    var opts = (cur ? '' : '<option value="" selected disabled>For?</option>')
+      + ['men', 'women', 'unisex'].map(function(g){
+          return '<option value="' + g + '"' + (g === cur ? ' selected' : '') + '>'
+            + GENDER_LABELS[g] + '</option>';
+        }).join('');
+    return '<span class="ref-add">'
+      + '<select id="gender-' + esc(w.id) + '" aria-label="Who this watch is for">' + opts + '</select>'
+      + '<button type="button" data-act="setgender" data-id="' + esc(w.id) + '">Save</button>'
+      + '</span>';
+  }
+
   function refEditHtml(w){
     return '<span class="ref-add">'
       + '<input type="text" id="ref-' + esc(w.id) + '" maxlength="40" list="crm-codes" '
@@ -729,7 +755,8 @@
         + (w.sold ? 'Back in stock' : 'Mark sold') + '</button>';
     var acts  = archived
       ? '<button type="button" data-act="restore" data-id="' + esc(w.id) + '">Bring back</button>'
-      : soldBtn + '<button type="button" data-act="archive" data-id="' + esc(w.id) + '">Archive</button>';
+      : soldBtn + '<button type="button" data-act="archive" data-id="' + esc(w.id) + '">Archive</button>'
+        + genderEditHtml(w);
     return '<div class="stock-row">' + img
       + '<div class="stock-meta"><strong>' + esc(w.brand) + ' ' + esc(w.model) + '</strong>' + sold
       + '<span>' + esc(w.reference || 'no reference') + ' \u00b7 ' + price + '</span></div>'
@@ -818,6 +845,10 @@
       }
       val = code;
     }
+    if(key === 'gender' && !GENDER_LABELS[val]){
+      stockMsg('Choose Men, Women, or Men and women.');
+      return;
+    }
     stockMsg('Saving\u2026');
     ghGet(token, 'watches.json').then(function(res){
       var arr = JSON.parse(b64ToUtf8(res.content)), w = null;
@@ -825,8 +856,23 @@
       if(!w) throw new Error(id + ' is no longer in watches.json');
       if(key === 'sold'){ w.sold = !!val; }
       else if(key === 'reference'){ w.reference = val; }
-      else if(val){ w.deleted = true; }
-      else { delete w.deleted; }
+      else if(key === 'gender'){
+        if('gender' in w){ w.gender = val; }
+        else {
+          // keep the canonical key order (...styles, gender, description_*) so the
+          // commit diff stays one line; a record with no styles gets it at the end
+          var n = {};
+          Object.keys(w).forEach(function(k){ n[k] = w[k]; if(k === 'styles') n.gender = val; });
+          if(!('gender' in n)) n.gender = val;
+          arr[i] = n; w = n;
+        }
+      }
+      // Explicit, never a fall-through: this branch used to be a bare else, so ANY key
+      // other than sold or reference archived the watch.
+      else if(key === 'deleted'){
+        if(val){ w.deleted = true; } else { delete w.deleted; }
+      }
+      else { throw new Error('unknown field ' + key + ', nothing saved'); }
       var body = btoa(unescape(encodeURIComponent(JSON.stringify(arr, null, 2) + "\n")));   // same shape as sync_stock.json_bytes
       return ghPut(token, 'watches.json', body,
                    label + ': ' + w.brand + ' ' + w.model, res.sha);
@@ -877,6 +923,11 @@
       } else if(act === 'setref'){
         var inp = document.getElementById('ref-' + id);
         setFlag(id, 'reference', inp ? inp.value : '', 'Code');
+      } else if(act === 'setgender'){
+        var sel = document.getElementById('gender-' + id);
+        var g = sel ? sel.value : '';
+        if(g && g === w.gender){ stockMsg('Already ' + GENDER_LABELS[g] + '. Nothing to save.'); return; }
+        setFlag(id, 'gender', g, 'For ' + (GENDER_LABELS[g] || g));
       }
     });
     var searchEl = document.getElementById('stock-search');
