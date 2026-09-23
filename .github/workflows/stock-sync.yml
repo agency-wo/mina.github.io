@@ -34,11 +34,25 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      # THE CRLF STEP IS LOAD-BEARING, the same one gates.yml documents at the
+      # top of that file. Without it the runner checks the blog indexes and
+      # sitemap out as pure LF, gen_blog_index asserts strict CRLF, and the
+      # job dies before it commits. That is how every push-triggered run
+      # failed from 2026-08-29 to 2026-09-10 and why no stock-sync commit
+      # existed in the history until this line went in.
+      - name: match the working tree's line endings
+        run: git config --global core.autocrlf true
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      # The CRM path tests first, then writes. The admin path cannot: an admin
+      # save commits watches.json alone, so watches-data.js is stale by design
+      # until --regen rewrites both, and the byte-format self-test would fail
+      # on exactly the state this job exists to repair. It regenerates first
+      # and tests after, so a bad regeneration still stops the commit.
       - name: self-test (flip semantics + byte formats, 3 passes)
+        if: github.event_name != 'push'
         run: |
           python tools/test_sync_stock.py
           python tools/test_sync_stock.py
@@ -51,6 +65,9 @@ jobs:
       - name: regenerate from watches.json (admin edit)
         if: github.event_name == 'push'
         run: python tools/sync_stock.py --regen
+      - name: self-test after regeneration (admin edit)
+        if: github.event_name == 'push'
+        run: python tools/test_sync_stock.py
       - name: commit if changed
         run: |
           git config user.name "stock-sync"

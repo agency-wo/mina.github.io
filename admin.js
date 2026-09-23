@@ -339,7 +339,9 @@
         var currentArr = JSON.parse(b64ToUtf8(res.content.replace(/\n/g,'')));
         var newWatch = buildWatch(currentArr, data);
         currentArr.push(newWatch);
-        var newContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentArr, null, 2))));
+        // + "\n": sync_stock.json_bytes ends the file with one newline and the stock-sync
+        // self-test compares bytes, so an admin save must write the same shape
+        var newContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentArr, null, 2) + "\n")));
         return ghPut(token, 'watches.json', newContent, 'Add watch: '+data.brand+' '+data.model, res.sha);
       })
       .then(function(){
@@ -825,7 +827,7 @@
       else if(key === 'reference'){ w.reference = val; }
       else if(val){ w.deleted = true; }
       else { delete w.deleted; }
-      var body = btoa(unescape(encodeURIComponent(JSON.stringify(arr, null, 2))));
+      var body = btoa(unescape(encodeURIComponent(JSON.stringify(arr, null, 2) + "\n")));   // same shape as sync_stock.json_bytes
       return ghPut(token, 'watches.json', body,
                    label + ': ' + w.brand + ' ' + w.model, res.sha);
     }).then(function(){
