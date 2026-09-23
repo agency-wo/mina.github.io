@@ -6,8 +6,9 @@ DOES:   bytes (no BOM, strict CRLF, no form feed, no em dash, no U+FFFD),
         aria-pressed), set equality (cards == articles on disk == ItemList),
         per-section counts against the ARTICLES manifest, cross-language mirror
         isomorphism, CollectionPage JSON-LD validity with contiguous
-        positions, localized month labels and read-times, copy preservation
-        against git HEAD, and the blog-search.js cache-bust version.
+        positions, localized month labels and read-times, each article's own
+        byline and header dates against its BlogPosting dates, copy
+        preservation against git HEAD, and the blog-search.js cache-bust version.
 IN:     no args. Invoked from the WORKING ROOT:
         python tools/gates/verify-blog-index.py
         Reads {en,it,sq}/blog/index.html, the articles on disk, and git HEAD.
@@ -79,7 +80,16 @@ def flag(msg):
 def main():
     sys.path.insert(0, str(BASE))
     from blog_index_data import ARTICLES
-    from gen_blog_index import UI, family_map, article_meta
+    from gen_blog_index import UI, family_map, article_meta, date_str
+
+    # check 11: the byline and the header date line inside each article
+    months = {lg: "|".join(UI[lg]["months"]) for lg in LANGS}
+    lead = {"en": "Published by", "it": "Pubblicato da", "sq": "Publikuar nga"}
+    published = {"en": "Published", "it": "Pubblicato", "sq": "Publikuar"}
+    BYLINE_RE = {lg: rf'{lead[lg]} <strong[^>]*>Iglisi Watch</strong> · [^<]*? · ((?:{months[lg]}) \d{{4}})\.'
+                 for lg in LANGS}
+    HEADER_RE = {lg: rf'fa-bolt"[^>]*></i>\s*(?:({UI[lg]["updated"]}|{published[lg]}) )?((?:{months[lg]}) \d{{4}})'
+                 for lg in LANGS}
 
     fam = family_map()
     feat_slug = [a["slug"] for a in ARTICLES if a.get("featured")][0]
@@ -222,6 +232,34 @@ def main():
                 flag(f"{lang}/{slug}: updated-variant mismatch (mod={mod} pub={pub})")
             if f" {rt} min" not in block.replace("&nbsp;", " "):
                 flag(f"{lang}/{slug}: read-time {rt} not on card")
+
+            # 11. the article's own visible dates. Both were typed by hand and
+            # drifted: 46 EN bylines said "May 2026" whatever the truth, and the
+            # header line under the title showed a month matching neither date
+            # on 19 EN articles. The byline says "Published", so it carries the
+            # datePublished month; a header labelled Updated carries
+            # dateModified, one labelled Published carries datePublished, and an
+            # unlabelled one must be one of the two. Unescaped first, so the
+            # entity and literal spellings (&middot;, &euml;) compare as one.
+            art = unescape(corpus.raw(BASE / lang / "blog" / f"{slug}.html").decode("utf-8-sig"))
+            want_pub, want_mod = date_str(lang, pub), date_str(lang, mod)
+            by = re.findall(BYLINE_RE[lang], art)
+            if len(by) > 1:
+                flag(f"{lang}/{slug}: {len(by)} bylines")
+            elif by and by[0] != want_pub:
+                flag(f"{lang}/{slug}: byline says {by[0]!r}, datePublished is {want_pub!r}")
+            hd = re.search(HEADER_RE[lang], art)
+            if hd:
+                label, shown = hd.group(1), hd.group(2)
+                if label == UI[lang]["updated"]:
+                    ok = shown == want_mod
+                elif label:
+                    ok = shown == want_pub
+                else:
+                    ok = shown in (want_pub, want_mod)
+                if not ok:
+                    flag(f"{lang}/{slug}: header date {(label + ' ' if label else '') + shown!r} "
+                         f"matches neither the label nor pub={want_pub!r} mod={want_mod!r}")
 
     if seq_by_lang["en"] != seq_by_lang["it"] or seq_by_lang["en"] != seq_by_lang["sq"]:
         flag("mirror isomorphism broken between languages")
