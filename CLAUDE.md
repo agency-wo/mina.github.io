@@ -239,9 +239,16 @@ Breaking one of these has caused a real incident. They are not style preferences
   prices; do not reintroduce one.
 - **A filter's answer comes first.** Any block placed between the shop filters and `#shopGrid`
   that ignores the filters (today New Arrivals and the "Browse by brand" links) steps aside while a
-  filter, search or sort is on: `syncArrivals` in the three `shop.js`. Before that, tapping Bigotti
-  on a phone showed a Hislon and put the first Bigotti 2,200 px down (owner, 2026-09-30). A new
-  block there joins that list, or sits below the grid.
+  filter, search or sort is on. The switch is the class `shop-filtered` on `<html>`: `inapp.js` sets
+  it before first paint when the page opens filtered (a shared link, or Back from a watch), and
+  `syncArrivals` in the three `shop.js` keeps it in step; the page's own CSS does the hiding. Before
+  that, tapping Bigotti on a phone showed a Hislon and put the first Bigotti 2,200 px down (owner,
+  2026-09-30). A new block there joins that CSS rule, or sits below the grid.
+- **The filter row never moves.** Above 600 px `.shop-controls` is a grid with fixed slots, and the
+  brand and style button rows are one chip high and scroll sideways, so the buttons the script fills
+  in cannot re-wrap the row. As a flex row it did: the sort box crossed the screen, and Back to a
+  filtered shop scored a layout shift of 0.76 on desktop. Measured after the change: 0 px of
+  movement at every width from 601 to 1920 px, in all three languages. A new control gets a slot.
 - **A FAQ answer exists twice**: visible HTML and a `FAQPage` JSON-LD twin. Author it once in
   `scripts/faq-overrides.json` and let `faq-build.py` write both copies in one pass.
   `faq-build.py --verify` fails any page whose schema claims an answer the reader cannot see.

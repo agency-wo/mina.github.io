@@ -58,9 +58,6 @@
   ]).catch(function(){ return null; });
 
   initGenderChips();
-  // a shared filtered link (?brand= / ?gender=) opens with its answer first, instead of
-  // showing New Arrivals until the catalogue and stock feed arrive up to 4 s later
-  try { if(new URLSearchParams(window.location.search).get('brand') || currentGender !== 'all') syncArrivals(true); } catch(e){}
 
   fetch('/watches.json?v=3')
     .then(function(r){ return r.json(); })
@@ -315,10 +312,10 @@
            currentGender !== 'all' || !!currentSearch || currentSort !== 'default' ||
            currentMinPrice > PRICE_MIN || currentMaxPrice < PRICE_MAX;
   }
+  // One class on <html>, hidden by the page's own CSS. inapp.js sets the same class before
+  // first paint when the page opens filtered, so an inline style could not undo it.
   function syncArrivals(off){
-    [document.getElementById('newArrivals'), document.querySelector('nav.brand-nav')].forEach(function(el){
-      if(el) el.style.display = off ? 'none' : '';
-    });
+    document.documentElement.classList.toggle('shop-filtered', !!off);
   }
 
   // [UI-016.c] renderWatches — the ONE render path: filter, sort, repaint
