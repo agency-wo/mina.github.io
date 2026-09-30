@@ -1474,7 +1474,7 @@ window.WATCHES_DATA = [
     "condition": "New",
     "price": 92,
     "currency": "EUR",
-    "image": "/images/watches/navimarine-nvm148-d4.webp",
+    "image": "/images/watches/navimarine-nvm148-d4.83bbe662.webp",
     "sold": false,
     "added": "2026-09-07",
     "styles": [
@@ -1554,7 +1554,7 @@ window.WATCHES_DATA = [
     "condition": "New",
     "price": 129,
     "currency": "EUR",
-    "image": "/images/watches/hislon-ql124s-05ss.webp",
+    "image": "/images/watches/hislon-ql124s-05ss.d61e03fe.webp",
     "sold": false,
     "added": "2026-09-09",
     "styles": [
