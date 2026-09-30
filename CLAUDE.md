@@ -237,6 +237,11 @@ Breaking one of these has caused a real incident. They are not style preferences
   non-breaking space before the `L` in a price. Change one and you must change the other in the same
   edit, or make the change CSS-only. A second renderer was deleted once for producing `NaN` Lek
   prices; do not reintroduce one.
+- **A filter's answer comes first.** Any block placed between the shop filters and `#shopGrid`
+  that ignores the filters (today New Arrivals and the "Browse by brand" links) steps aside while a
+  filter, search or sort is on: `syncArrivals` in the three `shop.js`. Before that, tapping Bigotti
+  on a phone showed a Hislon and put the first Bigotti 2,200 px down (owner, 2026-09-30). A new
+  block there joins that list, or sits below the grid.
 - **A FAQ answer exists twice**: visible HTML and a `FAQPage` JSON-LD twin. Author it once in
   `scripts/faq-overrides.json` and let `faq-build.py` write both copies in one pass.
   `faq-build.py --verify` fails any page whose schema claims an answer the reader cannot see.

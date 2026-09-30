@@ -59,6 +59,9 @@
   ]).catch(function(){ return null; });
 
   initGenderChips();
+  // a shared filtered link (?brand= / ?gender=) opens with its answer first, instead of
+  // showing New Arrivals until the catalogue and stock feed arrive up to 4 s later
+  try { if(new URLSearchParams(window.location.search).get('brand') || currentGender !== 'all') syncArrivals(true); } catch(e){}
 
   fetch('/watches.json?v=3')
     .then(function(r){ return r.json(); })
@@ -302,6 +305,23 @@
     });
   }
 
+  // A chosen filter's answer comes first (owner, 2026-09-30). New Arrivals and the "Browse by
+  // brand" links sit between the filters and #shopGrid and ignore every filter: a customer who
+  // tapped Bigotti on a phone saw a Hislon, and the first Bigotti was 2,200 px further down.
+  // While any filter, search or sort is on, both step aside so the results are the first thing
+  // under the controls; with nothing chosen the page is exactly as generated. Only runtime
+  // visibility changes: the static HTML that crawlers and no-JS visitors get is untouched.
+  function isFiltering(){
+    return currentFilter !== 'all' || currentBrand !== 'all' || currentStyle !== 'all' ||
+           currentGender !== 'all' || !!currentSearch || currentSort !== 'default' ||
+           currentMinPrice > PRICE_MIN || currentMaxPrice < PRICE_MAX;
+  }
+  function syncArrivals(off){
+    [document.getElementById('newArrivals'), document.querySelector('nav.brand-nav')].forEach(function(el){
+      if(el) el.style.display = off ? 'none' : '';
+    });
+  }
+
   // [UI-016.c] renderWatches — the ONE render path: filter, sort, repaint
   // DOES:   applies condition, brand, style, gender, search and the price window in that order,
   //         sorts, then replaces #shopGrid wholesale. It writes no count.
@@ -357,6 +377,7 @@
       filtered.sort(function(a,b){ return (a.brand+a.model).localeCompare(b.brand+b.model); });
     }
 
+    syncArrivals(isFiltering());
     var grid  = document.getElementById('shopGrid');
     // NO COUNT HERE, DELIBERATELY. This used to write "<n> watches available"
     // into #shopCount on every render. That is a published count of the
