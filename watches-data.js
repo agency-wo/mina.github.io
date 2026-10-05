@@ -1603,5 +1603,124 @@ window.WATCHES_DATA = [
     "description_en": "Hislon in two-tone steel with a gold-tone fluted bezel and a two-tone jubilee bracelet. Black dial, gold-tone applied baton indices, a date window at 3 and a sapphire crystal. Quartz movement.",
     "description_it": "Hislon in acciaio bicolore con lunetta zigrinata color oro e bracciale jubilee bicolore. Quadrante nero, indici a bastone applicati dorati, finestrella data alle 3 e vetro zaffiro. Movimento al quarzo.",
     "description_sq": "Hislon në çelik dyngjyrësh me lunetë të gdhendur në ngjyrë ari dhe byzylyk jubilee dyngjyrësh. Ciferblat i zi, tregues shiritash të aplikuar artë, dritare date në orën 3 dhe xham safiri. Mekanizëm kuarci."
+  },
+  {
+    "id": "philippe-lauren-steel-octagon-arabic",
+    "brand": "Philippe Lauren",
+    "model": "Steel Octagon Arabic",
+    "reference": "",
+    "condition": "New",
+    "price": 75,
+    "currency": "EUR",
+    "image": "/images/watches/philippe-lauren-steel-octagon-arabic.webp",
+    "sold": false,
+    "added": "2026-10-06",
+    "styles": [
+      "dress",
+      "sport"
+    ],
+    "gender": "men",
+    "description_en": "Philippe Lauren men's watch in brushed stainless steel with an octagonal case and an integrated steel bracelet. Silver sunburst dial with Eastern Arabic numerals at every hour and slim polished hands, no date window. A clean architectural shape that sits between our dress and sport models.",
+    "description_it": "Orologio da uomo Philippe Lauren in acciaio inossidabile satinato con cassa ottagonale e bracciale integrato in acciaio. Quadrante argentato sunburst con numeri arabi orientali a ogni ora e lancette sottili lucide, senza finestrella data. Una forma pulita e architettonica, a metà tra i nostri modelli da abito e quelli sportivi.",
+    "description_sq": "Orë për burra Philippe Lauren në çelik inoks të satinuar me kasë tetëkëndëshe dhe byzylyk të integruar çeliku. Ciferblat argjendi sunburst me numra arabë lindorë në çdo orë dhe akrepa të hollë të lëmuar, pa dritare date. Një formë e pastër arkitekturore, mes modeleve tona të veshjes dhe atyre sportive."
+  },
+  {
+    "id": "bigotti-bg1-10615-5",
+    "brand": "Bigotti",
+    "model": "Two Tone Green Crystal",
+    "reference": "BG.1.10615-5",
+    "condition": "New",
+    "price": 82,
+    "currency": "EUR",
+    "image": "/images/watches/bigotti-bg1-10615-5.webp",
+    "sold": false,
+    "added": "2026-10-06",
+    "styles": [
+      "dress",
+      "gold-tone"
+    ],
+    "gender": "women",
+    "description_en": "Bigotti Two Tone Green Crystal, a women's dress watch with a stainless steel case and a gold-tone bezel set with crystals all the way round. Deep green sunburst dial with applied gold-tone baton indices, doubled at 12, and matching hands, on a steel bracelet with gold-tone centre links. No date window.",
+    "description_it": "Orologio da donna Bigotti con cassa in acciaio inossidabile e lunetta color oro con cristalli tutt'intorno. Quadrante verde intenso sunburst con indici a bastone applicati color oro, doppi alle 12, e lancette abbinate, su bracciale in acciaio con maglie centrali color oro. Senza finestrella data.",
+    "description_sq": "Orë veshjeje për femra Bigotti me kasë çeliku inoks dhe lunetë ngjyrë ari me kristale rreth e rrotull. Ciferblat jeshil i thellë sunburst me tregues shiritash të aplikuar ngjyrë ari, të dyfishtë në 12, dhe akrepa të njëjtë, mbi byzylyk çeliku me hallka qendrore ngjyrë ari. Pa dritare date."
+  },
+  {
+    "id": "bigotti-bg1-10615-2",
+    "brand": "Bigotti",
+    "model": "Steel Peach Crystal",
+    "reference": "BG.1.10615-2",
+    "condition": "New",
+    "price": 82,
+    "currency": "EUR",
+    "image": "/images/watches/bigotti-bg1-10615-2.webp",
+    "sold": false,
+    "added": "2026-10-06",
+    "styles": [
+      "dress"
+    ],
+    "gender": "women",
+    "description_en": "Bigotti Steel Peach Crystal, a women's dress watch in polished stainless steel with a crystal-set bezel all the way round. Peach sunburst dial with applied steel baton indices, doubled at 12, and slim matching hands, on a steel bracelet. No date window. The same round case as our green-dial two-tone, in a softer colour.",
+    "description_it": "Orologio da donna Bigotti in acciaio inossidabile lucido con lunetta con cristalli tutt'intorno. Quadrante color pesca sunburst con indici a bastone applicati in acciaio, doppi alle 12, e lancette sottili abbinate, su bracciale in acciaio. Senza finestrella data. La stessa cassa rotonda del nostro bicolore con quadrante verde, in un colore più delicato.",
+    "description_sq": "Orë veshjeje për femra Bigotti në çelik inoks të lëmuar me lunetë me kristale rreth e rrotull. Ciferblat ngjyrë pjeshke sunburst me tregues shiritash çeliku të aplikuar, të dyfishtë në 12, dhe akrepa të hollë të njëjtë, mbi byzylyk çeliku. Pa dritare date. E njëjta kasë e rrumbullakët si modeli ynë dyngjyrësh me ciferblat jeshil, në një ngjyrë më të butë."
+  },
+  {
+    "id": "navimarine-nm279-02",
+    "brand": "Navimarine",
+    "model": "NM279-02",
+    "reference": "NM279-02",
+    "condition": "New",
+    "price": 71,
+    "currency": "EUR",
+    "image": "/images/watches/navimarine-nm279-02.webp",
+    "sold": false,
+    "added": "2026-10-06",
+    "styles": [
+      "dress",
+      "gold-tone"
+    ],
+    "gender": "women",
+    "description_en": "Navimarine NM279-02 - a slim women's dress watch in gold-tone steel with a round case and a plain polished bezel. White sunburst dial with applied gold-tone baton indices and matching hands, on a fine multi-link gold-tone bracelet. No date window, quartz movement.",
+    "description_it": "Navimarine NM279-02 - orologio da donna sottile in acciaio color oro con cassa rotonda e lunetta lucida liscia. Quadrante bianco sunburst con indici a bastone applicati color oro e lancette abbinate, su bracciale color oro a maglie fitte. Senza finestrella data, movimento al quarzo.",
+    "description_sq": "Navimarine NM279-02 - orë veshjeje e hollë për femra në çelik ngjyrë ari me kasë të rrumbullakët dhe lunetë të lëmuar pa zbukurime. Ciferblat i bardhë sunburst me tregues shiritash të aplikuar ngjyrë ari dhe akrepa të njëjtë, mbi byzylyk ngjyrë ari me hallka të imëta. Pa dritare date, mekanizëm kuarci."
+  },
+  {
+    "id": "navimarine-nm186-02",
+    "brand": "Navimarine",
+    "model": "NM186-02",
+    "reference": "NM186-02",
+    "condition": "New",
+    "price": 71,
+    "currency": "EUR",
+    "image": "/images/watches/navimarine-nm186-02.webp",
+    "sold": false,
+    "added": "2026-10-06",
+    "styles": [
+      "dress",
+      "gold-tone"
+    ],
+    "gender": "women",
+    "description_en": "Navimarine NM186-02 - a women's dress watch in gold-tone steel with a crystal-set bezel all the way round. White sunburst dial with a gold-tone Roman XII and applied baton indices for the other hours, on a three-link gold-tone bracelet. No date window, quartz movement.",
+    "description_it": "Navimarine NM186-02 - orologio da donna in acciaio color oro con lunetta con cristalli tutt'intorno. Quadrante bianco sunburst con XII romano color oro e indici a bastone applicati per le altre ore, su bracciale color oro a tre maglie. Senza finestrella data, movimento al quarzo.",
+    "description_sq": "Navimarine NM186-02 - orë veshjeje për femra në çelik ngjyrë ari me lunetë me kristale rreth e rrotull. Ciferblat i bardhë sunburst me XII romak ngjyrë ari dhe tregues shiritash të aplikuar për orët e tjera, mbi byzylyk ngjyrë ari me tre hallka. Pa dritare date, mekanizëm kuarci."
+  },
+  {
+    "id": "navimarine-nmm1036-col05",
+    "brand": "Navimarine",
+    "model": "NMM1036-color05",
+    "reference": "NMM1036-COL05",
+    "condition": "New",
+    "price": 82,
+    "currency": "EUR",
+    "image": "/images/watches/navimarine-nmm1036-col05.webp",
+    "sold": false,
+    "added": "2026-10-06",
+    "styles": [
+      "sport",
+      "gold-tone"
+    ],
+    "gender": "men",
+    "description_en": "Navimarine NMM1036 - a steel sport watch with a black 24-hour bezel in a gold-tone coin-edge ring, a grey sunburst dial, large luminous round markers and a date window at 3. Five-link jubilee bracelet in steel, quartz movement, and 5 ATM stated on the dial.",
+    "description_it": "Navimarine NMM1036 - orologio sportivo in acciaio con lunetta nera graduata su 24 ore in un anello zigrinato color oro, quadrante grigio sunburst, grandi indici tondi luminescenti e finestrella data alle 3. Bracciale jubilee in acciaio a cinque maglie, movimento al quarzo e 5 ATM dichiarati sul quadrante.",
+    "description_sq": "Navimarine NMM1036 - orë sportive prej çeliku me lunetë të zezë me numra 24-orësh në një unazë të dhëmbëzuar ngjyrë ari, ciferblat gri sunburst, tregues të mëdhenj të rrumbullakët ndriçues dhe dritare date në orën 3. Byzylyk jubilee çeliku me pesë hallka, mekanizëm kuarci dhe 5 ATM të deklaruara në ciferblat."
   }
 ];
