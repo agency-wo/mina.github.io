@@ -76,28 +76,6 @@ ARTICLES = [
         ),
     ),
     dict(
-        slug='how-much-to-spend-on-a-watch-gift', cat='gifts', icon='fa-balance-scale',
-        card=dict(
-            en=dict(title='How Much to Spend on a Watch as a Birthday Gift',
-                    desc='Everyone answers this with etiquette and nobody answers it with money. What a watch gift costs for a parent, a partner, a friend and a colleague, in euro and in Lek.'),
-            it=dict(title='Quanto Spendere per un Orologio come Regalo di Compleanno',
-                    desc='Tutti rispondono con il galateo e nessuno con i prezzi. Quanto costa un orologio da regalare a un genitore, al partner, a un amico e a un collega, in euro e in Lek.'),
-            sq=dict(title='Sa të Shpenzoni për një Orë si Dhuratë Ditëlindjeje',
-                    desc='Të gjithë përgjigjen me etikë dhe askush me çmime. Sa kushton një orë dhuratë për prindin, partnerin, një shok dhe një koleg, në euro dhe në lekë.'),
-        ),
-    ),
-    dict(
-        slug='milestone-birthday-watch-gift', cat='gifts', icon='fa-star',
-        card=dict(
-            en=dict(title='A Watch for a Milestone Birthday: 18, 30, 40, 50 and 60',
-                    desc='A round-number birthday asks for a different watch than an ordinary one. Which model fits each decade, and where the extra money actually goes.'),
-            it=dict(title='Regalo Orologio per il Diciottesimo, i 30, i 40, i 50 e i 60 Anni',
-                    desc='Un compleanno importante chiede un orologio diverso da uno qualsiasi. Quale modello si adatta a ogni età e dove finiscono davvero i soldi in più.'),
-            sq=dict(title='Orë Dhuratë për 18, 30, 40, 50 dhe 60 Vjet',
-                    desc='Një ditëlindje e rrumbullakët kërkon një orë tjetër nga një e zakonshme. Cili model i shkon secilës moshë dhe ku shkojnë vërtet paratë e tepërta.'),
-        ),
-    ),
-    dict(
         slug='watch-birthday-gift-albania', cat='gifts',
         card=dict(
             en=dict(title='A Watch as a Birthday Gift in Albania',
@@ -339,17 +317,6 @@ ARTICLES = [
         ),
     ),
     dict(
-        slug='matching-watches-for-couples', cat='gifts',
-        card=dict(
-            en=dict(title='Matching Watches for Couples: His and Hers Pairs from 124 Euro',
-                    desc='Four his and hers pairs for weddings and anniversaries: matching Hislon gold and steel sets with sapphire crystal, and Daniel Klein pairs from &euro;124.'),
-            it=dict(title='Orologi Abbinati per Coppie: Lui e Lei da 124 Euro',
-                    desc='Quattro coppie lui e lei per matrimoni e anniversari: set Hislon abbinati in oro e acciaio con vetro zaffiro, e coppie Daniel Klein da &euro;124.'),
-            sq=dict(title='Or&euml; p&euml;r Çifte: His and Hers nga 124 Euro',
-                    desc='Katër çifte his and hers p&euml;r dasma dhe p&euml;rvjetorë: sete Hislon t&euml; p&euml;rputhura n&euml; ar dhe çelik me xham safiri, dhe çifte Daniel Klein nga &euro;124.'),
-        ),
-    ),
-    dict(
         slug='watch-price-tiers-60-190', cat='buying',
         card=dict(
             en=dict(title='60 vs 90 vs 190 Euro: What More Money Actually Buys in a Watch',
@@ -383,42 +350,6 @@ ARTICLES = [
         ),
     ),
     dict(
-        slug='watch-history-stories', cat='knowledge',
-        label=dict(en='Watch History', it='Storia dell’Orologeria', sq='Historia e Orëve'),
-        card=dict(
-            en=dict(title='The Watches That Made History: Six Stories in One Place',
-                    desc='The wristwatch, the Moon, the war, the unbreakable one and the heirloom. Our six watch-history stories gathered in one place, each linking to the full article.'),
-            it=dict(title='Gli Orologi che Hanno Fatto la Storia: Sei Storie in un Solo Posto',
-                    desc='L&rsquo;orologio da polso, la Luna, la guerra, quello indistruttibile e il cimelio. Le nostre sei storie riunite in un posto, ognuna con un link all&rsquo;articolo completo.'),
-            sq=dict(title='Or&euml;t q&euml; B&euml;n&euml; Histori: Gjasht&euml; Histori n&euml; nj&euml; Vend',
-                    desc='Ora e dor&euml;s, H&euml;na, lufta, ajo e pathyeshme dhe trash&euml;gimia. Gjasht&euml; histori t&euml; sona t&euml; mbledhura n&euml; nj&euml; vend, secila me link te artikulli i plot&euml;.'),
-        ),
-    ),
-    dict(
-        slug='patek-philippe-generations', cat='knowledge',
-        label=dict(en='Watch History', it='Storia dell’Orologeria', sq='Historia e Orëve'),
-        card=dict(
-            en=dict(title='Patek Philippe and the Watch You Pass Down',
-                    desc='The most famous line in watch advertising, why a good watch is an heirloom and not a gadget, and the watches you can give in Durres to last a generation.'),
-            it=dict(title='Patek Philippe e l&rsquo;Orologio che si Tramanda',
-                    desc='La frase pi&ugrave; famosa della pubblicit&agrave; di orologi, perch&eacute; un buon orologio &egrave; un cimelio e non un gadget, e gli orologi che puoi regalare a Durazzo per durare una generazione.'),
-            sq=dict(title='Patek Philippe dhe Ora q&euml; Trash&euml;gohet',
-                    desc='Fraza m&euml; e famshme n&euml; reklamat e or&euml;ve, pse nj&euml; or&euml; e mir&euml; &euml;sht&euml; trash&euml;gimi e jo nj&euml; vegl&euml;, dhe or&euml;t q&euml; mund t&apos;i dhurosh n&euml; Durr&euml;s p&euml;r t&euml; zgjatur nj&euml; brez.'),
-        ),
-    ),
-    dict(
-        slug='hamilton-military-watches', cat='knowledge',
-        label=dict(en='Watch History', it='Storia dell’Orologeria', sq='Historia e Orëve'),
-        card=dict(
-            en=dict(title='Hamilton and the Watches That Went to War',
-                    desc='The trenches put the watch on the wrist, and Hamilton gave its whole factory to the war. The military watch and the rugged field-style watches you can buy today.'),
-            it=dict(title='Hamilton e gli Orologi che Andarono in Guerra',
-                    desc='Le trincee portarono l&rsquo;orologio al polso e Hamilton diede l&rsquo;intera fabbrica alla guerra. L&rsquo;orologio militare e gli orologi robusti in stile campo che puoi comprare oggi.'),
-            sq=dict(title='Hamilton dhe Or&euml;t q&euml; Shkuan n&euml; Luft&euml;',
-                    desc='Llogoret e vendos&euml;n or&euml;n n&euml; dor&euml;, dhe Hamilton i dha t&euml; gjith&euml; fabrik&euml;n luft&euml;s. Ora ushtarake dhe or&euml;t e forta n&euml; stil fushe q&euml; mund t&apos;i blesh sot.'),
-        ),
-    ),
-    dict(
         slug='g-shock-history', cat='knowledge',
         label=dict(en='Watch History', it='Storia dell’Orologeria', sq='Historia e Orëve'),
         card=dict(
@@ -428,42 +359,6 @@ ARTICLES = [
                     desc='Un ingegnere, un regalo rotto e 200 prototipi falliti. Come Casio costru&igrave; l&rsquo;orologio che non muore, e il valore Casio che puoi comprare da noi oggi.'),
             sq=dict(title='Historia e G-Shock: Si nj&euml; Or&euml; e Thyer Krijoi nj&euml; t&euml; Pathyeshme',
                     desc='Nj&euml; inxhinier, nj&euml; dhurat&euml; e thyer dhe 200 prototipe t&euml; d&euml;shtuar. Si Casio nd&euml;rtoi or&euml;n q&euml; nuk vdes, dhe vlera Casio q&euml; mund ta blesh nga ne sot.'),
-        ),
-    ),
-    dict(
-        slug='first-watch-on-the-moon', cat='knowledge',
-        label=dict(en='Watch History', it='Storia dell’Orologeria', sq='Historia e Orëve'),
-        card=dict(
-            en=dict(title='The First Watch on the Moon',
-                    desc='NASA tested watches to destruction and only the Omega Speedmaster survived. How it reached the Moon in 1969 and helped bring Apollo 13 home.'),
-            it=dict(title='Il Primo Orologio sulla Luna',
-                    desc='La NASA test&ograve; gli orologi fino a romperli e solo l&rsquo;Omega Speedmaster sopravvisse. Come raggiunse la Luna nel 1969 e aiut&ograve; a salvare l&rsquo;Apollo 13.'),
-            sq=dict(title='Ora e Par&euml; n&euml; H&euml;n&euml;',
-                    desc='NASA i testoi or&euml;t derisa u thyen dhe vet&euml;m Omega Speedmaster mbijetoi. Si arriti n&euml; H&euml;n&euml; n&euml; 1969 dhe ndihmoi t&euml; kthente Apollo 13.'),
-        ),
-    ),
-    dict(
-        slug='jaeger-lecoultre-history', cat='knowledge',
-        label=dict(en='Watch History', it='Storia dell’Orologeria', sq='Historia e Orëve'),
-        card=dict(
-            en=dict(title='Jaeger-LeCoultre: the Watchmaker Behind the Watchmakers',
-                    desc='For a century the most famous names in watchmaking put LeCoultre movements inside their cases. The valley workshop, 1200 calibres, and the watch that flips.'),
-            it=dict(title='Jaeger-LeCoultre: l&rsquo;Orologiaio Dietro gli Orologiai',
-                    desc='Per un secolo i nomi pi&ugrave; famosi hanno messo movimenti LeCoultre nelle loro casse. Il laboratorio nella valle, 1200 calibri e l&rsquo;orologio che si capovolge.'),
-            sq=dict(title='Jaeger-LeCoultre: Or&euml;ndreq&euml;si Pas Or&euml;ndreq&euml;sve',
-                    desc='P&euml;r nj&euml; shekull emrat m&euml; t&euml; fam&euml;sh&euml;m vendosnin mekanizma LeCoultre n&euml; kasat e tyre. Laboratori n&euml; lugin&euml;, 1200 kalibra dhe ora q&euml; kthehet mbrapsht.'),
-        ),
-    ),
-    dict(
-        slug='cartier-santos-first-wristwatch', cat='knowledge',
-        label=dict(en='Watch History', it='Storia dell’Orologeria', sq='Historia e Orëve'),
-        card=dict(
-            en=dict(title='Cartier Santos: How the First Wristwatch Was Born',
-                    desc='In 1904 a pilot could not check his pocket watch mid-flight, so Louis Cartier put time on the wrist. The story of the watch that started everything.'),
-            it=dict(title='Cartier Santos: Come Nacque il Primo Orologio da Polso',
-                    desc='Nel 1904 un pilota non poteva controllare l&rsquo;orologio da tasca in volo, cos&igrave; Louis Cartier port&ograve; il tempo al polso. La storia dell&rsquo;orologio da cui &egrave; nato tutto.'),
-            sq=dict(title='Cartier Santos: Si Lindi Ora e Par&euml; e Dor&euml;s',
-                    desc='N&euml; 1904 nj&euml; pilot nuk mund t&euml; shikonte or&euml;n e xhepit gjat&euml; fluturimit, k&euml;shtu Louis Cartier e solli koh&euml;n n&euml; dor&euml;. Historia e or&euml;s nga e cila filloi gjith&ccedil;ka.'),
         ),
     ),
     dict(
@@ -503,30 +398,6 @@ ARTICLES = [
         ),
     ),
     dict(
-        slug='watch-bezel-types-explained', cat='knowledge',
-        label=dict(en='Watch Knowledge', it='Cultura Orologiera', sq='Kultura e Orëve'),
-        card=dict(
-            en=dict(title='Watch Bezel Types Explained: From Dive Bezels to Tachymeters',
-                    desc='The bezel does far more than frame the crystal. Learn the six main types - dive, tachymeter, GMT, plain, bidirectional, and pulsometer - what each does and how to identify yours.'),
-            it=dict(title='Tipi di Lunetta dell&rsquo;Orologio: dalla Lunetta Sub al Tachimetro',
-                    desc='La lunetta fa molto pi&ugrave; che incorniciare il vetro. Scoprite i sei tipi principali - sub, tachimetrica, GMT, liscia, bidirezionale e pulsimetrica - cosa fa ciascuna e come riconoscerla.'),
-            sq=dict(title='Llojet e Unaz&euml;s s&euml; Or&euml;s: nga Unaza e Zhytjes tek Tahimetri',
-                    desc='Unaza b&euml;n shum&euml; m&euml; tep&euml;r se t&euml; rrethojë xhamin. Mësoni gjasht&euml; llojet kryesore - zhytja, tahimetri, GMT, e l&euml;muar, dydrejtim&euml;she dhe pulsometri - &ccedil;far&euml; b&euml;n secila dhe si ta identifikoni tuajën.'),
-        ),
-    ),
-    dict(
-        slug='citizen-eco-drive-explained', cat='knowledge',
-        label=dict(en='Watch Knowledge', it='Cultura Orologiera', sq='Kultura e Orëve'),
-        card=dict(
-            en=dict(title='Citizen Eco-Drive Explained: How Solar Charging Works in Watches',
-                    desc='No battery changes, but the capacitor lasts 10&ndash;15 years. Learn how Eco-Drive converts light to power, what the 2-second jump means, and when servicing is still needed.'),
-            it=dict(title='Citizen Eco-Drive Spiegato: Come Funziona la Ricarica Solare negli Orologi',
-                    desc='Niente cambio batteria, ma il condensatore dura 10&ndash;15 anni. Scopri come Eco-Drive converte la luce in energia, cosa significa il salto dei 2 secondi e quando serve la manutenzione.'),
-            sq=dict(title='Citizen Eco-Drive Shpjeguar: Si Funksionon Ngarkimi Solar n&euml; Or&euml;',
-                    desc='Pa nd&euml;rrim baterie, por kondensatori zgjat 10&ndash;15 vjet. M&euml;soni si Eco-Drive kthen drit&euml;n n&euml; energji, &ccedil;far&euml; do t&euml; thot&euml; k&euml;rcimi i 2 sekondave dhe kur k&euml;rkohet mir&euml;mbajtje.'),
-        ),
-    ),
-    dict(
         slug='casio-service-albania', cat='care',
         card=dict(
             en=dict(title='Where to Service a Casio, Seiko or Citizen in Albania',
@@ -557,52 +428,6 @@ ARTICLES = [
                     desc='Il valore di resistenza all&rsquo;acqua era accurato quando era nuovo. Un test di pressione ti dice se lo è ancora. Scopri cosa verifica, quando farlo e perché la sostituzione della batteria annulla la guarnizione.'),
             sq=dict(title='Testi i Presionit t&euml; Or&euml;s: &Ccedil;far&euml; &Euml;sht&euml; dhe Kur Nevojitet',
                     desc='Vlerësimi i rezistencës ndaj ujit ishte i saktë kur ishte e re. Testi i presionit ju tregon nëse është ende. Mësoni çfarë teston, kur ta bëni dhe pse ndërrimi i baterisë anullon guarnizën.'),
-        ),
-    ),
-    dict(
-        slug='watch-complications-explained', cat='knowledge',
-        label=dict(en='Watch Knowledge', it='Cultura Orologiera', sq='Kultura e Orëve'),
-        card=dict(
-            en=dict(title='Watch Complications Explained: From Date Windows to Tourbillons',
-                    desc='Date, chronograph, moon phase, GMT and tourbillon - what each complication actually does, why they exist, and how they affect long-term servicing costs and ownership.'),
-            it=dict(title='Complicazioni dell&rsquo;Orologio Spiegate: dal Data al Tourbillon',
-                    desc='Data, cronografo, fase lunare, GMT e tourbillon - cosa fa ogni complicazione, perch&eacute; esiste e come influenza i costi di revisione nel lungo periodo.'),
-            sq=dict(title='Komplikime t&euml; Or&euml;s Shpjeguara: nga Data tek Tourbillon-i',
-                    desc='Data, kronograf, faz&euml; h&euml;nore, GMT dhe tourbillon - &ccedil;far&euml; b&euml;n &ccedil;do komplikim, pse ekziston dhe si ndikon kostot e servisimit afatgjat&euml;.'),
-        ),
-    ),
-    dict(
-        slug='smartwatch-vs-traditional-watch', cat='buying',
-        card=dict(
-            en=dict(title='Smartwatch vs Traditional Watch: Which Should You Buy?',
-                    desc='One charges every night and tracks your heart rate. The other runs on a wound spring and can outlast its owner. An honest comparison from a workshop that repairs both.'),
-            it=dict(title='Smartwatch o Orologio Tradizionale: Quale Comprare?',
-                    desc='Uno si ricarica ogni notte e traccia la frequenza cardiaca. L&rsquo;altro funziona grazie a una molla e pu&ograve; durare pi&ugrave; del suo proprietario. Un confronto onesto da un laboratorio che li ripara entrambi.'),
-            sq=dict(title='Smartwatch apo Or&euml; Tradicionale: Cil&euml;n t&euml; Blesh?',
-                    desc='Njëra ngarkohet çdo natë dhe gjurmon frekuencën kardiake. Tjetra funksionon me sustë dhe mund të zgjasë më shumë se pronari. Krahasim i ndershëm nga laboratori.'),
-        ),
-    ),
-    dict(
-        slug='watch-as-investment-guide', cat='buying',
-        card=dict(
-            en=dict(title='Is a Watch a Good Investment? What to Buy and What to Avoid',
-                    desc='Some watches hold value; fewer actually appreciate; most depreciate. An honest guide to which brands, references, and conditions make a watch worth buying as an investment.'),
-            it=dict(title='L&rsquo;Orologio come Investimento: Cosa Comprare e Cosa Evitare',
-                    desc='Alcuni orologi mantengono il valore; pochi si apprezzano; la maggior parte si deprezza. Una guida onesta su marchi, referenze e condizioni che rendono un orologio un vero investimento.'),
-            sq=dict(title='A Është Ora një Investim i Mirë? Çfarë të Blini dhe Çfarë të Evitoni',
-                    desc='Disa orë ruajnë vlerën; pak rriten; shumica zhvlerësohen. Udhëzues i ndershëm mbi markat, referencat dhe kushtet që e bëjnë një orë investim të vërtetë.'),
-        ),
-    ),
-    dict(
-        slug='watch-types-guide', cat='knowledge',
-        label=dict(en='Watch Knowledge', it='Conoscenza Orologi', sq='Njohuri për Orët'),
-        card=dict(
-            en=dict(title='Watch Types Explained: Divers, Tanks, Pilots and More',
-                    desc='Dive, field, pilot, dress, tank: where each watch type comes from, what it was built to do, and which one fits how you actually live.'),
-            it=dict(title='Tipi di Orologio Spiegati: Subacquei, Tank, Aviatori e Non Solo',
-                    desc='Subacqueo, field, aviatore, elegante, tank: da dove viene ogni tipo di orologio, per cosa &egrave; stato costruito e quale si adatta a come vivi davvero.'),
-            sq=dict(title='Llojet e Or&euml;ve t&euml; Shpjeguara: Zhyt&euml;se, Tank, Pilot&euml; dhe T&euml; Tjer&euml;',
-                    desc='Zhyt&euml;se, field, pilot, elegante, tank: nga vjen secili lloj ore, p&euml;r &ccedil;far&euml; u nd&euml;rtua dhe cili i p&euml;rshtatet m&euml;nyr&euml;s si jetoni vërtet.'),
         ),
     ),
     # CONFLICT seeded en=care it=repair -> using care
@@ -858,42 +683,6 @@ ARTICLES = [
         ),
     ),
     dict(
-        slug='best-budget-watches-durres-under-100', cat='buying',
-        label=dict(en='Watch Buying Guide', it='Guida all’Acquisto', sq='Udhëzues Blerje'),
-        card=dict(
-            en=dict(title='Best Budget Watches in Durrës Under &euro;100',
-                    desc='&euro;100 is enough to buy a reliable, well-finished watch in Durrës - if you know where to look. Honest advice from a watchmaker who services these pieces every day.'),
-            it=dict(title='I Migliori Orologi Economici a Durrës Sotto i 100&euro;',
-                    desc='100&euro; sono sufficienti per un orologio affidabile a Durrës - se sapete dove guardare. Consigli onesti da un orologiaio che revisiona questi pezzi ogni giorno.'),
-            sq=dict(title='Orët më të Mira nën 100&euro; në Durrës',
-                    desc='100&euro; janë të mjaftueshme për orë të besueshme në Durrës - nëse dini ku të shikoni. Këshilla të ndershme nga orëtari që u shërbën këtyre copave çdo ditë.'),
-        ),
-    ),
-    dict(
-        slug='buy-watches-anywhere-albania', cat='buying',
-        label=dict(en='Albania Nationwide', it='Albania Nazionale', sq='E gjithë Shqipëria'),
-        card=dict(
-            en=dict(title='Buy Watches Anywhere in Albania',
-                    desc='Brand-new Daniel Klein from {lo:daniel-klein}, Navimarine from {lo:navimarine} and Hislon from {lo:hislon} - browse the stock online, message us on WhatsApp, and we arrange the rest. Tirana, Vlor&euml;, Shkod&euml;r, Elbasan or anywhere in Albania.'),
-            it=dict(title='Acquista Orologi in Tutta l&rsquo;Albania',
-                    desc='Orologi nuovi Daniel Klein da {lo:daniel-klein}, Navimarine da {lo:navimarine} e Hislon da {lo:hislon} - sfoglia il catalogo online, scrivici su WhatsApp e pensiamo noi al resto. Che tu sia a Tirana, Vlor&euml;, Shkod&euml;r, Elbasan o in qualsiasi altra citt&agrave; d&rsquo;Albania.'),
-            sq=dict(title='Bli Orë në Çdo Qytet të Shqipërisë',
-                    desc='Orë të reja Daniel Klein nga {lo:daniel-klein}, Navimarine nga {lo:navimarine} dhe Hislon nga {lo:hislon} - shfleto stokun online, dërgo mesazh në WhatsApp dhe ne rregullojmë pjesën tjetër. Tiranë, Vlorë, Shkodër, Elbasan apo kudo tjetër në Shqipëri.'),
-        ),
-    ),
-    dict(
-        slug='best-watches-under-200-albania', cat='buying',
-        label=dict(en='Watch Buying Guide', it='Guida all’Acquisto', sq='Udhëzues Blerjeje'),
-        card=dict(
-            en=dict(title='Best Watches Under &euro;200 in Albania',
-                    desc='An honest look at what is worth buying in Albania under &euro;200: everyday quartz, weekend sport watches and steel dress models. From a watchmaker who services these pieces daily.'),
-            it=dict(title='I Migliori Orologi Sotto &euro;200 in Albania',
-                    desc='Una valutazione onesta di ci&ograve; che vale la pena comprare in Albania sotto i &euro;200: orologi al quarzo quotidiani, sportivi da weekend e modelli da abito in acciaio.'),
-            sq=dict(title='Orët më të Mira Nën &euro;200 në Shqipëri',
-                    desc='Vlerësim i sinqertë i asaj që ia vlen të blihet në Shqipëri nën &euro;200: orë kuarci për çdo ditë, sportive për fundjavë dhe modele veshjeje çeliku.'),
-        ),
-    ),
-    dict(
         slug='where-to-buy-watch-durres', cat='buying',
         label=dict(en='Local Guide', it='Guida Locale', sq='Udhëzues Lokal'),
         card=dict(
@@ -918,28 +707,6 @@ ARTICLES = [
         ),
     ),
     dict(
-        slug='quartz-crisis', cat='knowledge',
-        card=dict(
-            en=dict(title='The Quartz Crisis: How a Japanese Chip Almost Destroyed Swiss Watchmaking',
-                    desc='In 1969, Seiko launched a watch more accurate than anything Switzerland had ever made - and far cheaper. What happened next was the near-total collapse of an entire industry.'),
-            it=dict(title='La Crisi al Quarzo: Come un Chip Giapponese Quasi Distrusse l&rsquo;Orologeria Svizzera',
-                    desc='Negli anni &rsquo;70, gli orologi al quarzo giapponesi mandarono in bancarotta centinaia di manifatture svizzere. La storia della crisi che ridisegnò l&rsquo;industria.'),
-            sq=dict(title='Kriza e Kuarcit: Si nj&euml; &Ccedil;ip Japonez Pothuajse Rr&euml;noi Or&euml;b&euml;rjen Zvicerane',
-                    desc='Nga lëshimi i Seiko Astron n&euml; 1969 te shpikja e Swatch - historia e plot&euml; e kolapsit q&euml; riformatoi ind&uuml;strin&euml; globale t&euml; or&euml;ve.'),
-        ),
-    ),
-    dict(
-        slug='watch-repair-tools', cat='knowledge',
-        card=dict(
-            en=dict(title='Watch Repair Tools: What We Use and Why It Matters',
-                    desc="The wrong tool causes more damage than the fault it's trying to fix. Here's what professional watch repair requires - from case back openers to movement holders."),
-            it=dict(title='Gli Strumenti del Maestro Orologiaio: Dal Cacciavite da 0,5 mm al Banco Ultrasuoni',
-                    desc='Pinzette antistatiche, cacciaviti per scappamento, vasche a ultrasuoni - gli strumenti professionali che separano una riparazione corretta da un danno permanente.'),
-            sq=dict(title='Mjetet e Riparimit t&euml; Or&euml;ve: &Ccedil;far&euml; P&euml;rdor Realisht Or&euml;tari dhe Pse',
-                    desc='Hapja e kas&euml;s me mjetin e gabuar g&euml;rvish, prish vul&euml;n e ujit ose d&euml;mton l&euml;vizjen. &Ccedil;do mjet q&euml; p&euml;rdor profesionisti dhe pse ekziston secili.'),
-        ),
-    ),
-    dict(
         slug='watch-magnetisation', cat='care',
         card=dict(
             en=dict(title="Watch Magnetisation: What It Is, What Causes It, and How It's Fixed",
@@ -948,73 +715,6 @@ ARTICLES = [
                     desc='Telefono, chiusura magnetica della borsa, altoparlante - bastano pochi secondi per magnetizzare il bilanciere. Scopri i sintomi e come risolvere il problema.'),
             sq=dict(title='Pse Ora Magnetizohet - dhe Si ta Rregulloni',
                     desc='Ora fiton minuta &ccedil;do dit&euml; pa asnjë arsye? Ka shumë mundësi t&euml; jet&euml; magnetizuar. Diagnoza kërkon sekonda. Rregullimi kërkon n&euml;n nj&euml; minut&euml;.'),
-        ),
-    ),
-    dict(
-        slug='swiss-vs-japanese-movements', cat='knowledge',
-        card=dict(
-            en=dict(title='Swiss vs Japanese Movements: What the Label Actually Tells You',
-                    desc="Swiss Made and Japanese movements represent two philosophies. One trades on heritage; the other on engineering volume. Here's what those labels actually mean at every price tier."),
-            it=dict(title='Movimenti Svizzeri vs Giapponesi: Qual È il Migliore?',
-                    desc='ETA 2824 contro Miyota 9015, Sellita contro NH35 - un confronto tecnico onesto tra i movimenti più usati al mondo senza pubblicità di mezzo.'),
-            sq=dict(title='L&euml;vizjet Zvicerane vs Japoneze: &Ccedil;far&euml; Tregon Etiketa Realisht',
-                    desc='&ldquo;Swiss Made&rdquo; nuk garanton cilësi - garanton origjin&euml;. Ja &ccedil;far&euml; k&euml;rkon etiketa ligjërisht dhe ku japonezja fiton sipas nivelit t&euml; &ccedil;mimit.'),
-        ),
-    ),
-    dict(
-        slug='buying-second-hand-watch', cat='knowledge',
-        card=dict(
-            en=dict(title='Buying a Second-Hand Watch: What to Check Before You Pay',
-                    desc='A second-hand watch is one of the best ways to get quality at a fair price - if you know what to look for. The complete pre-purchase checklist from case to movement.'),
-            it=dict(title='Comprare un Orologio Usato: La Checklist in 7 Passi per Non Sbagliare',
-                    desc='Dalla verifica del numero seriale al test dell&rsquo;impermeabilità, dalla storia delle riparazioni al prezzo di mercato - 7 controlli prima di acquistare un usato.'),
-            sq=dict(title='Si t&euml; Blini Or&euml; Dor&euml; t&euml; Dyt&euml; Pa u Djepur',
-                    desc='&Ccedil;farë t&euml; kontrolloni fizikisht, si t&euml; verifikoni &ccedil;mimin, kur t&euml; k&euml;rkoni inspektim nga or&euml;tar dhe pse refuzimi i shitësit &euml;sht&euml; vet&euml; informacion.'),
-        ),
-    ),
-    dict(
-        slug='watch-case-sizes', cat='knowledge',
-        label=dict(en='Watch Style', it='Stile Orologio', sq='Stili i Orës'),
-        card=dict(
-            en=dict(title='Watch Case Sizes Explained: What Each Number Actually Means',
-                    desc="Diameter is only one of three case measurements. Lug-to-lug distance and thickness matter just as much. How to read a specification, and which numbers we will measure for you."),
-            it=dict(title='Dimensioni della Cassa dell&rsquo;Orologio Spiegate: Cosa Significa Davvero Ogni Numero',
-                    desc='Il diametro è solo una delle tre misure della cassa. La distanza tra le anse e lo spessore contano quanto lui. Come si legge una scheda tecnica, e quali numeri misuriamo noi per te.'),
-            sq=dict(title='P&euml;rmasat e Kas&euml;s s&euml; Or&euml;s t&euml; Shpjeguara: &Ccedil;far&euml; Do t&euml; Thot&euml; V&euml;rtet Secili Num&euml;r',
-                    desc='Diametri &euml;sht&euml; vet&euml;m nj&euml; nga tre matjet e kas&euml;s. Lug-to-lug dhe trash&euml;sia kan&euml; po aq r&euml;nd&euml;si. Si lexohet nj&euml; sked&euml; teknike, dhe cil&euml;t numra i masim ne p&euml;r ju.'),
-        ),
-    ),
-    dict(
-        slug='luminous-dials-explained', cat='knowledge',
-        card=dict(
-            en=dict(title='Luminous Dials Explained: Radium, Tritium, and Super-LumiNova',
-                    desc="Watch dials have glowed in the dark for over a century. The materials used have changed from radioactive radium to modern Super-LumiNova - here's what that means for vintage watches."),
-            it=dict(title='Quadranti Luminosi: Lume, Super-LumiNova e la Storia del Radio Sugli Orologi',
-                    desc='Dalle pittrici del radio alle moderne vernici Super-LumiNova - come funzionano i quadranti che brillano nel buio e perché gli orologi vintage luminosi richiedono cautela.'),
-            sq=dict(title='Lumja e Ciferblatit: Lume, Tritium dhe Pse Ora Shk&euml;lqen n&euml; Err&euml;sir&euml;',
-                    desc='Radium, tritium dhe Super-LumiNova - tre teknologjit&euml; lumineshente, sher&euml; profili i tyre i sigurisë dhe si t&euml; identifikoni &ccedil;far&euml; ka or&euml;t juaj.'),
-        ),
-    ),
-    dict(
-        slug='watch-power-reserve', cat='knowledge',
-        card=dict(
-            en=dict(title='Watch Power Reserve: What It Is and Why It Matters',
-                    desc="An automatic watch winds itself - but not always enough. Understanding power reserve explains why your watch stops overnight and why there's a dangerous window for setting the date."),
-            it=dict(title='Riserva di Carica: Cos&rsquo;è, Come Funziona e Quanto Deve Durare il Tuo Orologio',
-                    desc='38 ore, 72 ore, 8 giorni - cosa significano questi numeri e perché la riserva di carica reale è spesso inferiore a quella dichiarata dal costruttore.'),
-            sq=dict(title='Pse Ora Automatike Ndalet N&euml;se Nuk e Vishni: Rezerva e Energjis&euml;',
-                    desc='Tabela e rezervave t&euml; energjis&euml; sipas llojit t&euml; l&euml;vizjes, pse mbushja automatike nuk &euml;sht&euml; gjithmon&euml; e mjaftueshme dhe si t&euml; rregulloni or&euml;n pas ndalimit.'),
-        ),
-    ),
-    dict(
-        slug='watch-crown-explained', cat='care',
-        card=dict(
-            en=dict(title='The Watch Crown Explained: What Every Position Does and Why It Matters',
-                    desc='The crown is the most-used control on a mechanical watch and the most common entry point for water damage. What each position does and the signs that the crown needs attention.'),
-            it=dict(title='La Corona dell&rsquo;Orologio: Funzioni, Posizioni e Come Non Danneggiarla',
-                    desc='La corona non serve solo a impostare l&rsquo;ora - ha 3 posizioni distinte, protegge l&rsquo;impermeabilità e può causare danni seri se usata male. Tutto quello che devi sapere.'),
-            sq=dict(title='Kurora e Or&euml;s: &Ccedil;far&euml; B&euml;n &Ccedil;do Pozicion dhe Pse R&euml;nd&euml;son',
-                    desc='Tre pozicionet e kuror&euml;s, si funksionon kurora me vid&euml; dhe pse keqp&euml;rdorimi i kuror&euml;s &euml;sht&euml; shkaku kryesor i d&euml;mtimit nga uji q&euml; shohim.'),
         ),
     ),
     dict(
@@ -1041,18 +741,6 @@ ARTICLES = [
         ),
     ),
     dict(
-        slug='watch-occasion-guide', cat='knowledge',
-        label=dict(en='Watch Style', it='Stile Orologio', sq='Stili i Orës'),
-        card=dict(
-            en=dict(title='Dress, Sport &amp; Casual Watches: What to Wear for Every Occasion',
-                    desc='Dress watch for a wedding, sport watch for the gym, diver for weekends - choosing the right watch for the occasion is simpler than you think.'),
-            it=dict(title='Orologi da Cerimonia, Sport e Casual: Cosa Indossare per Ogni Occasione',
-                    desc='Orologio da cerimonia per un matrimonio, sportivo per la palestra, subacqueo per i weekend - scegliere l&rsquo;orologio giusto per l&rsquo;occasione è più semplice di quanto pensi.'),
-            sq=dict(title='Or&euml; Ceremoniale, Sportive &amp; Casual: &Ccedil;far&euml; t&euml; Vishni p&euml;r &Ccedil;do Rast',
-                    desc='Or&euml; ceremoniale p&euml;r nj&euml; dasme, sportive p&euml;r palestr&euml;, zhyt&euml;se p&euml;r fundjavë - zgjed&euml;hja e or&euml;s s&euml; duhur p&euml;r rastin &euml;sht&euml; m&euml; e thjesht&euml; se sa mendoni.'),
-        ),
-    ),
-    dict(
         slug='watch-storage-guide', cat='care',
         label=dict(en='Watch Care', it='Cura Orologio', sq='Kujdesi i Orës'),
         card=dict(
@@ -1062,18 +750,6 @@ ARTICLES = [
                     desc='La conservazione sbagliata danneggia i lubrificanti, magn&eacute;tizza i movimenti e fa spellare i cinturini. Scopri le condizioni ottimali - temperatura, umidit&agrave; e cosa evitare.'),
             sq=dict(title='Si t&euml; Ruani Or&euml;n Tuaj Si&ccedil; Duhet: Udhëzues i Plot&euml;',
                     desc='Ruajtja gabim d&euml;mton lubrifikant&euml;t, magnetizon mekanizmin dhe bën t&euml; rrec&euml;jë rripin. M&euml;soni kushtet optimale - temperatura, lagështia dhe &ccedil;far&euml; t&euml; shmangni.'),
-        ),
-    ),
-    dict(
-        slug='mechanical-vs-quartz', cat='knowledge',
-        label=dict(en='Watch Knowledge', it='Conoscenza Orologi', sq='Njohuri për Orët'),
-        card=dict(
-            en=dict(title='Mechanical vs Quartz Watches: What&rsquo;s the Difference and Which Should You Choose?',
-                    desc='Quartz wins on accuracy and low maintenance. Mechanical wins on craftsmanship and collector value. An honest comparison to help you choose the right watch.'),
-            it=dict(title='Orologi Meccanici vs al Quarzo: Qual &egrave; la Differenza e Quale Scegliere?',
-                    desc='Il quarzo vince in precisione e bassa manutenzione. Il meccanico vince in artigianalit&agrave; e valore da collezione. Un confronto onesto per scegliere l&rsquo;orologio giusto.'),
-            sq=dict(title='Mekanik vs Kuarc: Cili &euml;sht&euml; Ndryshimi dhe Cilin t&euml; Zgjidhni?',
-                    desc='Kuarci fiton n&euml; saktësi dhe mir&euml;mbajtje t&euml; ul&euml;t. Mekaniku fiton n&euml; artizanat dhe vler&euml; koleksioni. Nj&euml; krahasim i nd&euml;rsh&euml;m p&euml;r t&euml; zgjedhur or&euml;n e duhur.'),
         ),
     ),
     dict(

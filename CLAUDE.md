@@ -19,6 +19,16 @@ publishing. Until the owner lifts this, and it overrides the standing brief and 
   the Vlorë, Shkodër and Elbasan city pages, dress, sapphire under 7,000 Lek, Cortébert, the Hislon
   Queen guide, and the friend, father, sibling and Mother's Day gift pages. Do not re-index them,
   re-card them or point new links at them without the owner's decision.
+- **The second pass (2026-10-06) hid twenty more families and merged eight.** Hidden (`noindex,
+  follow`, off the blog index): general watch knowledge and history written for readers who cannot
+  buy here, such as the brand histories, movements, complications, bezels, case sizes, the
+  smartwatch comparison and the investment guide. Merged: each page is now a stub that sends the
+  visitor to the stronger twin. Buy-anywhere goes to cash on delivery; the gift-budget and
+  milestone pages to the birthday gift guide; couples to the wedding gift guide; under 100 and
+  under 200 euro to the Lek and price-tier guides; power reserve to the winding guide; crown
+  explained to crown repair. Every one of the 28 is absent from `blog_index_data.ARTICLES` and its
+  pages carry `noindex`. The same rule applies to them. A merged topic is never published again
+  as a page of its own: add to the survivor instead.
 - **A Search Console day that is three or more days old and still far below trend is not reporting
   lag.** Treat it as real.
 

@@ -64,18 +64,17 @@ NO_ALTERNATES = frozenset({SITE})
 
 # Commercial-intent articles the owner ranks above the rest. Not derivable from
 # blog_index_data.cat: four are buying, three knowledge, one gifts. This set IS
-# the editorial decision.
+# the editorial decision. Eight left it on 2026-10-06 with the second cleanup pass: two
+# went noindex (smartwatch-vs-traditional-watch, watch-as-investment-guide) and six were
+# merged into a survivor that is already listed here.
 COMMERCIAL = frozenset({
     "watch-price-tiers-60-190",
-    "best-watches-under-200-albania",
     "best-watch-gifts-men-albania",
     "best-watch-gifts-women-albania",
     "where-to-buy-watch-durres",
     "hislon-vs-navimarine",
-    "best-budget-watches-durres-under-100",
     "watch-gift-durres-same-day",
     "watch-wedding-gift-albania",
-    "matching-watches-for-couples",
     "graduation-watch-ideas",
     "are-daniel-klein-watches-good",
     "which-navimarine-to-buy",
@@ -87,12 +86,8 @@ COMMERCIAL = frozenset({
     "casio-vs-citizen",
     "seiko-vs-citizen-vs-casio",
     "summer-sea-watch-guide",
-    "smartwatch-vs-traditional-watch",
-    "watch-as-investment-guide",
     "first-watch-teenager",
     "repair-or-buy-new-watch-durres",
-    "how-much-to-spend-on-a-watch-gift",
-    "milestone-birthday-watch-gift",
     "watch-birthday-gift-albania",
     "mens-watches-albania", "womens-watches-albania", "watches-under-10000-lek",
     "chronograph-vs-three-hand-watch", "what-makes-a-watch-look-expensive",
@@ -102,7 +97,7 @@ COMMERCIAL = frozenset({
     "why-buy-from-a-watchmaker", "bigotti-watches-albania",
     "daniel-klein-vs-philippe-lauren", "blue-dial-watches-albania",
     "quartz-watch-accuracy", "first-job-watch", "watch-for-working-hands",
-    "buy-watch-tirana", "buy-watches-anywhere-albania",
+    "buy-watch-tirana",
 })
 
 SECTIONS = ["apex", "home", "static", "shopindex", "brand", "product", "shopinfo",
