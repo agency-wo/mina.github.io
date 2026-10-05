@@ -133,9 +133,22 @@ def card(w, lang):
     return "".join(parts)
 
 
+# [DB-007.h] list_entry — one ItemList element, a Product only when the watch has a price
+# WHY:    Google rejects a Product with none of offers, review or aggregateRating, and a watch
+#         on "price on request" can honestly carry none of them (the reviews are of the shop).
+#         Search Console listed the unpriced Cortebert as an invalid product snippet
+#         (2026-10-06), so an unpriced watch is listed by its page url and name only, the
+#         same way its own product page now describes itself as an ItemPage.
+def list_entry(i, item, w):
+    if w.get("price"):
+        return {"@type": "ListItem", "position": i, "item": item}
+    return {"@type": "ListItem", "position": i, "url": item["url"], "name": item["name"]}
+
+
 # [DB-007.c] itemlist — the ItemList JSON-LD payload, rebuilt from watches.json
-# DOES:   one Product ListItem per UNSOLD watch (sold cards stay visible in HTML but
-#         never in schema); keeps the old block's non-list fields via dict(old).
+# DOES:   one ListItem per UNSOLD watch, a Product when it has a price (list_entry; sold
+#         cards stay visible in HTML but never in schema); keeps the old block's non-list
+#         fields via dict(old).
 def itemlist(lang, old):
     items = []
     for i, w in enumerate([x for x in W if not x.get("sold")], 1):
@@ -180,7 +193,7 @@ def itemlist(lang, old):
                 "seller": {"@type": "Organization", "name": "Iglisi Watch"},
                 "url": f'https://watch.al/{lang}/shop/{w["id"]}.html',
             }
-        items.append({"@type": "ListItem", "position": i, "item": item})
+        items.append(list_entry(i, item, w))
     new = dict(old)
     new["numberOfItems"] = len(items)
     new["itemListElement"] = items
@@ -314,7 +327,7 @@ def build_new_page(lang, src):
             item["offers"] = {"@type": "Offer", "priceCurrency": w.get("currency", "EUR"),
                               "price": str(w["price"]),
                               "availability": "https://schema.org/InStock"}
-        els.append({"@type": "ListItem", "position": i, "item": item})
+        els.append(list_entry(i, item, w))
     ld["mainEntity"] = {"@type": "ItemList", "numberOfItems": len(els), "itemListElement": els}
     blocks = "".join(
         '  <script type="application/ld+json">\n  '

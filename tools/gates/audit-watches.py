@@ -164,20 +164,25 @@ def main():
                 except Exception as e:
                     flag(f"{i} [{lang}]: JSON-LD parse error: {str(e)[:60]}")
                     continue
-                if isinstance(data, dict) and data.get("@type") == "Product":
+                if isinstance(data, dict) and data.get("@type") in ("Product", "ItemPage"):
                     prod = data
+            # A priced watch is a Product; an unpriced one is an ItemPage, because Google
+            # rejects a Product with no offer, review or rating (Search Console, 2026-10-06).
+            want_type = "Product" if w.get("price") else "ItemPage"
             if prod is None:
-                flag(f"{i} [{lang}]: no Product JSON-LD block")
+                flag(f"{i} [{lang}]: no {want_type} JSON-LD block")
                 continue
+            if prod.get("@type") != want_type:
+                flag(f"{i} [{lang}]: JSON-LD is a {prod.get('@type')}, expected {want_type}")
 
             expected_name = f'{w["brand"]} {w["model"]}'.strip()
             if not prod.get("name", "").startswith(expected_name):
                 flag(f"{i} [{lang}]: JSON-LD name {prod.get('name')!r} != {expected_name!r}")
             ref = w.get("reference", "")
-            if ref and prod.get("sku") != ref:
+            if want_type == "Product" and ref and prod.get("sku") != ref:
                 flag(f"{i} [{lang}]: sku {prod.get('sku')!r} != {ref!r}")
-            if not ref and "sku" in prod:
-                flag(f"{i} [{lang}]: sku present but reference empty")
+            if (not ref or want_type == "ItemPage") and "sku" in prod:
+                flag(f"{i} [{lang}]: sku present but {'reference empty' if not ref else 'not a Product'}")
             off = prod.get("offers", {})
             if not prod.get("image", "").endswith(w["image"].rsplit("/", 1)[-1]):
                 flag(f"{i} [{lang}]: JSON-LD image {prod.get('image')!r} != {w['image']!r}")
@@ -237,8 +242,14 @@ def main():
             for li in (node.get("itemListElement") or []):
                 prod = li.get("item", {})
                 off = prod.get("offers")
-                url = (off or {}).get("url", "")
+                url = (off or {}).get("url", "") or li.get("url", "")
                 wid = url.rsplit("/", 1)[-1][:-5] if url.endswith(".html") else ""
+                # And a Product with no Offer is one Google rejects outright: an unpriced
+                # watch is listed by url and name only (gen_shop_index.list_entry).
+                if isinstance(prod, dict) and prod.get("@type") == "Product" and not off \
+                        and not prod.get("review") and not prod.get("aggregateRating"):
+                    flag(f"{wid or prod.get('name')} [{lang}]: shop-index ItemList Product "
+                         f"with no offers, review or rating")
                 if off and str(off.get("price")) in ("0", "None", ""):
                     flag(f"{wid or prod.get('name')} [{lang}]: shop-index ItemList Offer "
                          f"quotes price {off.get('price')!r}")

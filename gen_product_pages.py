@@ -1334,7 +1334,21 @@ for w in watches:
             # missing is how a sold watch would keep advertising InStock.
             if not w.get("price"):
                 assert "offers" not in ld, f"{wid}: unpriced watch still has an Offer"
+                # AN UNPRICED WATCH IS DESCRIBED AS A PAGE, NOT AS A PRODUCT. Google rejects
+                # any Product that has none of offers, review or aggregateRating, and the
+                # only honest one of those here would be a price we do not have: Search
+                # Console listed the three price-on-request Cortebert pages as invalid
+                # product snippets (2026-10-06). The reviews are of the shop and may never
+                # sit on a product (verify-product-pages check 6). ItemPage is schema.org's
+                # "page devoted to a single item"; it keeps name, description and image, so
+                # rewrite_image_refs and the sitemap's image entry still find the picture,
+                # and sheds the fields that only a Product can carry.
+                ld["@type"] = "ItemPage"
+                for k in ("brand", "sku", "mpn", "audience"):
+                    ld.pop(k, None)
+                ld["url"] = f"https://watch.al/{lang}/shop/{wid}.html"
             else:
+                ld["@type"] = "Product"
                 assert isinstance(ld.get("offers"), dict), f"{wid}: Product LD without offers"
                 off = ld["offers"]
                 off["availability"] = ("https://schema.org/OutOfStock" if w.get("sold")

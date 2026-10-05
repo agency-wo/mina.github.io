@@ -231,13 +231,28 @@ def main():
                 # price survived on three. Every field below is either written by this
                 # generator or inherited from a page template that no longer has an owner,
                 # so the gate is now the owner.
-                for k in ("name", "brand", "description", "image"):
+                # A priced watch is a Product. An unpriced one is an ItemPage, because Google
+                # rejects a Product with no offer, review or rating, and a price we do not
+                # have is the only honest way to supply one (Search Console, 2026-10-06). So
+                # the type is checked against the price, and each type has its own fields.
+                want_type = "Product" if w.get("price") else "ItemPage"
+                if d.get("@type") != want_type:
+                    flag(f"{rel}: JSON-LD @type {d.get('@type')!r}, expected {want_type!r}")
+                need = ("name", "brand", "description", "image") if w.get("price") \
+                    else ("name", "description", "image", "url")
+                for k in need:
                     if not d.get(k):
-                        flag(f"{rel}: Product JSON-LD missing {k}")
+                        flag(f"{rel}: {want_type} JSON-LD missing {k}")
+                if not w.get("price"):
+                    for k in ("brand", "sku", "mpn", "audience"):
+                        if k in d:
+                            flag(f"{rel}: ItemPage carries {k}, which only a Product may")
                 # sku and mpn track the reference: both present when there is one, both
                 # absent when there is not. Never the empty string, which claims a part
                 # number that is empty rather than claiming nothing.
                 for k in ("sku", "mpn"):
+                    if not w.get("price"):
+                        continue                     # an ItemPage carries neither (above)
                     if w.get("reference"):
                         if d.get(k) != w["reference"]:
                             flag(f"{rel}: {k}={d.get(k)!r}, expected {w['reference']!r}")
@@ -315,7 +330,10 @@ def main():
                 row = f"<dt>{label}</dt><dd>{values[g]}</dd>"
                 if row not in t:
                     flag(f"{rel}: Details should read {label}: {values[g]}")
-                want_sg = {"men": "male", "women": "female", "unisex": "unisex"}[g]
+                # The audience lives on the Product, so an unpriced watch (an ItemPage, see
+                # check 6) shows who it is for in the Details row only.
+                want_sg = ({"men": "male", "women": "female", "unisex": "unisex"}[g]
+                           if w.get("price") else None)
                 if aud != want_sg:
                     flag(f"{rel}: audience.suggestedGender {aud!r}, expected {want_sg!r}")
             else:

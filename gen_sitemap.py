@@ -211,14 +211,16 @@ def collect():
 
 
 def product_image(d):
-    """[DB-010.f] The Product JSON-LD image, asserted equal to og:image and present on disk."""
+    """[DB-010.f] The Product JSON-LD image, asserted equal to og:image and present on disk.
+    An unpriced watch describes itself as an ItemPage instead of a Product (gen_product_pages,
+    2026-10-06), and its picture belongs in the sitemap all the same."""
     for b in re.findall(r'<script type="application/ld\+json"[^>]*>(.*?)</script>',
                         d["text"], re.S):
         try:
             data = json.loads(b)
         except Exception:
             continue
-        if isinstance(data, dict) and data.get("@type") == "Product":
+        if isinstance(data, dict) and data.get("@type") in ("Product", "ItemPage"):
             img = data["image"]
             # id= sits between property and content on product pages; [^>]* keeps
             # the match inside the one tag.
