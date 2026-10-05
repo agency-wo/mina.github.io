@@ -1711,7 +1711,7 @@ window.WATCHES_DATA = [
     "condition": "New",
     "price": 82,
     "currency": "EUR",
-    "image": "/images/watches/navimarine-nmm1036-col05.webp",
+    "image": "/images/watches/navimarine-nmm1036-col05.552dd37e.webp",
     "sold": false,
     "added": "2026-10-06",
     "styles": [
