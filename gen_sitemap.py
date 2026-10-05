@@ -40,12 +40,17 @@ import json
 import re
 import subprocess
 import sys
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
 SITE = "https://watch.al/"
 TODAY = date.today().isoformat()
+# The latest calendar date anywhere right now (UTC+14), the bound for "in the future". TODAY is
+# the BUILDER's local date and the owner builds in Albania, while the stock-sync runs this file
+# on GitHub in UTC: a page dated just after midnight in Durres is still "tomorrow" there for up
+# to two hours, and asserting against TODAY would crash the sold-flag sync in that window.
+LATEST = (datetime.now(timezone.utc) + timedelta(hours=14)).date().isoformat()
 STATE = BASE / "sitemap_state.json"
 OUT = BASE / "sitemap.xml"
 
@@ -377,7 +382,7 @@ def main():
             dates[u] = prev["lastmod"]                        # unchanged content
         else:
             dates[u] = TODAY                                  # real content change
-        assert dates[u] <= TODAY, f"{u}: lastmod {dates[u]} is in the future"
+        assert dates[u] <= LATEST, f"{u}: lastmod {dates[u]} is in the future"
         state[u] = {"fp": fp, "lastmod": dates[u]}
     for gone in set(state) - set(urls):
         del state[gone]

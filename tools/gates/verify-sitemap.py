@@ -48,7 +48,7 @@ import json
 import re
 import sys
 import xml.etree.ElementTree as ET
-from datetime import date
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -56,8 +56,12 @@ BASE = Path(__file__).resolve().parents[2]
 import corpus  # noqa: E402  - shared read cache, see [PERF-004]
 ROOT = BASE.parent
 SITE = "https://watch.al/"
-TODAY = date.today().isoformat()
-NS = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+# A lastmod is "in the future" only past the latest calendar date anywhere right now (UTC+14).
+# gen_sitemap stamps the BUILDER's local date, and the builder is in Albania while CI runs in
+# UTC: a chain run just after midnight in Durres wrote 2026-10-06 while the runner was still on
+# 10-05, and this gate failed CI on a correct sitemap (2026-10-06, 06d0064).
+LATEST = (datetime.now(timezone.utc) + timedelta(hours=14)).date().isoformat()
+NS ="{http://www.sitemaps.org/schemas/sitemap/0.9}"
 XH = "{http://www.w3.org/1999/xhtml}link"
 IM = "{http://www.google.com/schemas/sitemap-image/1.1}image"
 findings = []
@@ -220,7 +224,7 @@ def main():
         loc, lm = u.find(NS + "loc").text, u.find(NS + "lastmod").text
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", lm):
             flag(f"{loc}: malformed lastmod {lm}")
-        elif lm > TODAY:
+        elif lm > LATEST:
             flag(f"{loc}: lastmod {lm} is in the future")
         if loc not in state:
             flag(f"{loc}: missing from state file")
