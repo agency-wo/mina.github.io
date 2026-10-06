@@ -115,9 +115,19 @@ for _w in watches:
 LANGS = {
     "en": {
         "desc_key": "description_en",
-        # must equal what watch.js builds at runtime (see its `var desc = ...`)
-        "meta_tail": " Available at Iglisi Watch, Durrës, Albania.",
+        # the snippet lead (meta_desc_for): price, town, payment and guarantee come FIRST,
+        # because Google and every chat preview cut near 155 characters, and the old
+        # tail that named the shop and the town started around character 256
+        "desc_lead": "€{eur} ({lek} L) in Durrës, cash on delivery across Albania, 1-year guarantee. ",
+        "desc_lead_por": "Price on request in Durrës, cash on delivery across Albania, 1-year guarantee. ",
+        "desc_lead_sold": "Sold. Ask us in Durrës for a similar watch, with cash on delivery across Albania. ",
         "swiss_desc_prefix": "Swiss watch by {brand}. ",
+        # the descriptor (descriptor()): who it is for, then what kind of watch
+        "dsc_gender": {"men": "Men's", "women": "Women's", "unisex": ""},
+        "dsc_type": {"chronograph": "Chronograph", "moonphase": "Moonphase Watch",
+                     "digital": "Digital Watch", "sport": "Sport Watch", "dress": "Dress Watch"},
+        "dsc_watch": "Watch",
+        "dsc_gender_first": True,
         "back_href": "/en/shop/",
         "back_label": "Back to shop",
         "ref_label": "Ref.",
@@ -163,8 +173,16 @@ LANGS = {
     },
     "it": {
         "desc_key": "description_it",
-        "meta_tail": " Disponibile da Iglisi Watch, Durazzo, Albania.",
+        "desc_lead": "€{eur} ({lek} L) a Durazzo, pagamento alla consegna in tutta l’Albania, garanzia di 1 anno. ",
+        "desc_lead_por": "Prezzo su richiesta a Durazzo, pagamento alla consegna in tutta l’Albania, garanzia di 1 anno. ",
+        "desc_lead_sold": "Venduto. Chiedeteci a Durazzo un orologio simile, con pagamento alla consegna in tutta l’Albania. ",
         "swiss_desc_prefix": "Orologio svizzero {brand}. ",
+        "dsc_gender": {"men": "da Uomo", "women": "da Donna", "unisex": ""},
+        "dsc_type": {"chronograph": "Cronografo", "moonphase": "Orologio con Fasi Lunari",
+                     "digital": "Orologio Digitale", "sport": "Orologio Sportivo",
+                     "dress": "Orologio Elegante"},
+        "dsc_watch": "Orologio",
+        "dsc_gender_first": False,
         "back_href": "/it/shop/",
         "back_label": "Torna al negozio",
         "ref_label": "Rif.",
@@ -210,8 +228,16 @@ LANGS = {
     },
     "sq": {
         "desc_key": "description_sq",
-        "meta_tail": " E disponueshme tek Iglisi Watch, Durrës, Shqipëri.",
+        # SQ leads with Lek, as the visible price on these pages does
+        "desc_lead": "{lek} L (€{eur}) në Durrës, pagesë në dorëzim kudo në Shqipëri, garanci 1 vit. ",
+        "desc_lead_por": "Çmimi me kërkesë në Durrës, pagesë në dorëzim kudo në Shqipëri, garanci 1 vit. ",
+        "desc_lead_sold": "E shitur. Na pyesni në Durrës për një orë të ngjashme, me pagesë në dorëzim kudo në Shqipëri. ",
         "swiss_desc_prefix": "Orë zvicerane {brand}. ",
+        "dsc_gender": {"men": "për Burra", "women": "për Gra", "unisex": ""},
+        "dsc_type": {"chronograph": "Kronograf", "moonphase": "Orë me Fazat e Hënës",
+                     "digital": "Orë Dixhitale", "sport": "Orë Sportive", "dress": "Orë Elegante"},
+        "dsc_watch": "Orë",
+        "dsc_gender_first": False,
         "back_href": "/sq/shop/",
         "back_label": "Kthehu në dyqan",
         "ref_label": "Ref.",
@@ -259,9 +285,14 @@ LANGS = {
 
 
 def title_for(w, lang):
-    """[DB-017.b] Product <title>. MUST stay byte-identical to the string watch.js builds at runtime.
+    """[DB-017.b] Product <title>, also og:title and twitter:title. audit-watches check 9
+    restates this formula on its own, so change both together. (It once had to match a
+    title watch.js rebuilt at runtime; that renderer is gone and nothing rewrites it now.)
     The reference is included only when brand+model is not unique, which is the only
-    thing separating watch-1/3/8 (Hislon Classic) and watch-2/5 (Hislon Classic Queen)."""
+    thing separating watch-1/3/8 (Hislon Classic) and watch-2/5 (Hislon Classic Queen).
+    The descriptor follows the name because 37 of 88 model names were bare codes
+    ("Navimarine NM279-02") that gave a search for a women's or a sport watch nothing to
+    match (2026-10-06)."""
     cfg = LANGS[lang]
     name = f'{w["brand"]} {w["model"]}'.strip()
     ref = w.get("reference", "")
@@ -269,7 +300,7 @@ def title_for(w, lang):
         name += f" {ref}"
     price = w.get("price")
     price_part = f" - €{price}" if price else ""
-    return f'{name}{price_part} | {cfg["title_tail"]}'
+    return f'{name} {descriptor(w, cfg)}{price_part} | {cfg["title_tail"]}'
 
 
 def replace_watch_content(html: str, new_div: str) -> str:
@@ -313,7 +344,9 @@ def build_img_html(w, cfg):
         return ""
     webp = image
     jpg = re.sub(r"\.webp$", ".jpg", image, flags=re.IGNORECASE)
-    alt = f'{w["brand"]} {w["model"]}'
+    # what the picture shows, for image search and screen readers: the name, then the
+    # same descriptor as the title ("Navimarine NM279-02, women's dress watch")
+    alt = f'{w["brand"]} {w["model"]}, {descriptor(w, cfg).lower()}'
     sold = w.get("sold", False)
     badge = "Sold" if sold else w.get("condition", "New")
     # The catalogue's discounts were invisible here: the old renderer injected the
@@ -1205,6 +1238,79 @@ def replace_extra(html: str, new_div: str) -> str:
     return html[:i] + new_div + "\n" + html[i:]
 
 
+# [DB-017.af] descriptor — who the watch is for and what kind it is, in the page's language
+# IN:     a watches.json record and its language's LANGS block
+# OUT:    "Women's Dress Watch" / "Orologio Elegante da Donna" / "Orë Elegante për Gra", or
+#         the plain "Watch" / "Orologio" / "Orë" when nothing applies
+# NOTES:  built only from fields the owner already approved: gender (2026-09-23) and the
+#         style tags, whose chronograph tag audit-watches keeps to bench-verified watches, so
+#         the noun can never reach a lookalike such as the PL2412-8 or the Bigotti
+#         multifunction. Gold-tone is deliberately left out: that tag also covers two-tone
+#         watches. When the model name already says the kind ("Silver Chronograph"), the noun
+#         falls back to the plain word rather than repeating it.
+KIND_ORDER = ("chronograph", "moonphase", "digital", "sport", "dress")
+KIND_IN_NAME = {"chronograph": "chronograph", "moonphase": "moon", "digital": "digital",
+                "sport": "sport", "dress": "dress"}
+
+
+def descriptor(w, cfg):
+    styles = w.get("styles") or []
+    kind = next((k for k in KIND_ORDER if k in styles), None)
+    if kind is None or KIND_IN_NAME[kind] in w.get("model", "").lower():
+        noun = cfg["dsc_watch"]
+    else:
+        noun = cfg["dsc_type"][kind]
+    who = cfg["dsc_gender"].get(w.get("gender"), "")
+    parts = (who, noun) if cfg["dsc_gender_first"] else (noun, who)
+    return " ".join(p for p in parts if p)
+
+
+META_MAX = 158
+
+
+# [DB-017.ag] meta_desc_for — the meta, og and twitter description: a commercial lead, then the
+#             catalogue prose cut to fit
+# NOTES:  audit #24. The old string was the prose plus a tail naming the shop and the town:
+#         204 to 445 characters, so the tail began near character 256 and every search
+#         snippet and chat preview cut it off. The lead now carries price, town, payment and
+#         guarantee inside the first 80 or so characters. Whole sentences of the prose are
+#         kept while they fit; failing that it is cut at a word and closed with an ellipsis.
+#         Never a quote or an ampersand: the caller asserts it.
+def meta_desc_for(w, cfg, lang, raw_desc):
+    # The prose opens with the model's own name when the catalogue text never says it.
+    # Without that, four Italian Philippe Lauren descriptions began with the same words and
+    # shared a price, so two pairs of pages got identical snippets once the text was cut.
+    name = f'{w["brand"]} {w["model"]}'.strip()
+    model = w.get("model", "").strip()
+    if w.get("reference") and DUP_NAMES.get(name, 0) > 1:
+        model += f' {w["reference"]}'
+    named = model.lower() in raw_desc.lower() if model else True
+    prose = ((f"{model}: " if not named else "")
+             + (cfg["swiss_desc_prefix"].format(brand=w["brand"])
+                if w.get("brand") in SWISS_BRANDS else "") + raw_desc).strip()
+    if w.get("sold"):
+        lead = cfg["desc_lead_sold"]
+    elif not w.get("price"):
+        lead = cfg["desc_lead_por"]
+    else:
+        lead = cfg["desc_lead"].format(
+            eur=w["price"], lek=nfmt(lek(w["price"], w.get("currency", "EUR")), lang))
+    budget = META_MAX - len(lead)
+    if len(prose) <= budget:
+        return lead + prose
+    kept = ""
+    for sentence in re.split(r"(?<=[.!?])\s+", prose):
+        trial = f"{kept} {sentence}".strip()
+        if len(trial) > budget:
+            break
+        kept = trial
+    if len(kept) >= budget // 2:
+        return lead + kept
+    cut = prose[:budget - 1]
+    cut = cut[:cut.rfind(" ")].rstrip(" ,;:-")
+    return lead + cut + "…"
+
+
 updated = []
 skipped_missing = []
 unchanged = []
@@ -1266,28 +1372,24 @@ for w in watches:
                           lambda m: m.group(1) + json.dumps(bc, ensure_ascii=False) + m.group(3),
                           new_html, count=1, flags=re.S)
 
-        # <title> + og:title, localized and commercial. Must equal what watch.js
-        # rebuilds at runtime (see title_for), or static and rendered pages disagree.
+        # <title> + og:title, localized and commercial (title_for; audit-watches check 9
+        # restates the formula, so the two change together).
         t = title_for(w, lang)
         new_html = re.sub(r'(<title id="page-title">)[^<]*(</title>)',
                           lambda m: m.group(1) + t + m.group(2), new_html, count=1)
         new_html = re.sub(r'(<meta property="og:title" id="og-title" content=")[^"]*(")',
                           lambda m: m.group(1) + t + m.group(2), new_html, count=1)
 
-        # meta description + og:description + Product JSON-LD description. Same rule as the
-        # title: these are pre-rendered for crawlers and watch.js overwrites them at runtime,
-        # so the static value must equal the runtime one or the two disagree.
+        # meta description + og:description (+ twitter:description further down) come from
+        # meta_desc_for; the Product JSON-LD keeps the full catalogue prose.
         raw_desc = (w.get(cfg["desc_key"]) or w.get("description_en", "")).strip()
-        # The Swiss prefix NAMES THE BRAND, and it has to be the watch's own.
-        # It was the literal "Swiss watch by Hislon." because Hislon was the only
-        # Swiss brand when it was written. The moment Cortébert joined
-        # SWISS_BRANDS (2026-08-25) every Cortébert page told crawlers and every
-        # social preview that the watch was a Hislon: 9 pages, three languages,
-        # wrong brand, and no gate could see it because the sentence was
-        # perfectly well-formed.
-        meta_desc = ((cfg["swiss_desc_prefix"].format(brand=w["brand"])
-                      if w.get("brand") in SWISS_BRANDS else "")
-                     + raw_desc + cfg["meta_tail"])
+        # The Swiss prefix (inside meta_desc_for) NAMES THE BRAND, and it has to be the
+        # watch's own. It was the literal "Swiss watch by Hislon." because Hislon was the
+        # only Swiss brand when it was written. The moment Cortébert joined SWISS_BRANDS
+        # (2026-08-25) every Cortébert page told crawlers and every social preview that the
+        # watch was a Hislon: 9 pages, three languages, wrong brand, and no gate could see it
+        # because the sentence was perfectly well-formed.
+        meta_desc = meta_desc_for(w, cfg, lang, raw_desc)
         assert '"' not in meta_desc and "&" not in meta_desc, f"{wid}: description needs escaping"
         new_html = re.sub(r'(<meta name="description" id="page-desc" content=")[^"]*(")',
                           lambda m: m.group(1) + meta_desc + m.group(2), new_html, count=1)

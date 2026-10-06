@@ -320,6 +320,32 @@ def main():
     # --- 9. product <title> must equal the localized formula built from watches.json
     #        (catches stale prices, un-localized SQ/IT titles, and generator drift) ---
     tails = {"en": "Buy in Durrës, Albania", "it": "Orologi a Durazzo", "sq": "Blej Orë në Durrës"}
+    # The descriptor after the name (2026-10-06): who it is for, then what kind of watch,
+    # from the gender and style fields. Written out here rather than imported, so the gate
+    # can disagree with gen_product_pages.descriptor instead of agreeing by construction.
+    kinds = ("chronograph", "moonphase", "digital", "sport", "dress")
+    in_name = {"chronograph": "chronograph", "moonphase": "moon", "digital": "digital",
+               "sport": "sport", "dress": "dress"}
+    vocab = {
+        "en": ({"men": "Men's", "women": "Women's"}, "Watch", True,
+               {"chronograph": "Chronograph", "moonphase": "Moonphase Watch",
+                "digital": "Digital Watch", "sport": "Sport Watch", "dress": "Dress Watch"}),
+        "it": ({"men": "da Uomo", "women": "da Donna"}, "Orologio", False,
+               {"chronograph": "Cronografo", "moonphase": "Orologio con Fasi Lunari",
+                "digital": "Orologio Digitale", "sport": "Orologio Sportivo",
+                "dress": "Orologio Elegante"}),
+        "sq": ({"men": "për Burra", "women": "për Gra"}, "Orë", False,
+               {"chronograph": "Kronograf", "moonphase": "Orë me Fazat e Hënës",
+                "digital": "Orë Dixhitale", "sport": "Orë Sportive", "dress": "Orë Elegante"}),
+    }
+
+    def described(w, lang):
+        who_map, plain, who_first, nouns = vocab[lang]
+        kind = next((k for k in kinds if k in (w.get("styles") or [])), None)
+        noun = plain if kind is None or in_name[kind] in w.get("model", "").lower() else nouns[kind]
+        who = who_map.get(w.get("gender"), "")
+        return " ".join(p for p in ((who, noun) if who_first else (noun, who)) if p)
+
     names = {}
     for w in j.values():
         n = f'{w["brand"]} {w["model"]}'.strip()
@@ -340,7 +366,7 @@ def main():
             if not m:
                 flag(f"{i} [{lang}]: no <title id=\"page-title\">")
                 continue
-            want = f"{name}{price} | {tails[lang]}"
+            want = f"{name} {described(w, lang)}{price} | {tails[lang]}"
             if m.group(1) != want:
                 flag(f"{i} [{lang}]: title {m.group(1)!r} != {want!r}")
 

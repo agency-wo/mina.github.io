@@ -123,6 +123,7 @@ def main():
         flag(f"only {len(glyphs)} glyphs parsed from shared.css, expected ~64")
 
     pages = 0
+    snippets = {}                 # check 11: decoded meta description -> first page using it
     for lang in LANGS:
         for wid in ids:
             p = BASE / lang / "shop" / f"{wid}.html"
@@ -341,6 +342,31 @@ def main():
                     flag(f"{rel}: a {label} row on a watch with no gender")
                 if aud is not None:
                     flag(f"{rel}: audience on a watch with no gender")
+
+            # 11. the snippet (audit #24, 2026-10-06): the meta description is what a search
+            # result and every chat preview show, and both cut near 155 characters. It must fit,
+            # og:description must say the same, and a priced watch's description must OPEN with
+            # its own price, Lek first on Albanian pages as on the page itself. Before this the
+            # descriptions ran 204 to 445 characters and the shop and town came after the cut.
+            md_raw = re.search(r'<meta name="description" id="page-desc" content="([^"]*)"', t)
+            og = re.search(r'<meta property="og:description" id="og-desc" content="([^"]*)"', t)
+            if md_raw:
+                text = (md_raw.group(1).replace("&amp;", "&").replace("&euml;", "ë")
+                        .replace("&ccedil;", "ç"))
+                if len(text) > 160:
+                    flag(f"{rel}: meta description is {len(text)} characters, over 160")
+                if og and og.group(1) != md_raw.group(1):
+                    flag(f"{rel}: og:description differs from the meta description")
+                if text in snippets:
+                    flag(f"{rel}: same meta description as {snippets[text]}")
+                snippets.setdefault(text, rel)
+                if w.get("price") and not w.get("sold"):
+                    lek_v = int(w["price"] * 92.25 / 100 + 0.5) * 100
+                    want = (f"{nfmt(lek_v, lang)} L (€{w['price']})" if lang == "sq"
+                            else f"€{w['price']} ({nfmt(lek_v, lang)} L)")
+                    if not text.startswith(want):
+                        flag(f"{rel}: meta description should open with {want!r}, "
+                             f"opens {text[:30]!r}")
 
     print(f"\n  {pages} product pages | {len(glyphs)} glyphs in the subset")
     print("PRODUCT PAGE GATE PASS" if not findings else f"{len(findings)} FINDINGS")
