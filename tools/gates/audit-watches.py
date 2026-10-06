@@ -257,6 +257,49 @@ def main():
                     flag(f"{wid} [{lang}]: unpriced watch carries an Offer in the "
                          f"shop-index ItemList")
 
+    # Still group 3: the HOMEPAGE ItemList (audit #27, 2026-10-06). Each homepage carries six
+    # Products with full Offers in hand-written JSON-LD that no generator owns, so the next
+    # sale or reprice among them would keep telling crawlers the old price and InStock from
+    # the site's strongest pages. Each Offer resolves through its url to its watches.json
+    # record and must agree with it, the same comparison as the product pages above.
+    for lang in LANGS:
+        home = BASE / lang / "index.html"
+        if not home.exists():
+            continue
+        for m in re.finditer(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>',
+                             corpus.sig(home), re.S):
+            try:
+                stack = [json.loads(m.group(1))]
+            except ValueError:
+                continue          # group 7 owns unparseable JSON-LD
+            while stack:
+                node = stack.pop()
+                if isinstance(node, list):
+                    stack.extend(node)
+                    continue
+                if not isinstance(node, dict):
+                    continue
+                stack.extend(node.values())
+                off = node.get("offers")
+                if node.get("@type") != "Product" or not isinstance(off, dict):
+                    continue
+                url = off.get("url", "")
+                wid = url.rsplit("/", 1)[-1][:-5] if url.endswith(".html") else ""
+                w = j.get(wid)
+                if not w or w.get("deleted"):
+                    flag(f"{wid or node.get('name')} [{lang}]: homepage Offer for a watch the "
+                         f"catalogue no longer lists")
+                    continue
+                if str(off.get("price")) != str(w.get("price")):
+                    flag(f"{wid} [{lang}]: homepage Offer price {off.get('price')!r} != {w.get('price')}")
+                if off.get("priceCurrency") != w.get("currency", "EUR"):
+                    flag(f"{wid} [{lang}]: homepage Offer currency {off.get('priceCurrency')!r}")
+                want = ("https://schema.org/OutOfStock" if w.get("sold")
+                        else "https://schema.org/InStock")
+                if off.get("availability") != want:
+                    flag(f"{wid} [{lang}]: homepage Offer availability "
+                         f"{off.get('availability')!r}, expected {want!r}")
+
     # --- 4. orphan shop pages (pages without data) ---
     for lang in LANGS:
         for p in sorted((BASE / lang / "shop").glob("*.html")):
