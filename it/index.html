@@ -456,6 +456,69 @@ i.promise-icon,i.faq-icon{display:inline-flex!important;align-items:center;justi
 .hero-trust-pill:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.38); }
 .pill-stars { color: #f5c842; letter-spacing: 1px; font-size: .9rem; }
 
+/* ── HERO WATCHES (2026-10-07) ──────────────────────────────────────────────
+   Two in-stock watches with their prices, never two of the six Featured
+   Timepieces below. audit-watches checks each card's price against
+   watches.json and fails when one of them sells, naming the card to swap.
+   shared.css loads AFTER this block, so every rule that must beat it is
+   written one class stronger rather than with !important.
+   Phone: cards, then the buttons, then the lede, all above the cookie bar on
+   a 390x664 screen. Desktop: text left, cards right. */
+.hero-pair { display: flex; justify-content: center; gap: 1rem; width: 100%; max-width: 26rem; margin: 0 auto 1.25rem; }
+.hero-watch {
+  flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center;
+  text-decoration: none; color: #fff; padding: .75rem .5rem .9rem; border-radius: 1.25rem;
+  background: radial-gradient(ellipse at 50% 42%, rgba(201,169,110,.20), rgba(255,255,255,.03) 62%);
+  border: 1px solid rgba(201,169,110,.28);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+.hero-watch:hover { transform: translateY(-3px); border-color: rgba(201,169,110,.6); }
+.hw-kind { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: #c9a96e; font-weight: 600; }
+.hw-img { height: 150px; display: flex; align-items: center; justify-content: center; margin: .35rem 0 .5rem; }
+.hw-img img { height: 100%; width: auto; filter: drop-shadow(0 10px 18px rgba(0,0,0,.55)); }
+.hw-name { font-size: .8rem; line-height: 1.25; color: #e8e8e8; text-align: center; min-height: 2.5em; }
+.hw-price { margin-top: .3rem; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.35rem; color: #c9a96e; }
+.hw-price small { font-family: Inter, sans-serif; font-size: .72rem; font-weight: 500; color: rgba(255,255,255,.7); }
+@media (max-width: 640px) {
+  section.hero-bg { padding-top: 1.25rem !important; }
+  .hero-bg .hero-content > span:first-child { order: 1; font-size: .72rem; }
+  .hero-bg .hero-content .hero-kicker-line { order: 2; }
+  .hero-bg .hero-content .hero-title { order: 3; font-size: 1.6rem; margin: .6rem 0 .9rem; }
+  .hero-bg .hero-content .hero-pair { order: 4; gap: .75rem; margin-bottom: 1rem; }
+  .hero-bg .hero-content > div.flex { order: 5; }
+  .hero-bg .hero-content > p.text-xl { order: 6; margin: .75rem 0 0; }
+  .hero-bg .hero-content .hero-trust-strip { order: 7; flex-wrap: wrap; overflow: visible; justify-content: center; }
+  .hero-watch { padding: .55rem .4rem .6rem; }
+  .hw-img { height: 96px; margin: .2rem 0 .3rem; }
+  .hw-name { min-height: 0; font-size: .82rem; font-weight: 600; }
+  .hw-model { display: none; }
+  .hw-price { margin-top: .1rem; font-size: 1.25rem; }
+}
+@media (min-width: 1024px) {
+  .hero-bg .hero-content {
+    display: grid; grid-template-columns: 1.15fr .85fr; column-gap: 3rem; align-items: center; text-align: left;
+    grid-template-areas: "eyebrow pair" "line pair" "title pair" "lede pair" "ctas pair" "trust trust";
+  }
+  .hero-bg .hero-content > span:first-child { grid-area: eyebrow; }
+  .hero-bg .hero-content .hero-kicker-line { grid-area: line; margin-left: 0; }
+  .hero-bg .hero-content .hero-title { grid-area: title; font-size: 3.2rem; }
+  .hero-bg .hero-content > p.text-xl { grid-area: lede; margin-left: 0; }
+  .hero-bg .hero-content > div.flex { grid-area: ctas; justify-content: flex-start; }
+  .hero-bg .hero-content .hero-pair { grid-area: pair; max-width: none; margin: 0; gap: 1.25rem; }
+  .hero-bg .hero-content .hero-trust-strip { grid-area: trust; }
+  .hw-img { height: 250px; }
+  .hw-name { font-size: .9rem; }
+}
+
+/* Slim cookie bar on phones (2026-10-07). This page gets the banner pixel.js
+   builds, whose styles are inline, hence !important. Smaller text and tighter
+   padding keep the hero watches and the first button above it on a 390x664 screen. */
+@media (max-width: 640px) {
+  #iglisi-consent { padding: .55rem .9rem calc(.6rem + env(safe-area-inset-bottom,0px)) !important; }
+  #iglisi-consent p { font-size: .74rem !important; line-height: 1.4 !important; margin-bottom: .3rem !important; }
+  #iglisi-consent button { padding: .3rem .8rem !important; font-size: .76rem !important; }
+}
+
 /* ── FAQ LABEL - icon + text alignment ──────────────────────────────────── */
 .faq-q-label {
   display: inline-flex; align-items: center; gap: .55rem;
@@ -1017,9 +1080,9 @@ a.trust-stat-link:hover{transform:translateY(-3px)}
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Orologi in Primo Piano - Iglisi Watch Durazzo",
-    "description": "Orologi nuovi Daniel Klein, Navimarine e Hislon disponibili da Iglisi Watch a Durazzo, Albania.",
+    "description": "Orologi nuovi Daniel Klein, Philippe Lauren, Hislon, Navimarine e Bigotti disponibili da Iglisi Watch a Durazzo, Albania.",
     "url": "https://watch.al/it/shop/",
-    "numberOfItems": 6,
+    "numberOfItems": 8,
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -1188,6 +1251,62 @@ a.trust-stat-link:hover{transform:translateY(-3px)}
             "url": "https://watch.al/it/shop/watch-3.html"
           }
         }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "Product",
+          "name": "Navimarine 001808-color07",
+          "sku": "001808-COL07",
+          "description": "Navimarine 001808 bicolore - orologio in acciaio con lunetta color oro graduata su 24 ore su fondo nero, quadrante nero, indici tondi luminescenti e finestrella data. Una quarta lancetta a freccia legge un secondo fuso orario su quella lunetta. Bracciale jubilee a cinque maglie bicolore, movimento al quarzo.",
+          "brand": {
+            "@type": "Brand",
+            "name": "Navimarine"
+          },
+          "image": "https://watch.al/images/watches/navimarine-001808-col07.webp",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "98",
+            "availability": "https://schema.org/InStock",
+            "priceValidUntil": "2027-12-31",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Iglisi Watch"
+            },
+            "url": "https://watch.al/it/shop/navimarine-001808-col07.html"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "Product",
+          "name": "Bigotti Two Tone Green Crystal",
+          "sku": "BG.1.10615-5",
+          "description": "Orologio da donna Bigotti con cassa in acciaio inossidabile e lunetta color oro con cristalli tutt'intorno. Quadrante verde intenso sunburst con indici a bastone applicati color oro, doppi alle 12, e lancette abbinate, su bracciale in acciaio con maglie centrali color oro. Senza finestrella data.",
+          "brand": {
+            "@type": "Brand",
+            "name": "Bigotti"
+          },
+          "image": "https://watch.al/images/watches/bigotti-bg1-10615-5.webp",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "82",
+            "availability": "https://schema.org/InStock",
+            "priceValidUntil": "2027-12-31",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Iglisi Watch"
+            },
+            "url": "https://watch.al/it/shop/bigotti-bg1-10615-5.html"
+          }
+        }
       }
     ]
   }
@@ -1294,6 +1413,20 @@ a.trust-stat-link:hover{transform:translateY(-3px)}
         <h1 id="hero-heading" class="text-5xl md:text-6xl font-bold mt-4 mb-6 leading-tight hero-title">
           Riparazione Orologi &amp; <span class="gold-display">Orologi da Uomo e Donna</span> a Durazzo
         </h1>
+        <div class="hero-pair">
+          <a class="hero-watch" href="/it/shop/navimarine-001808-col07.html">
+            <span class="hw-kind">Da uomo</span>
+            <span class="hw-img"><img src="/images/watches/navimarine-001808-col07-nobg.webp" srcset="/images/watches/navimarine-001808-col07-nobg-300.webp 195w, /images/watches/navimarine-001808-col07-nobg.webp 390w" sizes="(max-width: 640px) 62px, (max-width: 1023px) 98px, 162px" alt="Navimarine 001808-color07, orologio sportivo da uomo" width="390" height="600" fetchpriority="high"></span>
+            <span class="hw-name"><span class="hw-brand">Navimarine</span> <span class="hw-model">001808-color07</span></span>
+            <span class="hw-price">€98<small> &middot; 9.000 L</small></span>
+          </a>
+          <a class="hero-watch" href="/it/shop/bigotti-bg1-10615-5.html">
+            <span class="hw-kind">Da donna</span>
+            <span class="hw-img"><img src="/images/watches/bigotti-bg1-10615-5-nobg.webp" srcset="/images/watches/bigotti-bg1-10615-5-nobg-300.webp 138w, /images/watches/bigotti-bg1-10615-5-nobg.webp 276w" sizes="(max-width: 640px) 44px, (max-width: 1023px) 69px, 115px" alt="Bigotti Two Tone Green Crystal, orologio elegante da donna" width="276" height="600"></span>
+            <span class="hw-name"><span class="hw-brand">Bigotti</span> <span class="hw-model">Two Tone Green Crystal</span></span>
+            <span class="hw-price">€82<small> &middot; 7.600 L</small></span>
+          </a>
+        </div>
         <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
           Laboratorio artigianale a Durazzo dal 2009. Riparazioni mentre aspetti, orologi nuovi da <span data-stat="lo">€50</span> e ordini su WhatsApp con pagamento alla consegna in tutta l'Albania.
         </p>
@@ -1304,9 +1437,10 @@ a.trust-stat-link:hover{transform:translateY(-3px)}
         </div>
         <div class="hero-trust-strip">
           <a href="https://search.google.com/local/reviews?placeid=ChIJU3JyAljB0RMRdoAB2vYR5oo" target="_blank" rel="noopener noreferrer" class="hero-trust-pill"><span class="pill-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&nbsp;Recensioni Google</a>
-          <span class="hero-trust-pill"><i class="fas fa-clock" aria-hidden="true"></i>&nbsp;Lun&ndash;Sab &middot; 8:30&ndash;20:30</span>
-          <span class="hero-trust-pill"><i class="fas fa-check-circle" aria-hidden="true"></i>&nbsp;Senza Appuntamento</span>
-          <a href="/it/shop/" class="hero-trust-pill"><i class="fas fa-shopping-bag" aria-hidden="true"></i>&nbsp;Orologi da <span data-stat="lo">€50</span></a>
+          <span class="hero-trust-pill"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>&nbsp;Consegna gratuita in Albania</span>
+          <span class="hero-trust-pill"><i class="fas fa-euro-sign" aria-hidden="true"></i>&nbsp;Pagamento alla consegna</span>
+          <span class="hero-trust-pill"><i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;30 giorni per il reso</span>
+          <span class="hero-trust-pill"><i class="fas fa-shield-alt" aria-hidden="true"></i>&nbsp;Garanzia di 1 anno</span>
         </div>
       </div>
     </section>

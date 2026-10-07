@@ -3,7 +3,8 @@
 DOES:   ten numbered check groups over watches.json <-> watches-data.js <-> the
         three product pages <-> sitemap.xml <-> the image files. 1 id sets match,
         2 field-by-field drift between the two data files, 3 per-watch images +
-        hreflang + Product JSON-LD + og:price + exactly 3 sitemap locs, 4 orphan
+        hreflang + Product JSON-LD + og:price + exactly 3 sitemap locs, plus the
+        homepage ItemList and the price on every homepage card, 4 orphan
         shop pages, 5 orphan images, 6 shop.js parses, 7 sitewide JSON-LD parses,
         8 one watches-data.js ?v= sitewide, 9 the localized <title> formula, 10
         brand landing pages still in sync with stock.
@@ -299,6 +300,49 @@ def main():
                 if off.get("availability") != want:
                     flag(f"{wid} [{lang}]: homepage Offer availability "
                          f"{off.get('availability')!r}, expected {want!r}")
+
+    # Still group 3: the homepage CARDS a visitor reads (2026-10-07). The two hero watches and
+    # the six Featured Timepieces print their price as typed text, "€98 · 9,000 L", in pages
+    # no generator owns. verify-stats check E proves such a pair is arithmetically true and is
+    # SOME catalogue price; this proves it is THAT watch's price. A hero watch must also be
+    # priced and unsold, since it is the first product a visitor sees, and never one of the
+    # featured six (owner, 2026-10-07: eight different watches on the homepage).
+    sys.path.insert(0, str(BASE))
+    from catalog_stats import nfmt
+    for lang in LANGS:
+        home = BASE / lang / "index.html"
+        if not home.exists():
+            continue
+        html = corpus.sig(home)
+        cards = [("hero", m.group(0)) for m in
+                 re.finditer(r'<a class="hero-watch".*?</a>', html, re.S)]
+        cards += [("featured", m.group(0)) for m in
+                  re.finditer(r'<article class="watch-card">.*?</article>', html, re.S)]
+        seen = {"hero": set(), "featured": set()}
+        for kind, block in cards:
+            href = re.search(r'href="/' + lang + r'/shop/([a-z0-9-]+)\.html"', block)
+            wid = href.group(1) if href else None
+            w = j.get(wid)
+            if not w or w.get("deleted"):
+                flag(f"{lang}/index.html: {kind} card links {wid!r}, which the catalogue "
+                     f"does not list")
+                continue
+            seen[kind].add(wid)
+            got = re.search(r'€(\d+)<(?:small|span)[^>]*> &middot; ([\d.,]+) L<', block)
+            want = f"€{w.get('price')} · {nfmt(lek(w.get('price')), lang)} L"
+            if not got:
+                flag(f"{lang}/index.html: {kind} card for {wid} has no price line; "
+                     f"expected {want!r}")
+            elif f"€{got.group(1)} · {got.group(2)} L" != want:
+                flag(f"{lang}/index.html: {kind} card for {wid} says "
+                     f"'€{got.group(1)} · {got.group(2)} L', catalogue says {want!r}")
+            if kind == "hero" and (w.get("sold") or not w.get("price")):
+                flag(f"{lang}/index.html: hero card shows {wid}, which is "
+                     f"{'sold' if w.get('sold') else 'unpriced'}. Swap in an in-stock "
+                     f"watch that is not one of the featured six")
+        for wid in sorted(seen["hero"] & seen["featured"]):
+            flag(f"{lang}/index.html: {wid} is in the hero AND the featured grid; the hero "
+                 f"shows two watches the grid does not")
 
     # --- 4. orphan shop pages (pages without data) ---
     for lang in LANGS:
