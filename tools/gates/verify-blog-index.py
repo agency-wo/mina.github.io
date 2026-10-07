@@ -313,6 +313,21 @@ def main():
         if "blog-search.js?v=3" not in t or "blog-search.js?v=2" in t:
             flag(f"{lang}: blog-search version wrong")
 
+    # 12. a translated article links into its own language (2026-10-07). The
+    #     language switcher's EN / IT / SQ links are the one exception. 12
+    #     "related reading" links on 8 Italian and Albanian articles carried a
+    #     translated title and an English href, so a reader left the language
+    #     mid-page and the page sent its link weight to the wrong twin.
+    for lang in ("it", "sq"):
+        for p in sorted((BASE / lang / "blog").glob("*.html")):
+            t = corpus.sig(p)
+            for href, other, text in re.findall(
+                    r'<a href="(/(en|it|sq)/[^"]*)"[^>]*>(.*?)</a>', t, re.S):
+                label = re.sub(r"<[^>]+>", "", text).strip()
+                if other != lang and label not in ("EN", "IT", "SQ"):
+                    flag(f"{lang}/blog/{p.name}: links {href} ({label[:40]!r}), "
+                         f"another language's page; link the {lang} twin")
+
     print(f"\n{'BLOG INDEX GATE PASS' if not findings else f'{len(findings)} FINDINGS'}")
     sys.exit(1 if findings else 0)
 
