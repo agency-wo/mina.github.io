@@ -1653,7 +1653,7 @@ window.WATCHES_DATA = [
     "price": 82,
     "currency": "EUR",
     "image": "/images/watches/bigotti-bg1-10615-2.webp",
-    "sold": false,
+    "sold": true,
     "added": "2026-10-06",
     "styles": [
       "dress"

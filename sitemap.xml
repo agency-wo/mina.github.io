@@ -6,7 +6,7 @@
   <!-- ──────────── SITE ROOT ──────────── -->
   <url>
     <loc>https://watch.al/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,7 +15,7 @@
   <!--  -->
   <url>
     <loc>https://watch.al/en/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/"/>
@@ -25,7 +25,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/"/>
@@ -35,7 +35,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/"/>
@@ -143,7 +143,7 @@
   <!-- shop/ -->
   <url>
     <loc>https://watch.al/en/shop/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/"/>
@@ -153,7 +153,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/shop/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/"/>
@@ -163,7 +163,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/shop/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/"/>
@@ -176,7 +176,7 @@
   <!-- shop/brand/bigotti.html -->
   <url>
     <loc>https://watch.al/en/shop/brand/bigotti.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/brand/bigotti.html"/>
@@ -186,7 +186,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/shop/brand/bigotti.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/brand/bigotti.html"/>
@@ -196,7 +196,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/shop/brand/bigotti.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/brand/bigotti.html"/>
@@ -3168,7 +3168,7 @@
   <!-- shop/bigotti-bg1-10476-1.html - Bigotti Steel Sunburst -->
   <url>
     <loc>https://watch.al/en/shop/bigotti-bg1-10476-1.html</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/bigotti-bg1-10476-1.html"/>
@@ -3181,7 +3181,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/shop/bigotti-bg1-10476-1.html</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/bigotti-bg1-10476-1.html"/>
@@ -3194,7 +3194,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/shop/bigotti-bg1-10476-1.html</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/bigotti-bg1-10476-1.html"/>
@@ -3848,7 +3848,7 @@
   <!-- shop/bigotti-bg1-10615-2.html - Bigotti Steel Peach Crystal -->
   <url>
     <loc>https://watch.al/en/shop/bigotti-bg1-10615-2.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/bigotti-bg1-10615-2.html"/>
@@ -3861,7 +3861,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/shop/bigotti-bg1-10615-2.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/bigotti-bg1-10615-2.html"/>
@@ -3874,7 +3874,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/shop/bigotti-bg1-10615-2.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/bigotti-bg1-10615-2.html"/>
@@ -4041,7 +4041,7 @@
   <!-- shop/new.html -->
   <url>
     <loc>https://watch.al/en/shop/new.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/new.html"/>
@@ -4051,7 +4051,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/shop/new.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/new.html"/>
@@ -4061,7 +4061,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/shop/new.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/shop/new.html"/>
@@ -4388,7 +4388,7 @@
   <!-- blog/bigotti-watches-albania.html -->
   <url>
     <loc>https://watch.al/en/blog/bigotti-watches-albania.html</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/bigotti-watches-albania.html"/>
@@ -4398,7 +4398,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/orologi-bigotti-albania.html</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/bigotti-watches-albania.html"/>
@@ -4408,7 +4408,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/ore-bigotti-shqiperi.html</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/bigotti-watches-albania.html"/>
@@ -6372,7 +6372,7 @@
   <!-- blog/womens-watches-albania.html -->
   <url>
     <loc>https://watch.al/en/blog/womens-watches-albania.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/womens-watches-albania.html"/>
@@ -6382,7 +6382,7 @@
   </url>
   <url>
     <loc>https://watch.al/it/blog/orologi-donna-albania.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/womens-watches-albania.html"/>
@@ -6392,7 +6392,7 @@
   </url>
   <url>
     <loc>https://watch.al/sq/blog/ore-per-femra-shqiperi.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://watch.al/en/blog/womens-watches-albania.html"/>
