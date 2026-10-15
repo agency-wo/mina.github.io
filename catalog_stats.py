@@ -76,6 +76,18 @@ def nfmt(v, lang):
     return f"{v:,}".replace(",", SEP[lang])
 
 
+def pct_off(price, original):
+    """[DB-013.h] The sale percentage a watch's badge prints, half-up like lek().
+
+    One definition for the shop card, the product page and the meta description, mirrored by
+    pctOff() in the three shop.js. It was a typed "-10%" on every shop card until 2026-10-15,
+    true only for the one discounted watch there was, so a 30%-off Lorus would have shown 10.
+    Python's round() is banker's: at an exact half it would part ways with Math.floor(x + 0.5)
+    in the browser, and the static card and the repainted one would disagree.
+    """
+    return int((original - price) * 100 / original + 0.5)
+
+
 # [DB-013.c] slugify — brand display name -> the slug used in tokens and URLs
 def slugify(brand):
     # Accents are FOLDED, not kept. Every brand was ASCII until Cortébert

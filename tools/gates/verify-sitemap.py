@@ -198,7 +198,13 @@ def main():
     # derived, never typed: one image entry per live product per language. This
     # was hardcoded to 171 and would have failed the day a watch was added, which
     # is the whole class the owner asked us to close.
-    want_imgs = 3 * len([w for w in watches if not w.get("sold") and not w.get("deleted")])
+    # "Live" is every watch with a page, which is `ids`. A SOLD watch keeps its page,
+    # its three <loc> blocks and so its picture: it stays on show with its badge
+    # ([DB-006]). Only a retired one leaves. This counted unsold watches instead, and
+    # failed the first time the stock-sync marked one sold (bigotti-bg1-10615-2,
+    # d2d3b29, 2026-10-14: 264 entries against 261), unseen because the bot's own
+    # commits do not run the gates.
+    want_imgs = 3 * len(ids)
     if len(imgs) != want_imgs:
         flag(f"{len(imgs)} image entries != {want_imgs} (3 per live product)")
     for loc, img in imgs:

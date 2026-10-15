@@ -1721,5 +1721,25 @@
     "description_en": "Navimarine NMM1036 - a steel sport watch with a black 24-hour bezel in a gold-tone coin-edge ring, a grey sunburst dial, large luminous round markers and a date window at 3. Five-link jubilee bracelet in steel, quartz movement, and 5 ATM stated on the dial.",
     "description_it": "Navimarine NMM1036 - orologio sportivo in acciaio con lunetta nera graduata su 24 ore in un anello zigrinato color oro, quadrante grigio sunburst, grandi indici tondi luminescenti e finestrella data alle 3. Bracciale jubilee in acciaio a cinque maglie, movimento al quarzo e 5 ATM dichiarati sul quadrante.",
     "description_sq": "Navimarine NMM1036 - orë sportive prej çeliku me lunetë të zezë me numra 24-orësh në një unazë të dhëmbëzuar ngjyrë ari, ciferblat gri sunburst, tregues të mëdhenj të rrumbullakët ndriçues dhe dritare date në orën 3. Byzylyk jubilee çeliku me pesë hallka, mekanizëm kuarci dhe 5 ATM të deklaruara në ciferblat."
+  },
+  {
+    "id": "lorus-steel-black-dial",
+    "brand": "Lorus",
+    "model": "Steel Black Dial",
+    "reference": "",
+    "condition": "New",
+    "price": 77,
+    "originalPrice": 110,
+    "currency": "EUR",
+    "image": "/images/watches/lorus-steel-black-dial.webp",
+    "sold": false,
+    "added": "2026-10-15",
+    "styles": [
+      "dress"
+    ],
+    "gender": "men",
+    "description_en": "Lorus Steel Black Dial - a men's dress watch in steel with a black dial, applied Arabic 12 and 6, faceted baton indices and a minute track around the edge. Polished faceted hands, a date window at 3 and quartz movement, on a brushed and polished steel link bracelet. A classic black dial for the office or the weekend.",
+    "description_it": "Lorus Steel Black Dial - orologio da abito da uomo in acciaio con quadrante nero, numeri arabi applicati a ore 12 e 6, indici a bastone sfaccettati e scala dei minuti sul bordo. Lancette lucide sfaccettate, finestrella data a ore 3 e movimento al quarzo, su bracciale a maglie in acciaio satinato e lucido. Un quadrante nero classico per l'ufficio o per il fine settimana.",
+    "description_sq": "Lorus Steel Black Dial - orë veshjeje për burra në çelik me ciferblat të zi, numra arabë të aplikuar në orën 12 dhe 6, tregues të fasetuar dhe shkallë minutash në buzë. Akrepa të lëmuar e të fasetuar, dritare date në orën 3 dhe mekanizëm kuarci, mbi byzylyk çeliku me hallka mat dhe të lëmuara. Një ciferblat i zi klasik për zyrë ose për fundjavë."
   }
 ]

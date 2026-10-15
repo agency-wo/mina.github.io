@@ -20,6 +20,9 @@
 //         The stock merge is capped at 4s by Promise.race on purpose: a hung,
 //         blackholed route neither resolves nor rejects, and an optional feed
 //         must never hold the chips, search and sort hostage. See [UI-002].
+//         "On sale" (owner, 2026-10-15) is a pseudo-style in #styleChips, present only while
+//         a watch has an originalPrice above its price. hasSale() and pctOff() mirror the
+//         static card's test and catalog_stats.pct_off, so a -N% badge is one number twice.
 //         The three copies are NOT identical: 269, 195 and 199 lines of code in
 //         en, it and sq before these headers went in. All three carry the
 //         dual-handle price slider (bounds derived from the catalogue, 5-euro snap)
@@ -40,6 +43,7 @@
   var STYLE_ORDER = ['chronograph','dress','sport','digital','gold-tone','moonphase'];
   var STYLE_ALL_LABEL = 'Të gjitha stilet';
   var STYLE_LABELS = {'chronograph':'Kronograf','dress':'Veshjeje','sport':'Sportive','digital':'Dixhitale','gold-tone':'Ngjyrë ari','moonphase':'Fazat e hënës'};
+  var SALE_LABEL = 'Me zbritje';
   var currentMinPrice = 50;
   var currentMaxPrice = 200;
   // seeded only; the real bounds are derived from WATCHES below
@@ -245,6 +249,12 @@
 
   // styleChips mirrors initBrandChips: data-driven, so a style appears the
   // moment a watch in watches.json carries it, and vanishes when none does.
+  // A sale is an originalPrice above the price (owner, 2026-10-15); the static card asks the
+  // same question in gen_shop_index.card(). pctOff is catalog_stats.pct_off: half-up, as
+  // Math.floor(x + 0.5), because Python's round() is banker's and the two would part at .5.
+  function hasSale(w){ return !!w.price && w.originalPrice > w.price; }
+  function pctOff(w){ return Math.floor((w.originalPrice - w.price) * 100 / w.originalPrice + 0.5); }
+
   function initStyleChips(WATCHES){
     var wrap = document.getElementById('styleChips');
     if(!wrap) return;
@@ -253,6 +263,10 @@
     });
     if(!present.length) return;
     var html = ['<button class="filter-chip active" aria-pressed="true" data-style="all">' + STYLE_ALL_LABEL + '</button>'];
+    // "On sale" leads the categories while anything is discounted, and is gone when nothing is
+    if(WATCHES.some(function(w){ return !w.deleted && !w.sold && hasSale(w); })){
+      html.push('<button class="filter-chip" data-style="sale">' + SALE_LABEL + '</button>');
+    }
     present.forEach(function(s){
       html.push('<button class="filter-chip" data-style="' + s + '">' + (STYLE_LABELS[s]||s) + '</button>');
     });
@@ -336,7 +350,9 @@
       filtered = filtered.filter(function(w){ return w.brand === currentBrand; });
     }
 
-    if(currentStyle !== 'all'){
+    if(currentStyle === 'sale'){
+      filtered = filtered.filter(function(w){ return !w.sold && hasSale(w); });
+    } else if(currentStyle !== 'all'){
       filtered = filtered.filter(function(w){ return (w.styles||[]).indexOf(currentStyle) !== -1; });
     }
 
@@ -472,7 +488,7 @@
     return '<article class="watch-card' + (w.sold?' sold-card':'') + '">'
       + '<div class="watch-card-img">' + imgHtml + soldOverlay
       + '<span class="watch-badge">' + cond + '</span>'
-      + (w.originalPrice ? '<span class="sale-badge">−10%</span>' : '')
+      + (hasSale(w) ? '<span class="sale-badge">−' + pctOff(w) + '%</span>' : '')
       + '</div>'
       + '<div class="watch-card-body">'
       + '<p class="watch-brand">' + w.brand + (SWISS_BRANDS.indexOf(w.brand) !== -1 ? '<span style="font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:#8a9abf;font-weight:500;margin-left:.4rem;vertical-align:middle">Swiss</span>' : '') + '</p>'
@@ -482,7 +498,7 @@
       + '<div class="watch-card-footer">'
       + '<div>'
       + '<p class="watch-price">' + /* LEK_FIRST: Albanian customers judge the Lek figure */ (lekVal(w.price,w.currency) ? group(lekVal(w.price,w.currency)) + ' L<span style="font-size:.78rem;color:#888;font-weight:400"> · ' + fmt(w.price,w.currency) + '</span>' : fmt(w.price, w.currency)) + '</p>'
-      + (w.originalPrice ? '<p class="was-price-line">Was ' + (w.currency==='EUR'?'\u20ac':w.currency) + w.originalPrice + '</p>' : '')
+      + (hasSale(w) ? '<p class="was-price-line">Më parë ' + (w.currency==='EUR'?'\u20ac':w.currency) + w.originalPrice + '</p>' : '')
       + '</div>'
       + '<a href="https://instagram.com/iglisiwatch" target="_blank" rel="noopener noreferrer" class="watch-ig-link" aria-label="Shiko n\u00eb Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>'
       + ctaHtml

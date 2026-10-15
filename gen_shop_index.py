@@ -105,9 +105,14 @@ def card(w, lang):
     swiss_tag = ('<span style="font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;'
                  'color:#8a9abf;font-weight:500;margin-left:.4rem;vertical-align:middle">Swiss</span>'
                  ) if w["brand"] in SWISS_BRANDS else ""
-    sale = '<span class="sale-badge">\u221210%</span>' if w.get("originalPrice") else ""
-    was = (f'<p class="was-price-line">{t["was"]}\u20ac{w["originalPrice"]}</p>'
-           if w.get("originalPrice") else "")
+    # A sale is an originalPrice ABOVE the price. The badge was a typed "-10%" on every card,
+    # right only for the one discounted watch there was; pct_off is the one definition, and
+    # shop.js's pctOff() mirrors it.
+    op = w.get("originalPrice")
+    on_sale = bool(op and w.get("price") and op > w["price"])
+    sale = (f'<span class="sale-badge">\u2212{catalog_stats.pct_off(w["price"], op)}%</span>'
+            if on_sale else "")
+    was = f'<p class="was-price-line">{t["was"]}\u20ac{op}</p>' if on_sale else ""
     # SQ leads with Lek; mirrored by shop.js. Single definition in shop_bits.
     price = card_price_html(w["price"], w.get("currency"), lang)
     sold_cls = " sold-card" if w.get("sold") else ""

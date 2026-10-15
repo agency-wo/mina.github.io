@@ -24,7 +24,7 @@ from datetime import date
 import urllib.parse
 from pathlib import Path
 
-from catalog_stats import REVIEWS, lek, nfmt
+from catalog_stats import REVIEWS, lek, nfmt, pct_off
 from contact import phone  # [CFG-010] en/it reach the owner, sq reaches his father
 from shop_bits import (PRICE_ON_REQUEST, SWISS_BRANDS, crumb_html, crumb_jsonld,
                        CRUMB_CSS, open_now_html,
@@ -119,6 +119,9 @@ LANGS = {
         # because Google and every chat preview cut near 155 characters, and the old
         # tail that named the shop and the town started around character 256
         "desc_lead": "€{eur} ({lek} L) in Durrës, cash on delivery across Albania, 1-year guarantee. ",
+        # A watch on sale says so in the snippet and in every WhatsApp or Facebook preview,
+        # still opening with its own price (verify-product-pages check 11)
+        "desc_lead_sale": "€{eur} ({lek} L), {pct}% off, in Durrës, cash on delivery across Albania, 1-year guarantee. ",
         "desc_lead_por": "Price on request in Durrës, cash on delivery across Albania, 1-year guarantee. ",
         "desc_lead_sold": "Sold. Ask us in Durrës for a similar watch, with cash on delivery across Albania. ",
         "swiss_desc_prefix": "Swiss watch by {brand}. ",
@@ -174,6 +177,7 @@ LANGS = {
     "it": {
         "desc_key": "description_it",
         "desc_lead": "€{eur} ({lek} L) a Durazzo, pagamento alla consegna in tutta l’Albania, garanzia di 1 anno. ",
+        "desc_lead_sale": "€{eur} ({lek} L), sconto del {pct}%, a Durazzo, pagamento alla consegna in tutta l’Albania, garanzia di 1 anno. ",
         "desc_lead_por": "Prezzo su richiesta a Durazzo, pagamento alla consegna in tutta l’Albania, garanzia di 1 anno. ",
         "desc_lead_sold": "Venduto. Chiedeteci a Durazzo un orologio simile, con pagamento alla consegna in tutta l’Albania. ",
         "swiss_desc_prefix": "Orologio svizzero {brand}. ",
@@ -230,6 +234,7 @@ LANGS = {
         "desc_key": "description_sq",
         # SQ leads with Lek, as the visible price on these pages does
         "desc_lead": "{lek} L (€{eur}) në Durrës, pagesë në dorëzim kudo në Shqipëri, garanci 1 vit. ",
+        "desc_lead_sale": "{lek} L (€{eur}), me {pct}% zbritje, në Durrës, pagesë në dorëzim kudo në Shqipëri, garanci 1 vit. ",
         "desc_lead_por": "Çmimi me kërkesë në Durrës, pagesë në dorëzim kudo në Shqipëri, garanci 1 vit. ",
         "desc_lead_sold": "E shitur. Na pyesni në Durrës për një orë të ngjashme, me pagesë në dorëzim kudo në Shqipëri. ",
         "swiss_desc_prefix": "Orë zvicerane {brand}. ",
@@ -355,7 +360,7 @@ def build_img_html(w, cfg):
     sale = ""
     op, p = w.get("originalPrice"), w.get("price")
     if op and p and op > p:
-        sale = f'<span class="sale-badge">-{round((op - p) / op * 100)}%</span>'
+        sale = f'<span class="sale-badge">-{pct_off(p, op)}%</span>'
     return (
         f'<div class="watch-img-wrap">'
         f"<picture>"
@@ -570,7 +575,11 @@ PDP_CSS = "<style id=\"pdp-css\">" + (
     ".pdp-rating .stars{color:var(--accent-gold,#b4945c);letter-spacing:.5px}"
     ".pdp-rating:hover{border-color:var(--accent-gold,#b4945c)}"
     ".was-price-pg{font-size:.9rem;color:#aaa;text-decoration:line-through;margin:0}"
-    ".sale-badge{position:absolute;top:1.15rem;right:-2.1rem;width:7.5rem;text-align:center;"
+    # left:auto and border-radius:0 undo shared.css's .sale-badge, a pill pinned top-LEFT for
+    # the shop cards. Without them left won over right and this ribbon sat across the condition
+    # badge, which is top-left here (seen 2026-10-15 on the 30%-off Lorus; watch-3 had it too).
+    ".sale-badge{position:absolute;top:1.15rem;right:-2.1rem;left:auto;width:7.5rem;text-align:center;"
+    "border-radius:0;"
     "background:var(--btn-start,#06153b);color:var(--accent-gold,#b4945c);font-size:.62rem;"
     "font-weight:700;letter-spacing:.12em;padding:.32rem 0;transform:rotate(45deg);z-index:3;"
     "box-shadow:0 2px 8px rgba(0,0,0,.28)}"
@@ -1293,8 +1302,11 @@ def meta_desc_for(w, cfg, lang, raw_desc):
     elif not w.get("price"):
         lead = cfg["desc_lead_por"]
     else:
-        lead = cfg["desc_lead"].format(
-            eur=w["price"], lek=nfmt(lek(w["price"], w.get("currency", "EUR")), lang))
+        op = w.get("originalPrice")
+        on_sale = bool(op and op > w["price"])
+        lead = cfg["desc_lead_sale" if on_sale else "desc_lead"].format(
+            eur=w["price"], lek=nfmt(lek(w["price"], w.get("currency", "EUR")), lang),
+            pct=pct_off(w["price"], op) if on_sale else 0)
     budget = META_MAX - len(lead)
     if len(prose) <= budget:
         return lead + prose
@@ -1473,11 +1485,25 @@ for w in watches:
                 # page that already carries the field, so a re-run changes nothing and says so
                 # cheerfully. Derived here, it cannot expire and cannot drift.
                 off["priceValidUntil"] = f"{date.today().year + 1}-12-31"
-                for spec in off.get("priceSpecification", []):
+                # THE REGULAR PRICE OF A SALE is derived the same way (2026-10-15): rebuilt from
+                # originalPrice on every run, so it is gone the run after a sale ends. Google
+                # reads it from a UnitPriceSpecification whose priceType is StrikethroughPrice,
+                # the active price carrying no priceType at all (merchant listing docs). It is
+                # set aside before the loop below, which would otherwise overwrite it with the
+                # sale price for being a EUR spec.
+                specs = [s for s in off.get("priceSpecification", []) if not s.get("priceType")]
+                for spec in specs:
                     if spec.get("priceCurrency") == "ALL":
                         spec["price"] = str(lek(w["price"], w.get("currency", "EUR")))
                     elif spec.get("priceCurrency") == "EUR":
                         spec["price"] = str(w["price"])
+                op = w.get("originalPrice")
+                if op and op > w["price"]:
+                    specs.append({"@type": "UnitPriceSpecification",
+                                  "priceType": "https://schema.org/StrikethroughPrice",
+                                  "price": str(op), "priceCurrency": w.get("currency", "EUR")})
+                if "priceSpecification" in off or specs:
+                    off["priceSpecification"] = specs
                 if policy is not None:
                     off["hasMerchantReturnPolicy"] = policy
             return m.group(1) + json.dumps(ld, ensure_ascii=False, separators=(",", ":")) + m.group(3)

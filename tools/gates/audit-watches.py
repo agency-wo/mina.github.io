@@ -206,6 +206,16 @@ def main():
                     if p.get("priceCurrency") == "ALL"]
             if alls and str(alls[0]) != str(lek(w["price"])):
                 flag(f"{i} [{lang}]: ALL price {alls[0]!r} != {lek(w['price'])}")
+            # A sale's regular price (2026-10-15): exactly one StrikethroughPrice, equal to
+            # originalPrice, while the watch is on sale, and none otherwise. Google shows it
+            # struck through beside the price, so a stale one advertises a discount that ended.
+            strikes = [p for p in off.get("priceSpecification", [])
+                       if str(p.get("priceType", "")).endswith("StrikethroughPrice")]
+            op = w.get("originalPrice")
+            want_strike = [str(op)] if op and op > w["price"] else []
+            if [str(p.get("price")) for p in strikes] != want_strike:
+                flag(f"{i} [{lang}]: StrikethroughPrice {[p.get('price') for p in strikes]} "
+                     f"!= {want_strike} (originalPrice {op!r})")
             pvu = off.get("priceValidUntil")
             if not pvu:
                 flag(f"{i} [{lang}]: Offer missing priceValidUntil")
@@ -517,6 +527,42 @@ def main():
         for i in sorted(set(re.findall(r'href="/en/shop/([a-z0-9.-]+)\.html"', t))):
             if i in j and j[i].get('gender') == opposite:
                 flag(f"{i}: gender {opposite!r} but the {side}'s guide {slug} recommends it")
+
+    # --- 13. sales (owner, 2026-10-15). A sale is an originalPrice above the price. The shop
+    # card's badge and was-line, the product page and the Offer's StrikethroughPrice all derive
+    # from it. The card badge was a typed "-10%" until then, right only for the one discounted
+    # watch there was, so the static cards are held to the data here. shop.js mirrors them, and
+    # the headless check is what proves that half: this gate cannot run a browser.
+    from catalog_stats import pct_off
+    for w in j.values():
+        op = w.get('originalPrice')
+        if op is None or w.get('deleted'):
+            continue
+        if not isinstance(op, int) or not w.get('price') or op <= w['price']:
+            flag(f"{w['id']}: originalPrice {op!r} must be a whole number above the price "
+                 f"{w.get('price')!r}")
+    for lang in LANGS:
+        page = BASE / lang / "shop" / "index.html"
+        if not page.exists():
+            continue
+        for m in re.finditer(r'<article class="watch-card.*?</article>', corpus.sig(page), re.S):
+            block = m.group(0)
+            href = re.search(r'href="/' + lang + r'/shop/([a-z0-9.-]+)\.html"', block)
+            w = j.get(href.group(1)) if href else None
+            if not w:
+                continue
+            op, p = w.get('originalPrice'), w.get('price')
+            badge = re.search(r'<span class="sale-badge">−(\d+)%</span>', block)
+            was = re.search(r'<p class="was-price-line">[^<]*€(\d+)</p>', block)
+            if op and p and op > p:
+                if not badge or int(badge.group(1)) != pct_off(p, op):
+                    flag(f"{lang}/shop/index.html: {w['id']} badge "
+                         f"{badge.group(0) if badge else 'missing'}, expected −{pct_off(p, op)}%")
+                if not was or int(was.group(1)) != op:
+                    flag(f"{lang}/shop/index.html: {w['id']} was-price "
+                         f"{was.group(1) if was else 'missing'}, expected {op}")
+            elif badge or was:
+                flag(f"{lang}/shop/index.html: {w['id']} shows a sale it does not have")
 
     # Imported, never re-typed. This was a hand-written copy of shop_bits.BRANDS and it
     # was eight entries long while BRANDS was ten, so the gate that exists to check the
