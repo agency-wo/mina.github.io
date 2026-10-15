@@ -564,6 +564,22 @@ def main():
             elif badge or was:
                 flag(f"{lang}/shop/index.html: {w['id']} shows a sale it does not have")
 
+    # --- 14. the card's condition word speaks the page's language (2026-10-15). The static
+    # cards printed the English "New" on every Italian and Albanian shop index, New Arrivals and
+    # brand page (367 times) while shop.js repainted them as Nuovo or I ri, so the HTML a
+    # crawler reads first was in the wrong language. Restated here, not imported from shop_bits,
+    # so the gate can disagree with the generator.
+    CARD_COND = {"it": {"Nuovo", "Usato"}, "sq": {"I ri", "I përdorur"}}
+    for lang, words in CARD_COND.items():
+        shop = BASE / lang / "shop"
+        for page in [shop / "index.html", shop / "new.html"] + sorted((shop / "brand").glob("*.html")):
+            if not page.exists():
+                continue
+            for m in re.finditer(r'<span class="watch-badge">([^<]*)</span>', corpus.sig(page)):
+                if m.group(1) not in words:
+                    flag(f"{page.relative_to(BASE).as_posix()}: a card says {m.group(1)!r}, "
+                         f"not one of {sorted(words)}")
+
     # Imported, never re-typed. This was a hand-written copy of shop_bits.BRANDS and it
     # was eight entries long while BRANDS was ten, so the gate that exists to check the
     # brand hubs could not see the Casio or Citizen hubs at all. They were the two that

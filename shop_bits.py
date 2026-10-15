@@ -18,6 +18,8 @@ Kept here so there is exactly one definition of:
   * the "open now" walk-in indicator
 """
 
+import re
+
 from catalog_stats import LEK_RATE, lek, nfmt, slugify  # one definition, see catalog_stats.py
 
 # Brands that have a landing page. Others fall back to a breadcrumb without a
@@ -26,6 +28,36 @@ from catalog_stats import LEK_RATE, lek, nfmt, slugify  # one definition, see ca
 # in hand, never inferred from a dial photo. Cortébert joined Hislon 2026-08-24.
 # The three shop.js copies carry a hand-mirrored array of this set.
 SWISS_BRANDS = {"Hislon", "Cortébert"}
+
+# The condition and sold words a card or a product page prints, per language. English is the
+# catalogue's own word. Mirrors condMap in it/ and sq/shop/shop.js (the repainted card) and
+# L.sold in stock-live.js (the live sold flip). Until 2026-10-15 the static Italian and
+# Albanian cards and every product page printed the English "New", 367 times, so the HTML
+# Google reads first said New on pages whose visitors were shown Nuovo or I ri.
+COND_LABEL = {"it": {"New": "Nuovo", "Pre-owned": "Usato"},
+              "sq": {"New": "I ri", "Pre-owned": "I përdorur"}}
+SOLD_LABEL = {"en": "Sold", "it": "Venduto", "sq": "Shitur"}
+
+
+def cond_label(cond, lang):
+    """[DB-014.i] The condition word in the page's language; a value with no entry passes as written."""
+    return COND_LABEL.get(lang, {}).get(cond, cond)
+
+
+# The header's language button cycles en -> sq -> it -> en (CONFIG.langs in shared.js), which
+# rewrites its href to the next language's hreflang twin when it runs. The href in the HTML is
+# what a crawler and a visitor without JS follow, so it must already be that twin. The brand
+# pages and New Arrivals are cloned from the shop index and kept its link to the next
+# language's SHOP INDEX until 2026-10-15. verify-sitemap holds every sitemap page to it.
+NEXT_LANG = {"en": "sq", "sq": "it", "it": "en"}
+_LANG_BUTTON = re.compile(r'(<a href=")[^"]*("[^>]*data-action="toggle-lang")')
+
+
+def set_lang_button(html, path):
+    """[DB-014.j] Point every header language button at `path`, the page's next-language twin."""
+    out, n = _LANG_BUTTON.subn(lambda m: m.group(1) + path + m.group(2), html)
+    assert n >= 1, "no language button (a[data-action=toggle-lang]) found"
+    return out
 
 # BRAND_SLUGS is DERIVED from BRANDS, at the bottom of this file. It used to be a
 # literal here, and it drifted exactly as the comment above BRANDS warned it would:

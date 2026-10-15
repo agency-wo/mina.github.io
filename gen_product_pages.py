@@ -26,8 +26,8 @@ from pathlib import Path
 
 from catalog_stats import REVIEWS, lek, nfmt, pct_off
 from contact import phone  # [CFG-010] en/it reach the owner, sq reaches his father
-from shop_bits import (PRICE_ON_REQUEST, SWISS_BRANDS, crumb_html, crumb_jsonld,
-                       CRUMB_CSS, open_now_html,
+from shop_bits import (PRICE_ON_REQUEST, SOLD_LABEL, SWISS_BRANDS, cond_label, crumb_html,
+                       crumb_jsonld, CRUMB_CSS, open_now_html,
                        price_html as shared_price_html, stub_html)
 
 BASE = Path(__file__).parent
@@ -343,7 +343,9 @@ def build_price_html(price, currency, lang="en"):
 # [DB-017.e] build_img_html — the hero <picture> with condition badge + sale ribbon
 # DOES:   webp source with jpg fallback, eager/high-priority load (it is the LCP),
 #         Sold overrides the condition badge, and the discount ribbon logic below.
-def build_img_html(w, cfg):
+#         Both words in the page's language (shop_bits.cond_label, SOLD_LABEL): this
+#         printed the English "New" and "Sold" on every Italian and Albanian page.
+def build_img_html(w, lang, cfg):
     image = w.get("image", "")
     if not image:
         return ""
@@ -353,7 +355,7 @@ def build_img_html(w, cfg):
     # same descriptor as the title ("Navimarine NM279-02, women's dress watch")
     alt = f'{w["brand"]} {w["model"]}, {descriptor(w, cfg).lower()}'
     sold = w.get("sold", False)
-    badge = "Sold" if sold else w.get("condition", "New")
+    badge = SOLD_LABEL[lang] if sold else cond_label(w.get("condition", "New"), lang)
     # The catalogue's discounts were invisible here: the old renderer injected the
     # CSS for a sale ribbon and then never emitted one. Pinned top-RIGHT so it can
     # never sit on top of the condition badge, which is top-left on this page.
@@ -612,6 +614,17 @@ PDP_CSS = "<style id=\"pdp-css\">" + (
     ".watch-info>.back-link{display:none}"
     ".watch-cta-main{width:100%;justify-content:center;font-size:1rem;padding:.85rem 1.5rem}"
     "}"
+    # THE PHONE HEADER (2026-10-15). The page template gives the header WhatsApp button an
+    # inline padding:.6rem 1.4rem, which beat the compact .btn-primary.wa-hdr rule beside it,
+    # and .header-inner adds a second 1rem of side padding inside the container's own. The
+    # logo's IGLISI · WATCH wordmark ran under the button by 77, 47 and 23 px at 360, 390 and
+    # 414 px, where every other page clears it. !important is the only way past an inline
+    # style; the template's min-width:2.6rem goes too, so the button is the other pages' size.
+    # The logo itself is sized by shared.css, which loads after the template's rules.
+    "@media(max-width:768px){"
+    ".header-inner{padding-left:0;padding-right:0}"
+    ".btn-primary.wa-hdr{padding:.5rem .6rem!important;min-width:0}"
+    "}"
 ) + "</style>"
 
 
@@ -758,9 +771,10 @@ def related_for(w, n=4):
 
 
 # [DB-017.o] build_specs_html — the Details definition list (empty values dropped)
-# NOTES:  the nfmt(l, lang) call reads the MODULE-LEVEL loop variable `lang`, not a
-#         parameter — correct only because this runs inside that loop; keep it so.
-def build_specs_html(w, cfg):
+# NOTES:  `lang` is a parameter since 2026-10-15. It used to be read from the module-level
+#         loop variable, correct only because this ran inside that loop; the Condition
+#         row needed it too, to stop printing the English "New" on Italian and Albanian pages.
+def build_specs_html(w, lang, cfg):
     rows = [(cfg["spec_brand"], w.get("brand", ""))]
     # who it is made for (owner, 2026-09-23). A category, never a size: the fitting ban in
     # CLAUDE.md still stands. Skipped, not asserted, when a watch has not been sorted yet.
@@ -768,7 +782,7 @@ def build_specs_html(w, cfg):
         rows.append((cfg["spec_gender"], cfg["gender_val"][w["gender"]]))
     if w.get("reference"):
         rows.append((cfg["spec_ref"], w["reference"]))
-    rows.append((cfg["spec_cond"], w.get("condition", "")))
+    rows.append((cfg["spec_cond"], cond_label(w.get("condition", ""), lang)))
     price, currency = w.get("price"), w.get("currency", "EUR")
     if price:
         l = lek(price, currency)
@@ -999,7 +1013,7 @@ def build_watch_div(w, lang, cfg):
     # WhatsApp URL
     wa_href = wa_url("order", w, lang)
 
-    img_html = build_img_html(w, cfg)
+    img_html = build_img_html(w, lang, cfg)
     price_html = build_price_html(price, currency, lang)
 
     # Hislon's Swiss tag rides inline in the identity row rather than taking a line of
@@ -1214,7 +1228,7 @@ def build_extra_div(w, lang, cfg):
     return (
         f'<div id="watch-extra" class="watch-extra">'
         f"{EXTRA_CSS}"
-        f"{build_specs_html(w, cfg)}"
+        f"{build_specs_html(w, lang, cfg)}"
         f"{build_buy_html(cfg)}"
         f"{build_help_html(w, lang)}"
         f"{build_related_html(w, lang, cfg)}"

@@ -186,6 +186,35 @@ def main():
             if not file_of(h).exists():
                 flag(f"{loc}: alternate target missing {h}")
 
+    # --- 3b. what a crawler reads before any script runs (2026-10-15) ---
+    # The header language button: shared.js rewrites its href to the next language's twin
+    # (en -> sq -> it -> en) when it runs, but the HTML is what a crawler's first read and a
+    # visitor without JS follow, and on 42 pages it led to the next language's home or shop
+    # index. og:locale by language (one English article said en_GB). And no text font that
+    # swaps after first paint: with fonts slowed to a phone connection's pace the swap moved
+    # the shop page by 0.198, twice Google's "good" limit; font-display:optional moves nothing.
+    NEXT = {"en": "sq", "sq": "it", "it": "en"}
+    LOCALE = {"en": "en_US", "it": "it_IT", "sq": "sq_AL"}
+    SWAPS = re.compile(r"font-family:'(?:Inter|Cormorant Garamond)';[^}]*font-display:swap")
+    for u in urls:
+        loc = u.find(NS + "loc").text
+        if loc in NO_ALTERNATES:
+            continue
+        lang = urlsplit(loc).path.split("/")[1]
+        alts = {a.get("hreflang"): a.get("href") for a in u.findall(XH)}
+        page = corpus.raw(file_of(loc)).decode("utf-8-sig")
+        want = urlsplit(alts.get(NEXT.get(lang), "")).path
+        got = re.findall(r'<a href="([^"]*)"[^>]*data-action="toggle-lang"', page)
+        if not got or any(g != want for g in got):
+            flag(f"{loc}: language button {got} != next-language twin {want!r}")
+        ogl = re.search(r'<meta property="og:locale" content="([^"]*)"', page)
+        if not ogl or ogl.group(1) != LOCALE.get(lang):
+            flag(f"{loc}: og:locale {ogl and ogl.group(1)} != {LOCALE.get(lang)}")
+        if SWAPS.search(page):
+            flag(f"{loc}: a text font swaps after first paint (use font-display:optional)")
+    if SWAPS.search(corpus.raw(BASE / "shared.css").decode("utf-8")):
+        flag("shared.css: a text font swaps after first paint (use font-display:optional)")
+
     # --- 4. images ---
     imgs = [(u.find(NS + "loc").text, i.find(NS.replace("sitemap/0.9", "sitemap/0.9") and
             "{http://www.google.com/schemas/sitemap-image/1.1}loc").text)

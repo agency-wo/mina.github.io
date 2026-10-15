@@ -101,7 +101,7 @@ UI = {
 
 from brand_copy import COPY  # localized, owner-verified brand copy
 from shop_bits import (crumb_html, crumb_jsonld, CRUMB_CSS, open_now_html,
-                       delivery_bar_html, DELIVERY_CSS)
+                       delivery_bar_html, DELIVERY_CSS, NEXT_LANG, set_lang_button)
 
 
 # [DB-008.a] esc — minimal HTML escaping for text landing in attributes/titles
@@ -276,6 +276,9 @@ def head_swaps(html, slug, brand, lang, items):
     html = re.sub(r'(<link rel="alternate" hreflang="x-default"\s+href=")[^"]*(")',
                   r"\g<1>" + f"https://watch.al/en/shop/brand/{slug}.html" + r"\g<2>",
                   html, count=1)
+    # the language button too: cloned from the shop index, it sent a visitor without JS (and
+    # a crawler's first read) to the next language's shop index instead of this brand's page
+    html = set_lang_button(html, f"/{NEXT_LANG[lang]}/shop/brand/{slug}.html")
     # asset paths move one level deeper: /shop/ -> /shop/brand/
     html = html.replace('src="shop.js', 'src="../shop.js').replace('href="watch.css', 'href="../watch.css')
     return html

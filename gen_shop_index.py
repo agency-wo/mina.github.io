@@ -24,8 +24,8 @@ from urllib.parse import quote
 
 import catalog_stats
 from contact import phone  # [CFG-010] en/it reach the owner, sq reaches his father
-from shop_bits import (SWISS_BRANDS, card_price_html, crumb_html, CRUMB_CSS,
-                       delivery_bar_html, DELIVERY_CSS)
+from shop_bits import (SWISS_BRANDS, card_price_html, cond_label, crumb_html, CRUMB_CSS,
+                       delivery_bar_html, DELIVERY_CSS, NEXT_LANG, set_lang_button)
 from shop_seo import (COPY as SEO_COPY, fill as seo_fill, seo_section_html, faq_jsonld,
                       brand_nav_html)
 
@@ -121,7 +121,7 @@ def card(w, lang):
     parts = [
         f'<article class="watch-card{sold_cls}">',
         f'<div class="watch-card-img">{img}{sold_ov}',
-        f'<span class="watch-badge">{w["condition"]}</span>{sale}</div>',
+        f'<span class="watch-badge">{cond_label(w["condition"], lang)}</span>{sale}</div>',
         '<div class="watch-card-body">',
         f'<p class="watch-brand">{w["brand"]}{swiss_tag}</p>',
         f'<h2 class="watch-model">{w["model"]}</h2>',
@@ -358,6 +358,9 @@ def build_new_page(lang, src):
                       r"\g<1>" + f"https://watch.al/{lg}/shop/new.html" + r"\g<2>", html, count=1)
     html = re.sub(r'(<link rel="alternate" hreflang="x-default"\s+href=")[^"]*(")',
                   r"\g<1>" + "https://watch.al/en/shop/new.html" + r"\g<2>", html, count=1)
+    # cloned from the shop index, the language button pointed at the next language's shop
+    # index; a visitor without JS and a crawler's first read now get this page's own twin
+    html = set_lang_button(html, f"/{NEXT_LANG[lang]}/shop/new.html")
 
     cards = "\n        ".join(card(w, lang) for w in items)
     body = (

@@ -90,6 +90,13 @@ GENDER_ROW = {
     "it": ("Tipo", {"men": "Da uomo", "women": "Da donna", "unisex": "Da uomo e da donna"}),
     "sq": ("Për", {"men": "Burra", "women": "Gra", "unisex": "Burra dhe gra"}),
 }
+# Check 12: the badge on the photo and the Condition row, in the page's own language. Written
+# out, not imported, for the same reason as GENDER_ROW. Until 2026-10-15 every Italian and
+# Albanian product page said "New", and the sold one "Sold", in English.
+COND_WORDS = {"New": {"en": "New", "it": "Nuovo", "sq": "I ri"},
+              "Pre-owned": {"en": "Pre-owned", "it": "Usato", "sq": "I përdorur"}}
+SOLD_WORD = {"en": "Sold", "it": "Venduto", "sq": "Shitur"}
+COND_ROW = {"en": "Condition", "it": "Condizione", "sq": "Gjendja"}
 
 
 def main():
@@ -367,6 +374,16 @@ def main():
                     if not text.startswith(want):
                         flag(f"{rel}: meta description should open with {want!r}, "
                              f"opens {text[:30]!r}")
+
+            # 12. the badge on the photo and the Condition row speak the page's language
+            cond = w.get("condition", "New")
+            word = COND_WORDS.get(cond, {}).get(lang, cond)
+            badge = SOLD_WORD[lang] if w.get("sold") else word
+            if f'<span class="watch-badge-pg">{badge}</span>' not in t:
+                got = re.search(r'<span class="watch-badge-pg">([^<]*)</span>', t)
+                flag(f"{rel}: photo badge {got and got.group(1)!r}, expected {badge!r}")
+            if f"<dt>{COND_ROW[lang]}</dt><dd>{word}</dd>" not in t:
+                flag(f"{rel}: Details should read {COND_ROW[lang]}: {word}")
 
     print(f"\n  {pages} product pages | {len(glyphs)} glyphs in the subset")
     print("PRODUCT PAGE GATE PASS" if not findings else f"{len(findings)} FINDINGS")
