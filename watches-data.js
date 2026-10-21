@@ -1235,7 +1235,7 @@ window.WATCHES_DATA = [
     "model": "Rectangular Multifunction",
     "reference": "",
     "condition": "New",
-    "price": 0,
+    "price": 152,
     "currency": "EUR",
     "image": "/images/watches/cortebert-rectangular-multifunction.webp",
     "sold": false,
