@@ -105,6 +105,11 @@ from blog_index_data import ARTICLES as _BLOG_ARTICLES  # noqa: E402
 CATS = {a["slug"]: a["cat"] for a in _BLOG_ARTICLES}
 
 
+# [DB-017.b] Title display budget. Google renders roughly 60 characters; past that
+# the tail is cut in the SERP although the whole string is still indexed.
+# audit-watches check 9 holds its own copy of this number on purpose.
+TITLE_BUDGET = 60
+
 # brand+model is not unique for the Hislon Classic / Classic Queen families, so those
 # titles get the reference appended to stay distinct.
 DUP_NAMES = {}
@@ -154,6 +159,9 @@ LANGS = {
              " Mon–Sat 8:30–20:30</span>"),
         ],
         "title_tail": "Buy in Durrës, Albania",
+        # [DB-017.b] the fallback tail, used when the full one will not fit the
+        # 60-char display budget. The town is never dropped, only shortened.
+        "title_tail_short": "Durrës, Albania",
         "specs_h": "Details",
         "spec_brand": "Brand",
         "spec_gender": "For",
@@ -210,6 +218,7 @@ LANGS = {
              " Lun–Sab 8:30–20:30</span>"),
         ],
         "title_tail": "Orologi a Durazzo",
+        "title_tail_short": "Durazzo",
         "specs_h": "Dettagli",
         "spec_brand": "Marca",
         "spec_gender": "Tipo",
@@ -266,6 +275,7 @@ LANGS = {
              " Hën–Sht 8:30–20:30</span>"),
         ],
         "title_tail": "Blej Orë në Durrës",
+        "title_tail_short": "Durrës",
         "specs_h": "Detaje",
         "spec_brand": "Marka",
         "spec_gender": "Për",
@@ -305,7 +315,22 @@ def title_for(w, lang):
         name += f" {ref}"
     price = w.get("price")
     price_part = f" - €{price}" if price else ""
-    return f'{name} {descriptor(w, cfg)}{price_part} | {cfg["title_tail"]}'
+    base = f'{name} {descriptor(w, cfg)}'.strip()
+    # Fit the 60-char display budget by shedding the least query-valuable part
+    # first, measured 2026-10-23 when 260 of 267 product titles ran over and the
+    # cut always landed on the town. Order matters and is deliberate:
+    #   1. price  - already carried by the Offer node and shown in the rich
+    #               snippet, so the title is the cheapest place to lose it
+    #   2. tail   - shortened, never removed
+    # The town is NEVER dropped. Over-length costs display only, since Google
+    # indexes the whole title, so trading the local term away to win a cosmetic
+    # fit would lose real relevance for a shop that lives on local search. 104
+    # long model names still exceed 60 and keep their town, which is correct.
+    for cand in (f'{base}{price_part} | {cfg["title_tail"]}',
+                 f'{base} | {cfg["title_tail"]}'):
+        if len(cand) <= TITLE_BUDGET:
+            return cand
+    return f'{base} | {cfg["title_tail_short"]}'
 
 
 def replace_watch_content(html: str, new_div: str) -> str:

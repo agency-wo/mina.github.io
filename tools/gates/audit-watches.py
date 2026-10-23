@@ -417,6 +417,11 @@ def main():
     # --- 9. product <title> must equal the localized formula built from watches.json
     #        (catches stale prices, un-localized SQ/IT titles, and generator drift) ---
     tails = {"en": "Buy in Durrës, Albania", "it": "Orologi a Durazzo", "sq": "Blej Orë në Durrës"}
+    # The short tails and the budget, restated here rather than imported, same as the
+    # descriptor vocabulary below and for the same reason: the gate has to be able to
+    # disagree with gen_product_pages instead of agreeing with it by construction.
+    tails_short = {"en": "Durrës, Albania", "it": "Durazzo", "sq": "Durrës"}
+    title_budget = 60
     # The descriptor after the name (2026-10-06): who it is for, then what kind of watch,
     # from the gender and style fields. Written out here rather than imported, so the gate
     # can disagree with gen_product_pages.descriptor instead of agreeing by construction.
@@ -463,7 +468,16 @@ def main():
             if not m:
                 flag(f"{i} [{lang}]: no <title id=\"page-title\">")
                 continue
-            want = f"{name} {described(w, lang)}{price} | {tails[lang]}"
+            # Same budget ladder as gen_product_pages.title_for: shed the price
+            # first, then shorten the tail. The town is never dropped.
+            base = f"{name} {described(w, lang)}".strip()
+            for cand in (f"{base}{price} | {tails[lang]}",
+                         f"{base} | {tails[lang]}"):
+                if len(cand) <= title_budget:
+                    want = cand
+                    break
+            else:
+                want = f"{base} | {tails_short[lang]}"
             if m.group(1) != want:
                 flag(f"{i} [{lang}]: title {m.group(1)!r} != {want!r}")
 
