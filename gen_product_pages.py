@@ -1450,6 +1450,16 @@ for w in watches:
         def _set_ld_desc(m):
             ld = json.loads(m.group(2))
             ld["description"] = raw_desc
+            # THE NAME IS REWRITTEN EVERY RUN, which is the price lesson 60 lines down
+            # arriving one field earlier. It was written once when the page was created
+            # and then owned by nobody, so renaming 36 models on 2026-10-24 left the H1,
+            # the title, the card and the WhatsApp text saying one thing while the
+            # structured data still published the old SKU: 108 audit findings on pages
+            # this generator had just reported as updated. Same formula as the shop
+            # index ItemList at gen_shop_index.py:162, from the SWISS_BRANDS already
+            # imported at the top of this file, so the two cannot drift.
+            ld["name"] = (f'{w["brand"]} {w["model"]}'
+                          + (" Swiss Watch" if w["brand"] in SWISS_BRANDS else ""))
             # mpn beside sku. The reference IS a manufacturer part number, so publishing
             # it as both is honest and free, and the shop-index ItemList already does it.
             # Omitted, never empty: eleven watches have no reference, and an empty

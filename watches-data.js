@@ -120,7 +120,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-7",
     "brand": "Navimarine",
-    "model": "NM268-06",
+    "model": "Two Tone Blue Roman",
     "reference": "NM268-06",
     "condition": "New",
     "price": 85,
@@ -160,7 +160,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-9",
     "brand": "Navimarine",
-    "model": "NMM1011",
+    "model": "Steel Slim Ice Blue",
     "reference": "NMM1011",
     "condition": "New",
     "price": 60,
@@ -179,7 +179,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-10",
     "brand": "Navimarine",
-    "model": "NM232-04",
+    "model": "Steel Jubilee Black Sunburst",
     "reference": "NM232-04",
     "condition": "New",
     "price": 65,
@@ -198,7 +198,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-11",
     "brand": "Navimarine",
-    "model": "NAVI 009-COL 6",
+    "model": "Gold Tone Multifunction",
     "reference": "NAVI-009-COL6",
     "condition": "New",
     "price": 95,
@@ -218,7 +218,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-12",
     "brand": "Navimarine",
-    "model": "NVM141-A1",
+    "model": "Steel Champagne Roman Crystal",
     "reference": "NVM141-A1",
     "condition": "New",
     "price": 65,
@@ -238,7 +238,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-13",
     "brand": "Navimarine",
-    "model": "NM181-03",
+    "model": "Steel Diver Blue",
     "reference": "NM181-03",
     "condition": "New",
     "price": 70,
@@ -257,7 +257,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-14",
     "brand": "Navimarine",
-    "model": "NT0029-2",
+    "model": "Steel Blue Multifunction",
     "reference": "NT0029-2",
     "condition": "New",
     "price": 85,
@@ -276,7 +276,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-15",
     "brand": "Navimarine",
-    "model": "NM282-04",
+    "model": "Two Tone Green Square Roman",
     "reference": "NM282-04",
     "condition": "New",
     "price": 65,
@@ -296,7 +296,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-16",
     "brand": "Navimarine",
-    "model": "NVM112-B4",
+    "model": "Gold Tone Champagne Faceted",
     "reference": "NVM112-B4",
     "condition": "New",
     "price": 70,
@@ -316,7 +316,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-17",
     "brand": "Navimarine",
-    "model": "NAVI 009-COL 1",
+    "model": "Steel Marinemaster Multifunction",
     "reference": "NAVI-009-COL1",
     "condition": "New",
     "price": 85,
@@ -335,7 +335,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-18",
     "brand": "Navimarine",
-    "model": "NM001101-color06",
+    "model": "Gold Tone Slim Champagne",
     "reference": "NM001101-COL06",
     "condition": "New",
     "price": 65,
@@ -355,7 +355,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-19",
     "brand": "Navimarine",
-    "model": "NT0031-1",
+    "model": "Steel Silver Multifunction",
     "reference": "NT0031-1",
     "condition": "New",
     "price": 85,
@@ -374,7 +374,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-20",
     "brand": "Navimarine",
-    "model": "NM001404-Color04",
+    "model": "Steel Integrated Blue Sunburst",
     "reference": "NM001404-COL04",
     "condition": "New",
     "price": 75,
@@ -393,7 +393,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-21",
     "brand": "Navimarine",
-    "model": "001808-color02",
+    "model": "Steel 24 Hour Bezel Black",
     "reference": "001808-COL02",
     "condition": "New",
     "price": 85,
@@ -412,7 +412,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-22",
     "brand": "Navimarine",
-    "model": "NM229-06",
+    "model": "Two Tone Square White Roman",
     "reference": "NM229-06",
     "condition": "New",
     "price": 75,
@@ -432,7 +432,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-23",
     "brand": "Navimarine",
-    "model": "NVM180-A2",
+    "model": "Steel Chronograph Black",
     "reference": "NVM180-A2",
     "condition": "New",
     "price": 85,
@@ -451,7 +451,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-24",
     "brand": "Navimarine",
-    "model": "NM001101-Color02",
+    "model": "Steel Slim Black",
     "reference": "NM001101-COL02",
     "condition": "New",
     "price": 65,
@@ -470,7 +470,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-25",
     "brand": "Navimarine",
-    "model": "NMM1013",
+    "model": "Two Tone Malachite Crystal",
     "reference": "NMM1013",
     "condition": "New",
     "price": 85,
@@ -490,7 +490,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-26",
     "brand": "Navimarine",
-    "model": "NM182-01",
+    "model": "Steel Fluted Black Jubilee",
     "reference": "NM182-01",
     "condition": "New",
     "price": 70,
@@ -509,7 +509,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-27",
     "brand": "Navimarine",
-    "model": "NT0021-1",
+    "model": "Steel Blue Day Date",
     "reference": "NT0021-1",
     "condition": "New",
     "price": 75,
@@ -528,7 +528,7 @@ window.WATCHES_DATA = [
   {
     "id": "watch-28",
     "brand": "Navimarine",
-    "model": "NM001404-Color01",
+    "model": "Steel Integrated White",
     "reference": "NM001404-Color01",
     "condition": "New",
     "price": 90,
@@ -547,7 +547,7 @@ window.WATCHES_DATA = [
   {
     "id": "casio-mtp-vd01",
     "brand": "Casio",
-    "model": "MTP-VD01",
+    "model": "Steel Sport Black Dial",
     "reference": "MTP-VD01D-1EVUDF",
     "condition": "New",
     "price": 52,
@@ -567,7 +567,7 @@ window.WATCHES_DATA = [
   {
     "id": "bigotti-bg1-10154-1",
     "brand": "Bigotti",
-    "model": "BG1.10154.1",
+    "model": "Steel White Multifunction",
     "reference": "BG1.10154.1",
     "condition": "New",
     "price": 84,
@@ -644,7 +644,7 @@ window.WATCHES_DATA = [
   {
     "id": "romanson-bh3054gbr",
     "brand": "Romanson",
-    "model": "BH3054GBR",
+    "model": "Parie Gold Rectangular",
     "reference": "BH3054GBR",
     "condition": "New",
     "price": 74,
@@ -763,7 +763,7 @@ window.WATCHES_DATA = [
   {
     "id": "casio-mtp-b145d",
     "brand": "Casio",
-    "model": "MTP-B145D",
+    "model": "Steel Green Sunburst",
     "reference": "MTP-B145D-3AVDF",
     "condition": "New",
     "price": 89,
@@ -842,7 +842,7 @@ window.WATCHES_DATA = [
   {
     "id": "casio-a159wa",
     "brand": "Casio",
-    "model": "A159WA",
+    "model": "Steel Retro Digital",
     "reference": "A159WA-N1",
     "condition": "New",
     "price": 61,
@@ -861,7 +861,7 @@ window.WATCHES_DATA = [
   {
     "id": "casio-w-737hx",
     "brand": "Casio",
-    "model": "W-737HX",
+    "model": "Illuminator Gold Digital",
     "reference": "W-737HX-1AVDF",
     "condition": "New",
     "price": 67,
@@ -881,7 +881,7 @@ window.WATCHES_DATA = [
   {
     "id": "casio-ae-1500wh",
     "brand": "Casio",
-    "model": "AE-1500WH",
+    "model": "Illuminator Black Digital",
     "reference": "AE-1500WH-8BVDF",
     "condition": "New",
     "price": 67,
@@ -1409,7 +1409,7 @@ window.WATCHES_DATA = [
   {
     "id": "navimarine-navi-s046-col4",
     "brand": "Navimarine",
-    "model": "NAVI S046-COL 4",
+    "model": "Steel Octagon Blue Ribbed",
     "reference": "NAVI-S046-COL4",
     "condition": "New",
     "price": 92,
@@ -1429,7 +1429,7 @@ window.WATCHES_DATA = [
   {
     "id": "navimarine-nmm1031-col03",
     "brand": "Navimarine",
-    "model": "NMM1031-color03",
+    "model": "Steel Sport Blue Ribbed",
     "reference": "NMM1031-COL03",
     "condition": "New",
     "price": 92,
@@ -1449,7 +1449,7 @@ window.WATCHES_DATA = [
   {
     "id": "navimarine-001808-col06",
     "brand": "Navimarine",
-    "model": "001808-color06",
+    "model": "Gold Tone Dual Time",
     "reference": "001808-COL06",
     "condition": "New",
     "price": 107,
@@ -1469,7 +1469,7 @@ window.WATCHES_DATA = [
   {
     "id": "navimarine-nvm148-d4",
     "brand": "Navimarine",
-    "model": "NVM148-D4",
+    "model": "Two Tone Champagne Chronograph",
     "reference": "NVM148-D4",
     "condition": "New",
     "price": 92,
@@ -1529,7 +1529,7 @@ window.WATCHES_DATA = [
   {
     "id": "navimarine-001808-col07",
     "brand": "Navimarine",
-    "model": "001808-color07",
+    "model": "Steel Gold Dual Time",
     "reference": "001808-COL07",
     "condition": "New",
     "price": 98,
@@ -1666,7 +1666,7 @@ window.WATCHES_DATA = [
   {
     "id": "navimarine-nm279-02",
     "brand": "Navimarine",
-    "model": "NM279-02",
+    "model": "Gold Tone Slim White",
     "reference": "NM279-02",
     "condition": "New",
     "price": 71,
@@ -1686,7 +1686,7 @@ window.WATCHES_DATA = [
   {
     "id": "navimarine-nm186-02",
     "brand": "Navimarine",
-    "model": "NM186-02",
+    "model": "Gold Tone White Crystal Bezel",
     "reference": "NM186-02",
     "condition": "New",
     "price": 71,
@@ -1706,7 +1706,7 @@ window.WATCHES_DATA = [
   {
     "id": "navimarine-nmm1036-col05",
     "brand": "Navimarine",
-    "model": "NMM1036-color05",
+    "model": "Two Tone Grey 24 Hour",
     "reference": "NMM1036-COL05",
     "condition": "New",
     "price": 82,
