@@ -1064,7 +1064,7 @@ window.WATCHES_DATA = [
     "price": 59,
     "currency": "EUR",
     "image": "/images/watches/daniel-klein-14190.webp",
-    "sold": false,
+    "sold": true,
     "added": "2026-08-02",
     "styles": [
       "dress"
