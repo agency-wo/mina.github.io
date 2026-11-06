@@ -52,7 +52,7 @@ COPY = {
         "brands_h": "Browse by brand",
         "faq": [
             ("Can I order a watch online in Albania?",
-             "Yes. Pick a watch on this page and message us on WhatsApp at " + phone("en")["text"] + ". We "
+             "Yes. Pick a watch on this page and message us on WhatsApp at " + phone("en")["wa_text"] + ". We "
              "deliver anywhere in Albania with cash on delivery, so you pay when the watch "
              "arrives. Delivery is free and normally takes 3 to 7 days."),
             ("Do you deliver watches to Tirana?",
@@ -101,7 +101,7 @@ COPY = {
         "brands_h": "Sfoglia per marca",
         "faq": [
             ("Posso ordinare un orologio online in Albania?",
-             "Sì. Scegliete un orologio in questa pagina e scriveteci su WhatsApp al " + phone("it")["text"] +
+             "Sì. Scegliete un orologio in questa pagina e scriveteci su WhatsApp al " + phone("it")["wa_text"] +
              ". Consegniamo in tutta l'Albania con pagamento alla consegna, quindi pagate "
              "quando l'orologio arriva. La consegna è gratuita e richiede di norma da 3 a 7 giorni."),
             ("Consegnate orologi a Tirana?",
@@ -149,7 +149,7 @@ COPY = {
         "brands_h": "Shfleto sipas markës",
         "faq": [
             ("A mund të porosis një orë online në Shqipëri?",
-             "Po. Zgjidhni një orë në këtë faqe dhe na shkruani në WhatsApp në " + phone("sq")["text"] + ". "
+             "Po. Zgjidhni një orë në këtë faqe dhe na shkruani në WhatsApp në " + phone("sq")["wa_text"] + ". "
              "Dërgojmë kudo në Shqipëri me pagesë në dorëzim, pra paguani kur ora të mbërrijë. "
              "Dërgesa është falas dhe zakonisht zgjat 3 deri në 7 ditë."),
             ("A dërgoni orë në Tiranë?",

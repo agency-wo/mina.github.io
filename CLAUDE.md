@@ -183,18 +183,23 @@ Breaking one of these has caused a real incident. They are not style preferences
 
 ### Contact
 
-- **The phone number is a language question, not a constant.** `en` and `it` reach the owner on
-  **+355 67 571 6090**. `sq` reaches his father on **+355 67 636 0510**, and his father speaks only
-  Albanian, so an English or Italian page carrying that number sends a customer to someone who
-  cannot serve them. The split covers display text, `tel:` links, `api.whatsapp.com/send?phone=`
-  and the floating WhatsApp button alike.
-- **`contact.py` is the one authority.** Take a number from `contact.phone(lang)` or
-  `contact.wa_link(lang, msg)`, or from that language's own `shop/delivery.html`. Never copy one
-  across languages.
-- `scripts/verify-contact.py` fails the build on an Albanian number under `en/` or `it/`. It
-  normalises `&thinsp;`, `&nbsp;` and `&#8201;` first, because the number is written four ways and
-  a scan that allows only plain spaces reports a desynced corpus clean. That is a real incident:
-  26 FAQ JSON-LD copies drifted from their visible twins and only `faq-build.py --verify` saw it.
+- **Calls and WhatsApp go to different numbers (the owner, 2026-11-06).** Every call, in every
+  language, goes to the shop's line **+355 67 636 0510**: `tel:` links, the number shown in them,
+  the call bar and JSON-LD `"telephone"`. The owner is in Italy for a long time and cannot take
+  calls on his own number. **WhatsApp is a language question:** `en` and `it` write to the owner
+  on **+355 67 571 6090**; `sq` writes to his father on +355 67 636 0510. His father speaks only
+  Albanian, so an English or Italian WhatsApp link to him reaches someone who cannot answer. The
+  owner's number may still be shown in a sentence that says WhatsApp or "message us", never in a
+  call link. From 2026-08-16 to 2026-11-06 en/ and it/ used the owner's number for both.
+- **`contact.py` is the one authority.** `phone(lang)["tel"]` and `["text"]` are the call line,
+  `["wa"]` and `["wa_text"]` the WhatsApp line, and `wa_link(lang, msg)` builds the link. Never
+  copy a number across languages.
+- `tools/gates/verify-contact.py` fails the build on a call link or JSON-LD telephone that is not
+  the call line, on a call link showing another number, and on an en/ or it/ WhatsApp link that
+  is not the owner's. It normalises `&thinsp;`, `&nbsp;` and `&#8201;` first, because the number
+  is written four ways and a scan that allows only plain spaces reports a desynced corpus clean.
+  That is a real incident: 26 FAQ JSON-LD copies drifted from their visible twins and only
+  `faq-build.py --verify` saw it.
 
 ### Claims
 

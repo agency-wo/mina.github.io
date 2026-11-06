@@ -1,34 +1,36 @@
 #!/usr/bin/env python3
-"""[ERR-013] verify-contact.py — the gate that keeps the two phone numbers apart.
-DOES:   four checks. A no en/ or it/ page carries the Albanian number; B the
-        Albanian number is still present under sq/, so an over-broad sweep cannot
-        quietly wipe it; C each per-language shop.js carries only its own number;
-        D no root file outside a named allowlist carries the Albanian number.
+"""[ERR-013] verify-contact.py — the gate that keeps the call line and the WhatsApp line apart.
+DOES:   five checks. A every tel: link and every JSON-LD "telephone" is the call
+        line; B no call link shows any other number in its text; C every WhatsApp
+        deep link on an en/ or it/ page (and on the English root pages) reaches
+        that language's WhatsApp line; D each per-language shop.js builds its
+        WhatsApp links on its own line and no other; E floors, so a sweep that
+        escaped its scope cannot quietly empty an area.
 IN:     python tools/gates/verify-contact.py, from the WORKING ROOT. No args.
         Read-only.
 OUT:    "  FINDING: ..." per problem, a scanned/occurrence tally, then
         "CONTACT GATE PASS" or "<n> FINDINGS". Exit 1 on findings.
-CALLS:  mina.github.io/contact.py for both numbers, so this gate and the
+CALLS:  mina.github.io/contact.py for every number, so this gate and the
         generators cannot hold two opinions about which number belongs where.
-NOTES:  Two numbers, and which one a page shows is a language question. The
-        Albanian line is the owner's father, who speaks only Albanian, so an
-        English or Italian visitor reaching it reaches somebody who cannot serve
-        them. That was true on 4,208 occurrences until 2026-08-16.
-        Check A is the one that matters and it is one-directional on purpose.
-        The reverse is NOT a finding: sq/ legitimately carries the owner's number
-        as a labelled SECONDARY contact on sq/index.html and the two sq legal
-        pages, and did so before any of this. Flagging that would fire on correct
-        markup, and a gate that fires on correct markup gets ignored.
-        Check B exists because check A can be satisfied by deleting the number
-        everywhere, which would be a much worse outcome than the bug. A floor of
-        one occurrence under sq/ is enough to catch a sweep that escaped scope.
-        Check D's allowlist is named files, never a blanket root skip, so a new
-        root page cannot inherit the wrong number unnoticed. booking.js and
-        stock-live.js are shared across all three languages and carry a per-
-        language map keyed off <html lang>; llms.txt and its template list both
-        numbers labelled, because AI answer engines read that one English file
-        and then answer in Albanian too; contact.py is the authority itself.
+NOTES:  The rule since 2026-11-06 (the owner): CALLS go to the shop's line,
+        +355 67 636 0510, on every page, because the owner is in Italy for a long
+        time and cannot take calls on his own number. WHATSAPP is unchanged: en/
+        and it/ write to the owner, +355 67 571 6090, since the shop's line is the
+        owner's father, who speaks only Albanian; sq/ writes to the father. The
+        2026-08-16 rule, one number per language for both, is what checks A to C
+        replace; its check "no Albanian number on an en/ or it/ page" would now
+        fire on the call line, which is correct markup.
+        The owner's number may still appear as text on en/ and it/ pages, in a
+        sentence that says WhatsApp or "message us"; B keeps it out of call links,
+        which is the place a visitor would dial it.
+        sq/ may also carry the owner's WhatsApp: its home page and two legal pages
+        list it as a secondary, WhatsApp-only contact, and 5 gift posts link it.
+        That is not a finding.
+        booking.js and stock-live.js are shared across the 3 languages and carry a
+        per-language WhatsApp map keyed off <html lang>; C does not read them, D's
+        sibling check below does.
 """
+import re
 import sys
 from pathlib import Path
 
@@ -38,15 +40,18 @@ ROOT = BASE.parent
 sys.path.insert(0, str(BASE))
 from contact import PHONE  # noqa: E402
 
-SQ = PHONE["sq"]
-EN = PHONE["en"]
-# longest first, so the bare digits are never counted inside the +CC form
-FORMS = ("text", "tel", "wa")
+CALL_TEL = {PHONE[k]["tel"] for k in PHONE}
+assert len(CALL_TEL) == 1, "contact.py: the call line must be one number in every language"
+CALL_TEL = CALL_TEL.pop()
+CALL_TEXT = PHONE["en"]["text"]
 EXT = (".html", ".js", ".txt", ".tpl", ".json", ".xml")
+SHARED_JS = {"booking.js", "stock-live.js"}
 
-# Root files that may legitimately name the Albanian number. Named, not globbed:
-# a new root page must be considered rather than inherit an exemption.
-ROOT_ALLOW = {"contact.py", "booking.js", "stock-live.js", "llms.txt", "llms.tpl"}
+TEL = re.compile(r'href="tel:([^"]*)"')
+TEL_ANCHOR = re.compile(r'<a\b[^>]*href="tel:[^"]*"[^>]*>(.*?)</a>', re.S)
+JSONLD_TEL = re.compile(r'"telephone"\s*:\s*"([^"]*)"')
+WA_LINK = re.compile(r'(?:api\.whatsapp\.com/send\?phone=|wa\.me/)(\d+)')
+NUMBER = re.compile(r"\+355 ?\d\d ?\d{3} ?\d{4}")
 
 findings = []
 
@@ -59,79 +64,84 @@ def flag(m):
 
 # [ERR-013.b] normalise — collapse the entity spellings of a space
 # NOTES:  the visible number is written "+355&thinsp;67&thinsp;636&thinsp;0510"
-#         on 39 pages, and a plain-text scan does not see it. That is not
-#         hypothetical: the 2026-08-16 sweep matched three literal spellings,
-#         missed this fourth one in 26 en/ and it/ files, and left their visible
-#         FAQ copy disagreeing with the JSON-LD twin it had already changed.
-#         faq-build.py caught it; this gate had said PASS. Normalising first is
-#         what makes the count honest.
+#         on 39 pages, and a plain-text scan does not see it. The 2026-08-16
+#         sweep matched three literal spellings, missed this fourth one in 26
+#         files, and left their visible FAQ copy disagreeing with its JSON-LD twin.
 def normalise(text):
     for ent in ("&thinsp;", "&nbsp;", "&#8201;", "&#160;", " ", " "):
         text = text.replace(ent, " ")
     return text
 
 
-# [ERR-013.c] hits — how many times one number appears in one file
-# NOTES:  counts longest form first and removes it, so "+355676360510" is never
-#         also counted as the bare "355676360510" sitting inside it.
-def hits(text, num):
-    text = normalise(text)
-    n = 0
-    for k in FORMS:
-        n += text.count(num[k])
-        text = text.replace(num[k], "")
-    return n
-
-
 def main():
-    scanned = sq_total = 0
+    scanned = 0
+    counts = {"tel": 0, "jsonld": 0, "wa": {"en": 0, "it": 0, "sq": 0, "root": 0}}
+    wa_by_area = {"en": set(), "it": set(), "sq": set(), "root": set()}
 
     for p in corpus.all_files():
         if p.is_dir() or p.suffix.lower() not in EXT:
             continue
         rel = p.relative_to(BASE).as_posix()
-        lang = rel.split("/")[0]
-        text = p.read_text(encoding="utf-8-sig", errors="replace")
+        top = rel.split("/")[0]
+        area = top if top in ("en", "it", "sq") else "root"
+        text = normalise(p.read_text(encoding="utf-8-sig", errors="replace"))
         scanned += 1
-        n = hits(text, SQ)
 
-        # A. the Albanian number must not appear on an English or Italian page
-        if lang in ("en", "it") and n:
-            flag(f"{rel}: carries the Albanian number ({SQ['text']}) {n}x on an "
-                 f"{lang} page. {lang} reaches {EN['text']} — see contact.py.")
+        # A. every call link and every JSON-LD telephone is the call line
+        for m in TEL.finditer(text):
+            counts["tel"] += 1
+            if m.group(1) != CALL_TEL:
+                flag(f"{rel}: tel:{m.group(1)} is not the call line {CALL_TEL} (contact.py).")
+        for m in JSONLD_TEL.finditer(text):
+            counts["jsonld"] += 1
+            if m.group(1).replace(" ", "") != CALL_TEL:
+                flag(f'{rel}: JSON-LD "telephone" {m.group(1)} is not the call line {CALL_TEL}.')
 
-        # B. and it must still be present under sq/
-        if lang == "sq":
-            sq_total += n
+        # B. a call link never shows another number
+        for m in TEL_ANCHOR.finditer(text):
+            inner = re.sub(r"<[^>]+>", " ", m.group(1))
+            for shown in NUMBER.findall(inner):
+                if shown.replace(" ", "") != CALL_TEL:
+                    flag(f"{rel}: a call link shows {shown}; a call link shows {CALL_TEXT} or no number.")
 
-        # D. root files, allowlisted by name
-        if lang not in ("en", "it", "sq") and n and p.name not in ROOT_ALLOW:
-            flag(f"{rel}: root file carries the Albanian number ({SQ['text']}) "
-                 f"{n}x and is not in ROOT_ALLOW. Decide which language it "
-                 f"serves, then either fix it or add it to the allowlist.")
+        # C. WhatsApp on en/, it/ and the English root pages reaches that language's WhatsApp line
+        if p.name in SHARED_JS:
+            continue
+        for m in WA_LINK.finditer(text):
+            counts["wa"][area] += 1
+            wa_by_area[area].add(m.group(1))
+            want = PHONE["en" if area == "root" else area]["wa"]
+            if area != "sq" and p.suffix.lower() == ".html" and m.group(1) != want:
+                flag(f"{rel}: a WhatsApp link reaches {m.group(1)} on an {area} page; "
+                     f"{area} writes to {want} (contact.py).")
 
-    if not sq_total:
-        flag(f"the Albanian number ({SQ['text']}) has vanished from sq/ "
-             f"entirely. It is the primary contact there; a sweep has escaped "
-             f"its scope. Do not 'fix' this by editing the gate.")
-
-    # C. each per-language shop.js carries its own number and no other
+    # D. each per-language shop.js builds WhatsApp links on its own line, and the shared JS maps agree
     for lang in ("en", "it", "sq"):
         p = BASE / lang / "shop" / "shop.js"
         if not p.exists():
             flag(f"{lang}/shop/shop.js is missing")
             continue
-        text = p.read_text(encoding="utf-8-sig", errors="replace")
-        want, other = PHONE[lang], PHONE["sq" if lang != "sq" else "en"]
-        if not hits(text, want):
-            flag(f"{lang}/shop/shop.js does not carry {want['text']}")
-        if want["wa"] != other["wa"] and hits(text, other):
-            flag(f"{lang}/shop/shop.js carries {other['text']}, which belongs to "
-                 f"another language. It mirrors gen_shop_index.card() byte for "
-                 f"byte, so fix both or the grid changes after hydration.")
+        found = set(WA_LINK.findall(p.read_text(encoding="utf-8-sig", errors="replace")))
+        if found != {PHONE[lang]["wa"]}:
+            flag(f"{lang}/shop/shop.js builds WhatsApp links on {sorted(found)}, not {PHONE[lang]['wa']}. "
+                 f"It mirrors gen_shop_index.card() byte for byte, so fix both.")
+    for name in sorted(SHARED_JS):
+        t = (BASE / name).read_text(encoding="utf-8-sig", errors="replace")
+        for lang in ("en", "it", "sq"):
+            if not re.search(rf"\b{lang}\s*:\s*'{PHONE[lang]['wa']}'", t):
+                flag(f"{name}: its per-language map does not give {lang} the WhatsApp line {PHONE[lang]['wa']}.")
 
-    print(f"\n  {scanned} files scanned | Albanian number: 0 under en/ and it/, "
-          f"{sq_total} under sq/ | root allowlist: {len(ROOT_ALLOW)}")
+    # E. floors: every area still carries its WhatsApp line, and the site still has call links
+    for area in ("en", "it", "sq"):
+        if PHONE[area]["wa"] not in wa_by_area[area]:
+            flag(f"{area}/ has no WhatsApp link to {PHONE[area]['wa']} left. A sweep has escaped its "
+                 f"scope. Do not 'fix' this by editing the gate.")
+    if not counts["tel"]:
+        flag("no tel: link anywhere: the call line has vanished from the site.")
+
+    w = counts["wa"]
+    print(f"\n  {scanned} files scanned | call links {counts['tel']}, JSON-LD telephone {counts['jsonld']}, all "
+          f"{CALL_TEXT} | WhatsApp links en {w['en']}, it {w['it']}, sq {w['sq']}, root {w['root']}")
     if findings:
         print(f"{len(findings)} FINDINGS")
         sys.exit(1)
