@@ -31,20 +31,6 @@
       "values": [
         "50"
       ]
-    },
-    "it/blog/guida-carica-orologio.html": {
-      "reason": "The 72 is hours of power reserve, the A. Lange & Söhne Calibre L941.1 in the charging guide, not a catalogue count. It collided with the count of watches under 10,000 Lek reaching 72 in the stock sync of 2026-11-02 (76209c7). Waived rather than wrapped: no data-stat marker means hours of reserve, and wrapping it would make the figure move with the stock. The English twin words it so check F does not fire. The entry deletes itself the next time the catalogue moves, when the ratchet flags it.",
-      "date": "2026-11-06",
-      "values": [
-        "72"
-      ]
-    },
-    "sq/blog/guide-mbushjes-ores.html": {
-      "reason": "The 72 is hours of power reserve, the A. Lange & Söhne Calibre L941.1 in the charging guide, not a catalogue count. It collided with the count of watches under 10,000 Lek reaching 72 in the stock sync of 2026-11-02 (76209c7). Waived rather than wrapped: no data-stat marker means hours of reserve, and wrapping it would make the figure move with the stock. The English twin words it so check F does not fire. The entry deletes itself the next time the catalogue moves, when the ratchet flags it.",
-      "date": "2026-11-06",
-      "values": [
-        "72"
-      ]
     }
   }
 }

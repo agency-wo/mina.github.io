@@ -383,6 +383,14 @@ def build_new_page(lang, src):
     html = html[:i] + body + html[j:]
     # shop.js would hydrate the grid from the FULL catalogue and wipe the arrivals
     html = re.sub(r'\s*<script src="shop\.js[^>]*></script>', "", html)
+    # Without shop.js these are static cards, and nothing marked a sold watch here
+    # until the next regen. stock-live.js flips them from the CRM feed, exactly as
+    # on the brand pages (gen_brand_pages.py, same anchor on any ?v=).
+    if '<script src="/stock-live.js' not in html:
+        html = re.sub(r'(<script src="/shared\.js\?v=\d+" defer></script>)',
+                      r'\1\n  <script src="/stock-live.js?v=2" defer></script>',
+                      html, count=1)
+    assert '<script src="/stock-live.js' in html, f"{lang}: new.html stock-live.js missing"
     return html
 
 
