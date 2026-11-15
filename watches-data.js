@@ -848,7 +848,7 @@ window.WATCHES_DATA = [
     "price": 61,
     "currency": "EUR",
     "image": "/images/watches/casio-a159wa.webp",
-    "sold": false,
+    "sold": true,
     "added": "2026-07-10",
     "styles": [
       "digital"
