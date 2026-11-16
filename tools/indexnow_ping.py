@@ -1,7 +1,8 @@
 # [API-007] indexnow_ping.py — tell Bing and the other IndexNow engines which pages just changed.
 # DOES:   Reads sitemap.xml, takes every URL whose <lastmod> is today or yesterday (UTC; a page
 #         dated "tomorrow" by the Albanian build counts too), and sends them in ONE POST to
-#         api.indexnow.org with the site's key.
+#         api.indexnow.org with the site's key, falling back to yandex.com when it is refused
+#         (see ENDPOINTS).
 # IN:     `python tools/indexnow_ping.py [--dry-run] [--days N]` from mina.github.io/. Run by
 #         .github/workflows/indexnow.yml after every GitHub Pages build.
 # OUT:    one line saying what was sent and the engine's answer. ALWAYS exits 0.
@@ -26,7 +27,10 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 HOST = "watch.al"
-ENDPOINT = "https://api.indexnow.org/indexnow"
+# Tried in order until one accepts. The engines share what they receive with each other. On 2026-11-16
+# api.indexnow.org and bing.com answered 403 "UserForbiddedToAccessSite" for this key while yandex.com accepted
+# the same request ("success": true), so the key and its file are valid and Bing's side is the odd one out.
+ENDPOINTS = ["https://api.indexnow.org/indexnow", "https://yandex.com/indexnow"]
 URL_RE = re.compile(r"<url>\s*<loc>([^<]+)</loc>(.*?)</url>", re.S)
 LASTMOD_RE = re.compile(r"<lastmod>(\d{4}-\d{2}-\d{2})")
 
@@ -68,15 +72,19 @@ def main(argv):
         return 0
     body = json.dumps({"host": HOST, "key": key, "keyLocation": f"https://{HOST}/{key}.txt",
                        "urlList": urls}).encode("utf-8")
-    req = urllib.request.Request(ENDPOINT, data=body, method="POST",
-                                 headers={"Content-Type": "application/json; charset=utf-8"})
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            print(f"indexnow: sent {len(urls)} URLs, answer {r.status}")
-    except urllib.error.HTTPError as e:
-        print(f"indexnow: sent {len(urls)} URLs, refused {e.code} {e.reason}")
-    except Exception as e:                      # network down, DNS, timeout: a hint lost, not a failure
-        print(f"indexnow: not sent ({type(e).__name__}: {e})")
+    for endpoint in ENDPOINTS:
+        req = urllib.request.Request(endpoint, data=body, method="POST",
+                                     headers={"Content-Type": "application/json; charset=utf-8",
+                                              "User-Agent": "watch.al-indexnow/1.0"})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                print(f"indexnow: sent {len(urls)} URLs to {endpoint}, answer {r.status}")
+                return 0
+        except urllib.error.HTTPError as e:
+            detail = e.read(200).decode("utf-8", "replace") if e.fp else ""
+            print(f"indexnow: {endpoint} refused {e.code} {detail}")
+        except Exception as e:                  # network down, DNS, timeout: a hint lost, not a failure
+            print(f"indexnow: {endpoint} not reached ({type(e).__name__}: {e})")
     return 0
 
 
