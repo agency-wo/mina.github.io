@@ -38,7 +38,7 @@ NOTES:  THE ONE RULE: a file is touched exactly ONCE, and the HTML and the JSON
         Never read_text/write_text in here: 15 of the 117 targets are LF-only and
         17 are mixed, and Python's text mode would silently rewrite every line
         ending in the file. The header below says "the repo root": that is the
-        working root .../watch-repair-shop, not the git repo nested inside it.
+        working root .../03 watch-repair-shop, not the git repo nested inside it.
 
 faq-build.py — FAQ sweep part 2.
 
